@@ -8,7 +8,7 @@ import {
   FileText, Globe, Award, Database, Microscope, 
   ArrowRight, ExternalLink, ChevronRight 
 } from 'lucide-react';
-import { patents, grants, industryGrants, publications } from '../data';
+import { patents, publications } from '../data';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },

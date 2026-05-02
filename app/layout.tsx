@@ -24,9 +24,24 @@ export const viewport = {
 
 export const metadata: Metadata = {
   title: "Raman's Research Lab | IISER Tirupati",
-  description: "Official website of Raman's Research Lab at IISER Tirupati. Pioneering research in catalysis, organometallic chemistry, asymmetric synthesis, and sustainability.",
+  description: "Official website of Raman's Research Lab at IISER Tirupati. Pioneering research in catalysis, sustainable chemistry, and organometallic systems.",
   keywords: ["Raman's Research Lab", "Prof. E. Balaraman", "IISER Tirupati", "Chemistry Research", "Catalysis", "Sustainable Chemistry", "Organometallic Chemistry"],
-  authors: [{ name: "Raman's Research Lab" }],
+  authors: [{ name: "Dr. E. Balaraman" }],
+  openGraph: {
+    title: "Raman's Research Lab | IISER Tirupati",
+    description: "Pioneering research in catalysis and sustainability at IISER Tirupati.",
+    url: "https://balaramanlab.com",
+    siteName: "Raman's Research Lab",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Raman's Research Lab | IISER Tirupati",
+    description: "Pioneering research in catalysis and sustainability at IISER Tirupati.",
+    images: ["/og-image.jpg"],
+  },
 };
 
 export default function RootLayout({
@@ -37,9 +52,49 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${outfit.variable} ${inter.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "EducationalOrganization",
+              "name": "Raman's Research Lab",
+              "url": "https://balaramanlab.com",
+              "logo": "https://balaramanlab.com/logo.png",
+              "parentOrganization": {
+                "@type": "CollegeOrUniversity",
+                "name": "IISER Tirupati"
+              },
+              "description": "Research lab specializing in Catalysis and Sustainable Chemistry."
+            })
+          }}
+        />
+      </head>
+      <body className="min-h-full flex flex-col" suppressHydrationWarning>
+        <div className="scroll-progress">
+          <div className="scroll-progress-bar h-full w-full" id="scroll-bar" suppressHydrationWarning></div>
+        </div>
+        {children}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.addEventListener('scroll', () => {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                const scrollBar = document.getElementById('scroll-bar');
+                if (scrollBar) {
+                  scrollBar.style.transform = 'scaleY(' + (scrolled / 100) + ')';
+                }
+              });
+            `
+          }}
+        />
+      </body>
     </html>
   );
 }

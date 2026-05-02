@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { 
   ArrowLeft, Mail, Globe, Users, GraduationCap, 
-  ExternalLink, ChevronRight, Briefcase 
+  ExternalLink, ChevronRight, Briefcase, BookOpen, Beaker, FlaskConical
 } from 'lucide-react';
 import { team } from '../data';
 
@@ -14,9 +14,78 @@ const fadeUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
 };
 
+const EXTENSIONS = ['.jpg', '.png', '.jpeg', '.webp'];
+
+const hasExtension = (path: string) => /\.\w{2,5}$/.test(path);
+
 const MemberCard = ({ member, role }: { member: any, role: string }) => {
+  const [extIdx, setExtIdx] = useState(0);
   const [imgFailed, setImgFailed] = useState(false);
 
+  const imagePath = member.image || '';
+  const needsExtProbe = imagePath && !hasExtension(imagePath);
+  const currentSrc = !imagePath
+    ? ''
+    : needsExtProbe
+      ? `${imagePath}${EXTENSIONS[extIdx]}`
+      : imagePath;
+
+  const handleError = () => {
+    if (needsExtProbe && extIdx < EXTENSIONS.length - 1) {
+      setExtIdx(extIdx + 1);
+    } else {
+      setImgFailed(true);
+    }
+  };
+
+  return (
+    <motion.div 
+      variants={fadeUp}
+      className="group relative bg-white/[0.03] border border-white/10 rounded-[2rem] overflow-hidden hover:bg-white/5 hover:border-blue-500/30 transition-all duration-500 shadow-xl"
+    >
+      <div className="aspect-[3/4] relative overflow-hidden bg-white/5">
+        {!imgFailed && currentSrc ? (
+          <img 
+            src={currentSrc} 
+            alt={member.name} 
+            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
+            onError={handleError}
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center opacity-10">
+             {role === 'PhD' ? <GraduationCap size={80} /> : role === 'Postdoc' ? <Briefcase size={80} /> : <Users size={80} />}
+          </div>
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
+        <div className="absolute bottom-4 left-4 right-4">
+           <span className="text-[10px] font-mono text-blue-400 uppercase tracking-widest">{role}</span>
+        </div>
+      </div>
+
+      <div className="p-6">
+        <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors tracking-tight">{member.name}</h3>
+        <p className="text-xs text-white/40 font-light leading-relaxed mb-4">{member.info}</p>
+        
+        {member.email && (
+          <a href={`mailto:${member.email}`} className="text-[10px] font-mono text-blue-500/50 hover:text-blue-400 transition-colors break-all leading-relaxed">
+            {member.email}
+          </a>
+        )}
+        
+        <div className="flex gap-4 border-t border-white/5 pt-4 mt-4">
+          {member.email && (
+            <a href={`mailto:${member.email}`} className="text-white/20 hover:text-blue-400 transition-colors"><Mail size={16} /></a>
+          )}
+          <button className="text-white/20 hover:text-blue-400 transition-colors"><Globe size={16} /></button>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+const AlumniPhDCard = ({ member }: { member: any }) => {
+  const [imgFailed, setImgFailed] = useState(false);
+  
   return (
     <motion.div 
       variants={fadeUp}
@@ -32,29 +101,31 @@ const MemberCard = ({ member, role }: { member: any, role: string }) => {
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center opacity-10">
-             {role === 'PhD' ? <GraduationCap size={80} /> : role === 'Postdoc' ? <Briefcase size={80} /> : <Users size={80} />}
+             <GraduationCap size={80} />
           </div>
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
         <div className="absolute bottom-4 left-4 right-4">
-           <span className="text-[10px] font-mono text-blue-400 uppercase tracking-widest">{role}</span>
+           <span className="text-[10px] font-mono text-emerald-400 uppercase tracking-widest">PhD Alumni</span>
         </div>
       </div>
-
       <div className="p-6">
-        <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors tracking-tight">{member.name}</h3>
-        <p className="text-xs text-white/40 font-light leading-relaxed mb-6">{member.info}</p>
-        
-        <div className="flex gap-4 border-t border-white/5 pt-4">
-          <button className="text-white/20 hover:text-blue-400 transition-colors"><Mail size={16} /></button>
-          <button className="text-white/20 hover:text-blue-400 transition-colors"><Globe size={16} /></button>
+        <h3 className="text-lg font-bold text-white mb-2 group-hover:text-blue-400 transition-colors tracking-tight">{member.name}</h3>
+        <p className="text-[10px] text-white/30 font-light leading-relaxed mb-1 line-clamp-2">{member.thesis}</p>
+        <div className="flex items-center gap-2 mt-3">
+          <span className="text-[10px] font-mono text-blue-500/50">{member.duration}</span>
         </div>
+        {member.present && (
+          <p className="text-[10px] text-white/20 mt-2 italic">Currently: {member.present}</p>
+        )}
       </div>
     </motion.div>
   );
 };
 
 export default function TeamPage() {
+  const [showAllAlumni, setShowAllAlumni] = useState(false);
+  
   return (
     <main className="min-h-screen bg-[#020202] text-white selection:bg-blue-500/30 pb-32">
       <section className="relative pt-32 pb-24 px-6 border-b border-white/5 overflow-hidden">
@@ -79,6 +150,7 @@ export default function TeamPage() {
 
       <div className="max-w-7xl mx-auto px-6 py-24 space-y-32">
         
+        {/* Postdocs */}
         {team.postdocs && team.postdocs.length > 0 && (
           <section>
             <div className="flex items-center gap-4 mb-12">
@@ -91,6 +163,7 @@ export default function TeamPage() {
           </section>
         )}
 
+        {/* PhD Scholars */}
         {team.currentPhd && team.currentPhd.length > 0 && (
           <section>
             <div className="flex items-center gap-4 mb-12">
@@ -103,11 +176,12 @@ export default function TeamPage() {
           </section>
         )}
 
+        {/* Masters */}
         {team.masters && team.masters.length > 0 && (
           <section>
             <div className="flex items-center gap-4 mb-12">
                <div className="h-px w-12 bg-blue-500"></div>
-               <h2 className="text-xs font-mono text-blue-500 uppercase tracking-[0.4em]">Master's Students</h2>
+               <h2 className="text-xs font-mono text-blue-500 uppercase tracking-[0.4em]">Master&apos;s Students</h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {team.masters.map((member, i) => <MemberCard key={i} member={member} role="Masters" />)}
@@ -115,16 +189,142 @@ export default function TeamPage() {
           </section>
         )}
 
-        <section className="pt-16 border-t border-white/5 text-center">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-             <h2 className="text-3xl font-bold mb-6">Our Alumni Network</h2>
-             <p className="text-white/40 font-light max-w-xl mx-auto mb-10 leading-relaxed">
-               Celebrating the achievements and career progression of our past group members across academia and industry globally.
+        {/* ===== ALUMNI SECTIONS ===== */}
+        <section className="pt-16 border-t border-white/5">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-20">
+             <h2 className="text-5xl md:text-8xl font-black tracking-tighter uppercase mb-4">Alumni</h2>
+             <p className="text-white/40 font-light max-w-xl mx-auto leading-relaxed">
+               Celebrating the achievements of our past group members across academia and industry globally.
              </p>
-             <Link href="/alumni" className="inline-flex items-center gap-3 px-10 py-5 rounded-full bg-blue-600 text-white font-bold hover:bg-blue-500 transition-all shadow-2xl">
-                Explore Alumni Registry <ChevronRight size={18} />
-             </Link>
           </motion.div>
+
+          {/* PhD Alumni */}
+          {team.alumniPhd && team.alumniPhd.length > 0 && (
+            <div className="mb-32">
+              <div className="flex items-center gap-4 mb-12">
+                 <div className="h-px w-12 bg-emerald-500"></div>
+                 <h3 className="text-xs font-mono text-emerald-500 uppercase tracking-[0.4em]">Doctoral Students (PhD Thesis)</h3>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                {team.alumniPhd.map((member: any, i: number) => <AlumniPhDCard key={i} member={member} />)}
+              </div>
+            </div>
+          )}
+
+          {/* MSc Alumni */}
+          {team.alumniMsc && team.alumniMsc.length > 0 && (
+            <div className="mb-32">
+              <div className="flex items-center gap-4 mb-12">
+                 <div className="h-px w-12 bg-purple-500"></div>
+                 <h3 className="text-xs font-mono text-purple-500 uppercase tracking-[0.4em]">Post-graduate Students (MSc Thesis)</h3>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {(team.alumniMsc as any[]).map((m, i) => (
+                  <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-purple-500/20 transition-all">
+                    <div className="w-8 h-8 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 shrink-0">
+                      <BookOpen size={14} />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="text-sm font-bold text-white/80 truncate">{m.name}</h4>
+                      <p className="text-[10px] text-white/30 font-light">{m.institution} • {m.year}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* BTech Alumni */}
+          {team.alumniBtech && team.alumniBtech.length > 0 && (
+            <div className="mb-32">
+              <div className="flex items-center gap-4 mb-12">
+                 <div className="h-px w-12 bg-orange-500"></div>
+                 <h3 className="text-xs font-mono text-orange-500 uppercase tracking-[0.4em]">Undergraduate Students (B.Tech)</h3>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {(team.alumniBtech as any[]).map((m, i) => (
+                  <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-orange-500/20 transition-all">
+                    <div className="w-8 h-8 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-400 shrink-0">
+                      <Beaker size={14} />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="text-sm font-bold text-white/80">{m.name}</h4>
+                      <p className="text-[10px] text-white/30 font-light">{m.institution}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Project Fellows */}
+          {team.alumniProjectFellows && team.alumniProjectFellows.length > 0 && (
+            <div className="mb-32">
+              <div className="flex items-center gap-4 mb-12">
+                 <div className="h-px w-12 bg-cyan-500"></div>
+                 <h3 className="text-xs font-mono text-cyan-500 uppercase tracking-[0.4em]">Project Fellows / Research Associates</h3>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {(team.alumniProjectFellows as any[]).map((m, i) => (
+                  <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-cyan-500/20 transition-all">
+                    <div className="w-8 h-8 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 shrink-0">
+                      <FlaskConical size={14} />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="text-sm font-bold text-white/80 truncate">{m.name}</h4>
+                      <p className="text-[10px] text-white/30 font-light">{m.duration}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Semester/Summer Project Students */}
+          {team.alumniSemester && team.alumniSemester.length > 0 && (
+            <div className="mb-32">
+              <div className="flex items-center gap-4 mb-12">
+                 <div className="h-px w-12 bg-pink-500"></div>
+                 <h3 className="text-xs font-mono text-pink-500 uppercase tracking-[0.4em]">Semester &amp; Summer Project Students @ IISER Tirupati</h3>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {(team.alumniSemester as any[]).map((m, i) => (
+                  <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-pink-500/20 transition-all">
+                    <div className="w-8 h-8 rounded-xl bg-pink-500/10 flex items-center justify-center text-pink-400 shrink-0">
+                      <GraduationCap size={14} />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="text-sm font-bold text-white/80 truncate">{m.name}</h4>
+                      <p className="text-[10px] text-white/30 font-light">{m.batch} • {m.duration}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Lab Rotation iPhD Students */}
+          {team.alumniLabRotation && team.alumniLabRotation.length > 0 && (
+            <div className="mb-16">
+              <div className="flex items-center gap-4 mb-12">
+                 <div className="h-px w-12 bg-amber-500"></div>
+                 <h3 className="text-xs font-mono text-amber-500 uppercase tracking-[0.4em]">Lab Rotation iPhD Students @ IISER Tirupati</h3>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {(team.alumniLabRotation as any[]).map((m, i) => (
+                  <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-amber-500/20 transition-all">
+                    <div className="w-8 h-8 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-400 shrink-0">
+                      <Users size={14} />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="text-sm font-bold text-white/80 truncate">{m.name}</h4>
+                      <p className="text-[10px] text-white/30 font-light">{m.batch} • {m.duration}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </section>
 
       </div>

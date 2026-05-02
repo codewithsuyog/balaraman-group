@@ -38,7 +38,7 @@ const PublicationCard = ({ pub, idx, fadeUp }: any) => {
         {!noImages && (
           <div className="w-full lg:w-[35%] flex gap-4 justify-center items-center h-40 lg:h-auto">
              {hasCover && (
-               <div className="w-[80px] h-40 rounded-xl bg-white border border-white/10 overflow-hidden relative group-hover:border-blue-500/40 transition-all shadow-xl flex items-center justify-center shrink-0 p-2">
+               <div className="w-[160px] h-40 rounded-xl bg-white border border-white/10 overflow-hidden relative group-hover:border-blue-500/40 transition-all shadow-xl flex items-center justify-center shrink-0 p-2">
                    <img 
                     key={`cover-archive-${pub.id}-${coverExtIdx}`}
                     src={coverFailed ? "/logo.png" : `/publications/covers/${pub.id}${extensions[coverExtIdx]}`} 
@@ -49,7 +49,7 @@ const PublicationCard = ({ pub, idx, fadeUp }: any) => {
                </div>
              )}
              {hasScheme && (
-               <div className="flex-1 h-40 rounded-xl bg-white border border-white/10 overflow-hidden relative group-hover:border-blue-500/40 transition-all shadow-xl flex items-center justify-center p-2">
+               <div className="flex-1 max-w-[500px] h-40 rounded-xl bg-white border border-white/10 overflow-hidden relative group-hover:border-blue-500/40 transition-all shadow-xl flex items-center justify-center p-2">
                    <img 
                     key={`scheme-archive-${pub.id}-${schemeExtIdx}`}
                     src={schemeFailed ? "/logo.png" : `/publications/schemes/${pub.id}${extensions[schemeExtIdx]}`} 
