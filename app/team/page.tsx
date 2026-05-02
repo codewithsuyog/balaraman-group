@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { 
@@ -9,7 +9,7 @@ import {
 } from 'lucide-react';
 import { team } from '../data';
 
-const fadeUp = {
+const fadeUp: any = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
 };
@@ -48,7 +48,7 @@ const MemberCard = ({ member, role }: { member: any, role: string }) => {
           <img 
             src={currentSrc} 
             alt={member.name} 
-            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
+            className="w-full h-full object-cover transition-all duration-700 scale-105 group-hover:scale-100"
             onError={handleError}
           />
         ) : (
@@ -64,8 +64,11 @@ const MemberCard = ({ member, role }: { member: any, role: string }) => {
 
       <div className="p-6">
         <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors tracking-tight">{member.name}</h3>
-        <p className="text-xs text-white/40 font-light leading-relaxed mb-4">{member.info}</p>
-        
+        <p className="text-xs text-white/80 font-light leading-relaxed mb-4">
+          {member.info ? member.info.split(',').map((part: string, idx: number) => (
+            <React.Fragment key={idx}>{part.trim()}<br/></React.Fragment>
+          )) : null}
+        </p>
         {member.email && (
           <a href={`mailto:${member.email}`} className="text-[10px] font-mono text-blue-500/50 hover:text-blue-400 transition-colors break-all leading-relaxed">
             {member.email}
@@ -111,7 +114,7 @@ const AlumniPhDCard = ({ member }: { member: any }) => {
       </div>
       <div className="p-6">
         <h3 className="text-lg font-bold text-white mb-2 group-hover:text-blue-400 transition-colors tracking-tight">{member.name}</h3>
-        <p className="text-[10px] text-white/30 font-light leading-relaxed mb-1 line-clamp-2">{member.thesis}</p>
+        <p className="text-[10px] text-white/50 font-light leading-relaxed mb-1">{member.thesis}</p>
         <div className="flex items-center gap-2 mt-3">
           <span className="text-[10px] font-mono text-blue-500/50">{member.duration}</span>
         </div>
@@ -125,6 +128,14 @@ const AlumniPhDCard = ({ member }: { member: any }) => {
 
 export default function TeamPage() {
   const [showAllAlumni, setShowAllAlumni] = useState(false);
+  const [isAlumniOnly, setIsAlumniOnly] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.location.hash === '#alumni') {
+      setIsAlumniOnly(true);
+      setShowAllAlumni(true);
+    }
+  }, []);
   
   return (
     <main className="min-h-screen bg-[#020202] text-white selection:bg-blue-500/30 pb-32">
@@ -150,8 +161,10 @@ export default function TeamPage() {
 
       <div className="max-w-7xl mx-auto px-6 py-24 space-y-32">
         
-        {/* Postdocs */}
-        {team.postdocs && team.postdocs.length > 0 && (
+        {!isAlumniOnly && (
+          <>
+            {/* Postdocs */}
+            {team.postdocs && team.postdocs.length > 0 && (
           <section>
             <div className="flex items-center gap-4 mb-12">
                <div className="h-px w-12 bg-blue-500"></div>
@@ -188,9 +201,11 @@ export default function TeamPage() {
             </div>
           </section>
         )}
+          </>
+        )}
 
         {/* ===== ALUMNI SECTIONS ===== */}
-        <section className="pt-16 border-t border-white/5">
+        <section id="alumni" className={`pt-16 border-t border-white/5 ${isAlumniOnly ? 'mt-0 border-t-0 pt-0' : ''}`}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-20">
              <h2 className="text-5xl md:text-8xl font-black tracking-tighter uppercase mb-4">Alumni</h2>
              <p className="text-white/40 font-light max-w-xl mx-auto leading-relaxed">

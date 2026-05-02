@@ -3,9 +3,10 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowLeft, GraduationCap, Users } from 'lucide-react';
-import { team } from '../data';
+import { team as teamData } from '../data';
+const team: any = teamData;
 
-const fadeUp = {
+const fadeUp: any = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
 };
@@ -46,7 +47,7 @@ export default function AlumniPage() {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-white/5">
-                    {team.alumniPhd.map((alumnus, idx) => (
+                    {team.alumniPhd.map((alumnus: any, idx: number) => (
                       <tr key={idx} className="hover:bg-white/[0.04] transition-colors">
                         <td className="p-6 font-bold text-white/90 text-lg">{alumnus.name}</td>
                         <td className="p-6 text-sm text-[var(--color-muted)] font-mono">{alumnus.duration || alumnus.year}</td>
@@ -66,7 +67,7 @@ export default function AlumniPage() {
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
                 <h3 className="text-2xl font-bold mb-6 text-white border-b border-white/10 pb-4">M.Sc. Thesis Alumni</h3>
                 <ul className="grid grid-cols-1 gap-3">
-                  {team.mscAlumni.map((name, idx) => (
+                  {team.mscAlumni.map((name: string, idx: number) => (
                     <li key={idx} className="text-sm text-white/70 font-light bg-white/5 px-4 py-3 rounded-lg border border-white/5 hover:border-blue-500/20 transition-colors">
                       {name}
                     </li>
@@ -80,7 +81,7 @@ export default function AlumniPage() {
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
                 <h3 className="text-2xl font-bold mb-6 text-white border-b border-white/10 pb-4">Project Fellows & Research Associates</h3>
                 <ul className="grid grid-cols-1 gap-3">
-                  {team.projectFellows.map((name, idx) => (
+                  {team.projectFellows.map((name: string, idx: number) => (
                     <li key={idx} className="text-sm text-white/70 font-light bg-white/5 px-4 py-3 rounded-lg border border-white/5 hover:emerald-500/20 transition-colors">
                       {name}
                     </li>
@@ -94,7 +95,7 @@ export default function AlumniPage() {
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
                 <h3 className="text-2xl font-bold mb-6 text-white border-b border-white/10 pb-4">Semester & Summer Project Students</h3>
                 <ul className="grid grid-cols-1 gap-3">
-                  {team.summerStudents.map((name, idx) => (
+                  {team.summerStudents.map((name: string, idx: number) => (
                     <li key={idx} className="text-sm text-white/70 font-light bg-white/5 px-4 py-3 rounded-lg border border-white/5 hover:border-blue-500/20 transition-colors">
                       {name}
                     </li>
@@ -109,7 +110,7 @@ export default function AlumniPage() {
                 <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
                   <h3 className="text-2xl font-bold mb-6 text-white border-b border-white/10 pb-4">Lab Rotation i-PhD Students</h3>
                   <ul className="grid grid-cols-1 gap-3">
-                    {team.labRotation.map((name, idx) => (
+                    {team.labRotation.map((name: string, idx: number) => (
                       <li key={idx} className="text-sm text-white/70 font-light bg-white/5 px-4 py-3 rounded-lg border border-white/5 hover:border-emerald-500/20 transition-colors">
                         {name}
                       </li>
@@ -123,7 +124,7 @@ export default function AlumniPage() {
                 <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
                   <h3 className="text-2xl font-bold mb-6 text-white border-b border-white/10 pb-4">Undergraduate Alumni</h3>
                   <ul className="grid grid-cols-1 gap-3">
-                    {team.ugAlumni.map((name, idx) => (
+                    {team.ugAlumni.map((name: string, idx: number) => (
                       <li key={idx} className="text-sm text-white/70 font-light bg-white/5 px-4 py-3 rounded-lg border border-white/5 hover:border-blue-500/20 transition-colors">
                         {name}
                       </li>

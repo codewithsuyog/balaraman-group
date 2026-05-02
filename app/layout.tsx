@@ -23,6 +23,7 @@ export const viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://balaramanlab.com'),
   title: "Raman's Research Lab | IISER Tirupati",
   description: "Official website of Raman's Research Lab at IISER Tirupati. Pioneering research in catalysis, sustainable chemistry, and organometallic systems.",
   keywords: ["Raman's Research Lab", "Prof. E. Balaraman", "IISER Tirupati", "Chemistry Research", "Catalysis", "Sustainable Chemistry", "Organometallic Chemistry"],

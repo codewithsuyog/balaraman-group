@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { ArrowLeft, BookOpen, ExternalLink } from 'lucide-react';
 import { publications } from '../data';
 
-const fadeUp = {
+const fadeUp: any = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
 };
@@ -31,66 +31,70 @@ const PublicationCard = ({ pub, idx, fadeUp }: any) => {
       viewport={{ once: true }}
       variants={fadeUp}
       transition={{ delay: (idx % 10) * 0.05 }}
-      className="bg-white/5 backdrop-blur-md p-6 md:p-8 rounded-[2rem] border border-white/10 hover:border-blue-500/30 hover:bg-white/10 transition-all flex flex-col gap-6 group shadow-xl overflow-hidden"
+      className="group relative flex flex-col gap-8 p-10 rounded-[3rem] bg-white/[0.03] border border-white/10 hover:border-blue-500/30 hover:bg-white/5 transition-all duration-500 shadow-xl overflow-hidden"
     >
-      <div className="flex flex-col lg:flex-row gap-8 items-center">
+      <div className="flex flex-col md:flex-row gap-12 items-start">
+        {/* Paper Details */}
+        <div className="flex-1 flex flex-col justify-center">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="px-4 py-1.5 rounded-full bg-blue-500/10 text-blue-400 text-[10px] font-black tracking-widest uppercase border border-blue-500/20">
+              {pub.year}
+            </span>
+            {pub.journal && pub.journal.length < 20 && (
+              <span className="text-xs text-white/30 font-mono italic">{pub.journal}</span>
+            )}
+          </div>
+          
+          <div className="text-base text-white/80 leading-relaxed mb-8 font-light border-l-2 border-blue-500/30 pl-6">
+            <span className="text-blue-400 font-bold mr-2 text-lg">{pub.id}.</span>
+            {pub.fullText ? pub.fullText : (
+              <>{pub.authors}. {pub.title}. <span className="italic">{pub.journal}</span>, {pub.year}{pub.details}</>
+            )}
+          </div>
+          
+          <div className="flex items-center gap-4 flex-wrap mt-auto">
+            {pub.doi && (
+              <a 
+                href={pub.doi.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`} 
+                target="_blank" 
+                rel="noreferrer" 
+                className="px-8 py-4 rounded-full bg-blue-600/10 border border-blue-600/30 text-blue-400 text-xs font-bold flex items-center gap-2 hover:bg-blue-500 hover:text-white shadow-lg shadow-blue-600/10 transition-all uppercase tracking-widest w-max"
+              >
+                Read Publication <ExternalLink size={14} />
+              </a>
+            )}
+          </div>
+        </div>
+
         {/* Visuals: Cover & Scheme */}
         {!noImages && (
-          <div className="w-full lg:w-[35%] flex gap-4 justify-center items-center h-40 lg:h-auto">
+          <div className="w-full md:w-[45%] flex flex-col sm:flex-row gap-6 items-center shrink-0">
              {hasCover && (
-               <div className="w-[160px] h-40 rounded-xl bg-white border border-white/10 overflow-hidden relative group-hover:border-blue-500/40 transition-all shadow-xl flex items-center justify-center shrink-0 p-2">
+               <div className="w-[140px] h-56 rounded-2xl bg-white border border-white/10 overflow-hidden relative group-hover:border-blue-500/40 transition-all p-2 shadow-2xl shrink-0">
                    <img 
                     key={`cover-archive-${pub.id}-${coverExtIdx}`}
                     src={coverFailed ? "/logo.png" : `/publications/covers/${pub.id}${extensions[coverExtIdx]}`} 
                     alt="Cover" 
+                    loading="lazy"
                     className={`w-full h-full object-contain ${coverFailed ? 'opacity-20 p-4' : ''}`}
                     onError={() => coverExtIdx < extensions.length - 1 ? setCoverExtIdx(prev => prev + 1) : setCoverFailed(true)}
                   />
                </div>
              )}
              {hasScheme && (
-               <div className="flex-1 max-w-[500px] h-40 rounded-xl bg-white border border-white/10 overflow-hidden relative group-hover:border-blue-500/40 transition-all shadow-xl flex items-center justify-center p-2">
+               <div className="flex-1 max-w-[500px] h-56 rounded-2xl bg-white border border-white/10 overflow-hidden relative group-hover:border-blue-500/40 transition-all shadow-2xl p-2">
                    <img 
                     key={`scheme-archive-${pub.id}-${schemeExtIdx}`}
                     src={schemeFailed ? "/logo.png" : `/publications/schemes/${pub.id}${extensions[schemeExtIdx]}`} 
                     alt="Scheme" 
-                    className={`w-full h-full object-contain ${schemeFailed ? 'opacity-20' : ''}`}
+                    loading="lazy"
+                    className={`w-full h-full object-contain ${schemeFailed ? 'opacity-20 p-4' : ''}`}
                     onError={() => schemeExtIdx < extensions.length - 1 ? setSchemeExtIdx(prev => prev + 1) : setSchemeFailed(true)}
                   />
                </div>
              )}
           </div>
         )}
-
-        {/* Paper Details */}
-        <div className={`w-full ${noImages ? 'lg:w-full' : 'lg:w-[65%]'} flex flex-col justify-center`}>
-          <div className="flex items-center gap-3 mb-4">
-            <span className="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-[10px] font-black tracking-widest uppercase border border-blue-500/30">
-              {pub.year}
-            </span>
-            {pub.journal && pub.journal.length < 20 && (
-              <span className="text-sm text-white/40 font-mono">{pub.journal}</span>
-            )}
-          </div>
-          
-          <div className="text-sm md:text-base text-[var(--color-muted)] leading-relaxed mb-6 font-light border-l-2 border-blue-500/30 pl-4">
-            <span className="text-blue-400 font-bold mr-2 text-lg">{pub.id}.</span>
-            {pub.authors}. {pub.title}. <span className="italic">{pub.journal}</span>, {pub.year}{pub.details}
-          </div>
-          
-          <div className="flex items-center gap-4 flex-wrap">
-            {pub.doi && (
-              <a 
-                href={pub.doi.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`} 
-                target="_blank" 
-                rel="noreferrer" 
-                className="inline-flex w-max px-5 py-2.5 rounded-full bg-blue-600/10 border border-blue-600/30 text-blue-400 text-xs font-bold items-center gap-2 hover:bg-blue-500 hover:text-white shadow-lg transition-all"
-              >
-                View Publication <ExternalLink size={14} />
-              </a>
-            )}
-          </div>
-        </div>
       </div>
     </motion.div>
   );

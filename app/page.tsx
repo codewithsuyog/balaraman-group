@@ -12,10 +12,10 @@ import {
 } from 'lucide-react';
 import { 
   publications, patents, piBio, cvLink, 
-  opportunities, team 
+  opportunities, team, awards 
 } from './data';
 
-const fadeUp = {
+const fadeUp: any = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
 };
@@ -82,13 +82,12 @@ const FeaturedPublication = ({ pub }: { pub: any }) => {
             </span>
             <span className="text-xs text-white/30 font-mono italic">{pub.journal}</span>
           </div>
-          <h3 className="text-2xl md:text-3xl font-black text-white mb-6 leading-tight group-hover:text-blue-400 transition-colors">
-            {pub.title}
-          </h3>
-          <p className="text-base text-white/60 font-light leading-relaxed mb-8">
-            <span className="text-blue-400 font-bold mr-2">{pub.id}.</span>
-            {pub.authors}. <span className="italic">{pub.journal}</span>, {pub.year}{pub.details}
-          </p>
+          <div className="text-base text-white/60 font-light leading-relaxed mb-8 border-l-2 border-blue-500/30 pl-6">
+            <span className="text-blue-400 font-bold mr-2 text-lg">{pub.id}.</span>
+            {pub.fullText ? pub.fullText : (
+              <>{pub.authors}. <span className="italic">{pub.journal}</span>, {pub.year}{pub.details}</>
+            )}
+          </div>
           <div className="flex items-center gap-4">
             <a 
               href={pub.doi?.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`} 
@@ -157,21 +156,21 @@ const TeamMemberThumb = ({ member, role }: { member: any, role: string }) => {
         <img 
           src={showImage ? src : "/logo.png"} 
           alt={member.name} 
-          className={`w-full h-full object-cover transition-all duration-700 ${!showImage ? 'opacity-20 p-4 object-contain' : ''}`}
+          className={`w-full h-full object-cover transition-all duration-700 ${!showImage ? 'opacity-50 p-4 object-contain brightness-150' : ''}`}
           onError={handleError}
         />
       </div>
       <span className="text-[10px] font-bold text-white uppercase tracking-wider truncate w-full mb-1">{member.name}</span>
       <span className="text-[9px] font-mono text-blue-400 uppercase tracking-widest mb-2">{role}</span>
       {member.info && (
-        <p className="text-[9px] text-white/50 leading-relaxed line-clamp-3 mb-1 font-light">
+        <p className="text-[10px] text-white/80 leading-relaxed mb-2 font-light">
           {member.info.split(',').map((part: string, idx: number) => (
             <React.Fragment key={idx}>{part.trim()}<br/></React.Fragment>
           ))}
         </p>
       )}
       {member.email && (
-        <a href={`mailto:${member.email}`} className="text-[9px] text-blue-400/70 hover:text-blue-400 transition-colors truncate w-full flex items-center gap-1 mt-auto pt-2">
+        <a href={`mailto:${member.email}`} className="text-[10px] text-blue-400 hover:text-blue-300 transition-colors truncate w-full flex items-center gap-1 mt-auto pt-2">
           <Mail size={10} /> {member.email}
         </a>
       )}
@@ -225,6 +224,57 @@ const AlumniThumb = ({ member }: { member: any }) => {
   );
 };
 
+const GallerySlideshow = () => {
+  const images = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="w-full relative overflow-hidden rounded-3xl bg-white/[0.02] border border-white/10 mb-8 aspect-video md:aspect-[21/9] shadow-2xl group">
+      <AnimatePresence mode="wait">
+        <motion.img
+          key={currentIndex}
+          src={`/gallery/${images[currentIndex]}.jpg`}
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.8 }}
+          className="absolute inset-0 w-full h-full object-cover"
+          onError={(e: any) => { e.currentTarget.src = '/logo.png'; e.currentTarget.className = "absolute inset-0 w-full h-full object-contain opacity-20 p-8"; }}
+        />
+      </AnimatePresence>
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+        {images.map((_, idx) => (
+          <button 
+            key={idx} 
+            onClick={() => setCurrentIndex(idx)}
+            className={`h-1.5 rounded-full transition-all duration-300 ${idx === currentIndex ? 'bg-pink-500 w-6' : 'bg-white/30 hover:bg-white/60 w-1.5'}`}
+          />
+        ))}
+      </div>
+      <button 
+        onClick={() => setCurrentIndex((prev) => (prev - 1 + images.length) % images.length)}
+        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/30 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/50"
+      >
+        <ArrowLeft size={16} />
+      </button>
+      <button 
+        onClick={() => setCurrentIndex((prev) => (prev + 1) % images.length)}
+        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/30 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/50"
+      >
+        <ArrowRight size={16} />
+      </button>
+    </div>
+  );
+};
+
 export default function Home() {
   const [activeSection, setActiveSection] = useState('home');
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -239,7 +289,7 @@ export default function Home() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'pi', 'research', 'publications', 'team', 'gallery', 'contact'];
+      const sections = ['home', 'pi', 'research', 'publications', 'patents', 'team', 'gallery', 'contact'];
       for (const sectionId of sections) {
         const element = document.getElementById(sectionId);
         if (element) {
@@ -311,7 +361,7 @@ export default function Home() {
         initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
         className="fixed top-6 left-1/2 -translate-x-1/2 z-50 glass rounded-full px-2 md:px-4 py-2 flex gap-1 md:gap-2 text-[10px] md:text-xs font-mono border border-white/10 max-w-[95vw] overflow-x-auto no-scrollbar shadow-2xl"
       >
-        {navLinks.map((link) => {
+        {navLinks.map((link: any) => {
           const isExternal = link.href?.startsWith('/');
           const href = isExternal ? link.href : `/#${link.id}`;
           
@@ -439,25 +489,14 @@ export default function Home() {
 
             <div className="mb-16">
                <h3 className="text-xl font-bold text-white mb-6 uppercase tracking-tight flex items-center gap-3">
-                 <BookOpen size={20} className="text-blue-500" /> Courses & Projects
+                 <BookOpen size={20} className="text-blue-500" /> Courses Offered
                </h3>
-               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-blue-500/30 transition-all">
-                     <h4 className="text-xs font-mono text-blue-400 uppercase tracking-widest mb-4">Courses Offered</h4>
-                     <ul className="space-y-2 text-sm text-white/60 font-light">
-                        <li>• CHM 111: Inorganic Chemistry</li>
-                        <li>• CHM 211: Coordination Chemistry</li>
-                        <li>• CHM 411: Organometallic Chemistry</li>
-                     </ul>
-                  </div>
-                  <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-blue-500/30 transition-all">
-                     <h4 className="text-xs font-mono text-blue-400 uppercase tracking-widest mb-4">Sponsored Projects</h4>
-                     <ul className="space-y-2 text-sm text-white/60 font-light">
-                        <li>• DST-SERB Core Research Grant</li>
-                        <li>• CSIR Extramural Research Grant</li>
-                        <li>• GAIL India Collaborative Project</li>
-                     </ul>
-                  </div>
+               <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-blue-500/30 transition-all max-w-2xl">
+                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-white/60 font-light">
+                     <li>• CHM 111: Inorganic Chemistry</li>
+                     <li>• CHM 211: Coordination Chemistry</li>
+                     <li>• CHM 411: Organometallic Chemistry</li>
+                  </ul>
                </div>
             </div>
 
@@ -511,7 +550,7 @@ export default function Home() {
                   <p className="text-base text-white/70 font-light leading-relaxed mb-8 max-w-sm line-clamp-3 opacity-80 group-hover:opacity-100 transition-all">
                     {cat.details}
                   </p>
-                  <Link href="/research" className="flex items-center gap-3 px-8 py-4 rounded-full glass border border-white/10 text-white text-[10px] font-black uppercase tracking-[0.2em] hover:bg-blue-600 hover:border-blue-600 transition-all">
+                  <Link href={`/research#${cat.id}`} className="flex items-center gap-3 px-8 py-4 rounded-full glass border border-white/10 text-white text-[10px] font-black uppercase tracking-[0.2em] hover:bg-blue-600 hover:border-blue-600 transition-all">
                      Dive Deeper <ArrowRight size={14} />
                   </Link>
                 </div>
@@ -623,13 +662,20 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Masters */}
-              <div>
-                <h3 className="text-xs font-mono text-blue-500 uppercase tracking-[0.4em] mb-10 text-left">Master&apos;s Students</h3>
-                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 w-full">
-                  {team.masters.map((member, i) => (
-                    <TeamMemberThumb key={i} member={member} role="Master's Student" />
-                  ))}
+              {/* Masters Section */}
+              <div className="mb-20">
+                <div className="flex items-center gap-4 mb-12">
+                   <div className="h-px w-12 bg-blue-500"></div>
+                   <h2 className="text-xs font-mono text-blue-500 uppercase tracking-[0.4em]">Master's / BS-MS Students</h2>
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
+                  {team.masters.map((member, i) => <TeamMemberThumb key={i} member={member} role="MSc/BS-MS" />)}
+                </div>
+                
+                <div className="mt-16 flex justify-start">
+                   <Link href="/team#alumni" className="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-blue-500/30 text-blue-400 font-bold hover:bg-blue-500/10 transition-all uppercase text-[10px] tracking-widest font-mono">
+                     Open Full Alumni Registry <ArrowRight size={18} />
+                   </Link>
                 </div>
               </div>
 
@@ -641,40 +687,91 @@ export default function Home() {
                 </div>
                 <p className="text-white/30 font-light text-sm mb-10 text-left">Glimpses of our vibrant group life inside and outside the lab.</p>
                 
-                <div className="w-full relative overflow-hidden rounded-3xl bg-white/[0.02] border border-white/10 p-4 mb-8">
-                  <div className="flex gap-4 overflow-x-auto no-scrollbar pb-4 snap-x">
-                    {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-                      <div key={i} className="min-w-[300px] h-[200px] rounded-2xl bg-white/5 overflow-hidden snap-center flex-shrink-0">
-                        <img 
-                          src={`/gallery/${i}.jpg`} 
-                          alt={`Lab Memory ${i}`}
-                          className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
-                          onError={(e) => { e.currentTarget.src = '/logo.png'; e.currentTarget.className = "w-full h-full object-contain opacity-20 p-8"; }}
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                <GallerySlideshow />
 
                 <Link href="/gallery" className="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-pink-500/30 text-pink-400 font-bold hover:bg-pink-500/10 transition-all uppercase text-[10px] tracking-widest font-mono mx-auto">
                   View Full Gallery <ArrowRight size={18} />
                 </Link>
               </div>
             </div>
-
-            <Link href="/team" className="mt-20 px-10 py-5 rounded-full bg-blue-600 text-white font-bold hover:bg-blue-500 transition-all shadow-2xl flex items-center gap-3">
-               Explore Full Team & Alumni Registry <ArrowRight size={18} />
-            </Link>
          </div>
       </section>
 
 
 
+      {/* 6. CONTACT SECTION */}
+      <section id="contact" className="w-full py-32 px-6 relative z-10 bg-black">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16">
+          <div className="w-full md:w-1/2">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="h-px w-12 bg-blue-500"></div>
+              <p className="text-[10px] font-mono text-blue-400 tracking-[0.3em] uppercase">Get in Touch</p>
+            </div>
+            <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-8 text-white uppercase">Contact Us</h2>
+            <p className="text-xl text-white/50 font-light mb-12">
+              Interested in joining our group or collaborating with us? We'd love to hear from you.
+            </p>
+            
+            <div className="space-y-8">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 shrink-0">
+                  <MapPin size={20} />
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-white uppercase tracking-widest mb-2">Location</h4>
+                  <p className="text-white/60 font-light leading-relaxed">
+                    Department of Chemistry,<br />
+                    IISER Tirupati, Rami Reddy Nagar,<br />
+                    Karakambadi Road, Tirupati 517506,<br />
+                    Andhra Pradesh, India
+                  </p>
+                </div>
+              </div>
+              
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 shrink-0">
+                  <Mail size={20} />
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-white uppercase tracking-widest mb-2">Email</h4>
+                  <a href="mailto:eb.raman@iisertirupati.ac.in" className="text-white/60 hover:text-blue-400 font-light transition-colors">
+                    eb.raman@iisertirupati.ac.in
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="w-full md:w-1/2 p-10 rounded-[3rem] bg-white/[0.02] border border-white/5">
+             <h3 className="text-2xl font-bold text-white mb-6 uppercase tracking-tight">Open Positions</h3>
+             <p className="text-white/60 font-light mb-8 leading-relaxed">
+               We are always looking for motivated Postdocs, PhD students, and Master's students to join our lab. Please send your CV and a brief description of your research interests to Prof. Balaraman.
+             </p>
+             <div className="space-y-4">
+               <div className="p-4 rounded-2xl bg-blue-500/5 border border-blue-500/10 flex items-center gap-4">
+                 <GraduationCap size={24} className="text-blue-400" />
+                 <div>
+                   <h4 className="text-sm font-bold text-white">PhD Positions</h4>
+                   <p className="text-xs text-white/50">Through regular IISER Tirupati admissions</p>
+                 </div>
+               </div>
+               <div className="p-4 rounded-2xl bg-blue-500/5 border border-blue-500/10 flex items-center gap-4">
+                 <Briefcase size={24} className="text-blue-400" />
+                 <div>
+                   <h4 className="text-sm font-bold text-white">Postdoc Positions</h4>
+                   <p className="text-xs text-white/50">NPDF / Institute Fellowships</p>
+                 </div>
+               </div>
+             </div>
+          </div>
+        </div>
+      </section>
+
       {/* FOOTER */}
       <footer className="w-full py-12 px-6 border-t border-white/5 bg-black/50 backdrop-blur-md relative z-10">
          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
             <p className="text-[10px] font-mono text-white/20 uppercase tracking-[0.4em]">
-               © 2024 Raman's Research Lab | IISER Tirupati
+               © {new Date().getFullYear()} Raman's Research Lab | IISER Tirupati
             </p>
          </div>
       </footer>
