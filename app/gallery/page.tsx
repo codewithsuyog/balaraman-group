@@ -17,14 +17,19 @@ export default function GalleryPage() {
     }
   }, []);
 
-  const photos = Array.from({ length: 30 }, (_, i) => i + 1);
+  const labImagesCount = 7;
+  const memoriesCount = 25;
+  const photos = Array.from(
+    { length: activeTab === 'images' ? labImagesCount : memoriesCount },
+    (_, i) => i + 1
+  );
 
   const GalleryImage = ({ num, folder, onClick }: { num: number, folder: string, onClick: (src: string) => void }) => {
     const extensions = ['.jpg', '.png', '.jpeg', '.webp'];
     const [extIdx, setExtIdx] = React.useState(0);
     const [failed, setFailed] = React.useState(false);
   
-    const src = `/${folder}/${num}${extensions[extIdx]}`;
+    const src = `/images/${folder}/${num}${extensions[extIdx]}`;
   
     return (
       <img 
@@ -95,7 +100,7 @@ export default function GalleryPage() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {photos.map((num) => {
-            const folder = activeTab === 'images' ? 'lab-images' : 'lab-memories';
+            const folder = activeTab === 'images' ? 'images/lab-images' : 'images/lab-memories';
             return (
               <motion.div 
                 key={num}

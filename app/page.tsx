@@ -256,7 +256,7 @@ const SlideImage = ({ srcBase, isActive }: { srcBase: string, isActive: boolean 
 };
 
 const GallerySlideshow = () => {
-  const images = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const images = Array.from({ length: 25 }, (_, i) => i + 1);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -269,7 +269,7 @@ const GallerySlideshow = () => {
   return (
     <div className="w-full relative overflow-hidden rounded-3xl bg-white/[0.02] border border-white/10 mb-8 aspect-video md:aspect-[21/9] shadow-2xl group">
       <AnimatePresence mode="wait">
-        <SlideImage key={currentIndex} srcBase={`/gallery/${images[currentIndex]}`} isActive={true} />
+        <SlideImage key={currentIndex} srcBase={`/images/gallery/${images[currentIndex]}`} isActive={true} />
       </AnimatePresence>
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
@@ -455,8 +455,8 @@ export default function Home() {
           <div className="w-full lg:w-1/3 sticky top-32">
             <div className="absolute inset-0 bg-blue-500/20 blur-[80px] rounded-full -z-10"></div>
             <div className="w-full aspect-[3/4] rounded-[3rem] border border-white/10 relative overflow-hidden group cursor-crosshair shadow-2xl bg-white/5">
-               <div className="absolute inset-0 bg-[url('/pi/pi-profile-1.jpg')] bg-cover bg-top transition-all duration-700 group-hover:opacity-0 group-hover:scale-105"></div>
-               <div className="absolute inset-0 bg-[url('/pi/pi-profile-2.jpg')] bg-cover bg-top opacity-0 transition-all duration-700 group-hover:opacity-100 group-hover:scale-105"></div>
+               <div className="absolute inset-0 bg-[url('/images/pi/pi-profile-1.jpg')] bg-cover bg-top transition-all duration-700 group-hover:opacity-0 group-hover:scale-105"></div>
+               <div className="absolute inset-0 bg-[url('/images/pi/pi-profile-2.jpg')] bg-cover bg-top opacity-0 transition-all duration-700 group-hover:opacity-100 group-hover:scale-105"></div>
             </div>
             
             <div className="mt-8 flex flex-col items-center gap-3">
@@ -718,7 +718,7 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl mb-12">
                {/* Card 1: Lab Images & Videos */}
                <Link href="/gallery?tab=images" className="group relative aspect-square md:aspect-auto md:h-[400px] rounded-[3rem] overflow-hidden border border-white/10 hover:border-pink-500/30 transition-all duration-500 bg-white/5 flex items-center justify-center shadow-2xl">
-                  <div className="absolute inset-0 bg-[url('/lab-images/5.jpg')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-all duration-700 group-hover:scale-105"></div>
+                  <div className="absolute inset-0 bg-[url('/images/lab-images/5.jpg')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-all duration-700 group-hover:scale-105"></div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
                   <div className="relative z-10 flex flex-col items-center justify-center p-8 text-center mt-auto pb-12">
                      <h3 className="text-3xl font-black text-white uppercase tracking-tighter mb-4">Lab Images & Videos</h3>
@@ -729,7 +729,7 @@ export default function Home() {
 
                {/* Card 2: Lab Memories */}
                <Link href="/gallery?tab=memories" className="group relative aspect-square md:aspect-auto md:h-[400px] rounded-[3rem] overflow-hidden border border-white/10 hover:border-blue-500/30 transition-all duration-500 bg-white/5 flex items-center justify-center shadow-2xl">
-                  <div className="absolute inset-0 bg-[url('/gallery/2.jpg')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-all duration-700 group-hover:scale-105"></div>
+                  <div className="absolute inset-0 bg-[url('/images/gallery/2.jpg')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-all duration-700 group-hover:scale-105"></div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
                   <div className="relative z-10 flex flex-col items-center justify-center p-8 text-center mt-auto pb-12">
                      <h3 className="text-3xl font-black text-white uppercase tracking-tighter mb-4">Lab Memories</h3>
