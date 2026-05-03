@@ -49,14 +49,16 @@ const PublicationLink = ({ pub }: { pub: any }) => {
           <span className="text-blue-400 font-bold mr-2">{pub.id}.</span>
           {pub.authors}. {pub.title}. <span className="italic">{pub.journal}</span>, {pub.year}{pub.details}
         </p>
-        <a 
-          href={pub.doi?.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`} 
-          target="_blank" 
-          rel="noreferrer" 
-          className="inline-flex items-center gap-2 mt-3 text-[10px] font-bold text-blue-500/80 hover:text-blue-400 transition-colors"
-        >
-          DOI: {pub.doi} <ExternalLink size={10} />
-        </a>
+        {pub.doi && (
+          <a 
+            href={pub.doi.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`} 
+            target="_blank" 
+            rel="noreferrer" 
+            className="inline-flex items-center gap-2 mt-3 text-[10px] font-bold text-blue-500/80 hover:text-blue-400 transition-colors"
+          >
+            DOI: {pub.doi} <ExternalLink size={10} />
+          </a>
+        )}
       </div>
     </div>
   );
@@ -89,14 +91,16 @@ const FeaturedPublication = ({ pub }: { pub: any }) => {
             )}
           </div>
           <div className="flex items-center gap-4">
-            <a 
-              href={pub.doi?.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`} 
-              target="_blank" 
-              rel="noreferrer" 
-              className="px-8 py-4 rounded-full bg-blue-600 text-white text-xs font-bold flex items-center gap-2 hover:bg-blue-500 transition-all shadow-lg shadow-blue-600/20 uppercase tracking-widest"
-            >
-              Read Publication <ExternalLink size={14} />
-            </a>
+            {pub.doi && (
+              <a 
+                href={pub.doi.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`} 
+                target="_blank" 
+                rel="noreferrer" 
+                className="px-8 py-4 rounded-full bg-blue-600 text-white text-xs font-bold flex items-center gap-2 hover:bg-blue-500 transition-all shadow-lg shadow-blue-600/20 uppercase tracking-widest"
+              >
+                Read Publication <ExternalLink size={14} />
+              </a>
+            )}
           </div>
         </div>
         
@@ -224,6 +228,33 @@ const AlumniThumb = ({ member }: { member: any }) => {
   );
 };
 
+
+const SlideImage = ({ srcBase, isActive }: { srcBase: string, isActive: boolean }) => {
+  const extensions = ['.jpg', '.png', '.jpeg', '.webp'];
+  const [extIdx, setExtIdx] = useState(0);
+  const [failed, setFailed] = useState(false);
+
+  const src = `${srcBase}${extensions[extIdx]}`;
+
+  return (
+    <motion.img
+      src={failed ? '/logo.png' : src}
+      initial={{ opacity: 0, scale: 1.05 }}
+      animate={{ opacity: isActive ? 1 : 0, scale: isActive ? 1 : 1.05 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.8 }}
+      className={`absolute inset-0 w-full h-full ${failed ? 'object-contain opacity-20 p-8' : 'object-cover'}`}
+      onError={() => {
+        if (extIdx < extensions.length - 1) {
+          setExtIdx(prev => prev + 1);
+        } else {
+          setFailed(true);
+        }
+      }}
+    />
+  );
+};
+
 const GallerySlideshow = () => {
   const images = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -238,16 +269,7 @@ const GallerySlideshow = () => {
   return (
     <div className="w-full relative overflow-hidden rounded-3xl bg-white/[0.02] border border-white/10 mb-8 aspect-video md:aspect-[21/9] shadow-2xl group">
       <AnimatePresence mode="wait">
-        <motion.img
-          key={currentIndex}
-          src={`/gallery/${images[currentIndex]}.jpg`}
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.8 }}
-          className="absolute inset-0 w-full h-full object-cover"
-          onError={(e: any) => { e.currentTarget.src = '/logo.png'; e.currentTarget.className = "absolute inset-0 w-full h-full object-contain opacity-20 p-8"; }}
-        />
+        <SlideImage key={currentIndex} srcBase={`/gallery/${images[currentIndex]}`} isActive={true} />
       </AnimatePresence>
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
@@ -313,6 +335,7 @@ export default function Home() {
     { id: 'publications', label: 'Publications' },
     { id: 'patents', label: 'Patents' },
     { id: 'team', label: 'People' },
+    { id: 'gallery', label: 'Gallery' },
     { id: 'contact', label: 'Contact Us' },
   ];
 
@@ -679,25 +702,52 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Lab Memories Preview */}
-              <div className="pt-16 border-t border-white/5">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="h-px w-12 bg-pink-500"></div>
-                  <h3 className="text-xs font-mono text-pink-500 uppercase tracking-[0.4em]">Lab Memories & Outings</h3>
-                </div>
-                <p className="text-white/30 font-light text-sm mb-10 text-left">Glimpses of our vibrant group life inside and outside the lab.</p>
-                
-                <GallerySlideshow />
-
-                <Link href="/gallery" className="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-pink-500/30 text-pink-400 font-bold hover:bg-pink-500/10 transition-all uppercase text-[10px] tracking-widest font-mono mx-auto">
-                  View Full Gallery <ArrowRight size={18} />
-                </Link>
-              </div>
             </div>
          </div>
       </section>
 
+      {/* 5.5. GALLERY SECTION */}
+      <section id="gallery" className="w-full py-32 px-6 relative z-10 bg-[#020202] border-t border-white/5">
+         <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
+            <div className="flex items-center justify-center gap-4 mb-4">
+              <div className="h-px w-12 bg-pink-500"></div>
+              <h3 className="text-xs font-mono text-pink-500 uppercase tracking-[0.4em]">Lab Images & Photos</h3>
+              <div className="h-px w-12 bg-pink-500"></div>
+            </div>
+            <h2 className="text-4xl md:text-6xl font-black mb-6 uppercase tracking-tighter text-white">Lab Memories</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl mb-12">
+               {/* Card 1: Lab Images & Videos */}
+               <Link href="/gallery?tab=images" className="group relative aspect-square md:aspect-auto md:h-[400px] rounded-[3rem] overflow-hidden border border-white/10 hover:border-pink-500/30 transition-all duration-500 bg-white/5 flex items-center justify-center shadow-2xl">
+                  <div className="absolute inset-0 bg-[url('/lab-images/5.jpg')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-all duration-700 group-hover:scale-105"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                  <div className="relative z-10 flex flex-col items-center justify-center p-8 text-center mt-auto pb-12">
+                     <h3 className="text-3xl font-black text-white uppercase tracking-tighter mb-4">Lab Images & Videos</h3>
+                     <p className="text-white/60 font-light text-sm mb-6 max-w-xs mx-auto">Explore our scientific facilities, instruments, and research media.</p>
+                     <span className="px-6 py-3 rounded-full border border-white/20 text-white text-[10px] uppercase tracking-widest font-bold group-hover:bg-pink-500 group-hover:border-pink-500 group-hover:text-white transition-all shadow-lg backdrop-blur-md">Enter Gallery</span>
+                  </div>
+               </Link>
 
+               {/* Card 2: Lab Memories */}
+               <Link href="/gallery?tab=memories" className="group relative aspect-square md:aspect-auto md:h-[400px] rounded-[3rem] overflow-hidden border border-white/10 hover:border-blue-500/30 transition-all duration-500 bg-white/5 flex items-center justify-center shadow-2xl">
+                  <div className="absolute inset-0 bg-[url('/lab-memories/2.jpg')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-all duration-700 group-hover:scale-105"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                  <div className="relative z-10 flex flex-col items-center justify-center p-8 text-center mt-auto pb-12">
+                     <h3 className="text-3xl font-black text-white uppercase tracking-tighter mb-4">Lab Memories</h3>
+                     <p className="text-white/60 font-light text-sm mb-6 max-w-xs mx-auto">Glimpses of our vibrant group life, farewells, and celebrations.</p>
+                     <span className="px-6 py-3 rounded-full border border-white/20 text-white text-[10px] uppercase tracking-widest font-bold group-hover:bg-blue-500 group-hover:border-blue-500 group-hover:text-white transition-all shadow-lg backdrop-blur-md">View Memories</span>
+                  </div>
+               </Link>
+            </div>
+
+            <div className="w-full max-w-5xl mb-12">
+               <GallerySlideshow />
+            </div>
+
+            <Link href="/gallery" className="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-pink-500/30 text-pink-400 font-bold hover:bg-pink-500/10 transition-all uppercase text-[10px] tracking-widest font-mono">
+               View Full Gallery <ArrowRight size={18} />
+            </Link>
+         </div>
+      </section>
 
       {/* 6. CONTACT SECTION */}
       <section id="contact" className="w-full py-32 px-6 relative z-10 bg-black">
