@@ -201,6 +201,21 @@ export default function TeamPage() {
             </div>
           </section>
         )}
+
+        {/* Semester Project Students */}
+        {(team as any).semesterProject && (team as any).semesterProject.length > 0 && (
+          <section>
+            <div className="flex items-center gap-4 mb-12">
+               <div className="h-px w-12 bg-indigo-500"></div>
+               <h2 className="text-xs font-mono text-indigo-500 uppercase tracking-[0.4em]">Semester Project Students</h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {(team as any).semesterProject.map((member: any, i: number) => (
+                <MemberCard key={i} member={member} role="Semester Project" />
+              ))}
+            </div>
+          </section>
+        )}
           </>
         )}
 

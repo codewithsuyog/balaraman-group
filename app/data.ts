@@ -1197,13 +1197,17 @@ export const team = {
     { name: "Dr. Sivaprakash", info: "Ph.D. 2023 (Central University of Tamil Nadu), M.Sc. (Chem) Bharathiyar University Coimbatore", email: "msivaprakash@labs.iisertirupati.ac.in", image: "/images/team/postdocs/Sivaprakash.png" },
     { name: "Dr. Bapurao", info: "Post-doctoral Fellow", image: "/images/team/postdocs/bapurao" },
     { name: "Dr. Naushad", info: "Post-doctoral Fellow", image: "/images/team/postdocs/naushad" },
-    { name: "Dr. Adhira", info: "Post-doctoral Fellow", image: "/images/team/postdocs/adhira" },
+    { name: "Dr. Athira", info: "Post-doctoral Fellow", image: "/images/team/postdocs/Athira.jpeg" },
     { name: "Dr. Anjali", info: "Post-doctoral Fellow", image: "/images/team/postdocs/anjali" }
   ],
   masters: [
-    { name: "Suyog", info: "Master's Student", image: "/images/team/masters/suyog.jpg" },
-    { name: "Kavya", info: "Master's Student", image: "/images/team/masters/kavya" },
-    { name: "Ayesha", info: "Master's Student", image: "/images/team/masters/ayesha" }
+    { name: "Shama", info: "BSMS Master's Thesis Student, IISER Tirupati", image: "/images/team/masters/shama" },
+    { name: "Lavya", info: "BSMS Master's Thesis Student, IISER Tirupati", image: "/images/team/masters/lavya" }
+  ],
+  semesterProject: [
+    { name: "Kavya", info: "BSMS Semester Project Student, IISER Tirupati", image: "/images/team/semester/kavya" },
+    { name: "Ayesha", info: "BSMS Semester Project Student, IISER Tirupati", image: "/images/team/semester/ayesha" },
+    { name: "Suyog", info: "BSMS Semester Project Student, IISER Tirupati", image: "/images/team/semester/suyog" }
   ],
   alumniPhd: [
     { name: "Dr. Manoj K. Sahoo", thesis: "Visible mediated photoredox catalytic Dehydrogenation and C-H arylation reactions", duration: "2013-2018", present: "Post-doctoral Studies at UNIST, South Korea", image: "/images/team/Phd Alumini/Dr. MANOJ K. SAHOO.jpg" },
@@ -1212,7 +1216,7 @@ export const team = {
     { name: "Dr. Siba P. Midya", thesis: "Transition metal catalyzed (de)hydrogenative C-C and C-N bond formation", duration: "2014-2019", present: "DST-Inspire Faculty at IACS, Kolkata", image: "/images/team/Phd Alumini/Dr. SIBA P. MIDYA.png" },
     { name: "Dr. Jagannath Rana", thesis: "Earth-abundant metal catalyzed C-N bond activation of amides and alkylation reactions using alcohols", duration: "2015-2019", present: "Post-doctoral Studies at IISER Bhopal", image: "/images/team/Phd Alumini/Dr. JAGANNATH RANA.jpg" },
     { name: "Dr. Subaramanian M", thesis: "Non-precious metal catalysis for the dehydrogenation and related reactions", duration: "2017-2022", present: "Post-doctoral Studies at University of Toronto, Canada", image: "/images/team/Phd Alumini/Dr. SUBARAMANIAN M.jpg" },
-    { name: "Dr. Akash Mondal", thesis: "Manganese catalysed dehydrogenative C-C and C-N bond formation", duration: "2016-2022", present: "Post-doctoral Studies at IISER, Kolkata", image: "/images/team/Phd Alumini/Dr. AKASH MONDAL.jpg" },
+    { name: "Dr. Akash Mondal", thesis: "Manganese catalysed dehydrogenative C-C and C-N bond formation", duration: "2016-2022", present: "Post-doctoral Studies at IISER, Kolkata", image: "/images/team/Phd Alumini/Dr. AKASH Mondal.jpg" },
     { name: "Dr. Vinita Yadav", thesis: "Earth-abundant metal catalyzed C-C and C-N bond forming reactions using alcohols to access olefin and indole scaffolds", duration: "2017-2022", present: "M. Sc., (Chem), IIT Guwahati", image: "/images/team/Phd Alumini/Dr. VINITA YADAV.jpg" },
     { name: "Dr. Sivakumar G", thesis: "Transition-metal catalyzed acceptorless dehydrogenation and related reactions in sustainable chemical synthesis", duration: "2019-2024", present: "Post-doctoral studies at Weizmann Institute of Science, Israel", image: "/images/team/Phd Alumini/Dr. SIVAKUMAR G.jpg" },
     { name: "Dr. Reshma Babu", thesis: "3d-Transition Metal Catalyzed Acceptorless Alcohol Dehydrogenation and Related Reactions", duration: "2019-2024", present: "M. Sc., (Chem), Mahatma Gandhi University, Kerala", image: "/images/team/Phd Alumini/Dr. RESHMA BABU.jpg" },
@@ -1267,7 +1271,7 @@ export const team = {
     { name: "Mr. G. Sivakumar", duration: "Feb 2018 – Nov 2018" },
     { name: "Mr. Krishna Borde", duration: "Feb 2018 – Nov 2018" },
     { name: "Dr. Alok K. Tripati", duration: "Jul 2016 – Feb 2017" },
-    { name: "Dr. A. Nandakumar", duration: "Jan 2015 – Jul 2015 & Feb 2018 – Jul 2018" },
+    { name: "Dr. A. Nandakumar", duration: "Jan 2015 – Jul 2015 \u0026 Feb 2018 – Jul 2018" },
     { name: "Dr. Melad Shaikh (N-PDF)", duration: "Jun 2019 – Dec 2021" },
     { name: "Mr. Palmurukan M.R.", duration: "Jul 2019 – Jul 2023" },
     { name: "Ms. Subarna Sukanya Padhy", duration: "Jul 2021 – Jul 2022" },
@@ -1300,12 +1304,7 @@ export const team = {
     { name: "Ms. Rupali Sahu", batch: "BSMS-2019", duration: "Jan 2023 – Jul 2023" },
     { name: "Ms. Sreelakshmi", batch: "BSMS-2019", duration: "Jan 2023 – Jul 2023" },
     { name: "Mr. Soumik Roy", batch: "BSMS-2020", duration: "May 2023 – Jul 2024" },
-    { name: "Mr. Annal Baisil", batch: "BSMS-2020", duration: "Jun 2024 – Jul 2024" },
-    { name: "Mr. Mithan G. R.", batch: "BSMS-2021", duration: "Aug 2024 – Present" },
-    { name: "Ms. G. Lavanya", batch: "BSMS-2021", duration: "Aug 2024 – Present" },
-    { name: "Mr. Suyog", batch: "BSMS-2022", duration: "Aug 2022 – Present" },
-    { name: "Ms. Kavya", batch: "BSMS-2022", duration: "Aug 2022 – Present" },
-    { name: "Ms. Ayesha", batch: "BSMS-2022", duration: "Aug 2022 – Present" }
+    { name: "Mr. Annal Baisil", batch: "BSMS-2020", duration: "Jun 2024 – Jul 2024" }
   ],
   alumniLabRotation: [
     { name: "Ms. A. Anagha Varma", batch: "iPhD-2019", duration: "Aug 2019 – Nov 2019" },
@@ -1343,12 +1342,12 @@ export const patents = {
 };
 
 export const piBio = [
-  { year: '1998 - 2001', role: 'B.Sc. (Chemistry)', institution: 'R. K. M. Vivekananda College, Chennai' },
-  { year: '2001 - 2003', role: 'M.Sc. (Chemistry)', institution: 'Madurai Kamaraj University' },
-  { year: '2004 - 2009', role: 'Ph.D. (Chemistry)', institution: 'IIT Kanpur' },
-  { year: '2009 - 2012', role: 'Post-doctoral Fellow', institution: 'Weizmann Institute of Science, Israel' },
-  { year: '2012 - 2013', role: 'Research Assistant Professor', institution: 'SRM Research Institute' },
-  { year: '2013 - 2018', role: 'Senior Scientist', institution: 'CSIR-NCL, Pune' },
+  { year: '1997 - 2000', role: 'Bachelor of Science (Chemistry)', institution: 'University of Madras, Chennai' },
+  { year: '2000 - 2002', role: 'Master of Science (Chemistry)', institution: 'University of Madras, Chennai' },
+  { year: '2002 - 2008', role: 'Doctor of Philosophy (PhD)', institution: 'University of Hyderabad, Hyderabad, AP', details: 'Thesis: Investigations on Organophosphonates and Modified BINOLs: Catalytic Hydrophosphonylation, Hydroamination, Asymmetric Reduction and Allylation of Unsaturated Systems (Mentor: Prof. K. C. Kumara Swamy)' },
+  { year: '2008 - 2012', role: 'FGS Post-Doctoral Fellow', institution: 'Weizmann Institute of Science, ISRAEL' },
+  { year: '2012 - 2013', role: 'Research Assistant Professor', institution: 'SRM Research Institute, Chennai' },
+  { year: '2013 - 2018', role: 'Senior Scientist (E-1)', institution: 'CSIR-National Chemical Laboratory (CSIR-NCL), Pune' },
   { year: '2018 - 2022', role: 'Assistant Professor', institution: 'IISER Tirupati' },
   { year: '2022 - Present', role: 'Associate Professor', institution: 'IISER Tirupati' }
 ];

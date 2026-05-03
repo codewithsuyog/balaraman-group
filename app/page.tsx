@@ -686,12 +686,17 @@ export default function Home() {
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 mb-16">
-              {piBio.map((item, idx) => (
+              {piBio.map((item: any, idx) => (
                 <div key={idx} className="flex flex-col group">
-                  <span className="text-[10px] font-bold text-blue-400 mb-2 font-mono tracking-widest uppercase">{item.year}</span>
-                  <div className="flex-1 border-l-2 border-white/5 pl-6 group-hover:border-blue-500 transition-colors">
-                    <h4 className="text-base font-bold text-white group-hover:text-blue-400 transition-colors leading-tight mb-1">{item.role}</h4>
-                    <p className="text-xs text-white/30 font-light leading-tight">{item.institution}</p>
+                  <span className="text-[11px] font-bold text-blue-400 mb-2 font-mono tracking-widest uppercase">{item.year}</span>
+                  <div className="flex-1 border-l-2 border-white/10 pl-6 group-hover:border-blue-500 transition-colors py-2">
+                    <h4 className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors leading-tight mb-2">{item.role}</h4>
+                    <p className="text-sm text-white/70 font-light leading-relaxed">{item.institution}</p>
+                    {item.details && (
+                      <p className="text-xs text-white/50 italic font-light leading-relaxed mt-3 max-w-md border-l-2 border-blue-500/20 pl-4">
+                        {item.details}
+                      </p>
+                    )}
                   </div>
                 </div>
               ))}
@@ -894,20 +899,37 @@ export default function Home() {
               </div>
 
               {/* Masters Section */}
-              <div className="mb-20">
-                <div className="flex items-center gap-4 mb-12">
-                   <div className="h-px w-12 bg-blue-500"></div>
-                   <h2 className="text-xs font-mono text-blue-500 uppercase tracking-[0.4em]">Master's / BS-MS Students</h2>
+              {team.masters && team.masters.length > 0 && (
+                <div className="mb-20">
+                  <div className="flex items-center gap-4 mb-12">
+                     <div className="h-px w-12 bg-blue-500"></div>
+                     <h2 className="text-xs font-mono text-blue-500 uppercase tracking-[0.4em]">Master&apos;s Students</h2>
+                  </div>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
+                    {team.masters.map((member, i) => <TeamMemberThumb key={i} member={member} role="MSc" />)}
+                  </div>
                 </div>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
-                  {team.masters.map((member, i) => <TeamMemberThumb key={i} member={member} role="MSc/BS-MS" />)}
+              )}
+
+              {/* Semester Project Students */}
+              {(team as any).semesterProject && (team as any).semesterProject.length > 0 && (
+                <div className="mb-20">
+                  <div className="flex items-center gap-4 mb-12">
+                     <div className="h-px w-12 bg-indigo-500"></div>
+                     <h2 className="text-xs font-mono text-indigo-500 uppercase tracking-[0.4em]">Semester Project Students</h2>
+                  </div>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
+                    {(team as any).semesterProject.map((member: any, i: number) => (
+                      <TeamMemberThumb key={i} member={member} role="Semester Project" />
+                    ))}
+                  </div>
                 </div>
-                
-                <div className="mt-16 flex justify-start">
-                   <Link href="/team#alumni" className="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-blue-500/30 text-blue-400 font-bold hover:bg-blue-500/10 transition-all uppercase text-[10px] tracking-widest font-mono">
-                     Open Full Alumni Registry <ArrowRight size={18} />
-                   </Link>
-                </div>
+              )}
+
+              <div className="mt-16 flex justify-start">
+                 <Link href="/team#alumni" className="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-blue-500/30 text-blue-400 font-bold hover:bg-blue-500/10 transition-all uppercase text-[10px] tracking-widest font-mono">
+                   Open Full Alumni Registry <ArrowRight size={18} />
+                 </Link>
               </div>
 
             </div>
