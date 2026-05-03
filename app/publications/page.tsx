@@ -4,7 +4,7 @@ import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowLeft, BookOpen, ExternalLink } from 'lucide-react';
-import { publications } from '../data';
+import { publications } from '../publications_master';
 
 const fadeUp: any = {
   hidden: { opacity: 0, y: 30 },
@@ -109,12 +109,14 @@ export default function PublicationsPage() {
       if (!grouped[year]) grouped[year] = [];
       grouped[year].push(pub);
     });
-    // Sort years descending
-    return Object.entries(grouped).sort((a, b) => {
-      if (a[0] === 'Unknown Year') return 1;
-      if (b[0] === 'Unknown Year') return -1;
-      return parseInt(b[0]) - parseInt(a[0]);
-    });
+    // Sort years descending, and within each year sort by ID descending
+    return Object.entries(grouped)
+      .sort((a, b) => {
+        if (a[0] === 'Unknown Year') return 1;
+        if (b[0] === 'Unknown Year') return -1;
+        return parseInt(b[0]) - parseInt(a[0]);
+      })
+      .map(([year, pubs]) => [year, [...pubs].sort((a, b) => b.id - a.id)] as [string, typeof publications]);
   }, []);
 
   return (

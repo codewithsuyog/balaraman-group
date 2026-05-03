@@ -8,12 +8,14 @@ import {
   Microscope, FlaskConical, 
   Beaker, Globe, Award, Zap, Shield, BookOpen,
   ArrowUpRight, Download, Users, Briefcase, GraduationCap,
-  ExternalLink, ChevronRight, Menu, X, Leaf, Database, ZapOff
+  ExternalLink, ChevronRight, Menu, X, Leaf, Database, ZapOff,
+  Play, Pause, Volume2, VolumeX, Video
 } from 'lucide-react';
 import { 
-  publications, patents, piBio, cvLink, 
+  patents, piBio, cvLink, 
   opportunities, team, awards 
 } from './data';
+import { publications } from './publications_master';
 
 const fadeUp: any = {
   hidden: { opacity: 0, y: 30 },
@@ -293,6 +295,212 @@ const GallerySlideshow = () => {
       >
         <ArrowRight size={16} />
       </button>
+    </div>
+  );
+};
+
+/* ─── LAB MEDIA SHOWCASE (Images + Videos) ───────────────────────── */
+const LAB_IMAGES = [
+  { src: '/images/lab-images/1.jpg', caption: 'Glove Box & Schlenk Line Setup' },
+  { src: '/images/lab-images/2.jpg', caption: 'Catalytic Reactor Assembly' },
+  { src: '/images/lab-images/3.jpg', caption: 'High-Pressure Reaction Vessels' },
+  { src: '/images/lab-images/4.jpg', caption: 'Analytical Instrumentation' },
+  { src: '/images/lab-images/5.jpg', caption: 'Synthesis Workstation' },
+  { src: '/images/lab-images/6.jpg', caption: 'Characterization Facility' },
+  { src: '/images/lab-images/7.jpg', caption: 'Research Lab Overview' },
+];
+
+const LAB_VIDEOS = [
+  { src: '/videos/1.mp4', title: 'Lab Tour', caption: 'A walkthrough of our state-of-the-art catalysis laboratory' },
+  { src: '/videos/2.mp4', title: 'Synthesis in Action', caption: 'Dehydrogenative coupling reactions under inert atmosphere' },
+  { src: '/videos/3.mp4', title: 'Instrument Facility', caption: 'NMR, GC-MS, and HPLC characterization suite' },
+  { src: '/videos/4.mp4', title: 'Group Activities', caption: 'Conference talks, celebrations, and lab life' },
+];
+
+const LabMediaShowcase = () => {
+  const [activeTab, setActiveTab] = useState<'images' | 'videos'>('images');
+
+  // ── Image slideshow state ──
+  const [imgIdx, setImgIdx] = useState(0);
+  useEffect(() => {
+    if (activeTab !== 'images') return;
+    const timer = setInterval(() => setImgIdx((p) => (p + 1) % LAB_IMAGES.length), 4000);
+    return () => clearInterval(timer);
+  }, [activeTab]);
+
+  // ── Video player state ──
+  const [vidIdx, setVidIdx] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
+  const [videoError, setVideoError] = useState<Record<number, boolean>>({});
+  const videoRef = React.useRef<HTMLVideoElement>(null);
+
+  const allVideosErrored = LAB_VIDEOS.every((_, i) => videoError[i]);
+
+  useEffect(() => {
+    if (activeTab !== 'videos' || !videoRef.current || videoError[vidIdx]) return;
+    videoRef.current.load();
+    videoRef.current.play().catch(() => {});
+    setIsPlaying(true);
+  }, [vidIdx, activeTab]);
+
+  useEffect(() => {
+    const vid = videoRef.current;
+    if (!vid || activeTab !== 'videos') return;
+    const onEnded = () => setVidIdx((p) => (p + 1) % LAB_VIDEOS.length);
+    vid.addEventListener('ended', onEnded);
+    return () => vid.removeEventListener('ended', onEnded);
+  }, [vidIdx, activeTab]);
+
+  const togglePlay = () => {
+    if (!videoRef.current) return;
+    if (isPlaying) { videoRef.current.pause(); } else { videoRef.current.play(); }
+    setIsPlaying(!isPlaying);
+  };
+
+  const toggleMute = () => {
+    if (!videoRef.current) return;
+    videoRef.current.muted = !isMuted;
+    setIsMuted(!isMuted);
+  };
+
+  return (
+    <div className="w-full relative overflow-hidden rounded-3xl bg-black border border-white/10 shadow-2xl group">
+      {/* ── Tab bar ── */}
+      <div className="absolute top-6 left-6 z-30 flex items-center gap-2">
+        <button
+          onClick={() => setActiveTab('images')}
+          className={`flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-xl border text-[10px] font-mono uppercase tracking-widest transition-all ${
+            activeTab === 'images'
+              ? 'bg-cyan-500/20 border-cyan-500/40 text-cyan-300'
+              : 'bg-black/50 border-white/10 text-white/40 hover:text-white/70'
+          }`}
+        >
+          <Microscope size={12} /> Lab Images
+          <span className="text-[9px] text-white/30">{imgIdx + 1}/{LAB_IMAGES.length}</span>
+        </button>
+        <button
+          onClick={() => setActiveTab('videos')}
+          className={`flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-xl border text-[10px] font-mono uppercase tracking-widest transition-all ${
+            activeTab === 'videos'
+              ? 'bg-red-500/20 border-red-500/40 text-red-300'
+              : 'bg-black/50 border-white/10 text-white/40 hover:text-white/70'
+          }`}
+        >
+          <Video size={12} /> Videos
+        </button>
+      </div>
+
+      {/* ── Content area ── */}
+      <div className="aspect-video relative bg-gradient-to-br from-gray-900 to-black">
+        <AnimatePresence mode="wait">
+          {activeTab === 'images' ? (
+            /* ═══ IMAGE SLIDESHOW ═══ */
+            <motion.div key="images-tab" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0">
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={imgIdx}
+                  src={LAB_IMAGES[imgIdx].src}
+                  alt={LAB_IMAGES[imgIdx].caption}
+                  initial={{ opacity: 0, scale: 1.05 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 1.02 }}
+                  transition={{ duration: 0.8 }}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </AnimatePresence>
+
+              {/* Gradient overlay */}
+              <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none z-10" />
+
+              {/* Caption + dots */}
+              <div className="absolute bottom-0 left-0 right-0 p-8 z-20">
+                <h4 className="text-lg font-bold text-white mb-1 tracking-tight">{LAB_IMAGES[imgIdx].caption}</h4>
+                <div className="flex gap-2 mt-4">
+                  {LAB_IMAGES.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setImgIdx(i)}
+                      className={`h-1.5 rounded-full transition-all duration-500 ${
+                        i === imgIdx ? 'bg-cyan-400 w-8' : 'bg-white/25 hover:bg-white/50 w-1.5'
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              {/* Nav arrows */}
+              <button onClick={() => setImgIdx((p) => (p - 1 + LAB_IMAGES.length) % LAB_IMAGES.length)}
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/30 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/50 z-20">
+                <ArrowLeft size={16} />
+              </button>
+              <button onClick={() => setImgIdx((p) => (p + 1) % LAB_IMAGES.length)}
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/30 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/50 z-20">
+                <ArrowRight size={16} />
+              </button>
+            </motion.div>
+          ) : (
+            /* ═══ VIDEO PLAYER ═══ */
+            <motion.div key="videos-tab" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0">
+              {!allVideosErrored ? (
+                <>
+                  <AnimatePresence mode="wait">
+                    <motion.div key={vidIdx} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }} className="absolute inset-0">
+                      <video ref={videoRef} src={LAB_VIDEOS[vidIdx].src} muted={isMuted} playsInline autoPlay
+                        className="w-full h-full object-cover"
+                        onError={() => setVideoError((p) => ({ ...p, [vidIdx]: true }))} />
+                    </motion.div>
+                  </AnimatePresence>
+
+                  <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/80 to-transparent pointer-events-none z-10" />
+
+                  <div className="absolute bottom-0 left-0 right-0 p-8 z-20">
+                    <div className="flex items-end justify-between">
+                      <div>
+                        <h4 className="text-xl font-bold text-white mb-1 tracking-tight">{LAB_VIDEOS[vidIdx].title}</h4>
+                        <p className="text-sm text-white/50 font-light">{LAB_VIDEOS[vidIdx].caption}</p>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <button onClick={toggleMute} className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/20 transition-all">
+                          {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
+                        </button>
+                        <button onClick={togglePlay} className="w-12 h-12 rounded-full bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/25 transition-all">
+                          {isPlaying ? <Pause size={18} /> : <Play size={18} className="ml-0.5" />}
+                        </button>
+                      </div>
+                    </div>
+                    <div className="flex gap-2 mt-6">
+                      {LAB_VIDEOS.map((_, i) => (
+                        <button key={i} onClick={() => setVidIdx(i)}
+                          className={`h-1 rounded-full transition-all duration-500 ${i === vidIdx ? 'bg-red-500 w-8' : videoError[i] ? 'bg-white/10 w-2' : 'bg-white/30 hover:bg-white/50 w-2'}`} />
+                      ))}
+                    </div>
+                  </div>
+
+                  <button onClick={() => setVidIdx((p) => (p - 1 + LAB_VIDEOS.length) % LAB_VIDEOS.length)}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/30 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/50 z-20">
+                    <ArrowLeft size={16} />
+                  </button>
+                  <button onClick={() => setVidIdx((p) => (p + 1) % LAB_VIDEOS.length)}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/30 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/50 z-20">
+                    <ArrowRight size={16} />
+                  </button>
+                </>
+              ) : (
+                <div className="absolute inset-0 flex flex-col items-center justify-center">
+                  <div className="w-24 h-24 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-6">
+                    <Video size={40} className="text-white/20" />
+                  </div>
+                  <h4 className="text-xl font-bold text-white/40 mb-2 tracking-tight">Lab Videos Coming Soon</h4>
+                  <p className="text-sm text-white/20 font-light max-w-md text-center">
+                    Our research video library is being prepared. Stay tuned for lab tours, synthesis demonstrations, and more.
+                  </p>
+                </div>
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   );
 };
@@ -714,7 +922,24 @@ export default function Home() {
               <h3 className="text-xs font-mono text-pink-500 uppercase tracking-[0.4em]">Lab Images & Photos</h3>
               <div className="h-px w-12 bg-pink-500"></div>
             </div>
-            <h2 className="text-4xl md:text-6xl font-black mb-6 uppercase tracking-tighter text-white">Lab Memories</h2>
+            <h2 className="text-4xl md:text-6xl font-black mb-12 uppercase tracking-tighter text-white">Lab Memories</h2>
+
+            {/* Slideshow 1: Gallery memories */}
+            <div className="w-full max-w-5xl mb-12">
+               <GallerySlideshow />
+            </div>
+
+            {/* Slideshow 2: Lab Research Media (Images + Videos) */}
+            <div className="w-full max-w-5xl mb-16">
+              <div className="flex items-center justify-center gap-4 mb-8">
+                <div className="h-px w-12 bg-cyan-500/50" />
+                <h3 className="text-xs font-mono text-cyan-400 uppercase tracking-[0.4em]">Lab Research Media</h3>
+                <div className="h-px w-12 bg-cyan-500/50" />
+              </div>
+              <LabMediaShowcase />
+            </div>
+
+            {/* Cards: Enter Gallery & View Memories */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl mb-12">
                {/* Card 1: Lab Images & Videos */}
                <Link href="/gallery?tab=images" className="group relative aspect-square md:aspect-auto md:h-[400px] rounded-[3rem] overflow-hidden border border-white/10 hover:border-pink-500/30 transition-all duration-500 bg-white/5 flex items-center justify-center shadow-2xl">
@@ -737,10 +962,6 @@ export default function Home() {
                      <span className="px-6 py-3 rounded-full border border-white/20 text-white text-[10px] uppercase tracking-widest font-bold group-hover:bg-blue-500 group-hover:border-blue-500 group-hover:text-white transition-all shadow-lg backdrop-blur-md">View Memories</span>
                   </div>
                </Link>
-            </div>
-
-            <div className="w-full max-w-5xl mb-12">
-               <GallerySlideshow />
             </div>
 
             <Link href="/gallery" className="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-pink-500/30 text-pink-400 font-bold hover:bg-pink-500/10 transition-all uppercase text-[10px] tracking-widest font-mono">

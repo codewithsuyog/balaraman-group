@@ -8,7 +8,8 @@ import {
   FileText, Globe, Award, Database, Microscope, 
   ArrowRight, ExternalLink, ChevronRight 
 } from 'lucide-react';
-import { patents, publications } from '../data';
+import { patents } from '../data';
+import { publications } from '../publications_master';
 
 const fadeUp: any = {
   hidden: { opacity: 0, y: 30 },
@@ -20,7 +21,7 @@ const PublicationItem = ({ pub }: { pub: any }) => (
     <span className="text-xs font-mono text-blue-500/50 mt-1 shrink-0">{pub.id}.</span>
     <div className="flex-1 min-w-0">
       <p className="text-sm text-white/70 font-light leading-relaxed">
-        {pub.authors}. {pub.title}. <span className="italic">{pub.journal}</span>, {pub.year}{pub.details}
+        {pub.authors}. {pub.title}. <span className="italic">{pub.journal}</span>, {pub.year}. {pub.volume && `${pub.volume}`}{pub.pages && `, ${pub.pages}`}
       </p>
       <div className="flex items-center gap-2 mt-2">
         <a 
@@ -43,7 +44,7 @@ export default function ResearchPage() {
         keywords.some(k => 
           p.title?.toLowerCase().includes(k.toLowerCase()) || 
           p.journal?.toLowerCase().includes(k.toLowerCase()) ||
-          p.details?.toLowerCase().includes(k.toLowerCase())
+          p.fullText?.toLowerCase().includes(k.toLowerCase())
         )
       ).slice(0, 4);
 
