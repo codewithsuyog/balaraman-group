@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Outfit, Geist_Mono, Inter } from "next/font/google";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import "./globals.css";
 
 const outfit = Outfit({
@@ -80,6 +81,7 @@ export default function RootLayout({
           <div className="scroll-progress-bar h-full w-full" id="scroll-bar" suppressHydrationWarning></div>
         </div>
         {children}
+        <SpeedInsights />
         <script
           dangerouslySetInnerHTML={{
             __html: `
