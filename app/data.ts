@@ -7,8 +7,8 @@ export const news = [
 export const publications = [
   {
     "id": 117,
-    "authors": "",
-    "title": "",
+    "authors": "Soumya Sree Samal, Murugan Subaramanian, and E. Balaraman*",
+    "title": "Nickel-Catalyzed Selective Monoamination of 1,2-Diols: An Affordable Approach to Amino Alcohols",
     "journal": "",
     "year": "2025",
     "details": "",
@@ -17,8 +17,8 @@ export const publications = [
   },
   {
     "id": 116,
-    "authors": "",
-    "title": "",
+    "authors": "G. Sivakumar, Abhijith Karattil Suresh, Debjani Nag,* Pratik Swarup Dash,* and E. Balaraman*",
+    "title": "Catalysis-Driven Methane Conversion to Carbon and Hydrogen",
     "journal": "",
     "year": "2025",
     "details": "",
@@ -27,8 +27,8 @@ export const publications = [
   },
   {
     "id": 115,
-    "authors": "",
-    "title": "",
+    "authors": "T. Nandakumar, Uma Dwivedi, Palmurukan M. Ramar, K. K. Pant,* Sanat Kumar,* E. Balaraman*",
+    "title": "Enhanced Catalytic Co-Conversion of Biomass and Plastic Volatiles Using Metal-Enhanced HZSM-5 Extrudates: A Study on Pyro-Kinetic, Synergistic, and Thermodynamic Efficacy",
     "journal": "",
     "year": "2025",
     "details": "",
@@ -37,18 +37,18 @@ export const publications = [
   },
   {
     "id": 114,
-    "authors": "",
-    "title": "",
+    "authors": "Reshma Babu, Smruti Rekha Padhy, and E. Balaraman*",
+    "title": "Efficient N-Methylation of Primary Amides Using Methanol Under Mn(I)-Catalysis",
     "journal": "",
     "year": "2025",
     "details": "",
     "doi": "10.1016/j.tet.2025.134535",
-    "fullText": "Reshma Babu, Smruti Rekha Padhy, and E. Balaraman*. Efficient N-Methylation of Primary Amides Using Methanol Under Mn(I)-Catalysis. Tetrahedron, 2025, 176, 134535. Invited article: Dr A V Rama Rao 90th Birthday Celebration."
+    "fullText": "Reshma Babu, Smruti Rekha Padhy, and E. Balaraman*. Efficient N-Methylation of Primary Amides Using Methanol Under Mn(I)-Catalysis. Tetrahedron, 2025, 176, 134535."
   },
   {
     "id": 113,
-    "authors": "",
-    "title": "",
+    "authors": "Reshma Babu, Ganesan Sivakumar, Smruti Rekha Padhy, and E. Balaraman*",
+    "title": "Green and Sustainable Catalytic Protocol for Methoxymethylation of Primary Amides Using Methanol with Dihydrogen Release",
     "journal": "",
     "year": "2025",
     "details": "",
@@ -57,8 +57,8 @@ export const publications = [
   },
   {
     "id": 112,
-    "authors": "",
-    "title": "",
+    "authors": "G. Sivakumar, Abhijith K. Suresh, Smruti R. Padhy, E. Balaraman*",
+    "title": "Double dehydrogenative coupling of amino alcohols with primary alcohols under Mn(I) catalysis",
     "journal": "",
     "year": "2024",
     "details": "",
@@ -67,8 +67,8 @@ export const publications = [
   },
   {
     "id": 111,
-    "authors": "",
-    "title": "",
+    "authors": "R. Babu, Abhijith K. Suresh, R. Kumar, E. Balaraman*",
+    "title": "Dehydrogenative coupling of alcohols with hydrazines under nickel catalysis",
     "journal": "",
     "year": "2025",
     "details": "",
@@ -77,8 +77,8 @@ export const publications = [
   },
   {
     "id": 110,
-    "authors": "",
-    "title": "",
+    "authors": "R. Kumar, R. Babu, S. Chakrabortty, V. Madhu, E. Balaraman*",
+    "title": "Catalytic N‑alkylation of (hetero)aromatic amines and tandem annulation reactions",
     "journal": "",
     "year": "2024",
     "details": "",
@@ -87,8 +87,8 @@ export const publications = [
   },
   {
     "id": 109,
-    "authors": "",
-    "title": "",
+    "authors": "R. Kumar, Smruti R. Padhy, E. Balaraman*",
+    "title": "Cobalt-catalyzed divergence in C(sp³)-H functionalization of 9H-fluorene: A streamlined approach utilizing alcohols",
     "journal": "",
     "year": "2024",
     "details": "",
@@ -97,8 +97,8 @@ export const publications = [
   },
   {
     "id": 108,
-    "authors": "",
-    "title": "",
+    "authors": "M. Subaramanian, Subarna S.Padhy, C. Gouda, T. Das, K. Vanka, E. Balaraman*",
+    "title": "Nickel catalyzed tandem conversion of paraformaldehyde:methanol to hydrogen and formate/chemo- and stereoselective hydrogenation of alkynes under neutral conditions",
     "journal": "",
     "year": "2024",
     "details": "",
@@ -107,8 +107,8 @@ export const publications = [
   },
   {
     "id": 107,
-    "authors": "",
-    "title": "",
+    "authors": "M. Subaramanian, C. Gouda, Triptesh K. Roy, G. Sivakumar, S. Banerjee, K. Vanka, E. Balaraman*",
+    "title": "Dehydrogenative coupling of alcohols with internal alkynes under nickel catalysis: An access to β-deuterated branched ketones",
     "journal": "",
     "year": "2024",
     "details": "",
@@ -117,8 +117,8 @@ export const publications = [
   },
   {
     "id": 106,
-    "authors": "",
-    "title": "",
+    "authors": "T. Nandakumar, Subhan K. Pal, R. Vinu, P. M. Ramar, K. K. Pant,* S. Kumar,* E. Balaraman*",
+    "title": "Graphene encapsulated transition metal@N/C catalysts for catalytic co-pyrolysis of biomass and waste plastics: Production of linear α-olefins and aromatics",
     "journal": "",
     "year": "2024",
     "details": "",
@@ -127,18 +127,18 @@ export const publications = [
   },
   {
     "id": 105,
-    "authors": "",
-    "title": "",
+    "authors": "Triptesh K. Roy, R. Babu, G. Sivakumar, V. Gupta,* E. Balaraman*",
+    "title": "Olefins from alcohols via catalytic acceptorless dehydrogenation coupling reactions",
     "journal": "",
-    "year": "2089",
+    "year": "2024",
     "details": "",
     "doi": "10.1039/D3CY01800H",
     "fullText": "Triptesh K. Roy, R. Babu, G. Sivakumar, V. Gupta,* E. Balaraman*. Olefins from alcohols via catalytic acceptorless dehydrogenation coupling reactions. Catal. Sci. Technol. 2024, 14, 2064-2089."
   },
   {
     "id": 104,
-    "authors": "",
-    "title": "",
+    "authors": "R. Kumar, A. K. Srivastava, P. Nagarasu, V. Madhu, E. Balaraman*",
+    "title": "A general and expedient amination of alcohols catalysed by a single-site (NN)Co(II)-bidentate complex under solventless conditions",
     "journal": "",
     "year": "2024",
     "details": "",
@@ -147,8 +147,8 @@ export const publications = [
   },
   {
     "id": 103,
-    "authors": "",
-    "title": "",
+    "authors": "A. Mondal, R. Kumar, A. K. Suresh, M. K. Sahoo, and E. Balaraman*",
+    "title": "Divergence in CH-alkylation of indoles under Mn-catalysis",
     "journal": "",
     "year": "2023",
     "details": "",
@@ -157,8 +157,8 @@ export const publications = [
   },
   {
     "id": 102,
-    "authors": "",
-    "title": "",
+    "authors": "M. Nallagangula, M. Subaramanian, R. Kumar, E. Balaraman*",
+    "title": "Transition metal-catalysis in interrupted borrowing hydrogen strategy",
     "journal": "",
     "year": "2023",
     "details": "",
@@ -167,8 +167,8 @@ export const publications = [
   },
   {
     "id": 101,
-    "authors": "",
-    "title": "",
+    "authors": "S. Chakrabortty, F. J. De Zwart, D. D. Snabilie, E. Balaraman, J",
+    "title": "N. H. Reek, B. de Bruin, J. G. de Vries*. Concise synthesis of Azilect via cobalt-catalyzed enantioselective hydrogenation in a bio-based solvent",
     "journal": "",
     "year": "2023",
     "details": "",
@@ -177,18 +177,18 @@ export const publications = [
   },
   {
     "id": 100,
-    "authors": "",
-    "title": "",
+    "authors": "M. Subaramanian, G. Sivakumar, V. G. Landge, R. Kumar, K. Natte, R. V Jagadeesh, E. Balaraman*",
+    "title": "General and selective homogeneous Ru-catalyzed transfer hydrogenation, deuteration, and methylation of functional compounds using methanol",
     "journal": "",
     "year": "2023",
     "details": "",
     "doi": "10.1016/j.jcat.2023.06.035",
-    "fullText": "M. Subaramanian, G. Sivakumar, V. G. Landge, R. Kumar, K. Natte, R. V Jagadeesh, E. Balaraman*. General and selective homogeneous Ru-catalyzed transfer hydrogenation, deuteration, and methylation of functional compounds using methanol. J. Catal. 2023, 425, 386–405. Highlights: Featured in DST portal:"
+    "fullText": "M. Subaramanian, G. Sivakumar, V. G. Landge, R. Kumar, K. Natte, R. V Jagadeesh, E. Balaraman*. General and selective homogeneous Ru-catalyzed transfer hydrogenation, deuteration, and methylation of functional compounds using methanol. J. Catal. 2023, 425, 386–405."
   },
   {
     "id": 99,
-    "authors": "",
-    "title": "",
+    "authors": "Reshma Babu, Subarna S Padhy, Ganesan Sivakumar, and E. Balaraman* Expedient Tandem Dehydrogenative Alkylation and Cyclization Reactions Under Mn(I)-Catalysis",
+    "title": "Catal. Sci. Technol.",
     "journal": "",
     "year": "2023",
     "details": "",
@@ -197,8 +197,8 @@ export const publications = [
   },
   {
     "id": 98,
-    "authors": "",
-    "title": "",
+    "authors": "Ganesan Sivakumar, Rohit Kumar, Vinita Yadav, Virendrakumar Gupta*, and E. Balaraman* Multi-Functionality of Methanol in Sustainable Catalysis: Beyond Methanol Economy",
+    "title": "ACS Catal.",
     "journal": "",
     "year": "2023",
     "details": "",
@@ -207,8 +207,8 @@ export const publications = [
   },
   {
     "id": 97,
-    "authors": "",
-    "title": "",
+    "authors": "G. Sivakumar, A. K. Suresh, and E. Balaraman*",
+    "title": "Tandem multicomponent reactions for diverse heterocycles synthesis under 3d-transition metal catalysis",
     "journal": "",
     "year": "2023",
     "details": "",
@@ -217,8 +217,8 @@ export const publications = [
   },
   {
     "id": 96,
-    "authors": "",
-    "title": "",
+    "authors": "T. Nandakumar, U. Dwivedia, K. K. Panta, S. Kumar, and E. Balaraman*",
+    "title": "Wheat straw/HDPE co-reaction synergy and enriched production of aromatics and light olefins via catalytic co-pyrolysis over Mn, Ni, and Zn metal modified HZSM-5",
     "journal": "",
     "year": "2023",
     "details": "",
@@ -227,8 +227,8 @@ export const publications = [
   },
   {
     "id": 95,
-    "authors": "",
-    "title": "",
+    "authors": "Reshma Babu, Subarna Sukanya Padhy, Rohit Kumar, E. Balaraman* Catalytic Amination of Alcohols Using Diazo Compounds under Manganese Catalysis Through Hydrogenative N-Alkylation Reaction Chem",
+    "title": "Eur. J.",
     "journal": "",
     "year": "2023",
     "details": "",
@@ -237,8 +237,8 @@ export const publications = [
   },
   {
     "id": 94,
-    "authors": "",
-    "title": "",
+    "authors": "Vishakha Goyal, Tarun Bhatt, Chitrarekha Dewangan, Anand Narani, Ganesh Naik, E. Balaraman*, Kishore Natte*, and Rajenahally V",
+    "title": "Jagadeesh* Methanol as a Potential Hydrogen Source for Reduction Reactions Enabled by a Commercial Pt/C Catalyst",
     "journal": "",
     "year": "2023",
     "details": "",
@@ -247,38 +247,38 @@ export const publications = [
   },
   {
     "id": 93,
-    "authors": "",
-    "title": "",
+    "authors": "S. Shaik, R. M. R. Sirigireddy, K. Godugu, V. Vemula, R. R. Kakarla, E. Balaraman, C",
+    "title": "G. R. Nallagondu, and T. M. Aminabhavi*. SiO2-supported HClO4 catalyzed synthesis of (Z)-thiazolylhydrazonoindolin-2-ones and their electrochemical properties",
     "journal": "",
     "year": "2022",
     "details": "",
-    "doi": "10.1016/j.chemosphere.2022.136667",
-    "fullText": "S. Shaik, R. M. R. Sirigireddy, K. Godugu, V. Vemula, R. R. Kakarla, E. Balaraman, C. G. R. Nallagondu, and T. M. Aminabhavi*. SiO2-supported HClO4 catalyzed synthesis of (Z)-thiazolylhydrazonoindolin-2-ones and their electrochemical properties. Chemosphere, 2022, 309, 136667. (Collaborative work)."
+    "doi": "",
+    "fullText": "S. Shaik, R. M. R. Sirigireddy, K. Godugu, V. Vemula, R. R. Kakarla, E. Balaraman, C. G. R. Nallagondu, and T. M. Aminabhavi*. SiO2-supported HClO4 catalyzed synthesis of (Z)-thiazolylhydrazonoindolin-2-ones and their electrochemical properties. Chemosphere, 2022, 309, 136667. (Collaborative work). https://doi.org/10.1016/j.chemosphere.2022.136667"
   },
   {
     "id": 92,
-    "authors": "",
-    "title": "",
+    "authors": "Akash Mondal, Abhijith Karattil Suresh, Ganesan Sivakumar, and E. Balaraman* Sustainable and Affordable Synthesis of (Deuterated) N‑Methyl/ Ethyl Amines from Nitroarenes",
+    "title": "Organic Letters",
     "journal": "",
     "year": "2022",
     "details": "",
     "doi": "10.1021/acs.orglett.2c03595",
-    "fullText": "Akash Mondal, Abhijith Karattil Suresh, Ganesan Sivakumar, and E. Balaraman* Sustainable and Affordable Synthesis of (Deuterated) N‑Methyl/ Ethyl Amines from Nitroarenes. Organic Letters, 2022, 24, 49, 8990-8995."
+    "fullText": "Akash Mondal, Abhijith Karattil Suresh, Ganesan Sivakumar, and E. Balaraman* Sustainable and Affordable Synthesis of (Deuterated) N‑Methyl/ Ethyl Amines from Nitroarenes. Organic Letters,  2022, 24, 49, 8990-8995."
   },
   {
     "id": 91,
-    "authors": "",
-    "title": "",
+    "authors": "Vinita Yadav, Sayali G. Jagtap, E. Balaraman,* and Santosh B",
+    "title": "Mhaske* Nickel-Catalyzed Direct Synthesis of N‑Substituted Indoles from Amino Alcohols and Alcohols",
     "journal": "",
     "year": "2022",
     "details": "",
-    "doi": "10.1021/acs.orglett.2c03617",
-    "fullText": "Vinita Yadav, Sayali G. Jagtap, E. Balaraman,* and Santosh B. Mhaske* Nickel-Catalyzed Direct Synthesis of N‑Substituted Indoles from Amino Alcohols and Alcohols. Organic Letters, 2022, 24, 9054-9059."
+    "doi": "",
+    "fullText": "Vinita Yadav, Sayali G. Jagtap, E. Balaraman,* and Santosh B. Mhaske* Nickel-Catalyzed Direct Synthesis of N‑Substituted Indoles from Amino Alcohols and Alcohols. Organic Letters,  2022, 24, 9054-9059. https://doi.org/10.1021/acs.orglett.2c03617"
   },
   {
     "id": 90,
-    "authors": "",
-    "title": "",
+    "authors": "Ganesan Sivakumar, Murugan Subaramanian, and Ekambaram Balaraman* Single-Molecular Mn(I)-Complex-Catalyzed Tandem Double Dehydrogenation Cross-Coupling of (Amino)Alcohols under Solventless Conditions with the Liberation of H2 and H2O",
+    "title": "ACS Sustain. Chem. Eng.",
     "journal": "",
     "year": "2022",
     "details": "",
@@ -287,8 +287,8 @@ export const publications = [
   },
   {
     "id": 89,
-    "authors": "",
-    "title": "",
+    "authors": "Vinita Yadav, Ganesan Sivakumar, Virendrakumar Gupta, and E. Balaraman*",
+    "title": "Recent Advances in Liquid Organic Hydrogen Carriers: An Alcohol-based Hydrogen Economy",
     "journal": "",
     "year": "2021",
     "details": "",
@@ -297,8 +297,8 @@ export const publications = [
   },
   {
     "id": 88,
-    "authors": "",
-    "title": "",
+    "authors": "Ganesan Sivakumar, Murugan Subaramanian, & E. Balaraman*",
+    "title": "Catalyzed C(sp3)-H bond functionalization: Arylation and aminoxylation. In D. Maiti (Ed.), Handbook of CH-functionalization",
     "journal": "",
     "year": "2021",
     "details": "",
@@ -307,8 +307,8 @@ export const publications = [
   },
   {
     "id": 87,
-    "authors": "",
-    "title": "",
+    "authors": "J. Karunakaran, H. Qiu, and E. Balaraman*",
+    "title": "Synthesis of diverse heterocyclic frameworks using cyclopentadienones via the Diels-Alder strategy",
     "journal": "",
     "year": "2021",
     "details": "",
@@ -317,18 +317,18 @@ export const publications = [
   },
   {
     "id": 86,
-    "authors": "",
-    "title": "",
+    "authors": "V. Yadav, E. Balaraman* and S",
+    "title": "B. Mhaske*. Phosphine-free manganese(II)-catalyst enables acceptorless dehydrogenative coupling of alcohols with indoles",
     "journal": "",
     "year": "2021",
     "details": "",
-    "doi": "10.1002/adsc.202100621",
-    "fullText": "V. Yadav, E. Balaraman* and S. B. Mhaske*. Phosphine-free manganese(II)-catalyst enables acceptorless dehydrogenative coupling of alcohols with indoles. Adv. Syn. Catal. 2021, ."
+    "doi": "",
+    "fullText": "V. Yadav, E. Balaraman* and S. B. Mhaske*. Phosphine-free manganese(II)-catalyst enables acceptorless dehydrogenative coupling of alcohols with indoles. Adv. Syn. Catal. 2021,  https://doi.org/10.1002/adsc.202100621."
   },
   {
     "id": 85,
-    "authors": "",
-    "title": "",
+    "authors": "M. Subaramanian, P. M. Ramar, G. Sivakumar, R. G. Kadam, M. Petr, R. Zboril, M. B. Gawande, and E. Balaraman*",
+    "title": "Convenient and reusable manganese-based nanocatalyst for amination of alcohols",
     "journal": "",
     "year": "2021",
     "details": "",
@@ -337,8 +337,8 @@ export const publications = [
   },
   {
     "id": 84,
-    "authors": "",
-    "title": "",
+    "authors": "M. Subaramanian, G. Sivakumar, and E. Balaraman*",
+    "title": "First-row transition-metal catalyzed acceptorless dehydrogenation and related reactions: A personal account",
     "journal": "",
     "year": "2021",
     "details": "",
@@ -347,43 +347,43 @@ export const publications = [
   },
   {
     "id": 83,
-    "authors": "",
-    "title": "",
+    "authors": "M. K. Sahoo, G. Sivakumar,  S. Jadhav,  S. Shaikh, and E. Balaraman*",
+    "title": "Convenient semihydrogenation of azoarenes to hydrazoarenes using H2",
     "journal": "",
     "year": "2021",
     "details": "",
     "doi": "10.1039/D1OB00850A",
-    "fullText": "M. K. Sahoo, G. Sivakumar, S. Jadhav, S. Shaikh, and E. Balaraman*. Convenient semihydrogenation of azoarenes to hydrazoarenes using H2. Org. Biomol. Chem., (2021), Accepted. ."
+    "fullText": "M. K. Sahoo, G. Sivakumar,  S. Jadhav,  S. Shaikh, and E. Balaraman*. Convenient semihydrogenation of azoarenes to hydrazoarenes using H2. Org. Biomol. Chem., (2021), Accepted."
   },
   {
     "id": 82,
-    "authors": "",
-    "title": "",
-    "journal": "",
-    "year": "2021",
-    "details": "",
-    "doi": "10.1021/acs.joc.1c00592",
-    "fullText": "S. P. Midya, M. Subaramanian, R. Babu, V. Yadav, and E. Balaraman*. Tandem acceptorless dehydrogenative coupling-decyanation under nickel catalysis. J. Org. Chem. 2021, 86, 11, 7552–7562. ."
-  },
-  {
-    "id": 81,
-    "authors": "",
-    "title": "",
-    "journal": "",
-    "year": "2021",
-    "details": "",
-    "doi": "10.1021/acs.orglett.1c00782",
-    "fullText": "R. Babu, M. Subaramanian, S. P. Midya and E. Balaraman*. Nickel-catalyzed Guerbet type reaction: C-alkylation of secondary alcohols via double (de)hydrogenation, Org. Lett. 2021, 23, 9, 3320–3325. ."
-  },
-  {
-    "id": 80,
-    "authors": "",
-    "title": "",
+    "authors": "S. P. Midya, M. Subaramanian, R. Babu, V. Yadav, and E. Balaraman*",
+    "title": "Tandem acceptorless dehydrogenative coupling-decyanation under nickel catalysis",
     "journal": "",
     "year": "2021",
     "details": "",
     "doi": "",
-    "fullText": "V. Yadav, G. Sivakumar and E. Balaraman*. Transition-metal pincer complexes in acceptorless dehydrogenation reactions. Invited book chapter, Elsevier, 2021. Title of the Book: Pincer-Metal Complexes: Applications in Catalytic Dehydrogenation Chemistry (Editor: Dr. Akshai Kumar Alape Seetharam)."
+    "fullText": "S. P. Midya, M. Subaramanian, R. Babu, V. Yadav, and E. Balaraman*. Tandem acceptorless dehydrogenative coupling-decyanation under nickel catalysis. J. Org. Chem. 2021, 86, 11, 7552–7562. https://doi.org/10.1021/acs.joc.1c00592."
+  },
+  {
+    "id": 81,
+    "authors": "R. Babu, M. Subaramanian, S. P. Midya and E. Balaraman*",
+    "title": "Nickel-catalyzed Guerbet type reaction: C-alkylation of secondary alcohols via double (de)hydrogenation, Org",
+    "journal": "",
+    "year": "2021",
+    "details": "",
+    "doi": "10.1021/acs.orglett.1c00782",
+    "fullText": "R. Babu, M. Subaramanian, S. P. Midya and E. Balaraman*. Nickel-catalyzed Guerbet type reaction: C-alkylation of secondary alcohols via double (de)hydrogenation, Org. Lett. 2021, 23, 9, 3320–3325. https://doi.org/10.1021/acs.orglett.1c00782."
+  },
+  {
+    "id": 80,
+    "authors": "V. Yadav, G. Sivakumar and E. Balaraman*",
+    "title": "Transition-metal pincer complexes in acceptorless dehydrogenation reactions",
+    "journal": "",
+    "year": "2021",
+    "details": "",
+    "doi": "",
+    "fullText": "V. Yadav, G. Sivakumar and E. Balaraman*. Transition-metal pincer complexes in acceptorless dehydrogenation reactions. Invited book chapter, Elsevier, 2021."
   },
   {
     "id": 79,
@@ -393,7 +393,7 @@ export const publications = [
     "year": "2021",
     "details": "",
     "doi": "10.1039/D1OB00080B",
-    "fullText": "M. Subaramanian, G. Sivakumar and E. Balaraman.* Recent advances in nickel-catalyzed C-C and C-N bond formation via ADC and HA reactions, Org. Biomol. Chem., 2021, 19, 4213-4227. Invited Review Article ."
+    "fullText": "M. Subaramanian, G. Sivakumar and E. Balaraman.* Recent advances in nickel-catalyzed C-C and C-N bond formation via ADC and HA reactions, Org. Biomol. Chem., 2021, 19, 4213-4227. Invited Review Article"
   },
   {
     "id": 78,
@@ -403,247 +403,247 @@ export const publications = [
     "year": "2021",
     "details": "",
     "doi": "10.1021/acs.organomet.1c00009",
-    "fullText": "J. Rana, P. Nagarasu, M. Subaramanian, A. Mondal, V. Madhu,* and E. Balaraman.* Manganese-catalyzed C(α)-alkylation of oxindoles with secondary alcohols via borrowing hydrogen, Organometallics. 2021, 40, 6, 627–634."
+    "fullText": "J. Rana, P. Nagarasu, M. Subaramanian, A. Mondal, V. Madhu,* and E. Balaraman.* Manganese-catalyzed C(α)-alkylation of oxindoles with secondary alcohols via borrowing hydrogen, Organometallics.  2021, 40, 6, 627–634."
   },
   {
     "id": 77,
-    "authors": "",
-    "title": "",
+    "authors": "E. Samaraj, E.Balaraman* and S",
+    "title": "Manickam.* Functional POM-catalyst for selective oxidative dehydrogenative couplings under base and additive-free conditions,  Mol",
     "journal": "",
     "year": "2021",
     "details": "",
     "doi": "",
-    "fullText": "E. Samaraj, E.Balaraman* and S. Manickam.* Functional POM-catalyst for selective oxidative dehydrogenative couplings under base and additive-free conditions, Mol. Catal. 502, 111396. 2021, 10.1016 / j.mcat.2021.111396."
+    "fullText": "E. Samaraj, E.Balaraman* and S. Manickam.* Functional POM-catalyst for selective oxidative dehydrogenative couplings under base and additive-free conditions,  Mol. Catal.  502, 111396. 2021,"
   },
   {
     "id": 76,
-    "authors": "",
-    "title": "",
+    "authors": "K. Vipin Raj, J. Kumawat, S. Dhamaniya, M. Subaramanian, E. Balaraman,* V",
+    "title": "K. Gupta,* K. Vanka,* and R. H. Grubbs. Insights into the nature of self-extinguishing external donors for Ziegler-Natta catalysis: A combined experimental and DFT study",
     "journal": "",
-    "year": "2005",
+    "year": "2021",
     "details": "",
     "doi": "10.1002/cctc.202001493",
-    "fullText": "K. Vipin Raj, J. Kumawat, S. Dhamaniya, M. Subaramanian, E. Balaraman,* V. K. Gupta,* K. Vanka,* and R. H. Grubbs. Insights into the nature of self-extinguishing external donors for Ziegler-Natta catalysis: A combined experimental and DFT study. ChemCatChem 13, 674-681 (2021), . A paper with Nobel laureate Prof. Robert H. Grubbs (Nobel prize-2005) and Reliance Industries Limited (RIL)"
+    "fullText": "K. Vipin Raj, J. Kumawat, S. Dhamaniya, M. Subaramanian, E. Balaraman,* V. K. Gupta,* K. Vanka,* and R. H. Grubbs. Insights into the nature of self-extinguishing external donors for Ziegler-Natta catalysis: A combined experimental and DFT study. ChemCatChem 13, 674-681 (2021), https://doi.org/10.1002/cctc.202001493."
   },
   {
     "id": 75,
-    "authors": "",
-    "title": "",
+    "authors": "M. Subaramanian, A. Mondal and E. Balaraman*",
+    "title": "Efficient synthesis of 1,1-dimethoxymethane from methanol and paraformaldehyde catalyzed by a molecularly defined Ni(II)-complex",
     "journal": "",
     "year": "2020",
     "details": "",
     "doi": "10.1007/s40010-020-00722-9",
-    "fullText": "M. Subaramanian, A. Mondal and E. Balaraman*. Efficient synthesis of 1,1-dimethoxymethane from methanol and paraformaldehyde catalyzed by a molecularly defined Ni(II)-complex. Proc. Natl. Acad. Sci., India, Sect. A Phys. Sci. (2020). . A part of INYAS Special Issues"
+    "fullText": "M. Subaramanian, A. Mondal and E. Balaraman*. Efficient synthesis of 1,1-dimethoxymethane from methanol and paraformaldehyde catalyzed by a molecularly defined Ni(II)-complex. Proc. Natl. Acad. Sci., India, Sect. A Phys. Sci. (2020)."
   },
   {
     "id": 74,
-    "authors": "",
-    "title": "",
+    "authors": "M. Subaramanian, G. Sivakumar, J. K. Babu and E. Balaraman*",
+    "title": "Selective hydrogenation of primary amides and cyclic di-peptides under Ru-catalysis",
     "journal": "",
     "year": "2020",
     "details": "",
-    "doi": "10.1039/D0CC04550K",
-    "fullText": "M. Subaramanian, G. Sivakumar, J. K. Babu and E. Balaraman*. Selective hydrogenation of primary amides and cyclic di-peptides under Ru-catalysis. Chem. Commun., 56, 12411-12414 (2020), ."
+    "doi": "",
+    "fullText": "M. Subaramanian, G. Sivakumar, J. K. Babu and E. Balaraman*. Selective hydrogenation of primary amides and cyclic di-peptides under Ru-catalysis. Chem. Commun., 56, 12411-12414 (2020), https://doi.org/10.1039/D0CC04550K."
   },
   {
     "id": 73,
-    "authors": "",
-    "title": "",
+    "authors": "M. Shaikh, and E. Balaraman*",
+    "title": "Confinement of nanoparticles in carbon nanotubes: A new paradigm in heterogeneous catalysis",
     "journal": "",
     "year": "2020",
     "details": "",
     "doi": "10.1021/bk-2020-1359.ch015",
-    "fullText": "M. Shaikh, and E. Balaraman*. Confinement of nanoparticles in carbon nanotubes: A new paradigm in heterogeneous catalysis. ACS Symposium Series Vol. 1359, Chapter 15, pp 459-481 (2020), . (Title of the Book: Advanced Heterogeneous Catalysts Volume 1: Applications at the Nano-Scale ; American Chemical Society, NW, Washington)."
+    "fullText": "M. Shaikh, and E. Balaraman*. Confinement of nanoparticles in carbon nanotubes: A new paradigm in heterogeneous catalysis. ACS Symposium Series Vol. 1359, Chapter 15, pp 459-481 (2020), DOI: 10.1021/bk-2020-1359.ch015."
   },
   {
     "id": 72,
-    "authors": "",
-    "title": "",
+    "authors": "G. Jaiswal, V. G. Landge, M. Subaramanian, R. G. Kadam, R. Zbořil, M. B. Gawande, and E. Balaraman*",
+    "title": "N-graphitic modified cobalt nanoparticles supported on graphene for tandem dehydrogenation of ammonia-borane and semihydrogenation of alkynes",
     "journal": "",
     "year": "2020",
     "details": "",
     "doi": "10.1021/acssuschemeng.9b07211",
-    "fullText": "G. Jaiswal, V. G. Landge, M. Subaramanian, R. G. Kadam, R. Zbořil, M. B. Gawande, and E. Balaraman*. N-graphitic modified cobalt nanoparticles supported on graphene for tandem dehydrogenation of ammonia-borane and semihydrogenation of alkynes. ACS Sustainable Chem. Eng. 8, 11058−11068 (2020), ."
+    "fullText": "G. Jaiswal, V. G. Landge, M. Subaramanian, R. G. Kadam, R. Zbořil, M. B. Gawande, and E. Balaraman*. N-graphitic modified cobalt nanoparticles supported on graphene for tandem dehydrogenation of ammonia-borane and semihydrogenation of alkynes. ACS Sustainable Chem. Eng. 8, 11058−11068 (2020), https://doi.org/10.1021/acssuschemeng.9b07211."
   },
   {
     "id": 71,
-    "authors": "",
-    "title": "",
+    "authors": "V. G. Landge, R. Babu, V. Yadav, M. Subaramanian,  V. K. Gupta* and E. Balaraman*",
+    "title": "Iron-catalyzed direct Julia-type olefination of alcohols",
     "journal": "",
     "year": "2020",
     "details": "",
     "doi": "10.1021/acs.joc.0c01173",
-    "fullText": "V. G. Landge, R. Babu, V. Yadav, M. Subaramanian, V. K. Gupta* and E. Balaraman*. Iron-catalyzed direct Julia-type olefination of alcohols. J. Org. Chem. 85, 9876−9886 (2020), ."
+    "fullText": "V. G. Landge, R. Babu, V. Yadav, M. Subaramanian,  V. K. Gupta* and E. Balaraman*. Iron-catalyzed direct Julia-type olefination of alcohols. J. Org. Chem. 85, 9876−9886 (2020),"
   },
   {
     "id": 70,
-    "authors": "",
-    "title": "",
+    "authors": "M. Subaramanian, P. M. Ramar, J. Rana, V. K. Gupta* and E. Balaraman*",
+    "title": "Catalytic conversion of ketones to esters via C(O)–C bond cleavage under transition-metal free conditions",
     "journal": "",
     "year": "2020",
     "details": "",
-    "doi": "10.1039/D0CC03312J",
-    "fullText": "M. Subaramanian, P. M. Ramar, J. Rana, V. K. Gupta* and E. Balaraman*. Catalytic conversion of ketones to esters via C(O)–C bond cleavage under transition-metal free conditions. Chem. Commun., 56, 8143-8146 (2020), ."
+    "doi": "",
+    "fullText": "M. Subaramanian, P. M. Ramar, J. Rana, V. K. Gupta* and E. Balaraman*. Catalytic conversion of ketones to esters via C(O)–C bond cleavage under transition-metal free conditions. Chem. Commun., 56, 8143-8146  (2020), https://doi.org/10.1039/D0CC03312J."
   },
   {
     "id": 69,
-    "authors": "",
-    "title": "",
+    "authors": "A. Mondal, M. K. Sahoo, M. Subaramanian, and E. Balaraman*",
+    "title": "Manganese(I)-catalyzed sustainable synthesis of quinoxaline and quinazoline derivatives with the liberation of dihydrogen. J. Org. Chem. 85, 11, 7181–7191",
     "journal": "",
     "year": "2020",
     "details": "",
     "doi": "10.1021/acs.joc.0c00561",
-    "fullText": "A. Mondal, M. K. Sahoo, M. Subaramanian, and E. Balaraman*. Manganese(I)-catalyzed sustainable synthesis of quinoxaline and quinazoline derivatives with the liberation of dihydrogen. J. Org. Chem. 85, 11, 7181–7191 (2020), ."
+    "fullText": "A. Mondal, M. K. Sahoo, M. Subaramanian, and E. Balaraman*. Manganese(I)-catalyzed sustainable synthesis of quinoxaline and quinazoline derivatives with the liberation of dihydrogen. J. Org. Chem. 85, 11, 7181–7191 (2020), https://doi.org/10.1021/acs.joc.0c00561."
   },
   {
     "id": 68,
-    "authors": "",
-    "title": "",
+    "authors": "V. Yadav, V. G. Landge,  M. Subaramanian, and E. Balaraman*",
+    "title": "Manganese catalyzed α-olefination of nitriles with secondary alcohols. ACS Catal. 10, 2, 947–954",
     "journal": "",
     "year": "2020",
     "details": "",
     "doi": "10.1021/acscatal.9b02811",
-    "fullText": "V. Yadav, V. G. Landge, M. Subaramanian, and E. Balaraman*. Manganese catalyzed α-olefination of nitriles with secondary alcohols. ACS Catal. 10, 2, 947–954 (2020), ."
+    "fullText": "V. Yadav, V. G. Landge,  M. Subaramanian, and E. Balaraman*. Manganese catalyzed α-olefination of nitriles with secondary alcohols. ACS Catal. 10, 2, 947–954 (2020), DOI: 10.1021/acscatal.9b02811."
   },
   {
     "id": 67,
-    "authors": "",
-    "title": "",
+    "authors": "N. V. Gorantla, R. Das, E. Balaraman*, and S",
+    "title": "Chinnathambi*.  Transition metal nickel prevents Tau aggregation in Alzheimer's disease. International Journal of Biological Macromolecules 156, 1359-1365",
     "journal": "",
     "year": "2020",
     "details": "",
-    "doi": "10.1016/j.ijbiomac.2019.11.176",
-    "fullText": "N. V. Gorantla, R. Das, E. Balaraman*, and S. Chinnathambi*. Transition metal nickel prevents Tau aggregation in Alzheimer's disease. International Journal of Biological Macromolecules 156, 1359-1365, (2020), . Collaborative work"
+    "doi": "",
+    "fullText": "N. V. Gorantla, R. Das, E. Balaraman*, and S. Chinnathambi*.  Transition metal nickel prevents Tau aggregation in Alzheimer's disease. International Journal of Biological Macromolecules 156, 1359-1365, (2020), https://doi.org/10.1016/j.ijbiomac.2019.11.176."
   },
   {
     "id": 66,
-    "authors": "",
-    "title": "",
+    "authors": "N. V. Gorantla, E. Balaraman*, and S",
+    "title": "Chinnathambi*.  Cobalt-based metal complexes prevent Repeat Tau aggregation and nontoxic to neuronal cells. International Journal of Biological Macromolecules 152, 171-179",
     "journal": "",
     "year": "2020",
     "details": "",
     "doi": "10.1016/j.ijbiomac.2020.02.278",
-    "fullText": "N. V. Gorantla, E. Balaraman*, and S. Chinnathambi*. Cobalt-based metal complexes prevent Repeat Tau aggregation and nontoxic to neuronal cells. International Journal of Biological Macromolecules 152, 171-179 (2020), . Collaborative work"
+    "fullText": "N. V. Gorantla, E. Balaraman*, and S. Chinnathambi*.  Cobalt-based metal complexes prevent Repeat Tau aggregation and nontoxic to neuronal cells. International Journal of Biological Macromolecules 152, 171-179  (2020),"
   },
   {
     "id": 65,
-    "authors": "",
-    "title": "",
+    "authors": "M. Subaramanian, S. P. Midya, P. M. Ramar and E. Balaraman*",
+    "title": "General synthesis of N-alkylation of amines with secondary alcohols via hydrogen autotransfer",
     "journal": "",
     "year": "2019",
     "details": "",
     "doi": "10.1021/acs.orglett.9b02990",
-    "fullText": "M. Subaramanian, S. P. Midya, P. M. Ramar and E. Balaraman*. General synthesis of N-alkylation of amines with secondary alcohols via hydrogen autotransfer. Org. Lett. 21, 22, 8899-8903 (2019), ."
+    "fullText": "M. Subaramanian, S. P. Midya, P. M. Ramar and E. Balaraman*. General synthesis of N-alkylation of amines with secondary alcohols via hydrogen autotransfer. Org. Lett. 21, 22, 8899-8903 (2019), DOI: 10.1021/acs.orglett.9b02990."
   },
   {
     "id": 64,
-    "authors": "",
-    "title": "",
+    "authors": "N. V. Gorantla, V. G. Landge, P. G. Nagaraju, P.  Priyadarshini CG, E. Balaraman*, and S",
+    "title": "Chinnathambi*. Molecular cobalt(II) complexes for Tau polymerization in Alzheimer’s disease",
     "journal": "",
     "year": "2019",
     "details": "",
     "doi": "10.1021/acsomega.9b00692",
-    "fullText": "N. V. Gorantla, V. G. Landge, P. G. Nagaraju, P. Priyadarshini CG, E. Balaraman*, and S. Chinnathambi*. Molecular cobalt(II) complexes for Tau polymerization in Alzheimer’s disease. ACS Omega 2019, 4, 16, 16702-16714, . Collaborative work"
+    "fullText": "N. V. Gorantla, V. G. Landge, P. G. Nagaraju, P.  Priyadarshini CG, E. Balaraman*, and S. Chinnathambi*. Molecular cobalt(II) complexes for Tau polymerization in Alzheimer’s disease. ACS Omega 2019, 4, 16, 16702-16714, DOI: 10.1021/acsomega.9b00692."
   },
   {
     "id": 63,
-    "authors": "",
-    "title": "",
+    "authors": "M. Subaramanian, V. G. Landge, V. Gupta* and E. Balaraman*",
+    "title": "Nickel‐catalyzed chemoselective acetalization of aldehydes with alcohols under neutral conditions",
     "journal": "",
     "year": "2019",
     "details": "",
     "doi": "10.1002/asia.201900908",
-    "fullText": "M. Subaramanian, V. G. Landge, V. Gupta* and E. Balaraman*. Nickel‐catalyzed chemoselective acetalization of aldehydes with alcohols under neutral conditions. Chem. Asian J. (2019), . This manuscript is part of a special issue celebrating the 20th anniversary of the Chemical Research Society of India (CRSI)."
+    "fullText": "M. Subaramanian, V. G. Landge, V. Gupta* and E. Balaraman*. Nickel‐catalyzed chemoselective acetalization of aldehydes with alcohols under neutral conditions. Chem. Asian J. (2019), DOI: 10.1002/asia.201900908."
   },
   {
     "id": 62,
-    "authors": "",
-    "title": "",
+    "authors": "M. K. Sahoo and E. Balaraman*",
+    "title": "Room temperature catalytic dehydrogenation of cyclic amines with liberation of H2 using water as a solvent",
     "journal": "",
     "year": "2019",
     "details": "",
-    "doi": "10.1039/C9GC00201D",
-    "fullText": "M. K. Sahoo and E. Balaraman*. Room temperature catalytic dehydrogenation of cyclic amines with liberation of H2 using water as a solvent. Green Chem., 21, 2119-2128 (2019), . Highlighted in SCISOUP: A Science and Technology Blog."
+    "doi": "",
+    "fullText": "M. K. Sahoo and E. Balaraman*. Room temperature catalytic dehydrogenation of cyclic amines with liberation of H2 using water as a solvent. Green Chem.,  21, 2119-2128 (2019), DOI: 10.1039/C9GC00201D."
   },
   {
     "id": 61,
-    "authors": "",
-    "title": "",
+    "authors": "V. G. Landge,# V. Yadav,# M. Subaramanian, P. Dangarh, E. Balaraman*",
+    "title": "Nickel(II)-catalyzed direct olefination of benzyl alcohols with sulfones with the liberation of H2",
     "journal": "",
     "year": "2019",
     "details": "",
-    "doi": "10.1039/C9CC02603G",
-    "fullText": "V. G. Landge,# V. Yadav,# M. Subaramanian, P. Dangarh, E. Balaraman*. Nickel(II)-catalyzed direct olefination of benzyl alcohols with sulfones with the liberation of H2. Chem. Commun., 55, 6130-6133 (2019), . # Equal contribution"
+    "doi": "",
+    "fullText": "V. G. Landge,# V. Yadav,# M. Subaramanian, P. Dangarh, E. Balaraman*. Nickel(II)-catalyzed direct olefination of benzyl alcohols with sulfones with the liberation of H2. Chem. Commun., 55, 6130-6133 (2019), DOI:10.1039/C9CC02603G."
   },
   {
     "id": 60,
-    "authors": "",
-    "title": "",
+    "authors": "G. Jaiswal, M. K. Sahoo, M. Subaramanian and E. Balaraman*",
+    "title": "A Reusable cobalt-catalyst for reversible acceptorless dehydrogenation and hydrogenation of N-Heterocycles",
     "journal": "",
     "year": "2019",
     "details": "",
     "doi": "10.1002/cctc.201900367",
-    "fullText": "G. Jaiswal, M. K. Sahoo, M. Subaramanian and E. Balaraman*. A Reusable cobalt-catalyst for reversible acceptorless dehydrogenation and hydrogenation of N-Heterocycles. ChemCatChem., 11, 2449-2457 (2019), ."
+    "fullText": "G. Jaiswal, M. K. Sahoo, M. Subaramanian and E. Balaraman*. A Reusable cobalt-catalyst for reversible acceptorless dehydrogenation and hydrogenation of N-Heterocycles. ChemCatChem., 11, 2449-2457 (2019), DOI: 10.1002/cctc.201900367."
   },
   {
     "id": 59,
-    "authors": "",
-    "title": "",
+    "authors": "J. Rana, V. K. Gupta, and E. Balaraman*",
+    "title": "Manganese-catalyzed direct C-C coupling of α-C-H bonds of amides and ester with alcohols via hydrogen autotransfer",
     "journal": "",
     "year": "2019",
     "details": "",
-    "doi": "10.1039/C8DT05020A",
-    "fullText": "J. Rana, V. K. Gupta, and E. Balaraman*. Manganese-catalyzed direct C-C coupling of α-C-H bonds of amides and ester with alcohols via hydrogen autotransfer. Dalton Trans., 48, 7094-7099 (2019), . (New Talent: Asia Pacific themed issue)"
+    "doi": "",
+    "fullText": "J. Rana, V. K. Gupta, and E. Balaraman*. Manganese-catalyzed direct C-C coupling of α-C-H bonds of amides and ester with alcohols via hydrogen autotransfer. Dalton Trans., 48, 7094-7099 (2019), DOI:10.1039/C8DT05020A."
   },
   {
     "id": 58,
-    "authors": "",
-    "title": "",
+    "authors": "M. Bhadra, S. Kandambeth, M.K. Sahoo, M. Addicoat, E. Balaraman* and R",
+    "title": "Banerjee*. A triazine functionalized porous covalent organic framework for photo-organocatalytic E-Z isomerization of olefins",
     "journal": "",
     "year": "2019",
     "details": "",
     "doi": "10.1021/jacs.9b01891",
-    "fullText": "M. Bhadra, S. Kandambeth, M.K. Sahoo, M. Addicoat, E. Balaraman* and R. Banerjee*. A triazine functionalized porous covalent organic framework for photo-organocatalytic E-Z isomerization of olefins. J. Am. Chem. Soc., 141, 6152-6156 (2019), Collaborative work"
+    "fullText": "M. Bhadra, S. Kandambeth, M.K. Sahoo, M. Addicoat, E. Balaraman* and R. Banerjee*. A triazine functionalized porous covalent organic framework for photo-organocatalytic E-Z isomerization of olefins. J. Am. Chem. Soc., 141, 6152-6156 (2019), DOI: 10.1021/jacs.9b01891"
   },
   {
     "id": 57,
-    "authors": "",
-    "title": "",
+    "authors": "V. G. Landge, A. Mondal, V. Kumar, A. Nandakumar, and E. Balaraman*, Manganese catalyzed N-alkylation of amines with alcohols:  Ligand enabled selectivity, Org",
+    "title": "Biomol. Chem., 16, 8175 - 8180",
     "journal": "",
     "year": "2018",
     "details": "",
-    "doi": "10.1039/C8OB01886C",
-    "fullText": "V. G. Landge, A. Mondal, V. Kumar, A. Nandakumar, and E. Balaraman*, Manganese catalyzed N-alkylation of amines with alcohols: Ligand enabled selectivity, Org. Biomol. Chem., 16, 8175 - 8180 (2018), ."
+    "doi": "",
+    "fullText": "V. G. Landge, A. Mondal, V. Kumar, A. Nandakumar, and E. Balaraman*, Manganese catalyzed N-alkylation of amines with alcohols:  Ligand enabled selectivity, Org. Biomol. Chem., 16, 8175 - 8180 (2018), DOI:10.1039/C8OB01886C."
   },
   {
     "id": 56,
-    "authors": "",
-    "title": "",
+    "authors": "V. G. Landge, A. Parveen, A. Nandakumar, and E. Balaraman*, Pd(II)-catalyzed gamma-C(sp3)-H alkynylation of amides: A selective  functionalization of R chain of amides R1C(O)NHR, Chem",
+    "title": "Commun., 54, 7483 - 7486",
     "journal": "",
     "year": "2018",
     "details": "",
-    "doi": "10.1039/C8CC03445A",
-    "fullText": "V. G. Landge, A. Parveen, A. Nandakumar, and E. Balaraman*, Pd(II)-catalyzed gamma-C(sp3)-H alkynylation of amides: A selective functionalization of R chain of amides R1C(O)NHR, Chem. Commun., 54, 7483 - 7486 (2018), ."
+    "doi": "",
+    "fullText": "V. G. Landge, A. Parveen, A. Nandakumar, and E. Balaraman*, Pd(II)-catalyzed gamma-C(sp3)-H alkynylation of amides: A selective  functionalization of R chain of amides R1C(O)NHR, Chem. Commun., 54, 7483 - 7486 (2018), DOI:10.1039/C8CC03445A."
   },
   {
     "id": 55,
-    "authors": "",
-    "title": "",
+    "authors": "A. Mondal, M. Subaramanian, A. Nandakumar, and E. Balaraman*, Manganese-catalyzed direct conversion of ester to amide with liberation of H2, Org",
+    "title": "Lett., 20, 3381 - 3384",
     "journal": "",
     "year": "2018",
     "details": "",
     "doi": "10.1021/acs.orglett.8b01305",
-    "fullText": "A. Mondal, M. Subaramanian, A. Nandakumar, and E. Balaraman*, Manganese-catalyzed direct conversion of ester to amide with liberation of H2, Org. Lett., 20, 3381 - 3384 (2018), ."
+    "fullText": "A. Mondal, M. Subaramanian, A. Nandakumar, and E. Balaraman*, Manganese-catalyzed direct conversion of ester to amide with liberation of H2, Org. Lett., 20, 3381 - 3384 (2018),"
   },
   {
     "id": 54,
-    "authors": "",
-    "title": "",
+    "authors": "S. P. Midya, J. Pitchaimani, V. G. Landge, V. Madhu,* and E. Balaraman*, Direct access to N-alkylated amines and imines via acceptorless dehydrogenative coupling catalyzed by cobalt(II)-NNN pincer complex, Catal",
+    "title": "Sci. Technol., 8, 3469 - 3473",
     "journal": "",
     "year": "2018",
     "details": "",
-    "doi": "10.1039/C8CY00859K",
-    "fullText": "S. P. Midya, J. Pitchaimani, V. G. Landge, V. Madhu,* and E. Balaraman*, Direct access to N-alkylated amines and imines via acceptorless dehydrogenative coupling catalyzed by cobalt(II)-NNN pincer complex, Catal. Sci. Technol., 8, 3469 - 3473 (2018), ."
+    "doi": "",
+    "fullText": "S. P. Midya, J. Pitchaimani, V. G. Landge, V. Madhu,* and E. Balaraman*, Direct access to N-alkylated amines and imines via acceptorless dehydrogenative coupling catalyzed by cobalt(II)-NNN pincer complex, Catal. Sci. Technol., 8, 3469 - 3473 (2018), DOI:10.1039/C8CY00859K."
   },
   {
     "id": 53,
@@ -652,8 +652,8 @@ export const publications = [
     "journal": "",
     "year": "2018",
     "details": "",
-    "doi": "10.1021/acscatal.8b01579",
-    "fullText": "Manoj K. Sahoo, K. Saravanakumar, G. Jaiswal, and E. Balaraman*, Photocatalysis enabling acceptorless dehydrogenation of diaryl hydrazines at room temperature, ACS Catal., 8, 7727 - 7733 (2018), ."
+    "doi": "10.1021/acscatal.8b01579#",
+    "fullText": "Manoj K. Sahoo, K. Saravanakumar, G. Jaiswal, and E. Balaraman*, Photocatalysis enabling acceptorless dehydrogenation of diaryl hydrazines at room temperature, ACS Catal., 8, 7727 - 7733 (2018), DOI:10.1021/acscatal.8b01579."
   },
   {
     "id": 52,
@@ -663,67 +663,67 @@ export const publications = [
     "year": "2018",
     "details": "",
     "doi": "10.1002/cssc.201801443",
-    "fullText": "S. P. Midya, J. Rana, J. Pitchaimani, A. Nandakumar, V. Madhu,* and E. Balaraman*, Ni-catalyzed alpha-alkylation of unactivated amides and esters with alcohols via hydrogen auto-transfer strategy, ChemSusChem., 11, 3911-3916 (2018), ."
+    "fullText": "S. P. Midya, J. Rana, J. Pitchaimani, A. Nandakumar, V. Madhu,* and E. Balaraman*, Ni-catalyzed alpha-alkylation of unactivated amides and esters with alcohols via hydrogen auto-transfer strategy, ChemSusChem., 11, 3911-3916 (2018), DOI:10.1002/cssc.201801443."
   },
   {
     "id": 51,
-    "authors": "",
-    "title": "",
+    "authors": "J. Rana, R. Babu, M. Subaramanian, and E. Balaraman*, Ni-catalyzed dehydrogenative coupling of primary and secondary alcohols with methyl-N-heteroaromatics, Org",
+    "title": "Chem. Front., 5, 3250 - 3255",
     "journal": "",
     "year": "2018",
     "details": "",
-    "doi": "10.1039/c8qo00764k",
-    "fullText": "J. Rana, R. Babu, M. Subaramanian, and E. Balaraman*, Ni-catalyzed dehydrogenative coupling of primary and secondary alcohols with methyl-N-heteroaromatics, Org. Chem. Front., 5, 3250 - 3255 (2018), ."
+    "doi": "",
+    "fullText": "J. Rana, R. Babu, M. Subaramanian, and E. Balaraman*, Ni-catalyzed dehydrogenative coupling of primary and secondary alcohols with methyl-N-heteroaromatics, Org. Chem. Front., 5, 3250 - 3255 (2018), DOI:10.1039/c8qo00764k."
   },
   {
     "id": 50,
-    "authors": "",
-    "title": "",
+    "authors": "P. Karthik, E. Balaraman* And B",
+    "title": "Neppolian*, Efficient solar light-driven H2 production: Post-synthetic encapsulation of a Cu2O co-catalyst in a metal–organic framework (MOF) for boosting the effective charge carrier separation, Catal",
     "journal": "",
     "year": "2018",
     "details": "",
-    "doi": "10.1039/c8cy00604k",
-    "fullText": "P. Karthik, E. Balaraman* And B. Neppolian*, Efficient solar light-driven H2 production: Post-synthetic encapsulation of a Cu2O co-catalyst in a metal–organic framework (MOF) for boosting the effective charge carrier separation, Catal. Sci. Technol., 8, 3286 - 3294 (2018), . Collaborative work"
+    "doi": "",
+    "fullText": "P. Karthik, E. Balaraman* And B. Neppolian*, Efficient solar light-driven H2 production: Post-synthetic encapsulation of a Cu2O co-catalyst in a metal–organic framework (MOF) for boosting the effective charge carrier separation, Catal. Sci. Technol., 8, 3286 - 3294 (2018), DOI:10.1039/c8cy00604k.                    https://pubs.rsc.org/en/content/articlelanding/2018/cy/c8cy00604k#!divAbstract"
   },
   {
     "id": 49,
-    "authors": "",
-    "title": "",
+    "authors": "P. Karthik, R. Vinoth, P. Zhang, W. Choi, E. Balaraman,* and B",
+    "title": "Neppolian*, pi–pi Interaction between metal–organic framework and reduced graphene oxide for visible-light photocatalytic H2 production, ACS Appl",
     "journal": "",
     "year": "2018",
     "details": "",
     "doi": "10.1021/acsaem.7b00245",
-    "fullText": "P. Karthik, R. Vinoth, P. Zhang, W. Choi, E. Balaraman,* and B. Neppolian*, pi–pi Interaction between metal–organic framework and reduced graphene oxide for visible-light photocatalytic H2 production, ACS Appl. Energy Mater., 1, 1913 - 1923 (2018), . Collaborative work 48. S. P. Midya, V. G. Landge, M. K. Sahoo, J. Rana, and E. Balaraman*, Cobalt-catalyzed acceptorless dehydrogenative coupling of aminoalcohols with alcohols: direct access to pyrrole, pyridine and pyrazine derivatives, Chem. Commun., 54, 90 - 93 (2018), DOI:10.1039/C7CC07427A."
+    "fullText": "P. Karthik, R. Vinoth, P. Zhang, W. Choi, E. Balaraman,* and B. Neppolian*, pi–pi Interaction between metal–organic framework and reduced graphene oxide for visible-light photocatalytic H2 production, ACS Appl. Energy Mater., 1, 1913 - 1923 (2018), DOI:10.1021/acsaem.7b00245."
   },
   {
     "id": 47,
-    "authors": "",
-    "title": "",
+    "authors": "V. G. Landge, J. Pitchaimani, S. P. Midya, M. Subaramanian, V. Madhu,* and E. Balaraman,* Phosphine-free cobalt pincer complex catalyzed Z-selective semihydrogenation of unbiased alkynes, Catal",
+    "title": "Sci. Technol., 8, 428 - 433",
     "journal": "",
     "year": "2018",
     "details": "",
-    "doi": "10.1039/C7CY01994G",
-    "fullText": "V. G. Landge, J. Pitchaimani, S. P. Midya, M. Subaramanian, V. Madhu,* and E. Balaraman,* Phosphine-free cobalt pincer complex catalyzed Z-selective semihydrogenation of unbiased alkynes, Catal. Sci. Technol., 8, 428 - 433 (2018), ."
+    "doi": "",
+    "fullText": "V. G. Landge, J. Pitchaimani, S. P. Midya, M. Subaramanian, V. Madhu,* and E. Balaraman,* Phosphine-free cobalt pincer complex catalyzed Z-selective semihydrogenation of unbiased alkynes, Catal. Sci. Technol., 8, 428 - 433 (2018), DOI:10.1039/C7CY01994G."
   },
   {
     "id": 46,
-    "authors": "",
-    "title": "",
+    "authors": "M. Bhadra, H. S. Sasmal, A. Basu, S. P. Midya, S. Kandambeth, P. Pachfule, E. Balaraman,* and R",
+    "title": "Banerjee,* Predesigned metal anchored building block for in situ generation of Pd nanoparticles in microporous covalent organic framework: Application in heterogeneous tandem catalysis, ACS Appl",
     "journal": "",
     "year": "2017",
     "details": "",
     "doi": "10.1021/acsami.7b02355",
-    "fullText": "M. Bhadra, H. S. Sasmal, A. Basu, S. P. Midya, S. Kandambeth, P. Pachfule, E. Balaraman,* and R. Banerjee,* Predesigned metal anchored building block for in situ generation of Pd nanoparticles in microporous covalent organic framework: Application in heterogeneous tandem catalysis, ACS Appl. Mater. Interfaces., 9, 13785 - 13792 (2017), . Collaborative work"
+    "fullText": "M. Bhadra, H. S. Sasmal, A. Basu, S. P. Midya, S. Kandambeth, P. Pachfule, E. Balaraman,* and R. Banerjee,* Predesigned metal anchored building block for in situ generation of Pd nanoparticles in microporous covalent organic framework: Application in heterogeneous tandem catalysis, ACS Appl. Mater. Interfaces., 9, 13785 - 13792 (2017),"
   },
   {
     "id": 45,
-    "authors": "",
-    "title": "",
+    "authors": "P. Karthik, R. Vinoth, P. Selvam, E. Balaraman,* M",
+    "title": "Navaneethan, Y. Hayakawa, and B. Neppolian*, A visible-light active catechol–metal oxide carbonaceous polymeric material for enhanced photocatalytic activity, J",
     "journal": "",
     "year": "2017",
     "details": "",
     "doi": "10.1039/C6TA07685H",
-    "fullText": "P. Karthik, R. Vinoth, P. Selvam, E. Balaraman,* M. Navaneethan, Y. Hayakawa, and B. Neppolian*, A visible-light active catechol–metal oxide carbonaceous polymeric material for enhanced photocatalytic activity, J. Mat. Chem. A., 5, 384 - 396 (2017), . Collaborative work"
+    "fullText": "P. Karthik, R. Vinoth, P. Selvam, E. Balaraman,* M. Navaneethan, Y. Hayakawa, and B. Neppolian*, A visible-light active catechol–metal oxide carbonaceous polymeric material for enhanced photocatalytic activity, J. Mat. Chem. A., 5, 384 - 396 (2017),"
   },
   {
     "id": 44,
@@ -733,17 +733,17 @@ export const publications = [
     "year": "2017",
     "details": "",
     "doi": "10.1038/s41467-017-01603-3",
-    "fullText": "G. Jaiswal, V. Landge, D. Jagadeesan,* and E. Balaraman,* Iron-based nanocatalyst for the acceptorless dehydrogenation reactions, Nature Commun., 8, 2147 - 2160 (2017), ."
+    "fullText": "G. Jaiswal, V. Landge, D. Jagadeesan,* and E. Balaraman,* Iron-based nanocatalyst for the acceptorless dehydrogenation reactions, Nature Commun., 8, 2147 - 2160 (2017),"
   },
   {
     "id": 43,
-    "authors": "",
-    "title": "",
+    "authors": "M. K. Sahoo, G. Jaiswal, J. Rana, and E. Balaraman,* Organo-photoredox catalyzed oxidative dehydrogenation of N-heterocycles, Chem",
+    "title": "Eur. J., 23, 14167 - 14172",
     "journal": "",
     "year": "2017",
     "details": "",
     "doi": "10.1002/chem.201703642",
-    "fullText": "M. K. Sahoo, G. Jaiswal, J. Rana, and E. Balaraman,* Organo-photoredox catalyzed oxidative dehydrogenation of N-heterocycles, Chem. Eur. J., 23, 14167 - 14172 (2017), ."
+    "fullText": "M. K. Sahoo, G. Jaiswal, J. Rana, and E. Balaraman,* Organo-photoredox catalyzed oxidative dehydrogenation of N-heterocycles, Chem. Eur. J., 23, 14167 - 14172 (2017),"
   },
   {
     "id": 42,
@@ -753,17 +753,17 @@ export const publications = [
     "year": "2017",
     "details": "",
     "doi": "10.1039/c6gc03438a",
-    "fullText": "M. K. Sahoo, S. P. Midya, V. G. Landge, and E. Balaraman,* A unified strategy for silver-, base-, and oxidant free direct arylation of C–H bonds, Green Chem., 19, 2111 - 2117 (2017), ."
+    "fullText": "M. K. Sahoo, S. P. Midya, V. G. Landge, and E. Balaraman,*  A unified strategy for silver-, base-, and oxidant free direct arylation of C–H bonds, Green Chem., 19, 2111 - 2117 (2017),"
   },
   {
     "id": 41,
-    "authors": "",
-    "title": "",
+    "authors": "S. P. Midya, J. Rana, T. Abraham, B. Aswin, and E. Balaraman,* Metal-free radical trifluoromethylation of beta-nitroalkenes through visible-light photoredox catalysis, Chem",
+    "title": "Commun., 53, 6760 - 6763",
     "journal": "",
     "year": "2017",
     "details": "",
-    "doi": "10.1039/C7CC02589K",
-    "fullText": "S. P. Midya, J. Rana, T. Abraham, B. Aswin, and E. Balaraman,* Metal-free radical trifluoromethylation of beta-nitroalkenes through visible-light photoredox catalysis, Chem. Commun., 53, 6760 - 6763 (2017), ."
+    "doi": "",
+    "fullText": "S. P. Midya, J. Rana, T. Abraham, B. Aswin, and E. Balaraman,* Metal-free radical trifluoromethylation of beta-nitroalkenes through visible-light photoredox catalysis, Chem. Commun., 53, 6760 - 6763 (2017), DOI:10.1039/C7CC02589K."
   },
   {
     "id": 40,
@@ -773,17 +773,17 @@ export const publications = [
     "year": "2017",
     "details": "",
     "doi": "10.1055/s-0036-1589064",
-    "fullText": "S. P. Midya, A. Mondal, A. Begum, and E. Balaraman*, A simple CoCl2 catalyzed N-alkylation of amines with alcohols, Synthesis., 49, 3957 - 3961 (2017), . *Dedicated to Professor David Milstein on the occasion of his 70th birthday * Invited article for a special topic on ‘Cobalt in organic synthesis’"
+    "fullText": "S. P. Midya, A. Mondal, A. Begum, and E. Balaraman*, A simple CoCl2 catalyzed N-alkylation of amines with alcohols, Synthesis., 49, 3957 - 3961 (2017), DOI:10.1055/s-0036-1589064."
   },
   {
     "id": 39,
-    "authors": "",
-    "title": "",
+    "authors": "E. Balaraman*, A",
+    "title": "Nandakumar*, G. Jaiswal, and M. K. Sahoo, Iron-catalyzed dehydrogenation reactions and its applications in sustainable energy and catalysis (Review Article), Catal",
     "journal": "",
     "year": "2017",
     "details": "",
-    "doi": "10.1039/C7CY00879A",
-    "fullText": "E. Balaraman*, A. Nandakumar*, G. Jaiswal, and M. K. Sahoo, Iron-catalyzed dehydrogenation reactions and its applications in sustainable energy and catalysis (Review Article), Catal. Sci. Technol., 7, 3177 - 3195 (2017), . * Cover page article * Dedicated to Professor David Milstein on the occasion of his 70th birthday"
+    "doi": "",
+    "fullText": "E. Balaraman*, A. Nandakumar*, G. Jaiswal, and M. K. Sahoo, Iron-catalyzed dehydrogenation reactions and its applications in sustainable energy and catalysis (Review Article), Catal. Sci. Technol., 7, 3177 - 3195 (2017), DOI:10.1039/C7CY00879A."
   },
   {
     "id": 38,
@@ -793,37 +793,37 @@ export const publications = [
     "year": "2017",
     "details": "",
     "doi": "10.1002/slct.201701108",
-    "fullText": "M. K. Sahoo, J. Rana, M. Subaramanian, and E. Balaraman*, Room-temperature direct arylation of anilides under external oxidant-free conditions using CO2 derived dimethyl carbonate (DMC) as 'green' solvent, ChemistrySelect., 2, 7565 - 7569 (2017), ."
+    "fullText": "M. K. Sahoo, J. Rana, M. Subaramanian, and E. Balaraman*, Room-temperature direct arylation of anilides under external oxidant-free conditions using CO2 derived dimethyl carbonate (DMC) as 'green' solvent, ChemistrySelect., 2, 7565 - 7569 (2017),"
   },
   {
     "id": 37,
-    "authors": "",
-    "title": "",
+    "authors": "M. Subaramanian, A. Bera, B. L. V. Prasad,* and E. Balaraman*, Nickel-catalyzed direct synthesis of dialkoxymethane ethers, J",
+    "title": "Chem. Sci., 129, 1153 - 1159",
     "journal": "",
     "year": "2017",
     "details": "",
     "doi": "10.1007/s12039-017-1339-6",
-    "fullText": "M. Subaramanian, A. Bera, B. L. V. Prasad,* and E. Balaraman*, Nickel-catalyzed direct synthesis of dialkoxymethane ethers, J. Chem. Sci., 129, 1153 - 1159 (2017), . \"Dedicated to Prof. K. C. Kumara Swamy on the occasion of his 60th birthday\""
+    "fullText": "M. Subaramanian, A. Bera, B. L. V. Prasad,* and E. Balaraman*, Nickel-catalyzed direct synthesis of dialkoxymethane ethers, J. Chem. Sci., 129, 1153 - 1159 (2017),"
   },
   {
     "id": 36,
-    "authors": "",
-    "title": "",
+    "authors": "V. G. Landge, J. Rana, M. Subaramanian, and E. Balaraman*, Nickel-catalyzed N-vinylation of heteroaromatic amines via C-H bond activation, Org",
+    "title": "Biomol. Chem., 15, 6896 - 6900",
     "journal": "",
     "year": "2017",
     "details": "",
     "doi": "10.1039/C7OB01791J",
-    "fullText": "V. G. Landge, J. Rana, M. Subaramanian, and E. Balaraman*, Nickel-catalyzed N-vinylation of heteroaromatic amines via C-H bond activation, Org. Biomol. Chem., 15, 6896 - 6900 (2017), ."
+    "fullText": "V. G. Landge, J. Rana, M. Subaramanian, and E. Balaraman*, Nickel-catalyzed N-vinylation of heteroaromatic amines via C-H bond activation, Org. Biomol. Chem., 15, 6896 - 6900 (2017),"
   },
   {
     "id": 35,
-    "authors": "",
-    "title": "",
+    "authors": "V. G. Landge, S. P. Midya, J. Rana, D. R. Shinde, and E. Balaraman*, Expedient cobalt-catalyzed C–H alkynylation of (enantiopure) benzylamines, Org",
+    "title": "Lett., 18, 5252 - 5255",
     "journal": "",
     "year": "2016",
     "details": "",
     "doi": "10.1021/acs.orglett.6b02549",
-    "fullText": "V. G. Landge, S. P. Midya, J. Rana, D. R. Shinde, and E. Balaraman*, Expedient cobalt-catalyzed C–H alkynylation of (enantiopure) benzylamines, Org. Lett., 18, 5252 - 5255 (2016), . \"Prof. Douglass F. Taber has cited in his Highlight column on \"Benzene Derivatives\" in Organic Chemistry Portal:"
+    "fullText": "V. G. Landge, S. P. Midya, J. Rana, D. R. Shinde, and E. Balaraman*, Expedient cobalt-catalyzed C–H alkynylation of (enantiopure) benzylamines, Org. Lett., 18, 5252 - 5255 (2016),"
   },
   {
     "id": 34,
@@ -832,28 +832,28 @@ export const publications = [
     "journal": "",
     "year": "2016",
     "details": "",
-    "doi": "10.1039/C6GC00565A",
-    "fullText": "G. Jaiswal, V. Landge, D. Jagadeesan,* and E. Balaraman*, Sustainable iron-catalyzed direct imine formation by acceptorless dehydrogenative coupling of alcohols with amines, Green Chem., 18, 3232 - 3238 (2016), . \"ChemInform Abstract: DOI: 10.1002/chin.201641098 \""
+    "doi": "10.1002/chin.201641098",
+    "fullText": "G. Jaiswal, V. Landge, D. Jagadeesan,* and E. Balaraman*, Sustainable iron-catalyzed direct imine formation by acceptorless dehydrogenative coupling of alcohols with amines, Green Chem., 18, 3232 - 3238 (2016), DOI:10.1039/C6GC00565A."
   },
   {
     "id": 33,
-    "authors": "",
-    "title": "",
+    "authors": "V. G. Landge, C. H. Shewale, G. Jaiswal, M. K. Sahoo, S. P. Midya, and E. Balaraman*, Nickel-catalyzed direct alkynylation of C(sp2)-H bonds of amides: An “inverse Sonogashira strategy” to ortho-alkynylbenzoic acids, Catal",
+    "title": "Sci. Technol., 6",
     "journal": "",
     "year": "2016",
     "details": "",
     "doi": "10.1039/C5CY01299F",
-    "fullText": "V. G. Landge, C. H. Shewale, G. Jaiswal, M. K. Sahoo, S. P. Midya, and E. Balaraman*, Nickel-catalyzed direct alkynylation of C(sp2)-H bonds of amides: An “inverse Sonogashira strategy” to ortho-alkynylbenzoic acids, Catal. Sci. Technol., 6, 1946 - 1951 (2016), ."
+    "fullText": "V. G. Landge, C. H. Shewale, G. Jaiswal, M. K. Sahoo, S. P. Midya, and E. Balaraman*, Nickel-catalyzed direct alkynylation of C(sp2)-H bonds of amides: An “inverse Sonogashira strategy” to ortho-alkynylbenzoic acids, Catal. Sci. Technol., 6, 1946 - 1951 (2016),"
   },
   {
     "id": 32,
-    "authors": "",
-    "title": "",
+    "authors": "V. G. Landge, C. H. Shewale, G. Jaiswal, M. K. Sahoo, S. P. Midya, and E. Balaraman*, Nickel-catalyzed direct alkynylation of C(sp2)-H bonds of amides: An “inverse Sonogashira strategy” to ortho-alkynylbenzoic acids, Catal",
+    "title": "Sci. Technol., 6",
     "journal": "",
     "year": "2016",
     "details": "",
     "doi": "10.1039/C5CY01299F",
-    "fullText": "V. G. Landge, C. H. Shewale, G. Jaiswal, M. K. Sahoo, S. P. Midya, and E. Balaraman*, Nickel-catalyzed direct alkynylation of C(sp2)-H bonds of amides: An “inverse Sonogashira strategy” to ortho-alkynylbenzoic acids, Catal. Sci. Technol., 6, 1946 - 1951 (2016), ."
+    "fullText": "V. G. Landge, C. H. Shewale, G. Jaiswal, M. K. Sahoo, S. P. Midya, and E. Balaraman*, Nickel-catalyzed direct alkynylation of C(sp2)-H bonds of amides: An “inverse Sonogashira strategy” to ortho-alkynylbenzoic acids, Catal. Sci. Technol., 6, 1946 - 1951 (2016),"
   },
   {
     "id": 31,
@@ -862,28 +862,28 @@ export const publications = [
     "journal": "",
     "year": "2015",
     "details": "",
-    "doi": "10.1038/ncomms9591",
-    "fullText": "S. P. Midya, M. K. Sahoo, V. G. Landge, P. R. Rajamohanan, and E. Balaraman*, Reversed reactivity of anilines with alkynes in the rhodium-catalysed C–H activation/carbonylation tandem, Nature Commun., 6, 8591 - 8601 (2015), ."
+    "doi": "",
+    "fullText": "S. P. Midya, M. K. Sahoo, V. G. Landge, P. R. Rajamohanan, and E. Balaraman*, Reversed reactivity of anilines with alkynes in the rhodium-catalysed C–H activation/carbonylation tandem, Nature Commun., 6, 8591 - 8601 (2015), DOI:10.1038/ncomms9591."
   },
   {
     "id": 30,
-    "authors": "",
-    "title": "",
+    "authors": "A. Nandakumar, M. K. Sahoo, and E. Balaraman*, Reverse-hydroformylation: A missing reaction explored, Org",
+    "title": "Chem. Front., 2, 1422 - 1424",
     "journal": "",
     "year": "2015",
     "details": "",
-    "doi": "10.1039/c5qo00229j",
-    "fullText": "A. Nandakumar, M. K. Sahoo, and E. Balaraman*, Reverse-hydroformylation: A missing reaction explored, Org. Chem. Front., 2, 1422 - 1424 (2015), ."
+    "doi": "",
+    "fullText": "A. Nandakumar, M. K. Sahoo, and E. Balaraman*, Reverse-hydroformylation: A missing reaction explored, Org. Chem. Front., 2, 1422 - 1424 (2015), DOI: 10.1039/c5qo00229j."
   },
   {
     "id": 29,
-    "authors": "",
-    "title": "",
+    "authors": "A. Nandakumar, * S. P. Midya, V. G. Landge, and E. Balaraman*, Transition-metal catalysed hydrogen transfer annulation strategy to heterocyclic scaffolds, Angew",
+    "title": "Chem. Int. Ed., 54, 11022 - 11034",
     "journal": "",
     "year": "2015",
     "details": "",
     "doi": "10.1002/anie.201503247",
-    "fullText": "A. Nandakumar, * S. P. Midya, V. G. Landge, and E. Balaraman*, Transition-metal catalysed hydrogen transfer annulation strategy to heterocyclic scaffolds, Angew. Chem. Int. Ed., 54, 11022 - 11034 (2015), ."
+    "fullText": "A. Nandakumar, * S. P. Midya, V. G. Landge, and E. Balaraman*, Transition-metal catalysed hydrogen transfer annulation strategy to heterocyclic scaffolds, Angew. Chem. Int. Ed., 54, 11022 - 11034 (2015), DOI:10.1002/anie.201503247."
   },
   {
     "id": 28,
@@ -892,118 +892,118 @@ export const publications = [
     "journal": "",
     "year": "2015",
     "details": "",
-    "doi": "10.1039/C5DT02772A",
-    "fullText": "V. G. Landge, M. K. Sahoo, S. P. Midya, G.Jaiswal, and E. Balaraman*, Well-defined palladium(II) complexes for ligand enabled C(sp3)-alkynylation, Dalton Trans., 44, 15382 - 15386 (2015), . Publications from Ph.D and Post-Doc"
+    "doi": "",
+    "fullText": "V. G. Landge, M. K. Sahoo, S. P. Midya, G.Jaiswal, and E. Balaraman*, Well-defined palladium(II) complexes for ligand enabled C(sp3)-alkynylation, Dalton Trans., 44, 15382 - 15386 (2015), DOI:10.1039/C5DT02772A."
   },
   {
     "id": 27,
-    "authors": "",
-    "title": "",
+    "authors": "E. Balaraman, D",
+    "title": "Srimani, Y. Diskin-Posner And D. Milstein*, Direct synthesis of secondary amines from alcohols and ammonia catalyzed by a ruthenium pincer complex, Catal",
     "journal": "",
     "year": "2015",
     "details": "",
-    "doi": "10.1007/s10562-014-1422-2",
-    "fullText": "E. Balaraman, D. Srimani, Y. Diskin-Posner And D. Milstein*, Direct synthesis of secondary amines from alcohols and ammonia catalyzed by a ruthenium pincer complex, Catal. Lett., 145, 139 - 144 (2015), ."
+    "doi": "",
+    "fullText": "E. Balaraman, D. Srimani, Y. Diskin-Posner And D. Milstein*, Direct synthesis of secondary amines from alcohols and ammonia catalyzed by a ruthenium pincer complex, Catal. Lett., 145, 139 - 144 (2015), DOI:10.1007/s10562-014-1422-2."
   },
   {
     "id": 26,
-    "authors": "",
-    "title": "",
+    "authors": "E. Balaraman* And D",
+    "title": "Milstein, Hydrogenation of polar bonds catalysed by ruthenium-pincer complexes, Top",
     "journal": "",
     "year": "2014",
     "details": "",
-    "doi": "10.1007/3418_2014_77",
-    "fullText": "E. Balaraman* And D. Milstein, Hydrogenation of polar bonds catalysed by ruthenium-pincer complexes, Top. Organomet. Chem., 48, 19 - 44 (2014), . \"Book Chapter: Ruthenium in catalysis (Eds: C. Bruneau, P. H. Dixneuf) \""
+    "doi": "",
+    "fullText": "E. Balaraman* And D. Milstein, Hydrogenation of polar bonds catalysed by ruthenium-pincer complexes, Top. Organomet. Chem., 48, 19 - 44 (2014), DOI:10.1007/3418_2014_77."
   },
   {
     "id": 25,
-    "authors": "",
-    "title": "",
+    "authors": "E. Balaraman, E",
+    "title": "Khaskin, G. Leitus And D. Milstein*, Catalytic transformation of alcohols to carboxylic acid salts and H2 using water as the oxygen atom source, Nature",
     "journal": "",
     "year": "2013",
     "details": "",
-    "doi": "10.1038/nchem.1536",
-    "fullText": "E. Balaraman, E. Khaskin, G. Leitus And D. Milstein*, Catalytic transformation of alcohols to carboxylic acid salts and H2 using water as the oxygen atom source, Nature. Chem., 5, 122 - 125 (2013), . \"Highlights: • RSC Chemistryworld • CORANTE - In the Pipeline • The Chemistry Cascade\""
+    "doi": "",
+    "fullText": "E. Balaraman, E. Khaskin, G. Leitus And D. Milstein*, Catalytic transformation of alcohols to carboxylic acid salts and H2 using water as the oxygen atom source, Nature. Chem., 5, 122 - 125 (2013), DOI:10.1038/nchem.1536."
   },
   {
     "id": 24,
-    "authors": "",
-    "title": "",
+    "authors": "D. Srimani, E. Balaraman, P",
+    "title": "Hu, Y. Ben-David And D. Milstein*, Formation of tertiary amides and H2 by dehydrogenative coupling of primary alcohols with secondary amines catalyzed by ruthenium bipyridine-based pincer complexes, Adv",
     "journal": "",
     "year": "2013",
     "details": "",
-    "doi": "10.1002/adsc.20130062",
-    "fullText": "D. Srimani, E. Balaraman, P. Hu, Y. Ben-David And D. Milstein*, Formation of tertiary amides and H2 by dehydrogenative coupling of primary alcohols with secondary amines catalyzed by ruthenium bipyridine-based pincer complexes, Adv. Syn. Catal., 355, 2525 - 2530 (2013),"
+    "doi": "",
+    "fullText": "D. Srimani, E. Balaraman, P. Hu, Y. Ben-David And D. Milstein*, Formation of tertiary amides and H2 by dehydrogenative coupling of primary alcohols with secondary amines catalyzed by ruthenium bipyridine-based pincer complexes, Adv. Syn. Catal., 355, 2525 - 2530 (2013), DOI:10.1002/adsc.20130062"
   },
   {
     "id": 23,
-    "authors": "",
-    "title": "",
+    "authors": "R. Langer, I. Fuchs, M. Vogt, E. Balaraman, Y",
+    "title": "Diskin-Posner, L. J. W. Shimon, Y. Ben-David And D. Milstein*, Stepwise metal-ligand cooperation via a reversible aromatization/deconjugation-sequence in ruthenium complexes with a tetradentate phenanthroline-based ligand, Chem",
     "journal": "",
     "year": "2013",
     "details": "",
-    "doi": "10.1002/chem.201204003",
-    "fullText": "R. Langer, I. Fuchs, M. Vogt, E. Balaraman, Y. Diskin-Posner, L. J. W. Shimon, Y. Ben-David And D. Milstein*, Stepwise metal-ligand cooperation via a reversible aromatization/deconjugation-sequence in ruthenium complexes with a tetradentate phenanthroline-based ligand, Chem. Eur. J., 19, 3407 - 3414 (2013), . Highlight: Selected as VIP article by Chem. Euro. J."
+    "doi": "",
+    "fullText": "R. Langer, I. Fuchs, M. Vogt, E. Balaraman, Y. Diskin-Posner, L. J. W. Shimon, Y. Ben-David And D. Milstein*, Stepwise metal-ligand cooperation via a reversible aromatization/deconjugation-sequence in ruthenium complexes with a tetradentate phenanthroline-based ligand, Chem. Eur. J., 19, 3407 - 3414 (2013), DOI:10.1002/chem.201204003."
   },
   {
     "id": 22,
-    "authors": "",
-    "title": "",
+    "authors": "T. Zell, R. Langer, M.A. Iron, L. Konstantinovski, L. J. W. Shimon, Yael Diskin-Posner, Gregory Leitus, E. Balaraman, Y",
+    "title": "Ben-David And D. Milstein*, Synthesis, structures, and dearomatization by deprotonation of iron complexes featuring bipyridine-based PNN Pincer ligands, Inorg",
     "journal": "",
     "year": "2013",
     "details": "",
-    "doi": "10.1021/ic401432m",
-    "fullText": "T. Zell, R. Langer, M.A. Iron, L. Konstantinovski, L. J. W. Shimon, Yael Diskin-Posner, Gregory Leitus, E. Balaraman, Y. Ben-David And D. Milstein*, Synthesis, structures, and dearomatization by deprotonation of iron complexes featuring bipyridine-based PNN Pincer ligands, Inorg. Chem., 52, 9636 - 9649 (2013), ."
+    "doi": "",
+    "fullText": "T. Zell, R. Langer, M.A. Iron, L. Konstantinovski, L. J. W. Shimon, Yael Diskin-Posner, Gregory Leitus, E. Balaraman, Y. Ben-David And D. Milstein*, Synthesis, structures, and dearomatization by deprotonation of iron complexes featuring bipyridine-based PNN Pincer ligands, Inorg. Chem., 52, 9636 - 9649 (2013), DOI:10.1021/ic401432m."
   },
   {
     "id": 21,
-    "authors": "",
-    "title": "",
+    "authors": "R. Barrios-Francisco, E. Balaraman, Y",
+    "title": "Diskin-Posner, G. Leitus, L. J. W. Shimon And D. Milstein*, PNN-ruthenium pincer complexes based on phosphinated 2,2’-dipyridinemethane- and 2,2’-oxobispyridine. Metal-ligand cooperation in cyclometallation and catalysis, Organometallics., 32, 2973 - 2982",
     "journal": "",
     "year": "2013",
     "details": "",
-    "doi": "10.1021/om400194w",
-    "fullText": "R. Barrios-Francisco, E. Balaraman, Y. Diskin-Posner, G. Leitus, L. J. W. Shimon And D. Milstein*, PNN-ruthenium pincer complexes based on phosphinated 2,2’-dipyridinemethane- and 2,2’-oxobispyridine. Metal-ligand cooperation in cyclometallation and catalysis, Organometallics., 32, 2973 - 2982 (2013), ."
+    "doi": "",
+    "fullText": "R. Barrios-Francisco, E. Balaraman, Y. Diskin-Posner, G. Leitus, L. J. W. Shimon And D. Milstein*, PNN-ruthenium pincer complexes based on phosphinated 2,2’-dipyridinemethane- and 2,2’-oxobispyridine. Metal-ligand cooperation in cyclometallation and catalysis, Organometallics., 32, 2973 - 2982 (2013), DOI:10.1021/om400194w."
   },
   {
     "id": 20,
-    "authors": "",
-    "title": "",
+    "authors": "D. Srimani, E. Balaraman, B",
+    "title": "Gnanaprakasam, Y. Ben-David And D. Milstein*, Ruthenium pincer-catalyzed cross-dehydrogenative coupling of primary alcohols with secondary alcohols under neutral conditions, Adv",
     "journal": "",
     "year": "2012",
     "details": "",
-    "doi": "10.1002/adsc.201200438",
-    "fullText": "D. Srimani, E. Balaraman, B. Gnanaprakasam, Y. Ben-David And D. Milstein*, Ruthenium pincer-catalyzed cross-dehydrogenative coupling of primary alcohols with secondary alcohols under neutral conditions, Adv. Syn. Catal., 354, 2403 - 2406 (2012), ."
+    "doi": "",
+    "fullText": "D. Srimani, E. Balaraman, B. Gnanaprakasam, Y. Ben-David And D. Milstein*, Ruthenium pincer-catalyzed cross-dehydrogenative coupling of primary alcohols with secondary alcohols under neutral conditions, Adv. Syn. Catal., 354, 2403 - 2406 (2012), DOI:10.1002/adsc.201200438."
   },
   {
     "id": 19,
-    "authors": "",
-    "title": "",
+    "authors": "E. Balaraman, E",
+    "title": "Fogler And D. Milstein*, Efficient hydrogenation of biomass derived cyclic di-esters to 1,2-diols, Chem",
     "journal": "",
     "year": "2012",
     "details": "",
-    "doi": "10.1039/C1CC15778G",
-    "fullText": "E. Balaraman, E. Fogler And D. Milstein*, Efficient hydrogenation of biomass derived cyclic di-esters to 1,2-diols, Chem. Commun., 48, 1111 - 1113 (2012), . Selected as HOT article by Chem. Commun."
+    "doi": "",
+    "fullText": "E. Balaraman, E. Fogler And D. Milstein*, Efficient hydrogenation of biomass derived cyclic di-esters to 1,2-diols, Chem. Commun., 48, 1111 - 1113 (2012), DOI:10.1039/C1CC15778G."
   },
   {
     "id": 18,
-    "authors": "",
-    "title": "",
+    "authors": "B. Gnanaprakasam, E. Balaraman, C",
+    "title": "Gunanathan And D. Milstein*, Synthesis of polyamides from diols and diamines with liberation of H2, J",
     "journal": "",
     "year": "2012",
     "details": "",
-    "doi": "10.1002/pola.25943",
-    "fullText": "B. Gnanaprakasam, E. Balaraman, C. Gunanathan And D. Milstein*, Synthesis of polyamides from diols and diamines with liberation of H2, J. Polymer. Chem. A., 50, 1755 - 1765 (2012), ."
+    "doi": "",
+    "fullText": "B. Gnanaprakasam, E. Balaraman, C. Gunanathan And D. Milstein*, Synthesis of polyamides from diols and diamines with liberation of H2, J. Polymer. Chem. A., 50, 1755 - 1765 (2012), DOI:10.1002/pola.25943."
   },
   {
     "id": 17,
-    "authors": "",
-    "title": "",
+    "authors": "E. Balaraman, C",
+    "title": "Gunanathan, J. Zhang, L. J. W. Shimon And D. Milstein*, Efficient hydrogenation of organic carbonates, carbamates, and formates indicates alternative routes to methanol based on CO2 and CO, Nature",
     "journal": "",
     "year": "2011",
     "details": "",
-    "doi": "10.1038/NCHEM.1089",
-    "fullText": "E. Balaraman, C. Gunanathan, J. Zhang, L. J. W. Shimon And D. Milstein*, Efficient hydrogenation of organic carbonates, carbamates, and formates indicates alternative routes to methanol based on CO2 and CO, Nature. Chem., 3, 609 - 614 (2011), . Highlights: • Science & Technology, News of the Week: Chemical & Engineering News, 89 (31), August 01, 2011. • Nature. Chem. 2011, 3, 578-579. • ChemCatChem. 2012, 5, 609-611. • ACS News and Latest News: Chemical & Engineering News, August 17, 2011. • Green Car Congress • Fisker Karma News"
+    "doi": "",
+    "fullText": "E. Balaraman, C. Gunanathan, J. Zhang, L. J. W. Shimon And D. Milstein*, Efficient hydrogenation of organic carbonates, carbamates, and formates indicates alternative routes to methanol based on CO2 and CO, Nature. Chem., 3, 609 - 614 (2011), DOI:10.1038/NCHEM.1089."
   },
   {
     "id": 16,
@@ -1012,161 +1012,160 @@ export const publications = [
     "journal": "",
     "year": "2011",
     "details": "",
-    "doi": "10.1016/j.ica.2010.12.072",
-    "fullText": "K. C. Kumara Swamy*, G. Gangadhararao, Venu Srinivas, N. N. Bhuvan Kumar, E. Balaraman And Manab Chakravarty, Cyclodiphosph(III)azane chemistry – Ylides from the reaction of [(RNH)P-N(t-Bu)]2 [R = t-Bu, i-Pr] with dimethyl maleate and chiral ansa-type derivatives from reaction of [ClP-N(t-Bu)]2 with a substituted BINOL, Inorg.Chem. Acta., 372, 374 - 382 (2011), ."
+    "doi": "",
+    "fullText": "K. C. Kumara Swamy*, G. Gangadhararao, Venu Srinivas, N. N. Bhuvan Kumar, E. Balaraman And Manab Chakravarty, Cyclodiphosph(III)azane chemistry – Ylides from the reaction of [(RNH)P-N(t-Bu)]2 [R = t-Bu, i-Pr] with dimethyl maleate and chiral ansa-type derivatives from reaction of [ClP-N(t-Bu)]2 with a substituted BINOL, Inorg.Chem. Acta., 372, 374 - 382 (2011), DOI:10.1016/j.ica.2010.12.072."
   },
   {
     "id": 15,
-    "authors": "",
-    "title": "",
+    "authors": "Venu Srinivas, E. Balaraman, K",
+    "title": "V. Sajna And K. C. Kumara Swamy*, Catalyst-free and catalyzed addition of P(O)-H bonds to phosphorylated allenes/alkynes and allenyl/alkynyl phosphine oxides: Use of a robust, recoverable dinuclear palladium(I) catalyst, Eur",
     "journal": "",
     "year": "2011",
     "details": "",
-    "doi": "10.1002/ejoc.201100197",
-    "fullText": "Venu Srinivas, E. Balaraman, K. V. Sajna And K. C. Kumara Swamy*, Catalyst-free and catalyzed addition of P(O)-H bonds to phosphorylated allenes/alkynes and allenyl/alkynyl phosphine oxides: Use of a robust, recoverable dinuclear palladium(I) catalyst, Eur. J. Org. Chem., 22, 4220 - 4230 (2011), ."
+    "doi": "",
+    "fullText": "Venu Srinivas, E. Balaraman, K. V. Sajna And K. C. Kumara Swamy*, Catalyst-free and catalyzed addition of P(O)-H bonds to phosphorylated allenes/alkynes and allenyl/alkynyl phosphine oxides: Use of a robust, recoverable dinuclear palladium(I) catalyst, Eur. J. Org. Chem., 22, 4220 - 4230 (2011), DOI:10.1002/ejoc.201100197."
   },
   {
     "id": 14,
-    "authors": "",
-    "title": "",
+    "authors": "K. C. Kumara Swamy*, Srinivasarao Allu, Venu Srinivas, E. Balaraman And K",
+    "title": "V. P. Pavan Kumar, Alkynyl and phosphonyl substituted nucleobases: A case of thermally induced conformational polymorphism, Cryst",
     "journal": "",
     "year": "2011",
     "details": "",
-    "doi": "10.1021/cg101737x",
-    "fullText": "K. C. Kumara Swamy*, Srinivasarao Allu, Venu Srinivas, E. Balaraman And K. V. P. Pavan Kumar, Alkynyl and phosphonyl substituted nucleobases: A case of thermally induced conformational polymorphism, Cryst. Growth Des., 11, 2302 - 2310 (2011), ."
+    "doi": "",
+    "fullText": "K. C. Kumara Swamy*, Srinivasarao Allu, Venu Srinivas, E. Balaraman And K. V. P. Pavan Kumar, Alkynyl and phosphonyl substituted nucleobases: A case of thermally induced conformational polymorphism, Cryst. Growth Des., 11, 2302 - 2310 (2011), DOI:10.1021/cg101737x."
   },
   {
     "id": 13,
-    "authors": "",
-    "title": "",
+    "authors": "E. Fogler, E. Balaraman, Y",
+    "title": "Ben-David, G. Leitus, L. J. W. Shimon And D. Milstein*, New CNN-type ruthenium pincer NHC complexes. Synthesis and catalytic activity. Mild, efficient hydrogenation of esters, Organometallics., 30, 3826 - 3833",
     "journal": "",
     "year": "2011",
     "details": "",
-    "doi": "10.1021/om200367j",
-    "fullText": "E. Fogler, E. Balaraman, Y. Ben-David, G. Leitus, L. J. W. Shimon And D. Milstein*, New CNN-type ruthenium pincer NHC complexes. Synthesis and catalytic activity. Mild, efficient hydrogenation of esters, Organometallics., 30, 3826 - 3833 (2011), ."
+    "doi": "",
+    "fullText": "E. Fogler, E. Balaraman, Y. Ben-David, G. Leitus, L. J. W. Shimon And D. Milstein*, New CNN-type ruthenium pincer NHC complexes. Synthesis and catalytic activity. Mild, efficient hydrogenation of esters, Organometallics., 30, 3826 - 3833 (2011), DOI:10.1021/om200367j."
   },
   {
     "id": 12,
-    "authors": "",
-    "title": "",
+    "authors": "J. Zhang, E. Balaraman, G",
+    "title": "Leitus And D. Milstein*, Electron-rich PNP- and PNN-type Ru(II) hydrido-borohydride complexes. Synthesis, structure and catalytic activity towards dehydrogenation of alcohols and hydrogenation of esters, Organometallics., 30, 5716 - 5724",
     "journal": "",
     "year": "2011",
     "details": "",
-    "doi": "10.1021/om200595m",
-    "fullText": "J. Zhang, E. Balaraman, G. Leitus And D. Milstein*, Electron-rich PNP- and PNN-type Ru(II) hydrido-borohydride complexes. Synthesis, structure and catalytic activity towards dehydrogenation of alcohols and hydrogenation of esters, Organometallics., 30, 5716 - 5724 (2011), ."
+    "doi": "",
+    "fullText": "J. Zhang, E. Balaraman, G. Leitus And D. Milstein*, Electron-rich PNP- and PNN-type Ru(II) hydrido-borohydride complexes. Synthesis, structure and catalytic activity towards dehydrogenation of alcohols and hydrogenation of esters, Organometallics., 30, 5716 - 5724 (2011), DOI:10.1021/om200595m."
   },
   {
     "id": 11,
-    "authors": "",
-    "title": "",
+    "authors": "K. Livanov, V. Madhu, E. Balaraman, L",
+    "title": "J. W. Shimon, Y. Diskin-Posner And R. Neumann*, The photocatalytic splitting of CS2 to a carbon-sulfur polymer and S8 catalyzed by a bimetallic ruthenium(II) compound with a tertiary amine binding site - towards photocatalytic splitting of CO2?, Inorg",
     "journal": "",
     "year": "2011",
     "details": "",
-    "doi": "10.1021/ic2008045",
-    "fullText": "K. Livanov, V. Madhu, E. Balaraman, L. J. W. Shimon, Y. Diskin-Posner And R. Neumann*, The photocatalytic splitting of CS2 to a carbon-sulfur polymer and S8 catalyzed by a bimetallic ruthenium(II) compound with a tertiary amine binding site - towards photocatalytic splitting of CO2?, Inorg. Chem., 50, 11273 - 11275 (2011), . Highlight: • Nanotechnology Virtical News"
+    "doi": "",
+    "fullText": "K. Livanov, V. Madhu, E. Balaraman, L. J. W. Shimon, Y. Diskin-Posner And R. Neumann*, The photocatalytic splitting of CS2 to a carbon-sulfur polymer and S8 catalyzed by a bimetallic ruthenium(II) compound with a tertiary amine binding site - towards photocatalytic splitting of CO2?, Inorg. Chem., 50, 11273 - 11275 (2011), DOI:10.1021/ic2008045."
   },
   {
     "id": 10,
-    "authors": "",
-    "title": "",
+    "authors": "B. Gnanaprakasam, E. Balaraman, Y",
+    "title": "Ben-David And D. Milstein*, Synthesis of peptides and pyrazines from beta-aminoalcohols via extrusion of H2 catalyzed by ruthenium pincer complexes. Ligand controlled selectivity, Angew",
     "journal": "",
     "year": "2011",
     "details": "",
-    "doi": "10.1002/anie.201105876",
-    "fullText": "B. Gnanaprakasam, E. Balaraman, Y. Ben-David And D. Milstein*, Synthesis of peptides and pyrazines from beta-aminoalcohols via extrusion of H2 catalyzed by ruthenium pincer complexes. Ligand controlled selectivity, Angew. Chem. Intl. Ed., 50, 12240 - 12244 (2011), ."
+    "doi": "",
+    "fullText": "B. Gnanaprakasam, E. Balaraman, Y. Ben-David And D. Milstein*, Synthesis of peptides and pyrazines from beta-aminoalcohols via extrusion of H2 catalyzed by ruthenium pincer complexes. Ligand controlled selectivity, Angew. Chem. Intl. Ed., 50, 12240 - 12244 (2011), DOI:10.1002/anie.201105876."
   },
   {
     "id": 9,
-    "authors": "",
-    "title": "",
+    "authors": "E. Balaraman, Y",
+    "title": "Ben-David And D. Milstein*, Unprecedented catalytic hydrogenation of urea derivatives to amines and methanol, Angew",
     "journal": "",
-    "year": "2012",
+    "year": "2011",
     "details": "",
-    "doi": "10.1002/anie.201106612",
-    "fullText": "E. Balaraman, Y. Ben-David And D. Milstein*, Unprecedented catalytic hydrogenation of urea derivatives to amines and methanol, Angew. Chem. Intl. Ed., 50, 11702 - 11705 (2011), . Highlights: • Selected as VIP article by Angew. Chem. Int. Ed. • ChemCatChem. 2012, 5, 609-611. • ChemistryViews Magazine"
+    "doi": "",
+    "fullText": "E. Balaraman, Y. Ben-David And D. Milstein*, Unprecedented catalytic hydrogenation of urea derivatives to amines and methanol, Angew. Chem. Intl. Ed., 50, 11702 - 11705 (2011), DOI:10.1002/anie.201106612."
   },
   {
     "id": 8,
-    "authors": "",
-    "title": "",
+    "authors": "Vedichi Madhu, Balaraman Ekambaram, Linda J",
+    "title": "W. Shimon, Yael Diskin, Gregory Leitus And Ronny Neumann*, Structural diversity in manganese, iron and cobalt complexes of the ditopic 1,2- bis(2,2’-bipyridyl-6-yl)ethyne ligand and observation of epoxidation and catalase activity of manganese compounds, Dalton Trans., 39, 7266 - 7275",
     "journal": "",
     "year": "2010",
     "details": "",
-    "doi": "10.1039/b925129d",
-    "fullText": "Vedichi Madhu, Balaraman Ekambaram, Linda J. W. Shimon, Yael Diskin, Gregory Leitus And Ronny Neumann*, Structural diversity in manganese, iron and cobalt complexes of the ditopic 1,2- bis(2,2’-bipyridyl-6-yl)ethyne ligand and observation of epoxidation and catalase activity of manganese compounds, Dalton Trans., 39, 7266 - 7275 (2010), ."
+    "doi": "",
+    "fullText": "Vedichi Madhu, Balaraman Ekambaram, Linda J. W. Shimon, Yael Diskin, Gregory Leitus And Ronny Neumann*, Structural diversity in manganese, iron and cobalt complexes of the ditopic 1,2- bis(2,2’-bipyridyl-6-yl)ethyne ligand and observation of epoxidation and catalase activity of manganese compounds, Dalton Trans., 39, 7266 - 7275 (2010), DOI:10.1039/b925129d."
   },
   {
     "id": 7,
-    "authors": "",
-    "title": "",
+    "authors": "E. Balaraman, B",
+    "title": "Gnanaprakasam, L. J. W. Shimon And D. Milstein*, Direct hydrogenation of amides to alcohols and amines under mild conditions, J",
     "journal": "",
     "year": "2010",
     "details": "",
-    "doi": "10.1021/ja1080019",
-    "fullText": "E. Balaraman, B. Gnanaprakasam, L. J. W. Shimon And D. Milstein*, Direct hydrogenation of amides to alcohols and amines under mild conditions, J. Am. Chem. Soc., 132, 16756 - 16758 (2010), . Highlight: • Chemistry Views Magazine"
+    "doi": "",
+    "fullText": "E. Balaraman, B. Gnanaprakasam, L. J. W. Shimon And D. Milstein*, Direct hydrogenation of amides to alcohols and amines under mild conditions, J. Am. Chem. Soc., 132, 16756 - 16758 (2010), DOI:10.1021/ja1080019."
   },
   {
     "id": 6,
-    "authors": "",
-    "title": "",
+    "authors": "K. C. Kumara Swamy*, N. N. Bhuvan Kumar, E. Balaraman And K",
+    "title": "V. P. Pavan Kumar, Mitsunobu and related reactions: Advances and applications, Chem",
     "journal": "",
     "year": "2009",
     "details": "",
-    "doi": "10.1021/cr800278z",
-    "fullText": "K. C. Kumara Swamy*, N. N. Bhuvan Kumar, E. Balaraman And K. V. P. Pavan Kumar, Mitsunobu and related reactions: Advances and applications, Chem. Rev., 109, 2551 - 2651 (2009), . Highlights: • Most read article in 2009 • Cited in Wikipedia"
+    "doi": "",
+    "fullText": "K. C. Kumara Swamy*, N. N. Bhuvan Kumar, E. Balaraman And K. V. P. Pavan Kumar, Mitsunobu and related reactions: Advances and applications, Chem. Rev., 109, 2551 - 2651 (2009), DOI:10.1021/cr800278z."
   },
   {
     "id": 5,
-    "authors": "",
-    "title": "",
+    "authors": "Balaraman, Venu Srinivas And K",
+    "title": "C. Kumara Swamy*, Hydrophosphonylation of activated alkenes and alkynes via fluoride ion activation in ionic liquid medium, Tetrahedron., 65, 7603 - 7610",
     "journal": "",
     "year": "2009",
     "details": "",
-    "doi": "10.1016/j.tet.2009.06.096",
-    "fullText": "Balaraman, Venu Srinivas And K. C. Kumara Swamy*, Hydrophosphonylation of activated alkenes and alkynes via fluoride ion activation in ionic liquid medium, Tetrahedron., 65, 7603 - 7610 (2009), ."
+    "doi": "",
+    "fullText": "Balaraman, Venu Srinivas And K. C. Kumara Swamy*, Hydrophosphonylation of activated alkenes and alkynes via fluoride ion activation in ionic liquid medium, Tetrahedron., 65, 7603 - 7610 (2009), DOI:10.1016/j.tet.2009.06.096."
   },
   {
     "id": 4,
-    "authors": "",
-    "title": "",
+    "authors": "E. Balaraman And K",
+    "title": "C. Kumara Swamy*, A convenient chromatography-free access to enantio-pure 6,6’-di-tert-butyl-1,1’- binaphthalene-2,2’-diol- its 3,3’-dibromo, di-tert-butyl and phosphorus derivatives: Utility in asymmetric synthesis, Tetrahedron: Asymmetry",
     "journal": "",
     "year": "2007",
     "details": "",
-    "doi": "10.1016/j.tetasy.2007.06.028",
-    "fullText": "E. Balaraman And K. C. Kumara Swamy*, A convenient chromatography-free access to enantio-pure 6,6’-di-tert-butyl-1,1’- binaphthalene-2,2’-diol- its 3,3’-dibromo, di-tert-butyl and phosphorus derivatives: Utility in asymmetric synthesis, Tetrahedron: Asymmetry., , 2037 - 2048 (2007), ."
+    "doi": "",
+    "fullText": "E. Balaraman And K. C. Kumara Swamy*, A convenient chromatography-free access to enantio-pure 6,6’-di-tert-butyl-1,1’- binaphthalene-2,2’-diol- its 3,3’-dibromo, di-tert-butyl and phosphorus derivatives: Utility in asymmetric synthesis, Tetrahedron: Asymmetry., , 2037 - 2048 (2007), DOI:10.1016/j.tetasy.2007.06.028."
   },
   {
     "id": 3,
-    "authors": "",
-    "title": "",
+    "authors": "K. C. Kumara Swamy*, E. Balaraman And N",
+    "title": "Satish Kumar, Synthesis and utility of new amine/nucleobase addition products of allenylphosphonates, Tetrahedron., 62, 10152 - 10161",
     "journal": "",
     "year": "2006",
     "details": "",
-    "doi": "10.1016/j.tet.2006.08.034",
-    "fullText": "K. C. Kumara Swamy*, E. Balaraman And N. Satish Kumar, Synthesis and utility of new amine/nucleobase addition products of allenylphosphonates, Tetrahedron., 62, 10152 - 10161 (2006), ."
+    "doi": "",
+    "fullText": "K. C. Kumara Swamy*, E. Balaraman And N. Satish Kumar, Synthesis and utility of new amine/nucleobase addition products of allenylphosphonates, Tetrahedron., 62, 10152 - 10161 (2006), DOI:10.1016/j.tet.2006.08.034."
   },
   {
     "id": 2,
-    "authors": "",
-    "title": "",
+    "authors": "K. C. Kumara Swamy*, E. Balaraman, M",
+    "title": "PhaniPavan, N. N. Bhuvan Kumar, K. Praveen Kumar And N. Satish Kumar, Unusual products in the reaction of phosphorus (III) compounds with N=N, C?C or conjugated double bonded systems, J",
     "journal": "",
     "year": "2006",
     "details": "",
-    "doi": "10.1007/BF02703946",
-    "fullText": "K. C. Kumara Swamy*, E. Balaraman, M. PhaniPavan, N. N. Bhuvan Kumar, K. Praveen Kumar And N. Satish Kumar, Unusual products in the reaction of phosphorus (III) compounds with N=N, C?C or conjugated double bonded systems, J. Chem. Sci., 118, 495 - 501 (2006), ."
+    "doi": "",
+    "fullText": "K. C. Kumara Swamy*, E. Balaraman, M. PhaniPavan, N. N. Bhuvan Kumar, K. Praveen Kumar And N. Satish Kumar, Unusual products in the reaction of phosphorus (III) compounds with N=N, C?C or conjugated double bonded systems, J. Chem. Sci., 118, 495 - 501 (2006), DOI:10.1007/BF02703946."
   },
   {
     "id": 1,
-    "authors": "",
-    "title": "",
+    "authors": "E. Balaraman and K",
+    "title": "C. Kumara Swamy*. Conversion of meso to dl form and vice versa in bisphosphonates: Synthesis and structures of new meso, dl and (meso+dl) bisphosphonates derived from cyclic phosphites and dialkylacetylenedicarboxylates",
     "journal": "",
     "year": "2004",
     "details": "",
     "doi": "",
     "fullText": "E. Balaraman and K. C. Kumara Swamy*. Conversion of meso to dl form and vice versa in bisphosphonates: Synthesis and structures of new meso, dl and (meso+dl) bisphosphonates derived from cyclic phosphites and dialkylacetylenedicarboxylates. Synthesis 3037-3042 (2004)."
-  }
+  },
 ];
-
 export const awards = [
   "RSC-ChemComm’s Pioneering Investigators – 2023",
   "Selected for DST Coffee Table Book '75 Scientists under 50 – Scientists shaping today's India'",

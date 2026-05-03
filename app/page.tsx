@@ -30,15 +30,6 @@ const PublicationLink = ({ pub }: { pub: any }) => {
   const extensions = ['.jpg', '.png', '.gif', '.jpeg', '.webp'];
   const [coverExtIdx, setCoverExtIdx] = useState(0);
 
-  // Extract title from fullText: "Authors. Title. Journal..."
-  const extractTitle = (text: string) => {
-    if (!text) return '';
-    const parts = text.split(/\. /);
-    return parts.length >= 2 ? parts[1] : '';
-  };
-
-  const displayTitle = pub.title || extractTitle(pub.fullText);
-
   return (
     <div className="group/pub flex flex-col md:flex-row gap-6 p-6 rounded-[2rem] bg-white/5 border border-white/5 hover:border-blue-500/20 hover:bg-white/10 transition-all">
       <div className="w-20 h-24 rounded-lg bg-white overflow-hidden flex-shrink-0 border border-white/10 p-1">
@@ -52,15 +43,11 @@ const PublicationLink = ({ pub }: { pub: any }) => {
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2 mb-2">
           <span className="text-[10px] font-bold text-blue-400 px-2 py-0.5 rounded bg-blue-500/10 border border-blue-500/20">{pub.year}</span>
-          <span className="text-[10px] text-white/30 font-mono italic truncate max-w-[200px]">{pub.journal}</span>
         </div>
-        {displayTitle && (
-          <p className="text-sm font-semibold text-white mb-1 leading-snug">{displayTitle}</p>
+        {pub.title && (
+          <p className="text-sm font-bold text-white mb-1 leading-snug">{pub.title}</p>
         )}
-        <p className="text-xs text-white/50 font-light leading-relaxed line-clamp-2">
-          <span className="text-blue-400 font-bold mr-1">{pub.id}.</span>
-          {pub.fullText || `${pub.authors}. ${pub.title}. ${pub.journal}, ${pub.year}${pub.details}`}
-        </p>
+        <p className="text-xs text-white/50 font-light leading-relaxed line-clamp-2">{pub.fullText}</p>
         {pub.doi && (
           <a 
             href={pub.doi.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`} 
@@ -90,26 +77,18 @@ const FeaturedPublication = ({ pub }: { pub: any }) => {
     >
       <div className="flex flex-col md:flex-row gap-12 items-start">
         <div className="flex-1">
-          <div className="flex items-center gap-3 mb-6">
+          <div className="flex items-center gap-3 mb-4">
             <span className="px-4 py-1.5 rounded-full bg-blue-500/10 text-blue-400 text-[10px] font-black tracking-widest uppercase border border-blue-500/20">
               {pub.year}
             </span>
             <span className="text-xs text-white/30 font-mono italic">{pub.journal}</span>
           </div>
-          {/* Extract & highlight publication title */}
-          {(() => {
-            const fullText = pub.fullText || '';
-            const parts = fullText.split(/\. /);
-            const title = pub.title || (parts.length >= 2 ? parts[1] : '');
-            return title ? (
-              <h3 className="text-xl font-bold text-white mb-4 leading-snug tracking-tight">{title}</h3>
-            ) : null;
-          })()}
-          <div className="text-base text-white/60 font-light leading-relaxed mb-8 border-l-2 border-blue-500/30 pl-6">
-            <span className="text-blue-400 font-bold mr-2 text-lg">{pub.id}.</span>
-            {pub.fullText ? pub.fullText : (
-              <>{pub.authors}. <span className="italic">{pub.journal}</span>, {pub.year}{pub.details}</>
-            )}
+          {pub.title && (
+            <h3 className="text-xl font-bold text-white mb-4 leading-snug tracking-tight">{pub.title}</h3>
+          )}
+          <div className="text-sm text-white/60 font-light leading-relaxed mb-8 border-l-2 border-blue-500/30 pl-6">
+            <span className="text-blue-400 font-bold mr-2">{pub.id}.</span>
+            {pub.fullText || `${pub.authors}. ${pub.title}. ${pub.journal}, ${pub.year}${pub.details}`}
           </div>
           <div className="flex items-center gap-4">
             {pub.doi && (
@@ -739,7 +718,7 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl mb-12">
                {/* Card 1: Lab Images & Videos */}
                <Link href="/gallery?tab=images" className="group relative aspect-square md:aspect-auto md:h-[400px] rounded-[3rem] overflow-hidden border border-white/10 hover:border-pink-500/30 transition-all duration-500 bg-white/5 flex items-center justify-center shadow-2xl">
-                  <div className="absolute inset-0 bg-[url('/gallery/5.jpg')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-all duration-700 group-hover:scale-105"></div>
+                  <div className="absolute inset-0 bg-[url('/lab-images/5.jpg')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-all duration-700 group-hover:scale-105"></div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
                   <div className="relative z-10 flex flex-col items-center justify-center p-8 text-center mt-auto pb-12">
                      <h3 className="text-3xl font-black text-white uppercase tracking-tighter mb-4">Lab Images & Videos</h3>

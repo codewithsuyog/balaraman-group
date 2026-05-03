@@ -47,19 +47,10 @@ const PublicationCard = ({ pub, idx, fadeUp }: any) => {
           
           <div className="text-base text-white/80 leading-relaxed mb-8 font-light border-l-2 border-blue-500/30 pl-6">
             <span className="text-blue-400 font-bold mr-2 text-lg">{pub.id}.</span>
-            {(() => {
-              const fullText = pub.fullText || '';
-              const parts = fullText.split(/\. /);
-              const title = pub.title || (parts.length >= 2 ? parts[1] : '');
-              return (
-                <>
-                  {title && (
-                    <strong className="block text-white text-lg font-bold mb-2 leading-snug tracking-tight not-italic">{title}</strong>
-                  )}
-                  <span className="text-sm text-white/60">{fullText || `${pub.authors}. ${pub.title}. ${pub.journal}, ${pub.year}${pub.details}`}</span>
-                </>
-              );
-            })()}
+            {pub.title && (
+              <strong className="block text-white text-lg font-bold mb-2 leading-snug tracking-tight not-italic">{pub.title}</strong>
+            )}
+            <span className="text-sm text-white/60">{pub.fullText || `${pub.authors}. ${pub.title}. ${pub.journal}, ${pub.year}${pub.details}`}</span>
           </div>
           
           <div className="flex items-center gap-4 flex-wrap mt-auto">
