@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 import { 
   patents, piBio, cvLink, 
-  opportunities, team, awards 
+  opportunities, team, awards, piStats 
 } from './data';
 import { publications } from './publications_master';
 
@@ -669,8 +669,13 @@ export default function Home() {
             
             <div className="mt-8 flex flex-col items-center gap-3">
                <div className="flex justify-center gap-6">
-                 <a href="mailto:eb.raman@iisertirupati.ac.in" className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-blue-400 hover:border-blue-500 transition-all"><Mail size={20} /></a>
-                 <a href="https://www.iisertirupati.ac.in/faculty/chemistry/eb-raman" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-blue-400 hover:border-blue-500 transition-all"><Globe size={20} /></a>
+                 <a href={piStats.googleScholar} target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-blue-400 hover:border-blue-500 transition-all" title="Google Scholar">
+                   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269z"/><circle cx="12" cy="16.5" r="5.5"/></svg>
+                 </a>
+                 <a href={`https://orcid.org/${piStats.orcid}`} target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-emerald-400 hover:border-emerald-500 transition-all" title="ORCID">
+                   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-1.847-1.188-3.722-3.978-3.722h-2.341z"/></svg>
+                 </a>
+                 <a href="mailto:eb.raman@iisertirupati.ac.in" className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-blue-400 hover:border-blue-500 transition-all" title="Email"><Mail size={20} /></a>
                </div>
                <p className="text-sm md:text-base font-mono text-white/60 tracking-wider">eb.raman@iisertirupati.ac.in</p>
             </div>
@@ -678,8 +683,8 @@ export default function Home() {
           
           <div className="w-full lg:w-2/3 flex flex-col">
             <div className="inline-flex items-center gap-3 px-4 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-mono uppercase tracking-[0.3em] mb-6">Principal Investigator</div>
-            <h2 className="text-5xl md:text-7xl font-black mb-4 tracking-tighter text-white">Dr. E. Balaraman</h2>
-            <h3 className="text-xl text-blue-400 mb-8 font-light tracking-tight">Associate Professor & Chair, Department of Chemistry</h3>
+            <h2 className="text-5xl md:text-7xl font-black mb-4 tracking-tighter text-white">Dr. Ekambaram Balaraman</h2>
+            <h3 className="text-xl text-blue-400 mb-8 font-light tracking-tight">Associate Professor, Department of Chemistry, IISER Tirupati</h3>
             
             <p className="text-lg md:text-xl text-white/80 font-light leading-relaxed mb-12 italic border-l-4 border-blue-500 pl-8">
               "Leading the frontier of sustainable catalysis and molecular engineering through innovative transition-metal systems."
@@ -703,10 +708,54 @@ export default function Home() {
             </div>
 
             <div className="mb-16 p-10 rounded-[3rem] bg-blue-500/5 border border-blue-500/10 italic text-white/90 relative group">
-               <span className="absolute -top-6 -left-4 text-8xl text-blue-500/10 font-serif font-black">"</span>
+               <span className="absolute -top-6 -left-4 text-8xl text-blue-500/10 font-serif font-black">&quot;</span>
                <p className="text-xl md:text-2xl font-light leading-relaxed relative z-10 text-white/70">
                  Take risk in life. If you win, you will lead; if you lose, you will guide.
                </p>
+            </div>
+
+            {/* Scholarly Metrics */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+              <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-blue-500/20 transition-all text-center group">
+                <div className="text-3xl md:text-4xl font-black text-blue-500 mb-2">{piStats.publications}</div>
+                <p className="text-[10px] uppercase tracking-widest text-white/40 font-mono">Publications</p>
+              </div>
+              <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-emerald-500/20 transition-all text-center group">
+                <div className="text-3xl md:text-4xl font-black text-emerald-500 mb-2">{piStats.hIndex}</div>
+                <p className="text-[10px] uppercase tracking-widest text-white/40 font-mono">h-Index</p>
+              </div>
+              <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-orange-500/20 transition-all text-center group">
+                <div className="text-3xl md:text-4xl font-black text-orange-500 mb-2">{piStats.citations.toLocaleString()}</div>
+                <p className="text-[10px] uppercase tracking-widest text-white/40 font-mono">Citations</p>
+              </div>
+              <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-purple-500/20 transition-all text-center group">
+                <div className="text-3xl md:text-4xl font-black text-purple-500 mb-2">{piStats.grantedUSPatents}</div>
+                <p className="text-[10px] uppercase tracking-widest text-white/40 font-mono">US Patents</p>
+              </div>
+            </div>
+
+            {/* Human Resource Stats */}
+            <div className="grid grid-cols-3 md:grid-cols-5 gap-3 mb-16">
+              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 text-center">
+                <div className="text-xl font-black text-white/80 mb-1">{piStats.phdCompleted}</div>
+                <p className="text-[8px] uppercase tracking-widest text-white/30 font-mono">PhD Completed</p>
+              </div>
+              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 text-center">
+                <div className="text-xl font-black text-white/80 mb-1">{piStats.phdPursuing}</div>
+                <p className="text-[8px] uppercase tracking-widest text-white/30 font-mono">PhD Pursuing</p>
+              </div>
+              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 text-center">
+                <div className="text-xl font-black text-white/80 mb-1">{piStats.postdocs}</div>
+                <p className="text-[8px] uppercase tracking-widest text-white/30 font-mono">Post-docs</p>
+              </div>
+              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 text-center">
+                <div className="text-xl font-black text-white/80 mb-1">{piStats.mscStudents}</div>
+                <p className="text-[8px] uppercase tracking-widest text-white/30 font-mono">MSc Students</p>
+              </div>
+              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 text-center">
+                <div className="text-xl font-black text-white/80 mb-1">{piStats.projectFellows}</div>
+                <p className="text-[8px] uppercase tracking-widest text-white/30 font-mono">Project Fellows</p>
+              </div>
             </div>
 
             <div className="mb-12">
@@ -714,7 +763,7 @@ export default function Home() {
                  <Shield size={20} className="text-blue-500" /> Honours & Awards
                </h3>
                <ul className="space-y-3">
-                 {awards.slice(0, 6).map((award, i) => (
+                 {awards.slice(0, 8).map((award, i) => (
                    <li key={i} className="flex items-start gap-3 text-sm text-white/70 font-light leading-relaxed">
                      <ChevronRight size={14} className="text-blue-500 mt-1 shrink-0" />
                      <span>{award}</span>
@@ -736,9 +785,13 @@ export default function Home() {
                </div>
             </div>
 
-            <div className="flex flex-wrap gap-6">
+            <div className="flex flex-wrap gap-4">
                <a href={cvLink} target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 px-10 py-5 rounded-full bg-white text-black font-bold hover:bg-blue-600 hover:text-white transition-all shadow-2xl">
                   <Download size={20} /> Download Academic CV
+               </a>
+               <a href={piStats.googleScholar} target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 px-8 py-5 rounded-full border border-blue-500/30 text-blue-400 font-bold hover:bg-blue-500/10 transition-all">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269z"/><circle cx="12" cy="16.5" r="5.5"/></svg>
+                  Google Scholar
                </a>
             </div>
           </div>
@@ -1015,7 +1068,7 @@ export default function Home() {
                   <p className="text-white/60 font-light leading-relaxed">
                     Department of Chemistry,<br />
                     IISER Tirupati, Rami Reddy Nagar,<br />
-                    Karakambadi Road, Tirupati 517506,<br />
+                    Karakambadi Road, Tirupati 517507,<br />
                     Andhra Pradesh, India
                   </p>
                 </div>
@@ -1027,8 +1080,23 @@ export default function Home() {
                 </div>
                 <div>
                   <h4 className="text-sm font-bold text-white uppercase tracking-widest mb-2">Email</h4>
-                  <a href="mailto:eb.raman@iisertirupati.ac.in" className="text-white/60 hover:text-blue-400 font-light transition-colors">
+                  <a href="mailto:eb.raman@iisertirupati.ac.in" className="text-white/60 hover:text-blue-400 font-light transition-colors block">
                     eb.raman@iisertirupati.ac.in
+                  </a>
+                  <a href="mailto:balaramanekambaram@gmail.com" className="text-white/60 hover:text-blue-400 font-light transition-colors block mt-1">
+                    balaramanekambaram@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 shrink-0">
+                  <Phone size={20} />
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-white uppercase tracking-widest mb-2">Phone</h4>
+                  <a href="tel:+917756831487" className="text-white/60 hover:text-blue-400 font-light transition-colors">
+                    +91-7756831487
                   </a>
                 </div>
               </div>

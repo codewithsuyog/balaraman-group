@@ -1170,13 +1170,17 @@ export const awards = [
   "RSC-ChemComm’s Pioneering Investigators – 2023",
   "Selected for DST Coffee Table Book '75 Scientists under 50 – Scientists shaping today's India'",
   "Experienced Researcher Humboldt Research Fellowship (AvH) – 2022",
-  "MRSI Medal – 2021",
-  "SwarnaJayanti Fellowship – 2020",
+  "Stanford University’s Top 2% Scientists of the World – 2021 & 2022",
+  "MRSI Medal for contributions to Heterogeneous Catalysis – 2021",
+  "Swarnajayanti Fellowship from DST-SERB, Govt. of India – 2020",
   "CRSI Bronze Medal – 2020",
-  "NASI Elected Member – 2020",
-  "APA Young Scientist – 2019",
-  "FRSC – 2019",
-  "AVRA Young Scientist Award – 2018"
+  "Elected Member of INYAS, INSA & National Academy of Sciences – 2020",
+  "ACS’s Top 3% Highly Cited Authors from India – 2019-2020",
+  "The Asian and Oceanian Photochemistry Association (APA) Young Scientist – 2019",
+  "Fellow of the Royal Society of Chemistry (FRSC) – 2019",
+  "Associate Fellow of Andhra Pradesh Akademi of Sciences (APAS) – 2019",
+  "AV Rama Rao (AVRA) Young Scientist Award – 2018",
+  "Top Peer Reviewer Award by Publons – 2019"
 ];
 
 export const team = {
@@ -1190,24 +1194,24 @@ export const team = {
     { name: "Veerahari Shankar", info: "Ph.D. Jan 2024, M.Sc (Chem), The Gandhigram Rural University, Tamil Nadu", email: "veeraharishankar@labs.iisertirupati.ac.in", image: "/images/team/phd/veerahari" },
     { name: "Nanthini P.", info: "Ph.D. Aug 2024, M.Sc (Chem), Bharathidasan University, Tamil Nadu", email: "nanthini20243208@students.iisertirupati.ac.in", image: "/images/team/phd/nanthini" },
     { name: "Mahendra D R", info: "Ph.D. Jan 2025, M.Sc (Chem), University of Mysuru, Karnataka", email: "mahendra_20253202@students.iisertirupati.ac.in", image: "/images/team/phd/mahendra" },
-    { name: "Sanjay", info: "IISER-iPhD, IISER Tirupati", email: "", image: "/images/team/phd/sanjay" }
+    { name: "Sanjay A", info: "IPhD 2024, B.Sc - St. Joseph's College (Autonomous) Tiruchirappalli, Tamilnadu", email: "", image: "/images/team/phd/sanjay" }
   ],
   postdocs: [
     { name: "Dr. Sachin S. Gorad", info: "Ph.D. 2024 (IISER-Bhopal), M.Sc. (Org. Chem) Savitribai Phule Pune University Maharashtra", email: "sachinshrimant@labs.iisertirupati.ac.in", image: "/images/team/postdocs/sachin.png" },
     { name: "Dr. Sivaprakash", info: "Ph.D. 2023 (Central University of Tamil Nadu), M.Sc. (Chem) Bharathiyar University Coimbatore", email: "msivaprakash@labs.iisertirupati.ac.in", image: "/images/team/postdocs/Sivaprakash.png" },
     { name: "Dr. Bapurao", info: "Post-doctoral Fellow", image: "/images/team/postdocs/bapurao" },
     { name: "Dr. Naushad", info: "Post-doctoral Fellow", image: "/images/team/postdocs/naushad" },
-    { name: "Dr. Athira", info: "Post-doctoral Fellow", image: "/images/team/postdocs/Athira.jpeg" },
-    { name: "Dr. Anjali", info: "Post-doctoral Fellow", image: "/images/team/postdocs/anjali" }
+    { name: "Dr. Athira C S", info: "PhD: CSIR NIIST, Kerala (2025), MSc: University of Kerala, Kerala (2019)", image: "/images/team/postdocs/Athira.jpeg" },
+    { name: "Dr. Anjali Krishna P K", info: "PhD: CSIR-NIIST, Thiruvananthapuram, Kerala (2024), MSc: NIT Tiruchirappalli, Tamilnadu (2017)", image: "/images/team/postdocs/anjali.jpeg" }
   ],
   masters: [
-    { name: "Shama", info: "BSMS Master's Thesis Student, IISER Tirupati", image: "/images/team/masters/shama" },
-    { name: "Lavya", info: "BSMS Master's Thesis Student, IISER Tirupati", image: "/images/team/masters/lavya" }
+    { name: "Shahma", info: "BSMS Master's Thesis Student, IISER Tirupati", image: "/images/team/masters/shama.jpeg" },
+    { name: "Lavanya", info: "BSMS Master's Thesis Student, IISER Tirupati", image: "/images/team/masters/Lavanya.jpeg" }
   ],
   semesterProject: [
-    { name: "Kavya", info: "BSMS Semester Project Student, IISER Tirupati", image: "/images/team/semester/kavya" },
-    { name: "Ayesha", info: "BSMS Semester Project Student, IISER Tirupati", image: "/images/team/semester/ayesha" },
-    { name: "Suyog", info: "BSMS Semester Project Student, IISER Tirupati", image: "/images/team/semester/suyog" }
+    { name: "Suyog", info: "BSMS Semester Project Student, IISER Tirupati", image: "/images/team/semester/suyog" },
+    { name: "Kavya", info: "BSMS Semester Project Student, IISER Tirupati", image: "/images/team/semester/Kavya.jpeg" },
+    { name: "Ayesha", info: "BSMS Semester Project Student, IISER Tirupati", image: "/images/team/semester/ayesha" }
   ],
   alumniPhd: [
     { name: "Dr. Manoj K. Sahoo", thesis: "Visible mediated photoredox catalytic Dehydrogenation and C-H arylation reactions", duration: "2013-2018", present: "Post-doctoral Studies at UNIST, South Korea", image: "/images/team/Phd Alumini/Dr. MANOJ K. SAHOO.jpg" },
@@ -1342,15 +1346,35 @@ export const patents = {
 };
 
 export const piBio = [
-  { year: '1997 - 2000', role: 'Bachelor of Science (Chemistry)', institution: 'University of Madras, Chennai' },
-  { year: '2000 - 2002', role: 'Master of Science (Chemistry)', institution: 'University of Madras, Chennai' },
-  { year: '2002 - 2008', role: 'Doctor of Philosophy (PhD)', institution: 'University of Hyderabad, Hyderabad, AP', details: 'Thesis: Investigations on Organophosphonates and Modified BINOLs: Catalytic Hydrophosphonylation, Hydroamination, Asymmetric Reduction and Allylation of Unsaturated Systems (Mentor: Prof. K. C. Kumara Swamy)' },
-  { year: '2008 - 2012', role: 'FGS Post-Doctoral Fellow', institution: 'Weizmann Institute of Science, ISRAEL' },
-  { year: '2012 - 2013', role: 'Research Assistant Professor', institution: 'SRM Research Institute, Chennai' },
-  { year: '2013 - 2018', role: 'Senior Scientist (E-1)', institution: 'CSIR-National Chemical Laboratory (CSIR-NCL), Pune' },
-  { year: '2018 - 2022', role: 'Assistant Professor', institution: 'IISER Tirupati' },
-  { year: '2022 - Present', role: 'Associate Professor', institution: 'IISER Tirupati' }
+  { year: '1997 - 2000', role: 'Bachelor of Science (Chemistry)', institution: 'University of Madras (Aringer Anna Arts College, Cheyyar, Chennai)' },
+  { year: '2000 - 2002', role: 'Master of Science (Chemistry)', institution: 'University of Madras (R.K.M. Vivekananda College, Chennai)' },
+  { year: '2002 - 2008', role: 'Doctor of Philosophy (PhD)', institution: 'Central University of Hyderabad, Hyderabad', details: 'Thesis: Investigations on Organophosphonates and Modified BINOLs: Catalytic Hydrophosphonylation, Hydroamination, Asymmetric Reduction and Allylation of Unsaturated Systems (Mentor: Prof. K. C. Kumara Swamy)' },
+  { year: '2008 - 2012', role: 'Post-Doctoral Fellow', institution: 'Weizmann Institute of Science, ISRAEL', details: 'Department of Organic Chemistry' },
+  { year: '2012 - 2013', role: 'Research Assistant Professor', institution: 'SRM Research Institute, SRM University, Chennai' },
+  { year: '2013 - 2018', role: 'Senior Scientist (E-1)', institution: 'Organic Chemistry Division, CSIR-National Chemical Laboratory (CSIR-NCL), Pune' },
+  { year: '2018 - 2022', role: 'Assistant Professor', institution: 'Department of Chemistry, IISER Tirupati' },
+  { year: '2022 - Present', role: 'Associate Professor', institution: 'Department of Chemistry, IISER Tirupati' }
 ];
+
+export const piStats = {
+  publications: '117+',
+  researchArticles: 90,
+  reviewArticles: 9,
+  bookChapters: 5,
+  hIndex: 52,
+  citations: 9554,
+  grantedUSPatents: 9,
+  phdCompleted: 11,
+  phdPursuing: 8,
+  postdocs: 14,
+  mscStudents: 22,
+  projectFellows: 7,
+  googleScholar: 'https://scholar.google.com/citations?user=8slXPm4AAAAJ&hl=en',
+  orcid: '0000-0001-9248-2809',
+  scopusId: '6504655693',
+  phone: '+91-7756831487',
+  emails: ['eb.raman@iisertirupati.ac.in', 'balaramanekambaram@gmail.com'],
+};
 
 export const opportunities = "Our group works in the areas of Organic/Organometallic Chemistry and Sustainable Catalysis...";
 export const cvLink = "https://drive.google.com/file/d/1WabSXluzO3DFCPj94AllohaI24ZrqSdS/view?usp=sharing";
