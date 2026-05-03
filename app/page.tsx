@@ -34,7 +34,7 @@ const PublicationLink = ({ pub }: { pub: any }) => {
     <div className="group/pub flex flex-col md:flex-row gap-6 p-6 rounded-[2rem] bg-white/5 border border-white/5 hover:border-blue-500/20 hover:bg-white/10 transition-all">
       <div className="w-20 h-24 rounded-lg bg-white overflow-hidden flex-shrink-0 border border-white/10 p-1">
             <img 
-               src={coverFailed ? "/logo.png" : `/publications/covers/${pub.id}${extensions[coverExtIdx]}`} 
+               src={coverFailed ? "/logo.png" : `/images/publications/covers/${pub.id}${extensions[coverExtIdx]}`} 
                alt="Cover" 
                className="w-full h-full object-contain opacity-50 group-hover/pub:opacity-100 transition-opacity"
                onError={() => coverExtIdx < extensions.length - 1 ? setCoverExtIdx(coverExtIdx + 1) : setCoverFailed(true)}
@@ -107,7 +107,7 @@ const FeaturedPublication = ({ pub }: { pub: any }) => {
         <div className="w-full md:w-[45%] flex flex-col sm:flex-row gap-6 items-center">
            <div className="w-[140px] h-56 rounded-2xl bg-white border border-white/10 overflow-hidden relative group-hover:border-blue-500/40 transition-all p-2 shadow-2xl shrink-0">
              <img 
-               src={coverFailed ? "/logo.png" : `/publications/covers/${pub.id}${extensions[coverExtIdx]}`} 
+               src={coverFailed ? "/logo.png" : `/images/publications/covers/${pub.id}${extensions[coverExtIdx]}`} 
                alt="Cover" 
                className={`w-full h-full object-contain ${coverFailed ? 'opacity-20' : ''}`}
                onError={() => coverExtIdx < extensions.length - 1 ? setCoverExtIdx(coverExtIdx + 1) : setCoverFailed(true)}
@@ -116,7 +116,7 @@ const FeaturedPublication = ({ pub }: { pub: any }) => {
            </div>
            <div className="flex-1 w-full h-56 rounded-2xl bg-white border border-white/10 overflow-hidden relative group-hover:border-blue-500/40 transition-all p-2 shadow-2xl">
              <img 
-               src={schemeFailed ? "/logo.png" : `/publications/schemes/${pub.id}${extensions[schemeExtIdx]}`} 
+               src={schemeFailed ? "/logo.png" : `/images/publications/schemes/${pub.id}${extensions[schemeExtIdx]}`} 
                alt="Scheme" 
                className={`w-full h-full object-contain ${schemeFailed ? 'opacity-20' : ''}`}
                onError={() => schemeExtIdx < extensions.length - 1 ? setSchemeExtIdx(schemeExtIdx + 1) : setSchemeFailed(true)}
@@ -307,7 +307,7 @@ export default function Home() {
     setTimeout(() => setFormSubmitted(false), 5000);
   };
 
-  const heroImage = '/images/group-photo.jpg';
+  const heroImage = '/images/Background/group-photo.jpg';
 
   useEffect(() => {
     const handleScroll = () => {

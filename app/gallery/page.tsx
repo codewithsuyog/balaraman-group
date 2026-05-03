@@ -100,7 +100,7 @@ export default function GalleryPage() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {photos.map((num) => {
-            const folder = activeTab === 'images' ? 'images/lab-images' : 'images/lab-memories';
+            const folder = activeTab === 'images' ? 'lab-images' : 'lab-memories';
             return (
               <motion.div 
                 key={num}
