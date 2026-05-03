@@ -684,7 +684,7 @@ export default function Home() {
           <div className="w-full lg:w-2/3 flex flex-col">
             <div className="inline-flex items-center gap-3 px-4 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-mono uppercase tracking-[0.3em] mb-6">Principal Investigator</div>
             <h2 className="text-5xl md:text-7xl font-black mb-4 tracking-tighter text-white">Dr. Ekambaram Balaraman</h2>
-            <h3 className="text-xl text-blue-400 mb-8 font-light tracking-tight">Associate Professor, Department of Chemistry, IISER Tirupati</h3>
+            <h3 className="text-xl text-blue-400 mb-8 font-light tracking-tight">Associate Professor & Chair, Department of Chemistry, IISER Tirupati</h3>
             
             <p className="text-lg md:text-xl text-white/80 font-light leading-relaxed mb-12 italic border-l-4 border-blue-500 pl-8">
               "Leading the frontier of sustainable catalysis and molecular engineering through innovative transition-metal systems."
@@ -716,45 +716,45 @@ export default function Home() {
 
             {/* Scholarly Metrics */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
-              <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-blue-500/20 transition-all text-center group">
-                <div className="text-3xl md:text-4xl font-black text-blue-500 mb-2">{piStats.publications}</div>
-                <p className="text-[10px] uppercase tracking-widest text-white/40 font-mono">Publications</p>
+              <div className="p-6 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-blue-500/30 transition-all text-center group hover:bg-blue-500/5">
+                <div className="text-3xl md:text-4xl font-black text-blue-400 mb-2 drop-shadow-[0_0_10px_rgba(96,165,250,0.3)]">{piStats.publications}</div>
+                <p className="text-[10px] uppercase tracking-widest text-white/90 font-mono font-semibold">Publications</p>
               </div>
-              <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-emerald-500/20 transition-all text-center group">
-                <div className="text-3xl md:text-4xl font-black text-emerald-500 mb-2">{piStats.hIndex}</div>
-                <p className="text-[10px] uppercase tracking-widest text-white/40 font-mono">h-Index</p>
+              <div className="p-6 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-emerald-500/30 transition-all text-center group hover:bg-emerald-500/5">
+                <div className="text-3xl md:text-4xl font-black text-emerald-400 mb-2 drop-shadow-[0_0_10px_rgba(52,211,153,0.3)]">{piStats.hIndex}</div>
+                <p className="text-[10px] uppercase tracking-widest text-white/90 font-mono font-semibold">h-Index</p>
               </div>
-              <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-orange-500/20 transition-all text-center group">
-                <div className="text-3xl md:text-4xl font-black text-orange-500 mb-2">{piStats.citations.toLocaleString()}</div>
-                <p className="text-[10px] uppercase tracking-widest text-white/40 font-mono">Citations</p>
+              <div className="p-6 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-orange-500/30 transition-all text-center group hover:bg-orange-500/5">
+                <div className="text-3xl md:text-4xl font-black text-orange-400 mb-2 drop-shadow-[0_0_10px_rgba(251,146,60,0.3)]">{piStats.citations.toLocaleString()}</div>
+                <p className="text-[10px] uppercase tracking-widest text-white/90 font-mono font-semibold">Citations</p>
               </div>
-              <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-purple-500/20 transition-all text-center group">
-                <div className="text-3xl md:text-4xl font-black text-purple-500 mb-2">{piStats.grantedUSPatents}</div>
-                <p className="text-[10px] uppercase tracking-widest text-white/40 font-mono">US Patents</p>
+              <div className="p-6 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-purple-500/30 transition-all text-center group hover:bg-purple-500/5">
+                <div className="text-3xl md:text-4xl font-black text-purple-400 mb-2 drop-shadow-[0_0_10px_rgba(192,132,252,0.3)]">{piStats.grantedUSPatents}</div>
+                <p className="text-[10px] uppercase tracking-widest text-white/90 font-mono font-semibold">US Patents</p>
               </div>
             </div>
 
             {/* Human Resource Stats */}
             <div className="grid grid-cols-3 md:grid-cols-5 gap-3 mb-16">
-              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 text-center">
-                <div className="text-xl font-black text-white/80 mb-1">{piStats.phdCompleted}</div>
-                <p className="text-[8px] uppercase tracking-widest text-white/30 font-mono">PhD Completed</p>
+              <div className="p-4 rounded-xl bg-white/[0.04] border border-white/10 text-center hover:border-cyan-500/20 transition-all">
+                <div className="text-xl font-black text-white mb-1">{piStats.phdCompleted}</div>
+                <p className="text-[9px] uppercase tracking-widest text-white/80 font-mono font-medium">PhD Completed</p>
               </div>
-              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 text-center">
-                <div className="text-xl font-black text-white/80 mb-1">{piStats.phdPursuing}</div>
-                <p className="text-[8px] uppercase tracking-widest text-white/30 font-mono">PhD Pursuing</p>
+              <div className="p-4 rounded-xl bg-white/[0.04] border border-white/10 text-center hover:border-cyan-500/20 transition-all">
+                <div className="text-xl font-black text-white mb-1">{piStats.phdPursuing}</div>
+                <p className="text-[9px] uppercase tracking-widest text-white/80 font-mono font-medium">PhD Pursuing</p>
               </div>
-              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 text-center">
-                <div className="text-xl font-black text-white/80 mb-1">{piStats.postdocs}</div>
-                <p className="text-[8px] uppercase tracking-widest text-white/30 font-mono">Post-docs</p>
+              <div className="p-4 rounded-xl bg-white/[0.04] border border-white/10 text-center hover:border-cyan-500/20 transition-all">
+                <div className="text-xl font-black text-white mb-1">{piStats.postdocs}</div>
+                <p className="text-[9px] uppercase tracking-widest text-white/80 font-mono font-medium">Post-docs</p>
               </div>
-              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 text-center">
-                <div className="text-xl font-black text-white/80 mb-1">{piStats.mscStudents}</div>
-                <p className="text-[8px] uppercase tracking-widest text-white/30 font-mono">MSc Students</p>
+              <div className="p-4 rounded-xl bg-white/[0.04] border border-white/10 text-center hover:border-cyan-500/20 transition-all">
+                <div className="text-xl font-black text-white mb-1">{piStats.mscStudents}</div>
+                <p className="text-[9px] uppercase tracking-widest text-white/80 font-mono font-medium">MSc Students</p>
               </div>
-              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 text-center">
-                <div className="text-xl font-black text-white/80 mb-1">{piStats.projectFellows}</div>
-                <p className="text-[8px] uppercase tracking-widest text-white/30 font-mono">Project Fellows</p>
+              <div className="p-4 rounded-xl bg-white/[0.04] border border-white/10 text-center hover:border-cyan-500/20 transition-all">
+                <div className="text-xl font-black text-white mb-1">{piStats.projectFellows}</div>
+                <p className="text-[9px] uppercase tracking-widest text-white/80 font-mono font-medium">Project Fellows</p>
               </div>
             </div>
 

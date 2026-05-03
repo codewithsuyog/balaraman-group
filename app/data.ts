@@ -1353,7 +1353,7 @@ export const piBio = [
   { year: '2012 - 2013', role: 'Research Assistant Professor', institution: 'SRM Research Institute, SRM University, Chennai' },
   { year: '2013 - 2018', role: 'Senior Scientist (E-1)', institution: 'Organic Chemistry Division, CSIR-National Chemical Laboratory (CSIR-NCL), Pune' },
   { year: '2018 - 2022', role: 'Assistant Professor', institution: 'Department of Chemistry, IISER Tirupati' },
-  { year: '2022 - Present', role: 'Associate Professor', institution: 'Department of Chemistry, IISER Tirupati' }
+  { year: '2022 - Present', role: 'Associate Professor & Chair', institution: 'Department of Chemistry, IISER Tirupati' }
 ];
 
 export const piStats = {
@@ -1365,7 +1365,7 @@ export const piStats = {
   citations: 9554,
   grantedUSPatents: 9,
   phdCompleted: 11,
-  phdPursuing: 8,
+  phdPursuing: 10,
   postdocs: 14,
   mscStudents: 22,
   projectFellows: 7,
