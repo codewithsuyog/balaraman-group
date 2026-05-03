@@ -594,13 +594,42 @@ export default function Home() {
       >
         {navLinks.map((link: any) => {
           const isExternal = link.href?.startsWith('/');
-          const href = isExternal ? link.href : `/#${link.id}`;
           
+          if (isExternal) {
+            return (
+              <Link 
+                key={link.id}
+                href={link.href as string}
+                className={`px-4 py-2 rounded-full transition-all duration-500 ease-out whitespace-nowrap relative group ${
+                  activeSection === link.id 
+                    ? 'text-white' 
+                    : 'text-white/40 hover:text-white/80'
+                }`}
+              >
+                {activeSection === link.id && (
+                  <motion.div 
+                    layoutId="activePill"
+                    className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full -z-10 shadow-[0_0_20px_rgba(37,99,235,0.4)]"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
+                {link.label}
+              </Link>
+            );
+          }
+
           return (
-            <Link 
+            <a 
               key={link.id}
-              href={href as string}
-              className={`px-4 py-2 rounded-full transition-all duration-500 ease-out whitespace-nowrap relative group ${
+              href={`#${link.id}`}
+              onClick={(e) => {
+                e.preventDefault();
+                const el = document.getElementById(link.id);
+                if (el) {
+                  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
+              className={`px-4 py-2 rounded-full transition-all duration-500 ease-out whitespace-nowrap relative group cursor-pointer ${
                 activeSection === link.id 
                   ? 'text-white' 
                   : 'text-white/40 hover:text-white/80'
@@ -614,7 +643,7 @@ export default function Home() {
                 />
               )}
               {link.label}
-            </Link>
+            </a>
           );
         })}
       </motion.nav>
@@ -1067,9 +1096,10 @@ export default function Home() {
                   <h4 className="text-sm font-bold text-white uppercase tracking-widest mb-2">Location</h4>
                   <p className="text-white/60 font-light leading-relaxed">
                     Department of Chemistry,<br />
-                    IISER Tirupati, Rami Reddy Nagar,<br />
-                    Karakambadi Road, Tirupati 517507,<br />
-                    Andhra Pradesh, India
+                    IISER Tirupati,<br />
+                    Srinivasapuram Venkatagiri Road,<br />
+                    Jangalapalli (G.P), Yerpedu Mandal,<br />
+                    Durgiperi, Andhra Pradesh 517619, India
                   </p>
                 </div>
               </div>
