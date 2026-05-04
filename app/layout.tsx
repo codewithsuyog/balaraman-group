@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Outfit, Geist_Mono, Inter } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
+import BackButton from "@/components/BackButton";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -84,6 +85,7 @@ export default function RootLayout({
         {children}
         <SpeedInsights />
         <Analytics />
+        <BackButton />
         <script
           dangerouslySetInnerHTML={{
             __html: `
