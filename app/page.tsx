@@ -673,7 +673,6 @@ export default function Home() {
           </motion.div>
 
           <motion.div initial="hidden" animate="visible" variants={fadeUp} className="relative">
-            
             <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter mb-8 bg-clip-text text-transparent bg-gradient-to-b from-white via-white/90 to-white/20 relative z-10 drop-shadow-[0_0_40px_rgba(255,255,255,0.15)] leading-[0.9]">
               Raman's <br className="hidden md:block"/> Research Lab
             </h1>
