@@ -645,11 +645,11 @@ export default function Home() {
         </motion.div>
 
         {/* Background watermark text */}
-        <div className="absolute inset-0 z-[2] flex items-center justify-center pointer-events-none select-none overflow-hidden mt-16">
+        <div className="absolute inset-0 z-[2] flex items-center justify-center pointer-events-none select-none overflow-hidden mt-0">
           <span className="text-[120px] sm:text-[200px] md:text-[300px] font-black uppercase tracking-tighter leading-none" style={{ color: 'transparent', WebkitTextStroke: '1px rgba(255,255,255,0.06)' }}>RAMAN</span>
         </div>
 
-        <div className="z-10 max-w-6xl mx-auto text-center mt-32 relative">
+        <div className="z-10 max-w-6xl mx-auto text-center -mt-16 relative">
           <motion.div initial="hidden" animate="visible" variants={fadeUp}>
             <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full glass mb-10 text-xs sm:text-sm font-mono text-[var(--color-accent-light)] uppercase tracking-widest border border-white/10">
               IISER Tirupati • Department of Chemistry
