@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { 
   ArrowRight, ArrowLeft, FileText, Mail, MapPin, Phone, 
   Microscope, FlaskConical, 
@@ -318,15 +319,12 @@ const LAB_VIDEOS = [
 ];
 
 const LabMediaShowcase = () => {
-  const [activeTab, setActiveTab] = useState<'images' | 'videos'>('images');
-
   // ── Image slideshow state ──
   const [imgIdx, setImgIdx] = useState(0);
   useEffect(() => {
-    if (activeTab !== 'images') return;
     const timer = setInterval(() => setImgIdx((p) => (p + 1) % LAB_IMAGES.length), 4000);
     return () => clearInterval(timer);
-  }, [activeTab]);
+  }, []);
 
   // ── Video player state ──
   const [vidIdx, setVidIdx] = useState(0);
@@ -338,19 +336,19 @@ const LabMediaShowcase = () => {
   const allVideosErrored = LAB_VIDEOS.every((_, i) => videoError[i]);
 
   useEffect(() => {
-    if (activeTab !== 'videos' || !videoRef.current || videoError[vidIdx]) return;
+    if (!videoRef.current || videoError[vidIdx]) return;
     videoRef.current.load();
     videoRef.current.play().catch(() => {});
     setIsPlaying(true);
-  }, [vidIdx, activeTab]);
+  }, [vidIdx]);
 
   useEffect(() => {
     const vid = videoRef.current;
-    if (!vid || activeTab !== 'videos') return;
+    if (!vid) return;
     const onEnded = () => setVidIdx((p) => (p + 1) % LAB_VIDEOS.length);
     vid.addEventListener('ended', onEnded);
     return () => vid.removeEventListener('ended', onEnded);
-  }, [vidIdx, activeTab]);
+  }, [vidIdx]);
 
   const togglePlay = () => {
     if (!videoRef.current) return;
@@ -365,141 +363,124 @@ const LabMediaShowcase = () => {
   };
 
   return (
-    <div className="w-full relative overflow-hidden rounded-3xl bg-black border border-white/10 shadow-2xl group">
-      {/* ── Tab bar ── */}
-      <div className="absolute top-6 left-6 z-30 flex items-center gap-2">
-        <button
-          onClick={() => setActiveTab('images')}
-          className={`flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-xl border text-[10px] font-mono uppercase tracking-widest transition-all ${
-            activeTab === 'images'
-              ? 'bg-cyan-500/20 border-cyan-500/40 text-cyan-300'
-              : 'bg-black/50 border-white/10 text-white/40 hover:text-white/70'
-          }`}
-        >
+    <div className="w-full flex flex-col md:flex-row gap-6 relative group">
+      {/* ── Images Section ── */}
+      <div className="w-full md:w-1/2 relative overflow-hidden rounded-3xl bg-black border border-white/10 shadow-2xl aspect-square md:aspect-[4/3] bg-gradient-to-br from-gray-900 to-black">
+        <div className="absolute top-6 left-6 z-30 flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-xl border text-[10px] font-mono uppercase tracking-widest transition-all bg-cyan-500/20 border-cyan-500/40 text-cyan-300">
           <Microscope size={12} /> Lab Images
-          <span className="text-[9px] text-white/30">{imgIdx + 1}/{LAB_IMAGES.length}</span>
-        </button>
-        <button
-          onClick={() => setActiveTab('videos')}
-          className={`flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-xl border text-[10px] font-mono uppercase tracking-widest transition-all ${
-            activeTab === 'videos'
-              ? 'bg-red-500/20 border-red-500/40 text-red-300'
-              : 'bg-black/50 border-white/10 text-white/40 hover:text-white/70'
-          }`}
-        >
-          <Video size={12} /> Videos
-        </button>
+          <span className="text-[9px] text-cyan-300/50">{imgIdx + 1}/{LAB_IMAGES.length}</span>
+        </div>
+
+        {/* ═══ IMAGE SLIDESHOW ═══ */}
+        <div className="absolute inset-0">
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={imgIdx}
+              src={LAB_IMAGES[imgIdx].src}
+              alt={LAB_IMAGES[imgIdx].caption}
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.02 }}
+              transition={{ duration: 0.8 }}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          </AnimatePresence>
+
+          {/* Gradient overlay */}
+          <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none z-10" />
+
+          {/* Caption + dots */}
+          <div className="absolute bottom-0 left-0 right-0 p-8 z-20">
+            <h4 className="text-lg font-bold text-white mb-1 tracking-tight">{LAB_IMAGES[imgIdx].caption}</h4>
+            <div className="flex gap-2 mt-4">
+              {LAB_IMAGES.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setImgIdx(i)}
+                  className={`h-1.5 rounded-full transition-all duration-500 ${
+                    i === imgIdx ? 'bg-cyan-400 w-8' : 'bg-white/25 hover:bg-white/50 w-1.5'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Nav arrows */}
+          <button onClick={() => setImgIdx((p) => (p - 1 + LAB_IMAGES.length) % LAB_IMAGES.length)}
+            className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/30 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/50 z-20">
+            <ArrowLeft size={16} />
+          </button>
+          <button onClick={() => setImgIdx((p) => (p + 1) % LAB_IMAGES.length)}
+            className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/30 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/50 z-20">
+            <ArrowRight size={16} />
+          </button>
+        </div>
       </div>
 
-      {/* ── Content area ── */}
-      <div className="aspect-video relative bg-gradient-to-br from-gray-900 to-black">
-        <AnimatePresence mode="wait">
-          {activeTab === 'images' ? (
-            /* ═══ IMAGE SLIDESHOW ═══ */
-            <motion.div key="images-tab" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0">
+      {/* ── Videos Section ── */}
+      <div className="w-full md:w-1/2 relative overflow-hidden rounded-3xl bg-black border border-white/10 shadow-2xl aspect-square md:aspect-[4/3] bg-gradient-to-br from-gray-900 to-black">
+        <div className="absolute top-6 left-6 z-30 flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-xl border text-[10px] font-mono uppercase tracking-widest transition-all bg-red-500/20 border-red-500/40 text-red-300">
+          <Video size={12} /> Videos
+        </div>
+
+        {/* ═══ VIDEO PLAYER ═══ */}
+        <div className="absolute inset-0">
+          {!allVideosErrored ? (
+            <>
               <AnimatePresence mode="wait">
-                <motion.img
-                  key={imgIdx}
-                  src={LAB_IMAGES[imgIdx].src}
-                  alt={LAB_IMAGES[imgIdx].caption}
-                  initial={{ opacity: 0, scale: 1.05 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 1.02 }}
-                  transition={{ duration: 0.8 }}
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
+                <motion.div key={vidIdx} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }} className="absolute inset-0">
+                  <video ref={videoRef} src={LAB_VIDEOS[vidIdx].src} muted={isMuted} playsInline autoPlay
+                    className="w-full h-full object-cover"
+                    onError={() => setVideoError((p) => ({ ...p, [vidIdx]: true }))} />
+                </motion.div>
               </AnimatePresence>
 
-              {/* Gradient overlay */}
-              <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none z-10" />
+              <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/80 to-transparent pointer-events-none z-10" />
 
-              {/* Caption + dots */}
               <div className="absolute bottom-0 left-0 right-0 p-8 z-20">
-                <h4 className="text-lg font-bold text-white mb-1 tracking-tight">{LAB_IMAGES[imgIdx].caption}</h4>
-                <div className="flex gap-2 mt-4">
-                  {LAB_IMAGES.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => setImgIdx(i)}
-                      className={`h-1.5 rounded-full transition-all duration-500 ${
-                        i === imgIdx ? 'bg-cyan-400 w-8' : 'bg-white/25 hover:bg-white/50 w-1.5'
-                      }`}
-                    />
+                <div className="flex items-end justify-between">
+                  <div className="flex-1 pr-4">
+                    <h4 className="text-xl font-bold text-white mb-1 tracking-tight truncate">{LAB_VIDEOS[vidIdx].title}</h4>
+                    <p className="text-sm text-white/50 font-light line-clamp-2">{LAB_VIDEOS[vidIdx].caption}</p>
+                  </div>
+                  <div className="flex items-center gap-3 shrink-0">
+                    <button onClick={toggleMute} className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/20 transition-all">
+                      {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
+                    </button>
+                    <button onClick={togglePlay} className="w-12 h-12 rounded-full bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/25 transition-all">
+                      {isPlaying ? <Pause size={18} /> : <Play size={18} className="ml-0.5" />}
+                    </button>
+                  </div>
+                </div>
+                <div className="flex gap-2 mt-6">
+                  {LAB_VIDEOS.map((_, i) => (
+                    <button key={i} onClick={() => setVidIdx(i)}
+                      className={`h-1 rounded-full transition-all duration-500 ${i === vidIdx ? 'bg-red-500 w-8' : videoError[i] ? 'bg-white/10 w-2' : 'bg-white/30 hover:bg-white/50 w-2'}`} />
                   ))}
                 </div>
               </div>
 
-              {/* Nav arrows */}
-              <button onClick={() => setImgIdx((p) => (p - 1 + LAB_IMAGES.length) % LAB_IMAGES.length)}
+              <button onClick={() => setVidIdx((p) => (p - 1 + LAB_VIDEOS.length) % LAB_VIDEOS.length)}
                 className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/30 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/50 z-20">
                 <ArrowLeft size={16} />
               </button>
-              <button onClick={() => setImgIdx((p) => (p + 1) % LAB_IMAGES.length)}
+              <button onClick={() => setVidIdx((p) => (p + 1) % LAB_VIDEOS.length)}
                 className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/30 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/50 z-20">
                 <ArrowRight size={16} />
               </button>
-            </motion.div>
+            </>
           ) : (
-            /* ═══ VIDEO PLAYER ═══ */
-            <motion.div key="videos-tab" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0">
-              {!allVideosErrored ? (
-                <>
-                  <AnimatePresence mode="wait">
-                    <motion.div key={vidIdx} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }} className="absolute inset-0">
-                      <video ref={videoRef} src={LAB_VIDEOS[vidIdx].src} muted={isMuted} playsInline autoPlay
-                        className="w-full h-full object-cover"
-                        onError={() => setVideoError((p) => ({ ...p, [vidIdx]: true }))} />
-                    </motion.div>
-                  </AnimatePresence>
-
-                  <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/80 to-transparent pointer-events-none z-10" />
-
-                  <div className="absolute bottom-0 left-0 right-0 p-8 z-20">
-                    <div className="flex items-end justify-between">
-                      <div>
-                        <h4 className="text-xl font-bold text-white mb-1 tracking-tight">{LAB_VIDEOS[vidIdx].title}</h4>
-                        <p className="text-sm text-white/50 font-light">{LAB_VIDEOS[vidIdx].caption}</p>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <button onClick={toggleMute} className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/20 transition-all">
-                          {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
-                        </button>
-                        <button onClick={togglePlay} className="w-12 h-12 rounded-full bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/25 transition-all">
-                          {isPlaying ? <Pause size={18} /> : <Play size={18} className="ml-0.5" />}
-                        </button>
-                      </div>
-                    </div>
-                    <div className="flex gap-2 mt-6">
-                      {LAB_VIDEOS.map((_, i) => (
-                        <button key={i} onClick={() => setVidIdx(i)}
-                          className={`h-1 rounded-full transition-all duration-500 ${i === vidIdx ? 'bg-red-500 w-8' : videoError[i] ? 'bg-white/10 w-2' : 'bg-white/30 hover:bg-white/50 w-2'}`} />
-                      ))}
-                    </div>
-                  </div>
-
-                  <button onClick={() => setVidIdx((p) => (p - 1 + LAB_VIDEOS.length) % LAB_VIDEOS.length)}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/30 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/50 z-20">
-                    <ArrowLeft size={16} />
-                  </button>
-                  <button onClick={() => setVidIdx((p) => (p + 1) % LAB_VIDEOS.length)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/30 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/50 z-20">
-                    <ArrowRight size={16} />
-                  </button>
-                </>
-              ) : (
-                <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <div className="w-24 h-24 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-6">
-                    <Video size={40} className="text-white/20" />
-                  </div>
-                  <h4 className="text-xl font-bold text-white/40 mb-2 tracking-tight">Lab Videos Coming Soon</h4>
-                  <p className="text-sm text-white/20 font-light max-w-md text-center">
-                    Our research video library is being prepared. Stay tuned for lab tours, synthesis demonstrations, and more.
-                  </p>
-                </div>
-              )}
-            </motion.div>
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-black">
+              <iframe 
+                className="w-full h-full border-0"
+                src="https://www.youtube.com/embed/your-lab-tour-id" 
+                title="Lab Tour Video" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowFullScreen
+              ></iframe>
+            </div>
           )}
-        </AnimatePresence>
+        </div>
       </div>
     </div>
   );
@@ -508,6 +489,7 @@ const LabMediaShowcase = () => {
 export default function Home() {
   const [activeSection, setActiveSection] = useState('home');
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -649,23 +631,25 @@ export default function Home() {
       </motion.nav>
 
       {/* 1. HERO SECTION */}
-      <section id="home" className="relative w-full min-h-screen flex items-center justify-center pt-20 pb-32 px-6 overflow-hidden">
+      <section id="home" className="relative w-full min-h-screen flex items-center justify-center pt-32 pb-32 px-6 overflow-hidden">
         <motion.div className="absolute inset-0 z-0">
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.3 }}
-            className="absolute inset-0 bg-cover bg-center blur-[8px]"
-            style={{ backgroundImage: `url(${heroImage})` }}
+          <Image 
+            src={heroImage} 
+            alt="Raman Lab Group" 
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center blur-[8px] opacity-30" 
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[var(--background)]/70 via-[var(--background)]/90 to-[var(--background)]"></div>
         </motion.div>
 
         {/* Background watermark text */}
-        <div className="absolute inset-0 z-[2] flex items-center justify-center pointer-events-none select-none overflow-hidden">
-          <span className="text-[200px] md:text-[300px] font-black uppercase tracking-tighter leading-none" style={{ color: 'transparent', WebkitTextStroke: '1px rgba(255,255,255,0.06)' }}>RAMAN</span>
+        <div className="absolute inset-0 z-[2] flex items-center justify-center pointer-events-none select-none overflow-hidden mt-16">
+          <span className="text-[120px] sm:text-[200px] md:text-[300px] font-black uppercase tracking-tighter leading-none" style={{ color: 'transparent', WebkitTextStroke: '1px rgba(255,255,255,0.06)' }}>RAMAN</span>
         </div>
 
-        <div className="z-10 max-w-6xl mx-auto text-center mt-12 relative">
+        <div className="z-10 max-w-6xl mx-auto text-center mt-32 relative">
           <motion.div initial="hidden" animate="visible" variants={fadeUp}>
             <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full glass mb-10 text-xs sm:text-sm font-mono text-[var(--color-accent-light)] uppercase tracking-widest border border-white/10">
               IISER Tirupati • Department of Chemistry
@@ -1057,7 +1041,7 @@ export default function Home() {
 
                {/* Card 2: Lab Memories */}
                <Link href="/gallery?tab=memories" className="group relative aspect-square md:aspect-auto md:h-[400px] rounded-[3rem] overflow-hidden border border-white/10 hover:border-blue-500/30 transition-all duration-500 bg-white/5 flex items-center justify-center shadow-2xl">
-                  <div className="absolute inset-0 bg-[url('/images/gallery/2.jpg')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-all duration-700 group-hover:scale-105"></div>
+                  <div className="absolute inset-0 bg-[url('/images/gallery/1.jpg')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-all duration-700 group-hover:scale-105"></div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
                   <div className="relative z-10 flex flex-col items-center justify-center p-8 text-center mt-auto pb-12">
                      <h3 className="text-3xl font-black text-white uppercase tracking-tighter mb-4">Lab Memories</h3>
