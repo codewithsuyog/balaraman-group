@@ -1015,7 +1015,6 @@ export default function Home() {
             <div className="w-full max-w-5xl mb-12">
                <GallerySlideshow />
             </div>
-
             {/* Slideshow 2: Lab Research Media (Images + Videos) */}
             <div className="w-full max-w-5xl mb-16">
               <div className="flex items-center justify-center gap-4 mb-8">
@@ -1025,32 +1024,6 @@ export default function Home() {
               </div>
               <LabMediaShowcase />
             </div>
-
-            {/* Cards: Enter Gallery & View Memories */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl mb-12">
-               {/* Card 1: Lab Images & Videos */}
-               <Link href="/gallery?tab=images" className="group relative aspect-square md:aspect-auto md:h-[400px] rounded-[3rem] overflow-hidden border border-white/10 hover:border-pink-500/30 transition-all duration-500 bg-white/5 flex items-center justify-center shadow-2xl">
-                  <div className="absolute inset-0 bg-[url('/images/lab-images/5.jpg')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-all duration-700 group-hover:scale-105"></div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-                  <div className="relative z-10 flex flex-col items-center justify-center p-8 text-center mt-auto pb-12">
-                     <h3 className="text-3xl font-black text-white uppercase tracking-tighter mb-4">Lab Images & Videos</h3>
-                     <p className="text-white/60 font-light text-sm mb-6 max-w-xs mx-auto">Explore our scientific facilities, instruments, and research media.</p>
-                     <span className="px-6 py-3 rounded-full border border-white/20 text-white text-[10px] uppercase tracking-widest font-bold group-hover:bg-pink-500 group-hover:border-pink-500 group-hover:text-white transition-all shadow-lg backdrop-blur-md">Enter Gallery</span>
-                  </div>
-               </Link>
-
-               {/* Card 2: Lab Memories */}
-               <Link href="/gallery?tab=memories" className="group relative aspect-square md:aspect-auto md:h-[400px] rounded-[3rem] overflow-hidden border border-white/10 hover:border-blue-500/30 transition-all duration-500 bg-white/5 flex items-center justify-center shadow-2xl">
-                  <div className="absolute inset-0 bg-[url('/images/gallery/1.jpg')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-all duration-700 group-hover:scale-105"></div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-                  <div className="relative z-10 flex flex-col items-center justify-center p-8 text-center mt-auto pb-12">
-                     <h3 className="text-3xl font-black text-white uppercase tracking-tighter mb-4">Lab Memories</h3>
-                     <p className="text-white/60 font-light text-sm mb-6 max-w-xs mx-auto">Glimpses of our vibrant group life, farewells, and celebrations.</p>
-                     <span className="px-6 py-3 rounded-full border border-white/20 text-white text-[10px] uppercase tracking-widest font-bold group-hover:bg-blue-500 group-hover:border-blue-500 group-hover:text-white transition-all shadow-lg backdrop-blur-md">View Memories</span>
-                  </div>
-               </Link>
-            </div>
-
             <Link href="/gallery" className="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-pink-500/30 text-pink-400 font-bold hover:bg-pink-500/10 transition-all uppercase text-[10px] tracking-widest font-mono">
                View Full Gallery <ArrowRight size={18} />
             </Link>
