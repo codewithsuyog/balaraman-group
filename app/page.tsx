@@ -672,7 +672,7 @@ export default function Home() {
                  alt="Dr. Ekambaram Balaraman" 
                  fill
                  sizes="(max-width: 768px) 100vw, 33vw"
-                 className="object-cover object-top transition-all duration-700 group-hover:scale-105" 
+                 className="object-cover object-[center_10%] transition-all duration-700 group-hover:scale-105" 
                />
              </div>
             
