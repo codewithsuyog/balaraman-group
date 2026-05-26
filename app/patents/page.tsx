@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React from 'react';
 import { motion } from 'framer-motion';
@@ -16,16 +16,16 @@ const fadeUp: any = {
 const PatentCard = ({ patent, type }: { patent: any, type: string }) => (
   <motion.div 
     variants={fadeUp}
-    className="group p-8 rounded-[2.5rem] bg-white/5 border border-white/10 hover:border-blue-500/30 transition-all duration-500 flex flex-col h-full"
+    className="group p-8 rounded-[2.5rem] bg-white/5 border border-white/10 hover:border-amber-500/30 transition-all duration-500 flex flex-col h-full"
   >
     <div className="flex items-center gap-3 mb-6">
-      <span className="px-3 py-1 rounded bg-blue-500/10 text-blue-400 text-[10px] font-black tracking-widest uppercase border border-blue-500/20">
+      <span className="px-3 py-1 rounded bg-amber-500/10 text-amber-400 text-[10px] font-black tracking-widest uppercase border border-amber-500/20">
         {type}
       </span>
       {patent.year && <span className="text-[10px] font-mono text-white/30">{patent.year}</span>}
     </div>
     
-    <h3 className="text-xl font-bold text-white mb-4 leading-tight group-hover:text-blue-400 transition-colors">
+    <h3 className="text-xl font-bold text-white mb-4 leading-tight group-hover:text-amber-400 transition-colors">
       {patent.title}
     </h3>
     
@@ -39,7 +39,7 @@ const PatentCard = ({ patent, type }: { patent: any, type: string }) => (
       {patent.number && (
         <div className="flex gap-2">
           <span className="text-[10px] font-mono text-white/20 uppercase shrink-0 mt-1">Number:</span>
-          <p className="text-sm text-blue-400 font-mono">{patent.number}</p>
+          <p className="text-sm text-amber-400 font-mono">{patent.number}</p>
         </div>
       )}
       {patent.coapplicant && (
@@ -60,12 +60,12 @@ const PatentCard = ({ patent, type }: { patent: any, type: string }) => (
 
 export default function PatentsPage() {
   return (
-    <main className="min-h-screen bg-[#050505] text-white pt-32 pb-20 px-6">
+    <main className="min-h-screen bg-[#0d1117] text-white pt-32 pb-20 px-6">
       <div className="max-w-7xl mx-auto">
         <motion.div initial="hidden" animate="visible" variants={fadeUp} className="mb-20">
           <div className="flex items-center gap-4 mb-8">
-            <div className="h-px w-12 bg-blue-500"></div>
-            <p className="text-[10px] font-mono text-blue-400 tracking-[0.4em] uppercase">Intellectual Property</p>
+            <div className="h-px w-12 bg-amber-500"></div>
+            <p className="text-[10px] font-mono text-amber-400 tracking-[0.4em] uppercase">Intellectual Property</p>
           </div>
           <h1 className="text-5xl md:text-8xl font-black tracking-tighter mb-8 uppercase leading-none">
             Patents & <br className="hidden md:block"/> Innovations
@@ -79,7 +79,7 @@ export default function PatentsPage() {
           {/* IISER Tirupati Patents */}
           <section>
             <div className="flex items-center justify-between mb-12 border-b border-white/5 pb-6">
-              <h2 className="text-2xl font-black uppercase tracking-widest text-blue-500 flex items-center gap-4">
+              <h2 className="text-2xl font-black uppercase tracking-widest text-amber-500 flex items-center gap-4">
                 <FileText size={24} /> Recent Filings (IISER Tirupati)
               </h2>
             </div>

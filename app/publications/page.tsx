@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
@@ -31,12 +31,12 @@ const PublicationCard = ({ pub, idx, fadeUp }: any) => {
       viewport={{ once: true }}
       variants={fadeUp}
       transition={{ delay: (idx % 10) * 0.05 }}
-      className="group relative flex flex-col gap-8 p-10 rounded-[3rem] bg-white/[0.03] border border-white/10 hover:border-blue-500/30 hover:bg-white/5 transition-all duration-500 shadow-xl overflow-hidden"
+      className="group relative flex flex-col gap-8 p-10 rounded-[3rem] bg-white/[0.03] border border-white/10 hover:border-amber-500/30 hover:bg-white/5 transition-all duration-500 shadow-xl overflow-hidden"
     >
       <div className="flex flex-col md:flex-row gap-8 items-start">
         {/* Cover Image - Left */}
         {hasCover && (
-          <div className="w-[120px] h-48 rounded-2xl bg-white border border-white/10 overflow-hidden relative group-hover:border-blue-500/40 transition-all p-2 shadow-2xl shrink-0">
+          <div className="w-[120px] h-48 rounded-2xl bg-white border border-white/10 overflow-hidden relative group-hover:border-amber-500/40 transition-all p-2 shadow-2xl shrink-0">
             <img 
               key={`cover-archive-${pub.id}-${coverExtIdx}`}
               src={coverFailed ? "/logo.png" : `/images/publications/covers/${pub.id}${extensions[coverExtIdx]}`} 
@@ -45,14 +45,14 @@ const PublicationCard = ({ pub, idx, fadeUp }: any) => {
               className={`w-full h-full object-contain ${coverFailed ? 'opacity-20 p-4' : ''}`}
               onError={() => coverExtIdx < extensions.length - 1 ? setCoverExtIdx(prev => prev + 1) : setCoverFailed(true)}
             />
-            <div className="absolute top-2 left-2 px-1.5 py-0.5 bg-black/50 backdrop-blur-md rounded text-[6px] font-mono uppercase tracking-widest text-white/40">Cover</div>
+            <div className="absolute top-2 left-2 px-1.5 py-0.5 bg-[#090c10]/50 backdrop-blur-md rounded text-[6px] font-mono uppercase tracking-widest text-white/40">Cover</div>
           </div>
         )}
 
         {/* Paper Details - Center */}
         <div className="flex-1 flex flex-col justify-center min-w-0">
           <div className="flex items-center gap-3 mb-4">
-            <span className="px-4 py-1.5 rounded-full bg-blue-500/10 text-blue-400 text-[10px] font-black tracking-widest uppercase border border-blue-500/20">
+            <span className="px-4 py-1.5 rounded-full bg-amber-500/10 text-amber-400 text-[10px] font-black tracking-widest uppercase border border-amber-500/20">
               {pub.year}
             </span>
             {pub.journal && pub.journal.length < 20 && (
@@ -60,8 +60,8 @@ const PublicationCard = ({ pub, idx, fadeUp }: any) => {
             )}
           </div>
           
-          <div className="text-base text-white/80 leading-relaxed mb-6 font-light border-l-2 border-blue-500/30 pl-6">
-            <span className="text-blue-400 font-bold mr-2 text-lg">{pub.id}.</span>
+          <div className="text-base text-white/80 leading-relaxed mb-6 font-light border-l-2 border-amber-500/30 pl-6">
+            <span className="text-amber-400 font-bold mr-2 text-lg">{pub.id}.</span>
             {pub.title && (
               <strong className="block text-white text-lg font-bold mb-2 leading-snug tracking-tight not-italic">{pub.title}</strong>
             )}
@@ -74,7 +74,7 @@ const PublicationCard = ({ pub, idx, fadeUp }: any) => {
                 href={pub.doi.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`} 
                 target="_blank" 
                 rel="noreferrer" 
-                className="px-8 py-4 rounded-full bg-blue-600/10 border border-blue-600/30 text-blue-400 text-xs font-bold flex items-center gap-2 hover:bg-blue-500 hover:text-white shadow-lg shadow-blue-600/10 transition-all uppercase tracking-widest w-max"
+                className="px-8 py-4 rounded-full bg-amber-600/10 border border-amber-600/30 text-amber-400 text-xs font-bold flex items-center gap-2 hover:bg-amber-500 hover:text-white shadow-lg shadow-amber-600/10 transition-all uppercase tracking-widest w-max"
               >
                 Read Publication <ExternalLink size={14} />
               </a>
@@ -84,7 +84,7 @@ const PublicationCard = ({ pub, idx, fadeUp }: any) => {
 
         {/* Scheme Image - Right */}
         {hasScheme && (
-          <div className="w-full md:w-[300px] h-48 rounded-2xl bg-white border border-white/10 overflow-hidden relative group-hover:border-blue-500/40 transition-all shadow-2xl p-2 shrink-0">
+          <div className="w-full md:w-[300px] h-48 rounded-2xl bg-white border border-white/10 overflow-hidden relative group-hover:border-amber-500/40 transition-all shadow-2xl p-2 shrink-0">
             <img 
               key={`scheme-archive-${pub.id}-${schemeExtIdx}`}
               src={schemeFailed ? "/logo.png" : `/images/publications/schemes/${pub.id}${extensions[schemeExtIdx]}`} 
@@ -93,7 +93,7 @@ const PublicationCard = ({ pub, idx, fadeUp }: any) => {
               className={`w-full h-full object-contain ${schemeFailed ? 'opacity-20 p-4' : ''}`}
               onError={() => schemeExtIdx < extensions.length - 1 ? setSchemeExtIdx(prev => prev + 1) : setSchemeFailed(true)}
             />
-            <div className="absolute top-2 left-2 px-1.5 py-0.5 bg-black/50 backdrop-blur-md rounded text-[6px] font-mono uppercase tracking-widest text-white/40">Scheme</div>
+            <div className="absolute top-2 left-2 px-1.5 py-0.5 bg-[#090c10]/50 backdrop-blur-md rounded text-[6px] font-mono uppercase tracking-widest text-white/40">Scheme</div>
           </div>
         )}
       </div>
@@ -131,14 +131,14 @@ export default function PublicationsPage() {
   }, [publicationsByYear, activeTab]);
 
   return (
-    <main className="min-h-screen bg-[#050505] text-white selection:bg-blue-500/30">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[50vh] bg-blue-600/5 blur-[120px] rounded-full pointer-events-none"></div>
+    <main className="min-h-screen bg-[#0d1117] text-white selection:bg-amber-500/30">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[50vh] bg-amber-600/5 blur-[120px] rounded-full pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-6 py-24 relative z-10">
         
         {/* Header */}
         <motion.div initial="hidden" animate="visible" variants={fadeUp} className="mb-20">
-          <Link href="/#publications" className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 font-bold mb-8 transition-colors">
+          <Link href="/#publications" className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 font-bold mb-8 transition-colors">
             <ArrowLeft size={20} /> Back to Home
           </Link>
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">Publications Archive</h1>
@@ -153,8 +153,8 @@ export default function PublicationsPage() {
             onClick={() => setActiveTab('independent')} 
             className={`px-8 py-4 rounded-full text-sm font-bold uppercase tracking-widest transition-all ${
               activeTab === 'independent' 
-                ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30' 
-                : 'bg-white/5 text-white/40 border border-white/10 hover:border-blue-500/30 hover:text-white/70'
+                ? 'bg-amber-600 text-white shadow-lg shadow-amber-600/30' 
+                : 'bg-white/5 text-white/40 border border-white/10 hover:border-amber-500/30 hover:text-white/70'
             }`}
           >
             Independent Career Publications
@@ -163,8 +163,8 @@ export default function PublicationsPage() {
             onClick={() => setActiveTab('early')} 
             className={`px-8 py-4 rounded-full text-sm font-bold uppercase tracking-widest transition-all ${
               activeTab === 'early' 
-                ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30' 
-                : 'bg-white/5 text-white/40 border border-white/10 hover:border-blue-500/30 hover:text-white/70'
+                ? 'bg-amber-600 text-white shadow-lg shadow-amber-600/30' 
+                : 'bg-white/5 text-white/40 border border-white/10 hover:border-amber-500/30 hover:text-white/70'
             }`}
           >
             Doctoral & Postdoctoral Publications
@@ -176,10 +176,10 @@ export default function PublicationsPage() {
           {filteredByYear.map(([year, pubs], yearIdx) => (
             <div key={year} className="relative">
               <div className="sticky top-24 z-20 mb-12 inline-block">
-                <h2 className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-white/50 drop-shadow-2xl">
+                <h2 className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-white/50 drop-shadow-2xl">
                   {year}
                 </h2>
-                <div className="h-1 w-1/2 bg-blue-500/50 mt-2 rounded-full"></div>
+                <div className="h-1 w-1/2 bg-amber-500/50 mt-2 rounded-full"></div>
               </div>
               
               <div className="grid grid-cols-1 gap-8 md:pl-12 border-l border-white/5">

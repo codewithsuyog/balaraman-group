@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
@@ -13,14 +13,14 @@ const fadeUp: any = {
 
 export default function AlumniPage() {
   return (
-    <main className="min-h-screen bg-[#050505] text-white selection:bg-blue-500/30">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[50vh] bg-blue-600/5 blur-[120px] rounded-full pointer-events-none"></div>
+    <main className="min-h-screen bg-[#0d1117] text-white selection:bg-amber-500/30">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[50vh] bg-amber-600/5 blur-[120px] rounded-full pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-6 py-24 relative z-10">
         
         {/* Header */}
         <motion.div initial="hidden" animate="visible" variants={fadeUp} className="mb-20">
-          <Link href="/#team" className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 font-bold mb-8 transition-colors">
+          <Link href="/#team" className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 font-bold mb-8 transition-colors">
             <ArrowLeft size={20} /> Back to Lab Members
           </Link>
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">Alumni Registry</h1>
@@ -34,7 +34,7 @@ export default function AlumniPage() {
           {team.alumniPhd && team.alumniPhd.length > 0 && (
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
               <h2 className="text-3xl font-bold mb-10 flex items-center gap-4 text-white">
-                <GraduationCap className="text-blue-400" size={32} /> Doctoral Alumni
+                <GraduationCap className="text-amber-400" size={32} /> Doctoral Alumni
               </h2>
               <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse min-w-[800px] bg-white/[0.02] rounded-2xl overflow-hidden border border-white/5">
@@ -52,7 +52,7 @@ export default function AlumniPage() {
                         <td className="p-6 font-bold text-white/90 text-lg">{alumnus.name}</td>
                         <td className="p-6 text-sm text-[var(--color-muted)] font-mono">{alumnus.duration || alumnus.year}</td>
                         <td className="p-6 text-xs text-white/70 leading-relaxed max-w-sm italic">{alumnus.thesis || alumnus.title}</td>
-                        <td className="p-6 text-sm text-blue-400 font-medium">{alumnus.present}</td>
+                        <td className="p-6 text-sm text-amber-400 font-medium">{alumnus.present}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -68,7 +68,7 @@ export default function AlumniPage() {
                 <h3 className="text-2xl font-bold mb-6 text-white border-b border-white/10 pb-4">M.Sc. Thesis Alumni</h3>
                 <ul className="grid grid-cols-1 gap-3">
                   {team.mscAlumni.map((name: string, idx: number) => (
-                    <li key={idx} className="text-sm text-white/70 font-light bg-white/5 px-4 py-3 rounded-lg border border-white/5 hover:border-blue-500/20 transition-colors">
+                    <li key={idx} className="text-sm text-white/70 font-light bg-white/5 px-4 py-3 rounded-lg border border-white/5 hover:border-amber-500/20 transition-colors">
                       {name}
                     </li>
                   ))}
@@ -96,7 +96,7 @@ export default function AlumniPage() {
                 <h3 className="text-2xl font-bold mb-6 text-white border-b border-white/10 pb-4">Semester & Summer Project Students</h3>
                 <ul className="grid grid-cols-1 gap-3">
                   {team.summerStudents.map((name: string, idx: number) => (
-                    <li key={idx} className="text-sm text-white/70 font-light bg-white/5 px-4 py-3 rounded-lg border border-white/5 hover:border-blue-500/20 transition-colors">
+                    <li key={idx} className="text-sm text-white/70 font-light bg-white/5 px-4 py-3 rounded-lg border border-white/5 hover:border-amber-500/20 transition-colors">
                       {name}
                     </li>
                   ))}
@@ -125,7 +125,7 @@ export default function AlumniPage() {
                   <h3 className="text-2xl font-bold mb-6 text-white border-b border-white/10 pb-4">Undergraduate Alumni</h3>
                   <ul className="grid grid-cols-1 gap-3">
                     {team.ugAlumni.map((name: string, idx: number) => (
-                      <li key={idx} className="text-sm text-white/70 font-light bg-white/5 px-4 py-3 rounded-lg border border-white/5 hover:border-blue-500/20 transition-colors">
+                      <li key={idx} className="text-sm text-white/70 font-light bg-white/5 px-4 py-3 rounded-lg border border-white/5 hover:border-amber-500/20 transition-colors">
                         {name}
                       </li>
                     ))}

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -34,7 +34,7 @@ const PublicationLink = ({ pub }: { pub: any }) => {
   const [coverExtIdx, setCoverExtIdx] = useState(0);
 
   return (
-    <div className="group/pub flex flex-col md:flex-row gap-6 p-6 rounded-[2rem] bg-white/5 border border-white/5 hover:border-blue-500/20 hover:bg-white/10 transition-all">
+    <div className="group/pub flex flex-col md:flex-row gap-6 p-6 rounded-[2rem] bg-white/5 border border-white/5 hover:border-amber-500/20 hover:bg-white/10 transition-all">
       <div className="w-20 h-24 rounded-lg bg-white overflow-hidden flex-shrink-0 border border-white/10 p-1">
             <img 
                src={coverFailed ? "/logo.png" : `/images/publications/covers/${pub.id}${extensions[coverExtIdx]}`} 
@@ -45,7 +45,7 @@ const PublicationLink = ({ pub }: { pub: any }) => {
       </div>
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2 mb-2">
-          <span className="text-[10px] font-bold text-blue-400 px-2 py-0.5 rounded bg-blue-500/10 border border-blue-500/20">{pub.year}</span>
+          <span className="text-[10px] font-bold text-amber-400 px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/20">{pub.year}</span>
         </div>
         {pub.title && (
           <p className="text-sm font-bold text-white mb-1 leading-snug">{pub.title}</p>
@@ -56,7 +56,7 @@ const PublicationLink = ({ pub }: { pub: any }) => {
             href={pub.doi.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`} 
             target="_blank" 
             rel="noreferrer" 
-            className="inline-flex items-center gap-2 mt-3 text-[10px] font-bold text-blue-500/80 hover:text-blue-400 transition-colors"
+            className="inline-flex items-center gap-2 mt-3 text-[10px] font-bold text-amber-500/80 hover:text-amber-400 transition-colors"
           >
             DOI: {pub.doi} <ExternalLink size={10} />
           </a>
@@ -76,12 +76,12 @@ const FeaturedPublication = ({ pub }: { pub: any }) => {
   return (
     <motion.div 
       initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-      className="group relative flex flex-col gap-8 p-10 rounded-[3rem] bg-white/[0.03] border border-white/10 hover:border-blue-500/30 transition-all duration-500"
+      className="group relative flex flex-col gap-8 p-10 rounded-[3rem] bg-white/[0.03] border border-white/10 hover:border-amber-500/30 transition-all duration-500"
     >
       <div className="flex flex-col md:flex-row gap-12 items-start">
         <div className="flex-1">
           <div className="flex items-center gap-3 mb-4">
-            <span className="px-4 py-1.5 rounded-full bg-blue-500/10 text-blue-400 text-[10px] font-black tracking-widest uppercase border border-blue-500/20">
+            <span className="px-4 py-1.5 rounded-full bg-amber-500/10 text-amber-400 text-[10px] font-black tracking-widest uppercase border border-amber-500/20">
               {pub.year}
             </span>
             <span className="text-xs text-white/30 font-mono italic">{pub.journal}</span>
@@ -89,8 +89,8 @@ const FeaturedPublication = ({ pub }: { pub: any }) => {
           {pub.title && (
             <h3 className="text-xl font-bold text-white mb-4 leading-snug tracking-tight">{pub.title}</h3>
           )}
-          <div className="text-sm text-white/60 font-light leading-relaxed mb-8 border-l-2 border-blue-500/30 pl-6">
-            <span className="text-blue-400 font-bold mr-2">{pub.id}.</span>
+          <div className="text-sm text-white/60 font-light leading-relaxed mb-8 border-l-2 border-amber-500/30 pl-6">
+            <span className="text-amber-400 font-bold mr-2">{pub.id}.</span>
             {pub.fullText || `${pub.authors}. ${pub.title}. ${pub.journal}, ${pub.year}${pub.details}`}
           </div>
           <div className="flex items-center gap-4">
@@ -99,7 +99,7 @@ const FeaturedPublication = ({ pub }: { pub: any }) => {
                 href={pub.doi.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`} 
                 target="_blank" 
                 rel="noreferrer" 
-                className="px-8 py-4 rounded-full bg-blue-600 text-white text-xs font-bold flex items-center gap-2 hover:bg-blue-500 transition-all shadow-lg shadow-blue-600/20 uppercase tracking-widest"
+                className="px-8 py-4 rounded-full bg-amber-600 text-white text-xs font-bold flex items-center gap-2 hover:bg-amber-500 transition-all shadow-lg shadow-amber-600/20 uppercase tracking-widest"
               >
                 Read Publication <ExternalLink size={14} />
               </a>
@@ -108,23 +108,23 @@ const FeaturedPublication = ({ pub }: { pub: any }) => {
         </div>
         
         <div className="w-full md:w-[45%] flex flex-col sm:flex-row gap-6 items-center">
-           <div className="w-[140px] h-56 rounded-2xl bg-white border border-white/10 overflow-hidden relative group-hover:border-blue-500/40 transition-all p-2 shadow-2xl shrink-0">
+           <div className="w-[140px] h-56 rounded-2xl bg-white border border-white/10 overflow-hidden relative group-hover:border-amber-500/40 transition-all p-2 shadow-2xl shrink-0">
              <img 
                src={coverFailed ? "/logo.png" : `/images/publications/covers/${pub.id}${extensions[coverExtIdx]}`} 
                alt="Cover" 
                className={`w-full h-full object-contain ${coverFailed ? 'opacity-20' : ''}`}
                onError={() => coverExtIdx < extensions.length - 1 ? setCoverExtIdx(coverExtIdx + 1) : setCoverFailed(true)}
              />
-             <div className="absolute top-2 left-2 px-1.5 py-0.5 bg-black/50 backdrop-blur-md rounded text-[6px] font-mono uppercase tracking-widest text-white/40">Cover</div>
+             <div className="absolute top-2 left-2 px-1.5 py-0.5 bg-[#090c10]/50 backdrop-blur-md rounded text-[6px] font-mono uppercase tracking-widest text-white/40">Cover</div>
            </div>
-           <div className="flex-1 w-full h-56 rounded-2xl bg-white border border-white/10 overflow-hidden relative group-hover:border-blue-500/40 transition-all p-2 shadow-2xl">
+           <div className="flex-1 w-full h-56 rounded-2xl bg-white border border-white/10 overflow-hidden relative group-hover:border-amber-500/40 transition-all p-2 shadow-2xl">
              <img 
                src={schemeFailed ? "/logo.png" : `/images/publications/schemes/${pub.id}${extensions[schemeExtIdx]}`} 
                alt="Scheme" 
                className={`w-full h-full object-contain ${schemeFailed ? 'opacity-20' : ''}`}
                onError={() => schemeExtIdx < extensions.length - 1 ? setSchemeExtIdx(schemeExtIdx + 1) : setSchemeFailed(true)}
              />
-             <div className="absolute top-2 left-2 px-1.5 py-0.5 bg-black/50 backdrop-blur-md rounded text-[6px] font-mono uppercase tracking-widest text-white/40">Scheme</div>
+             <div className="absolute top-2 left-2 px-1.5 py-0.5 bg-[#090c10]/50 backdrop-blur-md rounded text-[6px] font-mono uppercase tracking-widest text-white/40">Scheme</div>
            </div>
         </div>
       </div>
@@ -159,7 +159,7 @@ const TeamMemberThumb = ({ member, role }: { member: any, role: string }) => {
 
   return (
     <div className="flex flex-col items-start text-left group">
-      <div className="w-full aspect-[3/4] rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden mb-4 group-hover:border-blue-500/30 transition-all">
+      <div className="w-full aspect-[3/4] rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden mb-4 group-hover:border-amber-500/30 transition-all">
         <img 
           src={showImage ? src : "/logo.png"} 
           alt={member.name} 
@@ -168,7 +168,7 @@ const TeamMemberThumb = ({ member, role }: { member: any, role: string }) => {
         />
       </div>
       <span className="text-[10px] font-bold text-white uppercase tracking-wider truncate w-full mb-1">{member.name}</span>
-      <span className="text-[9px] font-mono text-blue-400 uppercase tracking-widest mb-2">{role}</span>
+      <span className="text-[9px] font-mono text-amber-400 uppercase tracking-widest mb-2">{role}</span>
       {member.info && (
         <p className="text-[10px] text-white/80 leading-relaxed mb-2 font-light">
           {member.info.split(',').map((part: string, idx: number) => (
@@ -177,7 +177,7 @@ const TeamMemberThumb = ({ member, role }: { member: any, role: string }) => {
         </p>
       )}
       {member.email && (
-        <a href={`mailto:${member.email}`} className="text-[10px] text-blue-400 hover:text-blue-300 transition-colors truncate w-full flex items-center gap-1 mt-auto pt-2">
+        <a href={`mailto:${member.email}`} className="text-[10px] text-amber-400 hover:text-amber-300 transition-colors truncate w-full flex items-center gap-1 mt-auto pt-2">
           <Mail size={10} /> {member.email}
         </a>
       )}
@@ -286,13 +286,13 @@ const GallerySlideshow = () => {
       </div>
       <button 
         onClick={() => setCurrentIndex((prev) => (prev - 1 + images.length) % images.length)}
-        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/30 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/50"
+        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#090c10]/30 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[#090c10]/50"
       >
         <ArrowLeft size={16} />
       </button>
       <button 
         onClick={() => setCurrentIndex((prev) => (prev + 1) % images.length)}
-        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/30 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/50"
+        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#090c10]/30 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[#090c10]/50"
       >
         <ArrowRight size={16} />
       </button>
@@ -365,7 +365,7 @@ const LabMediaShowcase = () => {
   return (
     <div className="w-full flex flex-col md:flex-row gap-6 relative group">
       {/* ── Images Section ── */}
-      <div className="w-full md:w-1/2 relative overflow-hidden rounded-3xl bg-black border border-white/10 shadow-2xl aspect-square md:aspect-[4/3] bg-gradient-to-br from-gray-900 to-black">
+      <div className="w-full md:w-1/2 relative overflow-hidden rounded-3xl bg-[#090c10] border border-white/10 shadow-2xl aspect-square md:aspect-[4/3] bg-gradient-to-br from-gray-900 to-black">
         <div className="absolute top-6 left-6 z-30 flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-xl border text-[10px] font-mono uppercase tracking-widest transition-all bg-cyan-500/20 border-cyan-500/40 text-cyan-300">
           <Microscope size={12} /> Lab Images
           <span className="text-[9px] text-cyan-300/50">{imgIdx + 1}/{LAB_IMAGES.length}</span>
@@ -407,18 +407,18 @@ const LabMediaShowcase = () => {
 
           {/* Nav arrows */}
           <button onClick={() => setImgIdx((p) => (p - 1 + LAB_IMAGES.length) % LAB_IMAGES.length)}
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/30 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/50 z-20">
+            className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#090c10]/30 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[#090c10]/50 z-20">
             <ArrowLeft size={16} />
           </button>
           <button onClick={() => setImgIdx((p) => (p + 1) % LAB_IMAGES.length)}
-            className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/30 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/50 z-20">
+            className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#090c10]/30 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[#090c10]/50 z-20">
             <ArrowRight size={16} />
           </button>
         </div>
       </div>
 
       {/* ── Videos Section ── */}
-      <div className="w-full md:w-1/2 relative overflow-hidden rounded-3xl bg-black border border-white/10 shadow-2xl aspect-square md:aspect-[4/3] bg-gradient-to-br from-gray-900 to-black">
+      <div className="w-full md:w-1/2 relative overflow-hidden rounded-3xl bg-[#090c10] border border-white/10 shadow-2xl aspect-square md:aspect-[4/3] bg-gradient-to-br from-gray-900 to-black">
         <div className="absolute top-6 left-6 z-30 flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-xl border text-[10px] font-mono uppercase tracking-widest transition-all bg-red-500/20 border-red-500/40 text-red-300">
           <Video size={12} /> Videos
         </div>
@@ -461,16 +461,16 @@ const LabMediaShowcase = () => {
               </div>
 
               <button onClick={() => setVidIdx((p) => (p - 1 + LAB_VIDEOS.length) % LAB_VIDEOS.length)}
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/30 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/50 z-20">
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#090c10]/30 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[#090c10]/50 z-20">
                 <ArrowLeft size={16} />
               </button>
               <button onClick={() => setVidIdx((p) => (p + 1) % LAB_VIDEOS.length)}
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/30 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/50 z-20">
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#090c10]/30 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[#090c10]/50 z-20">
                 <ArrowRight size={16} />
               </button>
             </>
           ) : (
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-black">
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#090c10]">
               <iframe 
                 className="w-full h-full border-0"
                 src="https://www.youtube.com/embed/your-lab-tour-id" 
@@ -536,7 +536,7 @@ export default function Home() {
         id: 'homogeneous',
         title: "Homogeneous Catalysis",
         image: "/images/research/organometallic.png",
-        icon: <FlaskConical className="text-blue-400" />,
+        icon: <FlaskConical className="text-amber-400" />,
         desc: "Molecularly-defined pincer complexes and metal-ligand cooperation for selective transformations.",
         details: "We design and develop well-defined transition-metal pincer complexes for C-C, C-N bond forming reactions, acceptorless dehydrogenation, hydrogenation, and borrowing hydrogen strategies using earth-abundant metals."
       },
@@ -576,7 +576,7 @@ export default function Home() {
                 {activeSection === link.id && (
                   <motion.div 
                     layoutId="activePill"
-                    className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full -z-10 shadow-[0_0_20px_rgba(37,99,235,0.4)]"
+                    className="absolute inset-0 bg-gradient-to-r from-amber-600 to-amber-400 rounded-full -z-10 shadow-[0_0_20px_rgba(245,158,11,0.4)]"
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
                 )}
@@ -605,7 +605,7 @@ export default function Home() {
               {activeSection === link.id && (
                 <motion.div 
                   layoutId="activePill"
-                  className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full -z-10 shadow-[0_0_20px_rgba(37,99,235,0.4)]"
+                  className="absolute inset-0 bg-gradient-to-r from-amber-600 to-amber-400 rounded-full -z-10 shadow-[0_0_20px_rgba(245,158,11,0.4)]"
                   transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                 />
               )}
@@ -658,43 +658,43 @@ export default function Home() {
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24 items-start relative">
           
           <div className="w-full lg:w-1/3 sticky top-32">
-            <div className="absolute inset-0 bg-blue-500/20 blur-[80px] rounded-full -z-10"></div>
+            <div className="absolute inset-0 bg-amber-500/20 blur-[80px] rounded-full -z-10"></div>
             <div className="w-full aspect-[3/4] rounded-[3rem] border border-white/10 relative overflow-hidden group cursor-crosshair shadow-2xl bg-white/5">
                <div className="absolute inset-0 bg-[url('/images/pi/pi-profile.jpg')] bg-cover bg-top transition-all duration-700 group-hover:scale-105"></div>
             </div>
             
             <div className="mt-8 flex flex-col items-center gap-3">
                <div className="flex justify-center gap-6">
-                 <a href={piStats.googleScholar} target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-blue-400 hover:border-blue-500 transition-all" title="Google Scholar">
+                 <a href={piStats.googleScholar} target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-amber-400 hover:border-amber-500 transition-all" title="Google Scholar">
                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269z"/><circle cx="12" cy="16.5" r="5.5"/></svg>
                  </a>
                  <a href={`https://orcid.org/${piStats.orcid}`} target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-emerald-400 hover:border-emerald-500 transition-all" title="ORCID">
                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-1.847-1.188-3.722-3.978-3.722h-2.341z"/></svg>
                  </a>
-                 <a href="mailto:eb.raman@iisertirupati.ac.in" className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-blue-400 hover:border-blue-500 transition-all" title="Email"><Mail size={20} /></a>
+                 <a href="mailto:eb.raman@iisertirupati.ac.in" className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-amber-400 hover:border-amber-500 transition-all" title="Email"><Mail size={20} /></a>
                </div>
                <p className="text-sm md:text-base font-mono text-white/60 tracking-wider">eb.raman@iisertirupati.ac.in</p>
             </div>
           </div>
           
           <div className="w-full lg:w-2/3 flex flex-col">
-            <div className="inline-flex items-center gap-3 px-4 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-mono uppercase tracking-[0.3em] mb-6">Principal Investigator</div>
+            <div className="inline-flex items-center gap-3 px-4 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-[10px] font-mono uppercase tracking-[0.3em] mb-6">Principal Investigator</div>
             <h2 className="text-5xl md:text-7xl font-black mb-4 tracking-tighter text-white">Dr. Ekambaram Balaraman</h2>
-            <h3 className="text-xl text-blue-400 mb-8 font-light tracking-tight">Associate Professor & Chair, Department of Chemistry, IISER Tirupati</h3>
+            <h3 className="text-xl text-amber-400 mb-8 font-light tracking-tight">Associate Professor & Chair, Department of Chemistry, IISER Tirupati</h3>
             
-            <p className="text-lg md:text-xl text-white/80 font-light leading-relaxed mb-12 italic border-l-4 border-blue-500 pl-8">
+            <p className="text-lg md:text-xl text-white/80 font-light leading-relaxed mb-12 italic border-l-4 border-amber-500 pl-8">
               "Leading the frontier of sustainable catalysis and molecular engineering through innovative transition-metal systems."
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 mb-16">
               {piBio.map((item: any, idx) => (
                 <div key={idx} className="flex flex-col group">
-                  <span className="text-[11px] font-bold text-blue-400 mb-2 font-mono tracking-widest uppercase">{item.year}</span>
-                  <div className="flex-1 border-l-2 border-white/10 pl-6 group-hover:border-blue-500 transition-colors py-2">
-                    <h4 className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors leading-tight mb-2">{item.role}</h4>
+                  <span className="text-[11px] font-bold text-amber-400 mb-2 font-mono tracking-widest uppercase">{item.year}</span>
+                  <div className="flex-1 border-l-2 border-white/10 pl-6 group-hover:border-amber-500 transition-colors py-2">
+                    <h4 className="text-lg font-bold text-white group-hover:text-amber-400 transition-colors leading-tight mb-2">{item.role}</h4>
                     <p className="text-sm text-white/70 font-light leading-relaxed">{item.institution}</p>
                     {item.details && (
-                      <p className="text-xs text-white/50 italic font-light leading-relaxed mt-3 max-w-md border-l-2 border-blue-500/20 pl-4">
+                      <p className="text-xs text-white/50 italic font-light leading-relaxed mt-3 max-w-md border-l-2 border-amber-500/20 pl-4">
                         {item.details}
                       </p>
                     )}
@@ -703,8 +703,8 @@ export default function Home() {
               ))}
             </div>
 
-            <div className="mb-16 p-10 rounded-[3rem] bg-blue-500/5 border border-blue-500/10 italic text-white/90 relative group">
-               <span className="absolute -top-6 -left-4 text-8xl text-blue-500/10 font-serif font-black">&quot;</span>
+            <div className="mb-16 p-10 rounded-[3rem] bg-amber-500/5 border border-amber-500/10 italic text-white/90 relative group">
+               <span className="absolute -top-6 -left-4 text-8xl text-amber-500/10 font-serif font-black">&quot;</span>
                <p className="text-xl md:text-2xl font-light leading-relaxed relative z-10 text-white/70">
                  Take risk in life. If you win, you will lead; if you lose, you will guide.
                </p>
@@ -712,8 +712,8 @@ export default function Home() {
 
             {/* Scholarly Metrics */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
-              <div className="p-6 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-blue-500/30 transition-all text-center group hover:bg-blue-500/5">
-                <div className="text-3xl md:text-4xl font-black text-blue-400 mb-2 drop-shadow-[0_0_10px_rgba(96,165,250,0.3)]">{piStats.publications}</div>
+              <div className="p-6 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-amber-500/30 transition-all text-center group hover:bg-amber-500/5">
+                <div className="text-3xl md:text-4xl font-black text-amber-400 mb-2 drop-shadow-[0_0_10px_rgba(96,165,250,0.3)]">{piStats.publications}</div>
                 <p className="text-[10px] uppercase tracking-widest text-white/90 font-mono font-semibold">Publications</p>
               </div>
               <div className="p-6 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-emerald-500/30 transition-all text-center group hover:bg-emerald-500/5">
@@ -756,12 +756,12 @@ export default function Home() {
 
             <div className="mb-12">
                <h3 className="text-xl font-bold text-white mb-6 uppercase tracking-tight flex items-center gap-3">
-                 <Shield size={20} className="text-blue-500" /> Honours & Awards
+                 <Shield size={20} className="text-amber-500" /> Honours & Awards
                </h3>
                <ul className="space-y-3">
                  {awards.slice(0, 8).map((award, i) => (
                    <li key={i} className="flex items-start gap-3 text-sm text-white/70 font-light leading-relaxed">
-                     <ChevronRight size={14} className="text-blue-500 mt-1 shrink-0" />
+                     <ChevronRight size={14} className="text-amber-500 mt-1 shrink-0" />
                      <span>{award}</span>
                    </li>
                  ))}
@@ -770,9 +770,9 @@ export default function Home() {
 
             <div className="mb-16">
                <h3 className="text-xl font-bold text-white mb-6 uppercase tracking-tight flex items-center gap-3">
-                 <BookOpen size={20} className="text-blue-500" /> Courses Offered
+                 <BookOpen size={20} className="text-amber-500" /> Courses Offered
                </h3>
-               <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-blue-500/30 transition-all max-w-2xl">
+               <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-amber-500/30 transition-all max-w-2xl">
                   <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-white/60 font-light">
                      <li>• CHM 111: Inorganic Chemistry</li>
                      <li>• CHM 211: Coordination Chemistry</li>
@@ -782,10 +782,10 @@ export default function Home() {
             </div>
 
             <div className="flex flex-wrap gap-4">
-               <a href={cvLink} target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 px-10 py-5 rounded-full bg-white text-black font-bold hover:bg-blue-600 hover:text-white transition-all shadow-2xl">
+               <a href={cvLink} target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 px-10 py-5 rounded-full bg-white text-black font-bold hover:bg-amber-600 hover:text-white transition-all shadow-2xl">
                   <Download size={20} /> Download Academic CV
                </a>
-               <a href={piStats.googleScholar} target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 px-8 py-5 rounded-full border border-blue-500/30 text-blue-400 font-bold hover:bg-blue-500/10 transition-all">
+               <a href={piStats.googleScholar} target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 px-8 py-5 rounded-full border border-amber-500/30 text-amber-400 font-bold hover:bg-amber-500/10 transition-all">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269z"/><circle cx="12" cy="16.5" r="5.5"/></svg>
                   Google Scholar
                </a>
@@ -815,7 +815,7 @@ export default function Home() {
                 <div className="flex items-center gap-3 mb-4">
                   <span className={`px-3 py-1 rounded-full text-[10px] font-black tracking-widest uppercase border ${
                     item.type === 'Award' ? 'bg-amber-500/10 border-amber-500/20 text-amber-400' :
-                    item.type === 'Paper' ? 'bg-blue-500/10 border-blue-500/20 text-blue-400' :
+                    item.type === 'Paper' ? 'bg-amber-500/10 border-amber-500/20 text-amber-400' :
                     item.type === 'Joining' ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' :
                     'bg-purple-500/10 border-purple-500/20 text-purple-400'
                   }`}>{item.type}</span>
@@ -839,12 +839,12 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mb-32">
             <div className="flex items-center gap-4 mb-8">
-               <div className="h-px w-12 bg-blue-500"></div>
-               <p className="text-[10px] font-mono text-blue-400 tracking-[0.3em] uppercase">Laboratory Focus</p>
+               <div className="h-px w-12 bg-amber-500"></div>
+               <p className="text-[10px] font-mono text-amber-400 tracking-[0.3em] uppercase">Laboratory Focus</p>
             </div>
             <h2 className="text-5xl md:text-8xl font-black tracking-tight mb-12 text-gradient leading-[0.9]">Research</h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-               <p className="text-xl md:text-2xl text-[var(--color-muted)] font-light leading-relaxed border-l-4 border-blue-500 pl-8 italic">
+               <p className="text-xl md:text-2xl text-[var(--color-muted)] font-light leading-relaxed border-l-4 border-amber-500 pl-8 italic">
                  "Our research centers on organometallic systems and enabling organic transformations via sustainable catalysis. Our primary objective is to generate green energy resources and recycle atmospheric waste."
                </p>
                <div className="space-y-6 text-lg text-white/60 font-light leading-relaxed">
@@ -860,22 +860,22 @@ export default function Home() {
               <motion.div 
                 key={cat.id}
                 initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp}
-                className="group relative h-[450px] md:h-[550px] rounded-[3.5rem] overflow-hidden border border-white/10 shadow-2xl hover:border-blue-500/30 transition-all duration-700"
+                className="group relative h-[450px] md:h-[550px] rounded-[3.5rem] overflow-hidden border border-white/10 shadow-2xl hover:border-amber-500/30 transition-all duration-700"
               >
                 {/* Background Image */}
                 <div className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-110" style={{ backgroundImage: `url(${cat.image})` }}></div>
                 
                 {/* Overlay Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80 group-hover:opacity-100 group-hover:via-blue-900/40 transition-all duration-700"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80 group-hover:opacity-100 group-hover:via-amber-900/40 transition-all duration-700"></div>
                 
                 {/* Content Overlay */}
                 <div className="absolute inset-0 p-12 flex flex-col justify-end items-start text-left">
-                  <span className="text-[10px] font-black text-blue-400 uppercase tracking-[0.4em] mb-4 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">Pillar {idx + 1}</span>
+                  <span className="text-[10px] font-black text-amber-400 uppercase tracking-[0.4em] mb-4 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">Pillar {idx + 1}</span>
                   <h3 className="text-2xl md:text-5xl font-black mb-6 tracking-tighter text-white uppercase leading-[0.8]">{cat.title}</h3>
                   <p className="text-base text-white/70 font-light leading-relaxed mb-8 max-w-sm line-clamp-3 opacity-80 group-hover:opacity-100 transition-all">
                     {cat.details}
                   </p>
-                  <Link href={`/research#${cat.id}`} className="flex items-center gap-3 px-8 py-4 rounded-full glass border border-white/10 text-white text-[10px] font-black uppercase tracking-[0.2em] hover:bg-blue-600 hover:border-blue-600 transition-all">
+                  <Link href={`/research#${cat.id}`} className="flex items-center gap-3 px-8 py-4 rounded-full glass border border-white/10 text-white text-[10px] font-black uppercase tracking-[0.2em] hover:bg-amber-600 hover:border-amber-600 transition-all">
                      Dive Deeper <ArrowRight size={14} />
                   </Link>
                 </div>
@@ -886,14 +886,14 @@ export default function Home() {
       </section>
 
       {/* 4. PUBLICATIONS SECTION */}
-      <section id="publications" className="w-full py-32 px-6 relative z-10 bg-[#050505] border-y border-white/5">
+      <section id="publications" className="w-full py-32 px-6 relative z-10 bg-[#0d1117] border-y border-white/5">
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
               <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-4 text-white uppercase">Publications</h2>
               <p className="text-white/40 font-light">Highlights from our 117+ published works.</p>
             </div>
-            <Link href="/publications" className="px-8 py-4 rounded-full border border-blue-500/30 text-blue-400 font-bold hover:bg-blue-500/10 transition-all flex items-center gap-2 uppercase text-[10px] tracking-widest font-mono">
+            <Link href="/publications" className="px-8 py-4 rounded-full border border-amber-500/30 text-amber-400 font-bold hover:bg-amber-500/10 transition-all flex items-center gap-2 uppercase text-[10px] tracking-widest font-mono">
               View All 117 Publications <ArrowRight size={18} />
             </Link>
           </div>
@@ -912,29 +912,29 @@ export default function Home() {
           <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
               <div className="flex items-center gap-4 mb-6">
-                <div className="h-px w-12 bg-blue-500"></div>
-                <p className="text-[10px] font-mono text-blue-400 tracking-[0.3em] uppercase">Intellectual Property</p>
+                <div className="h-px w-12 bg-amber-500"></div>
+                <p className="text-[10px] font-mono text-amber-400 tracking-[0.3em] uppercase">Intellectual Property</p>
               </div>
               <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-4 text-white uppercase">Patents</h2>
               <p className="text-white/40 font-light">33+ patents filed including {patents.grantedUS.length} granted US patents.</p>
             </div>
-            <Link href="/patents" className="px-8 py-4 rounded-full border border-blue-500/30 text-blue-400 font-bold hover:bg-blue-500/10 transition-all flex items-center gap-2 uppercase text-[10px] tracking-widest font-mono">
+            <Link href="/patents" className="px-8 py-4 rounded-full border border-amber-500/30 text-amber-400 font-bold hover:bg-amber-500/10 transition-all flex items-center gap-2 uppercase text-[10px] tracking-widest font-mono">
               View All Patents <ArrowRight size={18} />
             </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            <div className="p-10 rounded-[3rem] bg-white/[0.03] border border-white/5 hover:border-blue-500/20 transition-all group">
-              <div className="text-5xl font-black text-blue-500 mb-4">{patents.iiser.length + patents.industry.length}</div>
+            <div className="p-10 rounded-[3rem] bg-white/[0.03] border border-white/5 hover:border-amber-500/20 transition-all group">
+              <div className="text-5xl font-black text-amber-500 mb-4">{patents.iiser.length + patents.industry.length}</div>
               <h3 className="text-lg font-bold text-white mb-2 uppercase tracking-tight">Indian Patents</h3>
               <p className="text-white/40 text-sm font-light">Filed at IISER Tirupati & with industry partners</p>
             </div>
-            <div className="p-10 rounded-[3rem] bg-white/[0.03] border border-white/5 hover:border-blue-500/20 transition-all group">
+            <div className="p-10 rounded-[3rem] bg-white/[0.03] border border-white/5 hover:border-amber-500/20 transition-all group">
               <div className="text-5xl font-black text-emerald-500 mb-4">{patents.grantedUS.length}</div>
               <h3 className="text-lg font-bold text-white mb-2 uppercase tracking-tight">Granted US Patents</h3>
               <p className="text-white/40 text-sm font-light">International intellectual property portfolio</p>
             </div>
-            <div className="p-10 rounded-[3rem] bg-white/[0.03] border border-white/5 hover:border-blue-500/20 transition-all group">
+            <div className="p-10 rounded-[3rem] bg-white/[0.03] border border-white/5 hover:border-amber-500/20 transition-all group">
               <div className="text-5xl font-black text-orange-500 mb-4">{patents.industry.length}</div>
               <h3 className="text-lg font-bold text-white mb-2 uppercase tracking-tight">Industry Collaborations</h3>
               <p className="text-white/40 text-sm font-light">GAIL India, Tata Steel & more</p>
@@ -943,16 +943,16 @@ export default function Home() {
 
           <div className="space-y-4">
             {patents.iiser.slice(0, 3).map((p) => (
-              <div key={p.id} className="flex gap-6 p-6 rounded-[2rem] bg-white/[0.02] border border-white/5 hover:border-blue-500/20 transition-all group">
-                <div className="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 shrink-0">
+              <div key={p.id} className="flex gap-6 p-6 rounded-[2rem] bg-white/[0.02] border border-white/5 hover:border-amber-500/20 transition-all group">
+                <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 shrink-0">
                   <Shield size={20} />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="text-[10px] font-bold text-blue-400 px-2 py-0.5 rounded bg-blue-500/10 border border-blue-500/20">{p.year}</span>
+                    <span className="text-[10px] font-bold text-amber-400 px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/20">{p.year}</span>
                     <span className="text-[10px] text-white/20 font-mono">#{p.number}</span>
                   </div>
-                  <h4 className="text-base font-bold text-white/80 group-hover:text-blue-400 transition-colors leading-snug mb-1">{p.title}</h4>
+                  <h4 className="text-base font-bold text-white/80 group-hover:text-amber-400 transition-colors leading-snug mb-1">{p.title}</h4>
                   <p className="text-xs text-white/30 font-light">{p.authors}</p>
                 </div>
               </div>
@@ -969,7 +969,7 @@ export default function Home() {
             <div className="w-full space-y-24">
               {/* Postdocs */}
               <div>
-                <h3 className="text-xs font-mono text-blue-500 uppercase tracking-[0.4em] mb-10 text-left">Post-doctoral Fellows</h3>
+                <h3 className="text-xs font-mono text-amber-500 uppercase tracking-[0.4em] mb-10 text-left">Post-doctoral Fellows</h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 w-full">
                   {team.postdocs.map((member, i) => (
                     <TeamMemberThumb key={i} member={member} role="Postdoc" />
@@ -979,7 +979,7 @@ export default function Home() {
 
               {/* PhD Scholars */}
               <div>
-                <h3 className="text-xs font-mono text-blue-500 uppercase tracking-[0.4em] mb-10 text-left">PhD Scholars</h3>
+                <h3 className="text-xs font-mono text-amber-500 uppercase tracking-[0.4em] mb-10 text-left">PhD Scholars</h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 w-full">
                   {team.currentPhd.map((member, i) => (
                     <TeamMemberThumb key={i} member={member} role="PhD Scholar" />
@@ -991,8 +991,8 @@ export default function Home() {
               {team.masters && team.masters.length > 0 && (
                 <div className="mb-20">
                   <div className="flex items-center gap-4 mb-12">
-                     <div className="h-px w-12 bg-blue-500"></div>
-                     <h2 className="text-xs font-mono text-blue-500 uppercase tracking-[0.4em]">Master&apos;s Students</h2>
+                     <div className="h-px w-12 bg-amber-500"></div>
+                     <h2 className="text-xs font-mono text-amber-500 uppercase tracking-[0.4em]">Master&apos;s Students</h2>
                   </div>
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
                     {team.masters.map((member, i) => <TeamMemberThumb key={i} member={member} role="MSc" />)}
@@ -1016,7 +1016,7 @@ export default function Home() {
               )}
 
               <div className="mt-16 flex justify-start">
-                 <Link href="/team#alumni" className="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-blue-500/30 text-blue-400 font-bold hover:bg-blue-500/10 transition-all uppercase text-[10px] tracking-widest font-mono">
+                 <Link href="/team#alumni" className="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-amber-500/30 text-amber-400 font-bold hover:bg-amber-500/10 transition-all uppercase text-[10px] tracking-widest font-mono">
                    Open Full Alumni Registry <ArrowRight size={18} />
                  </Link>
               </div>
@@ -1026,7 +1026,7 @@ export default function Home() {
       </section>
 
       {/* 5.5. GALLERY SECTION */}
-      <section id="gallery" className="w-full py-32 px-6 relative z-10 bg-[#020202] border-t border-white/5">
+      <section id="gallery" className="w-full py-32 px-6 relative z-10 bg-[#0d1117] border-t border-white/5">
          <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
             <div className="flex items-center justify-center gap-4 mb-4">
               <div className="h-px w-12 bg-pink-500"></div>
@@ -1055,12 +1055,12 @@ export default function Home() {
       </section>
 
       {/* 6. CONTACT SECTION */}
-      <section id="contact" className="w-full py-32 px-6 relative z-10 bg-black">
+      <section id="contact" className="w-full py-32 px-6 relative z-10 bg-[#090c10]">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16">
           <div className="w-full md:w-1/2">
             <div className="flex items-center gap-4 mb-6">
-              <div className="h-px w-12 bg-blue-500"></div>
-              <p className="text-[10px] font-mono text-blue-400 tracking-[0.3em] uppercase">Get in Touch</p>
+              <div className="h-px w-12 bg-amber-500"></div>
+              <p className="text-[10px] font-mono text-amber-400 tracking-[0.3em] uppercase">Get in Touch</p>
             </div>
             <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-8 text-white uppercase">Contact Us</h2>
             <p className="text-xl text-white/50 font-light mb-12">
@@ -1069,7 +1069,7 @@ export default function Home() {
             
             <div className="space-y-8">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 shrink-0">
+                <div className="w-12 h-12 rounded-full bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 shrink-0">
                   <MapPin size={20} />
                 </div>
                 <div>
@@ -1085,15 +1085,15 @@ export default function Home() {
               </div>
               
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 shrink-0">
+                <div className="w-12 h-12 rounded-full bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 shrink-0">
                   <Mail size={20} />
                 </div>
                 <div>
                   <h4 className="text-sm font-bold text-white uppercase tracking-widest mb-2">Email</h4>
-                  <a href="mailto:eb.raman@iisertirupati.ac.in" className="text-white/60 hover:text-blue-400 font-light transition-colors block">
+                  <a href="mailto:eb.raman@iisertirupati.ac.in" className="text-white/60 hover:text-amber-400 font-light transition-colors block">
                     eb.raman@iisertirupati.ac.in
                   </a>
-                  <a href="mailto:balaramanekambaram@gmail.com" className="text-white/60 hover:text-blue-400 font-light transition-colors block mt-1">
+                  <a href="mailto:balaramanekambaram@gmail.com" className="text-white/60 hover:text-amber-400 font-light transition-colors block mt-1">
                     balaramanekambaram@gmail.com
                   </a>
                 </div>
@@ -1108,15 +1108,15 @@ export default function Home() {
                We are always looking for motivated Postdocs, PhD students, and Master's students to join our lab. Please send your CV and a brief description of your research interests to Prof. Balaraman.
              </p>
              <div className="space-y-4">
-               <div className="p-4 rounded-2xl bg-blue-500/5 border border-blue-500/10 flex items-center gap-4">
-                 <GraduationCap size={24} className="text-blue-400" />
+               <div className="p-4 rounded-2xl bg-amber-500/5 border border-amber-500/10 flex items-center gap-4">
+                 <GraduationCap size={24} className="text-amber-400" />
                  <div>
                    <h4 className="text-sm font-bold text-white">PhD Positions</h4>
                    <p className="text-xs text-white/50">Through regular IISER Tirupati admissions</p>
                  </div>
                </div>
-               <div className="p-4 rounded-2xl bg-blue-500/5 border border-blue-500/10 flex items-center gap-4">
-                 <Briefcase size={24} className="text-blue-400" />
+               <div className="p-4 rounded-2xl bg-amber-500/5 border border-amber-500/10 flex items-center gap-4">
+                 <Briefcase size={24} className="text-amber-400" />
                  <div>
                    <h4 className="text-sm font-bold text-white">Postdoc Positions</h4>
                    <p className="text-xs text-white/50">NPDF / Institute Fellowships</p>
@@ -1128,7 +1128,7 @@ export default function Home() {
       </section>
 
       {/* FOOTER */}
-      <footer className="w-full py-12 px-6 border-t border-white/5 bg-black/50 backdrop-blur-md relative z-10">
+      <footer className="w-full py-12 px-6 border-t border-white/5 bg-[#090c10]/50 backdrop-blur-md relative z-10">
          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
             <p className="text-[10px] font-mono text-white/20 uppercase tracking-[0.4em]">
                © {new Date().getFullYear()} Raman's Research Lab | IISER Tirupati

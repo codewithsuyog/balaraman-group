@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, X, Maximize2, Image as ImageIcon, Users } from 'lucide-react';
@@ -50,14 +50,14 @@ export default function GalleryPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#020202] text-white py-24 px-6 md:px-12">
+    <main className="min-h-screen bg-[#0d1117] text-white py-24 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
         <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
           >
-            <Link href="/#gallery" className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors mb-6 group">
+            <Link href="/#gallery" className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 transition-colors mb-6 group">
               <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" /> Back to Home
             </Link>
             <h1 className="text-6xl font-bold tracking-tighter mb-4 text-gradient">
@@ -90,7 +90,7 @@ export default function GalleryPage() {
             onClick={() => setActiveTab('memories')}
             className={`flex items-center gap-2 px-6 py-3 rounded-full font-bold text-xs uppercase tracking-widest transition-all ${
               activeTab === 'memories' 
-                ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30' 
+                ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' 
                 : 'bg-white/5 text-white/40 hover:bg-white/10 border border-transparent'
             }`}
           >
@@ -110,12 +110,12 @@ export default function GalleryPage() {
                 transition={{ delay: (num % 6) * 0.05 }}
                 className="group relative aspect-[16/10] rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl bg-white/5 cursor-pointer"
               >
-                <div className="w-full h-full flex items-center justify-center p-2 bg-black/40">
+                <div className="w-full h-full flex items-center justify-center p-2 bg-[#090c10]/40">
                   <GalleryImage num={num} folder={folder} onClick={setSelectedImage} />
                 </div>
                 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-8">
-                  <p className="text-[10px] font-mono text-blue-400 uppercase tracking-widest mb-1">Moment #{num}</p>
+                  <p className="text-[10px] font-mono text-amber-400 uppercase tracking-widest mb-1">Moment #{num}</p>
                   <p className="text-white text-sm font-light uppercase tracking-tighter">Memory Archive</p>
                 </div>
 
@@ -136,7 +136,7 @@ export default function GalleryPage() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedImage(null)}
-            className="fixed inset-0 z-[100] bg-black/98 backdrop-blur-3xl flex items-center justify-center p-6 md:p-20"
+            className="fixed inset-0 z-[100] bg-[#090c10]/98 backdrop-blur-3xl flex items-center justify-center p-6 md:p-20"
           >
             <motion.div 
               initial={{ scale: 0.9, opacity: 0 }}

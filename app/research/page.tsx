@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
@@ -18,7 +18,7 @@ const fadeUp: any = {
 
 const PublicationItem = ({ pub }: { pub: any }) => (
   <div className="flex gap-4 group/pub py-4 border-b border-white/5 last:border-0 hover:bg-white/[0.02] transition-colors rounded-lg px-3 -mx-3">
-    <span className="text-xs font-mono text-blue-500/50 mt-1 shrink-0">{pub.id}.</span>
+    <span className="text-xs font-mono text-amber-500/50 mt-1 shrink-0">{pub.id}.</span>
     <div className="flex-1 min-w-0">
       <p className="text-sm text-white/70 font-light leading-relaxed">
         {pub.authors}. {pub.title}. <span className="italic">{pub.journal}</span>, {pub.year}. {pub.volume && `${pub.volume}`}{pub.pages && `, ${pub.pages}`}
@@ -28,7 +28,7 @@ const PublicationItem = ({ pub }: { pub: any }) => (
           href={pub.doi?.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`} 
           target="_blank" 
           rel="noreferrer"
-          className="text-[10px] font-mono text-blue-500/40 hover:text-blue-400 transition-colors"
+          className="text-[10px] font-mono text-amber-500/40 hover:text-amber-400 transition-colors"
         >
           DOI: {pub.doi}
         </a>
@@ -54,7 +54,7 @@ export default function ResearchPage() {
         number: "01",
         title: "Homogeneous Catalysis",
         image: "/images/research/organometallic.png",
-        icon: <FlaskConical className="text-blue-400" />,
+        icon: <FlaskConical className="text-amber-400" />,
         desc: "Molecularly-defined pincer complexes and metal-ligand cooperation for selective transformations.",
         details: "We design and develop well-defined transition-metal pincer complexes for C-C, C-N bond forming reactions, acceptorless dehydrogenation, hydrogenation, and borrowing hydrogen strategies using earth-abundant metals like Mn, Co, Ni, and Fe.",
         pubs: filter(["pincer", "metal-ligand", "MLC", "dehydrogenation", "borrowing", "hydrogenation", "Mn", "Ni", "Co"])
@@ -73,22 +73,22 @@ export default function ResearchPage() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-[#020202] text-white selection:bg-blue-500/30 pb-32">
+    <main className="min-h-screen bg-[#0d1117] text-white selection:bg-amber-500/30 pb-32">
       {/* PROFESSIONAL HEADER */}
       <section className="relative pt-32 pb-24 px-6 border-b border-white/5 overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-600/10 via-transparent to-transparent opacity-50"></div>
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-amber-600/10 via-transparent to-transparent opacity-50"></div>
         
         <div className="max-w-6xl mx-auto relative z-10">
           <motion.div initial="hidden" animate="visible" variants={fadeUp}>
-            <Link href="/" className="inline-flex items-center gap-2 text-white/40 hover:text-blue-400 font-mono text-[10px] uppercase tracking-widest mb-12 transition-colors group">
+            <Link href="/" className="inline-flex items-center gap-2 text-white/40 hover:text-amber-400 font-mono text-[10px] uppercase tracking-widest mb-12 transition-colors group">
               <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Back to Laboratory
             </Link>
             
             <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-8 leading-[0.85] uppercase">
-              Research <br/> <span className="text-blue-500">Pillars</span>
+              Research <br/> <span className="text-amber-500">Pillars</span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-white/60 font-light max-w-3xl leading-relaxed border-l-2 border-blue-500 pl-8 italic">
+            <p className="text-xl md:text-2xl text-white/60 font-light max-w-3xl leading-relaxed border-l-2 border-amber-500 pl-8 italic">
               Focused on Organic/Organometallic Chemistry and Sustainable Catalysis to address global energy and environmental challenges.
             </p>
           </motion.div>
@@ -99,7 +99,7 @@ export default function ResearchPage() {
       <section className="py-24 px-6 bg-white/[0.01]">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
           <div className="md:col-span-2 space-y-6 text-lg text-white/70 font-light leading-relaxed">
-            <h3 className="text-xs font-mono text-blue-500 uppercase tracking-[0.4em] mb-4">Laboratory Mission</h3>
+            <h3 className="text-xs font-mono text-amber-500 uppercase tracking-[0.4em] mb-4">Laboratory Mission</h3>
             <p>
               Our research centers on organometallic systems and enabling organic transformations via sustainable catalysis. Our primary objective is to generate green energy resources and recycle atmospheric waste.
             </p>
@@ -109,14 +109,14 @@ export default function ResearchPage() {
           </div>
           <div className="bg-white/5 rounded-3xl p-8 border border-white/10 flex flex-col justify-center">
             <h4 className="text-xs font-bold text-white mb-4 uppercase tracking-widest flex items-center gap-2">
-              <Database size={16} className="text-blue-400" /> Focus Areas
+              <Database size={16} className="text-amber-400" /> Focus Areas
             </h4>
             <ul className="space-y-3 text-xs font-mono text-white/40">
-              <li className="flex items-center gap-3"><ChevronRight size={10} className="text-blue-500" /> Homogeneous Catalysis</li>
-              <li className="flex items-center gap-3"><ChevronRight size={10} className="text-blue-500" /> Heterogeneous Catalysis</li>
-              <li className="flex items-center gap-3"><ChevronRight size={10} className="text-blue-500" /> C-H Activation</li>
-              <li className="flex items-center gap-3"><ChevronRight size={10} className="text-blue-500" /> Hydrogen Generation</li>
-              <li className="flex items-center gap-3"><ChevronRight size={10} className="text-blue-500" /> Photocatalysis</li>
+              <li className="flex items-center gap-3"><ChevronRight size={10} className="text-amber-500" /> Homogeneous Catalysis</li>
+              <li className="flex items-center gap-3"><ChevronRight size={10} className="text-amber-500" /> Heterogeneous Catalysis</li>
+              <li className="flex items-center gap-3"><ChevronRight size={10} className="text-amber-500" /> C-H Activation</li>
+              <li className="flex items-center gap-3"><ChevronRight size={10} className="text-amber-500" /> Hydrogen Generation</li>
+              <li className="flex items-center gap-3"><ChevronRight size={10} className="text-amber-500" /> Photocatalysis</li>
             </ul>
           </div>
         </div>
@@ -139,7 +139,7 @@ export default function ResearchPage() {
               <div className="w-full lg:w-1/2">
                 <div className="text-7xl font-black text-white/5 font-mono mb-4 leading-none">{cat.number}</div>
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="p-3 rounded-2xl bg-blue-500/10 border border-blue-500/20">{cat.icon}</div>
+                  <div className="p-3 rounded-2xl bg-amber-500/10 border border-amber-500/20">{cat.icon}</div>
                   <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white uppercase">{cat.title}</h2>
                 </div>
                 
@@ -149,11 +149,11 @@ export default function ResearchPage() {
                 </p>
 
                 <div className="space-y-4 p-6 rounded-3xl bg-white/[0.03] border border-white/5">
-                  <h4 className="text-[10px] font-mono text-blue-500 uppercase tracking-[0.3em] mb-2">Representative Works</h4>
+                  <h4 className="text-[10px] font-mono text-amber-500 uppercase tracking-[0.3em] mb-2">Representative Works</h4>
                   <div className="flex flex-col">
                     {cat.pubs.map((pub, i) => <PublicationItem key={i} pub={pub} />)}
                   </div>
-                  <Link href="/publications" className="inline-flex items-center gap-2 text-[10px] font-mono text-white/30 hover:text-blue-400 mt-4 transition-colors">
+                  <Link href="/publications" className="inline-flex items-center gap-2 text-[10px] font-mono text-white/30 hover:text-amber-400 mt-4 transition-colors">
                     Access Complete Archive <ArrowRight size={10} />
                   </Link>
                 </div>
@@ -175,19 +175,19 @@ export default function ResearchPage() {
       <section className="py-32 px-6 border-t border-white/5">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-24">
-            <h3 className="text-xs font-mono text-blue-500 uppercase tracking-[0.4em] mb-4">Outcome & Impact</h3>
+            <h3 className="text-xs font-mono text-amber-500 uppercase tracking-[0.4em] mb-4">Outcome & Impact</h3>
             <h2 className="text-4xl md:text-6xl font-black tracking-tight uppercase">Advancing Science</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="p-12 rounded-[3rem] bg-white/[0.02] border border-white/5 hover:border-blue-500/20 transition-all">
-              <Award className="text-blue-400 mb-6" size={40} />
+            <div className="p-12 rounded-[3rem] bg-white/[0.02] border border-white/5 hover:border-amber-500/20 transition-all">
+              <Award className="text-amber-400 mb-6" size={40} />
               <h3 className="text-2xl font-bold mb-4 uppercase tracking-tight">Core Contribution</h3>
               <p className="text-white/50 font-light leading-relaxed">
                 Development of diverse C-C and C-N bond-forming reactions via dehydrogenation strategies. These protocols are highly atom-efficient, eliminating hazardous waste.
               </p>
             </div>
-            <div className="p-12 rounded-[3rem] bg-white/[0.02] border border-white/5 hover:border-blue-500/20 transition-all">
+            <div className="p-12 rounded-[3rem] bg-white/[0.02] border border-white/5 hover:border-amber-500/20 transition-all">
               <Microscope className="text-emerald-400 mb-6" size={40} />
               <h3 className="text-2xl font-bold mb-4 uppercase tracking-tight">Robust Nanocatalysis</h3>
               <p className="text-white/50 font-light leading-relaxed">
