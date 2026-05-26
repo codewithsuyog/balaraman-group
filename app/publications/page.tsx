@@ -31,7 +31,7 @@ const PublicationCard = ({ pub, idx, fadeUp }: any) => {
       viewport={{ once: true }}
       variants={fadeUp}
       transition={{ delay: (idx % 10) * 0.05 }}
-      className="group relative flex flex-col gap-8 p-10 rounded-[3rem] bg-foreground/[0.03] border border-foreground/10 hover:border-amber-500/30 hover:bg-foreground/5 transition-all duration-500 shadow-xl overflow-hidden"
+      className="group relative flex flex-col gap-8 p-5 md:p-10 rounded-2xl md:rounded-[3rem] bg-foreground/[0.03] border border-foreground/10 hover:border-amber-500/30 hover:bg-foreground/5 transition-all duration-500 shadow-xl overflow-hidden"
     >
       <div className="flex flex-col md:flex-row gap-8 items-start">
         {/* Cover Image - Left */}
@@ -73,7 +73,7 @@ const PublicationCard = ({ pub, idx, fadeUp }: any) => {
               <a 
                 href={pub.doi.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`} 
                 target="_blank" 
-                rel="noreferrer" 
+                rel="noopener noreferrer" 
                 className="px-8 py-4 rounded-full bg-amber-600/10 border border-amber-600/30 text-amber-400 text-xs font-bold flex items-center gap-2 hover:bg-amber-500 hover:text-foreground shadow-lg shadow-amber-600/10 transition-all uppercase tracking-widest w-max"
               >
                 Read Publication <ExternalLink size={14} />

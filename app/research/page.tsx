@@ -27,7 +27,7 @@ const PublicationItem = ({ pub }: { pub: any }) => (
         <a 
           href={pub.doi?.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`} 
           target="_blank" 
-          rel="noreferrer"
+          rel="noopener noreferrer"
           className="text-[10px] font-mono text-amber-500/40 hover:text-amber-400 transition-colors"
         >
           DOI: {pub.doi}
@@ -84,7 +84,7 @@ export default function ResearchPage() {
               <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Back to Laboratory
             </Link>
             
-            <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-8 leading-[0.85] uppercase">
+            <h1 className="text-4xl sm:text-6xl md:text-8xl font-black tracking-tighter mb-8 leading-[0.85] uppercase">
               Research <br/> <span className="text-amber-500">Pillars</span>
             </h1>
             

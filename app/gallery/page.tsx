@@ -79,7 +79,7 @@ export default function GalleryPage() {
             <Link href="/#gallery" className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 transition-colors mb-6 group">
               <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" /> Back to Home
             </Link>
-            <h1 className="text-6xl font-bold tracking-tighter mb-4 text-gradient">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter mb-4 text-gradient">
               {activeTab === 'images' ? 'Lab Images & Videos' : 'Lab Moments'}
             </h1>
             <p className="text-[var(--color-muted)] max-w-2xl font-light text-lg italic">

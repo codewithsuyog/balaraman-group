@@ -16,7 +16,7 @@ const fadeUp: any = {
 const PatentCard = ({ patent, type }: { patent: any, type: string }) => (
   <motion.div 
     variants={fadeUp}
-    className="group p-8 rounded-[2.5rem] bg-foreground/5 border border-foreground/10 hover:border-amber-500/30 transition-all duration-500 flex flex-col h-full"
+    className="group p-5 md:p-8 rounded-[2.5rem] bg-foreground/5 border border-foreground/10 hover:border-amber-500/30 transition-all duration-500 flex flex-col h-full"
   >
     <div className="flex items-center gap-3 mb-6">
       <span className="px-3 py-1 rounded bg-amber-500/10 text-amber-400 text-[10px] font-black tracking-widest uppercase border border-amber-500/20">

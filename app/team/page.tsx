@@ -148,7 +148,7 @@ export default function TeamPage() {
               <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Back to Laboratory
             </Link>
             
-            <h1 className="text-6xl md:text-9xl font-black tracking-tighter mb-8 leading-[0.85] uppercase">
+            <h1 className="text-4xl sm:text-6xl md:text-9xl font-black tracking-tighter mb-8 leading-[0.85] uppercase">
               Lab <br/> <span className="text-amber-500">Members</span>
             </h1>
             

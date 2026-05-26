@@ -79,7 +79,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="font-sans min-h-screen bg-background text-foreground flex flex-col transition-colors duration-300" suppressHydrationWarning>
+      <body className="font-sans min-h-screen bg-background text-foreground flex flex-col transition-colors duration-300 select-none" suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="light" disableTransitionOnChange>
           <div className="scroll-progress">
             <div className="scroll-progress-bar h-full w-full" id="scroll-bar" suppressHydrationWarning></div>
@@ -91,6 +91,7 @@ export default function RootLayout({
           <script
             dangerouslySetInnerHTML={{
               __html: `
+                // Scroll Progress
                 window.addEventListener('scroll', () => {
                   const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
                   const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -98,6 +99,25 @@ export default function RootLayout({
                   const scrollBar = document.getElementById('scroll-bar');
                   if (scrollBar) {
                     scrollBar.style.transform = 'scaleY(' + (scrolled / 100) + ')';
+                  }
+                });
+
+                // Security: Disable Right Click
+                document.addEventListener('contextmenu', event => event.preventDefault());
+
+                // Security: Disable Image Dragging
+                document.addEventListener('dragstart', event => {
+                  if (event.target.tagName && event.target.tagName.toLowerCase() === 'img') {
+                    event.preventDefault();
+                  }
+                });
+
+                // Security: Disable Keyboard Shortcuts (Ctrl+C, Ctrl+U, Ctrl+S, etc.)
+                document.addEventListener('keydown', event => {
+                  if (event.ctrlKey || event.metaKey) {
+                    if (['c', 'u', 's', 'p'].includes(event.key.toLowerCase())) {
+                      event.preventDefault();
+                    }
                   }
                 });
               `

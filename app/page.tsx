@@ -56,7 +56,7 @@ const PublicationLink = ({ pub }: { pub: any }) => {
           <a 
             href={pub.doi.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`} 
             target="_blank" 
-            rel="noreferrer" 
+            rel="noopener noreferrer" 
             className="inline-flex items-center gap-2 mt-3 text-[10px] font-bold text-amber-500/80 hover:text-amber-400 transition-colors"
           >
             DOI: {pub.doi} <ExternalLink size={10} />
@@ -99,7 +99,7 @@ const FeaturedPublication = ({ pub }: { pub: any }) => {
               <a 
                 href={pub.doi.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`} 
                 target="_blank" 
-                rel="noreferrer" 
+                rel="noopener noreferrer" 
                 className="px-8 py-4 rounded-full bg-amber-600 text-background text-xs font-bold flex items-center gap-2 hover:bg-amber-500 transition-all shadow-lg shadow-amber-600/20 uppercase tracking-widest"
               >
                 Read Publication <ExternalLink size={14} />
@@ -477,6 +477,7 @@ const LabMediaShowcase = () => {
                 src="https://www.youtube.com/embed/your-lab-tour-id" 
                 title="Lab Tour Video" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                sandbox="allow-scripts allow-same-origin allow-presentation"
                 allowFullScreen
               ></iframe>
             </div>
@@ -522,7 +523,6 @@ export default function Home() {
   const navLinks = [
     { id: 'home', label: 'Home' },
     { id: 'pi', label: 'PI' },
-    { id: 'news', label: 'News' },
     { id: 'research', label: 'Research' },
     { id: 'publications', label: 'Publications' },
     { id: 'patents', label: 'Patents' },
@@ -672,10 +672,10 @@ export default function Home() {
             
             <div className="mt-8 flex flex-col items-center gap-3">
                <div className="flex justify-center gap-6">
-                 <a href={piStats.googleScholar} target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:text-amber-400 hover:border-amber-500 transition-all" title="Google Scholar">
+                 <a href={piStats.googleScholar} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:text-amber-400 hover:border-amber-500 transition-all" title="Google Scholar">
                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269z"/><circle cx="12" cy="16.5" r="5.5"/></svg>
                  </a>
-                 <a href={`https://orcid.org/${piStats.orcid}`} target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:text-emerald-400 hover:border-emerald-500 transition-all" title="ORCID">
+                 <a href={`https://orcid.org/${piStats.orcid}`} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:text-emerald-400 hover:border-emerald-500 transition-all" title="ORCID">
                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-1.847-1.188-3.722-3.978-3.722h-2.341z"/></svg>
                  </a>
                  <a href="mailto:eb.raman@iisertirupati.ac.in" className="w-12 h-12 rounded-full bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:text-amber-400 hover:border-amber-500 transition-all" title="Email"><Mail size={20} /></a>
@@ -774,7 +774,7 @@ export default function Home() {
             </div>
 
             {/* Human Resource Stats */}
-            <div className="grid grid-cols-3 md:grid-cols-5 gap-3 mb-10">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 mb-10">
               <div className="p-4 rounded-xl bg-foreground/[0.04] border border-foreground/10 text-center hover:border-cyan-500/20 transition-all">
                 <div className="text-xl font-black text-foreground mb-1">{piStats.phdCompleted}</div>
                 <p className="text-[9px] uppercase tracking-widest text-foreground font-mono font-medium">PhD Completed</p>
@@ -829,10 +829,10 @@ export default function Home() {
             </div>
 
             <div className="flex flex-wrap gap-4">
-               <a href={cvLink} target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 px-10 py-5 rounded-full bg-foreground text-background font-bold hover:bg-amber-600 hover:text-foreground transition-all shadow-2xl">
+               <a href={cvLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 px-10 py-5 rounded-full bg-foreground text-background font-bold hover:bg-amber-600 hover:text-foreground transition-all shadow-2xl">
                   <Download size={20} /> Download Academic CV
                </a>
-               <a href={piStats.googleScholar} target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 px-8 py-5 rounded-full border border-amber-500/30 text-amber-400 font-bold hover:bg-amber-500/10 transition-all">
+               <a href={piStats.googleScholar} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 px-8 py-5 rounded-full border border-amber-500/30 text-amber-400 font-bold hover:bg-amber-500/10 transition-all">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269z"/><circle cx="12" cy="16.5" r="5.5"/></svg>
                   Google Scholar
                </a>
