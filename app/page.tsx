@@ -666,13 +666,13 @@ export default function Home() {
           
           <div className="w-full lg:w-1/3 flex flex-col">
             <div className="absolute inset-0 bg-amber-500/20 blur-[80px] rounded-full -z-10"></div>
-             <div className="w-full aspect-square md:aspect-[3/4] rounded-2xl border border-foreground/10 relative overflow-hidden group shadow-2xl bg-black/5">
+             <div className="w-full aspect-square rounded-[2rem] md:rounded-[3rem] border border-foreground/10 relative overflow-hidden group shadow-2xl bg-black/5">
                <Image 
                  src="/images/pi/pi-profile.jpg" 
                  alt="Dr. Ekambaram Balaraman" 
                  fill
                  sizes="(max-width: 768px) 100vw, 33vw"
-                 className="object-cover object-[center_10%] transition-all duration-700 group-hover:scale-105" 
+                 className="object-cover object-center transition-all duration-700 group-hover:scale-105" 
                />
              </div>
             
