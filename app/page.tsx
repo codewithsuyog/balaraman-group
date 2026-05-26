@@ -1034,20 +1034,6 @@ export default function Home() {
                 </div>
               )}
 
-              {/* Semester Project Students */}
-              {(team as any).semesterProject && (team as any).semesterProject.length > 0 && (
-                <div className="mb-20">
-                  <div className="flex items-center gap-4 mb-12">
-                     <div className="h-px w-12 bg-accent"></div>
-                     <h2 className="text-sm font-extrabold text-accent uppercase tracking-[0.2em]">Semester Project Students</h2>
-                  </div>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
-                    {(team as any).semesterProject.map((member: any, i: number) => (
-                      <TeamMemberThumb key={i} member={member} role="Semester Project" />
-                    ))}
-                  </div>
-                </div>
-              )}
 
               <div className="mt-16 flex justify-start">
                  <Link href="/team#alumni" className="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-amber-500/30 text-amber-400 font-bold hover:bg-amber-500/10 transition-all uppercase text-[10px] tracking-widest font-mono">
