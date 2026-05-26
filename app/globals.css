@@ -3,19 +3,19 @@
 :root {
   --background: #f4f5f7;
   --foreground: #1a1f2e;
-  --accent: #d97706;
-  --accent-secondary: #ea580c;
-  --accent-light: #fbbf24;
+  --accent: #b45309;
+  --accent-secondary: #92400e;
+  --accent-light: #d97706;
   --surface: #ffffff;
   --surface-alt: #ebedf0;
   --border: #d1d5db;
-  --muted: #6b7280;
+  --muted: #4b5563;
   --overlay: rgba(0, 0, 0, 0.04);
 }
 
 .dark {
   --background: #090c10;
-  --foreground: #f8fafc;
+  --foreground: #f1f5f9;
   --accent: #f59e0b;
   --accent-secondary: #d97706;
   --accent-light: #fcd34d;
@@ -36,7 +36,8 @@
   --color-surface-alt: var(--surface-alt);
   --color-border: var(--border);
   --color-muted: var(--muted);
-  --font-sans: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Playfair Display', 'Georgia', serif;
   --font-mono: 'Geist Mono', var(--font-geist-mono), monospace;
 }
 
@@ -57,37 +58,50 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
-  letter-spacing: 0.05em;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
   scroll-behavior: smooth;
 }
 
-/* Glassmorphism — tuned for light theme */
+/* Serif headings */
+h1, h2, h3 {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  letter-spacing: -0.02em;
+}
+
+/* Minimum body text */
+p, li, td, th, span, a {
+  font-size: max(1rem, inherit);
+}
+
+/* Glassmorphism — light */
 .glass {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .dark .glass {
-  background: rgba(15, 20, 30, 0.75);
+  background: rgba(15, 20, 30, 0.8);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .card-glass {
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(16px);
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 1.5rem;
-  transition: all 0.55s cubic-bezier(0.19, 1, 0.22, 1);
-  box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.08);
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.06);
 }
 
 .card-glass:hover {
-  background: rgba(255, 255, 255, 0.85);
-  border-color: hsla(38, 95%, 52%, 0.35);
-  box-shadow: 0 0 32px -8px hsla(38, 95%, 52%, 0.2);
+  background: rgba(255, 255, 255, 0.9);
+  border-color: var(--accent);
+  box-shadow: 0 8px 40px -8px rgba(180, 83, 9, 0.15);
   transform: translateY(-4px);
 }
 
@@ -99,15 +113,16 @@ body {
 
 .dark .card-glass:hover {
   background: rgba(15, 20, 30, 0.7);
+  border-color: var(--accent);
 }
 
-/* Amber-gold gradient text — deepened for light bg */
+/* Gradient text — warm amber */
 .text-gradient {
   background-image: linear-gradient(
     to right,
-    hsla(38, 90%, 42%, 1),
-    hsla(30, 95%, 48%, 1),
-    hsla(20, 80%, 40%, 1)
+    var(--accent),
+    var(--accent-light),
+    var(--accent)
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -116,26 +131,17 @@ body {
   animation: textGradient 5s linear infinite;
 }
 
-.dark .text-gradient {
-  background-image: linear-gradient(
-    to right,
-    hsla(38, 95%, 60%, 1),
-    hsla(30, 95%, 65%, 1),
-    hsla(20, 90%, 58%, 1)
-  );
-}
-
 @keyframes textGradient {
   to {
     background-position: 200% center;
   }
 }
 
-/* Tab active — amber */
+/* Tab active */
 .tab-active {
   background: var(--accent);
   color: #ffffff;
-  box-shadow: 0 0 22px -5px hsla(38, 95%, 52%, 0.5);
+  box-shadow: 0 0 22px -5px rgba(180, 83, 9, 0.5);
 }
 
 /* Custom Scrollbar */
@@ -156,7 +162,7 @@ body {
   background: var(--accent);
 }
 
-/* Scroll progress — amber */
+/* Scroll progress */
 .scroll-progress {
   position: fixed;
   top: 0;
@@ -171,11 +177,11 @@ body {
   width: 100%;
   background: linear-gradient(
     to bottom,
-    hsla(38, 95%, 52%, 1),
-    hsla(30, 95%, 60%, 1)
+    var(--accent),
+    var(--accent-light)
   );
   transform-origin: top;
-  box-shadow: 0 0 10px hsla(38, 95%, 52%, 0.5);
+  box-shadow: 0 0 10px rgba(180, 83, 9, 0.4);
 }
 
 /* Hide scrollbar utility */
@@ -185,6 +191,12 @@ body {
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Link styles */
+a[href^="mailto:"],
+a[href^="http"]:not(.nav-link):not(.btn) {
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
 }
 
 html { scroll-behavior: smooth; }

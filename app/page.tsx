@@ -630,7 +630,7 @@ export default function Home() {
             sizes="100vw"
             className="object-cover object-center opacity-80" 
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/60 to-background"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-background/70 to-background"></div>
         </motion.div>
 
         {/* Background watermark text */}
@@ -1153,52 +1153,11 @@ export default function Home() {
       </section>
 
       {/* FOOTER */}
-      <footer className="w-full py-16 px-6 border-t border-foreground/5 bg-foreground/[0.03] relative z-10">
-         <div className="max-w-7xl mx-auto">
-            <div className="flex flex-col md:flex-row items-start justify-between gap-12 mb-12">
-               {/* Lab Info */}
-               <div className="flex flex-col gap-4 max-w-md">
-                  <div className="flex items-center gap-4">
-                     <img src="/logo.png" alt="Lab Logo" className="w-12 h-12 rounded-xl object-contain bg-foreground/5 p-1" />
-                     <div>
-                        <h3 className="font-bold text-foreground text-lg tracking-tight">Raman's Research Lab</h3>
-                        <p className="text-xs text-muted font-mono">Est. 2017</p>
-                     </div>
-                  </div>
-                  <p className="text-sm text-muted leading-relaxed">
-                     Department of Chemistry, Indian Institute of Science Education and Research (IISER) Tirupati, 
-                     Mangalam, Tirupati – 517507, Andhra Pradesh, India.
-                  </p>
-               </div>
-
-               {/* Quick Links */}
-               <div className="flex flex-col gap-3">
-                  <h4 className="text-[10px] font-mono text-amber-500 uppercase tracking-[0.3em] font-bold mb-1">Quick Links</h4>
-                  <a href="#pi" className="text-sm text-muted hover:text-foreground transition-colors">Principal Investigator</a>
-                  <a href="#research" className="text-sm text-muted hover:text-foreground transition-colors">Research</a>
-                  <a href="#publications" className="text-sm text-muted hover:text-foreground transition-colors">Publications</a>
-                  <a href="#team" className="text-sm text-muted hover:text-foreground transition-colors">People</a>
-               </div>
-
-               {/* Contact */}
-               <div className="flex flex-col gap-3">
-                  <h4 className="text-[10px] font-mono text-amber-500 uppercase tracking-[0.3em] font-bold mb-1">Contact</h4>
-                  <p className="text-sm text-muted font-mono">eb.raman@iisertirupati.ac.in</p>
-                  <a href="https://www.iisertirupati.ac.in" target="_blank" rel="noopener noreferrer" className="text-sm text-muted hover:text-amber-500 transition-colors">
-                     www.iisertirupati.ac.in
-                  </a>
-               </div>
-            </div>
-
-            {/* Bottom Bar */}
-            <div className="pt-8 border-t border-foreground/5 flex flex-col md:flex-row items-center justify-between gap-4">
-               <p className="text-[10px] font-mono text-muted uppercase tracking-[0.3em]">
-                  © {new Date().getFullYear()} Balaraman Research Group. Department of Chemistry, IISER Tirupati. All rights reserved.
-               </p>
-               <p className="text-[10px] font-mono text-foreground/20 tracking-wider">
-                  Built with ♥ for Science
-               </p>
-            </div>
+      <footer className="w-full py-12 px-6 border-t border-foreground/5 bg-foreground/50 backdrop-blur-md relative z-10">
+         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <p className="text-[10px] font-mono text-foreground uppercase tracking-[0.4em]">
+               © {new Date().getFullYear()} Raman's Research Lab | IISER Tirupati
+            </p>
          </div>
       </footer>
 
