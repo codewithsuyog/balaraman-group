@@ -50,44 +50,24 @@ export default function ResearchPage() {
 
     return [
       {
-        id: 'catalysis',
+        id: 'homogeneous',
         number: "01",
-        title: "Catalysis & Sustainability",
-        image: "/images/research/catalysis.png",
-        icon: <FlaskConical className="text-blue-400" />,
-        desc: "Advancing the frontiers of Green Chemistry through high-performance catalytic systems.",
-        details: "Our group has pioneered diverse C-C and C-N bond-forming reactions via dehydrogenation/borrowing hydrogenation strategies. Using bio-derived and renewable alcohols as feedstocks, we aim to eliminate hazardous byproducts, producing only water or hydrogen.",
-        pubs: filter(["hydrogenation", "dehydrogenation", "ADC", "borrowing"])
-      },
-      {
-        id: 'c1',
-        number: "02",
-        title: "Sustainable C1 Chemistry",
-        image: "/images/research/green_synthesis.png",
-        icon: <Leaf className="text-emerald-400" />,
-        desc: "Harnessing abundant building blocks like CO2 for complex molecule synthesis.",
-        details: "We focus on the catalytic conversion of atmospheric CO2 and methanol into value-added chemical feedstocks. This research replaces traditional hazardous reagents with eco-friendly alternatives for the synthesis of bioactive molecules.",
-        pubs: filter(["CO2", "methanol", "formate", "polycarbonate", "C1"])
-      },
-      {
-        id: 'energy',
-        number: "03",
-        title: "Renewable Energy Solutions",
-        image: "/images/research/renewable.png",
-        icon: <Zap className="text-orange-400" />,
-        desc: "Pioneering chemical solutions for hydrogen production and energy storage.",
-        details: "Our research lies in efficient hydrogen generation from liquid organic hydrogen carriers (LOHCs). We develop molecular catalysts that enable sustainable energy storage and release, facilitating the global transition to green energy.",
-        pubs: filter(["hydrogen production", "hydrogen storage", "fuel", "LOHC"])
-      },
-      {
-        id: 'organometallic',
-        number: "04",
-        title: "Organometallic Chemistry",
+        title: "Homogeneous Catalysis",
         image: "/images/research/organometallic.png",
-        icon: <Beaker className="text-purple-400" />,
-        desc: "Designing transition-metal complexes with tailored pincer ligands.",
-        details: "We explore fundamental metal-ligand cooperation (MLC) patterns to unlock new reactivity. By tailoring the electronic and steric properties of pincer complexes, we achieve atom-efficient transformations for industrial applications.",
-        pubs: filter(["pincer", "metal-ligand", "MLC", "complex"])
+        icon: <FlaskConical className="text-blue-400" />,
+        desc: "Molecularly-defined pincer complexes and metal-ligand cooperation for selective transformations.",
+        details: "We design and develop well-defined transition-metal pincer complexes for C-C, C-N bond forming reactions, acceptorless dehydrogenation, hydrogenation, and borrowing hydrogen strategies using earth-abundant metals like Mn, Co, Ni, and Fe.",
+        pubs: filter(["pincer", "metal-ligand", "MLC", "dehydrogenation", "borrowing", "hydrogenation", "Mn", "Ni", "Co"])
+      },
+      {
+        id: 'heterogeneous',
+        number: "02",
+        title: "Heterogeneous Catalysis",
+        image: "/images/research/green_synthesis.png",
+        icon: <Beaker className="text-emerald-400" />,
+        desc: "Robust nanocatalysts and supported systems for sustainable industrial transformations.",
+        details: "Our group develops reusable heterogeneous nanocatalysts on graphene/carbon supports for hydrogen generation, CO2 conversion, biomass upgrading, photocatalysis, and co-pyrolysis of waste materials.",
+        pubs: filter(["nanocatalyst", "heterogeneous", "graphene", "photocatalytic", "co-pyrolysis", "biomass", "CO2", "supported"])
       }
     ];
   }, []);
@@ -121,10 +101,10 @@ export default function ResearchPage() {
           <div className="md:col-span-2 space-y-6 text-lg text-white/70 font-light leading-relaxed">
             <h3 className="text-xs font-mono text-blue-500 uppercase tracking-[0.4em] mb-4">Laboratory Mission</h3>
             <p>
-              We are dedicated to creating solutions for green energy and recycling atmospheric waste through sustainable chemical synthesis and atom-efficient transformations. 
+              Our research centers on organometallic systems and enabling organic transformations via sustainable catalysis. Our primary objective is to generate green energy resources and recycle atmospheric waste.
             </p>
             <p>
-              Specifically, we work on the design and development of catalytic materials for hydrogen generation from feedstocks, sustainable chemical synthesis, and conversion of CO2 to value-added products. We are also interested in the development of electron-donors for Ziegler-Natta olefin polymerization catalysis.
+              Specifically, we work on the design and development of catalytic systems for hydrogen generation, hydrogenation, photocatalysis, and C-H activation reactions using both homogeneous and heterogeneous catalysts.
             </p>
           </div>
           <div className="bg-white/5 rounded-3xl p-8 border border-white/10 flex flex-col justify-center">
@@ -132,10 +112,11 @@ export default function ResearchPage() {
               <Database size={16} className="text-blue-400" /> Focus Areas
             </h4>
             <ul className="space-y-3 text-xs font-mono text-white/40">
-              <li className="flex items-center gap-3"><ChevronRight size={10} className="text-blue-500" /> C1-Chemistry</li>
-              <li className="flex items-center gap-3"><ChevronRight size={10} className="text-blue-500" /> Hydrogen Storage</li>
-              <li className="flex items-center gap-3"><ChevronRight size={10} className="text-blue-500" /> Pincer Catalysis</li>
-              <li className="flex items-center gap-3"><ChevronRight size={10} className="text-blue-500" /> Sustainable Synthesis</li>
+              <li className="flex items-center gap-3"><ChevronRight size={10} className="text-blue-500" /> Homogeneous Catalysis</li>
+              <li className="flex items-center gap-3"><ChevronRight size={10} className="text-blue-500" /> Heterogeneous Catalysis</li>
+              <li className="flex items-center gap-3"><ChevronRight size={10} className="text-blue-500" /> C-H Activation</li>
+              <li className="flex items-center gap-3"><ChevronRight size={10} className="text-blue-500" /> Hydrogen Generation</li>
+              <li className="flex items-center gap-3"><ChevronRight size={10} className="text-blue-500" /> Photocatalysis</li>
             </ul>
           </div>
         </div>

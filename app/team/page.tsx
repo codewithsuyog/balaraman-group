@@ -241,6 +241,29 @@ export default function TeamPage() {
             </div>
           )}
 
+          {/* Postdoc Alumni */}
+          {(team as any).alumniPostdoc && (team as any).alumniPostdoc.length > 0 && (
+            <div className="mb-32">
+              <div className="flex items-center gap-4 mb-12">
+                 <div className="h-px w-12 bg-teal-500"></div>
+                 <h3 className="text-xs font-mono text-teal-500 uppercase tracking-[0.4em]">Post-doctoral Alumni</h3>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {((team as any).alumniPostdoc as any[]).map((m: any, i: number) => (
+                  <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-teal-500/20 transition-all">
+                    <div className="w-8 h-8 rounded-xl bg-teal-500/10 flex items-center justify-center text-teal-400 shrink-0">
+                      <Briefcase size={14} />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="text-sm font-bold text-white/80 truncate">{m.name}</h4>
+                      <p className="text-[10px] text-white/30 font-light">{m.info} • {m.duration}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* MSc Alumni */}
           {team.alumniMsc && team.alumniMsc.length > 0 && (
             <div className="mb-32">

@@ -1,7 +1,13 @@
 export const news = [
-  { id: 1, date: "2024", type: "Paper", title: "Sustainable Catalytic Materials for Hydrogen Generation", detail: "Published in J. Am. Chem. Soc. exploring new pincer complexes.", link: "10.1021/jacs.4c00000" },
-  { id: 2, date: "2024", type: "Award", title: "CRSI Bronze Medal awarded to Dr. E. Balaraman", detail: "Recognizing outstanding contributions to chemical sciences in India.", link: "" },
-  { id: 3, date: "2023", type: "Achievement", title: "PI Selected for RSC-ChemComm’s Pioneering Investigators", detail: "Acknowledging leading research in molecular catalysis.", link: "" },
+  { id: 1, date: "May 2026", type: "Award", title: "Dr. Balaraman selected for INSA Associate Fellowship (IAF) – 2026", detail: "Dr. Ekambaram Balaraman, Associate Professor and Chair, Department of Chemistry, IISER Tirupati, has been selected as a recipient of the INSA Associate Fellowship (IAF) – 2026 by the Indian National Science Academy.", link: "" },
+  { id: 2, date: "2025", type: "Paper", title: "Nickel-Catalyzed Selective Monoamination of 1,2-Diols published in Org. Lett.", detail: "Our latest work on an affordable approach to amino alcohols via Ni-catalysis has been published.", link: "10.1021/acs.orglett.5c02536" },
+  { id: 3, date: "2025", type: "Paper", title: "Catalysis-Driven Methane Conversion review published", detail: "Comprehensive review on catalytic methane conversion to carbon and hydrogen published in Int. J. Hydrogen Energy.", link: "10.1016/j.ijhydene.2025.03.270" },
+  { id: 4, date: "2025", type: "Joining", title: "Dr. Bapurao Rupanawar joins as Post-doctoral Fellow", detail: "Dr. Bapurao Rupanawar (PhD NCL-Pune, Post Doc OIST-Japan) has joined the lab as a Post-doctoral Fellow.", link: "" },
+  { id: 5, date: "2025", type: "Joining", title: "Dr. Athira C S and Dr. Anjali Krishna P K join as Postdocs", detail: "Two new post-doctoral fellows have joined from CSIR-NIIST, Kerala.", link: "" },
+  { id: 6, date: "2025", type: "Paper", title: "Green Chemistry publication on methoxymethylation of amides", detail: "Green and sustainable catalytic protocol for methoxymethylation published in Green Chem.", link: "" },
+  { id: 7, date: "2024", type: "Achievement", title: "Dr. Sivakumar G completes PhD and joins Weizmann Institute", detail: "Dr. Sivakumar G successfully defended his PhD thesis and has moved to Weizmann Institute of Science, Israel for postdoctoral studies.", link: "" },
+  { id: 8, date: "2024", type: "Award", title: "CRSI Bronze Medal awarded to Dr. E. Balaraman", detail: "Recognizing outstanding contributions to chemical sciences in India.", link: "" },
+  { id: 9, date: "2023", type: "Achievement", title: "PI Selected for RSC-ChemComm's Pioneering Investigators", detail: "Acknowledging leading research in molecular catalysis.", link: "" },
 ];
 
 export const publications = [
@@ -1167,6 +1173,7 @@ export const publications = [
   },
 ];
 export const awards = [
+  "INSA Associate Fellowship (IAF) – 2026 by the Indian National Science Academy",
   "RSC-ChemComm’s Pioneering Investigators – 2023",
   "Selected for DST Coffee Table Book '75 Scientists under 50 – Scientists shaping today's India'",
   "Experienced Researcher Humboldt Research Fellowship (AvH) – 2022",
@@ -1198,7 +1205,6 @@ export const team = {
   ],
   postdocs: [
     { name: "Dr. Sachin S. Gorad", info: "Ph.D. 2024 (IISER-Bhopal), M.Sc. (Org. Chem) Savitribai Phule Pune University Maharashtra", email: "sachinshrimant@labs.iisertirupati.ac.in", image: "/images/team/postdocs/sachin.png" },
-    { name: "Dr. Sivaprakash", info: "Ph.D. 2023 (Central University of Tamil Nadu), M.Sc. (Chem) Bharathiyar University Coimbatore", email: "msivaprakash@labs.iisertirupati.ac.in", image: "/images/team/postdocs/Sivaprakash.png" },
     { name: "Dr. Bapurao Rupanawar", info: "PhD. NCL-Pune, Feb 2022, Post Doc -OIST-Japan July 2022-Aug 2025, State- Maharashtra", image: "/images/team/postdocs/bapurao" },
     { name: "Dr. Naushad", info: "Post-doctoral Fellow", image: "/images/team/postdocs/naushad" },
     { name: "Dr. Athira C S", info: "PhD: CSIR NIIST, Kerala (2025), MSc: University of Kerala, Kerala (2019)", image: "/images/team/postdocs/Athira.jpeg" },
@@ -1206,13 +1212,12 @@ export const team = {
   ],
   masters: [
     { name: "Shahma", info: "BSMS Master's Thesis Student, IISER Tirupati", image: "/images/team/masters/shama.jpeg" },
-    { name: "Lavanya", info: "BSMS Master's Thesis Student, IISER Tirupati", image: "/images/team/masters/Lavanya.jpeg" }
+    { name: "Lavanya", info: "BSMS Master's Thesis Student, IISER Tirupati", image: "/images/team/masters/Lavanya.jpeg" },
+    { name: "Suyog", info: "BSMS Master's Student, IISER Tirupati", image: "/images/team/semester/suyog" },
+    { name: "Kavya", info: "BSMS Master's Student, IISER Tirupati", image: "/images/team/semester/Kavya.jpeg" },
+    { name: "Ayesha", info: "BSMS Master's Student, IISER Tirupati", image: "/images/team/semester/ayesha" }
   ],
-  semesterProject: [
-    { name: "Suyog", info: "BSMS Semester Project Student, IISER Tirupati", image: "/images/team/semester/suyog" },
-    { name: "Kavya", info: "BSMS Semester Project Student, IISER Tirupati", image: "/images/team/semester/Kavya.jpeg" },
-    { name: "Ayesha", info: "BSMS Semester Project Student, IISER Tirupati", image: "/images/team/semester/ayesha" }
-  ],
+  semesterProject: [],
   alumniPhd: [
     { name: "Dr. Manoj K. Sahoo", thesis: "Visible mediated photoredox catalytic Dehydrogenation and C-H arylation reactions", duration: "2013-2018", present: "Post-doctoral Studies at UNIST, South Korea", image: "/images/team/Phd Alumini/Dr. MANOJ K. SAHOO.jpg" },
     { name: "Dr. Garima Jaiswal", thesis: "Transition metal based nanocatalysts for (de)-hydrogenation reactions", duration: "2013-2018", present: "Research Scientist at HPCL, Bengaluru", image: "/images/team/Phd Alumini/Dr. GARIMA JAISWAL.png" },
@@ -1225,6 +1230,9 @@ export const team = {
     { name: "Dr. Sivakumar G", thesis: "Transition-metal catalyzed acceptorless dehydrogenation and related reactions in sustainable chemical synthesis", duration: "2019-2024", present: "Post-doctoral studies at Weizmann Institute of Science, Israel", image: "/images/team/Phd Alumini/Dr. SIVAKUMAR G.jpg" },
     { name: "Dr. Reshma Babu", thesis: "3d-Transition Metal Catalyzed Acceptorless Alcohol Dehydrogenation and Related Reactions", duration: "2019-2024", present: "M. Sc., (Chem), Mahatma Gandhi University, Kerala", image: "/images/team/Phd Alumini/Dr. RESHMA BABU.jpg" },
     { name: "Dr. Rohit Kumar", thesis: "Dehydrogenative C-C and C-N Bond Forming Reactions and Electrochemical N2 Activation Under Molecular Cobalt Catalysis", duration: "2018-2024", present: "B.Sc., (Chem), Central University, Bihar (iPhD)", image: "/images/team/Phd Alumini/Dr. ROHIT KUMAR.jpg" }
+  ],
+  alumniPostdoc: [
+    { name: "Dr. M. Sivaprakash", info: "Ph.D. 2023 (Central University of Tamil Nadu), M.Sc. (Chem) Bharathiyar University Coimbatore", duration: "Apr 2023 – Present", image: "/images/team/postdocs/Sivaprakash.png" },
   ],
   alumniMsc: [
     { name: "Mr. Thomas Abraham", institution: "Mahatma Gandhi University, Kerala", year: "2014" },
@@ -1372,7 +1380,7 @@ export const piStats = {
   googleScholar: 'https://scholar.google.com/citations?user=8slXPm4AAAAJ&hl=en',
   orcid: '0000-0001-9248-2809',
   scopusId: '6504655693',
-  phone: '+91-7756831487',
+  phone: '',
   emails: ['eb.raman@iisertirupati.ac.in', 'balaramanekambaram@gmail.com'],
 };
 

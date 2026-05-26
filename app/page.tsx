@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 import { 
   patents, piBio, cvLink, 
-  opportunities, team, awards, piStats 
+  opportunities, team, awards, piStats, news 
 } from './data';
 import { publications } from './publications_master';
 
@@ -501,7 +501,7 @@ export default function Home() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'pi', 'research', 'publications', 'patents', 'team', 'gallery', 'contact'];
+      const sections = ['home', 'pi', 'news', 'research', 'publications', 'patents', 'team', 'gallery', 'contact'];
       for (const sectionId of sections) {
         const element = document.getElementById(sectionId);
         if (element) {
@@ -521,6 +521,7 @@ export default function Home() {
   const navLinks = [
     { id: 'home', label: 'Home' },
     { id: 'pi', label: 'PI' },
+    { id: 'news', label: 'News' },
     { id: 'research', label: 'Research' },
     { id: 'publications', label: 'Publications' },
     { id: 'patents', label: 'Patents' },
@@ -532,36 +533,20 @@ export default function Home() {
   const researchCategories = useMemo(() => {
     return [
       {
-        id: 'catalysis',
-        title: "Catalysis & Sustainability",
-        image: "/images/research/catalysis.png",
-        icon: <FlaskConical className="text-blue-400" />,
-        desc: "Advancing Green Chemistry through high-performance catalytic systems.",
-        details: "We have developed diverse C-C and C-N bond-forming reactions via dehydrogenation/borrowing hydrogenation strategy using bioderived alcohols."
-      },
-      {
-        id: 'c1',
-        title: "Sustainable C1 Chemistry",
-        image: "/images/research/green_synthesis.png",
-        icon: <Leaf className="text-emerald-400" />,
-        desc: "Harnessing C1 building blocks like CO2 for complex molecule synthesis.",
-        details: "Our research focuses on the catalytic conversion of atmospheric CO2 into value-added chemicals, replacing hazardous reagents."
-      },
-      {
-        id: 'energy',
-        title: "Renewable Energy",
-        image: "/images/research/renewable.png",
-        icon: <Zap className="text-orange-400" />,
-        desc: "Pioneering chemical solutions for the global energy transition.",
-        details: "Developing efficient methods for hydrogen production from feedstocks and storage through molecular catalysis."
-      },
-      {
-        id: 'organometallic',
-        title: "Organometallic Chemistry",
+        id: 'homogeneous',
+        title: "Homogeneous Catalysis",
         image: "/images/research/organometallic.png",
-        icon: <Beaker className="text-purple-400" />,
-        desc: "Designing transition-metal complexes with tailored pincer ligands.",
-        details: "Exploring metal-ligand cooperation (MLC) patterns to unlock new reactivity for atom-efficient transformations."
+        icon: <FlaskConical className="text-blue-400" />,
+        desc: "Molecularly-defined pincer complexes and metal-ligand cooperation for selective transformations.",
+        details: "We design and develop well-defined transition-metal pincer complexes for C-C, C-N bond forming reactions, acceptorless dehydrogenation, hydrogenation, and borrowing hydrogen strategies using earth-abundant metals."
+      },
+      {
+        id: 'heterogeneous',
+        title: "Heterogeneous Catalysis",
+        image: "/images/research/green_synthesis.png",
+        icon: <Beaker className="text-emerald-400" />,
+        desc: "Robust nanocatalysts and supported systems for sustainable industrial transformations.",
+        details: "Our group develops reusable heterogeneous nanocatalysts on graphene/carbon supports for hydrogen generation, CO2 conversion, biomass upgrading, and co-pyrolysis of waste materials."
       }
     ];
   }, []);
@@ -663,7 +648,7 @@ export default function Home() {
           </motion.div>
 
           <motion.p initial="hidden" animate="visible" variants={fadeUp} className="text-lg md:text-2xl text-[var(--color-muted)] max-w-3xl mx-auto mb-12 font-light leading-relaxed">
-            Pioneering the future of <span className="text-white font-medium">catalysis</span>, <span className="text-white font-medium">sustainable chemistry</span>, and complex <span className="text-white font-medium">organometallic systems</span>.
+            Exploring new frontiers in <span className="text-white font-medium">catalysis</span>, <span className="text-white font-medium">sustainable chemistry</span>, and complex <span className="text-white font-medium">organometallic systems</span>.
           </motion.p>
         </div>
       </section>
@@ -675,8 +660,7 @@ export default function Home() {
           <div className="w-full lg:w-1/3 sticky top-32">
             <div className="absolute inset-0 bg-blue-500/20 blur-[80px] rounded-full -z-10"></div>
             <div className="w-full aspect-[3/4] rounded-[3rem] border border-white/10 relative overflow-hidden group cursor-crosshair shadow-2xl bg-white/5">
-               <div className="absolute inset-0 bg-[url('/images/pi/pi-profile-1.jpg')] bg-cover bg-top transition-all duration-700 group-hover:opacity-0 group-hover:scale-105"></div>
-               <div className="absolute inset-0 bg-[url('/images/pi/pi-profile-2.jpg')] bg-cover bg-top opacity-0 transition-all duration-700 group-hover:opacity-100 group-hover:scale-105"></div>
+               <div className="absolute inset-0 bg-[url('/images/pi/pi-profile.jpg')] bg-cover bg-top transition-all duration-700 group-hover:scale-105"></div>
             </div>
             
             <div className="mt-8 flex flex-col items-center gap-3">
@@ -810,6 +794,46 @@ export default function Home() {
         </motion.div>
       </section>
 
+      {/* LAB NEWS SECTION */}
+      <section id="news" className="w-full py-32 px-6 relative z-10">
+        <div className="max-w-7xl mx-auto">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mb-16">
+            <div className="flex items-center gap-4 mb-8">
+               <div className="h-px w-12 bg-pink-500"></div>
+               <p className="text-[10px] font-mono text-pink-400 tracking-[0.3em] uppercase">What's Happening</p>
+            </div>
+            <h2 className="text-5xl md:text-8xl font-black tracking-tight mb-6 text-gradient leading-[0.9]">Lab News</h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {news.map((item) => (
+              <motion.div
+                key={item.id}
+                initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
+                className="group p-8 rounded-[2rem] bg-white/[0.03] border border-white/5 hover:border-pink-500/20 hover:bg-white/5 transition-all duration-500"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <span className={`px-3 py-1 rounded-full text-[10px] font-black tracking-widest uppercase border ${
+                    item.type === 'Award' ? 'bg-amber-500/10 border-amber-500/20 text-amber-400' :
+                    item.type === 'Paper' ? 'bg-blue-500/10 border-blue-500/20 text-blue-400' :
+                    item.type === 'Joining' ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' :
+                    'bg-purple-500/10 border-purple-500/20 text-purple-400'
+                  }`}>{item.type}</span>
+                  <span className="text-[10px] text-white/30 font-mono">{item.date}</span>
+                </div>
+                <h3 className="text-lg font-bold text-white mb-3 leading-snug tracking-tight group-hover:text-pink-400 transition-colors">{item.title}</h3>
+                <p className="text-sm text-white/50 font-light leading-relaxed line-clamp-3">{item.detail}</p>
+                {item.link && (
+                  <a href={item.link.startsWith('http') ? item.link : `https://doi.org/${item.link}`} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 mt-4 text-[10px] font-bold text-pink-500/60 hover:text-pink-400 transition-colors uppercase tracking-widest">
+                    Read More <ArrowRight size={10} />
+                  </a>
+                )}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* 3. RESEARCH SECTION */}
       <section id="research" className="w-full py-32 px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
@@ -821,11 +845,11 @@ export default function Home() {
             <h2 className="text-5xl md:text-8xl font-black tracking-tight mb-12 text-gradient leading-[0.9]">Research</h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
                <p className="text-xl md:text-2xl text-[var(--color-muted)] font-light leading-relaxed border-l-4 border-blue-500 pl-8 italic">
-                 "Our group works in the areas of Organic/Organometallic Chemistry and Sustainable Catalysis. Our research primarily focuses on generating resources for green energy and recycling atmospheric waste."
+                 "Our research centers on organometallic systems and enabling organic transformations via sustainable catalysis. Our primary objective is to generate green energy resources and recycle atmospheric waste."
                </p>
                <div className="space-y-6 text-lg text-white/60 font-light leading-relaxed">
                   <p>
-                    Specifically, we work on the design and development of catalytic materials for hydrogen generation from feedstocks, sustainable chemical synthesis, and conversion of CO2 to value-added products.
+                    Specifically, we work on the design and development of catalytic systems for hydrogen generation, hydrogenation, photocatalysis, and C-H activation reactions using both homogeneous and heterogeneous catalysts.
                   </p>
                </div>
             </div>
@@ -1075,17 +1099,6 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 shrink-0">
-                  <Phone size={20} />
-                </div>
-                <div>
-                  <h4 className="text-sm font-bold text-white uppercase tracking-widest mb-2">Phone</h4>
-                  <a href="tel:+917756831487" className="text-white/60 hover:text-blue-400 font-light transition-colors">
-                    +91-7756831487
-                  </a>
-                </div>
-              </div>
             </div>
           </div>
           
