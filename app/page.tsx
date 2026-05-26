@@ -630,7 +630,7 @@ export default function Home() {
             sizes="100vw"
             className="object-cover object-center opacity-80" 
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 via-60% to-background"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/70 via-70% to-black/90"></div>
         </motion.div>
 
         {/* Background watermark text */}
@@ -646,15 +646,15 @@ export default function Home() {
           </motion.div>
 
           <motion.div initial="hidden" animate="visible" variants={fadeUp} className="relative">
-            <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter mb-8 bg-clip-text text-transparent bg-gradient-to-b from-foreground via-foreground/80 to-foreground/40 relative z-10 drop-shadow-[0_0_40px_rgba(0,0,0,0.08)] leading-[0.9]">
+            <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter mb-8 text-white relative z-10 drop-shadow-[0_2px_30px_rgba(0,0,0,0.5)] leading-[0.9]">
               Raman's<br/>
-              <span className="text-amber-500">Research</span> Lab
+              <span className="text-amber-400">Research</span> Lab
             </h1>
           </motion.div>
 
           <motion.div initial="hidden" animate="visible" variants={fadeUp}>
-            <p className="text-xl sm:text-2xl md:text-3xl text-foreground/80 font-light max-w-3xl mx-auto mb-8 leading-relaxed">
-              Exploring new frontiers in <span className="font-semibold text-foreground">catalysis</span>, <span className="font-semibold text-foreground">sustainable chemistry</span>, and complex <span className="font-semibold text-foreground">organometallic systems</span>.
+            <p className="text-lg sm:text-xl md:text-2xl text-white/80 font-light max-w-3xl mx-auto mb-8 leading-relaxed">
+              Exploring new frontiers in <span className="font-semibold text-white">catalysis</span>, <span className="font-semibold text-white">sustainable chemistry</span>, and complex <span className="font-semibold text-white">organometallic systems</span>.
             </p>
           </motion.div>
         </div>
