@@ -639,6 +639,12 @@ export default function Home() {
         </div>
 
         <div className="z-10 max-w-6xl mx-auto text-center relative">
+          <motion.div initial="hidden" animate="visible" variants={fadeUp}>
+            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full glass mb-10 text-xs sm:text-sm font-mono text-amber-400 font-bold uppercase tracking-widest border border-foreground/10">
+              IISER Tirupati • Department of Chemistry
+            </div>
+          </motion.div>
+
           <motion.div initial="hidden" animate="visible" variants={fadeUp} className="relative">
             <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter mb-8 text-white relative z-10 drop-shadow-[0_2px_30px_rgba(0,0,0,0.5)] leading-[0.9]">
               Raman's<br/>
@@ -650,12 +656,6 @@ export default function Home() {
             <p className="text-lg sm:text-xl md:text-2xl text-white/80 font-light max-w-3xl mx-auto mb-8 leading-relaxed">
               Exploring new frontiers in <span className="font-semibold text-white">catalysis</span>, <span className="font-semibold text-white">sustainable chemistry</span>, and complex <span className="font-semibold text-white">organometallic systems</span>.
             </p>
-          </motion.div>
-
-          <motion.div initial="hidden" animate="visible" variants={fadeUp}>
-            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full glass mt-4 text-xs sm:text-sm font-mono text-amber-400 font-bold uppercase tracking-widest border border-foreground/10">
-              IISER Tirupati • Department of Chemistry
-            </div>
           </motion.div>
         </div>
       </section>
