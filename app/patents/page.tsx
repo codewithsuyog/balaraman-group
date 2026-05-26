@@ -22,7 +22,7 @@ const PatentCard = ({ patent, type }: { patent: any, type: string }) => (
       <span className="px-3 py-1 rounded bg-amber-500/10 text-amber-400 text-[10px] font-black tracking-widest uppercase border border-amber-500/20">
         {type}
       </span>
-      {patent.year && <span className="text-[10px] font-mono text-white/30">{patent.year}</span>}
+      {patent.year && <span className="text-[10px] font-mono text-white/90">{patent.year}</span>}
     </div>
     
     <h3 className="text-xl font-bold text-white mb-4 leading-tight group-hover:text-amber-400 transition-colors">
@@ -32,26 +32,26 @@ const PatentCard = ({ patent, type }: { patent: any, type: string }) => (
     <div className="space-y-4 flex-1">
       {patent.authors && (
         <div className="flex gap-2">
-          <span className="text-[10px] font-mono text-white/20 uppercase shrink-0 mt-1">Authors:</span>
-          <p className="text-sm text-white/60 leading-relaxed italic">{patent.authors}</p>
+          <span className="text-[10px] font-mono text-white uppercase shrink-0 mt-1">Authors:</span>
+          <p className="text-sm text-white leading-relaxed italic">{patent.authors}</p>
         </div>
       )}
       {patent.number && (
         <div className="flex gap-2">
-          <span className="text-[10px] font-mono text-white/20 uppercase shrink-0 mt-1">Number:</span>
+          <span className="text-[10px] font-mono text-white uppercase shrink-0 mt-1">Number:</span>
           <p className="text-sm text-amber-400 font-mono">{patent.number}</p>
         </div>
       )}
       {patent.coapplicant && (
         <div className="flex gap-2">
-          <span className="text-[10px] font-mono text-white/20 uppercase shrink-0 mt-1">Partner:</span>
+          <span className="text-[10px] font-mono text-white uppercase shrink-0 mt-1">Partner:</span>
           <p className="text-sm text-emerald-400 font-bold uppercase tracking-wider">{patent.coapplicant}</p>
         </div>
       )}
     </div>
 
     <div className="mt-8 pt-6 border-t border-white/5">
-       <button className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-white/40 group-hover:text-white transition-colors">
+       <button className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-white group-hover:text-white transition-colors">
           View Details <ArrowRight size={12} />
        </button>
     </div>
@@ -70,7 +70,7 @@ export default function PatentsPage() {
           <h1 className="text-5xl md:text-8xl font-black tracking-tighter mb-8 uppercase leading-none">
             Patents & <br className="hidden md:block"/> Innovations
           </h1>
-          <p className="text-xl md:text-2xl text-white/40 font-light max-w-3xl leading-relaxed">
+          <p className="text-xl md:text-2xl text-white font-light max-w-3xl leading-relaxed">
             Bridging fundamental research and industrial applications through a robust portfolio of granted and filed patents.
           </p>
         </motion.div>

@@ -45,7 +45,7 @@ const PublicationCard = ({ pub, idx, fadeUp }: any) => {
               className={`w-full h-full object-contain ${coverFailed ? 'opacity-20 p-4' : ''}`}
               onError={() => coverExtIdx < extensions.length - 1 ? setCoverExtIdx(prev => prev + 1) : setCoverFailed(true)}
             />
-            <div className="absolute top-2 left-2 px-1.5 py-0.5 bg-[#090c10]/50 backdrop-blur-md rounded text-[6px] font-mono uppercase tracking-widest text-white/40">Cover</div>
+            <div className="absolute top-2 left-2 px-1.5 py-0.5 bg-[#090c10]/50 backdrop-blur-md rounded text-[6px] font-mono uppercase tracking-widest text-white">Cover</div>
           </div>
         )}
 
@@ -56,16 +56,16 @@ const PublicationCard = ({ pub, idx, fadeUp }: any) => {
               {pub.year}
             </span>
             {pub.journal && pub.journal.length < 20 && (
-              <span className="text-xs text-white/30 font-mono italic">{pub.journal}</span>
+              <span className="text-xs text-white/90 font-mono italic">{pub.journal}</span>
             )}
           </div>
           
-          <div className="text-base text-white/80 leading-relaxed mb-6 font-light border-l-2 border-amber-500/30 pl-6">
+          <div className="text-base text-white leading-relaxed mb-6 font-light border-l-2 border-amber-500/30 pl-6">
             <span className="text-amber-400 font-bold mr-2 text-lg">{pub.id}.</span>
             {pub.title && (
               <strong className="block text-white text-lg font-bold mb-2 leading-snug tracking-tight not-italic">{pub.title}</strong>
             )}
-            <span className="text-sm text-white/60">{pub.fullText || `${pub.authors}. ${pub.title}. ${pub.journal}, ${pub.year}${pub.details}`}</span>
+            <span className="text-sm text-white">{pub.fullText || `${pub.authors}. ${pub.title}. ${pub.journal}, ${pub.year}${pub.details}`}</span>
           </div>
           
           <div className="flex items-center gap-4 flex-wrap mt-auto">
@@ -93,7 +93,7 @@ const PublicationCard = ({ pub, idx, fadeUp }: any) => {
               className={`w-full h-full object-contain ${schemeFailed ? 'opacity-20 p-4' : ''}`}
               onError={() => schemeExtIdx < extensions.length - 1 ? setSchemeExtIdx(prev => prev + 1) : setSchemeFailed(true)}
             />
-            <div className="absolute top-2 left-2 px-1.5 py-0.5 bg-[#090c10]/50 backdrop-blur-md rounded text-[6px] font-mono uppercase tracking-widest text-white/40">Scheme</div>
+            <div className="absolute top-2 left-2 px-1.5 py-0.5 bg-[#090c10]/50 backdrop-blur-md rounded text-[6px] font-mono uppercase tracking-widest text-white">Scheme</div>
           </div>
         )}
       </div>
@@ -142,7 +142,7 @@ export default function PublicationsPage() {
             <ArrowLeft size={20} /> Back to Home
           </Link>
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">Publications Archive</h1>
-          <p className="text-white/60 text-lg font-light max-w-2xl">
+          <p className="text-white text-lg font-light max-w-2xl">
             A comprehensive record of all scholarly articles, peer-reviewed papers, and research outputs from Raman's Research Lab.
           </p>
         </motion.div>
@@ -154,7 +154,7 @@ export default function PublicationsPage() {
             className={`px-8 py-4 rounded-full text-sm font-bold uppercase tracking-widest transition-all ${
               activeTab === 'independent' 
                 ? 'bg-amber-600 text-white shadow-lg shadow-amber-600/30' 
-                : 'bg-white/5 text-white/40 border border-white/10 hover:border-amber-500/30 hover:text-white/70'
+                : 'bg-white/5 text-white border border-white/10 hover:border-amber-500/30 hover:text-white/90'
             }`}
           >
             Independent Career Publications
@@ -164,7 +164,7 @@ export default function PublicationsPage() {
             className={`px-8 py-4 rounded-full text-sm font-bold uppercase tracking-widest transition-all ${
               activeTab === 'early' 
                 ? 'bg-amber-600 text-white shadow-lg shadow-amber-600/30' 
-                : 'bg-white/5 text-white/40 border border-white/10 hover:border-amber-500/30 hover:text-white/70'
+                : 'bg-white/5 text-white border border-white/10 hover:border-amber-500/30 hover:text-white/90'
             }`}
           >
             Doctoral & Postdoctoral Publications

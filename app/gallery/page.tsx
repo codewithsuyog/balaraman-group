@@ -69,7 +69,7 @@ export default function GalleryPage() {
                 : "A comprehensive archive of Raman's Research Lab—milestones, celebrations, and daily scientific life."}
             </p>
           </motion.div>
-          <div className="px-6 py-3 rounded-full border border-white/10 bg-white/5 text-xs font-mono text-white/40 uppercase tracking-widest h-max">
+          <div className="px-6 py-3 rounded-full border border-white/10 bg-white/5 text-xs font-mono text-white uppercase tracking-widest h-max">
             {photos.length} Captured {activeTab === 'images' ? 'Media' : 'Memories'}
           </div>
         </div>
@@ -81,7 +81,7 @@ export default function GalleryPage() {
             className={`flex items-center gap-2 px-6 py-3 rounded-full font-bold text-xs uppercase tracking-widest transition-all ${
               activeTab === 'images' 
                 ? 'bg-pink-500/20 text-pink-400 border border-pink-500/30' 
-                : 'bg-white/5 text-white/40 hover:bg-white/10 border border-transparent'
+                : 'bg-white/5 text-white hover:bg-white/10 border border-transparent'
             }`}
           >
             <ImageIcon size={16} /> Lab Images & Videos
@@ -91,7 +91,7 @@ export default function GalleryPage() {
             className={`flex items-center gap-2 px-6 py-3 rounded-full font-bold text-xs uppercase tracking-widest transition-all ${
               activeTab === 'memories' 
                 ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' 
-                : 'bg-white/5 text-white/40 hover:bg-white/10 border border-transparent'
+                : 'bg-white/5 text-white hover:bg-white/10 border border-transparent'
             }`}
           >
             <Users size={16} /> Lab Memories

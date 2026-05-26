@@ -20,7 +20,7 @@ const PublicationItem = ({ pub }: { pub: any }) => (
   <div className="flex gap-4 group/pub py-4 border-b border-white/5 last:border-0 hover:bg-white/[0.02] transition-colors rounded-lg px-3 -mx-3">
     <span className="text-xs font-mono text-amber-500/50 mt-1 shrink-0">{pub.id}.</span>
     <div className="flex-1 min-w-0">
-      <p className="text-sm text-white/70 font-light leading-relaxed">
+      <p className="text-sm text-white/90 font-light leading-relaxed">
         {pub.authors}. {pub.title}. <span className="italic">{pub.journal}</span>, {pub.year}. {pub.volume && `${pub.volume}`}{pub.pages && `, ${pub.pages}`}
       </p>
       <div className="flex items-center gap-2 mt-2">
@@ -80,7 +80,7 @@ export default function ResearchPage() {
         
         <div className="max-w-6xl mx-auto relative z-10">
           <motion.div initial="hidden" animate="visible" variants={fadeUp}>
-            <Link href="/" className="inline-flex items-center gap-2 text-white/40 hover:text-amber-400 font-mono text-[10px] uppercase tracking-widest mb-12 transition-colors group">
+            <Link href="/" className="inline-flex items-center gap-2 text-white hover:text-amber-400 font-mono text-[10px] uppercase tracking-widest mb-12 transition-colors group">
               <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Back to Laboratory
             </Link>
             
@@ -88,7 +88,7 @@ export default function ResearchPage() {
               Research <br/> <span className="text-amber-500">Pillars</span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-white/60 font-light max-w-3xl leading-relaxed border-l-2 border-amber-500 pl-8 italic">
+            <p className="text-xl md:text-2xl text-white font-light max-w-3xl leading-relaxed border-l-2 border-amber-500 pl-8 italic">
               Focused on Organic/Organometallic Chemistry and Sustainable Catalysis to address global energy and environmental challenges.
             </p>
           </motion.div>
@@ -98,7 +98,7 @@ export default function ResearchPage() {
       {/* CORE MISSION SUMMARY */}
       <section className="py-24 px-6 bg-white/[0.01]">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
-          <div className="md:col-span-2 space-y-6 text-lg text-white/70 font-light leading-relaxed">
+          <div className="md:col-span-2 space-y-6 text-lg text-white/90 font-light leading-relaxed">
             <h3 className="text-xs font-mono text-amber-500 uppercase tracking-[0.4em] mb-4">Laboratory Mission</h3>
             <p>
               Our research centers on organometallic systems and enabling organic transformations via sustainable catalysis. Our primary objective is to generate green energy resources and recycle atmospheric waste.
@@ -111,7 +111,7 @@ export default function ResearchPage() {
             <h4 className="text-xs font-bold text-white mb-4 uppercase tracking-widest flex items-center gap-2">
               <Database size={16} className="text-amber-400" /> Focus Areas
             </h4>
-            <ul className="space-y-3 text-xs font-mono text-white/40">
+            <ul className="space-y-3 text-xs font-mono text-white">
               <li className="flex items-center gap-3"><ChevronRight size={10} className="text-amber-500" /> Homogeneous Catalysis</li>
               <li className="flex items-center gap-3"><ChevronRight size={10} className="text-amber-500" /> Heterogeneous Catalysis</li>
               <li className="flex items-center gap-3"><ChevronRight size={10} className="text-amber-500" /> C-H Activation</li>
@@ -144,7 +144,7 @@ export default function ResearchPage() {
                 </div>
                 
                 <p className="text-lg text-white/90 font-medium mb-6 leading-snug">{cat.desc}</p>
-                <p className="text-base text-white/50 font-light leading-relaxed mb-10 border-l-2 border-white/10 pl-6 italic">
+                <p className="text-base text-white/90 font-light leading-relaxed mb-10 border-l-2 border-white/10 pl-6 italic">
                   {cat.details}
                 </p>
 
@@ -153,7 +153,7 @@ export default function ResearchPage() {
                   <div className="flex flex-col">
                     {cat.pubs.map((pub, i) => <PublicationItem key={i} pub={pub} />)}
                   </div>
-                  <Link href="/publications" className="inline-flex items-center gap-2 text-[10px] font-mono text-white/30 hover:text-amber-400 mt-4 transition-colors">
+                  <Link href="/publications" className="inline-flex items-center gap-2 text-[10px] font-mono text-white/90 hover:text-amber-400 mt-4 transition-colors">
                     Access Complete Archive <ArrowRight size={10} />
                   </Link>
                 </div>
@@ -183,14 +183,14 @@ export default function ResearchPage() {
             <div className="p-12 rounded-[3rem] bg-white/[0.02] border border-white/5 hover:border-amber-500/20 transition-all">
               <Award className="text-amber-400 mb-6" size={40} />
               <h3 className="text-2xl font-bold mb-4 uppercase tracking-tight">Core Contribution</h3>
-              <p className="text-white/50 font-light leading-relaxed">
+              <p className="text-white/90 font-light leading-relaxed">
                 Development of diverse C-C and C-N bond-forming reactions via dehydrogenation strategies. These protocols are highly atom-efficient, eliminating hazardous waste.
               </p>
             </div>
             <div className="p-12 rounded-[3rem] bg-white/[0.02] border border-white/5 hover:border-amber-500/20 transition-all">
               <Microscope className="text-emerald-400 mb-6" size={40} />
               <h3 className="text-2xl font-bold mb-4 uppercase tracking-tight">Robust Nanocatalysis</h3>
-              <p className="text-white/50 font-light leading-relaxed">
+              <p className="text-white/90 font-light leading-relaxed">
                 Converting homogeneous catalytic systems into heterogeneous versions through stable supports. Our core-shell architectures represent a new frontier in 3d-transition-metal catalysis.
               </p>
             </div>

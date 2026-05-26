@@ -64,7 +64,7 @@ const MemberCard = ({ member, role }: { member: any, role: string }) => {
 
       <div className="p-6">
         <h3 className="text-xl font-bold text-white mb-2 group-hover:text-amber-400 transition-colors tracking-tight">{member.name}</h3>
-        <p className="text-xs text-white/80 font-light leading-relaxed mb-4">
+        <p className="text-xs text-white font-light leading-relaxed mb-4">
           {member.info ? member.info.split(',').map((part: string, idx: number) => (
             <React.Fragment key={idx}>{part.trim()}<br/></React.Fragment>
           )) : null}
@@ -77,9 +77,9 @@ const MemberCard = ({ member, role }: { member: any, role: string }) => {
         
         <div className="flex gap-4 border-t border-white/5 pt-4 mt-4">
           {member.email && (
-            <a href={`mailto:${member.email}`} className="text-white/20 hover:text-amber-400 transition-colors"><Mail size={16} /></a>
+            <a href={`mailto:${member.email}`} className="text-white hover:text-amber-400 transition-colors"><Mail size={16} /></a>
           )}
-          <button className="text-white/20 hover:text-amber-400 transition-colors"><Globe size={16} /></button>
+          <button className="text-white hover:text-amber-400 transition-colors"><Globe size={16} /></button>
         </div>
       </div>
     </motion.div>
@@ -114,12 +114,12 @@ const AlumniPhDCard = ({ member }: { member: any }) => {
       </div>
       <div className="p-6">
         <h3 className="text-lg font-bold text-white mb-2 group-hover:text-amber-400 transition-colors tracking-tight">{member.name}</h3>
-        <p className="text-[10px] text-white/50 font-light leading-relaxed mb-1">{member.thesis}</p>
+        <p className="text-[10px] text-white/90 font-light leading-relaxed mb-1">{member.thesis}</p>
         <div className="flex items-center gap-2 mt-3">
           <span className="text-[10px] font-mono text-amber-500/50">{member.duration}</span>
         </div>
         {member.present && (
-          <p className="text-[10px] text-white/20 mt-2 italic">Currently: {member.present}</p>
+          <p className="text-[10px] text-white mt-2 italic">Currently: {member.present}</p>
         )}
       </div>
     </motion.div>
@@ -144,7 +144,7 @@ export default function TeamPage() {
         
         <div className="max-w-7xl mx-auto relative z-10 text-center">
           <motion.div initial="hidden" animate="visible" variants={fadeUp}>
-            <Link href="/" className="inline-flex items-center gap-2 text-white/40 hover:text-amber-400 font-mono text-[10px] uppercase tracking-widest mb-12 transition-colors group">
+            <Link href="/" className="inline-flex items-center gap-2 text-white hover:text-amber-400 font-mono text-[10px] uppercase tracking-widest mb-12 transition-colors group">
               <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Back to Laboratory
             </Link>
             
@@ -152,7 +152,7 @@ export default function TeamPage() {
               Lab <br/> <span className="text-amber-500">Members</span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-white/60 font-light max-w-3xl mx-auto leading-relaxed border-y border-white/5 py-8 italic">
+            <p className="text-xl md:text-2xl text-white font-light max-w-3xl mx-auto leading-relaxed border-y border-white/5 py-8 italic">
               A diverse group of researchers dedicated to pioneering sustainable chemistry and advanced catalysis.
             </p>
           </motion.div>
@@ -223,7 +223,7 @@ export default function TeamPage() {
         <section id="alumni" className={`pt-16 border-t border-white/5 ${isAlumniOnly ? 'mt-0 border-t-0 pt-0' : ''}`}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-20">
              <h2 className="text-5xl md:text-8xl font-black tracking-tighter uppercase mb-4">Alumni</h2>
-             <p className="text-white/40 font-light max-w-xl mx-auto leading-relaxed">
+             <p className="text-white font-light max-w-xl mx-auto leading-relaxed">
                Celebrating the achievements of our past group members across academia and industry globally.
              </p>
           </motion.div>
@@ -255,8 +255,8 @@ export default function TeamPage() {
                       <Briefcase size={14} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h4 className="text-sm font-bold text-white/80 truncate">{m.name}</h4>
-                      <p className="text-[10px] text-white/30 font-light">{m.info} • {m.duration}</p>
+                      <h4 className="text-sm font-bold text-white truncate">{m.name}</h4>
+                      <p className="text-[10px] text-white/90 font-light">{m.info} • {m.duration}</p>
                     </div>
                   </div>
                 ))}
@@ -278,8 +278,8 @@ export default function TeamPage() {
                       <BookOpen size={14} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h4 className="text-sm font-bold text-white/80 truncate">{m.name}</h4>
-                      <p className="text-[10px] text-white/30 font-light">{m.institution} • {m.year}</p>
+                      <h4 className="text-sm font-bold text-white truncate">{m.name}</h4>
+                      <p className="text-[10px] text-white/90 font-light">{m.institution} • {m.year}</p>
                     </div>
                   </div>
                 ))}
@@ -301,8 +301,8 @@ export default function TeamPage() {
                       <Beaker size={14} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h4 className="text-sm font-bold text-white/80">{m.name}</h4>
-                      <p className="text-[10px] text-white/30 font-light">{m.institution}</p>
+                      <h4 className="text-sm font-bold text-white">{m.name}</h4>
+                      <p className="text-[10px] text-white/90 font-light">{m.institution}</p>
                     </div>
                   </div>
                 ))}
@@ -324,8 +324,8 @@ export default function TeamPage() {
                       <FlaskConical size={14} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h4 className="text-sm font-bold text-white/80 truncate">{m.name}</h4>
-                      <p className="text-[10px] text-white/30 font-light">{m.duration}</p>
+                      <h4 className="text-sm font-bold text-white truncate">{m.name}</h4>
+                      <p className="text-[10px] text-white/90 font-light">{m.duration}</p>
                     </div>
                   </div>
                 ))}
@@ -347,8 +347,8 @@ export default function TeamPage() {
                       <GraduationCap size={14} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h4 className="text-sm font-bold text-white/80 truncate">{m.name}</h4>
-                      <p className="text-[10px] text-white/30 font-light">{m.batch} • {m.duration}</p>
+                      <h4 className="text-sm font-bold text-white truncate">{m.name}</h4>
+                      <p className="text-[10px] text-white/90 font-light">{m.batch} • {m.duration}</p>
                     </div>
                   </div>
                 ))}
@@ -370,8 +370,8 @@ export default function TeamPage() {
                       <Users size={14} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h4 className="text-sm font-bold text-white/80 truncate">{m.name}</h4>
-                      <p className="text-[10px] text-white/30 font-light">{m.batch} • {m.duration}</p>
+                      <h4 className="text-sm font-bold text-white truncate">{m.name}</h4>
+                      <p className="text-[10px] text-white/90 font-light">{m.batch} • {m.duration}</p>
                     </div>
                   </div>
                 ))}
