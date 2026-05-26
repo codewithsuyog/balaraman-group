@@ -1020,7 +1020,7 @@ export default function Home() {
                 <div className="mb-20">
                   <div className="flex items-center gap-4 mb-12">
                      <div className="h-px w-12 bg-amber-500"></div>
-                     <h2 className="text-sm font-extrabold text-accent uppercase tracking-[0.2em]">Master&apos;s Students</h2>
+                     <h2 className="text-sm font-extrabold text-accent uppercase tracking-[0.2em]">Master&apos;s Thesis</h2>
                   </div>
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
                     {team.masters.map((member, i) => <TeamMemberThumb key={i} member={member} role="MSc" />)}

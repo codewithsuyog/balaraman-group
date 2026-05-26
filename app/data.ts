@@ -1204,6 +1204,9 @@ export const team = {
     { name: "Dr. Bapurao Rupanawar", info: "PhD. NCL-Pune, Feb 2022, Post Doc -OIST-Japan July 2022-Aug 2025, State- Maharashtra", image: "/images/team/postdocs/bapurao.jpg" }
   ],
   masters: [
+    { name: "Mr. Suyog", info: "Master's Thesis Student, IISER Tirupati (2026)", image: "/images/team/masters/suyog.jpg" },
+    { name: "Ms. Kavya", info: "Master's Thesis Student, IISER Tirupati (2026)", image: "/images/team/masters/Kavya.jpeg" },
+    { name: "Ms. Ayesha", info: "Master's Thesis Student, IISER Tirupati (2026)", image: "/images/team/masters/ayesha.jpg" },
   ],
   semesterProject: [],
   alumniPhd: [
