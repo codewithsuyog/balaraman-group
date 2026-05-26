@@ -1,13 +1,7 @@
 export const news = [
   { id: 1, date: "May 2026", type: "Award", title: "Dr. Balaraman selected for INSA Associate Fellowship (IAF) – 2026", detail: "Dr. Ekambaram Balaraman, Associate Professor and Chair, Department of Chemistry, IISER Tirupati, has been selected as a recipient of the INSA Associate Fellowship (IAF) – 2026 by the Indian National Science Academy.", link: "" },
-  { id: 2, date: "2025", type: "Paper", title: "Nickel-Catalyzed Selective Monoamination of 1,2-Diols published in Org. Lett.", detail: "Our latest work on an affordable approach to amino alcohols via Ni-catalysis has been published.", link: "10.1021/acs.orglett.5c02536" },
-  { id: 3, date: "2025", type: "Paper", title: "Catalysis-Driven Methane Conversion review published", detail: "Comprehensive review on catalytic methane conversion to carbon and hydrogen published in Int. J. Hydrogen Energy.", link: "10.1016/j.ijhydene.2025.03.270" },
-  { id: 4, date: "2025", type: "Joining", title: "Dr. Bapurao Rupanawar joins as Post-doctoral Fellow", detail: "Dr. Bapurao Rupanawar (PhD NCL-Pune, Post Doc OIST-Japan) has joined the lab as a Post-doctoral Fellow.", link: "" },
-  { id: 5, date: "2025", type: "Joining", title: "Dr. Athira C S and Dr. Anjali Krishna P K join as Postdocs", detail: "Two new post-doctoral fellows have joined from CSIR-NIIST, Kerala.", link: "" },
-  { id: 6, date: "2025", type: "Paper", title: "Green Chemistry publication on methoxymethylation of amides", detail: "Green and sustainable catalytic protocol for methoxymethylation published in Green Chem.", link: "" },
-  { id: 7, date: "2024", type: "Achievement", title: "Dr. Sivakumar G completes PhD and joins Weizmann Institute", detail: "Dr. Sivakumar G successfully defended his PhD thesis and has moved to Weizmann Institute of Science, Israel for postdoctoral studies.", link: "" },
-  { id: 8, date: "2024", type: "Award", title: "CRSI Bronze Medal awarded to Dr. E. Balaraman", detail: "Recognizing outstanding contributions to chemical sciences in India.", link: "" },
-  { id: 9, date: "2023", type: "Achievement", title: "PI Selected for RSC-ChemComm's Pioneering Investigators", detail: "Acknowledging leading research in molecular catalysis.", link: "" },
+  { id: 4, date: "August 2025", type: "Joining", title: "Dr. Bapurao Rupanawar joins as Post-doctoral Fellow", detail: "Dr. Bapurao Rupanawar (PhD NCL-Pune, Post Doc OIST-Japan) has joined the lab as a Post-doctoral Fellow.", link: "" },
+  { id: 5, date: "July 2025", type: "Joining", title: "Dr. Athira C S and Dr. Anjali Krishna P K join as Postdocs", detail: "Two new post-doctoral fellows have joined from CSIR-NIIST, Kerala.", link: "" },
 ];
 
 export const publications = [
@@ -1196,26 +1190,20 @@ export const team = {
     { name: "Subarna Sukanya Padhy", info: "Ph.D. August 2022 (PMRF), M. Sc., (Chem), Pondicherry University, Puducherry", email: "subarna_padhy@students.iisertirupati.ac.in", image: "/images/team/phd/subarna.jpg" },
     { name: "Smruti Rekha Padhy", info: "IISER-iPhD, IISER Tirupati", email: "smrutirekha@students.iisertirupati.ac.in", image: "/images/team/phd/smruti.jpg" },
     { name: "Abhijith K S", info: "Ph.D. Jan 2023, BSMS (Chem), IISER Tirupati", email: "abhijithks@students.iisertirupati.ac.in", image: "/images/team/phd/abhijith.png" },
-    { name: "Chandrakanth Gouda", info: "Ph.D. July 2023, M.Sc (Chem), Mangaluru University, Mangaluru", email: "chandrakantgouda@students.iisertirupati.ac.in", image: "/images/team/phd/Chandrakant.png" },
-    { name: "Palmurukan M. R (Paal)", info: "Ph.D. July 2023, M.Sc., M-Tech., (Industrial Catalysis) CUSAT, Kerala", email: "palmurukanmr@students.iisertirupati.ac.in", image: "/images/team/phd/palmurukan" },
-    { name: "Veerahari Shankar", info: "Ph.D. Jan 2024, M.Sc (Chem), The Gandhigram Rural University, Tamil Nadu", email: "veeraharishankar@labs.iisertirupati.ac.in", image: "/images/team/phd/veerahari" },
-    { name: "Nanthini P.", info: "Ph.D. Aug 2024, M.Sc (Chem), Bharathidasan University, Tamil Nadu", email: "nanthini20243208@students.iisertirupati.ac.in", image: "/images/team/phd/nanthini" },
-    { name: "Mahendra D R", info: "Ph.D. Jan 2025, M.Sc (Chem), University of Mysuru, Karnataka", email: "mahendra_20253202@students.iisertirupati.ac.in", image: "/images/team/phd/mahendra" },
-    { name: "Sanjay A", info: "IPhD 2024, B.Sc - St. Joseph's College (Autonomous) Tiruchirappalli, Tamilnadu", email: "", image: "/images/team/phd/sanjay" }
+    { name: "Chandrakant Gouda", info: "Ph.D. July 2023, M.Sc (Chem), Mangaluru University, Mangaluru", email: "chandrakantgouda@students.iisertirupati.ac.in", image: "/images/team/phd/Chandrakant.png" },
+    { name: "Palmurukan M. R. Pal", info: "Ph.D. July 2023, M.Sc., M-Tech., (Industrial Catalysis) CUSAT, Kerala", email: "palmurukanmr@students.iisertirupati.ac.in", image: "/images/team/phd/palmurukan.jpg" },
+    { name: "Sanjay A", info: "IPhD 2024, B.Sc - St. Joseph's College (Autonomous) Tiruchirappalli, Tamilnadu", email: "", image: "" },
+    { name: "Nanthini P.", info: "Ph.D. Aug 2024, M.Sc (Chem), Bharathidasan University, Tamil Nadu", email: "nanthini20243208@students.iisertirupati.ac.in", image: "/images/team/phd/nanthini.jpg" },
+    { name: "Mahendra D R", info: "Ph.D. Jan 2025, M.Sc (Chem), University of Mysuru, Karnataka", email: "mahendra_20253202@students.iisertirupati.ac.in", image: "/images/team/phd/mahendra.jpg" }
   ],
   postdocs: [
     { name: "Dr. Sachin S. Gorad", info: "Ph.D. 2024 (IISER-Bhopal), M.Sc. (Org. Chem) Savitribai Phule Pune University Maharashtra", email: "sachinshrimant@labs.iisertirupati.ac.in", image: "/images/team/postdocs/sachin.png" },
-    { name: "Dr. Bapurao Rupanawar", info: "PhD. NCL-Pune, Feb 2022, Post Doc -OIST-Japan July 2022-Aug 2025, State- Maharashtra", image: "/images/team/postdocs/bapurao" },
-    { name: "Dr. Naushad", info: "Post-doctoral Fellow", image: "/images/team/postdocs/naushad" },
+    { name: "Dr. Naushad", info: "Post-doctoral Fellow", image: "" },
     { name: "Dr. Athira C S", info: "PhD: CSIR NIIST, Kerala (2025), MSc: University of Kerala, Kerala (2019)", image: "/images/team/postdocs/Athira.jpeg" },
-    { name: "Dr. Anjali Krishna P K", info: "PhD: CSIR-NIIST, Thiruvananthapuram, Kerala (2024), MSc: NIT Tiruchirappalli, Tamilnadu (2017)", image: "/images/team/postdocs/anjali.jpeg" }
+    { name: "Dr. Anjali Krishna P K", info: "PhD: CSIR-NIIST, Thiruvananthapuram, Kerala (2024), MSc: NIT Tiruchirappalli, Tamilnadu (2017)", image: "/images/team/postdocs/anjali.jpeg" },
+    { name: "Dr. Bapurao Rupanawar", info: "PhD. NCL-Pune, Feb 2022, Post Doc -OIST-Japan July 2022-Aug 2025, State- Maharashtra", image: "/images/team/postdocs/bapurao.jpg" }
   ],
   masters: [
-    { name: "Shahma", info: "BSMS Master's Thesis Student, IISER Tirupati", image: "/images/team/masters/shama.jpeg" },
-    { name: "Lavanya", info: "BSMS Master's Thesis Student, IISER Tirupati", image: "/images/team/masters/Lavanya.jpeg" },
-    { name: "Suyog", info: "BSMS Master's Student, IISER Tirupati", image: "/images/team/semester/suyog" },
-    { name: "Kavya", info: "BSMS Master's Student, IISER Tirupati", image: "/images/team/semester/Kavya.jpeg" },
-    { name: "Ayesha", info: "BSMS Master's Student, IISER Tirupati", image: "/images/team/semester/ayesha" }
   ],
   semesterProject: [],
   alumniPhd: [
@@ -1235,6 +1223,9 @@ export const team = {
     { name: "Dr. M. Sivaprakash", info: "Ph.D. 2023 (Central University of Tamil Nadu), M.Sc. (Chem) Bharathiyar University Coimbatore", duration: "Apr 2023 – Present", image: "/images/team/postdocs/Sivaprakash.png" },
   ],
   alumniMsc: [
+    { name: "Mr. Suyog", institution: "IISER Tirupati", year: "2026" },
+    { name: "Ms. Kavya", institution: "IISER Tirupati", year: "2026" },
+    { name: "Ms. Ayesha", institution: "IISER Tirupati", year: "2026" },
     { name: "Mr. Thomas Abraham", institution: "Mahatma Gandhi University, Kerala", year: "2014" },
     { name: "Mr. T. Sulfikarali", institution: "University of Calicut, Kerala", year: "2015" },
     { name: "Mr. B. Aswin", institution: "Mahatma Gandhi University, Kerala", year: "2015" },
@@ -1267,7 +1258,9 @@ export const team = {
     { name: "Ms. Ardra Minil", institution: "Amrita Viswavidyapeetham University, Kollam", year: "2025-Present" },
     { name: "Ms. Meera Krishnan R.", institution: "Mahatma Gandhi University, Kerala", year: "2025-Present" },
     { name: "Ms. Lakshmi Lal V.", institution: "Mahatma Gandhi University, Kerala", year: "2025-Present" },
-    { name: "Ms. Gayathri Rajesh", institution: "Mahatma Gandhi University, Kerala", year: "2025-Present" }
+    { name: "Ms. Gayathri Rajesh", institution: "Mahatma Gandhi University, Kerala", year: "2025-Present" },
+    { name: "Ms. Shahma", institution: "IISER Tirupati", year: "2025" },
+    { name: "Ms. Lavanya", institution: "IISER Tirupati", year: "2025" }
   ],
   alumniBtech: [
     { name: "Mr. Varun Kant", institution: "IIT Roorkee" },
@@ -1275,6 +1268,7 @@ export const team = {
     { name: "Mr. Chinmay H. Shewale", institution: "ICT Mumbai" }
   ],
   alumniProjectFellows: [
+    { name: "Mr. Veerahari", duration: "Project Fellow" },
     { name: "Mr. M. Subaramanian", duration: "Feb 2016 – Jan 2017" },
     { name: "Mr. Ketan Wadekar", duration: "Jan 2016 – Jul 2016" },
     { name: "Mr. M. Prabhu", duration: "Feb 2017 – Jan 2018" },
@@ -1373,7 +1367,7 @@ export const piStats = {
   citations: 9554,
   grantedUSPatents: 9,
   phdCompleted: 11,
-  phdPursuing: 10,
+  phdPursuing: 9,
   postdocs: 14,
   mscStudents: 22,
   projectFellows: 7,

@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
@@ -41,9 +41,9 @@ const MemberCard = ({ member, role }: { member: any, role: string }) => {
   return (
     <motion.div 
       variants={fadeUp}
-      className="group relative bg-white/[0.03] border border-white/10 rounded-[2rem] overflow-hidden hover:bg-white/5 hover:border-amber-500/30 transition-all duration-500 shadow-xl"
+      className="group relative bg-foreground/[0.03] border border-foreground/10 rounded-[2rem] overflow-hidden hover:bg-foreground/5 hover:border-amber-500/30 transition-all duration-500 shadow-xl"
     >
-      <div className="aspect-[3/4] relative overflow-hidden bg-white/5">
+      <div className="aspect-[3/4] relative overflow-hidden bg-foreground/5">
         {!imgFailed && currentSrc ? (
           <img 
             src={currentSrc} 
@@ -63,8 +63,8 @@ const MemberCard = ({ member, role }: { member: any, role: string }) => {
       </div>
 
       <div className="p-6">
-        <h3 className="text-xl font-bold text-white mb-2 group-hover:text-amber-400 transition-colors tracking-tight">{member.name}</h3>
-        <p className="text-xs text-white font-light leading-relaxed mb-4">
+        <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-amber-400 transition-colors tracking-tight">{member.name}</h3>
+        <p className="text-xs text-foreground font-light leading-relaxed mb-4">
           {member.info ? member.info.split(',').map((part: string, idx: number) => (
             <React.Fragment key={idx}>{part.trim()}<br/></React.Fragment>
           )) : null}
@@ -75,11 +75,11 @@ const MemberCard = ({ member, role }: { member: any, role: string }) => {
           </a>
         )}
         
-        <div className="flex gap-4 border-t border-white/5 pt-4 mt-4">
+        <div className="flex gap-4 border-t border-foreground/5 pt-4 mt-4">
           {member.email && (
-            <a href={`mailto:${member.email}`} className="text-white hover:text-amber-400 transition-colors"><Mail size={16} /></a>
+            <a href={`mailto:${member.email}`} className="text-foreground hover:text-amber-400 transition-colors"><Mail size={16} /></a>
           )}
-          <button className="text-white hover:text-amber-400 transition-colors"><Globe size={16} /></button>
+          <button className="text-foreground hover:text-amber-400 transition-colors"><Globe size={16} /></button>
         </div>
       </div>
     </motion.div>
@@ -92,9 +92,9 @@ const AlumniPhDCard = ({ member }: { member: any }) => {
   return (
     <motion.div 
       variants={fadeUp}
-      className="group relative bg-white/[0.03] border border-white/10 rounded-[2rem] overflow-hidden hover:bg-white/5 hover:border-amber-500/30 transition-all duration-500 shadow-xl"
+      className="group relative bg-foreground/[0.03] border border-foreground/10 rounded-[2rem] overflow-hidden hover:bg-foreground/5 hover:border-amber-500/30 transition-all duration-500 shadow-xl"
     >
-      <div className="aspect-[3/4] relative overflow-hidden bg-white/5">
+      <div className="aspect-[3/4] relative overflow-hidden bg-foreground/5">
         {!imgFailed && member.image ? (
           <img 
             src={member.image} 
@@ -113,13 +113,13 @@ const AlumniPhDCard = ({ member }: { member: any }) => {
         </div>
       </div>
       <div className="p-6">
-        <h3 className="text-lg font-bold text-white mb-2 group-hover:text-amber-400 transition-colors tracking-tight">{member.name}</h3>
-        <p className="text-[10px] text-white/90 font-light leading-relaxed mb-1">{member.thesis}</p>
+        <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-amber-400 transition-colors tracking-tight">{member.name}</h3>
+        <p className="text-[10px] text-foreground/90 font-light leading-relaxed mb-1">{member.thesis}</p>
         <div className="flex items-center gap-2 mt-3">
           <span className="text-[10px] font-mono text-amber-500/50">{member.duration}</span>
         </div>
         {member.present && (
-          <p className="text-[10px] text-white mt-2 italic">Currently: {member.present}</p>
+          <p className="text-[10px] text-foreground mt-2 italic">Currently: {member.present}</p>
         )}
       </div>
     </motion.div>
@@ -138,13 +138,13 @@ export default function TeamPage() {
   }, []);
   
   return (
-    <main className="min-h-screen bg-[#0d1117] text-white selection:bg-amber-500/30 pb-32">
-      <section className="relative pt-32 pb-24 px-6 border-b border-white/5 overflow-hidden">
+    <main className="min-h-screen bg-background text-foreground selection:bg-amber-500/30 pb-32">
+      <section className="relative pt-32 pb-24 px-6 border-b border-foreground/5 overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-amber-600/10 via-transparent to-transparent opacity-50"></div>
         
         <div className="max-w-7xl mx-auto relative z-10 text-center">
           <motion.div initial="hidden" animate="visible" variants={fadeUp}>
-            <Link href="/" className="inline-flex items-center gap-2 text-white hover:text-amber-400 font-mono text-[10px] uppercase tracking-widest mb-12 transition-colors group">
+            <Link href="/" className="inline-flex items-center gap-2 text-foreground hover:text-amber-400 font-mono text-[10px] uppercase tracking-widest mb-12 transition-colors group">
               <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Back to Laboratory
             </Link>
             
@@ -152,7 +152,7 @@ export default function TeamPage() {
               Lab <br/> <span className="text-amber-500">Members</span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-white font-light max-w-3xl mx-auto leading-relaxed border-y border-white/5 py-8 italic">
+            <p className="text-xl md:text-2xl text-foreground font-light max-w-3xl mx-auto leading-relaxed border-y border-foreground/5 py-8 italic">
               A diverse group of researchers dedicated to pioneering sustainable chemistry and advanced catalysis.
             </p>
           </motion.div>
@@ -220,10 +220,10 @@ export default function TeamPage() {
         )}
 
         {/* ===== ALUMNI SECTIONS ===== */}
-        <section id="alumni" className={`pt-16 border-t border-white/5 ${isAlumniOnly ? 'mt-0 border-t-0 pt-0' : ''}`}>
+        <section id="alumni" className={`pt-16 border-t border-foreground/5 ${isAlumniOnly ? 'mt-0 border-t-0 pt-0' : ''}`}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-20">
              <h2 className="text-5xl md:text-8xl font-black tracking-tighter uppercase mb-4">Alumni</h2>
-             <p className="text-white font-light max-w-xl mx-auto leading-relaxed">
+             <p className="text-foreground font-light max-w-xl mx-auto leading-relaxed">
                Celebrating the achievements of our past group members across academia and industry globally.
              </p>
           </motion.div>
@@ -250,13 +250,13 @@ export default function TeamPage() {
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {((team as any).alumniPostdoc as any[]).map((m: any, i: number) => (
-                  <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-teal-500/20 transition-all">
+                  <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-foreground/[0.02] border border-foreground/5 hover:border-teal-500/20 transition-all">
                     <div className="w-8 h-8 rounded-xl bg-teal-500/10 flex items-center justify-center text-teal-400 shrink-0">
                       <Briefcase size={14} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h4 className="text-sm font-bold text-white truncate">{m.name}</h4>
-                      <p className="text-[10px] text-white/90 font-light">{m.info} • {m.duration}</p>
+                      <h4 className="text-sm font-bold text-foreground truncate">{m.name}</h4>
+                      <p className="text-[10px] text-foreground/90 font-light">{m.info} � {m.duration}</p>
                     </div>
                   </div>
                 ))}
@@ -273,13 +273,13 @@ export default function TeamPage() {
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {(team.alumniMsc as any[]).map((m, i) => (
-                  <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-purple-500/20 transition-all">
+                  <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-foreground/[0.02] border border-foreground/5 hover:border-purple-500/20 transition-all">
                     <div className="w-8 h-8 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 shrink-0">
                       <BookOpen size={14} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h4 className="text-sm font-bold text-white truncate">{m.name}</h4>
-                      <p className="text-[10px] text-white/90 font-light">{m.institution} • {m.year}</p>
+                      <h4 className="text-sm font-bold text-foreground truncate">{m.name}</h4>
+                      <p className="text-[10px] text-foreground/90 font-light">{m.institution} � {m.year}</p>
                     </div>
                   </div>
                 ))}
@@ -296,13 +296,13 @@ export default function TeamPage() {
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {(team.alumniBtech as any[]).map((m, i) => (
-                  <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-orange-500/20 transition-all">
+                  <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-foreground/[0.02] border border-foreground/5 hover:border-orange-500/20 transition-all">
                     <div className="w-8 h-8 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-400 shrink-0">
                       <Beaker size={14} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h4 className="text-sm font-bold text-white">{m.name}</h4>
-                      <p className="text-[10px] text-white/90 font-light">{m.institution}</p>
+                      <h4 className="text-sm font-bold text-foreground">{m.name}</h4>
+                      <p className="text-[10px] text-foreground/90 font-light">{m.institution}</p>
                     </div>
                   </div>
                 ))}
@@ -319,13 +319,13 @@ export default function TeamPage() {
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {(team.alumniProjectFellows as any[]).map((m, i) => (
-                  <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-cyan-500/20 transition-all">
+                  <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-foreground/[0.02] border border-foreground/5 hover:border-cyan-500/20 transition-all">
                     <div className="w-8 h-8 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 shrink-0">
                       <FlaskConical size={14} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h4 className="text-sm font-bold text-white truncate">{m.name}</h4>
-                      <p className="text-[10px] text-white/90 font-light">{m.duration}</p>
+                      <h4 className="text-sm font-bold text-foreground truncate">{m.name}</h4>
+                      <p className="text-[10px] text-foreground/90 font-light">{m.duration}</p>
                     </div>
                   </div>
                 ))}
@@ -342,13 +342,13 @@ export default function TeamPage() {
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {(team.alumniSemester as any[]).map((m, i) => (
-                  <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-pink-500/20 transition-all">
+                  <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-foreground/[0.02] border border-foreground/5 hover:border-pink-500/20 transition-all">
                     <div className="w-8 h-8 rounded-xl bg-pink-500/10 flex items-center justify-center text-pink-400 shrink-0">
                       <GraduationCap size={14} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h4 className="text-sm font-bold text-white truncate">{m.name}</h4>
-                      <p className="text-[10px] text-white/90 font-light">{m.batch} • {m.duration}</p>
+                      <h4 className="text-sm font-bold text-foreground truncate">{m.name}</h4>
+                      <p className="text-[10px] text-foreground/90 font-light">{m.batch} � {m.duration}</p>
                     </div>
                   </div>
                 ))}
@@ -365,13 +365,13 @@ export default function TeamPage() {
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {(team.alumniLabRotation as any[]).map((m, i) => (
-                  <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-amber-500/20 transition-all">
+                  <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-foreground/[0.02] border border-foreground/5 hover:border-amber-500/20 transition-all">
                     <div className="w-8 h-8 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-400 shrink-0">
                       <Users size={14} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h4 className="text-sm font-bold text-white truncate">{m.name}</h4>
-                      <p className="text-[10px] text-white/90 font-light">{m.batch} • {m.duration}</p>
+                      <h4 className="text-sm font-bold text-foreground truncate">{m.name}</h4>
+                      <p className="text-[10px] text-foreground/90 font-light">{m.batch} � {m.duration}</p>
                     </div>
                   </div>
                 ))}

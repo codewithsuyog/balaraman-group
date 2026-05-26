@@ -3,6 +3,7 @@ import { Outfit, Geist_Mono, Inter } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import BackButton from "@/components/BackButton";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -78,29 +79,31 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-full flex flex-col" suppressHydrationWarning>
-        <div className="scroll-progress">
-          <div className="scroll-progress-bar h-full w-full" id="scroll-bar" suppressHydrationWarning></div>
-        </div>
-        {children}
-        <SpeedInsights />
-        <Analytics />
-        <BackButton />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.addEventListener('scroll', () => {
-                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-                const scrolled = (winScroll / height) * 100;
-                const scrollBar = document.getElementById('scroll-bar');
-                if (scrollBar) {
-                  scrollBar.style.transform = 'scaleY(' + (scrolled / 100) + ')';
-                }
-              });
-            `
-          }}
-        />
+      <body className="font-sans min-h-screen bg-background text-foreground flex flex-col transition-colors duration-300" suppressHydrationWarning>
+        <ThemeProvider attribute="class" defaultTheme="light" disableTransitionOnChange>
+          <div className="scroll-progress">
+            <div className="scroll-progress-bar h-full w-full" id="scroll-bar" suppressHydrationWarning></div>
+          </div>
+          {children}
+          <SpeedInsights />
+          <Analytics />
+          <BackButton />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.addEventListener('scroll', () => {
+                  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                  const scrolled = (winScroll / height) * 100;
+                  const scrollBar = document.getElementById('scroll-bar');
+                  if (scrollBar) {
+                    scrollBar.style.transform = 'scaleY(' + (scrolled / 100) + ')';
+                  }
+                });
+              `
+            }}
+          />
+        </ThemeProvider>
       </body>
     </html>
   );

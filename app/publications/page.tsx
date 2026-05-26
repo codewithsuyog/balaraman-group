@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
@@ -31,12 +31,12 @@ const PublicationCard = ({ pub, idx, fadeUp }: any) => {
       viewport={{ once: true }}
       variants={fadeUp}
       transition={{ delay: (idx % 10) * 0.05 }}
-      className="group relative flex flex-col gap-8 p-10 rounded-[3rem] bg-white/[0.03] border border-white/10 hover:border-amber-500/30 hover:bg-white/5 transition-all duration-500 shadow-xl overflow-hidden"
+      className="group relative flex flex-col gap-8 p-10 rounded-[3rem] bg-foreground/[0.03] border border-foreground/10 hover:border-amber-500/30 hover:bg-foreground/5 transition-all duration-500 shadow-xl overflow-hidden"
     >
       <div className="flex flex-col md:flex-row gap-8 items-start">
         {/* Cover Image - Left */}
         {hasCover && (
-          <div className="w-[120px] h-48 rounded-2xl bg-white border border-white/10 overflow-hidden relative group-hover:border-amber-500/40 transition-all p-2 shadow-2xl shrink-0">
+          <div className="w-[120px] h-48 rounded-2xl bg-foreground border border-foreground/10 overflow-hidden relative group-hover:border-amber-500/40 transition-all p-2 shadow-2xl shrink-0">
             <img 
               key={`cover-archive-${pub.id}-${coverExtIdx}`}
               src={coverFailed ? "/logo.png" : `/images/publications/covers/${pub.id}${extensions[coverExtIdx]}`} 
@@ -45,7 +45,7 @@ const PublicationCard = ({ pub, idx, fadeUp }: any) => {
               className={`w-full h-full object-contain ${coverFailed ? 'opacity-20 p-4' : ''}`}
               onError={() => coverExtIdx < extensions.length - 1 ? setCoverExtIdx(prev => prev + 1) : setCoverFailed(true)}
             />
-            <div className="absolute top-2 left-2 px-1.5 py-0.5 bg-[#090c10]/50 backdrop-blur-md rounded text-[6px] font-mono uppercase tracking-widest text-white">Cover</div>
+
           </div>
         )}
 
@@ -56,16 +56,16 @@ const PublicationCard = ({ pub, idx, fadeUp }: any) => {
               {pub.year}
             </span>
             {pub.journal && pub.journal.length < 20 && (
-              <span className="text-xs text-white/90 font-mono italic">{pub.journal}</span>
+              <span className="text-xs text-foreground/90 font-mono italic">{pub.journal}</span>
             )}
           </div>
           
-          <div className="text-base text-white leading-relaxed mb-6 font-light border-l-2 border-amber-500/30 pl-6">
+          <div className="text-base text-foreground leading-relaxed mb-6 font-light border-l-2 border-amber-500/30 pl-6">
             <span className="text-amber-400 font-bold mr-2 text-lg">{pub.id}.</span>
             {pub.title && (
-              <strong className="block text-white text-lg font-bold mb-2 leading-snug tracking-tight not-italic">{pub.title}</strong>
+              <strong className="block text-foreground text-lg font-bold mb-2 leading-snug tracking-tight not-italic">{pub.title}</strong>
             )}
-            <span className="text-sm text-white">{pub.fullText || `${pub.authors}. ${pub.title}. ${pub.journal}, ${pub.year}${pub.details}`}</span>
+            <span className="text-sm text-foreground">{pub.fullText || `${pub.authors}. ${pub.title}. ${pub.journal}, ${pub.year}${pub.details}`}</span>
           </div>
           
           <div className="flex items-center gap-4 flex-wrap mt-auto">
@@ -74,7 +74,7 @@ const PublicationCard = ({ pub, idx, fadeUp }: any) => {
                 href={pub.doi.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`} 
                 target="_blank" 
                 rel="noreferrer" 
-                className="px-8 py-4 rounded-full bg-amber-600/10 border border-amber-600/30 text-amber-400 text-xs font-bold flex items-center gap-2 hover:bg-amber-500 hover:text-white shadow-lg shadow-amber-600/10 transition-all uppercase tracking-widest w-max"
+                className="px-8 py-4 rounded-full bg-amber-600/10 border border-amber-600/30 text-amber-400 text-xs font-bold flex items-center gap-2 hover:bg-amber-500 hover:text-foreground shadow-lg shadow-amber-600/10 transition-all uppercase tracking-widest w-max"
               >
                 Read Publication <ExternalLink size={14} />
               </a>
@@ -84,7 +84,7 @@ const PublicationCard = ({ pub, idx, fadeUp }: any) => {
 
         {/* Scheme Image - Right */}
         {hasScheme && (
-          <div className="w-full md:w-[300px] h-48 rounded-2xl bg-white border border-white/10 overflow-hidden relative group-hover:border-amber-500/40 transition-all shadow-2xl p-2 shrink-0">
+          <div className="w-full md:w-[300px] h-48 rounded-2xl bg-foreground border border-foreground/10 overflow-hidden relative group-hover:border-amber-500/40 transition-all shadow-2xl p-2 shrink-0">
             <img 
               key={`scheme-archive-${pub.id}-${schemeExtIdx}`}
               src={schemeFailed ? "/logo.png" : `/images/publications/schemes/${pub.id}${extensions[schemeExtIdx]}`} 
@@ -93,7 +93,7 @@ const PublicationCard = ({ pub, idx, fadeUp }: any) => {
               className={`w-full h-full object-contain ${schemeFailed ? 'opacity-20 p-4' : ''}`}
               onError={() => schemeExtIdx < extensions.length - 1 ? setSchemeExtIdx(prev => prev + 1) : setSchemeFailed(true)}
             />
-            <div className="absolute top-2 left-2 px-1.5 py-0.5 bg-[#090c10]/50 backdrop-blur-md rounded text-[6px] font-mono uppercase tracking-widest text-white">Scheme</div>
+
           </div>
         )}
       </div>
@@ -131,7 +131,7 @@ export default function PublicationsPage() {
   }, [publicationsByYear, activeTab]);
 
   return (
-    <main className="min-h-screen bg-[#0d1117] text-white selection:bg-amber-500/30">
+    <main className="min-h-screen bg-background text-foreground selection:bg-amber-500/30">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[50vh] bg-amber-600/5 blur-[120px] rounded-full pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-6 py-24 relative z-10">
@@ -142,7 +142,7 @@ export default function PublicationsPage() {
             <ArrowLeft size={20} /> Back to Home
           </Link>
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">Publications Archive</h1>
-          <p className="text-white text-lg font-light max-w-2xl">
+          <p className="text-foreground text-lg font-light max-w-2xl">
             A comprehensive record of all scholarly articles, peer-reviewed papers, and research outputs from Raman's Research Lab.
           </p>
         </motion.div>
@@ -153,8 +153,8 @@ export default function PublicationsPage() {
             onClick={() => setActiveTab('independent')} 
             className={`px-8 py-4 rounded-full text-sm font-bold uppercase tracking-widest transition-all ${
               activeTab === 'independent' 
-                ? 'bg-amber-600 text-white shadow-lg shadow-amber-600/30' 
-                : 'bg-white/5 text-white border border-white/10 hover:border-amber-500/30 hover:text-white/90'
+                ? 'bg-amber-600 text-foreground shadow-lg shadow-amber-600/30' 
+                : 'bg-foreground/5 text-foreground border border-foreground/10 hover:border-amber-500/30 hover:text-foreground/90'
             }`}
           >
             Independent Career Publications
@@ -163,8 +163,8 @@ export default function PublicationsPage() {
             onClick={() => setActiveTab('early')} 
             className={`px-8 py-4 rounded-full text-sm font-bold uppercase tracking-widest transition-all ${
               activeTab === 'early' 
-                ? 'bg-amber-600 text-white shadow-lg shadow-amber-600/30' 
-                : 'bg-white/5 text-white border border-white/10 hover:border-amber-500/30 hover:text-white/90'
+                ? 'bg-amber-600 text-foreground shadow-lg shadow-amber-600/30' 
+                : 'bg-foreground/5 text-foreground border border-foreground/10 hover:border-amber-500/30 hover:text-foreground/90'
             }`}
           >
             Doctoral & Postdoctoral Publications
@@ -176,13 +176,13 @@ export default function PublicationsPage() {
           {filteredByYear.map(([year, pubs], yearIdx) => (
             <div key={year} className="relative">
               <div className="sticky top-24 z-20 mb-12 inline-block">
-                <h2 className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-white/50 drop-shadow-2xl">
+                <h2 className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-foreground/50 drop-shadow-sm">
                   {year}
                 </h2>
                 <div className="h-1 w-1/2 bg-amber-500/50 mt-2 rounded-full"></div>
               </div>
               
-              <div className="grid grid-cols-1 gap-8 md:pl-12 border-l border-white/5">
+              <div className="grid grid-cols-1 gap-8 md:pl-12 border-l border-foreground/5">
                 {pubs.map((pub, idx) => (
                   <PublicationCard key={pub.id || idx} pub={pub} idx={idx} fadeUp={fadeUp} />
                 ))}

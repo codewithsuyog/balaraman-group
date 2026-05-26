@@ -78,7 +78,7 @@ export const publications: Publication[] = [
     year: "2025",
     volume: "27",
     pages: "2230–2237",
-    doi: "",
+    doi: "10.1039/D4GC05864J",
     coverImage: "/images/publications/covers/113.jpg",
     schemeImage: "/images/publications/schemes/113.jpg",
     fullText: "Reshma Babu, Ganesan Sivakumar, Smruti Rekha Padhy, and E. Balaraman*. Green and Sustainable Catalytic Protocol for Methoxymethylation of Primary Amides Using Methanol with Dihydrogen Release. Green Chem., 2025, 27, 2230-2237.",

@@ -12,6 +12,7 @@ import {
   ExternalLink, ChevronRight, Menu, X, Leaf, Database, ZapOff,
   Play, Pause, Volume2, VolumeX, Video
 } from 'lucide-react';
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { 
   patents, piBio, cvLink, 
   opportunities, team, awards, piStats, news 
@@ -34,8 +35,8 @@ const PublicationLink = ({ pub }: { pub: any }) => {
   const [coverExtIdx, setCoverExtIdx] = useState(0);
 
   return (
-    <div className="group/pub flex flex-col md:flex-row gap-6 p-6 rounded-[2rem] bg-white/5 border border-white/5 hover:border-amber-500/20 hover:bg-white/10 transition-all">
-      <div className="w-20 h-24 rounded-lg bg-white overflow-hidden flex-shrink-0 border border-white/10 p-1">
+    <div className="group/pub flex flex-col md:flex-row gap-6 p-6 rounded-[2rem] bg-foreground/5 border border-foreground/5 hover:border-amber-500/20 hover:bg-foreground/10 transition-all">
+      <div className="w-20 h-24 rounded-lg bg-foreground overflow-hidden flex-shrink-0 border border-foreground/10 p-1">
             <img 
                src={coverFailed ? "/logo.png" : `/images/publications/covers/${pub.id}${extensions[coverExtIdx]}`} 
                alt="Cover" 
@@ -48,9 +49,9 @@ const PublicationLink = ({ pub }: { pub: any }) => {
           <span className="text-[10px] font-bold text-amber-400 px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/20">{pub.year}</span>
         </div>
         {pub.title && (
-          <p className="text-sm font-bold text-white mb-1 leading-snug">{pub.title}</p>
+          <p className="text-sm font-bold text-foreground mb-1 leading-snug">{pub.title}</p>
         )}
-        <p className="text-xs text-white/90 font-light leading-relaxed line-clamp-2">{pub.fullText}</p>
+        <p className="text-xs text-foreground/90 font-light leading-relaxed line-clamp-2">{pub.fullText}</p>
         {pub.doi && (
           <a 
             href={pub.doi.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`} 
@@ -76,7 +77,7 @@ const FeaturedPublication = ({ pub }: { pub: any }) => {
   return (
     <motion.div 
       initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-      className="group relative flex flex-col gap-8 p-10 rounded-[3rem] bg-white/[0.03] border border-white/10 hover:border-amber-500/30 transition-all duration-500"
+      className="group relative flex flex-col gap-8 p-10 rounded-[3rem] bg-foreground/[0.03] border border-foreground/10 hover:border-amber-500/30 transition-all duration-500"
     >
       <div className="flex flex-col md:flex-row gap-12 items-start">
         <div className="flex-1">
@@ -84,12 +85,12 @@ const FeaturedPublication = ({ pub }: { pub: any }) => {
             <span className="px-4 py-1.5 rounded-full bg-amber-500/10 text-amber-400 text-[10px] font-black tracking-widest uppercase border border-amber-500/20">
               {pub.year}
             </span>
-            <span className="text-xs text-white/90 font-mono italic">{pub.journal}</span>
+            <span className="text-xs text-foreground/90 font-mono italic">{pub.journal}</span>
           </div>
           {pub.title && (
-            <h3 className="text-xl font-bold text-white mb-4 leading-snug tracking-tight">{pub.title}</h3>
+            <h3 className="text-xl font-bold text-foreground mb-4 leading-snug tracking-tight">{pub.title}</h3>
           )}
-          <div className="text-sm text-white font-light leading-relaxed mb-8 border-l-2 border-amber-500/30 pl-6">
+          <div className="text-sm text-foreground font-light leading-relaxed mb-8 border-l-2 border-amber-500/30 pl-6">
             <span className="text-amber-400 font-bold mr-2">{pub.id}.</span>
             {pub.fullText || `${pub.authors}. ${pub.title}. ${pub.journal}, ${pub.year}${pub.details}`}
           </div>
@@ -99,7 +100,7 @@ const FeaturedPublication = ({ pub }: { pub: any }) => {
                 href={pub.doi.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`} 
                 target="_blank" 
                 rel="noreferrer" 
-                className="px-8 py-4 rounded-full bg-amber-600 text-white text-xs font-bold flex items-center gap-2 hover:bg-amber-500 transition-all shadow-lg shadow-amber-600/20 uppercase tracking-widest"
+                className="px-8 py-4 rounded-full bg-amber-600 text-background text-xs font-bold flex items-center gap-2 hover:bg-amber-500 transition-all shadow-lg shadow-amber-600/20 uppercase tracking-widest"
               >
                 Read Publication <ExternalLink size={14} />
               </a>
@@ -108,23 +109,23 @@ const FeaturedPublication = ({ pub }: { pub: any }) => {
         </div>
         
         <div className="w-full md:w-[45%] flex flex-col sm:flex-row gap-6 items-center">
-           <div className="w-[140px] h-56 rounded-2xl bg-white border border-white/10 overflow-hidden relative group-hover:border-amber-500/40 transition-all p-2 shadow-2xl shrink-0">
+           <div className="w-[140px] h-56 rounded-2xl bg-foreground border border-foreground/10 overflow-hidden relative group-hover:border-amber-500/40 transition-all p-2 shadow-2xl shrink-0">
              <img 
                src={coverFailed ? "/logo.png" : `/images/publications/covers/${pub.id}${extensions[coverExtIdx]}`} 
                alt="Cover" 
                className={`w-full h-full object-contain ${coverFailed ? 'opacity-20' : ''}`}
                onError={() => coverExtIdx < extensions.length - 1 ? setCoverExtIdx(coverExtIdx + 1) : setCoverFailed(true)}
              />
-             <div className="absolute top-2 left-2 px-1.5 py-0.5 bg-[#090c10]/50 backdrop-blur-md rounded text-[6px] font-mono uppercase tracking-widest text-white">Cover</div>
+
            </div>
-           <div className="flex-1 w-full h-56 rounded-2xl bg-white border border-white/10 overflow-hidden relative group-hover:border-amber-500/40 transition-all p-2 shadow-2xl">
+           <div className="flex-1 w-full h-56 rounded-2xl bg-foreground border border-foreground/10 overflow-hidden relative group-hover:border-amber-500/40 transition-all p-2 shadow-2xl">
              <img 
                src={schemeFailed ? "/logo.png" : `/images/publications/schemes/${pub.id}${extensions[schemeExtIdx]}`} 
                alt="Scheme" 
                className={`w-full h-full object-contain ${schemeFailed ? 'opacity-20' : ''}`}
                onError={() => schemeExtIdx < extensions.length - 1 ? setSchemeExtIdx(schemeExtIdx + 1) : setSchemeFailed(true)}
              />
-             <div className="absolute top-2 left-2 px-1.5 py-0.5 bg-[#090c10]/50 backdrop-blur-md rounded text-[6px] font-mono uppercase tracking-widest text-white">Scheme</div>
+
            </div>
         </div>
       </div>
@@ -159,7 +160,7 @@ const TeamMemberThumb = ({ member, role }: { member: any, role: string }) => {
 
   return (
     <div className="flex flex-col items-start text-left group">
-      <div className="w-full aspect-[3/4] rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden mb-4 group-hover:border-amber-500/30 transition-all">
+      <div className="w-full aspect-[3/4] rounded-2xl bg-foreground/5 border border-foreground/10 flex items-center justify-center overflow-hidden mb-4 group-hover:border-amber-500/30 transition-all">
         <img 
           src={showImage ? src : "/logo.png"} 
           alt={member.name} 
@@ -167,10 +168,10 @@ const TeamMemberThumb = ({ member, role }: { member: any, role: string }) => {
           onError={handleError}
         />
       </div>
-      <span className="text-[10px] font-bold text-white uppercase tracking-wider truncate w-full mb-1">{member.name}</span>
+      <span className="text-[10px] font-bold text-foreground uppercase tracking-wider truncate w-full mb-1">{member.name}</span>
       <span className="text-[9px] font-mono text-amber-400 uppercase tracking-widest mb-2">{role}</span>
       {member.info && (
-        <p className="text-[10px] text-white leading-relaxed mb-2 font-light">
+        <p className="text-[10px] text-foreground leading-relaxed mb-2 font-light">
           {member.info.split(',').map((part: string, idx: number) => (
             <React.Fragment key={idx}>{part.trim()}<br/></React.Fragment>
           ))}
@@ -209,7 +210,7 @@ const AlumniThumb = ({ member }: { member: any }) => {
 
   return (
     <div className="flex flex-col items-start text-left group">
-      <div className="w-full aspect-[3/4] rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden mb-4 group-hover:border-emerald-500/30 transition-all">
+      <div className="w-full aspect-[3/4] rounded-2xl bg-foreground/5 border border-foreground/10 flex items-center justify-center overflow-hidden mb-4 group-hover:border-emerald-500/30 transition-all">
         <img 
           src={showImage ? src : "/logo.png"} 
           alt={member.name} 
@@ -217,13 +218,13 @@ const AlumniThumb = ({ member }: { member: any }) => {
           onError={handleError}
         />
       </div>
-      <h3 className="text-sm font-bold text-white mb-1 group-hover:text-emerald-400 transition-colors tracking-tight line-clamp-1">{member.name}</h3>
-      <p className="text-[10px] text-white font-light leading-relaxed mb-2 line-clamp-2">{member.thesis}</p>
+      <h3 className="text-sm font-bold text-foreground mb-1 group-hover:text-emerald-400 transition-colors tracking-tight line-clamp-1">{member.name}</h3>
+      <p className="text-[10px] text-foreground font-light leading-relaxed mb-2 line-clamp-2">{member.thesis}</p>
       <div className="flex items-center gap-2 mt-auto">
         <span className="text-[9px] font-mono text-emerald-500/50">{member.duration}</span>
       </div>
       {member.present && (
-        <p className="text-[9px] text-white/90 mt-1 italic line-clamp-1 flex gap-1">
+        <p className="text-[9px] text-foreground/90 mt-1 italic line-clamp-1 flex gap-1">
           <span className="text-emerald-500/30">Currently:</span> {member.present}
         </p>
       )}
@@ -270,7 +271,7 @@ const GallerySlideshow = () => {
   }, []);
 
   return (
-    <div className="w-full relative overflow-hidden rounded-3xl bg-white/[0.02] border border-white/10 mb-8 aspect-video md:aspect-[21/9] shadow-2xl group">
+    <div className="w-full relative overflow-hidden rounded-3xl bg-foreground/[0.02] border border-foreground/10 mb-8 aspect-video md:aspect-[21/9] shadow-2xl group">
       <AnimatePresence mode="wait">
         <SlideImage key={currentIndex} srcBase={`/images/gallery/${images[currentIndex]}`} isActive={true} />
       </AnimatePresence>
@@ -280,19 +281,19 @@ const GallerySlideshow = () => {
           <button 
             key={idx} 
             onClick={() => setCurrentIndex(idx)}
-            className={`h-1.5 rounded-full transition-all duration-300 ${idx === currentIndex ? 'bg-pink-500 w-6' : 'bg-white/30 hover:bg-white/60 w-1.5'}`}
+            className={`h-1.5 rounded-full transition-all duration-300 ${idx === currentIndex ? 'bg-pink-500 w-6' : 'bg-foreground/30 hover:bg-foreground/60 w-1.5'}`}
           />
         ))}
       </div>
       <button 
         onClick={() => setCurrentIndex((prev) => (prev - 1 + images.length) % images.length)}
-        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#090c10]/30 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[#090c10]/50"
+        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-foreground/20 backdrop-blur-md border border-foreground/10 flex items-center justify-center text-foreground opacity-0 group-hover:opacity-100 transition-opacity hover:bg-foreground/50"
       >
         <ArrowLeft size={16} />
       </button>
       <button 
         onClick={() => setCurrentIndex((prev) => (prev + 1) % images.length)}
-        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#090c10]/30 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[#090c10]/50"
+        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-foreground/20 backdrop-blur-md border border-foreground/10 flex items-center justify-center text-foreground opacity-0 group-hover:opacity-100 transition-opacity hover:bg-foreground/50"
       >
         <ArrowRight size={16} />
       </button>
@@ -365,7 +366,7 @@ const LabMediaShowcase = () => {
   return (
     <div className="w-full flex flex-col md:flex-row gap-6 relative group">
       {/* ── Images Section ── */}
-      <div className="w-full md:w-1/2 relative overflow-hidden rounded-3xl bg-[#090c10] border border-white/10 shadow-2xl aspect-square md:aspect-[4/3] bg-gradient-to-br from-gray-900 to-black">
+      <div className="w-full md:w-1/2 relative overflow-hidden rounded-3xl bg-background border border-foreground/10 shadow-2xl aspect-square md:aspect-[4/3] bg-gradient-to-br from-gray-900 to-black">
         <div className="absolute top-6 left-6 z-30 flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-xl border text-[10px] font-mono uppercase tracking-widest transition-all bg-cyan-500/20 border-cyan-500/40 text-cyan-300">
           <Microscope size={12} /> Lab Images
           <span className="text-[9px] text-cyan-300/50">{imgIdx + 1}/{LAB_IMAGES.length}</span>
@@ -391,14 +392,14 @@ const LabMediaShowcase = () => {
 
           {/* Caption + dots */}
           <div className="absolute bottom-0 left-0 right-0 p-8 z-20">
-            <h4 className="text-lg font-bold text-white mb-1 tracking-tight">{LAB_IMAGES[imgIdx].caption}</h4>
+            <h4 className="text-lg font-bold text-foreground mb-1 tracking-tight">{LAB_IMAGES[imgIdx].caption}</h4>
             <div className="flex gap-2 mt-4">
               {LAB_IMAGES.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => setImgIdx(i)}
                   className={`h-1.5 rounded-full transition-all duration-500 ${
-                    i === imgIdx ? 'bg-cyan-400 w-8' : 'bg-white/25 hover:bg-white/50 w-1.5'
+                    i === imgIdx ? 'bg-cyan-400 w-8' : 'bg-foreground/25 hover:bg-foreground/50 w-1.5'
                   }`}
                 />
               ))}
@@ -407,18 +408,18 @@ const LabMediaShowcase = () => {
 
           {/* Nav arrows */}
           <button onClick={() => setImgIdx((p) => (p - 1 + LAB_IMAGES.length) % LAB_IMAGES.length)}
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#090c10]/30 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[#090c10]/50 z-20">
+            className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-foreground/20 backdrop-blur-md border border-foreground/10 flex items-center justify-center text-foreground opacity-0 group-hover:opacity-100 transition-opacity hover:bg-foreground/50 z-20">
             <ArrowLeft size={16} />
           </button>
           <button onClick={() => setImgIdx((p) => (p + 1) % LAB_IMAGES.length)}
-            className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#090c10]/30 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[#090c10]/50 z-20">
+            className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-foreground/20 backdrop-blur-md border border-foreground/10 flex items-center justify-center text-foreground opacity-0 group-hover:opacity-100 transition-opacity hover:bg-foreground/50 z-20">
             <ArrowRight size={16} />
           </button>
         </div>
       </div>
 
       {/* ── Videos Section ── */}
-      <div className="w-full md:w-1/2 relative overflow-hidden rounded-3xl bg-[#090c10] border border-white/10 shadow-2xl aspect-square md:aspect-[4/3] bg-gradient-to-br from-gray-900 to-black">
+      <div className="w-full md:w-1/2 relative overflow-hidden rounded-3xl bg-background border border-foreground/10 shadow-2xl aspect-square md:aspect-[4/3] bg-gradient-to-br from-gray-900 to-black">
         <div className="absolute top-6 left-6 z-30 flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-xl border text-[10px] font-mono uppercase tracking-widest transition-all bg-red-500/20 border-red-500/40 text-red-300">
           <Video size={12} /> Videos
         </div>
@@ -440,14 +441,14 @@ const LabMediaShowcase = () => {
               <div className="absolute bottom-0 left-0 right-0 p-8 z-20">
                 <div className="flex items-end justify-between">
                   <div className="flex-1 pr-4">
-                    <h4 className="text-xl font-bold text-white mb-1 tracking-tight truncate">{LAB_VIDEOS[vidIdx].title}</h4>
-                    <p className="text-sm text-white/90 font-light line-clamp-2">{LAB_VIDEOS[vidIdx].caption}</p>
+                    <h4 className="text-xl font-bold text-foreground mb-1 tracking-tight truncate">{LAB_VIDEOS[vidIdx].title}</h4>
+                    <p className="text-sm text-foreground/90 font-light line-clamp-2">{LAB_VIDEOS[vidIdx].caption}</p>
                   </div>
                   <div className="flex items-center gap-3 shrink-0">
-                    <button onClick={toggleMute} className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center text-white/90 hover:text-white hover:bg-white/20 transition-all">
+                    <button onClick={toggleMute} className="w-10 h-10 rounded-full bg-foreground/10 backdrop-blur-md border border-foreground/10 flex items-center justify-center text-foreground/90 hover:text-foreground hover:bg-foreground/20 transition-all">
                       {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
                     </button>
-                    <button onClick={togglePlay} className="w-12 h-12 rounded-full bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/25 transition-all">
+                    <button onClick={togglePlay} className="w-12 h-12 rounded-full bg-foreground/15 backdrop-blur-md border border-foreground/20 flex items-center justify-center text-foreground hover:bg-foreground/25 transition-all">
                       {isPlaying ? <Pause size={18} /> : <Play size={18} className="ml-0.5" />}
                     </button>
                   </div>
@@ -455,22 +456,22 @@ const LabMediaShowcase = () => {
                 <div className="flex gap-2 mt-6">
                   {LAB_VIDEOS.map((_, i) => (
                     <button key={i} onClick={() => setVidIdx(i)}
-                      className={`h-1 rounded-full transition-all duration-500 ${i === vidIdx ? 'bg-red-500 w-8' : videoError[i] ? 'bg-white/10 w-2' : 'bg-white/30 hover:bg-white/50 w-2'}`} />
+                      className={`h-1 rounded-full transition-all duration-500 ${i === vidIdx ? 'bg-red-500 w-8' : videoError[i] ? 'bg-foreground/10 w-2' : 'bg-foreground/30 hover:bg-foreground/50 w-2'}`} />
                   ))}
                 </div>
               </div>
 
               <button onClick={() => setVidIdx((p) => (p - 1 + LAB_VIDEOS.length) % LAB_VIDEOS.length)}
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#090c10]/30 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[#090c10]/50 z-20">
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-foreground/20 backdrop-blur-md border border-foreground/10 flex items-center justify-center text-foreground opacity-0 group-hover:opacity-100 transition-opacity hover:bg-foreground/50 z-20">
                 <ArrowLeft size={16} />
               </button>
               <button onClick={() => setVidIdx((p) => (p + 1) % LAB_VIDEOS.length)}
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#090c10]/30 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[#090c10]/50 z-20">
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-foreground/20 backdrop-blur-md border border-foreground/10 flex items-center justify-center text-foreground opacity-0 group-hover:opacity-100 transition-opacity hover:bg-foreground/50 z-20">
                 <ArrowRight size={16} />
               </button>
             </>
           ) : (
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#090c10]">
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-background">
               <iframe 
                 className="w-full h-full border-0"
                 src="https://www.youtube.com/embed/your-lab-tour-id" 
@@ -552,12 +553,12 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="flex flex-col items-center w-full overflow-hidden bg-[var(--background)] selection:bg-[var(--accent)]/30">
+    <main className="flex flex-col items-center w-full overflow-hidden bg-background selection:bg-[var(--accent)]/30">
       
       {/* FLOATING NAVIGATION MENU */}
       <motion.nav 
         initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
-        className="fixed top-6 left-1/2 -translate-x-1/2 z-50 glass rounded-full px-2 md:px-4 py-2 flex gap-1 md:gap-2 text-[10px] md:text-xs font-mono border border-white/10 max-w-[95vw] overflow-x-auto no-scrollbar shadow-2xl"
+        className="fixed top-6 left-1/2 -translate-x-1/2 z-50 glass rounded-full px-2 md:px-4 py-2 flex gap-1 md:gap-2 text-[10px] md:text-xs font-mono border border-foreground/10 max-w-[95vw] overflow-x-auto no-scrollbar shadow-2xl"
       >
         {navLinks.map((link: any) => {
           const isExternal = link.href?.startsWith('/');
@@ -569,8 +570,8 @@ export default function Home() {
                 href={link.href as string}
                 className={`px-4 py-2 rounded-full transition-all duration-500 ease-out whitespace-nowrap relative group ${
                   activeSection === link.id 
-                    ? 'text-white' 
-                    : 'text-white hover:text-white'
+                    ? 'text-foreground' 
+                    : 'text-foreground hover:text-foreground'
                 }`}
               >
                 {activeSection === link.id && (
@@ -598,8 +599,8 @@ export default function Home() {
               }}
               className={`px-4 py-2 rounded-full transition-all duration-500 ease-out whitespace-nowrap relative group cursor-pointer ${
                 activeSection === link.id 
-                  ? 'text-white' 
-                  : 'text-white hover:text-white'
+                  ? 'text-foreground' 
+                  : 'text-foreground hover:text-foreground'
               }`}
             >
               {activeSection === link.id && (
@@ -613,10 +614,13 @@ export default function Home() {
             </a>
           );
         })}
+        <div className="w-px h-6 bg-foreground/20 self-center mx-1"></div>
+        <ThemeToggle />
       </motion.nav>
 
       {/* 1. HERO SECTION */}
       <section id="home" className="relative w-full min-h-screen flex items-center justify-center pt-32 pb-32 px-6 overflow-hidden">
+        
         <motion.div className="absolute inset-0 z-0">
           <Image 
             src={heroImage} 
@@ -624,111 +628,116 @@ export default function Home() {
             fill
             priority
             sizes="100vw"
-            className="object-cover object-center blur-[8px] opacity-30" 
+            className="object-cover object-center opacity-80" 
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[var(--background)]/70 via-[var(--background)]/90 to-[var(--background)]"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/60 to-background"></div>
         </motion.div>
 
         {/* Background watermark text */}
         <div className="absolute inset-0 z-[2] flex items-center justify-center pointer-events-none select-none overflow-hidden mt-0">
-          <span className="text-[120px] sm:text-[200px] md:text-[300px] font-black uppercase tracking-tighter leading-none" style={{ color: 'transparent', WebkitTextStroke: '1px rgba(255,255,255,0.06)' }}>RAMAN</span>
+          <span className="text-[120px] sm:text-[200px] md:text-[300px] font-black uppercase tracking-tighter leading-none opacity-80" style={{ color: 'rgba(255, 255, 255, 0.2)', WebkitTextStroke: '2px rgba(0,0,0,0.2)' }}>RAMAN</span>
         </div>
 
         <div className="z-10 max-w-6xl mx-auto text-center -mt-16 relative">
           <motion.div initial="hidden" animate="visible" variants={fadeUp}>
-            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full glass mb-10 text-xs sm:text-sm font-mono text-[var(--color-accent-light)] uppercase tracking-widest border border-white/10">
+            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full glass mb-10 text-xs sm:text-sm font-mono text-amber-400 font-bold uppercase tracking-widest border border-foreground/10">
               IISER Tirupati • Department of Chemistry
             </div>
           </motion.div>
 
           <motion.div initial="hidden" animate="visible" variants={fadeUp} className="relative">
-            <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter mb-8 bg-clip-text text-transparent bg-gradient-to-b from-white via-white/90 to-white/20 relative z-10 drop-shadow-[0_0_40px_rgba(255,255,255,0.15)] leading-[0.9]">
-              Raman's <br className="hidden md:block"/> Research Lab
+            <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter mb-8 bg-clip-text text-transparent bg-gradient-to-b from-foreground via-foreground/80 to-foreground/40 relative z-10 drop-shadow-[0_0_40px_rgba(0,0,0,0.08)] leading-[0.9]">
+              Raman's<br/>
+              <span className="text-amber-500">Research</span> Lab
             </h1>
           </motion.div>
 
-          <motion.p initial="hidden" animate="visible" variants={fadeUp} className="text-lg md:text-2xl text-[var(--color-muted)] max-w-3xl mx-auto mb-12 font-light leading-relaxed">
-            Exploring new frontiers in <span className="text-white font-medium">catalysis</span>, <span className="text-white font-medium">sustainable chemistry</span>, and complex <span className="text-white font-medium">organometallic systems</span>.
-          </motion.p>
+          <motion.div initial="hidden" animate="visible" variants={fadeUp}>
+            <p className="text-xl sm:text-2xl md:text-3xl text-foreground/80 font-light max-w-3xl mx-auto mb-16 leading-relaxed">
+              Exploring new frontiers in <span className="font-semibold text-foreground">catalysis</span>, <span className="font-semibold text-foreground">sustainable chemistry</span>, and complex <span className="font-semibold text-foreground">organometallic systems</span>.
+            </p>
+          </motion.div>
         </div>
       </section>
 
       {/* 2. PI SECTION */}
-      <section id="pi" className="w-full py-32 px-6 relative z-10 bg-white/[0.02]">
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24 items-start relative">
+      <section id="pi" className="w-full py-20 md:py-32 px-6 relative z-10 bg-foreground/[0.02]">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16 items-stretch relative">
           
-          <div className="w-full lg:w-1/3 sticky top-32">
+          <div className="w-full lg:w-1/3 flex flex-col">
             <div className="absolute inset-0 bg-amber-500/20 blur-[80px] rounded-full -z-10"></div>
-            <div className="w-full aspect-[3/4] rounded-[3rem] border border-white/10 relative overflow-hidden group cursor-crosshair shadow-2xl bg-white/5">
-               <div className="absolute inset-0 bg-[url('/images/pi/pi-profile.jpg')] bg-cover bg-top transition-all duration-700 group-hover:scale-105"></div>
-            </div>
+             <div className="w-full aspect-[3/4] md:aspect-square lg:aspect-[3/4] rounded-[2rem] md:rounded-[3rem] border border-foreground/10 relative overflow-hidden group cursor-crosshair shadow-2xl bg-foreground/5">
+               <div className="absolute inset-0 bg-[url('/images/pi/pi-profile.jpg')] bg-cover bg-center transition-all duration-700 group-hover:scale-105"></div>
+             </div>
             
             <div className="mt-8 flex flex-col items-center gap-3">
                <div className="flex justify-center gap-6">
-                 <a href={piStats.googleScholar} target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:text-amber-400 hover:border-amber-500 transition-all" title="Google Scholar">
+                 <a href={piStats.googleScholar} target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:text-amber-400 hover:border-amber-500 transition-all" title="Google Scholar">
                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269z"/><circle cx="12" cy="16.5" r="5.5"/></svg>
                  </a>
-                 <a href={`https://orcid.org/${piStats.orcid}`} target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:text-emerald-400 hover:border-emerald-500 transition-all" title="ORCID">
+                 <a href={`https://orcid.org/${piStats.orcid}`} target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:text-emerald-400 hover:border-emerald-500 transition-all" title="ORCID">
                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-1.847-1.188-3.722-3.978-3.722h-2.341z"/></svg>
                  </a>
-                 <a href="mailto:eb.raman@iisertirupati.ac.in" className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:text-amber-400 hover:border-amber-500 transition-all" title="Email"><Mail size={20} /></a>
+                 <a href="mailto:eb.raman@iisertirupati.ac.in" className="w-12 h-12 rounded-full bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:text-amber-400 hover:border-amber-500 transition-all" title="Email"><Mail size={20} /></a>
                </div>
-               <p className="text-sm md:text-base font-mono text-white tracking-wider">eb.raman@iisertirupati.ac.in</p>
+               <p className="text-sm md:text-base font-mono text-foreground tracking-wider">eb.raman@iisertirupati.ac.in</p>
             </div>
 
-            {/* LAB NEWS SECTION (Moved under PI) */}
-            <div id="news" className="mt-16 pt-16 border-t border-white/10 w-full">
-              <div className="flex items-center gap-4 mb-8">
-                 <div className="h-px w-8 bg-pink-500"></div>
-                 <p className="text-[10px] font-mono text-pink-400 tracking-[0.3em] uppercase">What's Happening</p>
+            {/* LAB NEWS - Vertical scroll below PI photo */}
+            <div id="news" className="mt-12 pt-8 border-t border-foreground/10 w-full flex flex-col flex-1 pb-4">
+              <div className="flex items-center gap-3 mb-6 shrink-0">
+                 <div className="h-px w-6 bg-amber-500"></div>
+                 <p className="text-[10px] font-mono text-amber-400 tracking-[0.3em] uppercase font-bold">Lab News</p>
               </div>
-              <h2 className="text-3xl font-black tracking-tight mb-8 text-white">Lab News</h2>
-              <div className="flex flex-col gap-6 max-h-[600px] overflow-y-auto no-scrollbar pr-2 pb-16">
-                {news.map((item) => (
-                  <div
-                    key={item.id}
-                    className="group p-6 rounded-3xl bg-white/[0.03] border border-white/5 hover:border-pink-500/20 hover:bg-white/5 transition-all duration-500"
-                  >
-                    <div className="flex items-center gap-3 mb-3">
-                      <span className={`px-2 py-1 rounded-full text-[9px] font-black tracking-widest uppercase border ${
-                        item.type === 'Award' ? 'bg-amber-500/10 border-amber-500/20 text-amber-400' :
-                        item.type === 'Paper' ? 'bg-amber-500/10 border-amber-500/20 text-amber-400' :
-                        item.type === 'Joining' ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' :
-                        'bg-purple-500/10 border-purple-500/20 text-purple-400'
-                      }`}>{item.type}</span>
-                      <span className="text-[9px] text-white/50 font-mono">{item.date}</span>
-                    </div>
-                    <h3 className="text-base font-bold text-white mb-2 leading-snug tracking-tight group-hover:text-pink-400 transition-colors">{item.title}</h3>
-                    <p className="text-xs text-white/70 font-light leading-relaxed line-clamp-3 mb-3">{item.detail}</p>
-                    {item.link && (
-                      <a href={item.link.startsWith('http') ? item.link : `https://doi.org/${item.link}`} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-[9px] font-bold text-pink-500/60 hover:text-pink-400 transition-colors uppercase tracking-widest">
-                        Read More <ArrowRight size={10} />
-                      </a>
-                    )}
+              <div className="relative flex-1 min-h-[400px] w-full group overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-8 bg-gradient-to-b from-background to-transparent z-10 pointer-events-none opacity-0 transition-opacity"></div>
+                
+                <div className="absolute inset-0 overflow-y-auto overflow-x-hidden pr-3 scrollbar-thin scrollbar-thumb-foreground/10 hover:scrollbar-thumb-amber-500/50 scrollbar-track-transparent">
+                  <div className="flex flex-col gap-4 pb-12">
+                    {news.map((item, idx) => (
+                      <div
+                        key={`${item.id}-${idx}`}
+                        className="w-full p-5 rounded-2xl bg-foreground/[0.03] border border-foreground/8 hover:border-amber-500/30 hover:bg-amber-500/5 transition-all duration-300 cursor-default group/news shadow-sm hover:shadow-md"
+                      >
+                        <div className="flex items-center gap-2 mb-3">
+                          <span className={`px-2 py-0.5 rounded-full text-[9px] font-black tracking-widest uppercase border ${
+                            item.type === 'Award' ? 'bg-amber-500/10 border-amber-500/20 text-amber-400' :
+                            item.type === 'Joining' ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' :
+                            'bg-purple-500/10 border-purple-500/20 text-purple-400'
+                          }`}>{item.type}</span>
+                          <span className="text-[10px] text-foreground/50 font-mono">{item.date}</span>
+                        </div>
+                        <h3 className="text-sm font-bold text-foreground mb-2 leading-snug tracking-tight group-hover/news:text-amber-600 transition-colors">{item.title}</h3>
+                        <p className="text-xs text-foreground/70 font-light leading-relaxed">{item.detail}</p>
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </div>
+
+                <div className="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-background to-transparent z-10 pointer-events-none"></div>
               </div>
             </div>
+
           </div>
           
           <div className="w-full lg:w-2/3 flex flex-col">
-            <div className="inline-flex items-center gap-3 px-4 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-[10px] font-mono uppercase tracking-[0.3em] mb-6">Principal Investigator</div>
-            <h2 className="text-5xl md:text-7xl font-black mb-4 tracking-tighter text-white">Dr. Ekambaram Balaraman</h2>
-            <h3 className="text-xl text-amber-400 mb-8 font-light tracking-tight">Associate Professor & Chair, Department of Chemistry, IISER Tirupati</h3>
+            <div className="inline-flex items-center gap-3 px-4 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 font-bold text-[10px] font-mono uppercase tracking-[0.3em] mb-6">Principal Investigator</div>
+            <h2 className="text-5xl md:text-7xl font-black mb-4 tracking-tighter text-foreground">Dr. Ekambaram Balaraman</h2>
+            <h3 className="text-xl text-amber-500 mb-6 font-light tracking-tight">Associate Professor & Chair, Department of Chemistry, IISER Tirupati</h3>
             
-            <p className="text-lg md:text-xl text-white font-light leading-relaxed mb-12 italic border-l-4 border-amber-500 pl-8">
+            <p className="text-lg md:text-xl text-foreground font-light leading-relaxed mb-8 italic border-l-4 border-amber-500 pl-6">
               "Leading the frontier of sustainable catalysis and molecular engineering through innovative transition-metal systems."
             </p>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6 mb-10">
               {piBio.map((item: any, idx) => (
                 <div key={idx} className="flex flex-col group">
                   <span className="text-[11px] font-bold text-amber-400 mb-2 font-mono tracking-widest uppercase">{item.year}</span>
-                  <div className="flex-1 border-l-2 border-white/10 pl-6 group-hover:border-amber-500 transition-colors py-2">
-                    <h4 className="text-lg font-bold text-white group-hover:text-amber-400 transition-colors leading-tight mb-2">{item.role}</h4>
-                    <p className="text-sm text-white/90 font-light leading-relaxed">{item.institution}</p>
+                  <div className="flex-1 border-l-2 border-foreground/10 pl-6 group-hover:border-amber-500 transition-colors py-2">
+                    <h4 className="text-lg font-bold text-foreground group-hover:text-amber-400 transition-colors leading-tight mb-2">{item.role}</h4>
+                    <p className="text-sm text-foreground/90 font-light leading-relaxed">{item.institution}</p>
                     {item.details && (
-                      <p className="text-xs text-white/90 italic font-light leading-relaxed mt-3 max-w-md border-l-2 border-amber-500/20 pl-4">
+                      <p className="text-xs text-foreground/90 italic font-light leading-relaxed mt-3 max-w-md border-l-2 border-amber-500/20 pl-4">
                         {item.details}
                       </p>
                     )}
@@ -737,86 +746,90 @@ export default function Home() {
               ))}
             </div>
 
-            <div className="mb-16 p-10 rounded-[3rem] bg-amber-500/5 border border-amber-500/10 italic text-white/90 relative group">
-               <span className="absolute -top-6 -left-4 text-8xl text-amber-500/10 font-serif font-black">&quot;</span>
-               <p className="text-xl md:text-2xl font-light leading-relaxed relative z-10 text-white/90">
+            <div className="mb-10 p-6 md:p-8 rounded-[2rem] bg-amber-500/5 border border-amber-500/10 italic text-foreground/90 relative group">
+               <span className="absolute -top-4 -left-2 text-7xl text-amber-500/10 font-serif font-black">&quot;</span>
+               <p className="text-lg md:text-xl font-light leading-relaxed relative z-10 text-foreground/90 pl-4">
                  Take risk in life. If you win, you will lead; if you lose, you will guide.
                </p>
             </div>
 
             {/* Scholarly Metrics */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
-              <div className="p-6 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-amber-500/30 transition-all text-center group hover:bg-amber-500/5">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+              <div className="p-6 rounded-2xl bg-foreground/[0.04] border border-foreground/10 hover:border-amber-500/30 transition-all text-center group hover:bg-amber-500/5">
                 <div className="text-3xl md:text-4xl font-black text-amber-400 mb-2 drop-shadow-[0_0_10px_rgba(96,165,250,0.3)]">{piStats.publications}</div>
-                <p className="text-[10px] uppercase tracking-widest text-white/90 font-mono font-semibold">Publications</p>
+                <p className="text-[10px] uppercase tracking-widest text-foreground/90 font-mono font-semibold">Publications</p>
               </div>
-              <div className="p-6 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-emerald-500/30 transition-all text-center group hover:bg-emerald-500/5">
+              <div className="p-6 rounded-2xl bg-foreground/[0.04] border border-foreground/10 hover:border-emerald-500/30 transition-all text-center group hover:bg-emerald-500/5">
                 <div className="text-3xl md:text-4xl font-black text-emerald-400 mb-2 drop-shadow-[0_0_10px_rgba(52,211,153,0.3)]">{piStats.hIndex}</div>
-                <p className="text-[10px] uppercase tracking-widest text-white/90 font-mono font-semibold">h-Index</p>
+                <p className="text-[10px] uppercase tracking-widest text-foreground/90 font-mono font-semibold">h-Index</p>
               </div>
-              <div className="p-6 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-orange-500/30 transition-all text-center group hover:bg-orange-500/5">
+              <div className="p-6 rounded-2xl bg-foreground/[0.04] border border-foreground/10 hover:border-orange-500/30 transition-all text-center group hover:bg-orange-500/5">
                 <div className="text-3xl md:text-4xl font-black text-orange-400 mb-2 drop-shadow-[0_0_10px_rgba(251,146,60,0.3)]">{piStats.citations.toLocaleString()}</div>
-                <p className="text-[10px] uppercase tracking-widest text-white/90 font-mono font-semibold">Citations</p>
+                <p className="text-[10px] uppercase tracking-widest text-foreground/90 font-mono font-semibold">Citations</p>
               </div>
-              <div className="p-6 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-purple-500/30 transition-all text-center group hover:bg-purple-500/5">
+              <div className="p-6 rounded-2xl bg-foreground/[0.04] border border-foreground/10 hover:border-purple-500/30 transition-all text-center group hover:bg-purple-500/5">
                 <div className="text-3xl md:text-4xl font-black text-purple-400 mb-2 drop-shadow-[0_0_10px_rgba(192,132,252,0.3)]">{piStats.grantedUSPatents}</div>
-                <p className="text-[10px] uppercase tracking-widest text-white/90 font-mono font-semibold">US Patents</p>
+                <p className="text-[10px] uppercase tracking-widest text-foreground/90 font-mono font-semibold">US Patents</p>
               </div>
             </div>
 
             {/* Human Resource Stats */}
-            <div className="grid grid-cols-3 md:grid-cols-5 gap-3 mb-16">
-              <div className="p-4 rounded-xl bg-white/[0.04] border border-white/10 text-center hover:border-cyan-500/20 transition-all">
-                <div className="text-xl font-black text-white mb-1">{piStats.phdCompleted}</div>
-                <p className="text-[9px] uppercase tracking-widest text-white font-mono font-medium">PhD Completed</p>
+            <div className="grid grid-cols-3 md:grid-cols-5 gap-3 mb-10">
+              <div className="p-4 rounded-xl bg-foreground/[0.04] border border-foreground/10 text-center hover:border-cyan-500/20 transition-all">
+                <div className="text-xl font-black text-foreground mb-1">{piStats.phdCompleted}</div>
+                <p className="text-[9px] uppercase tracking-widest text-foreground font-mono font-medium">PhD Completed</p>
               </div>
-              <div className="p-4 rounded-xl bg-white/[0.04] border border-white/10 text-center hover:border-cyan-500/20 transition-all">
-                <div className="text-xl font-black text-white mb-1">{piStats.phdPursuing}</div>
-                <p className="text-[9px] uppercase tracking-widest text-white font-mono font-medium">PhD Pursuing</p>
+              <div className="p-4 rounded-xl bg-foreground/[0.04] border border-foreground/10 text-center hover:border-cyan-500/20 transition-all">
+                <div className="text-xl font-black text-foreground mb-1">{piStats.phdPursuing}</div>
+                <p className="text-[9px] uppercase tracking-widest text-foreground font-mono font-medium">PhD Pursuing</p>
               </div>
-              <div className="p-4 rounded-xl bg-white/[0.04] border border-white/10 text-center hover:border-cyan-500/20 transition-all">
-                <div className="text-xl font-black text-white mb-1">{piStats.postdocs}</div>
-                <p className="text-[9px] uppercase tracking-widest text-white font-mono font-medium">Post-docs</p>
+              <div className="p-4 rounded-xl bg-foreground/[0.04] border border-foreground/10 text-center hover:border-cyan-500/20 transition-all">
+                <div className="text-xl font-black text-foreground mb-1">{piStats.postdocs}</div>
+                <p className="text-[9px] uppercase tracking-widest text-foreground font-mono font-medium">Post-docs</p>
               </div>
-              <div className="p-4 rounded-xl bg-white/[0.04] border border-white/10 text-center hover:border-cyan-500/20 transition-all">
-                <div className="text-xl font-black text-white mb-1">{piStats.mscStudents}</div>
-                <p className="text-[9px] uppercase tracking-widest text-white font-mono font-medium">MSc Students</p>
+              <div className="p-4 rounded-xl bg-foreground/[0.04] border border-foreground/10 text-center hover:border-cyan-500/20 transition-all">
+                <div className="text-xl font-black text-foreground mb-1">{piStats.mscStudents}</div>
+                <p className="text-[9px] uppercase tracking-widest text-foreground font-mono font-medium">MSc Students</p>
               </div>
-              <div className="p-4 rounded-xl bg-white/[0.04] border border-white/10 text-center hover:border-cyan-500/20 transition-all">
-                <div className="text-xl font-black text-white mb-1">{piStats.projectFellows}</div>
-                <p className="text-[9px] uppercase tracking-widest text-white font-mono font-medium">Project Fellows</p>
+              <div className="p-4 rounded-xl bg-foreground/[0.04] border border-foreground/10 text-center hover:border-cyan-500/20 transition-all">
+                <div className="text-xl font-black text-foreground mb-1">{piStats.projectFellows}</div>
+                <p className="text-[9px] uppercase tracking-widest text-foreground font-mono font-medium">Project Fellows</p>
               </div>
             </div>
 
-            <div className="mb-12">
-               <h3 className="text-xl font-bold text-white mb-6 uppercase tracking-tight flex items-center gap-3">
-                 <Shield size={20} className="text-amber-500" /> Honours & Awards
-               </h3>
-               <ul className="space-y-3">
-                 {awards.slice(0, 8).map((award, i) => (
-                   <li key={i} className="flex items-start gap-3 text-sm text-white/90 font-light leading-relaxed">
-                     <ChevronRight size={14} className="text-amber-500 mt-1 shrink-0" />
-                     <span>{award}</span>
-                   </li>
-                 ))}
-               </ul>
-            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-10">
+              {/* Honours & Awards */}
+              <div>
+                 <h3 className="text-lg font-bold text-foreground mb-4 uppercase tracking-tight flex items-center gap-2">
+                   <Shield size={18} className="text-amber-500" /> Honours & Awards
+                 </h3>
+                 <ul className="space-y-3">
+                   {awards.slice(0, 8).map((award, i) => (
+                     <li key={i} className="flex items-start gap-3 text-sm text-foreground/90 font-light leading-relaxed">
+                       <ChevronRight size={14} className="text-amber-500 mt-1 shrink-0" />
+                       <span>{award}</span>
+                     </li>
+                   ))}
+                 </ul>
+              </div>
 
-            <div className="mb-16">
-               <h3 className="text-xl font-bold text-white mb-6 uppercase tracking-tight flex items-center gap-3">
-                 <BookOpen size={20} className="text-amber-500" /> Courses Offered
-               </h3>
-               <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-amber-500/30 transition-all max-w-2xl">
-                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-white font-light">
-                     <li>• CHM 111: Inorganic Chemistry</li>
-                     <li>• CHM 211: Coordination Chemistry</li>
-                     <li>• CHM 411: Organometallic Chemistry</li>
-                  </ul>
-               </div>
+              {/* Courses Offered */}
+              <div>
+                 <h3 className="text-lg font-bold text-foreground mb-4 uppercase tracking-tight flex items-center gap-2">
+                   <BookOpen size={18} className="text-amber-500" /> Courses Offered
+                 </h3>
+                 <div className="bg-foreground/[0.02] border border-foreground/10 rounded-2xl p-5 hover:border-amber-500/30 transition-all h-full">
+                    <ul className="flex flex-col gap-4 text-sm text-foreground font-light">
+                       <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-amber-500/50"></div> CHM 111: Inorganic Chemistry</li>
+                       <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-amber-500/50"></div> CHM 211: Coordination Chemistry</li>
+                       <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-amber-500/50"></div> CHM 411: Organometallic Chemistry</li>
+                    </ul>
+                 </div>
+              </div>
             </div>
 
             <div className="flex flex-wrap gap-4">
-               <a href={cvLink} target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 px-10 py-5 rounded-full bg-white text-black font-bold hover:bg-amber-600 hover:text-white transition-all shadow-2xl">
+               <a href={cvLink} target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 px-10 py-5 rounded-full bg-foreground text-background font-bold hover:bg-amber-600 hover:text-foreground transition-all shadow-2xl">
                   <Download size={20} /> Download Academic CV
                </a>
                <a href={piStats.googleScholar} target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 px-8 py-5 rounded-full border border-amber-500/30 text-amber-400 font-bold hover:bg-amber-500/10 transition-all">
@@ -827,7 +840,6 @@ export default function Home() {
           </div>
         </motion.div>
       </section>
-
 
 
       {/* 3. RESEARCH SECTION */}
@@ -843,7 +855,7 @@ export default function Home() {
                <p className="text-xl md:text-2xl text-[var(--color-muted)] font-light leading-relaxed border-l-4 border-amber-500 pl-8 italic">
                  "Our research centers on organometallic systems and enabling organic transformations via sustainable catalysis. Our primary objective is to generate green energy resources and recycle atmospheric waste."
                </p>
-               <div className="space-y-6 text-lg text-white font-light leading-relaxed">
+               <div className="space-y-6 text-lg text-foreground font-light leading-relaxed">
                   <p>
                     Specifically, we work on the design and development of catalytic systems for hydrogen generation, hydrogenation, photocatalysis, and C-H activation reactions using both homogeneous and heterogeneous catalysts.
                   </p>
@@ -856,7 +868,7 @@ export default function Home() {
               <motion.div 
                 key={cat.id}
                 initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp}
-                className="group relative h-[450px] md:h-[550px] rounded-[3.5rem] overflow-hidden border border-white/10 shadow-2xl hover:border-amber-500/30 transition-all duration-700"
+                className="group relative h-[450px] md:h-[550px] rounded-[3.5rem] overflow-hidden border border-foreground/10 shadow-2xl hover:border-amber-500/30 transition-all duration-700"
               >
                 {/* Background Image */}
                 <div className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-110" style={{ backgroundImage: `url(${cat.image})` }}></div>
@@ -865,13 +877,30 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80 group-hover:opacity-100 group-hover:via-amber-900/40 transition-all duration-700"></div>
                 
                 {/* Content Overlay */}
-                <div className="absolute inset-0 p-12 flex flex-col justify-end items-start text-left">
+                <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-end items-start text-left z-20">
                   <span className="text-[10px] font-black text-amber-400 uppercase tracking-[0.4em] mb-4 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">Pillar {idx + 1}</span>
-                  <h3 className="text-2xl md:text-5xl font-black mb-6 tracking-tighter text-white uppercase leading-[0.8]">{cat.title}</h3>
-                  <p className="text-base text-white/90 font-light leading-relaxed mb-8 max-w-sm line-clamp-3 opacity-80 group-hover:opacity-100 transition-all">
+                  <h3 className="text-2xl md:text-5xl font-black mb-4 tracking-tighter text-white uppercase leading-[0.8]">{cat.title}</h3>
+                  <p className="text-sm md:text-base text-white font-normal leading-relaxed mb-6 max-w-sm line-clamp-2 md:line-clamp-3 group-hover:opacity-100 transition-all shadow-black drop-shadow-md">
                     {cat.details}
                   </p>
-                  <Link href={`/research#${cat.id}`} className="flex items-center gap-3 px-8 py-4 rounded-full glass border border-white/10 text-white text-[10px] font-black uppercase tracking-[0.2em] hover:bg-amber-600 hover:border-amber-600 transition-all">
+                  
+                  {/* Relevant Papers Preview */}
+                  <div className="hidden md:block w-full max-w-md space-y-2 mb-8 opacity-0 group-hover:opacity-100 transition-all duration-700 transform translate-y-4 group-hover:translate-y-0 h-0 group-hover:h-auto overflow-hidden">
+                    <p className="text-[9px] text-amber-400 font-mono uppercase tracking-widest mb-2 border-b border-white/10 pb-1">Key Publications</p>
+                    {idx === 0 ? (
+                      <>
+                        <p className="text-xs text-white leading-tight font-medium truncate drop-shadow-md">1. Transition-metal pincer complexes in acceptorless dehydrogenation...</p>
+                        <p className="text-xs text-white leading-tight font-medium truncate drop-shadow-md">2. Direct access to N-alkylated amines and imines via...</p>
+                      </>
+                    ) : (
+                      <>
+                        <p className="text-xs text-white leading-tight font-medium truncate drop-shadow-md">1. Robust nanocatalysts for sustainable industrial transformations...</p>
+                        <p className="text-xs text-white leading-tight font-medium truncate drop-shadow-md">2. Reusable heterogeneous nanocatalysts on graphene/carbon supports...</p>
+                      </>
+                    )}
+                  </div>
+
+                  <Link href={`/research#${cat.id}`} className="flex items-center gap-3 px-8 py-4 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-[10px] font-black uppercase tracking-[0.2em] hover:bg-amber-600 hover:text-white hover:border-amber-600 transition-all mt-auto shadow-lg">
                      Dive Deeper <ArrowRight size={14} />
                   </Link>
                 </div>
@@ -882,12 +911,12 @@ export default function Home() {
       </section>
 
       {/* 4. PUBLICATIONS SECTION */}
-      <section id="publications" className="w-full py-32 px-6 relative z-10 bg-[#0d1117] border-y border-white/5">
+      <section id="publications" className="w-full py-32 px-6 relative z-10 bg-background border-y border-foreground/5">
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
-              <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-4 text-white uppercase">Publications</h2>
-              <p className="text-white font-light">Highlights from our 117+ published works.</p>
+              <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-4 text-foreground uppercase">Publications</h2>
+              <p className="text-foreground font-light">Highlights from our 117+ published works.</p>
             </div>
             <Link href="/publications" className="px-8 py-4 rounded-full border border-amber-500/30 text-amber-400 font-bold hover:bg-amber-500/10 transition-all flex items-center gap-2 uppercase text-[10px] tracking-widest font-mono">
               View All 117 Publications <ArrowRight size={18} />
@@ -911,8 +940,8 @@ export default function Home() {
                 <div className="h-px w-12 bg-amber-500"></div>
                 <p className="text-[10px] font-mono text-amber-400 tracking-[0.3em] uppercase">Intellectual Property</p>
               </div>
-              <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-4 text-white uppercase">Patents</h2>
-              <p className="text-white font-light">33+ patents filed including {patents.grantedUS.length} granted US patents.</p>
+              <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-4 text-foreground uppercase">Patents</h2>
+              <p className="text-foreground font-light">33+ patents filed including {patents.grantedUS.length} granted US patents.</p>
             </div>
             <Link href="/patents" className="px-8 py-4 rounded-full border border-amber-500/30 text-amber-400 font-bold hover:bg-amber-500/10 transition-all flex items-center gap-2 uppercase text-[10px] tracking-widest font-mono">
               View All Patents <ArrowRight size={18} />
@@ -920,36 +949,36 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            <div className="p-10 rounded-[3rem] bg-white/[0.03] border border-white/5 hover:border-amber-500/20 transition-all group">
+            <div className="p-10 rounded-[3rem] bg-foreground/[0.03] border border-foreground/5 hover:border-amber-500/20 transition-all group">
               <div className="text-5xl font-black text-amber-500 mb-4">{patents.iiser.length + patents.industry.length}</div>
-              <h3 className="text-lg font-bold text-white mb-2 uppercase tracking-tight">Indian Patents</h3>
-              <p className="text-white text-sm font-light">Filed at IISER Tirupati & with industry partners</p>
+              <h3 className="text-lg font-bold text-foreground mb-2 uppercase tracking-tight">Indian Patents</h3>
+              <p className="text-foreground text-sm font-light">Filed at IISER Tirupati & with industry partners</p>
             </div>
-            <div className="p-10 rounded-[3rem] bg-white/[0.03] border border-white/5 hover:border-amber-500/20 transition-all group">
+            <div className="p-10 rounded-[3rem] bg-foreground/[0.03] border border-foreground/5 hover:border-amber-500/20 transition-all group">
               <div className="text-5xl font-black text-emerald-500 mb-4">{patents.grantedUS.length}</div>
-              <h3 className="text-lg font-bold text-white mb-2 uppercase tracking-tight">Granted US Patents</h3>
-              <p className="text-white text-sm font-light">International intellectual property portfolio</p>
+              <h3 className="text-lg font-bold text-foreground mb-2 uppercase tracking-tight">Granted US Patents</h3>
+              <p className="text-foreground text-sm font-light">International intellectual property portfolio</p>
             </div>
-            <div className="p-10 rounded-[3rem] bg-white/[0.03] border border-white/5 hover:border-amber-500/20 transition-all group">
+            <div className="p-10 rounded-[3rem] bg-foreground/[0.03] border border-foreground/5 hover:border-amber-500/20 transition-all group">
               <div className="text-5xl font-black text-orange-500 mb-4">{patents.industry.length}</div>
-              <h3 className="text-lg font-bold text-white mb-2 uppercase tracking-tight">Industry Collaborations</h3>
-              <p className="text-white text-sm font-light">GAIL India, Tata Steel & more</p>
+              <h3 className="text-lg font-bold text-foreground mb-2 uppercase tracking-tight">Industry Collaborations</h3>
+              <p className="text-foreground text-sm font-light">GAIL India, Tata Steel & more</p>
             </div>
           </div>
 
           <div className="space-y-4">
             {patents.iiser.slice(0, 3).map((p) => (
-              <div key={p.id} className="flex gap-6 p-6 rounded-[2rem] bg-white/[0.02] border border-white/5 hover:border-amber-500/20 transition-all group">
+              <div key={p.id} className="flex gap-6 p-6 rounded-[2rem] bg-foreground/[0.02] border border-foreground/5 hover:border-amber-500/20 transition-all group">
                 <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 shrink-0">
                   <Shield size={20} />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-2">
                     <span className="text-[10px] font-bold text-amber-400 px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/20">{p.year}</span>
-                    <span className="text-[10px] text-white font-mono">#{p.number}</span>
+                    <span className="text-[10px] text-foreground font-mono">#{p.number}</span>
                   </div>
-                  <h4 className="text-base font-bold text-white group-hover:text-amber-400 transition-colors leading-snug mb-1">{p.title}</h4>
-                  <p className="text-xs text-white/90 font-light">{p.authors}</p>
+                  <h4 className="text-base font-bold text-foreground group-hover:text-amber-400 transition-colors leading-snug mb-1">{p.title}</h4>
+                  <p className="text-xs text-foreground/90 font-light">{p.authors}</p>
                 </div>
               </div>
             ))}
@@ -958,9 +987,9 @@ export default function Home() {
       </section>
 
       {/* 5. TEAM & GALLERY PREVIEW SECTION */}
-      <section id="team" className="w-full py-32 px-6 relative z-10 bg-white/[0.01]">
+      <section id="team" className="w-full py-32 px-6 relative z-10 bg-foreground/[0.01]">
          <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
-            <h2 className="text-4xl md:text-6xl font-black mb-12 uppercase tracking-tighter text-white">Lab Members</h2>
+            <h2 className="text-4xl md:text-6xl font-black mb-12 uppercase tracking-tighter text-foreground">Lab Members</h2>
             
             <div className="w-full space-y-24">
               {/* Postdocs */}
@@ -1022,14 +1051,14 @@ export default function Home() {
       </section>
 
       {/* 5.5. GALLERY SECTION */}
-      <section id="gallery" className="w-full py-32 px-6 relative z-10 bg-[#0d1117] border-t border-white/5">
+      <section id="gallery" className="w-full py-32 px-6 relative z-10 bg-background border-t border-foreground/5">
          <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
             <div className="flex items-center justify-center gap-4 mb-4">
               <div className="h-px w-12 bg-pink-500"></div>
               <h3 className="text-xs font-mono text-pink-500 uppercase tracking-[0.4em]">Lab Images & Photos</h3>
               <div className="h-px w-12 bg-pink-500"></div>
             </div>
-            <h2 className="text-4xl md:text-6xl font-black mb-12 uppercase tracking-tighter text-white">Lab Memories</h2>
+            <h2 className="text-4xl md:text-6xl font-black mb-12 uppercase tracking-tighter text-foreground">Lab Memories</h2>
 
             {/* Slideshow 1: Gallery memories */}
             <div className="w-full max-w-5xl mb-12">
@@ -1051,15 +1080,15 @@ export default function Home() {
       </section>
 
       {/* 6. CONTACT SECTION */}
-      <section id="contact" className="w-full py-32 px-6 relative z-10 bg-[#090c10]">
+      <section id="contact" className="w-full py-32 px-6 relative z-10 bg-background">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16">
           <div className="w-full md:w-1/2">
             <div className="flex items-center gap-4 mb-6">
               <div className="h-px w-12 bg-amber-500"></div>
               <p className="text-[10px] font-mono text-amber-400 tracking-[0.3em] uppercase">Get in Touch</p>
             </div>
-            <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-8 text-white uppercase">Contact Us</h2>
-            <p className="text-xl text-white/90 font-light mb-12">
+            <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-8 text-foreground uppercase">Contact Us</h2>
+            <p className="text-xl text-foreground/90 font-light mb-12">
               Interested in joining our group or collaborating with us? We'd love to hear from you.
             </p>
             
@@ -1069,8 +1098,8 @@ export default function Home() {
                   <MapPin size={20} />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-white uppercase tracking-widest mb-2">Location</h4>
-                  <p className="text-white font-light leading-relaxed">
+                  <h4 className="text-sm font-bold text-foreground uppercase tracking-widest mb-2">Location</h4>
+                  <p className="text-foreground font-light leading-relaxed">
                     Department of Chemistry,<br />
                     IISER Tirupati,<br />
                     Srinivasapuram Venkatagiri Road,<br />
@@ -1085,11 +1114,11 @@ export default function Home() {
                   <Mail size={20} />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-white uppercase tracking-widest mb-2">Email</h4>
-                  <a href="mailto:eb.raman@iisertirupati.ac.in" className="text-white hover:text-amber-400 font-light transition-colors block">
+                  <h4 className="text-sm font-bold text-foreground uppercase tracking-widest mb-2">Email</h4>
+                  <a href="mailto:eb.raman@iisertirupati.ac.in" className="text-foreground hover:text-amber-400 font-light transition-colors block">
                     eb.raman@iisertirupati.ac.in
                   </a>
-                  <a href="mailto:balaramanekambaram@gmail.com" className="text-white hover:text-amber-400 font-light transition-colors block mt-1">
+                  <a href="mailto:balaramanekambaram@gmail.com" className="text-foreground hover:text-amber-400 font-light transition-colors block mt-1">
                     balaramanekambaram@gmail.com
                   </a>
                 </div>
@@ -1098,24 +1127,24 @@ export default function Home() {
             </div>
           </div>
           
-          <div className="w-full md:w-1/2 p-10 rounded-[3rem] bg-white/[0.02] border border-white/5">
-             <h3 className="text-2xl font-bold text-white mb-6 uppercase tracking-tight">Open Positions</h3>
-             <p className="text-white font-light mb-8 leading-relaxed">
+          <div className="w-full md:w-1/2 p-10 rounded-[3rem] bg-foreground/[0.02] border border-foreground/5">
+             <h3 className="text-2xl font-bold text-foreground mb-6 uppercase tracking-tight">Open Positions</h3>
+             <p className="text-foreground font-light mb-8 leading-relaxed">
                We are always looking for motivated Postdocs, PhD students, and Master's students to join our lab. Please send your CV and a brief description of your research interests to Prof. Balaraman.
              </p>
              <div className="space-y-4">
                <div className="p-4 rounded-2xl bg-amber-500/5 border border-amber-500/10 flex items-center gap-4">
                  <GraduationCap size={24} className="text-amber-400" />
                  <div>
-                   <h4 className="text-sm font-bold text-white">PhD Positions</h4>
-                   <p className="text-xs text-white/90">Through regular IISER Tirupati admissions</p>
+                   <h4 className="text-sm font-bold text-foreground">PhD Positions</h4>
+                   <p className="text-xs text-foreground/90">Through regular IISER Tirupati admissions</p>
                  </div>
                </div>
                <div className="p-4 rounded-2xl bg-amber-500/5 border border-amber-500/10 flex items-center gap-4">
                  <Briefcase size={24} className="text-amber-400" />
                  <div>
-                   <h4 className="text-sm font-bold text-white">Postdoc Positions</h4>
-                   <p className="text-xs text-white/90">NPDF / Institute Fellowships</p>
+                   <h4 className="text-sm font-bold text-foreground">Postdoc Positions</h4>
+                   <p className="text-xs text-foreground/90">NPDF / Institute Fellowships</p>
                  </div>
                </div>
              </div>
@@ -1124,9 +1153,9 @@ export default function Home() {
       </section>
 
       {/* FOOTER */}
-      <footer className="w-full py-12 px-6 border-t border-white/5 bg-[#090c10]/50 backdrop-blur-md relative z-10">
+      <footer className="w-full py-12 px-6 border-t border-foreground/5 bg-foreground/50 backdrop-blur-md relative z-10">
          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-            <p className="text-[10px] font-mono text-white uppercase tracking-[0.4em]">
+            <p className="text-[10px] font-mono text-foreground uppercase tracking-[0.4em]">
                © {new Date().getFullYear()} Raman's Research Lab | IISER Tirupati
             </p>
          </div>
@@ -1135,3 +1164,4 @@ export default function Home() {
     </main>
   );
 }
+

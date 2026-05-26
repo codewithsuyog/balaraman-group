@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, X, Maximize2, Image as ImageIcon, Users } from 'lucide-react';
@@ -24,7 +24,7 @@ export default function GalleryPage() {
     (_, i) => i + 1
   );
 
-  const GalleryImage = ({ num, folder, onClick }: { num: number, folder: string, onClick: (src: string) => void }) => {
+  const GalleryCard = ({ num, folder }: { num: number, folder: string }) => {
     const extensions = ['.jpg', '.png', '.jpeg', '.webp'];
     const [extIdx, setExtIdx] = React.useState(0);
     const [failed, setFailed] = React.useState(false);
@@ -32,25 +32,44 @@ export default function GalleryPage() {
     const src = `/images/${folder}/${num}${extensions[extIdx]}`;
   
     return (
-      <img 
-        src={failed ? "/logo.png" : src} 
-        alt={`Lab Moment ${num}`}
-        className={`max-w-full max-h-full object-contain transition-transform duration-700 group-hover:scale-105 ${failed ? 'opacity-20' : ''}`}
-        loading="lazy"
-        onClick={() => !failed && onClick(src)}
-        onError={() => {
-          if (extIdx < extensions.length - 1) {
-            setExtIdx(prev => prev + 1);
-          } else {
-            setFailed(true);
-          }
-        }}
-      />
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: (num % 6) * 0.05 }}
+        className="group relative aspect-[16/10] rounded-[2.5rem] overflow-hidden border border-foreground/10 shadow-2xl bg-foreground/5 cursor-pointer"
+        onClick={() => !failed && setSelectedImage(src)}
+      >
+        <div className="w-full h-full flex items-center justify-center p-2 bg-surface-alt/40">
+          <img 
+            src={failed ? "/logo.png" : src} 
+            alt={`Lab Moment ${num}`}
+            className={`max-w-full max-h-full object-contain transition-transform duration-700 group-hover:scale-105 ${failed ? 'opacity-20' : ''}`}
+            loading="lazy"
+            onError={() => {
+              if (extIdx < extensions.length - 1) {
+                setExtIdx(prev => prev + 1);
+              } else {
+                setFailed(true);
+              }
+            }}
+          />
+        </div>
+        
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-8">
+          <p className="text-[10px] font-mono text-amber-400 uppercase tracking-widest mb-1">Moment #{num}</p>
+          <p className="text-white text-sm font-light uppercase tracking-tighter">Memory Archive</p>
+        </div>
+
+        <div className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 scale-50 group-hover:scale-100">
+          <Maximize2 size={20} className="text-white" />
+        </div>
+      </motion.div>
     );
   };
 
   return (
-    <main className="min-h-screen bg-[#0d1117] text-white py-24 px-6 md:px-12">
+    <main className="min-h-screen bg-background text-foreground py-24 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
         <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <motion.div 
@@ -69,19 +88,19 @@ export default function GalleryPage() {
                 : "A comprehensive archive of Raman's Research Lab—milestones, celebrations, and daily scientific life."}
             </p>
           </motion.div>
-          <div className="px-6 py-3 rounded-full border border-white/10 bg-white/5 text-xs font-mono text-white uppercase tracking-widest h-max">
+          <div className="px-6 py-3 rounded-full border border-foreground/10 bg-foreground/5 text-xs font-mono text-foreground uppercase tracking-widest h-max">
             {photos.length} Captured {activeTab === 'images' ? 'Media' : 'Memories'}
           </div>
         </div>
 
         {/* TABS */}
-        <div className="flex items-center gap-4 mb-12 border-b border-white/10 pb-4">
+        <div className="flex items-center gap-4 mb-12 border-b border-foreground/10 pb-4">
           <button 
             onClick={() => setActiveTab('images')}
             className={`flex items-center gap-2 px-6 py-3 rounded-full font-bold text-xs uppercase tracking-widest transition-all ${
               activeTab === 'images' 
                 ? 'bg-pink-500/20 text-pink-400 border border-pink-500/30' 
-                : 'bg-white/5 text-white hover:bg-white/10 border border-transparent'
+                : 'bg-foreground/5 text-foreground hover:bg-foreground/10 border border-transparent'
             }`}
           >
             <ImageIcon size={16} /> Lab Images & Videos
@@ -91,7 +110,7 @@ export default function GalleryPage() {
             className={`flex items-center gap-2 px-6 py-3 rounded-full font-bold text-xs uppercase tracking-widest transition-all ${
               activeTab === 'memories' 
                 ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' 
-                : 'bg-white/5 text-white hover:bg-white/10 border border-transparent'
+                : 'bg-foreground/5 text-foreground hover:bg-foreground/10 border border-transparent'
             }`}
           >
             <Users size={16} /> Lab Memories
@@ -101,29 +120,7 @@ export default function GalleryPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {photos.map((num) => {
             const folder = activeTab === 'images' ? 'lab-images' : 'lab-memories';
-            return (
-              <motion.div 
-                key={num}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: (num % 6) * 0.05 }}
-                className="group relative aspect-[16/10] rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl bg-white/5 cursor-pointer"
-              >
-                <div className="w-full h-full flex items-center justify-center p-2 bg-[#090c10]/40">
-                  <GalleryImage num={num} folder={folder} onClick={setSelectedImage} />
-                </div>
-                
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-8">
-                  <p className="text-[10px] font-mono text-amber-400 uppercase tracking-widest mb-1">Moment #{num}</p>
-                  <p className="text-white text-sm font-light uppercase tracking-tighter">Memory Archive</p>
-                </div>
-
-                <div className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 scale-50 group-hover:scale-100">
-                  <Maximize2 size={20} className="text-white" />
-                </div>
-              </motion.div>
-            );
+            return <GalleryCard key={num} num={num} folder={folder} />;
           })}
         </div>
       </div>
@@ -152,9 +149,9 @@ export default function GalleryPage() {
               />
               <button 
                 onClick={() => setSelectedImage(null)}
-                className="absolute top-0 right-0 -translate-y-12 md:translate-y-0 md:translate-x-12 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors border border-white/10"
+                className="absolute top-0 right-0 -translate-y-12 md:translate-y-0 md:translate-x-12 w-12 h-12 rounded-full bg-foreground/10 hover:bg-foreground/20 flex items-center justify-center transition-colors border border-foreground/10"
               >
-                <X size={24} className="text-white" />
+                <X size={24} className="text-foreground" />
               </button>
             </motion.div>
           </motion.div>
