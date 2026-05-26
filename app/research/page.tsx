@@ -162,7 +162,7 @@ export default function ResearchPage() {
               {/* Visual Sidebar */}
               <div className="w-full lg:w-1/2 group">
                 <div className="relative aspect-[4/3] rounded-[2.5rem] overflow-hidden border border-foreground/10 shadow-2xl">
-                  <div className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-105" style={{ backgroundImage: `url(${cat.image})` }}></div>
+                  <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${cat.image})` }}></div>
                   <div className="absolute inset-0 bg-gradient-to-t from-[#020202] via-transparent to-transparent opacity-60"></div>
                 </div>
               </div>

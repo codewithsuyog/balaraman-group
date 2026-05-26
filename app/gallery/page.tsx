@@ -44,7 +44,7 @@ export default function GalleryPage() {
           <img 
             src={failed ? "/logo.png" : src} 
             alt={`Lab Moment ${num}`}
-            className={`max-w-full max-h-full object-contain transition-transform duration-700 group-hover:scale-105 ${failed ? 'opacity-20' : ''}`}
+            className={`max-w-full max-h-full object-contain ${failed ? 'opacity-20' : ''}`}
             loading="lazy"
             onError={() => {
               if (extIdx < extensions.length - 1) {

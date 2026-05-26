@@ -48,7 +48,7 @@ const MemberCard = ({ member, role }: { member: any, role: string }) => {
           <img 
             src={currentSrc} 
             alt={member.name} 
-            className="w-full h-full object-cover transition-all duration-700 scale-105 group-hover:scale-100"
+            className="w-full h-full object-cover"
             onError={handleError}
           />
         ) : (
@@ -99,7 +99,7 @@ const AlumniPhDCard = ({ member }: { member: any }) => {
           <img 
             src={member.image} 
             alt={member.name} 
-            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
+            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
             onError={() => setImgFailed(true)}
           />
         ) : (

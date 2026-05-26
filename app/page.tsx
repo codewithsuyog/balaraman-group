@@ -672,7 +672,7 @@ export default function Home() {
                  alt="Dr. Ekambaram Balaraman" 
                  fill
                  sizes="(max-width: 768px) 100vw, 33vw"
-                 className="object-cover object-center transition-all duration-700 group-hover:scale-105" 
+                 className="object-cover object-center" 
                />
              </div>
             
@@ -880,7 +880,7 @@ export default function Home() {
                 className="group relative h-[450px] md:h-[550px] rounded-[3.5rem] overflow-hidden border border-foreground/10 shadow-2xl hover:border-amber-500/30 transition-all duration-700"
               >
                 {/* Background Image */}
-                <div className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-110" style={{ backgroundImage: `url(${cat.image})` }}></div>
+                <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${cat.image})` }}></div>
                 
                 {/* Overlay Gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80 group-hover:opacity-100 group-hover:via-amber-900/40 transition-all duration-700"></div>
