@@ -1208,7 +1208,11 @@ export const team = {
     { name: "Ms. Kavya", info: "Master's Thesis Student, IISER Tirupati (2026)", image: "/images/team/masters/Kavya.jpeg" },
     { name: "Ms. Ayesha", info: "Master's Thesis Student, IISER Tirupati (2026)", image: "/images/team/masters/ayesha.jpg" },
   ],
-  semesterProject: [],
+  semesterProject: [
+    { name: "Mr. Suyog", info: "Semester Project, IISER Tirupati (2026)", image: "/images/team/masters/suyog.jpg" },
+    { name: "Ms. Kavya", info: "Semester Project, IISER Tirupati (2026)", image: "/images/team/masters/Kavya.jpeg" },
+    { name: "Ms. Ayesha", info: "Semester Project, IISER Tirupati (2026)", image: "/images/team/masters/ayesha.jpg" },
+  ],
   alumniPhd: [
     { name: "Dr. Manoj K. Sahoo", thesis: "Visible mediated photoredox catalytic Dehydrogenation and C-H arylation reactions", duration: "2013-2018", present: "Post-doctoral Studies at UNIST, South Korea", image: "/images/team/Phd Alumini/Dr. MANOJ K. SAHOO.jpg" },
     { name: "Dr. Garima Jaiswal", thesis: "Transition metal based nanocatalysts for (de)-hydrogenation reactions", duration: "2013-2018", present: "Research Scientist at HPCL, Bengaluru", image: "/images/team/Phd Alumini/Dr. GARIMA JAISWAL.png" },
@@ -1296,7 +1300,6 @@ export const team = {
     { name: "Dr. Ankit Kumar Srivastav", duration: "Feb 2023 – Dec 2023" },
     { name: "Dr. M. Sivaprakash", duration: "Apr 2023 – Present" },
     { name: "Dr. Sivakumar G", duration: "Jan 2024 – Present" },
-    { name: "Dr. Sachin S. Gorad", duration: "Oct 2024 – Present" },
     { name: "Dr. Rohit Kumar", duration: "Dec 2024 – Present" }
   ],
   alumniSemester: [
