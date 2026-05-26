@@ -619,7 +619,7 @@ export default function Home() {
       </motion.nav>
 
       {/* 1. HERO SECTION */}
-      <section id="home" className="relative w-full min-h-screen flex items-center justify-center pt-32 pb-32 px-6 overflow-hidden">
+      <section id="home" className="relative w-full min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
         
         <motion.div className="absolute inset-0 z-0">
           <Image 
@@ -630,7 +630,7 @@ export default function Home() {
             sizes="100vw"
             className="object-cover object-center opacity-80" 
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-background/70 to-background"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 via-60% to-background"></div>
         </motion.div>
 
         {/* Background watermark text */}
@@ -638,7 +638,7 @@ export default function Home() {
           <span className="text-[120px] sm:text-[200px] md:text-[300px] font-black uppercase tracking-tighter leading-none opacity-80" style={{ color: 'rgba(255, 255, 255, 0.2)', WebkitTextStroke: '2px rgba(0,0,0,0.2)' }}>RAMAN</span>
         </div>
 
-        <div className="z-10 max-w-6xl mx-auto text-center -mt-16 relative">
+        <div className="z-10 max-w-6xl mx-auto text-center relative">
           <motion.div initial="hidden" animate="visible" variants={fadeUp}>
             <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full glass mb-10 text-xs sm:text-sm font-mono text-amber-400 font-bold uppercase tracking-widest border border-foreground/10">
               IISER Tirupati • Department of Chemistry
@@ -653,7 +653,7 @@ export default function Home() {
           </motion.div>
 
           <motion.div initial="hidden" animate="visible" variants={fadeUp}>
-            <p className="text-xl sm:text-2xl md:text-3xl text-foreground/80 font-light max-w-3xl mx-auto mb-16 leading-relaxed">
+            <p className="text-xl sm:text-2xl md:text-3xl text-foreground/80 font-light max-w-3xl mx-auto mb-8 leading-relaxed">
               Exploring new frontiers in <span className="font-semibold text-foreground">catalysis</span>, <span className="font-semibold text-foreground">sustainable chemistry</span>, and complex <span className="font-semibold text-foreground">organometallic systems</span>.
             </p>
           </motion.div>
@@ -661,7 +661,7 @@ export default function Home() {
       </section>
 
       {/* 2. PI SECTION */}
-      <section id="pi" className="w-full py-20 md:py-32 px-6 relative z-10 bg-foreground/[0.02]">
+      <section id="pi" className="w-full py-20 md:py-24 px-6 relative z-10 bg-foreground/[0.02]">
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16 items-stretch relative">
           
           <div className="w-full lg:w-1/3 flex flex-col">
