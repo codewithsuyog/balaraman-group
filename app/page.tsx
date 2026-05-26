@@ -685,9 +685,12 @@ export default function Home() {
 
             {/* LAB NEWS - Vertical scroll below PI photo */}
             <div id="news" className="mt-12 pt-8 border-t border-foreground/10 w-full flex flex-col flex-1 pb-4">
-              <div className="flex items-center gap-3 mb-6 shrink-0">
-                 <div className="h-px w-6 bg-amber-500"></div>
-                 <p className="text-[10px] font-mono text-amber-400 tracking-[0.3em] uppercase font-bold">Lab News</p>
+              <div className="mb-8 shrink-0">
+                 <div className="flex items-center gap-3 mb-3">
+                   <div className="h-px w-8 bg-accent"></div>
+                   <p className="text-sm font-extrabold text-accent tracking-[0.2em] uppercase">Lab News</p>
+                 </div>
+                 <h3 className="text-2xl font-bold text-foreground tracking-tight">Latest Updates</h3>
               </div>
               <div className="relative flex-1 min-h-[400px] w-full group overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-8 bg-gradient-to-b from-background to-transparent z-10 pointer-events-none opacity-0 transition-opacity"></div>
@@ -721,7 +724,7 @@ export default function Home() {
           </div>
           
           <div className="w-full lg:w-2/3 flex flex-col">
-            <div className="inline-flex items-center gap-3 px-4 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 font-bold text-[10px] font-mono uppercase tracking-[0.3em] mb-6">Principal Investigator</div>
+            <div className="inline-flex items-center gap-3 px-5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-accent font-extrabold text-sm uppercase tracking-[0.2em] mb-6">Principal Investigator</div>
             <h2 className="text-5xl md:text-7xl font-black mb-4 tracking-tighter text-foreground">Dr. Ekambaram Balaraman</h2>
             <h3 className="text-xl text-amber-500 mb-6 font-light tracking-tight">Associate Professor & Chair, Department of Chemistry, IISER Tirupati</h3>
             
@@ -846,9 +849,9 @@ export default function Home() {
       <section id="research" className="w-full py-32 px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mb-32">
-            <div className="flex items-center gap-4 mb-8">
-               <div className="h-px w-12 bg-amber-500"></div>
-               <p className="text-[10px] font-mono text-amber-400 tracking-[0.3em] uppercase">Laboratory Focus</p>
+            <div className="flex items-center gap-4 mb-4">
+               <div className="h-px w-12 bg-accent"></div>
+               <p className="text-sm font-extrabold text-accent tracking-[0.2em] uppercase">Laboratory Focus</p>
             </div>
             <h2 className="text-5xl md:text-8xl font-black tracking-tight mb-12 text-gradient leading-[0.9]">Research</h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -936,9 +939,9 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
-              <div className="flex items-center gap-4 mb-6">
-                <div className="h-px w-12 bg-amber-500"></div>
-                <p className="text-[10px] font-mono text-amber-400 tracking-[0.3em] uppercase">Intellectual Property</p>
+              <div className="flex items-center gap-4 mb-4">
+                <div className="h-px w-12 bg-accent"></div>
+                <p className="text-sm font-extrabold text-accent tracking-[0.2em] uppercase">Intellectual Property</p>
               </div>
               <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-4 text-foreground uppercase">Patents</h2>
               <p className="text-foreground font-light">33+ patents filed including {patents.grantedUS.length} granted US patents.</p>
@@ -994,7 +997,7 @@ export default function Home() {
             <div className="w-full space-y-24">
               {/* Postdocs */}
               <div>
-                <h3 className="text-xs font-mono text-amber-500 uppercase tracking-[0.4em] mb-10 text-left">Post-doctoral Fellows</h3>
+                <h3 className="text-sm font-extrabold text-accent uppercase tracking-[0.2em] mb-10 text-left">Post-doctoral Fellows</h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 w-full">
                   {team.postdocs.map((member, i) => (
                     <TeamMemberThumb key={i} member={member} role="Postdoc" />
@@ -1004,7 +1007,7 @@ export default function Home() {
 
               {/* PhD Scholars */}
               <div>
-                <h3 className="text-xs font-mono text-amber-500 uppercase tracking-[0.4em] mb-10 text-left">PhD Scholars</h3>
+                <h3 className="text-sm font-extrabold text-accent uppercase tracking-[0.2em] mb-10 text-left">PhD Scholars</h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 w-full">
                   {team.currentPhd.map((member, i) => (
                     <TeamMemberThumb key={i} member={member} role="PhD Scholar" />
@@ -1017,7 +1020,7 @@ export default function Home() {
                 <div className="mb-20">
                   <div className="flex items-center gap-4 mb-12">
                      <div className="h-px w-12 bg-amber-500"></div>
-                     <h2 className="text-xs font-mono text-amber-500 uppercase tracking-[0.4em]">Master&apos;s Students</h2>
+                     <h2 className="text-sm font-extrabold text-accent uppercase tracking-[0.2em]">Master&apos;s Students</h2>
                   </div>
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
                     {team.masters.map((member, i) => <TeamMemberThumb key={i} member={member} role="MSc" />)}
@@ -1029,8 +1032,8 @@ export default function Home() {
               {(team as any).semesterProject && (team as any).semesterProject.length > 0 && (
                 <div className="mb-20">
                   <div className="flex items-center gap-4 mb-12">
-                     <div className="h-px w-12 bg-indigo-500"></div>
-                     <h2 className="text-xs font-mono text-indigo-500 uppercase tracking-[0.4em]">Semester Project Students</h2>
+                     <div className="h-px w-12 bg-accent"></div>
+                     <h2 className="text-sm font-extrabold text-accent uppercase tracking-[0.2em]">Semester Project Students</h2>
                   </div>
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
                     {(team as any).semesterProject.map((member: any, i: number) => (
@@ -1054,9 +1057,9 @@ export default function Home() {
       <section id="gallery" className="w-full py-32 px-6 relative z-10 bg-background border-t border-foreground/5">
          <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
             <div className="flex items-center justify-center gap-4 mb-4">
-              <div className="h-px w-12 bg-pink-500"></div>
-              <h3 className="text-xs font-mono text-pink-500 uppercase tracking-[0.4em]">Lab Images & Photos</h3>
-              <div className="h-px w-12 bg-pink-500"></div>
+              <div className="h-px w-12 bg-accent"></div>
+              <h3 className="text-sm font-extrabold text-accent uppercase tracking-[0.2em]">Lab Images & Photos</h3>
+              <div className="h-px w-12 bg-accent"></div>
             </div>
             <h2 className="text-4xl md:text-6xl font-black mb-12 uppercase tracking-tighter text-foreground">Lab Memories</h2>
 
@@ -1067,9 +1070,9 @@ export default function Home() {
             {/* Slideshow 2: Lab Research Media (Images + Videos) */}
             <div className="w-full max-w-5xl mb-16">
               <div className="flex items-center justify-center gap-4 mb-8">
-                <div className="h-px w-12 bg-cyan-500/50" />
-                <h3 className="text-xs font-mono text-cyan-400 uppercase tracking-[0.4em]">Lab Research Media</h3>
-                <div className="h-px w-12 bg-cyan-500/50" />
+                <div className="h-px w-12 bg-accent/50" />
+                <h3 className="text-sm font-extrabold text-accent uppercase tracking-[0.2em]">Lab Research Media</h3>
+                <div className="h-px w-12 bg-accent/50" />
               </div>
               <LabMediaShowcase />
             </div>
@@ -1083,9 +1086,9 @@ export default function Home() {
       <section id="contact" className="w-full py-32 px-6 relative z-10 bg-background">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16">
           <div className="w-full md:w-1/2">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="h-px w-12 bg-amber-500"></div>
-              <p className="text-[10px] font-mono text-amber-400 tracking-[0.3em] uppercase">Get in Touch</p>
+            <div className="flex items-center gap-4 mb-4">
+              <div className="h-px w-12 bg-accent"></div>
+              <p className="text-sm font-extrabold text-accent tracking-[0.2em] uppercase">Get in Touch</p>
             </div>
             <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-8 text-foreground uppercase">Contact Us</h2>
             <p className="text-xl text-foreground/90 font-light mb-12">
