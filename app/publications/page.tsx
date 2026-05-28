@@ -17,7 +17,7 @@ const PublicationCard = ({ pub, idx, fadeUp }: any) => {
   const [coverExtIdx, setCoverExtIdx] = React.useState(0);
   const [schemeExtIdx, setSchemeExtIdx] = React.useState(0);
   
-  const extensions = ['.jpg', '.png', '.gif', '.jpeg', '.webp'];
+  const extensions = ['.webp', '.jpg', '.png', '.gif', '.jpeg'];
 
   const hasCover = !coverFailed;
   const hasScheme = !schemeFailed;

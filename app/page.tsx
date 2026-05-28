@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, lazy, Suspense } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -17,7 +17,7 @@ import {
   patents, piBio, cvLink, 
   opportunities, team, awards, piStats, news 
 } from './data';
-import { publications } from './publications_master';
+import { featuredPublications as publications } from './publications_featured';
 
 const fadeUp: any = {
   hidden: { opacity: 0, y: 30 },
@@ -31,7 +31,7 @@ const staggerContainer = {
 
 const PublicationLink = ({ pub }: { pub: any }) => {
   const [coverFailed, setCoverFailed] = useState(false);
-  const extensions = ['.jpg', '.png', '.gif', '.jpeg', '.webp'];
+  const extensions = ['.webp', '.jpg', '.png', '.gif', '.jpeg'];
   const [coverExtIdx, setCoverExtIdx] = useState(0);
 
   return (
@@ -40,6 +40,7 @@ const PublicationLink = ({ pub }: { pub: any }) => {
             <img 
                src={coverFailed ? "/logo.png" : `/images/publications/covers/${pub.id}${extensions[coverExtIdx]}`} 
                alt="Cover" 
+               loading="lazy"
                className="w-full h-full object-contain opacity-50 group-hover/pub:opacity-100 transition-opacity"
                onError={() => coverExtIdx < extensions.length - 1 ? setCoverExtIdx(coverExtIdx + 1) : setCoverFailed(true)}
             />
@@ -70,7 +71,7 @@ const PublicationLink = ({ pub }: { pub: any }) => {
 const FeaturedPublication = ({ pub }: { pub: any }) => {
   const [coverFailed, setCoverFailed] = useState(false);
   const [schemeFailed, setSchemeFailed] = useState(false);
-  const extensions = ['.jpg', '.png', '.gif', '.jpeg', '.webp'];
+  const extensions = ['.webp', '.jpg', '.png', '.gif', '.jpeg'];
   const [coverExtIdx, setCoverExtIdx] = useState(0);
   const [schemeExtIdx, setSchemeExtIdx] = useState(0);
 
@@ -111,20 +112,22 @@ const FeaturedPublication = ({ pub }: { pub: any }) => {
         <div className="w-full md:w-[45%] flex flex-col sm:flex-row gap-6 items-center">
            <div className="w-[140px] h-56 rounded-2xl bg-foreground border border-foreground/10 overflow-hidden relative group-hover:border-amber-500/40 transition-all p-2 shadow-2xl shrink-0">
              <img 
-               src={coverFailed ? "/logo.png" : `/images/publications/covers/${pub.id}${extensions[coverExtIdx]}`} 
-               alt="Cover" 
-               className={`w-full h-full object-contain ${coverFailed ? 'opacity-20' : ''}`}
-               onError={() => coverExtIdx < extensions.length - 1 ? setCoverExtIdx(coverExtIdx + 1) : setCoverFailed(true)}
-             />
+                src={coverFailed ? "/logo.png" : `/images/publications/covers/${pub.id}${extensions[coverExtIdx]}`} 
+                alt="Cover" 
+                loading="lazy"
+                className={`w-full h-full object-contain ${coverFailed ? 'opacity-20' : ''}`}
+                onError={() => coverExtIdx < extensions.length - 1 ? setCoverExtIdx(coverExtIdx + 1) : setCoverFailed(true)}
+              />
 
            </div>
            <div className="flex-1 w-full h-56 rounded-2xl bg-foreground border border-foreground/10 overflow-hidden relative group-hover:border-amber-500/40 transition-all p-2 shadow-2xl">
              <img 
-               src={schemeFailed ? "/logo.png" : `/images/publications/schemes/${pub.id}${extensions[schemeExtIdx]}`} 
-               alt="Scheme" 
-               className={`w-full h-full object-contain ${schemeFailed ? 'opacity-20' : ''}`}
-               onError={() => schemeExtIdx < extensions.length - 1 ? setSchemeExtIdx(schemeExtIdx + 1) : setSchemeFailed(true)}
-             />
+                src={schemeFailed ? "/logo.png" : `/images/publications/schemes/${pub.id}${extensions[schemeExtIdx]}`} 
+                alt="Scheme" 
+                loading="lazy"
+                className={`w-full h-full object-contain ${schemeFailed ? 'opacity-20' : ''}`}
+                onError={() => schemeExtIdx < extensions.length - 1 ? setSchemeExtIdx(schemeExtIdx + 1) : setSchemeFailed(true)}
+              />
 
            </div>
         </div>
@@ -133,7 +136,7 @@ const FeaturedPublication = ({ pub }: { pub: any }) => {
   );
 };
 
-const IMG_EXTENSIONS = ['.jpg', '.png', '.jpeg', '.webp'];
+const IMG_EXTENSIONS = ['.webp', '.jpg', '.png', '.jpeg'];
 const hasFileExt = (path: string) => /\.\w{2,5}$/.test(path);
 
 const TeamMemberThumb = ({ member, role }: { member: any, role: string }) => {
@@ -164,6 +167,7 @@ const TeamMemberThumb = ({ member, role }: { member: any, role: string }) => {
         <img 
           src={showImage ? src : "/logo.png"} 
           alt={member.name} 
+          loading="lazy"
           className={`w-full h-full object-cover transition-all duration-700 ${!showImage ? 'opacity-50 p-4 object-contain brightness-150' : ''}`}
           onError={handleError}
         />
@@ -214,6 +218,7 @@ const AlumniThumb = ({ member }: { member: any }) => {
         <img 
           src={showImage ? src : "/logo.png"} 
           alt={member.name} 
+          loading="lazy"
           className={`w-full h-full object-cover transition-all duration-700 ${!showImage ? 'opacity-20 p-4 object-contain' : ''}`}
           onError={handleError}
         />
@@ -234,7 +239,7 @@ const AlumniThumb = ({ member }: { member: any }) => {
 
 
 const SlideImage = ({ srcBase, isActive }: { srcBase: string, isActive: boolean }) => {
-  const extensions = ['.jpg', '.png', '.jpeg', '.webp'];
+  const extensions = ['.webp', '.jpg', '.png', '.jpeg'];
   const [extIdx, setExtIdx] = useState(0);
   const [failed, setFailed] = useState(false);
 
@@ -499,7 +504,7 @@ export default function Home() {
     setTimeout(() => setFormSubmitted(false), 5000);
   };
 
-  const heroImage = '/images/Background/group-photo.jpg';
+  const heroImage = '/images/Background/group-photo.webp';
 
   useEffect(() => {
     const handleScroll = () => {

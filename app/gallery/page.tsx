@@ -25,7 +25,7 @@ export default function GalleryPage() {
   );
 
   const GalleryCard = ({ num, folder }: { num: number, folder: string }) => {
-    const extensions = ['.jpg', '.png', '.jpeg', '.webp'];
+    const extensions = ['.webp', '.jpg', '.png', '.jpeg'];
     const [extIdx, setExtIdx] = React.useState(0);
     const [failed, setFailed] = React.useState(false);
   

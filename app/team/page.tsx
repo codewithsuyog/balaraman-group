@@ -14,7 +14,7 @@ const fadeUp: any = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
 };
 
-const EXTENSIONS = ['.jpg', '.png', '.jpeg', '.webp'];
+const EXTENSIONS = ['.webp', '.jpg', '.png', '.jpeg'];
 
 const hasExtension = (path: string) => /\.\w{2,5}$/.test(path);
 
@@ -48,6 +48,7 @@ const MemberCard = ({ member, role }: { member: any, role: string }) => {
           <img 
             src={currentSrc} 
             alt={member.name} 
+            loading="lazy"
             className="w-full h-full object-cover"
             onError={handleError}
           />
@@ -99,6 +100,7 @@ const AlumniPhDCard = ({ member }: { member: any }) => {
           <img 
             src={member.image} 
             alt={member.name} 
+            loading="lazy"
             className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
             onError={() => setImgFailed(true)}
           />

@@ -79,6 +79,7 @@ export default function RootLayout({
             })
           }}
         />
+        <link rel="preload" as="image" type="image/webp" href="/images/Background/group-photo.webp" fetchPriority="high" />
       </head>
       <body className="font-sans min-h-screen bg-background text-foreground flex flex-col transition-colors duration-300 select-none" suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="light" disableTransitionOnChange>
