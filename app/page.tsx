@@ -678,7 +678,7 @@ export default function Home() {
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16 items-stretch relative">
           
           <div className="w-full lg:w-1/3 flex flex-col">
-            <div className="absolute inset-0 bg-amber-500/20 blur-[80px] rounded-full -z-10"></div>
+            <div className="absolute inset-0 bg-amber-500/20 dark:bg-amber-500/5 blur-[80px] rounded-full -z-10"></div>
              <div className="w-full aspect-square rounded-[2rem] md:rounded-[3rem] border border-foreground/10 relative overflow-hidden group shadow-2xl bg-black/5">
                <Image 
                  src="/images/pi/pi-profile.jpg" 
