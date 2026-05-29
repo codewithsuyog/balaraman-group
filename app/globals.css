@@ -11,6 +11,28 @@
   --border: #d1d5db;
   --muted: #4b5563;
   --overlay: rgba(0, 0, 0, 0.04);
+
+  /* Override Tailwind amber for light-mode readability */
+  --color-amber-300: #b45309;
+  --color-amber-400: #b45309;
+  --color-amber-500: #92400e;
+
+  /* Override pink accents */
+  --color-pink-300: #be185d;
+  --color-pink-400: #9d174d;
+  --color-pink-500: #831843;
+
+  /* Override blue accents */
+  --color-blue-300: #1d4ed8;
+  --color-blue-400: #1e40af;
+
+  /* Override emerald accents */
+  --color-emerald-300: #047857;
+  --color-emerald-400: #065f46;
+
+  /* Override purple accents */
+  --color-purple-300: #7e22ce;
+  --color-purple-400: #6b21a8;
 }
 
 .dark {
@@ -24,6 +46,20 @@
   --border: rgba(255, 255, 255, 0.1);
   --muted: #94a3b8;
   --overlay: rgba(255, 255, 255, 0.05);
+
+  /* Restore Tailwind defaults for dark mode */
+  --color-amber-300: #fcd34d;
+  --color-amber-400: #fbbf24;
+  --color-amber-500: #f59e0b;
+  --color-pink-300: #f9a8d4;
+  --color-pink-400: #f472b6;
+  --color-pink-500: #ec4899;
+  --color-blue-300: #93c5fd;
+  --color-blue-400: #60a5fa;
+  --color-emerald-300: #6ee7b7;
+  --color-emerald-400: #34d399;
+  --color-purple-300: #d8b4fe;
+  --color-purple-400: #c084fc;
 }
 
 @theme inline {
