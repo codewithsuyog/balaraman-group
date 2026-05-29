@@ -101,10 +101,10 @@ export default function ResearchPage() {
           <div className="md:col-span-2 space-y-6 text-lg text-foreground/90 font-light leading-relaxed">
             <h3 className="text-xs font-mono text-amber-500 uppercase tracking-[0.4em] mb-4">Laboratory Mission</h3>
             <p>
-              Our research centers on organometallic systems and enabling organic transformations via sustainable catalysis. Our primary objective is to generate green energy resources and recycle atmospheric waste.
+              We explore the frontiers of <span className="text-accent font-semibold">organometallic chemistry</span> — designing molecular architectures that unlock new pathways for <span className="text-accent font-semibold">sustainable catalysis</span> and selective organic transformations.
             </p>
             <p>
-              Specifically, we work on the design and development of catalytic systems for hydrogen generation, hydrogenation, photocatalysis, and C-H activation reactions using both homogeneous and heterogeneous catalysts.
+              Our laboratory develops <span className="text-foreground font-medium">well-defined transition-metal catalytic systems</span> spanning hydrogen generation, hydrogenation, photocatalysis, and C–H activation — bridging the gap between <span className="text-foreground font-medium">homogeneous precision</span> and <span className="text-foreground font-medium">heterogeneous scalability</span>.
             </p>
           </div>
           <div className="bg-foreground/5 rounded-3xl p-8 border border-foreground/10 flex flex-col justify-center">

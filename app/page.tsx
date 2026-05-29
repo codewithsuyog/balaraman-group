@@ -866,12 +866,12 @@ export default function Home() {
             </div>
             <h2 className="text-5xl md:text-8xl font-black tracking-tight mb-12 text-gradient leading-[0.9]">Research</h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-               <p className="text-xl md:text-2xl text-[var(--color-muted)] font-light leading-relaxed border-l-4 border-amber-500 pl-8 italic">
-                 "Our research centers on organometallic systems and enabling organic transformations via sustainable catalysis. Our primary objective is to generate green energy resources and recycle atmospheric waste."
+               <p className="text-xl md:text-2xl text-foreground/80 font-light leading-relaxed border-l-4 border-amber-500 pl-8 italic">
+                 "We explore the frontiers of <span className="text-accent font-semibold not-italic">organometallic chemistry</span> — designing molecular architectures that unlock new pathways for <span className="text-accent font-semibold not-italic">sustainable catalysis</span> and selective organic transformations."
                </p>
-               <div className="space-y-6 text-lg text-foreground font-light leading-relaxed">
+               <div className="space-y-6 text-lg text-foreground/80 font-light leading-relaxed">
                   <p>
-                    Specifically, we work on the design and development of catalytic systems for hydrogen generation, hydrogenation, photocatalysis, and C-H activation reactions using both homogeneous and heterogeneous catalysts.
+                    Our laboratory develops <span className="text-foreground font-medium">well-defined transition-metal catalytic systems</span> spanning hydrogen generation, hydrogenation, photocatalysis, and C–H activation — bridging the gap between <span className="text-foreground font-medium">homogeneous precision</span> and <span className="text-foreground font-medium">heterogeneous scalability</span>.
                   </p>
                </div>
             </div>
