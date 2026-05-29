@@ -656,9 +656,6 @@ export default function Home() {
 
         <div className="z-10 max-w-6xl mx-auto text-center relative">
           <motion.div initial="hidden" animate="visible" variants={fadeUp}>
-            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full glass mb-10 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest border border-foreground/10" style={{ color: '#fbbf24' }}>
-              Catalysis & Sustainable Chemistry
-            </div>
           </motion.div>
 
           <motion.div initial="hidden" animate="visible" variants={fadeUp} className="relative">
