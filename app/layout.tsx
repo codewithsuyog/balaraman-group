@@ -29,13 +29,13 @@ export const viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://balaramanlab.com'),
-  title: "Raman's Research Lab | IISER Tirupati",
-  description: "Official website of Raman's Research Lab at IISER Tirupati. Pioneering research in catalysis, sustainable chemistry, and organometallic systems.",
-  keywords: ["Raman's Research Lab", "Prof. E. Balaraman", "IISER Tirupati", "Chemistry Research", "Catalysis", "Sustainable Chemistry", "Organometallic Chemistry"],
+  title: "Raman's Research Lab",
+  description: "Official website of Raman's Research Lab. Pioneering research in catalysis, sustainable chemistry, and organometallic systems.",
+  keywords: ["Raman's Research Lab", "Prof. E. Balaraman", "Chemistry Research", "Catalysis", "Sustainable Chemistry", "Organometallic Chemistry"],
   authors: [{ name: "Dr. E. Balaraman" }],
   openGraph: {
-    title: "Raman's Research Lab | IISER Tirupati",
-    description: "Pioneering research in catalysis and sustainability at IISER Tirupati.",
+    title: "Raman's Research Lab",
+    description: "Pioneering research in catalysis and sustainability.",
     url: "https://balaramanlab.com",
     siteName: "Raman's Research Lab",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
@@ -44,8 +44,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Raman's Research Lab | IISER Tirupati",
-    description: "Pioneering research in catalysis and sustainability at IISER Tirupati.",
+    title: "Raman's Research Lab",
+    description: "Pioneering research in catalysis and sustainability.",
     images: ["/og-image.jpg"],
   },
 };

@@ -563,64 +563,75 @@ export default function Home() {
       {/* FLOATING NAVIGATION MENU */}
       <motion.nav 
         initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
-        className="fixed top-6 left-1/2 -translate-x-1/2 z-50 glass rounded-full px-2 md:px-4 py-2 flex gap-1 md:gap-2 text-[10px] md:text-xs font-mono border border-foreground/10 max-w-[95vw] overflow-x-auto no-scrollbar shadow-2xl"
+        className="fixed top-6 left-1/2 -translate-x-1/2 z-50 glass rounded-2xl md:rounded-full px-2 md:px-4 py-2 flex flex-col md:flex-row md:items-center gap-1 md:gap-2 text-[10px] md:text-xs font-mono border border-foreground/10 w-[90vw] md:w-auto md:max-w-[95vw] shadow-2xl"
       >
-        {navLinks.map((link: any) => {
-          const isExternal = link.href?.startsWith('/');
-          
-          if (isExternal) {
-            return (
-              <Link 
-                key={link.id}
-                href={link.href as string}
-                className={`px-4 py-2 rounded-full transition-all duration-500 ease-out whitespace-nowrap relative group ${
-                  activeSection === link.id 
-                    ? 'text-white font-bold' 
-                    : 'text-foreground/70 hover:text-foreground'
-                }`}
-              >
-                {activeSection === link.id && (
-                  <motion.div 
-                    layoutId="activePill"
-                    className="absolute inset-0 bg-gradient-to-r from-amber-600 to-amber-400 rounded-full -z-10 shadow-[0_0_20px_rgba(245,158,11,0.4)]"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                  />
-                )}
-                {link.label}
-              </Link>
-            );
-          }
-
-          return (
-            <a 
-              key={link.id}
-              href={`#${link.id}`}
-              onClick={(e) => {
-                e.preventDefault();
-                const el = document.getElementById(link.id);
-                if (el) {
-                  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-              }}
-              className={`px-4 py-2 rounded-full transition-all duration-500 ease-out whitespace-nowrap relative group cursor-pointer ${
-                activeSection === link.id 
-                  ? 'text-white font-bold' 
-                  : 'text-foreground/70 hover:text-foreground'
-              }`}
+        {/* Mobile Header */}
+        <div className="flex items-center justify-between w-full md:w-auto md:hidden">
+          <div className="px-3 font-bold text-amber-500 tracking-widest uppercase text-[10px]">
+            Raman's Lab
+          </div>
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <button 
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="w-10 h-10 rounded-full bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:bg-amber-500/10 transition-colors"
             >
-              {activeSection === link.id && (
-                <motion.div 
-                  layoutId="activePill"
-                  className="absolute inset-0 bg-gradient-to-r from-amber-600 to-amber-400 rounded-full -z-10 shadow-[0_0_20px_rgba(245,158,11,0.4)]"
-                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                />
-              )}
-              {link.label}
-            </a>
-          );
-        })}
-        <div className="w-px h-6 bg-foreground/20 self-center mx-1"></div>
-        <ThemeToggle />
+              {mobileMenuOpen ? <X size={16} /> : <Menu size={16} />}
+            </button>
+          </div>
+        </div>
+
+        {/* Navigation Links */}
+        <div className={`flex-col md:flex-row md:flex items-stretch md:items-center gap-1 md:gap-2 ${mobileMenuOpen ? 'flex mt-2 mb-2' : 'hidden'}`}>
+          {navLinks.map((link: any) => {
+            const isExternal = link.href?.startsWith('/');
+            const baseClass = `px-4 py-3 md:py-2 rounded-xl md:rounded-full transition-all duration-500 ease-out whitespace-nowrap relative group cursor-pointer text-left md:text-center ${
+              activeSection === link.id 
+                ? 'text-white font-bold' 
+                : 'text-foreground/70 hover:text-foreground'
+            }`;
+            
+            const activeIndicator = activeSection === link.id && (
+              <motion.div 
+                layoutId="activePill"
+                className="absolute inset-0 bg-gradient-to-r from-amber-600 to-amber-400 rounded-xl md:rounded-full -z-10 shadow-[0_0_20px_rgba(245,158,11,0.4)]"
+                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+              />
+            );
+
+            if (isExternal) {
+              return (
+                <Link key={link.id} href={link.href as string} className={baseClass} onClick={() => setMobileMenuOpen(false)}>
+                  {activeIndicator}
+                  {link.label}
+                </Link>
+              );
+            }
+
+            return (
+              <a 
+                key={link.id}
+                href={`#${link.id}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setMobileMenuOpen(false);
+                  const el = document.getElementById(link.id);
+                  if (el) {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }}
+                className={baseClass}
+              >
+                {activeIndicator}
+                {link.label}
+              </a>
+            );
+          })}
+          <div className="hidden md:block w-px h-6 bg-foreground/20 self-center mx-1"></div>
+          <div className="hidden md:block">
+            <ThemeToggle />
+          </div>
+        </div>
       </motion.nav>
 
       {/* 1. HERO SECTION */}
@@ -646,7 +657,7 @@ export default function Home() {
         <div className="z-10 max-w-6xl mx-auto text-center relative">
           <motion.div initial="hidden" animate="visible" variants={fadeUp}>
             <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full glass mb-10 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest border border-foreground/10" style={{ color: '#fbbf24' }}>
-              IISER Tirupati • Department of Chemistry
+              Catalysis & Sustainable Chemistry
             </div>
           </motion.div>
 
@@ -1156,7 +1167,7 @@ export default function Home() {
       <footer className="w-full py-12 px-6 border-t border-foreground/5 bg-foreground/50 backdrop-blur-md relative z-10">
          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
             <p className="text-[10px] font-mono text-foreground uppercase tracking-[0.4em]">
-               © {new Date().getFullYear()} Raman's Research Lab | IISER Tirupati
+               © {new Date().getFullYear()} Raman's Research Lab
             </p>
          </div>
       </footer>
