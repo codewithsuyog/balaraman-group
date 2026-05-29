@@ -108,7 +108,7 @@ export default function AlumniPage() {
               {/* Lab Rotation Students */}
               {team.labRotation && team.labRotation.length > 0 && (
                 <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-                  <h3 className="text-2xl font-bold mb-6 text-foreground border-b border-foreground/10 pb-4">Lab Rotation i-PhD Students</h3>
+                  <h3 className="text-2xl font-bold mb-6 text-foreground border-b border-foreground/10 pb-4">Lab Rotation i-Ph.D. Students</h3>
                   <ul className="grid grid-cols-1 gap-3">
                     {team.labRotation.map((name: string, idx: number) => (
                       <li key={idx} className="text-sm text-foreground/90 font-light bg-foreground/5 px-4 py-3 rounded-lg border border-foreground/5 hover:border-emerald-500/20 transition-colors">

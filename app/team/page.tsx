@@ -54,7 +54,7 @@ const MemberCard = ({ member, role }: { member: any, role: string }) => {
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center opacity-10">
-             {role === 'PhD' ? <GraduationCap size={80} /> : role === 'Postdoc' ? <Briefcase size={80} /> : <Users size={80} />}
+             {role === 'Ph.D.' ? <GraduationCap size={80} /> : role === 'Postdoc' ? <Briefcase size={80} /> : <Users size={80} />}
           </div>
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
@@ -111,7 +111,7 @@ const AlumniPhDCard = ({ member }: { member: any }) => {
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
         <div className="absolute bottom-4 left-4 right-4">
-           <span className="text-[10px] font-mono text-emerald-400 uppercase tracking-widest">PhD Alumni</span>
+           <span className="text-[10px] font-mono text-emerald-400 uppercase tracking-widest">Ph.D. Alumni</span>
         </div>
       </div>
       <div className="p-6">
@@ -178,7 +178,7 @@ export default function TeamPage() {
           </section>
         )}
 
-        {/* PhD Scholars */}
+        {/* Ph.D. Scholars */}
         {team.currentPhd && team.currentPhd.length > 0 && (
           <section>
             <div className="flex items-center gap-4 mb-12">
@@ -186,7 +186,7 @@ export default function TeamPage() {
                <h2 className="text-xs font-mono text-amber-500 uppercase tracking-[0.4em]">Doctoral Scholars</h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {team.currentPhd.map((member, i) => <MemberCard key={i} member={member} role="PhD" />)}
+              {team.currentPhd.map((member, i) => <MemberCard key={i} member={member} role="Ph.D." />)}
             </div>
           </section>
         )}
@@ -216,12 +216,12 @@ export default function TeamPage() {
              </p>
           </motion.div>
 
-          {/* PhD Alumni */}
+          {/* Ph.D. Alumni */}
           {team.alumniPhd && team.alumniPhd.length > 0 && (
             <div className="mb-32">
               <div className="flex items-center gap-4 mb-12">
                  <div className="h-px w-12 bg-emerald-500"></div>
-                 <h3 className="text-xs font-mono text-emerald-500 uppercase tracking-[0.4em]">Doctoral Students (PhD Thesis)</h3>
+                 <h3 className="text-xs font-mono text-emerald-500 uppercase tracking-[0.4em]">Doctoral Students (Ph.D. Thesis)</h3>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 {team.alumniPhd.map((member: any, i: number) => <AlumniPhDCard key={i} member={member} />)}

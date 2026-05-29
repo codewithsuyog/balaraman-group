@@ -791,11 +791,11 @@ export default function Home() {
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 mb-10">
               <div className="p-4 rounded-xl bg-foreground/[0.04] border border-foreground/10 text-center hover:border-cyan-500/20 transition-all">
                 <div className="text-xl font-black text-foreground mb-1">{piStats.phdCompleted}</div>
-                <p className="text-[9px] uppercase tracking-widest text-foreground font-mono font-medium">PhD Completed</p>
+                <p className="text-[9px] uppercase tracking-widest text-foreground font-mono font-medium">Ph.D. Completed</p>
               </div>
               <div className="p-4 rounded-xl bg-foreground/[0.04] border border-foreground/10 text-center hover:border-cyan-500/20 transition-all">
                 <div className="text-xl font-black text-foreground mb-1">{piStats.phdPursuing}</div>
-                <p className="text-[9px] uppercase tracking-widest text-foreground font-mono font-medium">PhD Pursuing</p>
+                <p className="text-[9px] uppercase tracking-widest text-foreground font-mono font-medium">Ph.D. Pursuing</p>
               </div>
               <div className="p-4 rounded-xl bg-foreground/[0.04] border border-foreground/10 text-center hover:border-cyan-500/20 transition-all">
                 <div className="text-xl font-black text-foreground mb-1">{piStats.postdocs}</div>
@@ -1016,12 +1016,12 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* PhD Scholars */}
+              {/* Ph.D. Scholars */}
               <div>
-                <h3 className="text-sm font-extrabold text-accent uppercase tracking-[0.2em] mb-10 text-left">PhD Scholars</h3>
+                <h3 className="text-sm font-extrabold text-accent uppercase tracking-[0.2em] mb-10 text-left">Ph.D. Scholars</h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 w-full">
                   {team.currentPhd.map((member, i) => (
-                    <TeamMemberThumb key={i} member={member} role="PhD Scholar" />
+                    <TeamMemberThumb key={i} member={member} role="Ph.D. Scholar" />
                   ))}
                 </div>
               </div>
@@ -1130,13 +1130,13 @@ export default function Home() {
           <div className="w-full md:w-1/2 p-10 rounded-[3rem] bg-foreground/[0.02] border border-foreground/5">
              <h3 className="text-2xl font-bold text-foreground mb-6 uppercase tracking-tight">Open Positions</h3>
              <p className="text-foreground font-light mb-8 leading-relaxed">
-               We are always looking for motivated Postdocs, PhD students, and Master's students to join our lab. Please send your CV and a brief description of your research interests to Prof. Balaraman.
+               We are always looking for motivated Postdocs, Ph.D. students, and Master's students to join our lab. Please send your CV and a brief description of your research interests to Prof. Balaraman.
              </p>
              <div className="space-y-4">
                <div className="p-4 rounded-2xl bg-amber-500/5 border border-amber-500/10 flex items-center gap-4">
                  <GraduationCap size={24} className="text-amber-400" />
                  <div>
-                   <h4 className="text-sm font-bold text-foreground">PhD Positions</h4>
+                   <h4 className="text-sm font-bold text-foreground">Ph.D. Positions</h4>
                    <p className="text-xs text-foreground/90">Through regular IISER Tirupati admissions</p>
                  </div>
                </div>
