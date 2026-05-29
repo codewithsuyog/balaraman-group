@@ -575,8 +575,8 @@ export default function Home() {
                 href={link.href as string}
                 className={`px-4 py-2 rounded-full transition-all duration-500 ease-out whitespace-nowrap relative group ${
                   activeSection === link.id 
-                    ? 'text-foreground' 
-                    : 'text-foreground hover:text-foreground'
+                    ? 'text-white font-bold' 
+                    : 'text-accent hover:text-accent-secondary font-semibold'
                 }`}
               >
                 {activeSection === link.id && (
@@ -604,8 +604,8 @@ export default function Home() {
               }}
               className={`px-4 py-2 rounded-full transition-all duration-500 ease-out whitespace-nowrap relative group cursor-pointer ${
                 activeSection === link.id 
-                  ? 'text-foreground' 
-                  : 'text-foreground hover:text-foreground'
+                  ? 'text-white font-bold' 
+                  : 'text-accent hover:text-accent-secondary font-semibold'
               }`}
             >
               {activeSection === link.id && (
@@ -929,7 +929,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
-              <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-4 text-foreground uppercase">Publications</h2>
+              <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-4 text-gradient uppercase">Publications</h2>
               <p className="text-foreground font-light">Highlights from our 117+ published works.</p>
             </div>
             <Link href="/publications" className="px-8 py-4 rounded-full border border-amber-500/30 text-amber-400 font-bold hover:bg-amber-500/10 transition-all flex items-center gap-2 uppercase text-[10px] tracking-widest font-mono">
@@ -954,7 +954,7 @@ export default function Home() {
                 <div className="h-px w-12 bg-accent"></div>
                 <p className="text-sm font-extrabold text-accent tracking-[0.2em] uppercase">Intellectual Property</p>
               </div>
-              <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-4 text-foreground uppercase">Patents</h2>
+              <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-4 text-gradient uppercase">Patents</h2>
               <p className="text-foreground font-light">33+ patents filed including {patents.grantedUS.length} granted US patents.</p>
             </div>
             <Link href="/patents" className="px-8 py-4 rounded-full border border-amber-500/30 text-amber-400 font-bold hover:bg-amber-500/10 transition-all flex items-center gap-2 uppercase text-[10px] tracking-widest font-mono">
@@ -1003,7 +1003,7 @@ export default function Home() {
       {/* 5. TEAM & GALLERY PREVIEW SECTION */}
       <section id="team" className="w-full py-32 px-6 relative z-10 bg-foreground/[0.01]">
          <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
-            <h2 className="text-4xl md:text-6xl font-black mb-12 uppercase tracking-tighter text-foreground">Lab Members</h2>
+            <h2 className="text-4xl md:text-6xl font-black mb-12 uppercase tracking-tighter text-gradient">Lab Members</h2>
             
             <div className="w-full space-y-24">
               {/* Postdocs */}
@@ -1058,7 +1058,7 @@ export default function Home() {
               <h3 className="text-sm font-extrabold text-accent uppercase tracking-[0.2em]">Lab Images & Photos</h3>
               <div className="h-px w-12 bg-accent"></div>
             </div>
-            <h2 className="text-4xl md:text-6xl font-black mb-12 uppercase tracking-tighter text-foreground">Lab Memories</h2>
+            <h2 className="text-4xl md:text-6xl font-black mb-12 uppercase tracking-tighter text-gradient">Lab Memories</h2>
 
             {/* Slideshow 1: Gallery memories */}
             <div className="w-full max-w-5xl mb-12">
@@ -1087,7 +1087,7 @@ export default function Home() {
               <div className="h-px w-12 bg-accent"></div>
               <p className="text-sm font-extrabold text-accent tracking-[0.2em] uppercase">Get in Touch</p>
             </div>
-            <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-8 text-foreground uppercase">Contact Us</h2>
+            <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-8 text-gradient uppercase">Contact Us</h2>
             <p className="text-xl text-foreground/90 font-light mb-12">
               Interested in joining our group or collaborating with us? We'd love to hear from you.
             </p>
