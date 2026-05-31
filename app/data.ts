@@ -1186,15 +1186,15 @@ export const awards = [
 
 export const team = {
   currentPhd: [
-    { name: "Soumya Sree Samal", info: "Ph.D.: August 2022 (PMRF), M. Sc., (Chem), Pondicherry University, Puducherry", email: "soumya_samal@students.iisertirupati.ac.in", image: "/images/team/Ph.D./soumya.png" },
-    { name: "Subarna Sukanya Padhy", info: "Ph.D. August 2022 (PMRF), M. Sc., (Chem), Pondicherry University, Puducherry", email: "subarna_padhy@students.iisertirupati.ac.in", image: "/images/team/Ph.D./subarna.jpg" },
-    { name: "Smruti Rekha Padhy", info: "IISER-iPhD, IISER Tirupati", email: "smrutirekha@students.iisertirupati.ac.in", image: "/images/team/Ph.D./smruti.jpg" },
-    { name: "Abhijith K S", info: "Ph.D. Jan 2023, BSMS (Chem), IISER Tirupati", email: "abhijithks@students.iisertirupati.ac.in", image: "/images/team/Ph.D./abhijith.png" },
-    { name: "Chandrakant Gouda", info: "Ph.D. July 2023, M.Sc (Chem), Mangaluru University, Mangaluru", email: "chandrakantgouda@students.iisertirupati.ac.in", image: "/images/team/Ph.D./Chandrakant.png" },
-    { name: "Palmurukan M. R. Pal", info: "Ph.D. July 2023, M.Sc., M-Tech., (Industrial Catalysis) CUSAT, Kerala", email: "palmurukanmr@students.iisertirupati.ac.in", image: "/images/team/Ph.D./palmurukan.jpg" },
+    { name: "Soumya Sree Samal", info: "Ph.D.: August 2022 (PMRF), M. Sc., (Chem), Pondicherry University, Puducherry", email: "soumya_samal@students.iisertirupati.ac.in", image: "/images/team/phd/soumya.png" },
+    { name: "Subarna Sukanya Padhy", info: "Ph.D. August 2022 (PMRF), M. Sc., (Chem), Pondicherry University, Puducherry", email: "subarna_padhy@students.iisertirupati.ac.in", image: "/images/team/phd/subarna.jpg" },
+    { name: "Smruti Rekha Padhy", info: "IISER-iPhD, IISER Tirupati", email: "smrutirekha@students.iisertirupati.ac.in", image: "/images/team/phd/smruti.jpg" },
+    { name: "Abhijith K S", info: "Ph.D. Jan 2023, BSMS (Chem), IISER Tirupati", email: "abhijithks@students.iisertirupati.ac.in", image: "/images/team/phd/abhijith.png" },
+    { name: "Chandrakant Gouda", info: "Ph.D. July 2023, M.Sc (Chem), Mangaluru University, Mangaluru", email: "chandrakantgouda@students.iisertirupati.ac.in", image: "/images/team/phd/Chandrakant.png" },
+    { name: "Palmurukan M. R. Pal", info: "Ph.D. July 2023, M.Sc., M-Tech., (Industrial Catalysis) CUSAT, Kerala", email: "palmurukanmr@students.iisertirupati.ac.in", image: "/images/team/phd/palmurukan.jpg" },
     { name: "Sanjay A", info: "IPhD 2024, B.Sc - St. Joseph's College (Autonomous) Tiruchirappalli, Tamilnadu", email: "", image: "" },
-    { name: "Nanthini P.", info: "Ph.D. Aug 2024, M.Sc (Chem), Bharathidasan University, Tamil Nadu", email: "nanthini20243208@students.iisertirupati.ac.in", image: "/images/team/Ph.D./nanthini.jpg" },
-    { name: "Mahendra D R", info: "Ph.D. Jan 2025, M.Sc (Chem), University of Mysuru, Karnataka", email: "mahendra_20253202@students.iisertirupati.ac.in", image: "/images/team/Ph.D./mahendra.jpg" }
+    { name: "Nanthini P.", info: "Ph.D. Aug 2024, M.Sc (Chem), Bharathidasan University, Tamil Nadu", email: "nanthini20243208@students.iisertirupati.ac.in", image: "/images/team/phd/nanthini.jpg" },
+    { name: "Mahendra D R", info: "Ph.D. Jan 2025, M.Sc (Chem), University of Mysuru, Karnataka", email: "mahendra_20253202@students.iisertirupati.ac.in", image: "/images/team/phd/mahendra.jpg" }
   ],
   postdocs: [
     { name: "Dr. Sachin S. Gorad", info: "Ph.D. 2024 (IISER-Bhopal), M.Sc. (Org. Chem) Savitribai Phule Pune University Maharashtra", email: "sachinshrimant@labs.iisertirupati.ac.in", image: "/images/team/postdocs/sachin.png" },
@@ -1214,17 +1214,17 @@ export const team = {
     { name: "Ms. Ayesha", info: "Semester Project, IISER Tirupati (2026)", image: "/images/team/masters/ayesha.jpg" },
   ],
   alumniPhd: [
-    { name: "Dr. Manoj K. Sahoo", thesis: "Visible mediated photoredox catalytic Dehydrogenation and C-H arylation reactions", duration: "2013-2018", present: "Post-doctoral Studies at UNIST, South Korea", image: "/images/team/Ph.D. Alumini/Dr. MANOJ K. SAHOO.jpg" },
-    { name: "Dr. Garima Jaiswal", thesis: "Transition metal based nanocatalysts for (de)-hydrogenation reactions", duration: "2013-2018", present: "Research Scientist at HPCL, Bengaluru", image: "/images/team/Ph.D. Alumini/Dr. GARIMA JAISWAL.png" },
-    { name: "Dr. Vinod G. Landge", thesis: "Transition-metal catalyzed C-H bond alkynylation", duration: "2014-2019", present: "Research Scientist at USA", image: "/images/team/Ph.D. Alumini/Dr. VINOD G. LANDGE.jpg" },
-    { name: "Dr. Siba P. Midya", thesis: "Transition metal catalyzed (de)hydrogenative C-C and C-N bond formation", duration: "2014-2019", present: "DST-Inspire Faculty at IACS, Kolkata", image: "/images/team/Ph.D. Alumini/Dr. SIBA P. MIDYA.png" },
-    { name: "Dr. Jagannath Rana", thesis: "Earth-abundant metal catalyzed C-N bond activation of amides and alkylation reactions using alcohols", duration: "2015-2019", present: "Post-doctoral Studies at IISER Bhopal", image: "/images/team/Ph.D. Alumini/Dr. JAGANNATH RANA.jpg" },
-    { name: "Dr. Subaramanian M", thesis: "Non-precious metal catalysis for the dehydrogenation and related reactions", duration: "2017-2022", present: "Post-doctoral Studies at University of Toronto, Canada", image: "/images/team/Ph.D. Alumini/Dr. SUBARAMANIAN M.jpg" },
-    { name: "Dr. Akash Mondal", thesis: "Manganese catalysed dehydrogenative C-C and C-N bond formation", duration: "2016-2022", present: "Post-doctoral Studies at IISER, Kolkata", image: "/images/team/Ph.D. Alumini/Dr. AKASH Mondal.jpg" },
-    { name: "Dr. Vinita Yadav", thesis: "Earth-abundant metal catalyzed C-C and C-N bond forming reactions using alcohols to access olefin and indole scaffolds", duration: "2017-2022", present: "M. Sc., (Chem), IIT Guwahati", image: "/images/team/Ph.D. Alumini/Dr. VINITA YADAV.jpg" },
-    { name: "Dr. Sivakumar G", thesis: "Transition-metal catalyzed acceptorless dehydrogenation and related reactions in sustainable chemical synthesis", duration: "2019-2024", present: "Post-doctoral studies at Weizmann Institute of Science, Israel", image: "/images/team/Ph.D. Alumini/Dr. SIVAKUMAR G.jpg" },
-    { name: "Dr. Reshma Babu", thesis: "3d-Transition Metal Catalyzed Acceptorless Alcohol Dehydrogenation and Related Reactions", duration: "2019-2024", present: "M. Sc., (Chem), Mahatma Gandhi University, Kerala", image: "/images/team/Ph.D. Alumini/Dr. RESHMA BABU.jpg" },
-    { name: "Dr. Rohit Kumar", thesis: "Dehydrogenative C-C and C-N Bond Forming Reactions and Electrochemical N2 Activation Under Molecular Cobalt Catalysis", duration: "2018-2024", present: "B.Sc., (Chem), Central University, Bihar (iPhD)", image: "/images/team/Ph.D. Alumini/Dr. ROHIT KUMAR.jpg" }
+    { name: "Dr. Manoj K. Sahoo", thesis: "Visible mediated photoredox catalytic Dehydrogenation and C-H arylation reactions", duration: "2013-2018", present: "Post-doctoral Studies at UNIST, South Korea", image: "/images/team/phd Alumini/Dr. MANOJ K. SAHOO.jpg" },
+    { name: "Dr. Garima Jaiswal", thesis: "Transition metal based nanocatalysts for (de)-hydrogenation reactions", duration: "2013-2018", present: "Research Scientist at HPCL, Bengaluru", image: "/images/team/phd Alumini/Dr. GARIMA JAISWAL.png" },
+    { name: "Dr. Vinod G. Landge", thesis: "Transition-metal catalyzed C-H bond alkynylation", duration: "2014-2019", present: "Research Scientist at USA", image: "/images/team/phd Alumini/Dr. VINOD G. LANDGE.jpg" },
+    { name: "Dr. Siba P. Midya", thesis: "Transition metal catalyzed (de)hydrogenative C-C and C-N bond formation", duration: "2014-2019", present: "DST-Inspire Faculty at IACS, Kolkata", image: "/images/team/phd Alumini/Dr. SIBA P. MIDYA.png" },
+    { name: "Dr. Jagannath Rana", thesis: "Earth-abundant metal catalyzed C-N bond activation of amides and alkylation reactions using alcohols", duration: "2015-2019", present: "Post-doctoral Studies at IISER Bhopal", image: "/images/team/phd Alumini/Dr. JAGANNATH RANA.jpg" },
+    { name: "Dr. Subaramanian M", thesis: "Non-precious metal catalysis for the dehydrogenation and related reactions", duration: "2017-2022", present: "Post-doctoral Studies at University of Toronto, Canada", image: "/images/team/phd Alumini/Dr. SUBARAMANIAN M.jpg" },
+    { name: "Dr. Akash Mondal", thesis: "Manganese catalysed dehydrogenative C-C and C-N bond formation", duration: "2016-2022", present: "Post-doctoral Studies at IISER, Kolkata", image: "/images/team/phd Alumini/Dr. AKASH MONDAL.jpg" },
+    { name: "Dr. Vinita Yadav", thesis: "Earth-abundant metal catalyzed C-C and C-N bond forming reactions using alcohols to access olefin and indole scaffolds", duration: "2017-2022", present: "M. Sc., (Chem), IIT Guwahati", image: "/images/team/phd Alumini/Dr. VINITA YADAV.jpg" },
+    { name: "Dr. Sivakumar G", thesis: "Transition-metal catalyzed acceptorless dehydrogenation and related reactions in sustainable chemical synthesis", duration: "2019-2024", present: "Post-doctoral studies at Weizmann Institute of Science, Israel", image: "/images/team/phd Alumini/Dr. SIVAKUMAR G.jpg" },
+    { name: "Dr. Reshma Babu", thesis: "3d-Transition Metal Catalyzed Acceptorless Alcohol Dehydrogenation and Related Reactions", duration: "2019-2024", present: "M. Sc., (Chem), Mahatma Gandhi University, Kerala", image: "/images/team/phd Alumini/Dr. RESHMA BABU.jpg" },
+    { name: "Dr. Rohit Kumar", thesis: "Dehydrogenative C-C and C-N Bond Forming Reactions and Electrochemical N2 Activation Under Molecular Cobalt Catalysis", duration: "2018-2024", present: "B.Sc., (Chem), Central University, Bihar (iPhD)", image: "/images/team/phd Alumini/Dr. ROHIT KUMAR.jpg" }
   ],
   alumniPostdoc: [
     { name: "Dr. M. Sivaprakash", info: "Ph.D. 2023 (Central University of Tamil Nadu), M.Sc. (Chem) Bharathiyar University Coimbatore", duration: "Apr 2023 – Present", image: "/images/team/postdocs/Sivaprakash.png" },
