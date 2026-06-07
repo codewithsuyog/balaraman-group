@@ -1157,15 +1157,27 @@ export default function Home() {
                   <Globe size={20} />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-foreground uppercase tracking-widest mb-3">Group Socials</h4>
-                  <div className="flex flex-wrap items-center gap-3">
-                    <a href={piStats.twitter} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-foreground/5 border border-foreground/10 hover:border-sky-500/30 text-foreground hover:text-sky-400 font-mono text-[10px] uppercase tracking-wider transition-all" title="Twitter / X">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                      Twitter / X
+                  <h4 className="text-sm font-bold text-foreground uppercase tracking-widest mb-4">Follow Our Lab</h4>
+                  <div className="flex flex-wrap items-center gap-4">
+                    <a href={piStats.twitter} target="_blank" rel="noopener noreferrer" className="group/social relative inline-flex items-center gap-3 px-5 py-3 rounded-2xl bg-gradient-to-br from-gray-900 to-black border border-foreground/10 hover:border-sky-500/40 text-white hover:shadow-[0_0_20px_rgba(56,189,248,0.15)] transition-all duration-300 hover:scale-[1.03]" title="Twitter / X">
+                      <div className="w-8 h-8 rounded-xl bg-white/10 flex items-center justify-center group-hover/social:bg-sky-500/20 transition-colors">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="group-hover/social:text-sky-400 transition-colors"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-[10px] font-mono uppercase tracking-wider text-white/50">Follow us on</span>
+                        <span className="text-sm font-bold tracking-tight">𝕏 / Twitter</span>
+                      </div>
+                      <ExternalLink size={12} className="ml-1 text-white/30 group-hover/social:text-sky-400 transition-colors" />
                     </a>
-                    <a href={piStats.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-foreground/5 border border-foreground/10 hover:border-blue-500/30 text-foreground hover:text-blue-500 font-mono text-[10px] uppercase tracking-wider transition-all" title="LinkedIn">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z"/></svg>
-                      LinkedIn
+                    <a href={piStats.linkedin} target="_blank" rel="noopener noreferrer" className="group/social relative inline-flex items-center gap-3 px-5 py-3 rounded-2xl bg-gradient-to-br from-[#0a66c2] to-[#004182] border border-blue-500/20 hover:border-blue-400/40 text-white hover:shadow-[0_0_20px_rgba(59,130,246,0.2)] transition-all duration-300 hover:scale-[1.03]" title="LinkedIn">
+                      <div className="w-8 h-8 rounded-xl bg-white/15 flex items-center justify-center group-hover/social:bg-white/25 transition-colors">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z"/></svg>
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-[10px] font-mono uppercase tracking-wider text-white/60">Connect on</span>
+                        <span className="text-sm font-bold tracking-tight">LinkedIn</span>
+                      </div>
+                      <ExternalLink size={12} className="ml-1 text-white/40 group-hover/social:text-white/80 transition-colors" />
                     </a>
                   </div>
                 </div>
@@ -1205,12 +1217,12 @@ export default function Home() {
             <p className="text-[10px] font-mono text-foreground uppercase tracking-[0.4em]">
                © {new Date().getFullYear()} Raman's Research Lab
             </p>
-            <div className="flex items-center gap-6">
-               <a href={piStats.twitter} target="_blank" rel="noopener noreferrer" className="text-foreground/60 hover:text-sky-400 transition-colors" title="Twitter / X">
-                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            <div className="flex items-center gap-4">
+               <a href={piStats.twitter} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-foreground/10 border border-foreground/10 flex items-center justify-center text-foreground/60 hover:bg-black hover:text-white hover:border-foreground/20 hover:shadow-[0_0_12px_rgba(56,189,248,0.2)] transition-all duration-300" title="Twitter / X">
+                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                </a>
-               <a href={piStats.linkedin} target="_blank" rel="noopener noreferrer" className="text-foreground/60 hover:text-blue-500 transition-colors" title="LinkedIn">
-                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z"/></svg>
+               <a href={piStats.linkedin} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-foreground/10 border border-foreground/10 flex items-center justify-center text-foreground/60 hover:bg-[#0a66c2] hover:text-white hover:border-blue-500/30 hover:shadow-[0_0_12px_rgba(59,130,246,0.2)] transition-all duration-300" title="LinkedIn">
+                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z"/></svg>
                </a>
             </div>
          </div>
