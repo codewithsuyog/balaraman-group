@@ -200,8 +200,9 @@ const TeamMemberThumb = ({ member, role }: { member: any, role: string }) => {
         </div>
         
         {member.email && (
-          <a href={`mailto:${member.email}`} className="text-[11px] font-semibold text-accent hover:text-accent-light transition-colors w-full flex items-start gap-1.5 mt-auto pt-3 break-all leading-tight">
-            <Mail size={12} className="shrink-0 mt-0.5" /> {member.email}
+          <a href={`mailto:${member.email}`} className="text-[11px] font-semibold text-accent hover:text-accent-light transition-colors w-full flex items-center gap-1.5 mt-auto pt-3 min-w-0" title={member.email}>
+            <Mail size={12} className="shrink-0" />
+            <span className="truncate flex-1">{member.email}</span>
           </a>
         )}
       </div>

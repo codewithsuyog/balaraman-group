@@ -75,7 +75,7 @@ const MemberCard = ({ member, role }: { member: any, role: string }) => {
         
         <div className="mt-auto pt-4">
           {member.email && (
-            <a href={`mailto:${member.email}`} className="text-[10px] font-mono text-amber-500/50 hover:text-amber-400 transition-colors break-all leading-relaxed block mb-3">
+            <a href={`mailto:${member.email}`} className="text-[10px] font-mono text-amber-500/50 hover:text-amber-400 transition-colors truncate block mb-3 w-full" title={member.email}>
               {member.email}
             </a>
           )}
