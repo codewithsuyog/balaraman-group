@@ -1204,14 +1204,14 @@ export const team = {
     { name: "Dr. Bapurao Rupanawar", info: "Ph.D. NCL-Pune, Feb 2022, Post Doc -OIST-Japan July 2022-Aug 2025, State- Maharashtra", email: "bapuraorupanawar@labs.iisertirupati.ac.in", image: "/images/team/present/postdocs/bapurao.jpg" }
   ],
   masters: [
-    { name: "Suyog", info: "Master's Thesis Student, IISER Tirupati (2026)", image: "/images/team/present/masters/suyog.jpg" },
-    { name: "Kavya", info: "Master's Thesis Student, IISER Tirupati (2026)", image: "/images/team/present/masters/Kavya.jpeg" },
-    { name: "Ayesha", info: "Master's Thesis Student, IISER Tirupati (2026)", image: "/images/team/present/masters/ayesha.jpg" },
+    { name: "Suyog", info: "Master's Thesis Student, IISER Tirupati (2026)", email: "suyog_20221147@students.iisertirupati.ac.in", image: "/images/team/present/masters/suyog.jpg" },
+    { name: "Kavya", info: "Master's Thesis Student, IISER Tirupati (2026)", email: "mothukuri_20221091@students.iisertirupati.ac.in", image: "/images/team/present/masters/Kavya.jpeg" },
+    { name: "Ayesha", info: "Master's Thesis Student, IISER Tirupati (2026)", email: "aysha_20221020@students.iisertirupati.ac.in", image: "/images/team/present/masters/ayesha.jpg" },
   ],
   semesterProject: [
-    { name: "Suyog", info: "Semester Project, IISER Tirupati (2026)", image: "/images/team/present/masters/suyog.jpg" },
-    { name: "Kavya", info: "Semester Project, IISER Tirupati (2026)", image: "/images/team/present/masters/Kavya.jpeg" },
-    { name: "Ayesha", info: "Semester Project, IISER Tirupati (2026)", image: "/images/team/present/masters/ayesha.jpg" },
+    { name: "Suyog", info: "Semester Project, IISER Tirupati (2026)", email: "suyog_20221147@students.iisertirupati.ac.in", image: "/images/team/present/masters/suyog.jpg" },
+    { name: "Kavya", info: "Semester Project, IISER Tirupati (2026)", email: "mothukuri_20221091@students.iisertirupati.ac.in", image: "/images/team/present/masters/Kavya.jpeg" },
+    { name: "Ayesha", info: "Semester Project, IISER Tirupati (2026)", email: "aysha_20221020@students.iisertirupati.ac.in", image: "/images/team/present/masters/ayesha.jpg" },
   ],
   alumniPhd: [
     { name: "Dr. Manoj K. Sahoo", thesis: "Visible mediated photoredox catalytic Dehydrogenation and C-H arylation reactions", duration: "2013-2018", present: "Post-doctoral Studies at UNIST, South Korea", image: "/images/team/Alumini/Phd Alumini/Dr. MANOJ K. SAHOO.jpg" },
