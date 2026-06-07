@@ -701,7 +701,7 @@ export default function Home() {
             <div className="absolute inset-0 bg-amber-500/20 dark:bg-amber-500/5 blur-[80px] rounded-full -z-10"></div>
              <div className="w-full aspect-square rounded-[2rem] md:rounded-[3rem] border border-foreground/10 relative overflow-hidden group shadow-2xl bg-black/5">
                <Image 
-                 src="/images/pi/pi-profile.jpg" 
+                 src="/images/pi/PI Photo 2.jpeg" 
                  alt="Dr. Ekambaram Balaraman" 
                  fill
                  sizes="(max-width: 768px) 100vw, 33vw"
