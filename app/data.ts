@@ -1381,6 +1381,8 @@ export const piStats = {
   googleScholar: 'https://scholar.google.com/citations?user=8slXPm4AAAAJ&hl=en',
   orcid: '0000-0001-9248-2809',
   scopusId: '6504655693',
+  twitter: 'https://x.com/EbLabgroup',
+  linkedin: 'https://www.linkedin.com', // Placeholder for now
   phone: '',
   emails: ['eb.raman@iisertirupati.ac.in', 'balaramanekambaram@gmail.com'],
 };
