@@ -1204,14 +1204,14 @@ export const team = {
     { name: "Dr. Bapurao Rupanawar", info: "Ph.D. NCL-Pune, Feb 2022, Post Doc -OIST-Japan July 2022-Aug 2025, State- Maharashtra", email: "bapuraorupanawar@labs.iisertirupati.ac.in", image: "/images/team/postdocs/bapurao.jpg" }
   ],
   masters: [
-    { name: "Mr. Suyog", info: "Master's Thesis Student, IISER Tirupati (2026)", image: "/images/team/masters/suyog.jpg" },
-    { name: "Ms. Kavya", info: "Master's Thesis Student, IISER Tirupati (2026)", image: "/images/team/masters/Kavya.jpeg" },
-    { name: "Ms. Ayesha", info: "Master's Thesis Student, IISER Tirupati (2026)", image: "/images/team/masters/ayesha.jpg" },
+    { name: "Suyog", info: "Master's Thesis Student, IISER Tirupati (2026)", image: "/images/team/masters/suyog.jpg" },
+    { name: "Kavya", info: "Master's Thesis Student, IISER Tirupati (2026)", image: "/images/team/masters/Kavya.jpeg" },
+    { name: "Ayesha", info: "Master's Thesis Student, IISER Tirupati (2026)", image: "/images/team/masters/ayesha.jpg" },
   ],
   semesterProject: [
-    { name: "Mr. Suyog", info: "Semester Project, IISER Tirupati (2026)", image: "/images/team/masters/suyog.jpg" },
-    { name: "Ms. Kavya", info: "Semester Project, IISER Tirupati (2026)", image: "/images/team/masters/Kavya.jpeg" },
-    { name: "Ms. Ayesha", info: "Semester Project, IISER Tirupati (2026)", image: "/images/team/masters/ayesha.jpg" },
+    { name: "Suyog", info: "Semester Project, IISER Tirupati (2026)", image: "/images/team/masters/suyog.jpg" },
+    { name: "Kavya", info: "Semester Project, IISER Tirupati (2026)", image: "/images/team/masters/Kavya.jpeg" },
+    { name: "Ayesha", info: "Semester Project, IISER Tirupati (2026)", image: "/images/team/masters/ayesha.jpg" },
   ],
   alumniPhd: [
     { name: "Dr. Manoj K. Sahoo", thesis: "Visible mediated photoredox catalytic Dehydrogenation and C-H arylation reactions", duration: "2013-2018", present: "Post-doctoral Studies at UNIST, South Korea", image: "/images/team/Phd Alumini/Dr. MANOJ K. SAHOO.jpg" },
