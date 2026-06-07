@@ -41,9 +41,9 @@ const MemberCard = ({ member, role }: { member: any, role: string }) => {
   return (
     <motion.div 
       variants={fadeUp}
-      className="group relative bg-foreground/[0.03] border border-foreground/10 rounded-[2rem] overflow-hidden hover:bg-foreground/5 hover:border-amber-500/30 transition-all duration-500 shadow-xl"
+      className="group relative bg-foreground/[0.03] border border-foreground/10 rounded-[2rem] overflow-hidden hover:bg-foreground/5 hover:border-amber-500/30 transition-all duration-500 shadow-xl flex flex-col h-full"
     >
-      <div className="aspect-[3/4] relative overflow-hidden bg-foreground/5">
+      <div className="aspect-[3/4] relative overflow-hidden bg-foreground/5 shrink-0">
         {!imgFailed && currentSrc ? (
           <img 
             src={currentSrc} 
@@ -63,24 +63,29 @@ const MemberCard = ({ member, role }: { member: any, role: string }) => {
         </div>
       </div>
 
-      <div className="p-6">
-        <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-amber-400 transition-colors tracking-tight">{member.name}</h3>
-        <p className="text-xs text-foreground font-light leading-relaxed mb-4">
-          {member.info ? member.info.split(',').map((part: string, idx: number) => (
-            <React.Fragment key={idx}>{part.trim()}<br/></React.Fragment>
-          )) : null}
-        </p>
-        {member.email && (
-          <a href={`mailto:${member.email}`} className="text-[10px] font-mono text-amber-500/50 hover:text-amber-400 transition-colors break-all leading-relaxed">
-            {member.email}
-          </a>
-        )}
+      <div className="p-6 flex-1 flex flex-col">
+        <div className="flex-1">
+          <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-amber-400 transition-colors tracking-tight">{member.name}</h3>
+          <p className="text-xs text-foreground font-light leading-relaxed mb-4">
+            {member.info ? member.info.split(',').map((part: string, idx: number) => (
+              <React.Fragment key={idx}>{part.trim()}<br/></React.Fragment>
+            )) : null}
+          </p>
+        </div>
         
-        <div className="flex gap-4 border-t border-foreground/5 pt-4 mt-4">
+        <div className="mt-auto pt-4">
           {member.email && (
-            <a href={`mailto:${member.email}`} className="text-foreground hover:text-amber-400 transition-colors"><Mail size={16} /></a>
+            <a href={`mailto:${member.email}`} className="text-[10px] font-mono text-amber-500/50 hover:text-amber-400 transition-colors break-all leading-relaxed block mb-3">
+              {member.email}
+            </a>
           )}
-          <button className="text-foreground hover:text-amber-400 transition-colors"><Globe size={16} /></button>
+          
+          <div className="flex gap-4 border-t border-foreground/5 pt-4">
+            {member.email && (
+              <a href={`mailto:${member.email}`} className="text-foreground hover:text-amber-400 transition-colors"><Mail size={16} /></a>
+            )}
+            <button className="text-foreground hover:text-amber-400 transition-colors"><Globe size={16} /></button>
+          </div>
         </div>
       </div>
     </motion.div>
