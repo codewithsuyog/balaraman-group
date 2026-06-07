@@ -175,8 +175,8 @@ const TeamMemberThumb = ({ member, role }: { member: any, role: string }) => {
   const showImage = src && !failed;
 
   return (
-    <div className="flex flex-col items-start text-left group">
-      <div className="w-full aspect-[3/4] rounded-2xl bg-foreground/5 border border-foreground/10 flex items-center justify-center overflow-hidden mb-4 group-hover:border-amber-500/30 transition-all">
+    <div className="flex flex-col items-start text-left group h-full">
+      <div className="w-full aspect-[3/4] rounded-2xl bg-foreground/5 border border-foreground/10 flex items-center justify-center overflow-hidden mb-4 group-hover:border-amber-500/30 transition-all shrink-0">
         <img 
           src={showImage ? src : "/logo.png"} 
           alt={member.name} 
@@ -185,20 +185,26 @@ const TeamMemberThumb = ({ member, role }: { member: any, role: string }) => {
           onError={handleError}
         />
       </div>
-      <span className="text-[10px] font-bold text-foreground uppercase tracking-wider truncate w-full mb-1">{member.name}</span>
-      <span className="text-[9px] font-mono text-amber-400 uppercase tracking-widest mb-2">{role}</span>
-      {member.info && (
-        <p className="text-[10px] text-foreground leading-relaxed mb-2 font-light">
-          {member.info.split(',').map((part: string, idx: number) => (
-            <React.Fragment key={idx}>{part.trim()}<br/></React.Fragment>
-          ))}
-        </p>
-      )}
-      {member.email && (
-        <a href={`mailto:${member.email}`} className="text-[11px] font-semibold text-accent hover:text-accent-light transition-colors w-full flex items-start gap-1.5 mt-auto pt-3 break-all leading-tight">
-          <Mail size={12} className="shrink-0 mt-0.5" /> {member.email}
-        </a>
-      )}
+      
+      <div className="flex-1 flex flex-col justify-between w-full">
+        <div>
+          <span className="text-[10px] font-bold text-foreground uppercase tracking-wider truncate w-full mb-1 block">{member.name}</span>
+          <span className="text-[9px] font-mono text-amber-400 uppercase tracking-widest mb-2 block">{role}</span>
+          {member.info && (
+            <p className="text-[10px] text-foreground leading-relaxed mb-4 font-light">
+              {member.info.split(',').map((part: string, idx: number) => (
+                <React.Fragment key={idx}>{part.trim()}<br/></React.Fragment>
+              ))}
+            </p>
+          )}
+        </div>
+        
+        {member.email && (
+          <a href={`mailto:${member.email}`} className="text-[11px] font-semibold text-accent hover:text-accent-light transition-colors w-full flex items-start gap-1.5 mt-auto pt-3 break-all leading-tight">
+            <Mail size={12} className="shrink-0 mt-0.5" /> {member.email}
+          </a>
+        )}
+      </div>
     </div>
   );
 };
