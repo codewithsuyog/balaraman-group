@@ -75,62 +75,75 @@ const FeaturedPublication = ({ pub }: { pub: any }) => {
   const [coverExtIdx, setCoverExtIdx] = useState(0);
   const [schemeExtIdx, setSchemeExtIdx] = useState(0);
 
+  const hasCover = !coverFailed;
+  const hasScheme = !schemeFailed;
+
   return (
     <motion.div 
       initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-      className="group relative flex flex-col gap-8 p-10 rounded-[3rem] bg-foreground/[0.03] border border-foreground/10 hover:border-amber-500/30 transition-all duration-500"
+      className="group relative flex flex-col gap-8 p-5 md:p-10 rounded-2xl md:rounded-[3rem] bg-foreground/[0.03] border border-foreground/10 hover:border-amber-500/30 hover:bg-foreground/5 transition-all duration-500 shadow-xl overflow-hidden"
     >
-      <div className="flex flex-col md:flex-row gap-12 items-start">
-        <div className="flex-1">
+      <div className="flex flex-col md:flex-row gap-8 items-start">
+        {/* Cover Image - Left */}
+        {hasCover && (
+          <div className="w-[120px] h-48 rounded-2xl bg-foreground border border-foreground/10 overflow-hidden relative group-hover:border-amber-500/40 transition-all p-2 shadow-2xl shrink-0">
+            <img 
+              key={`cover-home-${pub.id}-${coverExtIdx}`}
+              src={`/images/publications/covers/${pub.id}${extensions[coverExtIdx]}`} 
+              alt="Cover" 
+              loading="lazy"
+              className="w-full h-full object-contain"
+              onError={() => coverExtIdx < extensions.length - 1 ? setCoverExtIdx(prev => prev + 1) : setCoverFailed(true)}
+            />
+          </div>
+        )}
+
+        {/* Paper Details - Center */}
+        <div className="flex-1 flex flex-col justify-center min-w-0">
           <div className="flex items-center gap-3 mb-4">
             <span className="px-4 py-1.5 rounded-full bg-amber-500/10 text-amber-400 text-[10px] font-black tracking-widest uppercase border border-amber-500/20">
               {pub.year}
             </span>
-            <span className="text-xs text-foreground/90 font-mono italic">{pub.journal}</span>
+            {pub.journal && pub.journal.length < 20 && (
+              <span className="text-xs text-foreground/90 font-mono italic">{pub.journal}</span>
+            )}
           </div>
-          {pub.title && (
-            <h3 className="text-xl font-bold text-foreground mb-4 leading-snug tracking-tight">{pub.title}</h3>
-          )}
-          <div className="text-sm text-foreground font-light leading-relaxed mb-8 border-l-2 border-amber-500/30 pl-6">
-            <span className="text-amber-400 font-bold mr-2">{pub.id}.</span>
-            {pub.fullText || `${pub.authors}. ${pub.title}. ${pub.journal}, ${pub.year}${pub.details}`}
+          
+          <div className="text-base text-foreground leading-relaxed mb-6 font-light border-l-2 border-amber-500/30 pl-6">
+            <span className="text-amber-400 font-bold mr-2 text-lg">{pub.id}.</span>
+            {pub.title && (
+              <strong className="block text-foreground text-lg font-bold mb-2 leading-snug tracking-tight not-italic">{pub.title}</strong>
+            )}
+            <span className="text-sm text-foreground">{pub.fullText || `${pub.authors}. ${pub.title}. ${pub.journal}, ${pub.year}${pub.details}`}</span>
           </div>
-          <div className="flex items-center gap-4">
+          
+          <div className="flex items-center gap-4 flex-wrap mt-auto">
             {pub.doi && (
               <a 
                 href={pub.doi.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="px-8 py-4 rounded-full bg-amber-600 text-background text-xs font-bold flex items-center gap-2 hover:bg-amber-500 transition-all shadow-lg shadow-amber-600/20 uppercase tracking-widest"
+                className="px-8 py-4 rounded-full bg-amber-600/10 border border-amber-600/30 text-amber-400 text-xs font-bold flex items-center gap-2 hover:bg-amber-500 hover:text-foreground shadow-lg shadow-amber-600/10 transition-all uppercase tracking-widest w-max"
               >
                 Read Publication <ExternalLink size={14} />
               </a>
             )}
           </div>
         </div>
-        
-        <div className="w-full md:w-[45%] flex flex-col sm:flex-row gap-6 items-center">
-           <div className="w-[140px] h-56 rounded-2xl bg-foreground border border-foreground/10 overflow-hidden relative group-hover:border-amber-500/40 transition-all p-2 shadow-2xl shrink-0">
-             <img 
-                src={coverFailed ? "/logo.png" : `/images/publications/covers/${pub.id}${extensions[coverExtIdx]}`} 
-                alt="Cover" 
-                loading="lazy"
-                className={`w-full h-full object-contain ${coverFailed ? 'opacity-20' : ''}`}
-                onError={() => coverExtIdx < extensions.length - 1 ? setCoverExtIdx(coverExtIdx + 1) : setCoverFailed(true)}
-              />
 
-           </div>
-           <div className="flex-1 w-full h-56 rounded-2xl bg-foreground border border-foreground/10 overflow-hidden relative group-hover:border-amber-500/40 transition-all p-2 shadow-2xl">
-             <img 
-                src={schemeFailed ? "/logo.png" : `/images/publications/schemes/${pub.id}${extensions[schemeExtIdx]}`} 
-                alt="Scheme" 
-                loading="lazy"
-                className={`w-full h-full object-contain ${schemeFailed ? 'opacity-20' : ''}`}
-                onError={() => schemeExtIdx < extensions.length - 1 ? setSchemeExtIdx(schemeExtIdx + 1) : setSchemeFailed(true)}
-              />
-
-           </div>
-        </div>
+        {/* Scheme Image - Right */}
+        {hasScheme && (
+          <div className="w-full md:w-[300px] h-48 rounded-2xl bg-foreground border border-foreground/10 overflow-hidden relative group-hover:border-amber-500/40 transition-all shadow-2xl p-2 shrink-0">
+            <img 
+              key={`scheme-home-${pub.id}-${schemeExtIdx}`}
+              src={`/images/publications/schemes/${pub.id}${extensions[schemeExtIdx]}`} 
+              alt="Scheme" 
+              loading="lazy"
+              className="w-full h-full object-contain"
+              onError={() => schemeExtIdx < extensions.length - 1 ? setSchemeExtIdx(prev => prev + 1) : setSchemeFailed(true)}
+            />
+          </div>
+        )}
       </div>
     </motion.div>
   );
