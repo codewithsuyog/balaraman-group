@@ -712,7 +712,7 @@ export default function Home() {
                  </a>
                  <a href="mailto:eb.raman@iisertirupati.ac.in" className="w-12 h-12 rounded-full bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:text-amber-400 hover:border-amber-500 transition-all" title="Email"><Mail size={20} /></a>
                </div>
-               <p className="text-sm md:text-base font-mono text-foreground tracking-wider">eb.raman@iisertirupati.ac.in</p>
+               <a href="mailto:eb.raman@iisertirupati.ac.in" className="text-sm md:text-base font-mono text-foreground tracking-wider hover:text-amber-400 transition-colors">eb.raman@iisertirupati.ac.in</a>
             </div>
 
             {/* LAB NEWS - Vertical scroll below PI photo */}
