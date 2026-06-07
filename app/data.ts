@@ -1198,7 +1198,7 @@ export const team = {
   ],
   postdocs: [
     { name: "Dr. Sachin S. Gorad", info: "Ph.D. 2024 (IISER-Bhopal), M.Sc. (Org. Chem) Savitribai Phule Pune University Maharashtra", email: "sachinshrimant@labs.iisertirupati.ac.in", image: "/images/team/present/postdocs/sachin.png" },
-    { name: "Dr. Naushad", info: "Post-doctoral Fellow", image: "" },
+    { name: "Dr. Nausad", info: "Ph.D. – IISER Mohali, B.Sc. + M.Sc. – Jamia Millia Islamia Central University", email: "nausadkhan@labs.iisertirupati.ac.in", image: "/images/team/present/postdocs/Nausad.jpeg" },
     { name: "Dr. Athira C S", info: "Ph.D.: CSIR NIIST, Kerala (2025), MSc: University of Kerala, Kerala (2019)", email: "athiracs@labs.iisertirupati.ac.in", image: "/images/team/present/postdocs/Athira.jpeg" },
     { name: "Dr. Anjali Krishna P K", info: "Ph.D.: CSIR-NIIST, Thiruvananthapuram, Kerala (2024), MSc: NIT Tiruchirappalli, Tamilnadu (2017)", email: "anjalikrishna@labs.iisertirupati.ac.in", image: "/images/team/present/postdocs/anjali.jpeg" },
     { name: "Dr. Bapurao Rupanawar", info: "Ph.D. NCL-Pune, Feb 2022, Post Doc -OIST-Japan July 2022-Aug 2025, State- Maharashtra", email: "bapuraorupanawar@labs.iisertirupati.ac.in", image: "/images/team/present/postdocs/bapurao.jpg" }
