@@ -282,7 +282,7 @@ export const team = {
   postdocs: [
     { name: "Dr. Sachin S. Gorad", info: "Ph.D. 2024 (IISER-Bhopal), M.Sc. (Org. Chem), SPPU Maharashtra. Email: sachinshrimant@labs.iisertirupati.ac.in", image: "/team/postdocs/sachin.png" },
     { name: "Dr. Bapurao", info: "Post-doctoral Fellow", image: "" },
-    { name: "Dr. Naushad", info: "Post-doctoral Fellow", image: "" },
+    { name: "Dr. Nausad", info: "Post-doctoral Fellow", image: "" },
     { name: "Dr. Adhira", info: "Post-doctoral Fellow", image: "" },
     { name: "Dr. Anjali", info: "Post-doctoral Fellow", image: "" }
   ],
