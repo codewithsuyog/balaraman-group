@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { patents } from '../data';
 import { publications } from '../publications_master';
+import ChemText from '../../components/ChemText';
 
 const fadeUp: any = {
   hidden: { opacity: 0, y: 30 },
@@ -21,7 +22,7 @@ const PublicationItem = ({ pub }: { pub: any }) => (
     <span className="text-xs font-mono text-amber-500/50 mt-1 shrink-0">{pub.id}.</span>
     <div className="flex-1 min-w-0">
       <p className="text-sm text-foreground/90 font-light leading-relaxed">
-        {pub.authors}. {pub.title}. <span className="italic">{pub.journal}</span>, {pub.year}. {pub.volume && `${pub.volume}`}{pub.pages && `, ${pub.pages}`}
+        {pub.authors}. <ChemText text={pub.title} />. <span className="italic">{pub.journal}</span>, {pub.year}. {pub.volume && `${pub.volume}`}{pub.pages && `, ${pub.pages}`}
       </p>
       <div className="flex items-center gap-2 mt-2">
         <a 

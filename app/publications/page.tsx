@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowLeft, BookOpen, ExternalLink } from 'lucide-react';
 import { publications } from '../publications_master';
+import ChemText from '../../components/ChemText';
 
 const fadeUp: any = {
   hidden: { opacity: 0, y: 30 },
@@ -63,9 +64,9 @@ const PublicationCard = ({ pub, idx, fadeUp }: any) => {
           <div className="text-base text-foreground leading-relaxed mb-6 font-light border-l-2 border-amber-500/30 pl-6">
             <span className="text-amber-400 font-bold mr-2 text-lg">{pub.id}.</span>
             {pub.title && (
-              <strong className="block text-foreground text-lg font-bold mb-2 leading-snug tracking-tight not-italic">{pub.title}</strong>
+              <ChemText text={pub.title} as="strong" className="block text-foreground text-lg font-bold mb-2 leading-snug tracking-tight not-italic" />
             )}
-            <span className="text-sm text-foreground">{pub.fullText || `${pub.authors}. ${pub.title}. ${pub.journal}, ${pub.year}${pub.details}`}</span>
+            <span className="text-sm text-foreground"><ChemText text={pub.fullText || `${pub.authors}. ${pub.title}. ${pub.journal}, ${pub.year}${pub.details}`} /></span>
           </div>
           
           <div className="flex items-center gap-4 flex-wrap mt-auto">
