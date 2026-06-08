@@ -62,12 +62,10 @@ const PublicationCard = ({ pub, idx, fadeUp }: any) => {
           </div>
           
           <div className="text-base text-foreground leading-relaxed mb-6 font-light border-l-2 border-amber-500/30 pl-6">
-            <div className="mb-2">
-              <span className="text-amber-400 font-bold mr-2 text-lg">{pub.id}.</span>
-              {pub.title && (
-                <ChemText text={pub.title} as="strong" className="text-foreground text-lg font-bold leading-snug tracking-tight not-italic" />
-              )}
-            </div>
+            <span className="text-amber-400 font-bold mr-2 text-lg">{pub.id}.</span>
+            {pub.title && (
+              <ChemText text={pub.title} as="strong" className="block text-foreground text-lg font-bold mb-2 leading-snug tracking-tight not-italic" />
+            )}
             <span className="text-sm text-foreground"><ChemText text={pub.fullText || `${pub.authors}. ${pub.title}. ${pub.journal}, ${pub.year}${pub.details}`} /></span>
           </div>
           
