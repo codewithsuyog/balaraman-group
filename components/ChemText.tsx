@@ -8,99 +8,95 @@ import React from 'react';
  * Handles:
  *   - Chemical formulas: H2, CO2, H2O, CH4, NH3, SiO2, Cu2O, Fe3O4, NaBH4, Al2O3, etc.
  *   - Orbital notation: C(sp2), C(sp3)
- *   - Roman numeral oxidation states in titles: Mn(I), Co(II), Pd(ii), Ni(ii), Ru(II), Fe(III)
- *   - Greek letters already present as unicode are left as-is (α, β, γ)
+ *   - Variable groups: R1, R2, R3, etc.
+ *   - Chemical group abbreviations: tBu2, Me2, Et2, etc.
+ *   - Roman numeral oxidation states: Mn(I), Co(II)
  */
-
-// Match chemical formulas like H2, CO2, H2O, SiO2, Cu2O, Fe3O4, NaBH4, CH3OH, etc.
-// Pattern: element symbols followed by digits that should be subscripted
-// Also matches sp2, sp3 orbital notation for superscript
-const CHEM_REGEX = /(\b(?:H|C|N|O|S|P|B|F|Li|Na|K|Mg|Ca|Al|Si|Ti|Mn|Fe|Co|Ni|Cu|Zn|Pd|Ru|Rh|Ir|Pt|Ce|Zr|Mo|Cl|Br|I)(\d+)(?=[^a-zA-Z0-9]|$))|(\bsp(\d)\b)|(C\(sp([23])\))/g;
-
-// Match roman numeral oxidation states: (I), (II), (III), (IV), (V), (i), (ii), (iii), (iv), (v)
-const ROMAN_REGEX = /\(([IVXivx]+)\)/g;
 
 function processChemText(text: string): React.ReactNode[] {
   if (!text) return [];
-  
-  const parts: React.ReactNode[] = [];
-  let lastIndex = 0;
-  
-  // Combined regex that matches all patterns we care about
-  const combined = new RegExp(
-    // Chemical formula: element + digit (H2, CO2, etc.)
-    '(?:(?<=^|[^a-zA-Z])(?:H|C|N|O|S|P|B|F|Li|Na|K|Mg|Ca|Al|Si|Ti|Mn|Fe|Co|Ni|Cu|Zn|Pd|Ru|Rh|Ir|Pt|Ce|Zr|Mo|Cl|Br|I))(\\d+)(?=[^a-zA-Z0-9]|$)' +
-    // sp orbital notation: sp2, sp3
-    '|\\b(sp)(\\d)\\b' +
-    // C(sp2), C(sp3) full notation
-    '|(C\\(sp)([23])(\\))' +
-    // Oxidation state in parens: (II), (ii), etc. — leave as-is, just style nicely
-    '',
-    'g'
-  );
-  
-  // Simpler approach: use replace with a function to build the output
-  // Split text by recognized patterns and reconstruct with React elements
-  
-  // We'll do a multi-pass approach for clarity
-  return renderWithSubs(text);
-}
 
-function renderWithSubs(text: string): React.ReactNode[] {
-  const result: React.ReactNode[] = [];
-  let remaining = text;
-  let keyIdx = 0;
-  
-  // Pattern to find chemical numbers that should be subscripts
-  // This regex looks for common chemical element symbols followed by a number
-  const chemPattern = /((?:CH|CO|Cl|Br|Na|Li|Ca|Mg|Al|Si|Ti|Mn|Fe|Co|Ni|Cu|Zn|Pd|Ru|Rh|Ir|Pt|Ce|Zr|Mo|NaBH|HClO|H|C|N|O|S|P|B|F|I)(?=[0-9]))(\d+)/g;
-  
-  // Pattern for C(sp2), C(sp3) - the number should be superscript
-  const spPattern = /(C\(sp)(\d)(\))/g;
-  
-  // First handle C(sp2/3) patterns
-  let processedParts: { text: string; isProcessed: boolean }[] = [{ text: remaining, isProcessed: false }];
-  
-  // Process sp notation
-  const newParts: { text: string | React.ReactNode; isProcessed: boolean }[] = [];
-  for (const part of processedParts) {
-    if (part.isProcessed) {
-      newParts.push(part);
-      continue;
-    }
-    
-    const splits = part.text.split(/(C\(sp\d\))/g);
-    for (const s of splits) {
-      const spMatch = s.match(/^C\(sp(\d)\)$/);
-      if (spMatch) {
-        newParts.push({
-          text: s, // Will be handled in final render
-          isProcessed: false,
-        });
-      } else {
-        newParts.push({ text: s, isProcessed: false });
-      }
+  // 1. Separate the DOI/URL section to avoid formatting digits in URLs/DOIs
+  const textLower = text.toLowerCase();
+  let doiIdx = -1;
+  const markers = ["doi:", "https://doi.org/", "http://doi.org/", "doi.org/"];
+  for (const marker of markers) {
+    const idx = textLower.indexOf(marker);
+    if (idx !== -1) {
+      doiIdx = idx;
+      break;
     }
   }
-  
-  // Now do the final render
-  const finalText = remaining;
-  
-  // Use a single comprehensive regex approach
-  // Pattern groups:
-  // 1. C(sp2) or C(sp3) → superscript the digit
-  // 2. Chemical formulas → subscript the digit
-  const masterPattern = /C\(sp([23])\)|((?:CH|CO|Cl|Br|Na|Li|Ca|Mg|Al|Si|Ti|Mn|Fe|Co|Ni|Cu|Zn|Pd|Ru|Rh|Ir|Pt|Ce|Zr|Mo|NaBH|HClO|HZSM|H|C|N|O|S|P|B|F|I)(?=[0-9]))(\d+)/g;
-  
+
+  let mainText = text;
+  let doiPart = "";
+  if (doiIdx !== -1) {
+    mainText = text.substring(0, doiIdx);
+    doiPart = text.substring(doiIdx);
+  }
+
+  const result: React.ReactNode[] = [];
+  let keyIdx = 0;
+
+  // Master pattern - case sensitive
+  const masterPattern = /C\(sp([23])\)|((?:tBu|Me|Et|Pr|Ph|Bu|Ac|Cp|Ar|NaBH|HClO|HZSM|CH|CO|Cl|Br|Na|Li|Ca|Mg|Al|Si|Ti|Mn|Fe|Co|Ni|Cu|Zn|Pd|Ru|Rh|Ir|Pt|Ce|Zr|Mo|H|C|N|O|S|P|B|F|I|R)(?=[0-9]))(\d+)/g;
+
+  // Element letters set for checking next characters to identify chemical formulas
+  const elementLetters = new Set("HCNOsSPBFIiAlMgCaTiMnFeCoNiCuZnPdRuRhIrPtCeZrMo");
+
   let match: RegExpExecArray | null;
   let lastIdx = 0;
-  
-  while ((match = masterPattern.exec(finalText)) !== null) {
-    // Add text before this match
-    if (match.index > lastIdx) {
-      result.push(finalText.slice(lastIdx, match.index));
+
+  while ((match = masterPattern.exec(mainText)) !== null) {
+    const matchIndex = match.index;
+    const matchLength = match[0].length;
+
+    let skip = false;
+
+    if (match[1] !== undefined) {
+      // C(sp2) or C(sp3) — always format
+    } else if (match[2] !== undefined && match[3] !== undefined) {
+      const sym = match[2];
+      const numStr = match[3];
+
+      // Rule A: Do not subscript a single '1' unless it's a variable R group
+      if (sym !== 'R' && numStr === '1') {
+        skip = true;
+      }
+
+      // Rule B: If symbol is 'C' and it is followed by a single digit
+      if (sym === 'C' && numStr.length === 1) {
+        const nextCharIdx = matchIndex + matchLength;
+        const nextChar = nextCharIdx < mainText.length ? mainText[nextCharIdx] : "";
+        if (nextChar && elementLetters.has(nextChar)) {
+          // Valid chemical formula prefix (e.g. C2H2)
+        } else {
+          skip = true; // Likely carbon position (e.g. C2-symmetric, C5-alkynylation)
+        }
+      }
+
+      // Rule C: If symbol is 'N' and it is followed by a single digit
+      if (sym === 'N' && numStr.length === 1) {
+        const nextCharIdx = matchIndex + matchLength;
+        const nextChar = nextCharIdx < mainText.length ? mainText[nextCharIdx] : "";
+        const isFollowedByElem = nextChar && elementLetters.has(nextChar);
+        if (numStr === '2' || isFollowedByElem) {
+          // Valid (e.g. N2 gas)
+        } else {
+          skip = true; // Likely nitrogen position (e.g. N9, N1)
+        }
+      }
     }
-    
+
+    if (skip) {
+      continue;
+    }
+
+    // Add text before this match
+    if (matchIndex > lastIdx) {
+      result.push(mainText.slice(lastIdx, matchIndex));
+    }
+
     if (match[1] !== undefined) {
       // C(sp2) or C(sp3) — superscript the number
       result.push(
@@ -112,15 +108,20 @@ function renderWithSubs(text: string): React.ReactNode[] {
         <span key={keyIdx++}>{match[2]}<sub>{match[3]}</sub></span>
       );
     }
-    
-    lastIdx = match.index + match[0].length;
+
+    lastIdx = matchIndex + matchLength;
   }
-  
-  // Add remaining text
-  if (lastIdx < finalText.length) {
-    result.push(finalText.slice(lastIdx));
+
+  // Add remaining text of mainText
+  if (lastIdx < mainText.length) {
+    result.push(mainText.slice(lastIdx));
   }
-  
+
+  // Append DOI part as plain text
+  if (doiPart) {
+    result.push(doiPart);
+  }
+
   return result.length > 0 ? result : [text];
 }
 
