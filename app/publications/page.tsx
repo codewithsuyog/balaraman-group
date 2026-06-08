@@ -56,7 +56,7 @@ const PublicationCard = ({ pub, idx, fadeUp }: any) => {
             <span className="px-4 py-1.5 rounded-full bg-amber-500/10 text-amber-400 text-[10px] font-black tracking-widest uppercase border border-amber-500/20">
               {pub.year}
             </span>
-            {pub.journal && pub.journal.length < 20 && (
+            {pub.journal && (
               <span className="text-xs text-foreground/90 font-mono italic">{pub.journal}</span>
             )}
           </div>
