@@ -3,6 +3,9 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Team | Raman\'s Research Lab',
   description: 'Meet the researchers of Raman\'s Lab — postdocs, PhD scholars, and students at IISER Tirupati.',
+  alternates: {
+    canonical: 'https://www.ebalaraman.com/team',
+  },
   openGraph: {
     title: 'Team | Raman\'s Research Lab',
     description: 'Meet the researchers of Raman\'s Lab — postdocs, PhD scholars, and students at IISER Tirupati.',

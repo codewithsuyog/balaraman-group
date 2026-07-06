@@ -42,10 +42,10 @@ export default function GalleryPage() {
       >
         <div className="w-full h-full flex items-center justify-center p-2 bg-surface-alt/40">
           <img 
-            src={failed ? "/logo.png" : src} 
+            src={failed ? "/logo.webp" : src} 
             alt={`Lab Moment ${num}`}
             className={`max-w-full max-h-full object-contain ${failed ? 'opacity-20' : ''}`}
-            loading="lazy"
+            loading="lazy" decoding="async"
             onError={() => {
               if (extIdx < extensions.length - 1) {
                 setExtIdx(prev => prev + 1);
@@ -119,7 +119,7 @@ export default function GalleryPage() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {photos.map((num) => {
-            const folder = activeTab === 'images' ? 'lab-images' : 'lab-memories';
+            const folder = activeTab === 'images' ? 'lab-images' : 'gallery';
             return <GalleryCard key={num} num={num} folder={folder} />;
           })}
         </div>
@@ -142,7 +142,7 @@ export default function GalleryPage() {
               className="relative max-w-7xl w-full h-full flex items-center justify-center"
               onClick={(e) => e.stopPropagation()}
             >
-              <img 
+              <img loading="lazy" decoding="async" 
                 src={selectedImage} 
                 alt="Enlarged view" 
                 className="max-w-full max-h-full object-contain rounded-2xl shadow-[0_0_100px_rgba(37,99,235,0.2)]"

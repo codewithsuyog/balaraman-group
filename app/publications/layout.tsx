@@ -3,6 +3,9 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Publications | Raman\'s Research Lab',
   description: 'Complete archive of peer-reviewed publications from Raman\'s Research Lab at IISER Tirupati.',
+  alternates: {
+    canonical: 'https://www.ebalaraman.com/publications',
+  },
   openGraph: {
     title: 'Publications | Raman\'s Research Lab',
     description: 'Complete archive of peer-reviewed publications from Raman\'s Research Lab at IISER Tirupati.',

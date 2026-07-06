@@ -39,9 +39,9 @@ const PublicationLink = ({ pub }: { pub: any }) => {
     <div className="group/pub flex flex-col md:flex-row gap-6 p-6 rounded-[2rem] bg-foreground/5 border border-foreground/5 hover:border-amber-500/20 hover:bg-foreground/10 transition-all">
       <div className="w-20 h-24 rounded-lg bg-foreground overflow-hidden flex-shrink-0 border border-foreground/10 p-1">
             <img 
-               src={coverFailed ? "/logo.png" : `/images/publications/covers/${pub.id}${extensions[coverExtIdx]}`} 
+               src={coverFailed ? "/logo.webp" : `/images/publications/covers/${pub.id}${extensions[coverExtIdx]}`} 
                alt="Cover" 
-               loading="lazy"
+               loading="lazy" decoding="async"
                className="w-full h-full object-contain opacity-50 group-hover/pub:opacity-100 transition-opacity"
                onError={() => coverExtIdx < extensions.length - 1 ? setCoverExtIdx(coverExtIdx + 1) : setCoverFailed(true)}
             />
@@ -92,7 +92,7 @@ const FeaturedPublication = ({ pub }: { pub: any }) => {
               key={`cover-home-${pub.id}-${coverExtIdx}`}
               src={`/images/publications/covers/${pub.id}${extensions[coverExtIdx]}`} 
               alt="Cover" 
-              loading="lazy"
+              loading="lazy" decoding="async"
               className="w-full h-full object-contain"
               onError={() => coverExtIdx < extensions.length - 1 ? setCoverExtIdx(prev => prev + 1) : setCoverFailed(true)}
             />
@@ -139,7 +139,7 @@ const FeaturedPublication = ({ pub }: { pub: any }) => {
               key={`scheme-home-${pub.id}-${schemeExtIdx}`}
               src={`/images/publications/schemes/${pub.id}${extensions[schemeExtIdx]}`} 
               alt="Scheme" 
-              loading="lazy"
+              loading="lazy" decoding="async"
               className="w-full h-full object-contain"
               onError={() => schemeExtIdx < extensions.length - 1 ? setSchemeExtIdx(prev => prev + 1) : setSchemeFailed(true)}
             />
@@ -179,9 +179,9 @@ const TeamMemberThumb = ({ member, role }: { member: any, role: string }) => {
     <div className="flex flex-col items-start text-left group h-full">
       <div className="w-full aspect-[3/4] rounded-2xl bg-foreground/5 border border-foreground/10 flex items-center justify-center overflow-hidden mb-4 group-hover:border-amber-500/30 transition-all shrink-0">
         <img 
-          src={showImage ? src : "/logo.png"} 
+          src={showImage ? src : "/logo.webp"} 
           alt={member.name} 
-          loading="lazy"
+          loading="lazy" decoding="async"
           className={`w-full h-full object-cover transition-all duration-700 ${!showImage ? 'opacity-50 p-4 object-contain brightness-150' : ''}`}
           onError={handleError}
         />
@@ -237,9 +237,9 @@ const AlumniThumb = ({ member }: { member: any }) => {
     <div className="flex flex-col items-start text-left group">
       <div className="w-full aspect-[3/4] rounded-2xl bg-foreground/5 border border-foreground/10 flex items-center justify-center overflow-hidden mb-4 group-hover:border-emerald-500/30 transition-all">
         <img 
-          src={showImage ? src : "/logo.png"} 
+          src={showImage ? src : "/logo.webp"} 
           alt={member.name} 
-          loading="lazy"
+          loading="lazy" decoding="async"
           className={`w-full h-full object-cover transition-all duration-700 ${!showImage ? 'opacity-20 p-4 object-contain' : ''}`}
           onError={handleError}
         />
@@ -268,7 +268,7 @@ const SlideImage = ({ srcBase, isActive }: { srcBase: string, isActive: boolean 
 
   return (
     <motion.img
-      src={failed ? '/logo.png' : src}
+      src={failed ? '/logo.webp' : src}
       initial={{ opacity: 0, scale: 1.05 }}
       animate={{ opacity: isActive ? 1 : 0, scale: isActive ? 1 : 1.05 }}
       exit={{ opacity: 0 }}

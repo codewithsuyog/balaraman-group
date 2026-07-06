@@ -1,4 +1,36 @@
 {
+  "redirects": [
+    {
+      "source": "/:path(.*)",
+      "has": [{ "type": "host", "value": "ebalaraman.in" }],
+      "destination": "https://www.ebalaraman.com/:path",
+      "permanent": true
+    },
+    {
+      "source": "/:path(.*)",
+      "has": [{ "type": "host", "value": "www.ebalaraman.in" }],
+      "destination": "https://www.ebalaraman.com/:path",
+      "permanent": true
+    },
+    {
+      "source": "/:path(.*)",
+      "has": [{ "type": "host", "value": "ebalaraman.com" }],
+      "destination": "https://www.ebalaraman.com/:path",
+      "permanent": true
+    },
+    {
+      "source": "/:path(.*)",
+      "has": [{ "type": "host", "value": "balaramanlab.com" }],
+      "destination": "https://www.ebalaraman.com/:path",
+      "permanent": true
+    },
+    {
+      "source": "/:path(.*)",
+      "has": [{ "type": "host", "value": "www.balaramanlab.com" }],
+      "destination": "https://www.ebalaraman.com/:path",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

@@ -5,6 +5,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import BackButton from "@/components/BackButton";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import ScrollProgress from "@/components/ScrollProgress";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -29,15 +30,18 @@ export const viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://balaramanlab.com'),
+  metadataBase: new URL('https://www.ebalaraman.com'),
   title: "Raman's Research Lab",
-  description: "Official website of Raman's Research Lab. Pioneering research in catalysis, sustainable chemistry, and organometallic systems.",
-  keywords: ["Raman's Research Lab", "Prof. E. Balaraman", "Chemistry Research", "Catalysis", "Sustainable Chemistry", "Organometallic Chemistry"],
+  description: "Official website of Raman's Research Lab. Pioneering research in catalysis, sustainable chemistry, C1 chemistry, and organometallic systems.",
+  keywords: ["balaraman", "E Balaraman", "IISER Tirupati chemistry", "Raman Lab", "catalysis research India", "sustainable chemistry", "organometallic chemistry", "C1 chemistry", "IISER Tirupati research lab"],
   authors: [{ name: "Dr. E. Balaraman" }],
+  alternates: {
+    canonical: 'https://www.ebalaraman.com',
+  },
   openGraph: {
     title: "Raman's Research Lab",
-    description: "Pioneering research in catalysis and sustainability.",
-    url: "https://balaramanlab.com",
+    description: "Pioneering research in catalysis, sustainable chemistry, and organometallic systems.",
+    url: "https://www.ebalaraman.com",
     siteName: "Raman's Research Lab",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
     locale: "en_US",
@@ -46,8 +50,11 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Raman's Research Lab",
-    description: "Pioneering research in catalysis and sustainability.",
+    description: "Pioneering research in catalysis, sustainable chemistry, and organometallic systems.",
     images: ["/og-image.jpg"],
+  },
+  icons: {
+    apple: '/apple-touch-icon.png',
   },
 };
 
@@ -68,19 +75,29 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "EducationalOrganization",
+              "@type": "ResearchOrganization",
               "name": "Raman's Research Lab",
-              "url": "https://balaramanlab.com",
-              "logo": "https://balaramanlab.com/logo.png",
+              "alternateName": ["E. Balaraman Lab", "Balaraman Research Group", "IISER Tirupati Balaraman Lab"],
+              "url": "https://www.ebalaraman.com",
+              "logo": "https://www.ebalaraman.com/logo.webp",
               "parentOrganization": {
                 "@type": "CollegeOrUniversity",
-                "name": "IISER Tirupati"
+                "name": "Indian Institute of Science Education and Research (IISER) Tirupati",
+                "url": "https://www.iisertirupati.ac.in"
               },
-              "description": "Research lab specializing in Catalysis and Sustainable Chemistry."
+              "member": {
+                "@type": "Person",
+                "name": "Dr. E. Balaraman",
+                "jobTitle": "Associate Professor",
+                "affiliation": "IISER Tirupati",
+                "sameAs": ["https://twitter.com/Raman_Lab", "https://www.linkedin.com/in/ekambaram-balaraman-4a11293a/"]
+              },
+              "description": "Research lab at IISER Tirupati specializing in catalysis, sustainable chemistry, C1 chemistry, and organometallic systems.",
+              "knowsAbout": ["Catalysis", "Sustainable Chemistry", "Organometallic Chemistry", "C1 Chemistry"]
             })
           }}
         />
-        <link rel="preload" as="image" type="image/webp" href="/images/Background/group-photo.webp" fetchPriority="high" />
+        <link rel="preload" as="image" type="image/webp" href="/images/Background/group-photo.webp" />
       </head>
       <body className="font-sans min-h-screen bg-background text-foreground flex flex-col transition-colors duration-300 select-none" suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
@@ -95,41 +112,7 @@ export default function RootLayout({
             <Analytics />
           </React.Suspense>
           <BackButton />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-                // Scroll Progress
-                window.addEventListener('scroll', () => {
-                  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-                  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-                  const scrolled = (winScroll / height) * 100;
-                  const scrollBar = document.getElementById('scroll-bar');
-                  if (scrollBar) {
-                    scrollBar.style.transform = 'scaleY(' + (scrolled / 100) + ')';
-                  }
-                });
-
-                // Security: Disable Right Click
-                document.addEventListener('contextmenu', event => event.preventDefault());
-
-                // Security: Disable Image Dragging
-                document.addEventListener('dragstart', event => {
-                  if (event.target.tagName && event.target.tagName.toLowerCase() === 'img') {
-                    event.preventDefault();
-                  }
-                });
-
-                // Security: Disable Keyboard Shortcuts (Ctrl+C, Ctrl+U, Ctrl+S, etc.)
-                document.addEventListener('keydown', event => {
-                  if (event.ctrlKey || event.metaKey) {
-                    if (['c', 'u', 's', 'p'].includes(event.key.toLowerCase())) {
-                      event.preventDefault();
-                    }
-                  }
-                });
-              `
-            }}
-          />
+          <ScrollProgress />
         </ThemeProvider>
       </body>
     </html>

@@ -40,9 +40,9 @@ const PublicationCard = ({ pub, idx, fadeUp }: any) => {
           <div className="w-[120px] h-48 rounded-2xl bg-foreground border border-foreground/10 overflow-hidden relative group-hover:border-amber-500/40 transition-all p-2 shadow-2xl shrink-0">
             <img 
               key={`cover-archive-${pub.id}-${coverExtIdx}`}
-              src={coverFailed ? "/logo.png" : `/images/publications/covers/${pub.id}${extensions[coverExtIdx]}`} 
+              src={coverFailed ? "/logo.webp" : `/images/publications/covers/${pub.id}${extensions[coverExtIdx]}`} 
               alt="Cover" 
-              loading="lazy"
+              loading="lazy" decoding="async"
               className={`w-full h-full object-contain ${coverFailed ? 'opacity-20 p-4' : ''}`}
               onError={() => coverExtIdx < extensions.length - 1 ? setCoverExtIdx(prev => prev + 1) : setCoverFailed(true)}
             />
@@ -88,9 +88,9 @@ const PublicationCard = ({ pub, idx, fadeUp }: any) => {
           <div className="w-full md:w-[300px] h-48 rounded-2xl bg-foreground border border-foreground/10 overflow-hidden relative group-hover:border-amber-500/40 transition-all shadow-2xl p-2 shrink-0">
             <img 
               key={`scheme-archive-${pub.id}-${schemeExtIdx}`}
-              src={schemeFailed ? "/logo.png" : `/images/publications/schemes/${pub.id}${extensions[schemeExtIdx]}`} 
+              src={schemeFailed ? "/logo.webp" : `/images/publications/schemes/${pub.id}${extensions[schemeExtIdx]}`} 
               alt="Scheme" 
-              loading="lazy"
+              loading="lazy" decoding="async"
               className={`w-full h-full object-contain ${schemeFailed ? 'opacity-20 p-4' : ''}`}
               onError={() => schemeExtIdx < extensions.length - 1 ? setSchemeExtIdx(prev => prev + 1) : setSchemeFailed(true)}
             />
