@@ -3,6 +3,7 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, X, Maximize2, Image as ImageIcon, Users } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function GalleryPage() {
   const [selectedImage, setSelectedImage] = React.useState<string | null>(null);
@@ -25,11 +26,8 @@ export default function GalleryPage() {
   );
 
   const GalleryCard = ({ num, folder }: { num: number, folder: string }) => {
-    const extensions = ['.webp', '.jpg', '.png', '.jpeg'];
-    const [extIdx, setExtIdx] = React.useState(0);
     const [failed, setFailed] = React.useState(false);
-  
-    const src = `/images/${folder}/${num}${extensions[extIdx]}`;
+    const src = `/images/${folder}/${num}.webp`;
   
     return (
       <motion.div 
@@ -40,19 +38,15 @@ export default function GalleryPage() {
         className="group relative aspect-[16/10] rounded-[2.5rem] overflow-hidden border border-foreground/10 shadow-2xl bg-foreground/5 cursor-pointer"
         onClick={() => !failed && setSelectedImage(src)}
       >
-        <div className="w-full h-full flex items-center justify-center p-2 bg-surface-alt/40">
-          <img 
+        <div className="w-full h-full relative p-2 bg-surface-alt/40">
+          <Image 
             src={failed ? "/logo.webp" : src} 
             alt={`Lab Moment ${num}`}
-            className={`max-w-full max-h-full object-contain ${failed ? 'opacity-20' : ''}`}
-            loading="lazy" decoding="async"
-            onError={() => {
-              if (extIdx < extensions.length - 1) {
-                setExtIdx(prev => prev + 1);
-              } else {
-                setFailed(true);
-              }
-            }}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className={`object-contain ${failed ? 'opacity-20' : ''}`}
+            priority={num <= 4}
+            onError={() => setFailed(true)}
           />
         </div>
         
