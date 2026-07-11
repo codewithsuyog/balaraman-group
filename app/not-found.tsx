@@ -23,7 +23,7 @@ export default function NotFound() {
         </h1>
         
         <p className="text-lg md:text-xl text-foreground/70 font-light mb-12 leading-relaxed">
-          The page you are looking for has either evaporated or was never synthesized. Let's get you back to the main laboratory.
+          The page you are looking for has either evaporated or was never synthesized. Let&apos;s get you back to the main laboratory.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center gap-6">

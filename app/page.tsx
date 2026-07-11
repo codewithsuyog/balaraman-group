@@ -20,7 +20,9 @@ import {
 import { featuredPublications as publications } from './publications_featured';
 import ChemText from '../components/ChemText';
 
-const fadeUp: any = {
+import { Variants } from 'framer-motion';
+
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
 };
@@ -30,7 +32,20 @@ const staggerContainer = {
   visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
 };
 
-const PublicationLink = ({ pub }: { pub: any }) => {
+interface PubData {
+  id: number;
+  year?: number | string;
+  title?: string;
+  fullText?: string;
+  doi?: string;
+  journal?: string;
+  authors?: string;
+  volume?: string;
+  pages?: string;
+  details?: string;
+}
+
+const PublicationLink = ({ pub }: { pub: PubData }) => {
   const [coverFailed, setCoverFailed] = useState(false);
   const extensions = ['.webp', '.jpg', '.png', '.gif', '.jpeg'];
   const [coverExtIdx, setCoverExtIdx] = useState(0);
@@ -69,7 +84,7 @@ const PublicationLink = ({ pub }: { pub: any }) => {
   );
 };
 
-const FeaturedPublication = ({ pub }: { pub: any }) => {
+const FeaturedPublication = ({ pub }: { pub: PubData }) => {
   const [coverFailed, setCoverFailed] = useState(false);
   const [schemeFailed, setSchemeFailed] = useState(false);
   const extensions = ['.webp', '.jpg', '.png', '.gif', '.jpeg'];
@@ -153,7 +168,17 @@ const FeaturedPublication = ({ pub }: { pub: any }) => {
 const IMG_EXTENSIONS = ['.webp', '.jpg', '.png', '.jpeg'];
 const hasFileExt = (path: string) => /\.\w{2,5}$/.test(path);
 
-const TeamMemberThumb = ({ member, role }: { member: any, role: string }) => {
+interface TeamMember {
+  name?: string;
+  image?: string;
+  info?: string;
+  email?: string;
+  thesis?: string;
+  duration?: string;
+  present?: string;
+}
+
+const TeamMemberThumb = ({ member, role }: { member: TeamMember, role: string }) => {
   const [extIdx, setExtIdx] = useState(0);
   const [failed, setFailed] = useState(false);
 
@@ -211,7 +236,7 @@ const TeamMemberThumb = ({ member, role }: { member: any, role: string }) => {
   );
 };
 
-const AlumniThumb = ({ member }: { member: any }) => {
+const AlumniThumb = ({ member }: { member: TeamMember }) => {
   const [extIdx, setExtIdx] = useState(0);
   const [failed, setFailed] = useState(false);
 
@@ -589,7 +614,7 @@ export default function Home() {
         {/* Mobile Header */}
         <div className="flex items-center justify-between w-full md:w-auto md:hidden">
           <div className="px-3 font-bold text-amber-500 tracking-widest uppercase text-[10px]">
-            Raman's Lab
+            Raman&apos;s Lab
           </div>
           <div className="flex items-center gap-2">
             <ThemeToggle />
@@ -604,7 +629,7 @@ export default function Home() {
 
         {/* Navigation Links */}
         <div className={`flex-col md:flex-row md:flex items-stretch md:items-center gap-1 md:gap-2 ${mobileMenuOpen ? 'flex mt-2 mb-2' : 'hidden'}`}>
-          {navLinks.map((link: any) => {
+          {navLinks.map((link: { id: string; label: string; href?: string }) => {
             const isExternal = link.href?.startsWith('/');
             const baseClass = `px-4 py-3 md:py-2 rounded-xl md:rounded-full transition-all duration-500 ease-out whitespace-nowrap relative group cursor-pointer text-left md:text-center ${
               activeSection === link.id 
@@ -681,7 +706,7 @@ export default function Home() {
 
           <motion.div initial="hidden" animate="visible" variants={fadeUp} className="relative">
             <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter mb-8 text-white relative z-10 drop-shadow-[0_2px_30px_rgba(0,0,0,0.5)] leading-[0.9]">
-              Raman's<br/>
+              Raman&apos;s<br/>
               <span style={{ color: '#fbbf24' }}>Research</span> Lab
             </h1>
           </motion.div>
@@ -769,11 +794,11 @@ export default function Home() {
             <h3 className="text-xl text-amber-500 mb-6 font-light tracking-tight">Associate Professor & Chair, Department of Chemistry, IISER Tirupati</h3>
             
             <p className="text-lg md:text-xl text-foreground font-light leading-relaxed mb-8 italic border-l-4 border-amber-500 pl-6">
-              "Leading the frontier of sustainable catalysis and molecular engineering through innovative transition-metal systems."
+              &quot;Leading the frontier of sustainable catalysis and molecular engineering through innovative transition-metal systems.&quot;
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6 mb-10">
-              {piBio.map((item: any, idx) => (
+              {piBio.map((item: { year?: string; role?: string; institution?: string; details?: string }, idx) => (
                 <div key={idx} className="flex flex-col group">
                   <span className="text-[11px] font-bold text-amber-400 mb-2 font-mono tracking-widest uppercase">{item.year}</span>
                   <div className="flex-1 border-l-2 border-foreground/10 pl-6 group-hover:border-amber-500 transition-colors py-2">
@@ -896,7 +921,7 @@ export default function Home() {
             <h2 className="text-5xl md:text-8xl font-black tracking-tight mb-12 text-gradient leading-[0.9]">Research</h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
                <p className="text-xl md:text-2xl text-foreground/80 font-light leading-relaxed border-l-4 border-amber-500 pl-8 italic">
-                 "We explore the frontiers of <span className="text-accent font-semibold not-italic">organometallic chemistry</span> — designing molecular architectures that unlock new pathways for <span className="text-accent font-semibold not-italic">sustainable catalysis</span> and selective organic transformations."
+                 &quot;We explore the frontiers of <span className="text-accent font-semibold not-italic">organometallic chemistry</span> — designing molecular architectures that unlock new pathways for <span className="text-accent font-semibold not-italic">sustainable catalysis</span> and selective organic transformations.&quot;
                </p>
                <div className="space-y-6 text-lg text-foreground/80 font-light leading-relaxed">
                   <p>
@@ -1118,7 +1143,7 @@ export default function Home() {
             </div>
             <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-8 text-gradient uppercase">Contact Us</h2>
             <p className="text-xl text-foreground/90 font-light mb-12">
-              Interested in joining our group or collaborating with us? We'd love to hear from you.
+              Interested in joining our group or collaborating with us? We&apos;d love to hear from you.
             </p>
             
             <div className="space-y-8">
@@ -1197,7 +1222,7 @@ export default function Home() {
           <div className="w-full md:w-1/2 p-10 rounded-[3rem] bg-foreground/[0.02] border border-foreground/5">
              <h3 className="text-2xl font-bold text-foreground mb-6 uppercase tracking-tight">Open Positions</h3>
              <p className="text-foreground font-light mb-8 leading-relaxed">
-               We are always looking for motivated Postdocs, Ph.D. students, and Master's students to join our lab. Please send your CV and a brief description of your research interests to Prof. Balaraman.
+               We are always looking for motivated Postdocs, Ph.D. students, and Master&apos;s students to join our lab. Please send your CV and a brief description of your research interests to Prof. Balaraman.
              </p>
              <div className="space-y-4">
                <div className="p-4 rounded-2xl bg-amber-500/5 border border-amber-500/10 flex items-center gap-4">
@@ -1223,7 +1248,7 @@ export default function Home() {
       <footer className="w-full py-12 px-6 border-t border-foreground/5 bg-foreground/50 backdrop-blur-md relative z-10">
          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
             <p className="text-[10px] font-mono text-foreground uppercase tracking-[0.4em]">
-               © {new Date().getFullYear()} Raman's Research Lab
+               © {new Date().getFullYear()} Raman&apos;s Research Lab
             </p>
             <div className="flex items-center gap-2">
                <a href={piStats.twitter} target="_blank" rel="noopener noreferrer"

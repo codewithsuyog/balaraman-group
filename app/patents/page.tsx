@@ -8,12 +8,22 @@ import {
 } from 'lucide-react';
 import { patents } from '../data';
 
-const fadeUp: any = {
+import { Variants } from 'framer-motion';
+
+interface Patent {
+  title: string;
+  authors?: string;
+  number?: string;
+  year?: string | number;
+  coapplicant?: string;
+}
+
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
 };
 
-const PatentCard = ({ patent, type }: { patent: any, type: string }) => (
+const PatentCard = ({ patent, type }: { patent: Patent, type: string }) => (
   <motion.div 
     variants={fadeUp}
     className="group p-5 md:p-8 rounded-[2.5rem] bg-foreground/5 border border-foreground/10 hover:border-amber-500/30 transition-all duration-500 flex flex-col h-full"

@@ -12,12 +12,25 @@ import { patents } from '../data';
 import { publications } from '../publications_master';
 import ChemText from '../../components/ChemText';
 
-const fadeUp: any = {
+import { Variants } from 'framer-motion';
+
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
 };
 
-const PublicationItem = ({ pub }: { pub: any }) => (
+interface Publication {
+  id: number;
+  authors: string;
+  title: string;
+  journal: string;
+  year: string | number;
+  volume?: string;
+  pages?: string;
+  doi?: string;
+}
+
+const PublicationItem = ({ pub }: { pub: Publication }) => (
   <div className="flex gap-4 group/pub py-4 border-b border-foreground/5 last:border-0 hover:bg-foreground/[0.02] transition-colors rounded-lg px-3 -mx-3">
     <span className="text-xs font-mono text-amber-500/50 mt-1 shrink-0">{pub.id}.</span>
     <div className="flex-1 min-w-0">

@@ -3,10 +3,46 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowLeft, GraduationCap, Users } from 'lucide-react';
+import { Variants } from 'framer-motion';
 import { team as teamData } from '../data';
-const team: any = teamData;
 
-const fadeUp: any = {
+interface TeamData {
+  alumniPhd?: PhdAlumnus[];
+  alumniMsc?: MscAlumnus[];
+  semesterProject?: SemesterStudent[];
+  mscAlumni?: string[];
+  projectFellows?: string[];
+  summerStudents?: string[];
+  labRotation?: string[];
+  ugAlumni?: string[];
+}
+
+interface PhdAlumnus {
+  name: string;
+  duration?: string;
+  year?: string;
+  thesis?: string;
+  title?: string;
+  present?: string;
+  image?: string;
+}
+
+interface MscAlumnus {
+  name: string;
+  info?: string;
+  year?: string;
+  image?: string;
+}
+
+interface SemesterStudent {
+  name: string;
+  info?: string;
+  image?: string;
+}
+
+const team = teamData as TeamData;
+
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
 };
@@ -25,7 +61,7 @@ export default function AlumniPage() {
           </Link>
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">Alumni Registry</h1>
           <p className="text-foreground text-lg font-light max-w-2xl">
-            A complete record of the brilliant doctoral scholars, post-graduates, undergraduates, and project fellows who have contributed to Raman's Research Lab.
+            A complete record of the brilliant doctoral scholars, post-graduates, undergraduates, and project fellows who have contributed to Raman&apos;s Research Lab.
           </p>
         </motion.div>
 
@@ -47,7 +83,7 @@ export default function AlumniPage() {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-foreground/5">
-                    {team.alumniPhd.map((alumnus: any, idx: number) => (
+                    {team.alumniPhd.map((alumnus: PhdAlumnus, idx: number) => (
                       <tr key={idx} className="hover:bg-foreground/[0.04] transition-colors">
                         <td className="p-6 font-bold text-foreground/90 text-lg">{alumnus.name}</td>
                         <td className="p-6 text-sm text-[var(--color-muted)] font-mono">{alumnus.duration || alumnus.year}</td>

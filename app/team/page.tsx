@@ -9,7 +9,9 @@ import {
 } from 'lucide-react';
 import { team } from '../data';
 
-const fadeUp: any = {
+import { Variants } from 'framer-motion';
+
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
 };
@@ -18,7 +20,20 @@ const EXTENSIONS = ['.webp', '.jpg', '.png', '.jpeg'];
 
 const hasExtension = (path: string) => /\.\w{2,5}$/.test(path);
 
-const MemberCard = ({ member, role }: { member: any, role: string }) => {
+interface TeamMember {
+  name?: string;
+  image?: string;
+  info?: string;
+  email?: string;
+  duration?: string;
+  present?: string;
+  thesis?: string;
+  institution?: string;
+  year?: string | number;
+  batch?: string;
+}
+
+const MemberCard = ({ member, role }: { member: TeamMember, role: string }) => {
   const [extIdx, setExtIdx] = useState(0);
   const [imgFailed, setImgFailed] = useState(false);
 
@@ -92,7 +107,7 @@ const MemberCard = ({ member, role }: { member: any, role: string }) => {
   );
 };
 
-const AlumniPhDCard = ({ member }: { member: any }) => {
+const AlumniPhDCard = ({ member }: { member: TeamMember }) => {
   const [imgFailed, setImgFailed] = useState(false);
   
   return (
@@ -133,7 +148,7 @@ const AlumniPhDCard = ({ member }: { member: any }) => {
   );
 };
 
-const AlumniPostdocCard = ({ member }: { member: any }) => {
+const AlumniPostdocCard = ({ member }: { member: TeamMember }) => {
   const [imgFailed, setImgFailed] = useState(false);
   
   return (
@@ -177,8 +192,10 @@ export default function TeamPage() {
 
   useEffect(() => {
     if (typeof window !== 'undefined' && window.location.hash === '#alumni') {
-      setIsAlumniOnly(true);
-      setShowAllAlumni(true);
+      setTimeout(() => {
+        setIsAlumniOnly(true);
+        setShowAllAlumni(true);
+      }, 0);
     }
   }, []);
   
@@ -267,25 +284,25 @@ export default function TeamPage() {
                  <h3 className="text-xs font-mono text-emerald-500 uppercase tracking-[0.4em]">Doctoral Students (Ph.D. Thesis)</h3>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                {team.alumniPhd.map((member: any, i: number) => <AlumniPhDCard key={i} member={member} />)}
+                {team.alumniPhd.map((member: TeamMember, i: number) => <AlumniPhDCard key={i} member={member} />)}
               </div>
             </div>
           )}
 
           {/* Postdoc Alumni */}
-          {(team as any).alumniPostdoc && (team as any).alumniPostdoc.length > 0 && (
+          {(team as typeof team & { alumniPostdoc?: TeamMember[] }).alumniPostdoc?.length ? (
             <div className="mb-32">
               <div className="flex items-center gap-4 mb-12">
                  <div className="h-px w-12 bg-teal-500"></div>
                  <h3 className="text-xs font-mono text-teal-500 uppercase tracking-[0.4em]">Post-doctoral Alumni</h3>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                {((team as any).alumniPostdoc as any[]).map((member: any, i: number) => (
+                {(team as typeof team & { alumniPostdoc: TeamMember[] }).alumniPostdoc.map((member: TeamMember, i: number) => (
                   <AlumniPostdocCard key={i} member={member} />
                 ))}
               </div>
             </div>
-          )}
+          ) : null}
 
           {/* MSc Alumni */}
           {team.alumniMsc && team.alumniMsc.length > 0 && (
@@ -295,7 +312,7 @@ export default function TeamPage() {
                  <h3 className="text-xs font-mono text-purple-500 uppercase tracking-[0.4em]">Post-graduate Students (MSc Thesis)</h3>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {(team.alumniMsc as any[]).map((m, i) => (
+                {(team.alumniMsc as TeamMember[]).map((m, i) => (
                   <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-foreground/[0.02] border border-foreground/5 hover:border-purple-500/20 transition-all">
                     <div className="w-8 h-8 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 shrink-0">
                       <BookOpen size={14} />
@@ -318,7 +335,7 @@ export default function TeamPage() {
                  <h3 className="text-xs font-mono text-orange-500 uppercase tracking-[0.4em]">Undergraduate Students (B.Tech)</h3>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {(team.alumniBtech as any[]).map((m, i) => (
+                {(team.alumniBtech as TeamMember[]).map((m, i) => (
                   <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-foreground/[0.02] border border-foreground/5 hover:border-orange-500/20 transition-all">
                     <div className="w-8 h-8 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-400 shrink-0">
                       <Beaker size={14} />
@@ -341,7 +358,7 @@ export default function TeamPage() {
                  <h3 className="text-xs font-mono text-cyan-500 uppercase tracking-[0.4em]">Project Fellows / Research Associates</h3>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {(team.alumniProjectFellows as any[]).map((m, i) => (
+                {(team.alumniProjectFellows as TeamMember[]).map((m, i) => (
                   <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-foreground/[0.02] border border-foreground/5 hover:border-cyan-500/20 transition-all">
                     <div className="w-8 h-8 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 shrink-0">
                       <FlaskConical size={14} />
@@ -364,7 +381,7 @@ export default function TeamPage() {
                  <h3 className="text-xs font-mono text-pink-500 uppercase tracking-[0.4em]">Semester &amp; Summer Project Students @ IISER Tirupati</h3>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {(team.alumniSemester as any[]).map((m, i) => (
+                {(team.alumniSemester as TeamMember[]).map((m, i) => (
                   <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-foreground/[0.02] border border-foreground/5 hover:border-pink-500/20 transition-all">
                     <div className="w-8 h-8 rounded-xl bg-pink-500/10 flex items-center justify-center text-pink-400 shrink-0">
                       <GraduationCap size={14} />
@@ -387,7 +404,7 @@ export default function TeamPage() {
                  <h3 className="text-xs font-mono text-amber-500 uppercase tracking-[0.4em]">Lab Rotation iPhD Students @ IISER Tirupati</h3>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {(team.alumniLabRotation as any[]).map((m, i) => (
+                {(team.alumniLabRotation as TeamMember[]).map((m, i) => (
                   <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-foreground/[0.02] border border-foreground/5 hover:border-amber-500/20 transition-all">
                     <div className="w-8 h-8 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-400 shrink-0">
                       <Users size={14} />

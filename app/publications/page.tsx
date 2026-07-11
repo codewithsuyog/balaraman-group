@@ -7,12 +7,33 @@ import { ArrowLeft, BookOpen, ExternalLink } from 'lucide-react';
 import { publications } from '../publications_master';
 import ChemText from '../../components/ChemText';
 
-const fadeUp: any = {
+import { Variants } from 'framer-motion';
+
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
 };
 
-const PublicationCard = ({ pub, idx, fadeUp }: any) => {
+interface Publication {
+  id: number;
+  authors: string;
+  title: string;
+  journal?: string;
+  year: string | number;
+  volume?: string;
+  pages?: string;
+  doi?: string;
+  fullText?: string;
+  details?: string;
+}
+
+interface PublicationCardProps {
+  pub: Publication;
+  idx: number;
+  fadeUp: Variants;
+}
+
+const PublicationCard = ({ pub, idx, fadeUp }: PublicationCardProps) => {
   const [coverFailed, setCoverFailed] = React.useState(false);
   const [schemeFailed, setSchemeFailed] = React.useState(false);
   const [coverExtIdx, setCoverExtIdx] = React.useState(0);
@@ -144,7 +165,7 @@ export default function PublicationsPage() {
           </Link>
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">Publications Archive</h1>
           <p className="text-foreground text-lg font-light max-w-2xl">
-            A comprehensive record of all scholarly articles, peer-reviewed papers, and research outputs from Raman's Research Lab.
+            A comprehensive record of all scholarly articles, peer-reviewed papers, and research outputs from Raman&apos;s Research Lab.
           </p>
         </motion.div>
 

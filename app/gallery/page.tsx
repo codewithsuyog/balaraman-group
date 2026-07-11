@@ -13,7 +13,7 @@ export default function GalleryPage() {
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search);
       if (params.get('tab') === 'images') {
-        setActiveTab('images');
+        setTimeout(() => setActiveTab('images'), 0);
       }
     }
   }, []);
