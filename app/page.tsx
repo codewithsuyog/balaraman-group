@@ -686,7 +686,7 @@ export default function Home() {
         <motion.div className="absolute inset-0 z-0">
           <Image 
             src={heroImage} 
-            alt="Raman Lab Group" 
+            alt="Dr. Ekambaram Balaraman leading Raman's Research Lab team in Catalysis and C1 Chemistry research" 
             fill
             priority
             sizes="100vw"
@@ -706,8 +706,8 @@ export default function Home() {
 
           <motion.div initial="hidden" animate="visible" variants={fadeUp} className="relative">
             <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter mb-8 text-white relative z-10 drop-shadow-[0_2px_30px_rgba(0,0,0,0.5)] leading-[0.9]">
-              Raman&apos;s<br/>
-              <span style={{ color: '#fbbf24' }}>Research</span> Lab
+              Dr. Ekambaram Balaraman<br/>
+              <span style={{ color: '#fbbf24' }}>Raman&apos;s Research Lab</span>
             </h1>
           </motion.div>
 
@@ -728,7 +728,7 @@ export default function Home() {
              <div className="w-full aspect-square rounded-[2rem] md:rounded-[3rem] border border-foreground/10 relative overflow-hidden group shadow-2xl bg-black/5">
                <Image 
                  src="/images/pi/PI Photo 2.jpeg" 
-                 alt="Dr. Ekambaram Balaraman" 
+                 alt="Dr. Ekambaram Balaraman - Principal Investigator of Raman's Research Lab at IISER Tirupati" 
                  fill
                  sizes="(max-width: 768px) 100vw, 33vw"
                  className="object-cover object-center" 

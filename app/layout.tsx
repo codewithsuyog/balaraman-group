@@ -33,26 +33,26 @@ export const viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://balaraman-group.com'),
-  title: "Balaraman Group | E. Balaraman (Ekambaram)",
-  description: "Official website of the Balaraman Group, led by Dr. E. Balaraman (Ekambaram). Explore our research in catalysis, academic publications, patents, and lab gallery.",
-  keywords: ["E. Balaraman", "Ekambaram", "ebalarama", "ekambaramam", "Balaraman Group", "Catalysis", "chemistry research", "IISER Tirupati"],
-  authors: [{ name: "Dr. E. Balaraman" }],
+  title: "Dr. Ekambaram Balaraman | Raman's Lab | Catalysis Research",
+  description: "Raman's Research Lab led by Dr. Ekambaram Balaraman at IISER Tirupati. Pioneering research in Catalysis, Sustainable Chemistry, and C1 Chemistry.",
+  keywords: ["Dr. Ekambaram Balaraman", "Ekambaram Balaraman", "E. Balaraman", "Raman's Research Lab", "Catalysis", "Sustainable Chemistry", "C1 Chemistry", "Transition-metal organometallic systems", "IISER Tirupati"],
+  authors: [{ name: "Dr. Ekambaram Balaraman" }],
   alternates: {
     canonical: 'https://balaraman-group.com',
   },
   openGraph: {
-    title: "Balaraman Group | E. Balaraman (Ekambaram)",
-    description: "Official website of the Balaraman Group, led by Dr. E. Balaraman (Ekambaram). Explore our research in catalysis, academic publications, patents, and lab gallery.",
+    title: "Dr. Ekambaram Balaraman | Raman's Lab | Catalysis Research",
+    description: "Raman's Research Lab led by Dr. Ekambaram Balaraman at IISER Tirupati. Pioneering research in Catalysis, Sustainable Chemistry, and C1 Chemistry.",
     url: "https://balaraman-group.com",
-    siteName: "Balaraman Group",
+    siteName: "Raman's Research Lab",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Balaraman Group | E. Balaraman (Ekambaram)",
-    description: "Official website of the Balaraman Group, led by Dr. E. Balaraman (Ekambaram). Explore our research in catalysis, academic publications, patents, and lab gallery.",
+    title: "Dr. Ekambaram Balaraman | Raman's Lab | Catalysis Research",
+    description: "Raman's Research Lab led by Dr. Ekambaram Balaraman at IISER Tirupati. Pioneering research in Catalysis, Sustainable Chemistry, and C1 Chemistry.",
     images: ["/og-image.jpg"],
   },
   icons: {
@@ -79,11 +79,15 @@ export default function RootLayout({
               {
                 "@context": "https://schema.org",
                 "@type": "Person",
-                "name": "E. Balaraman",
-                "alternateName": ["Ekambaram", "Ebalarama", "Ekambaramam", "E Balaraman", "Balaraman E"],
+                "name": "Dr. Ekambaram Balaraman",
+                "alternateName": ["E. Balaraman", "Ekambaram", "Ebalarama", "Ekambaramam", "E Balaraman", "Balaraman E"],
                 "url": "https://balaraman-group.com",
-                "jobTitle": "Professor / Principal Investigator",
-                "knowsAbout": ["Catalysis", "Chemistry", "Organic Synthesis"],
+                "jobTitle": "Principal Investigator",
+                "affiliation": {
+                  "@type": "EducationalOrganization",
+                  "name": "Indian Institute of Science Education and Research (IISER) Tirupati"
+                },
+                "knowsAbout": ["Catalysis", "Sustainable Chemistry", "C1 Chemistry", "Transition-metal organometallic systems"],
                 "sameAs": [
                   "https://twitter.com/Raman_Lab",
                   "https://www.linkedin.com/in/ekambaram-balaraman-4a11293a/"
@@ -91,25 +95,22 @@ export default function RootLayout({
               },
               {
                 "@context": "https://schema.org",
-                "@type": "ResearchOrganization",
-                "name": "Balaraman Research Group",
-                "alternateName": ["Raman's Research Lab", "E. Balaraman Lab", "IISER Tirupati Balaraman Lab"],
+                "@type": "EducationalOrganization",
+                "name": "Raman's Research Lab",
+                "alternateName": ["Balaraman Research Group", "E. Balaraman Lab", "IISER Tirupati Balaraman Lab"],
                 "url": "https://balaraman-group.com",
                 "logo": "https://balaraman-group.com/logo.webp",
                 "parentOrganization": {
-                  "@type": "CollegeOrUniversity",
+                  "@type": "EducationalOrganization",
                   "name": "Indian Institute of Science Education and Research (IISER) Tirupati",
                   "url": "https://www.iisertirupati.ac.in"
                 },
-                "member": {
+                "founder": {
                   "@type": "Person",
-                  "name": "Dr. E. Balaraman",
-                  "jobTitle": "Associate Professor",
-                  "affiliation": "IISER Tirupati",
-                  "sameAs": ["https://twitter.com/Raman_Lab", "https://www.linkedin.com/in/ekambaram-balaraman-4a11293a/"]
+                  "name": "Dr. Ekambaram Balaraman"
                 },
-                "description": "Research lab at IISER Tirupati specializing in catalysis, sustainable chemistry, C1 chemistry, and organometallic systems.",
-                "knowsAbout": ["Catalysis", "Sustainable Chemistry", "Organometallic Chemistry", "C1 Chemistry"]
+                "description": "Research lab at IISER Tirupati specializing in Catalysis, Sustainable Chemistry, C1 Chemistry, and Transition-metal organometallic systems.",
+                "knowsAbout": ["Catalysis", "Sustainable Chemistry", "C1 Chemistry", "Transition-metal organometallic systems"]
               }
             ])
           }}
