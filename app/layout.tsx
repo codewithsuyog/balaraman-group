@@ -127,22 +127,24 @@ export default function RootLayout({
       </head>
       <body className="font-sans min-h-screen bg-background text-foreground flex flex-col transition-colors duration-300 select-none" suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <div className="fixed inset-0 z-[-1] opacity-10 pointer-events-none overflow-hidden">
-            <FloatingPaths position={1} />
-            <FloatingPaths position={-1} />
-          </div>
-          <div className="scroll-progress">
-            <div className="scroll-progress-bar h-full w-full" id="scroll-bar" suppressHydrationWarning></div>
-          </div>
-          {children}
-          <React.Suspense fallback={null}>
-            <SpeedInsights />
-          </React.Suspense>
-          <React.Suspense fallback={null}>
-            <Analytics />
-          </React.Suspense>
-          <BackButton />
-          <ScrollProgress />
+          <>
+            <div className="fixed inset-0 z-[-1] opacity-10 pointer-events-none overflow-hidden">
+              <FloatingPaths position={1} />
+              <FloatingPaths position={-1} />
+            </div>
+            <div className="scroll-progress">
+              <div className="scroll-progress-bar h-full w-full" id="scroll-bar" suppressHydrationWarning></div>
+            </div>
+            {children}
+            <React.Suspense fallback={null}>
+              <SpeedInsights />
+            </React.Suspense>
+            <React.Suspense fallback={null}>
+              <Analytics />
+            </React.Suspense>
+            <BackButton />
+            <ScrollProgress />
+          </>
         </ThemeProvider>
       </body>
     </html>
