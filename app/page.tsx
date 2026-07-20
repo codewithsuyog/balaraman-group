@@ -19,7 +19,6 @@ import {
 } from './data';
 import { featuredPublications as publications } from './publications_featured';
 import ChemText from '../components/ChemText';
-import { FloatingPaths } from '@/components/ui/background-paths';
 
 import { Variants } from 'framer-motion';
 
@@ -722,10 +721,6 @@ export default function Home() {
 
       {/* 2. PI SECTION */}
       <section id="pi" className="w-full py-20 md:py-24 px-6 relative z-10 bg-foreground/[0.02] overflow-hidden">
-        <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
-          <FloatingPaths position={1} />
-          <FloatingPaths position={-1} />
-        </div>
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16 items-stretch relative z-10">
           
           <div className="w-full lg:w-1/3 flex flex-col">

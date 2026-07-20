@@ -83,8 +83,8 @@ function FlipCard({
 const TOTAL_IMAGES = 20;
 const MAX_SCROLL = 3000;
 
-// Actual Publication Schemes
-const IMAGES = Array.from({ length: 20 }, (_, i) => `/images/publications/schemes/${117 - i}.webp`);
+// Actual Publication Covers
+const IMAGES = Array.from({ length: 20 }, (_, i) => `/images/publications/covers/${117 - i}.webp`);
 
 const lerp = (start: number, end: number, t: number) => start * (1 - t) + end * t;
 
