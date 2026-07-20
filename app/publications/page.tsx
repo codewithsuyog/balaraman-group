@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { ArrowLeft, BookOpen, ExternalLink } from 'lucide-react';
 import { publications } from '../publications_master';
 import ChemText from '../../components/ChemText';
+import ScrollMorphHero from '@/components/ui/scroll-morph-hero';
 
 import { Variants } from 'framer-motion';
 
@@ -168,6 +169,11 @@ export default function PublicationsPage() {
             A comprehensive record of all scholarly articles, peer-reviewed papers, and research outputs from Raman&apos;s Research Lab.
           </p>
         </motion.div>
+
+        {/* Morphing Hero Section */}
+        <div className="mb-20">
+          <ScrollMorphHero />
+        </div>
 
         {/* Category Tabs */}
         <div className="flex gap-4 mb-16 flex-wrap">
