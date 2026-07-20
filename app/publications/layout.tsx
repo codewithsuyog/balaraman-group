@@ -13,5 +13,5 @@ export const metadata: Metadata = {
 };
 
 export default function PublicationsLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return children;
 }
