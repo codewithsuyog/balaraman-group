@@ -19,6 +19,7 @@ import {
 } from './data';
 import { featuredPublications as publications } from './publications_featured';
 import ChemText from '../components/ChemText';
+import { FloatingPaths } from '@/components/ui/background-paths';
 
 import { Variants } from 'framer-motion';
 
@@ -706,8 +707,8 @@ export default function Home() {
 
           <motion.div initial="hidden" animate="visible" variants={fadeUp} className="relative">
             <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter mb-8 text-white relative z-10 drop-shadow-[0_2px_30px_rgba(0,0,0,0.5)] leading-[0.9]">
-              Dr. Ekambaram Balaraman<br/>
-              <span style={{ color: '#fbbf24' }}>Raman&apos;s Research Lab</span>
+              Raman&apos;s<br/>
+              <span style={{ color: '#fbbf24' }}>Research</span> Lab
             </h1>
           </motion.div>
 
@@ -720,8 +721,12 @@ export default function Home() {
       </section>
 
       {/* 2. PI SECTION */}
-      <section id="pi" className="w-full py-20 md:py-24 px-6 relative z-10 bg-foreground/[0.02]">
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16 items-stretch relative">
+      <section id="pi" className="w-full py-20 md:py-24 px-6 relative z-10 bg-foreground/[0.02] overflow-hidden">
+        <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
+          <FloatingPaths position={1} />
+          <FloatingPaths position={-1} />
+        </div>
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16 items-stretch relative z-10">
           
           <div className="w-full lg:w-1/3 flex flex-col">
             <div className="absolute inset-0 bg-amber-500/20 dark:bg-amber-500/5 blur-[80px] rounded-full -z-10"></div>

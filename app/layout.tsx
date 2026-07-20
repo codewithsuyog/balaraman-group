@@ -32,28 +32,35 @@ export const viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://balaraman-group.com'),
-  title: "Dr. Ekambaram Balaraman | Raman's Lab | Catalysis Research",
-  description: "Raman's Research Lab led by Dr. Ekambaram Balaraman at IISER Tirupati. Pioneering research in Catalysis, Sustainable Chemistry, and C1 Chemistry.",
+  metadataBase: new URL('https://www.ebalaraman.com'),
+  title: "Dr. Ekambaram Balaraman | Raman's Lab",
+  description: "Raman's Research Lab led by Dr. Ekambaram Balaraman at IISER Tirupati.",
   keywords: ["Dr. Ekambaram Balaraman", "Ekambaram Balaraman", "E. Balaraman", "Raman's Research Lab", "Catalysis", "Sustainable Chemistry", "C1 Chemistry", "Transition-metal organometallic systems", "IISER Tirupati"],
   authors: [{ name: "Dr. Ekambaram Balaraman" }],
   alternates: {
-    canonical: 'https://balaraman-group.com',
+    canonical: 'https://www.ebalaraman.com',
   },
   openGraph: {
-    title: "Dr. Ekambaram Balaraman | Raman's Lab | Catalysis Research",
-    description: "Raman's Research Lab led by Dr. Ekambaram Balaraman at IISER Tirupati. Pioneering research in Catalysis, Sustainable Chemistry, and C1 Chemistry.",
-    url: "https://balaraman-group.com",
-    siteName: "Raman's Research Lab",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
-    locale: "en_US",
-    type: "website",
+    title: "Dr. Ekambaram Balaraman | Raman's Lab",
+    description: "Raman's Research Lab at IISER Tirupati.",
+    url: 'https://www.ebalaraman.com',
+    siteName: "Raman's Lab",
+    images: [
+      {
+        url: '/opengraph-image.png',
+        width: 1200,
+        height: 630,
+        alt: "Raman's Research Lab Group Banner",
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dr. Ekambaram Balaraman | Raman's Lab | Catalysis Research",
-    description: "Raman's Research Lab led by Dr. Ekambaram Balaraman at IISER Tirupati. Pioneering research in Catalysis, Sustainable Chemistry, and C1 Chemistry.",
-    images: ["/og-image.jpg"],
+    title: "Dr. Ekambaram Balaraman | Raman's Lab",
+    description: "Raman's Research Lab led by Dr. Ekambaram Balaraman at IISER Tirupati.",
+    images: ["/opengraph-image.png"],
   },
   icons: {
     apple: '/apple-touch-icon.png',
