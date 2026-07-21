@@ -1188,7 +1188,7 @@ export const team = {
   currentPhd: [
     { name: "Soumya Sree Samal", info: "Ph.D.: August 2022 (PMRF), M. Sc., (Chem), Pondicherry University, Puducherry", email: "soumya_samal@students.iisertirupati.ac.in", image: "/images/team/present/phd/soumya.png" },
     { name: "Subarna Sukanya Padhy", info: "Ph.D. August 2022 (PMRF), M. Sc., (Chem), Pondicherry University, Puducherry", email: "subarna_padhy@students.iisertirupati.ac.in", image: "/images/team/present/phd/subarna.jpg" },
-    { name: "Smruti Rekha Padhy", info: "IISER-iPhD, IISER Tirupati", email: "smrutirekha@students.iisertirupati.ac.in", image: "/images/team/present/phd/smruti.jpeg" },
+    { name: "Smruti Rekha Padhy", info: "IISER-iPhD, IISER Tirupati", email: "smrutirekha@students.iisertirupati.ac.in", image: "/images/team/present/phd/smruti2.jpeg" },
     { name: "Abhijith K S", info: "Ph.D. Jan 2023, BSMS (Chem), IISER Tirupati", email: "abhijithks@students.iisertirupati.ac.in", image: "/images/team/present/phd/abhijith.png" },
     { name: "Chandrakant Gouda", info: "Ph.D. July 2023, M.Sc (Chem), Mangaluru University, Mangaluru", email: "chandrakantgouda@students.iisertirupati.ac.in", image: "/images/team/present/phd/chandrakant.jpeg" },
     { name: "Palmurukan M. R. Pal", info: "Ph.D. July 2023, M.Sc., M-Tech., (Industrial Catalysis) CUSAT, Kerala", email: "palmurukanmr@students.iisertirupati.ac.in", image: "/images/team/present/phd/palmurukan.jpg" },

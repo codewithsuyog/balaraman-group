@@ -13,6 +13,9 @@ import {
   Play, Pause, Volume2, VolumeX, Video
 } from 'lucide-react';
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { BackgroundCircles } from '@/components/ui/background-circles';
+import { AtomOrbital } from '@/components/ui/atom-orbital';
+import FramerCarouselThumbnails from '@/components/ui/framer-thumbnails';
 import { 
   patents, piBio, cvLink, 
   opportunities, team, awards, piStats, news 
@@ -725,14 +728,20 @@ export default function Home() {
           
           <div className="w-full lg:w-1/3 flex flex-col">
             <div className="absolute inset-0 bg-amber-500/20 dark:bg-amber-500/5 blur-[80px] rounded-full -z-10"></div>
-             <div className="w-full aspect-square rounded-[2rem] md:rounded-[3rem] border border-foreground/10 relative overflow-hidden group shadow-2xl bg-black/5">
-               <Image 
-                 src="/images/pi/PI Photo 2.jpeg" 
-                 alt="Dr. Ekambaram Balaraman - Principal Investigator of Raman's Research Lab at IISER Tirupati" 
-                 fill
-                 sizes="(max-width: 768px) 100vw, 33vw"
-                 className="object-cover object-center" 
-               />
+             {/* Photo wrapper with animated circles behind it */}
+             <div className="relative">
+               <div className="absolute -inset-16 pointer-events-none z-0 opacity-30 dark:opacity-50">
+                 <BackgroundCircles variant="amber" />
+               </div>
+               <div className="w-full aspect-square rounded-[2rem] md:rounded-[3rem] border border-foreground/10 relative overflow-hidden group shadow-2xl bg-black/5 z-[1]">
+                 <Image 
+                   src="/images/pi/PI Photo 2.jpeg" 
+                   alt="Dr. Ekambaram Balaraman - Principal Investigator of Raman's Research Lab at IISER Tirupati" 
+                   fill
+                   sizes="(max-width: 768px) 100vw, 33vw"
+                   className="object-cover object-center" 
+                 />
+               </div>
              </div>
             
             <div className="mt-8 flex flex-col items-center gap-3">
@@ -911,14 +920,20 @@ export default function Home() {
 
 
       {/* 3. RESEARCH SECTION */}
-      <section id="research" className="w-full py-32 px-6 relative z-10">
-        <div className="max-w-7xl mx-auto">
+      <section id="research" className="w-full py-32 px-6 relative z-10 overflow-hidden">
+        <div className="max-w-7xl mx-auto relative z-10">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mb-32">
             <div className="flex items-center gap-4 mb-4">
                <div className="h-px w-12 bg-accent"></div>
                <p className="text-sm font-extrabold text-accent tracking-[0.2em] uppercase">Laboratory Focus</p>
             </div>
-            <h2 className="text-5xl md:text-8xl font-black tracking-tight mb-12 text-gradient leading-[0.9]">Research</h2>
+            <div className="flex flex-col lg:flex-row items-start gap-8 mb-12">
+              <h2 className="text-5xl md:text-8xl font-black tracking-tight text-gradient leading-[0.9] flex-1">Research</h2>
+              {/* Atom Orbital Decoration */}
+              <div className="hidden lg:flex items-center justify-center">
+                <AtomOrbital size={200} />
+              </div>
+            </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
                <p className="text-xl md:text-2xl text-foreground/80 font-light leading-relaxed border-l-4 border-amber-500 pl-8 italic">
                  &quot;We explore the frontiers of <span className="text-accent font-semibold not-italic">organometallic chemistry</span> — designing molecular architectures that unlock new pathways for <span className="text-accent font-semibold not-italic">sustainable catalysis</span> and selective organic transformations.&quot;
@@ -1114,9 +1129,9 @@ export default function Home() {
             </div>
             <h2 className="text-4xl md:text-6xl font-black mb-12 uppercase tracking-tighter text-gradient">Lab Memories</h2>
 
-            {/* Slideshow 1: Gallery memories */}
+            {/* Interactive Gallery Carousel with Thumbnails */}
             <div className="w-full max-w-5xl mb-12">
-               <GallerySlideshow />
+               <FramerCarouselThumbnails />
             </div>
             {/* Slideshow 2: Lab Research Media (Images + Videos) */}
             <div className="w-full max-w-5xl mb-16">
@@ -1247,9 +1262,15 @@ export default function Home() {
       {/* FOOTER */}
       <footer className="w-full py-12 px-6 border-t border-foreground/5 bg-foreground/50 backdrop-blur-md relative z-10">
          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-            <p className="text-[10px] font-mono text-foreground uppercase tracking-[0.4em]">
-               © {new Date().getFullYear()} Raman&apos;s Research Lab
-            </p>
+            <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4">
+              <p className="text-[10px] font-mono text-foreground uppercase tracking-[0.4em] text-center md:text-left">
+                 © {new Date().getFullYear()} Raman&apos;s Research Lab
+              </p>
+              <span className="hidden md:inline text-foreground/40">|</span>
+              <p className="text-[10px] font-mono text-foreground/70 uppercase tracking-[0.4em] text-center md:text-left">
+                 Designed & Developed by <span className="font-bold text-foreground">Suyog</span>
+              </p>
+            </div>
             <div className="flex items-center gap-2">
                <a href={piStats.twitter} target="_blank" rel="noopener noreferrer"
                  className="group/ft w-9 h-9 rounded-xl border border-foreground/10 bg-foreground/[0.04] flex items-center justify-center text-foreground hover:bg-foreground/10 transition-all duration-200"
