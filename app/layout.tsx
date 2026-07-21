@@ -127,7 +127,7 @@ export default function RootLayout({
       </head>
       <body className="font-sans min-h-screen bg-background text-foreground flex flex-col transition-colors duration-300 select-none" suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <>
+          <div className="contents">
             <div className="fixed inset-0 z-[-1] opacity-10 pointer-events-none overflow-hidden">
               <FloatingPaths position={1} />
               <FloatingPaths position={-1} />
@@ -144,7 +144,7 @@ export default function RootLayout({
             </React.Suspense>
             <BackButton />
             <ScrollProgress />
-          </>
+          </div>
         </ThemeProvider>
       </body>
     </html>
