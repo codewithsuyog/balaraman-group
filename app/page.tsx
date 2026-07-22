@@ -16,6 +16,9 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { BackgroundCircles } from '@/components/ui/background-circles';
 import { AtomOrbital } from '@/components/ui/atom-orbital';
 import FramerCarouselThumbnails from '@/components/ui/framer-thumbnails';
+import { GlowCard } from '@/components/ui/glow-card';
+import { AnimatedCounter } from '@/components/ui/animated-counter';
+import { MagneticButton } from '@/components/ui/magnetic-button';
 import { 
   patents, piBio, cvLink, 
   opportunities, team, awards, piStats, news 
@@ -98,6 +101,7 @@ const FeaturedPublication = ({ pub }: { pub: PubData }) => {
   const hasScheme = !schemeFailed;
 
   return (
+    <GlowCard className="rounded-2xl md:rounded-[3rem]">
     <motion.div 
       initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
       className="group relative flex flex-col gap-8 p-5 md:p-10 rounded-2xl md:rounded-[3rem] bg-foreground/[0.03] border border-foreground/10 hover:border-amber-500/30 hover:bg-foreground/5 transition-all duration-500 shadow-xl overflow-hidden"
@@ -138,14 +142,16 @@ const FeaturedPublication = ({ pub }: { pub: PubData }) => {
           
           <div className="flex items-center gap-4 flex-wrap mt-auto">
             {pub.doi && (
+              <MagneticButton>
               <a 
                 href={pub.doi.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="px-8 py-4 rounded-full bg-amber-600/10 border border-amber-600/30 text-amber-400 text-xs font-bold flex items-center gap-2 hover:bg-amber-500 hover:text-foreground shadow-lg shadow-amber-600/10 transition-all uppercase tracking-widest w-max"
+                className="cta-shimmer px-8 py-4 rounded-full bg-amber-600/10 border border-amber-600/30 text-amber-400 text-xs font-bold flex items-center gap-2 hover:bg-amber-500 hover:text-foreground shadow-lg shadow-amber-600/10 transition-all uppercase tracking-widest w-max"
               >
                 Read Publication <ExternalLink size={14} />
               </a>
+              </MagneticButton>
             )}
           </div>
         </div>
@@ -165,6 +171,7 @@ const FeaturedPublication = ({ pub }: { pub: PubData }) => {
         )}
       </div>
     </motion.div>
+    </GlowCard>
   );
 };
 
@@ -832,22 +839,30 @@ export default function Home() {
 
             {/* Scholarly Metrics */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+              <GlowCard className="rounded-2xl" glowColor="rgba(245, 158, 11, 0.2)">
               <div className="p-6 rounded-2xl bg-foreground/[0.04] border border-foreground/10 hover:border-amber-500/30 transition-all text-center group hover:bg-amber-500/5">
-                <div className="text-3xl md:text-4xl font-black text-amber-400 mb-2 drop-shadow-[0_0_10px_rgba(96,165,250,0.3)]">{piStats.publications}</div>
+                <div className="text-3xl md:text-4xl font-black text-amber-400 mb-2 drop-shadow-[0_0_10px_rgba(96,165,250,0.3)]"><AnimatedCounter target={typeof piStats.publications === 'string' ? parseInt(piStats.publications) : piStats.publications} suffix="+" /></div>
                 <p className="text-[10px] uppercase tracking-widest text-foreground/90 font-mono font-semibold">Publications</p>
               </div>
+              </GlowCard>
+              <GlowCard className="rounded-2xl" glowColor="rgba(52, 211, 153, 0.2)">
               <div className="p-6 rounded-2xl bg-foreground/[0.04] border border-foreground/10 hover:border-emerald-500/30 transition-all text-center group hover:bg-emerald-500/5">
-                <div className="text-3xl md:text-4xl font-black text-emerald-400 mb-2 drop-shadow-[0_0_10px_rgba(52,211,153,0.3)]">{piStats.hIndex}</div>
+                <div className="text-3xl md:text-4xl font-black text-emerald-400 mb-2 drop-shadow-[0_0_10px_rgba(52,211,153,0.3)]"><AnimatedCounter target={piStats.hIndex} /></div>
                 <p className="text-[10px] uppercase tracking-widest text-foreground/90 font-mono font-semibold">h-Index</p>
               </div>
+              </GlowCard>
+              <GlowCard className="rounded-2xl" glowColor="rgba(251, 146, 60, 0.2)">
               <div className="p-6 rounded-2xl bg-foreground/[0.04] border border-foreground/10 hover:border-orange-500/30 transition-all text-center group hover:bg-orange-500/5">
-                <div className="text-3xl md:text-4xl font-black text-orange-400 mb-2 drop-shadow-[0_0_10px_rgba(251,146,60,0.3)]">{piStats.citations.toLocaleString()}</div>
+                <div className="text-3xl md:text-4xl font-black text-orange-400 mb-2 drop-shadow-[0_0_10px_rgba(251,146,60,0.3)]"><AnimatedCounter target={piStats.citations} formatCommas /></div>
                 <p className="text-[10px] uppercase tracking-widest text-foreground/90 font-mono font-semibold">Citations</p>
               </div>
+              </GlowCard>
+              <GlowCard className="rounded-2xl" glowColor="rgba(192, 132, 252, 0.2)">
               <div className="p-6 rounded-2xl bg-foreground/[0.04] border border-foreground/10 hover:border-purple-500/30 transition-all text-center group hover:bg-purple-500/5">
-                <div className="text-3xl md:text-4xl font-black text-purple-400 mb-2 drop-shadow-[0_0_10px_rgba(192,132,252,0.3)]">{piStats.grantedUSPatents}</div>
+                <div className="text-3xl md:text-4xl font-black text-purple-400 mb-2 drop-shadow-[0_0_10px_rgba(192,132,252,0.3)]"><AnimatedCounter target={piStats.grantedUSPatents} suffix="+" /></div>
                 <p className="text-[10px] uppercase tracking-widest text-foreground/90 font-mono font-semibold">US Patents</p>
               </div>
+              </GlowCard>
             </div>
 
             {/* Human Resource Stats */}
@@ -906,13 +921,17 @@ export default function Home() {
             </div>
 
             <div className="flex flex-wrap gap-4">
-               <a href={cvLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 px-10 py-5 rounded-full bg-foreground text-background font-bold hover:bg-amber-600 hover:text-foreground transition-all shadow-2xl">
+               <MagneticButton>
+               <a href={cvLink} target="_blank" rel="noopener noreferrer" className="cta-shimmer inline-flex items-center gap-3 px-10 py-5 rounded-full bg-foreground text-background font-bold hover:bg-amber-600 hover:text-foreground transition-all shadow-2xl">
                   <Download size={20} /> Download Academic CV
                </a>
-               <a href={piStats.googleScholar} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 px-8 py-5 rounded-full border border-amber-500/30 text-amber-400 font-bold hover:bg-amber-500/10 transition-all">
+               </MagneticButton>
+               <MagneticButton>
+               <a href={piStats.googleScholar} target="_blank" rel="noopener noreferrer" className="cta-shimmer inline-flex items-center gap-3 px-8 py-5 rounded-full border border-amber-500/30 text-amber-400 font-bold hover:bg-amber-500/10 transition-all">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269z"/><circle cx="12" cy="16.5" r="5.5"/></svg>
                   Google Scholar
                </a>
+               </MagneticButton>
             </div>
           </div>
         </motion.div>
@@ -920,7 +939,7 @@ export default function Home() {
 
 
       {/* 3. RESEARCH SECTION */}
-      <section id="research" className="w-full py-32 px-6 relative z-10 overflow-hidden">
+      <section id="research" className="w-full py-32 px-6 relative z-10 overflow-hidden dot-grid-bg">
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mb-32">
             <div className="flex items-center gap-4 mb-4">
@@ -983,9 +1002,11 @@ export default function Home() {
                     )}
                   </div>
 
-                  <Link href={`/research#${cat.id}`} className="flex items-center gap-3 px-8 py-4 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-[10px] font-black uppercase tracking-[0.2em] hover:bg-amber-600 hover:text-white hover:border-amber-600 transition-all mt-auto shadow-lg">
+                  <MagneticButton>
+                  <Link href={`/research#${cat.id}`} className="cta-shimmer flex items-center gap-3 px-8 py-4 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-[10px] font-black uppercase tracking-[0.2em] hover:bg-amber-600 hover:text-white hover:border-amber-600 transition-all mt-auto shadow-lg">
                      Dive Deeper <ArrowRight size={14} />
                   </Link>
+                  </MagneticButton>
                 </div>
               </motion.div>
             ))}
@@ -1001,9 +1022,11 @@ export default function Home() {
               <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-4 text-gradient uppercase">Publications</h2>
               <p className="text-foreground font-light">Highlights from our 117+ published works.</p>
             </div>
-            <Link href="/publications" className="px-8 py-4 rounded-full border border-amber-500/30 text-amber-400 font-bold hover:bg-amber-500/10 transition-all flex items-center gap-2 uppercase text-[10px] tracking-widest font-mono">
+            <MagneticButton>
+            <Link href="/publications" className="cta-shimmer px-8 py-4 rounded-full border border-amber-500/30 text-amber-400 font-bold hover:bg-amber-500/10 transition-all flex items-center gap-2 uppercase text-[10px] tracking-widest font-mono">
               View All 117 Publications <ArrowRight size={18} />
             </Link>
+            </MagneticButton>
           </div>
 
           <div className="flex flex-col gap-12">
@@ -1015,7 +1038,7 @@ export default function Home() {
       </section>
 
       {/* PATENTS PREVIEW SECTION */}
-      <section id="patents" className="w-full py-32 px-6 relative z-10">
+      <section id="patents" className="w-full py-32 px-6 relative z-10 dot-grid-bg">
         <div className="max-w-7xl mx-auto">
           <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
@@ -1026,28 +1049,42 @@ export default function Home() {
               <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-4 text-gradient uppercase">Patents</h2>
               <p className="text-foreground font-light">33+ patents filed including {patents.grantedUS.length} granted US patents.</p>
             </div>
-            <Link href="/patents" className="px-8 py-4 rounded-full border border-amber-500/30 text-amber-400 font-bold hover:bg-amber-500/10 transition-all flex items-center gap-2 uppercase text-[10px] tracking-widest font-mono">
+            <MagneticButton>
+            <Link href="/patents" className="cta-shimmer px-8 py-4 rounded-full border border-amber-500/30 text-amber-400 font-bold hover:bg-amber-500/10 transition-all flex items-center gap-2 uppercase text-[10px] tracking-widest font-mono">
               View All Patents <ArrowRight size={18} />
             </Link>
+            </MagneticButton>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            <div className="p-10 rounded-[3rem] bg-foreground/[0.03] border border-foreground/5 hover:border-amber-500/20 transition-all group">
-              <div className="text-5xl font-black text-amber-500 mb-4">{patents.iiser.length + patents.industry.length}</div>
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <motion.div variants={fadeUp}>
+            <GlowCard className="rounded-[3rem] h-full">
+            <div className="p-10 rounded-[3rem] bg-foreground/[0.03] border border-foreground/5 hover:border-amber-500/20 transition-all group h-full">
+              <div className="text-5xl font-black text-amber-500 mb-4"><AnimatedCounter target={patents.iiser.length + patents.industry.length} suffix="+" /></div>
               <h3 className="text-lg font-bold text-foreground mb-2 uppercase tracking-tight">Indian Patents</h3>
               <p className="text-foreground text-sm font-light">Filed at IISER Tirupati & with industry partners</p>
             </div>
-            <div className="p-10 rounded-[3rem] bg-foreground/[0.03] border border-foreground/5 hover:border-amber-500/20 transition-all group">
-              <div className="text-5xl font-black text-emerald-500 mb-4">{patents.grantedUS.length}</div>
+            </GlowCard>
+            </motion.div>
+            <motion.div variants={fadeUp}>
+            <GlowCard className="rounded-[3rem] h-full" glowColor="rgba(52, 211, 153, 0.2)">
+            <div className="p-10 rounded-[3rem] bg-foreground/[0.03] border border-foreground/5 hover:border-amber-500/20 transition-all group h-full">
+              <div className="text-5xl font-black text-emerald-500 mb-4"><AnimatedCounter target={patents.grantedUS.length} /></div>
               <h3 className="text-lg font-bold text-foreground mb-2 uppercase tracking-tight">Granted US Patents</h3>
               <p className="text-foreground text-sm font-light">International intellectual property portfolio</p>
             </div>
-            <div className="p-10 rounded-[3rem] bg-foreground/[0.03] border border-foreground/5 hover:border-amber-500/20 transition-all group">
-              <div className="text-5xl font-black text-orange-500 mb-4">{patents.industry.length}</div>
+            </GlowCard>
+            </motion.div>
+            <motion.div variants={fadeUp}>
+            <GlowCard className="rounded-[3rem] h-full" glowColor="rgba(251, 146, 60, 0.2)">
+            <div className="p-10 rounded-[3rem] bg-foreground/[0.03] border border-foreground/5 hover:border-amber-500/20 transition-all group h-full">
+              <div className="text-5xl font-black text-orange-500 mb-4"><AnimatedCounter target={patents.industry.length} /></div>
               <h3 className="text-lg font-bold text-foreground mb-2 uppercase tracking-tight">Industry Collaborations</h3>
               <p className="text-foreground text-sm font-light">GAIL India, Tata Steel & more</p>
             </div>
-          </div>
+            </GlowCard>
+            </motion.div>
+          </motion.div>
 
           <div className="space-y-4">
             {patents.iiser.slice(0, 3).map((p) => (
@@ -1070,7 +1107,7 @@ export default function Home() {
       </section>
 
       {/* 5. TEAM & GALLERY PREVIEW SECTION */}
-      <section id="team" className="w-full py-32 px-6 relative z-10 bg-foreground/[0.01]">
+      <section id="team" className="w-full py-32 px-6 relative z-10 bg-foreground/[0.01] dot-grid-bg">
          <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
             <h2 className="text-4xl md:text-6xl font-black mb-12 uppercase tracking-tighter text-gradient">Lab Members</h2>
             
@@ -1120,7 +1157,7 @@ export default function Home() {
       </section>
 
       {/* 5.5. GALLERY SECTION */}
-      <section id="gallery" className="w-full py-32 px-6 relative z-10 bg-background border-t border-foreground/5">
+      <section id="gallery" className="w-full py-32 px-6 relative z-10 bg-background border-t border-foreground/5 dot-grid-bg">
          <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
             <div className="flex items-center justify-center gap-4 mb-4">
               <div className="h-px w-12 bg-accent"></div>
@@ -1149,7 +1186,7 @@ export default function Home() {
       </section>
 
       {/* 6. CONTACT SECTION */}
-      <section id="contact" className="w-full py-32 px-6 relative z-10 bg-background">
+      <section id="contact" className="w-full py-32 px-6 relative z-10 bg-background dot-grid-bg">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16">
           <div className="w-full md:w-1/2">
             <div className="flex items-center gap-4 mb-4">

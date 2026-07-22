@@ -236,3 +236,48 @@ a[href^="http"]:not(.nav-link):not(.btn) {
 }
 
 html { scroll-behavior: smooth; }
+
+/* Animated dot-grid background for sections */
+.dot-grid-bg {
+  position: relative;
+}
+.dot-grid-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, var(--foreground) 0.5px, transparent 0.5px);
+  background-size: 24px 24px;
+  opacity: 0.03;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 30%, transparent 80%);
+}
+
+/* CTA shimmer sweep animation */
+.cta-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.cta-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.15) 45%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(255, 255, 255, 0.15) 55%,
+    transparent 60%
+  );
+  background-size: 200% 100%;
+  background-position: 200% 0;
+  transition: background-position 0s;
+  pointer-events: none;
+  border-radius: inherit;
+}
+.cta-shimmer:hover::after {
+  background-position: -200% 0;
+  transition: background-position 0.8s ease;
+}

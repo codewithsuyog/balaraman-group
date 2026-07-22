@@ -1,12 +1,12 @@
 'use client';
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, X, Maximize2, Image as ImageIcon, Users } from 'lucide-react';
+import { ArrowLeft, ArrowRight, X, Maximize2, Image as ImageIcon, Users, ChevronLeft, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 
 export default function GalleryPage() {
-  const [selectedImage, setSelectedImage] = React.useState<string | null>(null);
+  const [selectedIndex, setSelectedIndex] = React.useState<number | null>(null);
   const [activeTab, setActiveTab] = React.useState<'images' | 'memories'>('memories');
 
   React.useEffect(() => {
@@ -25,7 +25,21 @@ export default function GalleryPage() {
     (_, i) => i + 1
   );
 
-  const GalleryCard = ({ num, folder }: { num: number, folder: string }) => {
+  const folder = activeTab === 'images' ? 'lab-images' : 'gallery';
+
+  // Keyboard navigation for lightbox
+  React.useEffect(() => {
+    if (selectedIndex === null) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setSelectedIndex(null);
+      if (e.key === 'ArrowRight') setSelectedIndex((prev) => prev !== null ? (prev + 1) % photos.length : null);
+      if (e.key === 'ArrowLeft') setSelectedIndex((prev) => prev !== null ? (prev - 1 + photos.length) % photos.length : null);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedIndex, photos.length]);
+
+  const GalleryCard = ({ num, folder, index }: { num: number, folder: string, index: number }) => {
     const [failed, setFailed] = React.useState(false);
     const src = `/images/${folder}/${num}.webp`;
   
@@ -35,8 +49,9 @@ export default function GalleryPage() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: (num % 6) * 0.05 }}
+        whileHover={{ scale: 1.03 }}
         className="group relative aspect-[16/10] rounded-[2.5rem] overflow-hidden border border-foreground/10 shadow-2xl bg-foreground/5 cursor-pointer"
-        onClick={() => !failed && setSelectedImage(src)}
+        onClick={() => !failed && setSelectedIndex(index)}
       >
         <div className="w-full h-full relative p-2 bg-surface-alt/40">
           <Image 
@@ -44,7 +59,7 @@ export default function GalleryPage() {
             alt={`Lab Moment ${num}`}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className={`object-contain ${failed ? 'opacity-20' : ''}`}
+            className={`object-contain transition-transform duration-500 group-hover:scale-105 ${failed ? 'opacity-20' : ''}`}
             priority={num <= 4}
             onError={() => setFailed(true)}
           />
@@ -112,41 +127,65 @@ export default function GalleryPage() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {photos.map((num) => {
-            const folder = activeTab === 'images' ? 'lab-images' : 'gallery';
-            return <GalleryCard key={num} num={num} folder={folder} />;
+          {photos.map((num, idx) => {
+            return <GalleryCard key={num} num={num} folder={folder} index={idx} />;
           })}
         </div>
       </div>
 
-      {/* LIGHTBOX */}
-      <AnimatePresence>
-        {selectedImage && (
+      {/* LIGHTBOX WITH ARROW NAVIGATION */}
+      <AnimatePresence mode="wait">
+        {selectedIndex !== null && (
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setSelectedImage(null)}
+            onClick={() => setSelectedIndex(null)}
             className="fixed inset-0 z-[100] bg-[#090c10]/98 backdrop-blur-3xl flex items-center justify-center p-6 md:p-20"
           >
             <motion.div 
+              key={selectedIndex}
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.25 }}
               className="relative max-w-7xl w-full h-full flex items-center justify-center"
               onClick={(e) => e.stopPropagation()}
             >
               <img loading="lazy" decoding="async" 
-                src={selectedImage} 
+                src={`/images/${folder}/${photos[selectedIndex]}.webp`}
                 alt="Enlarged view" 
                 className="max-w-full max-h-full object-contain rounded-2xl shadow-[0_0_100px_rgba(37,99,235,0.2)]"
               />
+
+              {/* Close */}
               <button 
-                onClick={() => setSelectedImage(null)}
+                onClick={() => setSelectedIndex(null)}
                 className="absolute top-0 right-0 -translate-y-12 md:translate-y-0 md:translate-x-12 w-12 h-12 rounded-full bg-foreground/10 hover:bg-foreground/20 flex items-center justify-center transition-colors border border-foreground/10"
               >
                 <X size={24} className="text-foreground" />
               </button>
+
+              {/* Previous arrow */}
+              <button
+                onClick={(e) => { e.stopPropagation(); setSelectedIndex((selectedIndex - 1 + photos.length) % photos.length); }}
+                className="absolute left-2 md:-left-16 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-foreground/10 hover:bg-foreground/20 border border-foreground/10 flex items-center justify-center transition-all hover:scale-110"
+              >
+                <ChevronLeft size={24} className="text-foreground" />
+              </button>
+
+              {/* Next arrow */}
+              <button
+                onClick={(e) => { e.stopPropagation(); setSelectedIndex((selectedIndex + 1) % photos.length); }}
+                className="absolute right-2 md:-right-16 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-foreground/10 hover:bg-foreground/20 border border-foreground/10 flex items-center justify-center transition-all hover:scale-110"
+              >
+                <ChevronRight size={24} className="text-foreground" />
+              </button>
+
+              {/* Counter */}
+              <div className="absolute bottom-2 md:-bottom-12 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full bg-foreground/10 border border-foreground/10 text-xs font-mono text-foreground/60">
+                {selectedIndex + 1} / {photos.length}
+              </div>
             </motion.div>
           </motion.div>
         )}
