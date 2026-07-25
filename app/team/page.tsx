@@ -53,6 +53,9 @@ const MemberCard = ({ member, role }: { member: TeamMember, role: string }) => {
     }
   };
 
+  const roleTitle = role === 'Ph.D.' ? 'Ph.D. Scholar' : role === 'Postdoc' ? 'Postdoctoral Fellow' : role === 'Masters' ? "Master's Student" : role;
+  const altText = member.name ? `${roleTitle} ${member.name}` : 'Team Member';
+
   return (
     <motion.div 
       variants={fadeUp}
@@ -62,7 +65,7 @@ const MemberCard = ({ member, role }: { member: TeamMember, role: string }) => {
         {!imgFailed && currentSrc ? (
           <img 
             src={currentSrc} 
-            alt={member.name} 
+            alt={altText} 
             loading="lazy" decoding="async"
             className="w-full h-full object-cover"
             onError={handleError}
@@ -109,6 +112,7 @@ const MemberCard = ({ member, role }: { member: TeamMember, role: string }) => {
 
 const AlumniPhDCard = ({ member }: { member: TeamMember }) => {
   const [imgFailed, setImgFailed] = useState(false);
+  const altText = member.name ? `Ph.D. Scholar Alumni ${member.name}` : 'Ph.D. Alumni';
   
   return (
     <motion.div 
@@ -119,7 +123,7 @@ const AlumniPhDCard = ({ member }: { member: TeamMember }) => {
         {!imgFailed && member.image ? (
           <img 
             src={member.image} 
-            alt={member.name} 
+            alt={altText} 
             loading="lazy" decoding="async"
             className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
             onError={() => setImgFailed(true)}
@@ -150,6 +154,7 @@ const AlumniPhDCard = ({ member }: { member: TeamMember }) => {
 
 const AlumniPostdocCard = ({ member }: { member: TeamMember }) => {
   const [imgFailed, setImgFailed] = useState(false);
+  const altText = member.name ? `Postdoctoral Fellow Alumni ${member.name}` : 'Postdoc Alumni';
   
   return (
     <motion.div 
@@ -160,7 +165,7 @@ const AlumniPostdocCard = ({ member }: { member: TeamMember }) => {
         {!imgFailed && member.image ? (
           <img 
             src={member.image} 
-            alt={member.name} 
+            alt={altText} 
             loading="lazy" decoding="async"
             className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
             onError={() => setImgFailed(true)}

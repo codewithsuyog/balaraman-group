@@ -34,7 +34,7 @@ export const viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.ebalaraman.com'),
-  title: "Dr. Ekambaram Balaraman | Raman's Lab",
+  title: "Dr. Ekambaram Balaraman | Raman's Research Lab | IISER Tirupati",
   description: "Raman's Research Lab led by Dr. Ekambaram Balaraman at IISER Tirupati.",
   keywords: ["Dr. Ekambaram Balaraman", "Ekambaram Balaraman", "E. Balaraman", "Raman's Research Lab", "Catalysis", "Sustainable Chemistry", "C1 Chemistry", "Transition-metal organometallic systems", "IISER Tirupati"],
   authors: [{ name: "Dr. Ekambaram Balaraman" }],
@@ -42,16 +42,16 @@ export const metadata: Metadata = {
     canonical: 'https://www.ebalaraman.com',
   },
   openGraph: {
-    title: "Dr. Ekambaram Balaraman | Raman's Lab",
-    description: "Raman's Research Lab at IISER Tirupati.",
+    title: "Dr. Ekambaram Balaraman | Raman's Research Lab | IISER Tirupati",
+    description: "Raman's Research Lab led by Dr. Ekambaram Balaraman at IISER Tirupati.",
     url: 'https://www.ebalaraman.com',
-    siteName: "Raman's Lab",
+    siteName: "Raman's Research Lab",
     images: [
       {
-        url: '/opengraph-image.png',
-        width: 1200,
-        height: 630,
-        alt: "Raman's Research Lab Group Banner",
+        url: '/pi-photo.webp',
+        width: 800,
+        height: 800,
+        alt: "Dr. Ekambaram Balaraman - Associate Professor & Chair",
       },
     ],
     locale: 'en_US',
@@ -59,9 +59,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dr. Ekambaram Balaraman | Raman's Lab",
+    title: "Dr. Ekambaram Balaraman | Raman's Research Lab | IISER Tirupati",
     description: "Raman's Research Lab led by Dr. Ekambaram Balaraman at IISER Tirupati.",
-    images: ["/opengraph-image.png"],
+    images: ["/pi-photo.webp"],
   },
   icons: {
     apple: '/apple-touch-icon.png',
@@ -88,16 +88,26 @@ export default function RootLayout({
                 "@context": "https://schema.org",
                 "@type": "Person",
                 "name": "Dr. Ekambaram Balaraman",
-                "alternateName": ["E. Balaraman", "Ekambaram", "Ebalarama", "Ekambaramam", "E Balaraman", "Balaraman E"],
-                "url": "https://balaraman-group.com",
-                "jobTitle": "Principal Investigator",
+                "alternateName": ["Ekambaram Balaraman", "E. Balaraman", "Ekambaram", "Ebalarama", "E Balaraman", "Balaraman E"],
+                "url": "https://www.ebalaraman.com",
+                "image": "https://www.ebalaraman.com/pi-photo.webp",
+                "jobTitle": "Associate Professor & Chair",
+                "worksFor": {
+                  "@type": "EducationalOrganization",
+                  "name": "IISER Tirupati",
+                  "url": "https://www.iisertirupati.ac.in"
+                },
                 "affiliation": {
                   "@type": "EducationalOrganization",
-                  "name": "Indian Institute of Science Education and Research (IISER) Tirupati"
+                  "name": "IISER Tirupati",
+                  "url": "https://www.iisertirupati.ac.in"
                 },
                 "knowsAbout": ["Catalysis", "Sustainable Chemistry", "C1 Chemistry", "Transition-metal organometallic systems"],
                 "sameAs": [
+                  "https://scholar.google.com/citations?user=8slXPm4AAAAJ&hl=en",
+                  "https://orcid.org/0000-0001-9248-2809",
                   "https://twitter.com/Raman_Lab",
+                  "https://x.com/EbLabgroup",
                   "https://www.linkedin.com/in/ekambaram-balaraman-4a11293a/"
                 ]
               },
@@ -106,11 +116,11 @@ export default function RootLayout({
                 "@type": "EducationalOrganization",
                 "name": "Raman's Research Lab",
                 "alternateName": ["Balaraman Research Group", "E. Balaraman Lab", "IISER Tirupati Balaraman Lab"],
-                "url": "https://balaraman-group.com",
-                "logo": "https://balaraman-group.com/logo.webp",
+                "url": "https://www.ebalaraman.com",
+                "logo": "https://www.ebalaraman.com/logo.webp",
                 "parentOrganization": {
                   "@type": "EducationalOrganization",
-                  "name": "Indian Institute of Science Education and Research (IISER) Tirupati",
+                  "name": "IISER Tirupati",
                   "url": "https://www.iisertirupati.ac.in"
                 },
                 "founder": {
