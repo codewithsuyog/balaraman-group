@@ -183,6 +183,59 @@ export default function RootLayout({
                   "name": "Raman's Research Lab",
                   "description": "Official website of Dr. Ekambaram Balaraman's research group at IISER Tirupati",
                   "publisher": { "@id": "https://www.ebalaraman.com/#person" }
+                },
+                {
+                  "@type": "ProfilePage",
+                  "dateCreated": "2024-01-01",
+                  "dateModified": "2026-07-27",
+                  "mainEntity": { "@id": "https://www.ebalaraman.com/#person" }
+                },
+                {
+                  "@type": "BreadcrumbList",
+                  "itemListElement": [
+                    {
+                      "@type": "ListItem",
+                      "position": 1,
+                      "name": "Home",
+                      "item": "https://www.ebalaraman.com"
+                    },
+                    {
+                      "@type": "ListItem",
+                      "position": 2,
+                      "name": "Research",
+                      "item": "https://www.ebalaraman.com/research"
+                    },
+                    {
+                      "@type": "ListItem",
+                      "position": 3,
+                      "name": "Publications",
+                      "item": "https://www.ebalaraman.com/publications"
+                    },
+                    {
+                      "@type": "ListItem",
+                      "position": 4,
+                      "name": "Team",
+                      "item": "https://www.ebalaraman.com/team"
+                    },
+                    {
+                      "@type": "ListItem",
+                      "position": 5,
+                      "name": "Patents",
+                      "item": "https://www.ebalaraman.com/patents"
+                    },
+                    {
+                      "@type": "ListItem",
+                      "position": 6,
+                      "name": "Gallery",
+                      "item": "https://www.ebalaraman.com/gallery"
+                    },
+                    {
+                      "@type": "ListItem",
+                      "position": 7,
+                      "name": "Alumni",
+                      "item": "https://www.ebalaraman.com/alumni"
+                    }
+                  ]
                 }
               ]
             })
