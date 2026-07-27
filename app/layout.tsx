@@ -34,16 +34,26 @@ export const viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.ebalaraman.com'),
-  title: "Dr. Ekambaram Balaraman | Raman's Research Lab",
-  description: "Organometallics & Sustainable Catalysis at IISER Tirupati.",
-  keywords: ["Dr. Ekambaram Balaraman", "Ekambaram Balaraman", "E. Balaraman", "Raman's Research Lab", "Catalysis", "Sustainable Chemistry", "C1 Chemistry", "Transition-metal organometallic systems", "IISER Tirupati"],
+  title: "Dr. Ekambaram Balaraman | Raman's Research Lab — IISER Tirupati",
+  description: "Official website of Dr. Ekambaram Balaraman (E. Balaraman), Associate Professor & Chair, Department of Chemistry, IISER Tirupati. Leading research in organometallics, catalysis, sustainable chemistry, and C1 chemistry.",
+  keywords: [
+    "Dr. Ekambaram Balaraman", "Ekambaram Balaraman", "E. Balaraman",
+    "E Balaraman", "Balaraman", "Dr. Balaraman", "Ekambaramam Balaraman",
+    "Balaraman Group", "Raman Group", "Raman's Research Lab", "Raman's Group",
+    "Balaraman Research Group", "E. Balaraman Lab", "EB Lab",
+    "Catalysis", "Sustainable Chemistry", "C1 Chemistry",
+    "Transition-metal organometallic systems", "IISER Tirupati",
+    "IISER Tirupati Chemistry", "Organometallic Chemistry India",
+    "Homogeneous Catalysis", "Heterogeneous Catalysis",
+    "CRSI Bronze Medal", "Pincer Complexes"
+  ],
   authors: [{ name: "Dr. Ekambaram Balaraman" }],
   alternates: {
     canonical: 'https://www.ebalaraman.com',
   },
   openGraph: {
-    title: "Dr. Ekambaram Balaraman | Raman's Research Lab",
-    description: "Organometallics & Sustainable Catalysis at IISER Tirupati.",
+    title: "Dr. Ekambaram Balaraman | Raman's Research Lab — IISER Tirupati",
+    description: "Official website of Dr. Ekambaram Balaraman, leading research in organometallics, catalysis & sustainable chemistry at IISER Tirupati. 117+ publications, 9,500+ citations.",
     url: 'https://www.ebalaraman.com',
     siteName: "Raman's Research Lab",
     images: [
@@ -51,7 +61,7 @@ export const metadata: Metadata = {
         url: 'https://www.ebalaraman.com/pi-photo.webp',
         width: 1200,
         height: 630,
-        alt: 'Dr. Ekambaram Balaraman',
+        alt: 'Dr. Ekambaram Balaraman - Associate Professor & Chair, IISER Tirupati',
       },
     ],
     locale: 'en_US',
@@ -60,7 +70,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Dr. Ekambaram Balaraman | Raman's Research Lab",
-    description: "Organometallics & Sustainable Catalysis at IISER Tirupati.",
+    description: "Organometallics, catalysis & sustainable chemistry at IISER Tirupati. 117+ publications, 9,500+ citations.",
     images: ["https://www.ebalaraman.com/pi-photo.webp"],
   },
   icons: {
@@ -80,62 +90,107 @@ export default function RootLayout({
       className={`${playfair.variable} ${inter.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
+        <meta name="robots" content="max-image-preview:large" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify([
-              {
-                "@context": "https://schema.org",
-                "@type": "Person",
-                "name": "Dr. Ekambaram Balaraman",
-                "alternateName": ["Ekambaram Balaraman", "E. Balaraman", "Ekambaram", "Ebalarama", "E Balaraman", "Balaraman E"],
-                "url": "https://www.ebalaraman.com",
-                "image": "https://www.ebalaraman.com/pi-photo.webp",
-                "jobTitle": "Associate Professor & Chair",
-                "worksFor": {
-                  "@type": "EducationalOrganization",
-                  "name": "IISER Tirupati",
-                  "url": "https://www.iisertirupati.ac.in"
-                },
-                "affiliation": {
-                  "@type": "EducationalOrganization",
-                  "name": "IISER Tirupati",
-                  "url": "https://www.iisertirupati.ac.in"
-                },
-                "knowsAbout": ["Catalysis", "Sustainable Chemistry", "C1 Chemistry", "Transition-metal organometallic systems"],
-                "sameAs": [
-                  "https://scholar.google.com/citations?user=8slXPm4AAAAJ&hl=en",
-                  "https://orcid.org/0000-0001-9248-2809",
-                  "https://twitter.com/Raman_Lab",
-                  "https://x.com/EbLabgroup",
-                  "https://www.linkedin.com/in/ekambaram-balaraman-4a11293a/"
-                ]
-              },
-              {
-                "@context": "https://schema.org",
-                "@type": "EducationalOrganization",
-                "name": "Raman's Research Lab",
-                "alternateName": ["Balaraman Research Group", "E. Balaraman Lab", "IISER Tirupati Balaraman Lab"],
-                "url": "https://www.ebalaraman.com",
-                "logo": "https://www.ebalaraman.com/logo.webp",
-                "parentOrganization": {
-                  "@type": "EducationalOrganization",
-                  "name": "IISER Tirupati",
-                  "url": "https://www.iisertirupati.ac.in"
-                },
-                "founder": {
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
                   "@type": "Person",
-                  "name": "Dr. Ekambaram Balaraman"
+                  "@id": "https://www.ebalaraman.com/#person",
+                  "name": "Dr. Ekambaram Balaraman",
+                  "alternateName": [
+                    "Ekambaram Balaraman", "E. Balaraman", "Ekambaram", "Ebalarama",
+                    "E Balaraman", "Balaraman E", "Ekambaramam Balaraman",
+                    "Balaraman", "Dr. E. Balaraman", "Dr. Balaraman",
+                    "Balaraman IISER", "E Balaraman IISER Tirupati"
+                  ],
+                  "url": "https://www.ebalaraman.com",
+                  "image": {
+                    "@type": "ImageObject",
+                    "url": "https://www.ebalaraman.com/pi-photo.webp",
+                    "width": 800,
+                    "height": 800,
+                    "caption": "Dr. Ekambaram Balaraman - Associate Professor & Chair, IISER Tirupati"
+                  },
+                  "jobTitle": "Associate Professor & Chair, Department of Chemistry",
+                  "honorificPrefix": "Dr.",
+                  "worksFor": { "@id": "https://www.ebalaraman.com/#iiser" },
+                  "affiliation": { "@id": "https://www.ebalaraman.com/#iiser" },
+                  "memberOf": { "@id": "https://www.ebalaraman.com/#lab" },
+                  "knowsAbout": [
+                    "Catalysis", "Sustainable Chemistry", "C1 Chemistry",
+                    "Transition-metal organometallic systems", "Homogeneous Catalysis",
+                    "Heterogeneous Catalysis", "Organometallics", "C-H Activation",
+                    "Hydrogenation", "Dehydrogenation", "Pincer Complexes"
+                  ],
+                  "hasCredential": [
+                    { "@type": "EducationalOccupationalCredential", "credentialCategory": "award", "name": "CRSI Bronze Medal – Chemical Research Society of India" },
+                    { "@type": "EducationalOccupationalCredential", "credentialCategory": "award", "name": "INSA Associate Fellowship (IAF) – 2026, Indian National Science Academy" },
+                    { "@type": "EducationalOccupationalCredential", "credentialCategory": "award", "name": "RSC ChemComm Pioneering Investigators – Royal Society of Chemistry" }
+                  ],
+                  "alumniOf": [
+                    { "@type": "EducationalOrganization", "name": "Weizmann Institute of Science, Israel" },
+                    { "@type": "EducationalOrganization", "name": "National Chemical Laboratory (NCL), Pune" },
+                    { "@type": "EducationalOrganization", "name": "University of Madras" }
+                  ],
+                  "sameAs": [
+                    "https://scholar.google.com/citations?user=8slXPm4AAAAJ&hl=en",
+                    "https://orcid.org/0000-0001-9248-2809",
+                    "https://twitter.com/Raman_Lab",
+                    "https://x.com/EbLabgroup",
+                    "https://www.linkedin.com/in/ekambaram-balaraman-4a11293a/",
+                    "https://www.iisertirupati.ac.in/faculty/chemistry/ekambaram-balaraman"
+                  ]
                 },
-                "description": "Research lab at IISER Tirupati specializing in Catalysis, Sustainable Chemistry, C1 Chemistry, and Transition-metal organometallic systems.",
-                "knowsAbout": ["Catalysis", "Sustainable Chemistry", "C1 Chemistry", "Transition-metal organometallic systems"]
-              }
-            ])
+                {
+                  "@type": ["ResearchOrganization", "EducationalOrganization"],
+                  "@id": "https://www.ebalaraman.com/#lab",
+                  "name": "Raman's Research Lab",
+                  "alternateName": [
+                    "Balaraman Research Group", "Balaraman Group", "Raman Group",
+                    "Raman's Group", "E. Balaraman Lab", "IISER Tirupati Balaraman Lab",
+                    "EB Lab", "Raman Lab IISER"
+                  ],
+                  "url": "https://www.ebalaraman.com",
+                  "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://www.ebalaraman.com/logo.webp"
+                  },
+                  "parentOrganization": { "@id": "https://www.ebalaraman.com/#iiser" },
+                  "founder": { "@id": "https://www.ebalaraman.com/#person" },
+                  "description": "Research lab at IISER Tirupati led by Dr. Ekambaram Balaraman, specializing in organometallics, homogeneous & heterogeneous catalysis, sustainable chemistry, and C1 chemistry.",
+                  "knowsAbout": [
+                    "Catalysis", "Sustainable Chemistry", "C1 Chemistry",
+                    "Transition-metal organometallic systems", "Green Chemistry",
+                    "Hydrogen Generation", "CO2 Conversion"
+                  ],
+                  "numberOfEmployees": { "@type": "QuantitativeValue", "value": 20 }
+                },
+                {
+                  "@type": "EducationalOrganization",
+                  "@id": "https://www.ebalaraman.com/#iiser",
+                  "name": "Indian Institute of Science Education and Research (IISER) Tirupati",
+                  "alternateName": ["IISER Tirupati"],
+                  "url": "https://www.iisertirupati.ac.in"
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": "https://www.ebalaraman.com/#website",
+                  "url": "https://www.ebalaraman.com",
+                  "name": "Raman's Research Lab",
+                  "description": "Official website of Dr. Ekambaram Balaraman's research group at IISER Tirupati",
+                  "publisher": { "@id": "https://www.ebalaraman.com/#person" }
+                }
+              ]
+            })
           }}
         />
-        <meta name="thumbnail" content="https://www.ebalaraman.com/pi-photo.jpg" />
-        <link rel="image_src" href="https://www.ebalaraman.com/pi-photo.jpg" />
-        <link rel="preload" as="image" type="image/jpeg" href="/images/pi/PI%20Photo%202.jpeg" />
+        <meta name="thumbnail" content="https://www.ebalaraman.com/pi-photo.webp" />
+        <link rel="image_src" href="https://www.ebalaraman.com/pi-photo.webp" />
+        <link rel="preload" as="image" type="image/webp" href="/images/pi/PI%20Photo%202.jpeg" />
         <link rel="preload" as="image" type="image/webp" href="/images/Background/group-photo.webp" />
       </head>
       <body className="font-sans min-h-screen bg-background text-foreground flex flex-col transition-colors duration-300 select-none" suppressHydrationWarning>
