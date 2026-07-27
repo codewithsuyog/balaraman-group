@@ -48,7 +48,13 @@ export const metadata: Metadata = {
     siteName: "Raman's Research Lab",
     images: [
       {
-        url: '/pi-photo.webp',
+        url: 'https://www.ebalaraman.com/pi-photo.jpg',
+        width: 800,
+        height: 800,
+        alt: "Dr. Ekambaram Balaraman - Associate Professor & Chair",
+      },
+      {
+        url: 'https://www.ebalaraman.com/pi-photo.webp',
         width: 800,
         height: 800,
         alt: "Dr. Ekambaram Balaraman - Associate Professor & Chair",
@@ -61,7 +67,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Dr. Ekambaram Balaraman | Raman's Research Lab | IISER Tirupati",
     description: "Raman's Research Lab led by Dr. Ekambaram Balaraman at IISER Tirupati.",
-    images: ["/pi-photo.webp"],
+    images: ["https://www.ebalaraman.com/pi-photo.jpg"],
   },
   icons: {
     apple: '/apple-touch-icon.png',
@@ -133,6 +139,9 @@ export default function RootLayout({
             ])
           }}
         />
+        <meta name="thumbnail" content="https://www.ebalaraman.com/pi-photo.jpg" />
+        <link rel="image_src" href="https://www.ebalaraman.com/pi-photo.jpg" />
+        <link rel="preload" as="image" type="image/jpeg" href="/images/pi/PI%20Photo%202.jpeg" />
         <link rel="preload" as="image" type="image/webp" href="/images/Background/group-photo.webp" />
       </head>
       <body className="font-sans min-h-screen bg-background text-foreground flex flex-col transition-colors duration-300 select-none" suppressHydrationWarning>

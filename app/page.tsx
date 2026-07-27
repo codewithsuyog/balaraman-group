@@ -744,6 +744,7 @@ export default function Home() {
                  <Image 
                    src="/images/pi/PI Photo 2.jpeg" 
                    alt="Dr. Ekambaram Balaraman - Principal Investigator of Raman's Research Lab at IISER Tirupati" 
+                   priority
                    fill
                    sizes="(max-width: 768px) 100vw, 33vw"
                    className="object-cover object-center" 
