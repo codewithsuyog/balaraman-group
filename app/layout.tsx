@@ -34,30 +34,24 @@ export const viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.ebalaraman.com'),
-  title: "Dr. Ekambaram Balaraman | Raman's Research Lab | IISER Tirupati",
-  description: "Raman's Research Lab led by Dr. Ekambaram Balaraman at IISER Tirupati.",
+  title: "Dr. Ekambaram Balaraman | Raman's Research Lab",
+  description: "Organometallics & Sustainable Catalysis at IISER Tirupati.",
   keywords: ["Dr. Ekambaram Balaraman", "Ekambaram Balaraman", "E. Balaraman", "Raman's Research Lab", "Catalysis", "Sustainable Chemistry", "C1 Chemistry", "Transition-metal organometallic systems", "IISER Tirupati"],
   authors: [{ name: "Dr. Ekambaram Balaraman" }],
   alternates: {
     canonical: 'https://www.ebalaraman.com',
   },
   openGraph: {
-    title: "Dr. Ekambaram Balaraman | Raman's Research Lab | IISER Tirupati",
-    description: "Raman's Research Lab led by Dr. Ekambaram Balaraman at IISER Tirupati.",
+    title: "Dr. Ekambaram Balaraman | Raman's Research Lab",
+    description: "Organometallics & Sustainable Catalysis at IISER Tirupati.",
     url: 'https://www.ebalaraman.com',
     siteName: "Raman's Research Lab",
     images: [
       {
-        url: 'https://www.ebalaraman.com/pi-photo.jpg',
-        width: 800,
-        height: 800,
-        alt: "Dr. Ekambaram Balaraman - Associate Professor & Chair",
-      },
-      {
         url: 'https://www.ebalaraman.com/pi-photo.webp',
-        width: 800,
-        height: 800,
-        alt: "Dr. Ekambaram Balaraman - Associate Professor & Chair",
+        width: 1200,
+        height: 630,
+        alt: 'Dr. Ekambaram Balaraman',
       },
     ],
     locale: 'en_US',
@@ -65,9 +59,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dr. Ekambaram Balaraman | Raman's Research Lab | IISER Tirupati",
-    description: "Raman's Research Lab led by Dr. Ekambaram Balaraman at IISER Tirupati.",
-    images: ["https://www.ebalaraman.com/pi-photo.jpg"],
+    title: "Dr. Ekambaram Balaraman | Raman's Research Lab",
+    description: "Organometallics & Sustainable Catalysis at IISER Tirupati.",
+    images: ["https://www.ebalaraman.com/pi-photo.webp"],
   },
   icons: {
     apple: '/apple-touch-icon.png',
