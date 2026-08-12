@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { 
-  ArrowRight, ArrowLeft, FileText, Mail, MapPin, Phone, 
+  ArrowRight, ArrowLeft, FileText, Mail, MapPin, Phone, Microscope, Play, Pause, Volume2, VolumeX, Video, 
   FlaskConical, 
   Beaker, Globe, Award, Zap, Shield, BookOpen,
   ArrowUpRight, Download, Users, Briefcase, GraduationCap,
@@ -361,6 +361,182 @@ const GallerySlideshow = () => {
   );
 };
 
+
+
+
+const LAB_IMAGES = [
+  { src: '', caption: 'Add your lab image here' },
+];
+
+const LAB_VIDEOS = [
+  { src: '', title: 'Lab Video', caption: 'Add your lab video here' },
+];
+
+
+
+const LabMediaShowcase = () => {
+  const [imgIdx, setImgIdx] = useState(0);
+  useEffect(() => {
+    const timer = setInterval(() => setImgIdx((p) => (p + 1) % LAB_IMAGES.length), 4000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const [vidIdx, setVidIdx] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
+  const [videoError, setVideoError] = useState<Record<number, boolean>>({});
+  const videoRef = React.useRef<HTMLVideoElement>(null);
+
+  const allVideosErrored = LAB_VIDEOS.every((_, i) => videoError[i]);
+
+  useEffect(() => {
+    if (!videoRef.current || videoError[vidIdx]) return;
+    videoRef.current.load();
+    videoRef.current.play().catch(() => {});
+    setIsPlaying(true);
+  }, [vidIdx]);
+
+  useEffect(() => {
+    const vid = videoRef.current;
+    if (!vid) return;
+    const onEnded = () => setVidIdx((p) => (p + 1) % LAB_VIDEOS.length);
+    vid.addEventListener('ended', onEnded);
+    return () => vid.removeEventListener('ended', onEnded);
+  }, [vidIdx]);
+
+  const togglePlay = () => {
+    if (!videoRef.current) return;
+    if (isPlaying) { videoRef.current.pause(); } else { videoRef.current.play(); }
+    setIsPlaying(!isPlaying);
+  };
+
+  const toggleMute = () => {
+    if (!videoRef.current) return;
+    videoRef.current.muted = !isMuted;
+    setIsMuted(!isMuted);
+  };
+
+  return (
+    <div className="w-full flex flex-col md:flex-row gap-6 relative group">
+      {/* -- Images Section -- */}
+      <div className="w-full md:w-1/2 relative overflow-hidden rounded-3xl bg-background border border-foreground/10 shadow-2xl aspect-square md:aspect-[4/3] bg-gradient-to-br from-gray-900 to-black">
+        <div className="absolute top-6 left-6 z-30 flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-xl border text-[10px] font-mono uppercase tracking-widest transition-all bg-cyan-500/20 border-cyan-500/40 text-cyan-300">
+          <Microscope size={12} /> Lab Images
+          <span className="text-[9px] text-cyan-300/50">{imgIdx + 1}/{LAB_IMAGES.length}</span>
+        </div>
+
+        {/* --- IMAGE SLIDESHOW --- */}
+        <div className="absolute inset-0">
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={imgIdx}
+              src={LAB_IMAGES[imgIdx].src}
+              alt={LAB_IMAGES[imgIdx].caption}
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.02 }}
+              transition={{ duration: 0.8 }}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          </AnimatePresence>
+
+          <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none z-10" />
+
+          <div className="absolute bottom-0 left-0 right-0 p-8 z-20">
+            <h4 className="text-lg font-bold text-foreground mb-1 tracking-tight">{LAB_IMAGES[imgIdx].caption}</h4>
+            <div className="flex gap-2 mt-4">
+              {LAB_IMAGES.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setImgIdx(i)}
+                  className={`h-1.5 rounded-full transition-all duration-500 ${
+                    i === imgIdx ? 'bg-cyan-400 w-8' : 'bg-foreground/25 hover:bg-foreground/50 w-1.5'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+
+          <button onClick={() => setImgIdx((p) => (p - 1 + LAB_IMAGES.length) % LAB_IMAGES.length)}
+            className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-foreground/20 backdrop-blur-md border border-foreground/10 flex items-center justify-center text-foreground opacity-0 group-hover:opacity-100 transition-opacity hover:bg-foreground/50 z-20">
+            <ArrowLeft size={16} />
+          </button>
+          <button onClick={() => setImgIdx((p) => (p + 1) % LAB_IMAGES.length)}
+            className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-foreground/20 backdrop-blur-md border border-foreground/10 flex items-center justify-center text-foreground opacity-0 group-hover:opacity-100 transition-opacity hover:bg-foreground/50 z-20">
+            <ArrowRight size={16} />
+          </button>
+        </div>
+      </div>
+
+      {/* -- Videos Section -- */}
+      <div className="w-full md:w-1/2 relative overflow-hidden rounded-3xl bg-background border border-foreground/10 shadow-2xl aspect-square md:aspect-[4/3] bg-gradient-to-br from-gray-900 to-black">
+        <div className="absolute top-6 left-6 z-30 flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-xl border text-[10px] font-mono uppercase tracking-widest transition-all bg-red-500/20 border-red-500/40 text-red-300">
+          <Video size={12} /> Videos
+        </div>
+
+        {/* --- VIDEO PLAYER --- */}
+        <div className="absolute inset-0">
+          {!allVideosErrored ? (
+            <>
+              <AnimatePresence mode="wait">
+                <motion.div key={vidIdx} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }} className="absolute inset-0">
+                  <video ref={videoRef} src={LAB_VIDEOS[vidIdx].src} muted={isMuted} playsInline autoPlay
+                    className="w-full h-full object-cover"
+                    onError={() => setVideoError((p) => ({ ...p, [vidIdx]: true }))} />
+                </motion.div>
+              </AnimatePresence>
+
+              <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/80 to-transparent pointer-events-none z-10" />
+
+              <div className="absolute bottom-0 left-0 right-0 p-8 z-20">
+                <div className="flex items-end justify-between">
+                  <div className="flex-1 pr-4">
+                    <h4 className="text-xl font-bold text-foreground mb-1 tracking-tight truncate">{LAB_VIDEOS[vidIdx].title}</h4>
+                    <p className="text-sm text-foreground/90 font-light line-clamp-2">{LAB_VIDEOS[vidIdx].caption}</p>
+                  </div>
+                  <div className="flex items-center gap-3 shrink-0">
+                    <button onClick={toggleMute} className="w-10 h-10 rounded-full bg-foreground/10 backdrop-blur-md border border-foreground/10 flex items-center justify-center text-foreground/90 hover:text-foreground hover:bg-foreground/20 transition-all">
+                      {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
+                    </button>
+                    <button onClick={togglePlay} className="w-12 h-12 rounded-full bg-foreground/15 backdrop-blur-md border border-foreground/20 flex items-center justify-center text-foreground hover:bg-foreground/25 transition-all">
+                      {isPlaying ? <Pause size={18} /> : <Play size={18} className="ml-0.5" />}
+                    </button>
+                  </div>
+                </div>
+                <div className="flex gap-2 mt-6">
+                  {LAB_VIDEOS.map((_, i) => (
+                    <button key={i} onClick={() => setVidIdx(i)}
+                      className={`h-1 rounded-full transition-all duration-500 ${i === vidIdx ? 'bg-red-500 w-8' : videoError[i] ? 'bg-foreground/10 w-2' : 'bg-foreground/30 hover:bg-foreground/50 w-2'}`} />
+                  ))}
+                </div>
+              </div>
+
+              <button onClick={() => setVidIdx((p) => (p - 1 + LAB_VIDEOS.length) % LAB_VIDEOS.length)}
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-foreground/20 backdrop-blur-md border border-foreground/10 flex items-center justify-center text-foreground opacity-0 group-hover:opacity-100 transition-opacity hover:bg-foreground/50 z-20">
+                <ArrowLeft size={16} />
+              </button>
+              <button onClick={() => setVidIdx((p) => (p + 1) % LAB_VIDEOS.length)}
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-foreground/20 backdrop-blur-md border border-foreground/10 flex items-center justify-center text-foreground opacity-0 group-hover:opacity-100 transition-opacity hover:bg-foreground/50 z-20">
+                <ArrowRight size={16} />
+              </button>
+            </>
+          ) : (
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-background">
+              <iframe 
+                className="w-full h-full border-0"
+                src="https://www.youtube.com/embed/your-lab-tour-id" 
+                title="Lab Tour Video" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                sandbox="allow-scripts allow-same-origin allow-presentation"
+                allowFullScreen
+              ></iframe>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 
 export default function Home() {
