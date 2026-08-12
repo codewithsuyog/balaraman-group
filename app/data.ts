@@ -1194,7 +1194,11 @@ export const team = {
     { name: "Palmurukan M. R. Pal", info: "Ph.D. July 2023, M.Sc., M-Tech., (Industrial Catalysis) CUSAT, Kerala", email: "palmurukanmr@students.iisertirupati.ac.in", image: "/images/team/present/phd/palmurukan.jpg" },
     { name: "Sanjay A", info: "IPhD 2024, B.Sc - St. Joseph's College (Autonomous) Tiruchirappalli, Tamilnadu", email: "sanjay20242207@students.iisertirupati.ac.in", image: "/images/team/present/phd/Sanjay.jpeg" },
     { name: "Nanthini P.", info: "Ph.D. Aug 2024, M.Sc (Chem), Bharathidasan University, Tamil Nadu", email: "nanthini20243208@students.iisertirupati.ac.in", image: "/images/team/present/phd/nanthini.jpg" },
-    { name: "Mahendra D R", info: "Ph.D. Jan 2025, M.Sc (Chem), University of Mysuru, Karnataka", email: "mahendra_20253202@students.iisertirupati.ac.in", image: "/images/team/present/phd/mahendra.jpg" }
+    { name: "Mahendra D R", info: "Ph.D. Jan 2025, M.Sc (Chem), University of Mysuru, Karnataka", email: "mahendra_20253202@students.iisertirupati.ac.in", image: "/images/team/present/phd/mahendra.jpg" },
+    { name: "Kumararaja Mahesh", info: "Ph.D. Aug 2026, M.Sc (Chem), The Gandhigram Rural Institute, Dindigul, Tamil Nadu", email: "kumararajamahesh20263208@students.iisertirupati.ac.in", image: "/images/team/present/phd/Mahesh.jpeg" }
+  ],
+  projectAssociates: [
+    { name: "Gowtham Ram K", info: "Project Associate, M.Sc (Chem), Madurai Kamaraj University (MKU), Madurai, Tamil Nadu", email: "gowthamram@students.iisertirupati.ac.in", image: "/images/team/present/phd/Gowtham.jpeg" }
   ],
   postdocs: [
     { name: "Dr. Sachin S. Gorad", info: "Ph.D. 2024 (IISER-Bhopal), M.Sc. (Org. Chem) Savitribai Phule Pune University Maharashtra", email: "sachinshrimant@labs.iisertirupati.ac.in", image: "/images/team/present/postdocs/sachin.png" },
@@ -1207,6 +1211,9 @@ export const team = {
     { name: "Suyog", info: "Master's Thesis Student, IISER Tirupati (2026)", email: "suyog_20221147@students.iisertirupati.ac.in", image: "/images/team/present/masters/suyog.jpg" },
     { name: "Kavya", info: "Master's Thesis Student, IISER Tirupati (2026)", email: "mothukuri_20221091@students.iisertirupati.ac.in", image: "/images/team/present/masters/Kavya.jpeg" },
     { name: "Ayesha", info: "Master's Thesis Student, IISER Tirupati (2026)", email: "aysha_20221020@students.iisertirupati.ac.in", image: "/images/team/present/masters/ayesha.jpg" },
+    { name: "Subham Ghosh", info: "Master's Thesis Student, B.Sc (Hons.) (Chem), Banaras Hindu University, Varanasi", email: "subham20255208@students.iisertirupati.ac.in", image: "/images/team/present/masters/Shubham.jpeg" },
+    { name: "Dheeksha", info: "Master's Thesis Student, B.Sc (Chem), SDNB Vaishnav College, Chromepet, Chennai", email: "dheeksha20255202@students.iisertirupati.ac.in", image: "/images/team/present/masters/Dheeksha.jpeg" },
+    { name: "Uruz Iqbal", info: "Master's Thesis Student, iPhD 2024, B.Sc (Hons.) (Chem), Oriental College, Patliputra University", email: "oruziqbal20242205@students.iisertirupati.ac.in", image: "/images/team/present/masters/urus.jpeg" },
   ],
   semesterProject: [
     { name: "Suyog", info: "Semester Project, IISER Tirupati (2026)", email: "suyog_20221147@students.iisertirupati.ac.in", image: "/images/team/present/masters/suyog.jpg" },

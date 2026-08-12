@@ -256,6 +256,19 @@ export default function TeamPage() {
           </section>
         )}
 
+        {/* Project Associates */}
+        {team.projectAssociates && team.projectAssociates.length > 0 && (
+          <section>
+            <div className="flex items-center gap-4 mb-12">
+               <div className="h-px w-12 bg-amber-500"></div>
+               <h2 className="text-xs font-mono text-amber-500 uppercase tracking-[0.4em]">Project Associates</h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {team.projectAssociates.map((member, i) => <MemberCard key={i} member={member} role="Project Associate" />)}
+            </div>
+          </section>
+        )}
+
         {/* Masters */}
         {team.masters && team.masters.length > 0 && (
           <section>
