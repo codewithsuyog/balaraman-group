@@ -554,6 +554,12 @@ export default function Home() {
 
   useEffect(() => {
     const handleScroll = () => {
+      // If user has scrolled to the bottom of the page, activate the last section
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 100) {
+        setActiveSection('contact');
+        return;
+      }
+
       const sections = ['home', 'pi', 'news', 'research', 'publications', 'patents', 'team', 'gallery', 'contact'];
       for (const sectionId of sections) {
         const element = document.getElementById(sectionId);
