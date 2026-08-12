@@ -1195,7 +1195,7 @@ export const team = {
     { name: "Sanjay A", info: "IPhD 2024, B.Sc - St. Joseph's College (Autonomous) Tiruchirappalli, Tamilnadu", email: "sanjay20242207@students.iisertirupati.ac.in", image: "/images/team/present/phd/Sanjay.jpeg" },
     { name: "Nanthini P.", info: "Ph.D. Aug 2024, M.Sc (Chem), Bharathidasan University, Tamil Nadu", email: "nanthini20243208@students.iisertirupati.ac.in", image: "/images/team/present/phd/nanthini.jpg" },
     { name: "Mahendra D R", info: "Ph.D. Jan 2025, M.Sc (Chem), University of Mysuru, Karnataka", email: "mahendra_20253202@students.iisertirupati.ac.in", image: "/images/team/present/phd/mahendra.jpg" },
-    { name: "Kumar Raja Mahesh K", info: "Ph.D. Aug 2026, M.Sc (Chem), The Gandhigram Rural Institute, Dindigul, Tamil Nadu", email: "kumararajamahesh20263208@students.iisertirupati.ac.in", image: "/images/team/present/phd/Mahesh.jpeg" }
+    { name: "Kumara Raja Mahesh K", info: "Ph.D. Aug 2026, M.Sc (Chem), The Gandhigram Rural Institute, Dindigul, Tamil Nadu", email: "kumararajamahesh20263208@students.iisertirupati.ac.in", image: "/images/team/present/phd/Mahesh.jpeg" }
   ],
   projectAssociates: [
     { name: "Gowtham Ram K", info: "Project Associate, M.Sc (Chem), Madurai Kamaraj University (MKU), Madurai, Tamil Nadu", email: "gowthamram@students.iisertirupati.ac.in", image: "/images/team/present/phd/Gowtham.jpeg" }
