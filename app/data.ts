@@ -1208,12 +1208,12 @@ export const team = {
     { name: "Dr. Bapurao Rupanawar", info: "Ph.D. NCL-Pune, Feb 2022, Post Doc -OIST-Japan July 2022-Aug 2025, State- Maharashtra", email: "bapuraorupanawar@labs.iisertirupati.ac.in", image: "/images/team/present/postdocs/bapurao.jpg" }
   ],
   masters: [
-    { name: "Suyog", info: "MSc, IISER Tirupati (2026)", email: "suyog_20221147@students.iisertirupati.ac.in", image: "/images/team/present/masters/suyog.jpg" },
-    { name: "Kavya", info: "MSc, IISER Tirupati (2026)", email: "mothukuri_20221091@students.iisertirupati.ac.in", image: "/images/team/present/masters/Kavya.jpeg" },
-    { name: "Ayesha", info: "MSc, IISER Tirupati (2026)", email: "aysha_20221020@students.iisertirupati.ac.in", image: "/images/team/present/masters/ayesha.jpg" },
-    { name: "Subham Ghosh", info: "MSc, B.Sc (Hons.) (Chem), Banaras Hindu University, Varanasi", email: "subham20255208@students.iisertirupati.ac.in", image: "/images/team/present/masters/Shubham.jpeg" },
-    { name: "Dheeksha", info: "MSc, B.Sc (Chem), SDNB Vaishnav College, Chromepet, Chennai", email: "dheeksha20255202@students.iisertirupati.ac.in", image: "/images/team/present/masters/Dheeksha.jpeg" },
-    { name: "Md. Oruz Iqbal", info: "MSc, iPhD 2024, B.Sc (Hons.) (Chem), Oriental College, Patliputra University", email: "oruziqbal20242205@students.iisertirupati.ac.in", image: "/images/team/present/masters/urus.jpeg" },
+    { name: "Suyog", info: "MS, IISER Tirupati (2026)", email: "suyog_20221147@students.iisertirupati.ac.in", image: "/images/team/present/masters/suyog.jpg" },
+    { name: "Kavya", info: "MS, IISER Tirupati (2026)", email: "mothukuri_20221091@students.iisertirupati.ac.in", image: "/images/team/present/masters/Kavya.jpeg" },
+    { name: "Ayesha", info: "MS, IISER Tirupati (2026)", email: "aysha_20221020@students.iisertirupati.ac.in", image: "/images/team/present/masters/ayesha.jpg" },
+    { name: "Subham Ghosh", info: "MS, B.Sc (Hons.) (Chem), Banaras Hindu University, Varanasi", email: "subham20255208@students.iisertirupati.ac.in", image: "/images/team/present/masters/Shubham.jpeg" },
+    { name: "Dheeksha", info: "MS, B.Sc (Chem), SDNB Vaishnav College, Chromepet, Chennai", email: "dheeksha20255202@students.iisertirupati.ac.in", image: "/images/team/present/masters/Dheeksha.jpeg" },
+    { name: "Md. Oruz Iqbal", info: "MS, iPhD 2024, B.Sc (Hons.) (Chem), Oriental College, Patliputra University", email: "oruziqbal20242205@students.iisertirupati.ac.in", image: "/images/team/present/masters/urus.jpeg" },
   ],
   semesterProject: [
     { name: "Suyog", info: "Semester Project, IISER Tirupati (2026)", email: "suyog_20221147@students.iisertirupati.ac.in", image: "/images/team/present/masters/suyog.jpg" },
