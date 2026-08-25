@@ -866,11 +866,11 @@ export default function Home() {
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 mb-10">
               <div className="p-4 rounded-xl bg-foreground/[0.04] border border-foreground/10 text-center hover:border-cyan-500/20 transition-all">
                 <div className="text-xl font-black text-foreground mb-1">{piStats.phdCompleted}</div>
-                <p className="text-[9px] uppercase tracking-widest text-foreground font-mono font-medium">Ph.D. Completed</p>
+                <p className="text-[9px] tracking-widest text-foreground font-mono font-medium">Ph.D. Completed</p>
               </div>
               <div className="p-4 rounded-xl bg-foreground/[0.04] border border-foreground/10 text-center hover:border-cyan-500/20 transition-all">
                 <div className="text-xl font-black text-foreground mb-1">{piStats.phdPursuing}</div>
-                <p className="text-[9px] uppercase tracking-widest text-foreground font-mono font-medium">Ph.D. Pursuing</p>
+                <p className="text-[9px] tracking-widest text-foreground font-mono font-medium">Ph.D. Pursuing</p>
               </div>
               <div className="p-4 rounded-xl bg-foreground/[0.04] border border-foreground/10 text-center hover:border-cyan-500/20 transition-all">
                 <div className="text-xl font-black text-foreground mb-1">{piStats.postdocs}</div>
@@ -1121,7 +1121,7 @@ export default function Home() {
 
               {/* Ph.D. Scholars */}
               <div>
-                <h3 className="text-sm font-extrabold text-accent uppercase tracking-[0.2em] mb-10 text-left">Ph.D. Scholars</h3>
+                <h3 className="text-sm font-extrabold text-accent tracking-[0.2em] mb-10 text-left">Ph.D. Scholars</h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 w-full">
                   {team.currentPhd.map((member, i) => (
                     <TeamMemberThumb key={i} member={member} role="Ph.D. Scholar" />

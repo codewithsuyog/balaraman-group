@@ -77,7 +77,7 @@ const MemberCard = ({ member, role }: { member: TeamMember, role: string }) => {
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
         <div className="absolute bottom-4 left-4 right-4">
-           <span className="text-[10px] font-mono text-amber-400 uppercase tracking-widest">{role}</span>
+           <span className="text-[10px] font-mono text-amber-400 tracking-widest">{role}</span>
         </div>
       </div>
 
@@ -135,7 +135,7 @@ const AlumniPhDCard = ({ member }: { member: TeamMember }) => {
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
         <div className="absolute bottom-4 left-4 right-4">
-           <span className="text-[10px] font-mono text-emerald-400 uppercase tracking-widest">Ph.D. Alumni</span>
+           <span className="text-[10px] font-mono text-emerald-400 tracking-widest">Ph.D. Alumni</span>
         </div>
       </div>
       <div className="p-6">
@@ -299,7 +299,7 @@ export default function TeamPage() {
             <div className="mb-32">
               <div className="flex items-center gap-4 mb-12">
                  <div className="h-px w-12 bg-emerald-500"></div>
-                 <h3 className="text-xs font-mono text-emerald-500 uppercase tracking-[0.4em]">Doctoral Students (Ph.D. Thesis)</h3>
+                 <h3 className="text-xs font-mono text-emerald-500 tracking-[0.4em]">Doctoral Students (Ph.D. Thesis)</h3>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 {team.alumniPhd.map((member: TeamMember, i: number) => <AlumniPhDCard key={i} member={member} />)}
