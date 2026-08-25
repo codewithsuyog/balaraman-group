@@ -223,7 +223,7 @@ const TeamMemberThumb = ({ member, role }: { member: TeamMember, role: string })
       
       <div className="flex-1 flex flex-col justify-between w-full">
         <div>
-          <span className="text-[10px] font-bold text-foreground uppercase tracking-wider truncate w-full mb-1 block">{member.name}</span>
+          <span className="text-[10px] font-bold text-foreground tracking-wider truncate w-full mb-1 block">{member.name}</span>
           <span className="text-[9px] font-mono text-amber-400 uppercase tracking-widest mb-2 block">{role}</span>
           {member.info && (
             <p className="text-[10px] text-foreground leading-relaxed mb-4 font-light">

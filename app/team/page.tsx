@@ -145,7 +145,7 @@ const AlumniPhDCard = ({ member }: { member: TeamMember }) => {
           <span className="text-[10px] font-mono text-amber-500/50">{member.duration}</span>
         </div>
         {member.present && (
-          <p className="text-[10px] text-foreground mt-2 italic">Currently: {member.present}</p>
+          <p className="text-[10px] text-foreground mt-2 italic">Present: {member.present}</p>
         )}
       </div>
     </motion.div>
