@@ -125,7 +125,7 @@ const AlumniPhDCard = ({ member }: { member: TeamMember }) => {
             src={member.image} 
             alt={altText} 
             loading="lazy" decoding="async"
-            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+            className="w-full h-full object-cover transition-all duration-700"
             onError={() => setImgFailed(true)}
           />
         ) : (
@@ -167,7 +167,7 @@ const AlumniPostdocCard = ({ member }: { member: TeamMember }) => {
             src={member.image} 
             alt={altText} 
             loading="lazy" decoding="async"
-            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+            className="w-full h-full object-cover transition-all duration-700"
             onError={() => setImgFailed(true)}
           />
         ) : (
@@ -206,7 +206,7 @@ const AlumniMScCard = ({ member }: { member: TeamMember }) => {
             src={member.image} 
             alt={altText} 
             loading="lazy" decoding="async"
-            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+            className="w-full h-full object-cover transition-all duration-700"
             onError={() => setImgFailed(true)}
           />
         ) : (
