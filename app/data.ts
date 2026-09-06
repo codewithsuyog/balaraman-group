@@ -1268,8 +1268,8 @@ export const team = {
     { name: "Mr. Soumik Roy", institution: "Indian Institute of Science Education and Research (IISER) Tirupati", year: "May 2024 – 2025" },
     { name: "Ms. Navyasri M.", institution: "Indian Institute of Science Education and Research (IISER) Tirupati", year: "Aug 2024 – 2025" },
     { name: "Ms. Divyasikha Sutar", institution: "Indian Institute of Science Education and Research (IISER) Tirupati", year: "Aug 2025 – 2026", image: "/images/team/Alumini/Msc Alumini/Divyasikha.jpg" },
-    { name: "Ms. Lavanya", institution: "Indian Institute of Science Education and Research (IISER) Tirupati", year: "Aug 2025 – 2026" },
-    { name: "Ms. Shahma Sujeer", institution: "Indian Institute of Science Education and Research (IISER) Tirupati", year: "Aug 2025 – 2026" }
+    { name: "Ms. Lavanya", institution: "Indian Institute of Science Education and Research (IISER) Tirupati", year: "Aug 2025 – 2026", image: "/images/team/Alumini/Msc Alumini/Lavanya.webp" },
+    { name: "Ms. Shahma Sujeer", institution: "Indian Institute of Science Education and Research (IISER) Tirupati", year: "Aug 2025 – 2026", image: "/images/team/Alumini/Msc Alumini/Shahma.webp" }
   ],
   alumniBtech: [
     { name: "Mr. Varun Kant", institution: "IIT Roorkee" },

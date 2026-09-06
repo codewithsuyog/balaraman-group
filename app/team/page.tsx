@@ -191,6 +191,45 @@ const AlumniPostdocCard = ({ member }: { member: TeamMember }) => {
   );
 };
 
+const AlumniMScCard = ({ member }: { member: TeamMember }) => {
+  const [imgFailed, setImgFailed] = useState(false);
+  const altText = member.name ? `MSc Alumni ${member.name}` : 'MSc Alumni';
+  
+  return (
+    <motion.div 
+      variants={fadeUp}
+      className="group relative bg-foreground/[0.03] border border-foreground/10 rounded-[2rem] overflow-hidden hover:bg-foreground/5 hover:border-purple-500/30 transition-all duration-500 shadow-xl"
+    >
+      <div className="aspect-[3/4] relative overflow-hidden bg-foreground/5">
+        {!imgFailed && member.image ? (
+          <img 
+            src={member.image} 
+            alt={altText} 
+            loading="lazy" decoding="async"
+            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+            onError={() => setImgFailed(true)}
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center opacity-10">
+             <BookOpen size={80} />
+          </div>
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
+        <div className="absolute bottom-4 left-4 right-4">
+           <span className="text-[10px] font-mono text-purple-400 tracking-widest uppercase">MSc Alumni</span>
+        </div>
+      </div>
+      <div className="p-6">
+        <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-purple-400 transition-colors tracking-tight">{member.name}</h3>
+        <p className="text-[10px] text-foreground/90 font-light leading-relaxed mb-1">{member.institution}</p>
+        <div className="flex items-center gap-2 mt-3">
+          <span className="text-[10px] font-mono text-purple-500/50">{member.year}</span>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
 export default function TeamPage() {
   const [showAllAlumni, setShowAllAlumni] = useState(false);
   const [isAlumniOnly, setIsAlumniOnly] = useState(false);
@@ -329,23 +368,9 @@ export default function TeamPage() {
                  <div className="h-px w-12 bg-purple-500"></div>
                  <h3 className="text-xs font-mono text-purple-500 uppercase tracking-[0.4em]">Post-graduate Students (MSc Thesis)</h3>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 {(team.alumniMsc as TeamMember[]).map((m, i) => (
-                  <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-foreground/[0.02] border border-foreground/5 hover:border-purple-500/20 transition-all">
-                    {m.image ? (
-                      <div className="w-10 h-10 rounded-xl overflow-hidden border border-foreground/10 shrink-0">
-                        <img src={m.image} alt={m.name} className="w-full h-full object-cover" />
-                      </div>
-                    ) : (
-                      <div className="w-8 h-8 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 shrink-0">
-                        <BookOpen size={14} />
-                      </div>
-                    )}
-                    <div className="flex-1 min-w-0">
-                      <h4 className="text-sm font-bold text-foreground truncate">{m.name}</h4>
-                      <p className="text-[10px] text-foreground/90 font-light">{m.institution} – {m.year}</p>
-                    </div>
-                  </div>
+                  <AlumniMScCard key={i} member={m} />
                 ))}
               </div>
             </div>
