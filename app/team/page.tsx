@@ -332,12 +332,18 @@ export default function TeamPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {(team.alumniMsc as TeamMember[]).map((m, i) => (
                   <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-foreground/[0.02] border border-foreground/5 hover:border-purple-500/20 transition-all">
-                    <div className="w-8 h-8 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 shrink-0">
-                      <BookOpen size={14} />
-                    </div>
+                    {m.image ? (
+                      <div className="w-10 h-10 rounded-xl overflow-hidden border border-foreground/10 shrink-0">
+                        <img src={m.image} alt={m.name} className="w-full h-full object-cover" />
+                      </div>
+                    ) : (
+                      <div className="w-8 h-8 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 shrink-0">
+                        <BookOpen size={14} />
+                      </div>
+                    )}
                     <div className="flex-1 min-w-0">
                       <h4 className="text-sm font-bold text-foreground truncate">{m.name}</h4>
-                      <p className="text-[10px] text-foreground/90 font-light">{m.institution} � {m.year}</p>
+                      <p className="text-[10px] text-foreground/90 font-light">{m.institution} – {m.year}</p>
                     </div>
                   </div>
                 ))}

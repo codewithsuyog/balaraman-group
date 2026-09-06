@@ -1267,7 +1267,7 @@ export const team = {
     { name: "Ms. Anuja Joy", institution: "Mahatma Gandhi University, Kerala", year: "Feb 2024 – Jul 2024" },
     { name: "Mr. Soumik Roy", institution: "Indian Institute of Science Education and Research (IISER) Tirupati", year: "May 2024 – 2025" },
     { name: "Ms. Navyasri M.", institution: "Indian Institute of Science Education and Research (IISER) Tirupati", year: "Aug 2024 – 2025" },
-    { name: "Ms. Divyasikha Sutar", institution: "Indian Institute of Science Education and Research (IISER) Tirupati", year: "Aug 2025 – 2026" },
+    { name: "Ms. Divyasikha Sutar", institution: "Indian Institute of Science Education and Research (IISER) Tirupati", year: "Aug 2025 – 2026", image: "/images/team/Alumini/Msc Alumini/Divyasikha.jpg" },
     { name: "Ms. Lavanya", institution: "Indian Institute of Science Education and Research (IISER) Tirupati", year: "Aug 2025 – 2026" },
     { name: "Ms. Shahma Sujeer", institution: "Indian Institute of Science Education and Research (IISER) Tirupati", year: "Aug 2025 – 2026" }
   ],
