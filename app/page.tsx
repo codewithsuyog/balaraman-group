@@ -550,7 +550,7 @@ export default function Home() {
     setTimeout(() => setFormSubmitted(false), 5000);
   };
 
-  const heroImage = '/images/Background/group-photo.webp';
+  const heroImage = '/images/gallery/30.webp';
 
   useEffect(() => {
     const handleScroll = () => {
