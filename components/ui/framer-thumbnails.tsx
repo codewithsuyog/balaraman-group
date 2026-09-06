@@ -73,6 +73,15 @@ function FramerCarouselThumbnails() {
     setImgErrors((prev) => ({ ...prev, [id]: true }));
   };
 
+  // Autoplay functionality
+  useEffect(() => {
+    if (isDragging) return;
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % galleryItems.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [isDragging]);
+
   return (
     <div className='w-full mx-auto'>
       <div className='flex flex-col gap-3'>
@@ -104,12 +113,19 @@ function FramerCarouselThumbnails() {
             style={{ x }}
           >
             {galleryItems.map((item) => (
-              <div key={item.id} className='shrink-0 w-full h-[350px] md:h-[450px] bg-foreground/5'>
+              <div key={item.id} className='shrink-0 w-full h-[350px] md:h-[500px] bg-foreground/5 relative overflow-hidden'>
+                {/* Cinematic blurred background to fill space */}
+                <img 
+                  src={imgErrors[item.id] ? '/logo.webp' : item.url} 
+                  className='absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-110'
+                  alt="" 
+                />
+                {/* Main uncropped image */}
                 <img
                   src={imgErrors[item.id] ? '/logo.webp' : item.url}
                   alt={item.title}
-                  className={`w-full h-full object-cover select-none pointer-events-none ${
-                    imgErrors[item.id] ? 'object-contain opacity-20 p-12' : ''
+                  className={`relative z-10 w-full h-full object-contain select-none pointer-events-none drop-shadow-2xl ${
+                    imgErrors[item.id] ? 'opacity-20 p-12' : ''
                   }`}
                   draggable={false}
                   onError={() => handleImgError(item.id)}
