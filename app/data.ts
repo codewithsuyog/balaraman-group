@@ -1208,7 +1208,7 @@ export const team = {
     { name: "Dr. Bapurao Rupanawar", info: "Ph.D. NCL-Pune, Feb 2022, Post Doc -OIST-Japan July 2022-Aug 2025, State- Maharashtra", email: "bapuraorupanawar@labs.iisertirupati.ac.in", image: "/images/team/present/postdocs/bapurao.jpg" }
   ],
   masters: [
-    { name: "Suyog", info: "MS, IISER Tirupati (2026)", email: "suyog_20221147@students.iisertirupati.ac.in", image: "/images/team/present/masters/suyog.jpg" },
+    { name: "Suyog", info: "MS, IISER Tirupati (2026)", email: "suyog_20221147@students.iisertirupati.ac.in", image: "/images/team/present/masters/suyog-2026.jpg" },
     { name: "Kavya", info: "MS, IISER Tirupati (2026)", email: "mothukuri_20221091@students.iisertirupati.ac.in", image: "/images/team/present/masters/Kavya.jpeg" },
     { name: "Ayesha", info: "MS, IISER Tirupati (2026)", email: "aysha_20221020@students.iisertirupati.ac.in", image: "/images/team/present/masters/ayesha.jpg" },
     { name: "Subham Ghosh", info: "MS, B.Sc (Hons.) (Chem), Banaras Hindu University, Varanasi", email: "subham20255208@students.iisertirupati.ac.in", image: "/images/team/present/masters/Shubham.jpeg" },
@@ -1216,7 +1216,7 @@ export const team = {
     { name: "Md. Oruz Iqbal", info: "MS, iPhD 2024, B.Sc (Hons.) (Chem), Oriental College, Patliputra University", email: "oruziqbal20242205@students.iisertirupati.ac.in", image: "/images/team/present/masters/urus.jpeg" },
   ],
   semesterProject: [
-    { name: "Suyog", info: "Semester Project, IISER Tirupati (2026)", email: "suyog_20221147@students.iisertirupati.ac.in", image: "/images/team/present/masters/suyog.jpg" },
+    { name: "Suyog", info: "Semester Project, IISER Tirupati (2026)", email: "suyog_20221147@students.iisertirupati.ac.in", image: "/images/team/present/masters/suyog-2026.jpg" },
     { name: "Kavya", info: "Semester Project, IISER Tirupati (2026)", email: "mothukuri_20221091@students.iisertirupati.ac.in", image: "/images/team/present/masters/Kavya.jpeg" },
     { name: "Ayesha", info: "Semester Project, IISER Tirupati (2026)", email: "aysha_20221020@students.iisertirupati.ac.in", image: "/images/team/present/masters/ayesha.jpg" },
   ],
