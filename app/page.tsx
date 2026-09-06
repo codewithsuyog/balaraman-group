@@ -320,7 +320,10 @@ const SlideImage = ({ srcBase, isActive }: { srcBase: string, isActive: boolean 
 };
 
 const GallerySlideshow = () => {
-  const images = Array.from({ length: 36 }, (_, i) => i + 1);
+  const images = [
+    ...Array.from({ length: 11 }, (_, i) => i + 26), 
+    ...Array.from({ length: 25 }, (_, i) => i + 1)
+  ];
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {

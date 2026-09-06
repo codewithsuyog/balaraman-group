@@ -20,10 +20,12 @@ export default function GalleryPage() {
 
   const labImagesCount = 7;
   const memoriesCount = 36;
-  const photos = Array.from(
-    { length: activeTab === 'images' ? labImagesCount : memoriesCount },
-    (_, i) => i + 1
-  );
+  const photos = activeTab === 'images' 
+    ? Array.from({ length: labImagesCount }, (_, i) => i + 1)
+    : [
+        ...Array.from({ length: memoriesCount - 25 }, (_, i) => i + 26),
+        ...Array.from({ length: 25 }, (_, i) => i + 1)
+      ];
 
   const folder = activeTab === 'images' ? 'lab-images' : 'gallery';
 
