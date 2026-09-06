@@ -9,7 +9,7 @@ export const galleryItems = [
   { id: 35, url: '/images/gallery/35.webp', title: 'Group Photo' },
   { id: 34, url: '/images/gallery/34.webp', title: 'Group Photo' },
   { id: 33, url: '/images/gallery/33.webp', title: 'Lab Postdocs with PI' },
-  { id: 32, url: '/images/gallery/32.webp', title: 'Lab PhDs with BS-MS' },
+  { id: 32, url: '/images/gallery/32.webp', title: 'Lab BS-MS with PI' },
   { id: 31, url: '/images/gallery/31.webp', title: 'Lab PhDs with PI' },
   { id: 30, url: '/images/gallery/30.webp', title: 'Group Photo' },
   { id: 29, url: '/images/gallery/29.webp', title: 'Group Photo' },
