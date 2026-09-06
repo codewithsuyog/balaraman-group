@@ -19,7 +19,7 @@ export default function GalleryPage() {
   }, []);
 
   const labImagesCount = 7;
-  const memoriesCount = 25;
+  const memoriesCount = 36;
   const photos = Array.from(
     { length: activeTab === 'images' ? labImagesCount : memoriesCount },
     (_, i) => i + 1
