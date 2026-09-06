@@ -340,9 +340,25 @@ export default function TeamPage() {
                  <div className="h-px w-12 bg-emerald-500"></div>
                  <h3 className="text-xs font-mono text-emerald-500 tracking-[0.4em]">Doctoral Students (Ph.D. Thesis)</h3>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                {team.alumniPhd.map((member: TeamMember, i: number) => <AlumniPhDCard key={i} member={member} />)}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                {team.alumniPhd.filter(m => m.image).map((member: TeamMember, i: number) => <AlumniPhDCard key={`phd-img-${i}`} member={member} />)}
               </div>
+              {team.alumniPhd.filter(m => !m.image).length > 0 && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {team.alumniPhd.filter(m => !m.image).map((m: TeamMember, i: number) => (
+                    <div key={`phd-noimg-${i}`} className="flex items-center gap-4 p-4 rounded-2xl bg-foreground/[0.02] border border-foreground/5 hover:border-emerald-500/20 transition-all">
+                      <div className="w-8 h-8 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 shrink-0">
+                        <GraduationCap size={14} />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="text-sm font-bold text-foreground truncate">{m.name}</h4>
+                        <p className="text-[10px] text-foreground/90 font-light truncate">{m.thesis}</p>
+                        <p className="text-[10px] font-mono text-emerald-500/50 mt-1">{m.duration}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           )}
 
@@ -353,11 +369,27 @@ export default function TeamPage() {
                  <div className="h-px w-12 bg-teal-500"></div>
                  <h3 className="text-xs font-mono text-teal-500 uppercase tracking-[0.4em]">Post-doctoral Alumni</h3>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                {(team as typeof team & { alumniPostdoc: TeamMember[] }).alumniPostdoc.map((member: TeamMember, i: number) => (
-                  <AlumniPostdocCard key={i} member={member} />
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                {(team as typeof team & { alumniPostdoc: TeamMember[] }).alumniPostdoc.filter(m => m.image).map((member: TeamMember, i: number) => (
+                  <AlumniPostdocCard key={`postdoc-img-${i}`} member={member} />
                 ))}
               </div>
+              {(team as typeof team & { alumniPostdoc: TeamMember[] }).alumniPostdoc.filter(m => !m.image).length > 0 && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {(team as typeof team & { alumniPostdoc: TeamMember[] }).alumniPostdoc.filter(m => !m.image).map((m: TeamMember, i: number) => (
+                    <div key={`postdoc-noimg-${i}`} className="flex items-center gap-4 p-4 rounded-2xl bg-foreground/[0.02] border border-foreground/5 hover:border-teal-500/20 transition-all">
+                      <div className="w-8 h-8 rounded-xl bg-teal-500/10 flex items-center justify-center text-teal-500 shrink-0">
+                        <Microscope size={14} />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="text-sm font-bold text-foreground truncate">{m.name}</h4>
+                        {m.institution && <p className="text-[10px] text-foreground/90 font-light truncate">{m.institution}</p>}
+                        <p className="text-[10px] font-mono text-teal-500/50 mt-1">{m.duration || m.year}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           ) : null}
 
@@ -368,11 +400,27 @@ export default function TeamPage() {
                  <div className="h-px w-12 bg-purple-500"></div>
                  <h3 className="text-xs font-mono text-purple-500 uppercase tracking-[0.4em]">Post-graduate Students (MSc Thesis)</h3>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                {(team.alumniMsc as TeamMember[]).map((m, i) => (
-                  <AlumniMScCard key={i} member={m} />
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                {(team.alumniMsc as TeamMember[]).filter(m => m.image).map((m, i) => (
+                  <AlumniMScCard key={`msc-img-${i}`} member={m} />
                 ))}
               </div>
+              {(team.alumniMsc as TeamMember[]).filter(m => !m.image).length > 0 && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {(team.alumniMsc as TeamMember[]).filter(m => !m.image).map((m, i) => (
+                    <div key={`msc-noimg-${i}`} className="flex items-center gap-4 p-4 rounded-2xl bg-foreground/[0.02] border border-foreground/5 hover:border-purple-500/20 transition-all">
+                      <div className="w-8 h-8 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-500 shrink-0">
+                        <BookOpen size={14} />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="text-sm font-bold text-foreground truncate">{m.name}</h4>
+                        <p className="text-[10px] text-foreground/90 font-light truncate">{m.institution}</p>
+                        <p className="text-[10px] font-mono text-purple-500/50 mt-1">{m.year}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           )}
 
