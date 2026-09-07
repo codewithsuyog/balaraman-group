@@ -1237,8 +1237,8 @@ export const team = {
     { name: "Dr. Reshma Babu", thesis: "3d-Transition Metal Catalyzed Acceptorless Alcohol Dehydrogenation and Related Reactions", duration: "2019-2024", image: "/images/team/Alumini/Phd Alumini/Dr. RESHMA BABU.jpg" }
   ],
   alumniPostdoc: [
-    { name: "Dr. M. Sivaprakash", info: "Ph.D. 2023 (Central University of Tamil Nadu), M.Sc. (Chem) Bharathiyar University Coimbatore", duration: "Apr 2023 – Present", image: "/images/team/Alumini/Postdoc alumini/Sivaprakash.png" },
-    { name: "Dr. Rohit Kumar", info: "Ph.D. 2024 (IISER Tirupati), B.Sc., (Chem), Central University, Bihar (iPhD)", duration: "2024 – Present", image: "/images/team/Alumini/Postdoc alumini/Dr. ROHIT KUMAR.jpg" },
+    { name: "Dr. M. Sivaprakash", info: "Ph.D. 2023 (Central University of Tamil Nadu), M.Sc. (Chem) Bharathiyar University Coimbatore", duration: "Apr 2023 – 2024", image: "/images/team/Alumini/Postdoc alumini/Sivaprakash.png" },
+    { name: "Dr. Rohit Kumar", info: "Ph.D. 2024 (IISER Tirupati), B.Sc., (Chem), Central University, Bihar (iPhD)", duration: "2024 – 2025", image: "/images/team/Alumini/Postdoc alumini/Dr. ROHIT KUMAR.jpg" },
   ],
   alumniMsc: [
     { name: "Mr. Thomas Abraham", institution: "Mahatma Gandhi University, Kerala", year: "2014" },
@@ -1299,13 +1299,13 @@ export const team = {
     { name: "Dr. Shantimoy Khilari (RA)", duration: "Sep 2021 – Aug 2022" },
     { name: "Dr. Rajib Kumar Singha (RA)", duration: "Oct 2021 – Feb 2022" },
     { name: "Mr. Abhijith K S", duration: "Jun 2022 – Dec 2022" },
-    { name: "Dr. Madhu N. (N-PDF)", duration: "Oct 2022 – Present" },
+    { name: "Dr. Madhu N. (N-PDF)", duration: "Oct 2022 – 2024" },
     { name: "Mr. Veerahari Shankar", duration: "Nov 2022 – Dec 2023" },
     { name: "Dr. Ankit Kumar Srivastav", duration: "Feb 2023 – Dec 2023" },
-    { name: "Dr. M. Sivaprakash", duration: "Apr 2023 – Present" },
+    { name: "Dr. M. Sivaprakash", duration: "Apr 2023 – 2024" },
     { name: "Mr. Veerahari", duration: "Project Fellow" },
-    { name: "Dr. Sivakumar G", duration: "Jan 2024 – Present" },
-    { name: "Dr. Rohit Kumar", duration: "Dec 2024 – Present" }
+    { name: "Dr. Sivakumar G", duration: "Jan 2024 – 2025" },
+    { name: "Dr. Rohit Kumar", duration: "Dec 2024 – 2025" }
   ],
   alumniSemester: [
     { name: "Mr. Rajasekhar Pathi", batch: "BSMS-2016", duration: "May 2019 – Dec 2020" },
@@ -1330,7 +1330,7 @@ export const team = {
     { name: "Mr. Prabhakar Bhardwaj", batch: "iPhD-2019", duration: "Jan 2019 – Jun 2020" },
     { name: "Ms. Smruti Rekha Padhy", batch: "iPhD-2021", duration: "Jun 2022 – Jul 2023" },
     { name: "Ms. Debomitra Mallik", batch: "iPhD-2024", duration: "Aug 2024 – Dec 2024" },
-    { name: "Mr. Sanjay A.", batch: "iPhD-2024", duration: "Jan 2022 – Present" }
+    { name: "Mr. Sanjay A.", batch: "iPhD-2024", duration: "Jan 2022 – Dec 2022" }
   ]
 };
 
