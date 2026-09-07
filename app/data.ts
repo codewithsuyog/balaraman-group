@@ -1199,7 +1199,7 @@ export const team = {
   ],
   projectAssociates: [
     { name: "Gowtham Ram K", info: "Project Associate, M.Sc (Chem), Madurai Kamaraj University (MKU), Madurai, Tamil Nadu", email: "gowthamram@students.iisertirupati.ac.in", image: "/images/team/present/phd/Gowtham.jpeg" },
-    { name: "Ms. Divyasikha Sutar", info: "Project Fellow", image: "/images/team/Alumini/Msc Alumini/Divyasikha.webp" },
+    { name: "Divyasikha K Sutar", info: "Project Fellow, BS-MS IISER Tirupati 2021-2026", email: "divyasikhaksutar211177@students.iisertirupati.ac.in", image: "/images/team/Alumini/Msc Alumini/Divyasikha.webp" },
     { name: "Sayan Mondal", info: "Project Fellow, BS-MS IISER Tirupati 2021-2026, Master thesis IIT BHU 2025-2026", email: "sayanmondal211078@students.iisertirupati.ac.in", image: "/images/team/present/project/Sayan.webp" }
   ],
   postdocs: [
@@ -1271,8 +1271,8 @@ export const team = {
     { name: "Mr. Soumik Roy", institution: "Indian Institute of Science Education and Research (IISER) Tirupati", year: "May 2024 – 2025" },
     { name: "Ms. Navyasri M.", institution: "Indian Institute of Science Education and Research (IISER) Tirupati", year: "Aug 2024 – 2025" },
     { name: "Ms. Divyasikha Sutar", institution: "Indian Institute of Science Education and Research (IISER) Tirupati", year: "Aug 2025 – 2026", image: "/images/team/Alumini/Msc Alumini/Divyasikha.jpg" },
-    { name: "Ms. Lavanya", institution: "Indian Institute of Science Education and Research (IISER) Tirupati", year: "Aug 2025 – 2026", image: "/images/team/Alumini/Msc Alumini/Lavanya.webp" },
-    { name: "Ms. Shahma Sujeer", institution: "Indian Institute of Science Education and Research (IISER) Tirupati", year: "Aug 2025 – 2026", image: "/images/team/Alumini/Msc Alumini/Shahma.webp" }
+    { name: "Ms. Lavanya", institution: "Indian Institute of Science Education and Research (IISER) Tirupati", year: "Aug 2025 – 2026", image: "/images/team/Alumini/Msc Alumini/Lavanya.webp", email: "laana23g@gmail.com" },
+    { name: "Ms. Shahma Sujeer", institution: "Indian Institute of Science Education and Research (IISER) Tirupati", year: "Aug 2025 – 2026", image: "/images/team/Alumini/Msc Alumini/Shahma.webp", email: "shahmasujeer44@gmail.com" }
   ],
   alumniBtech: [
     { name: "Mr. Varun Kant", institution: "IIT Roorkee" },
