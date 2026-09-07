@@ -1198,14 +1198,17 @@ export const team = {
     { name: "Kumara Raja Mahesh K", info: "Ph.D. Aug 2026, M.Sc (Chem), The Gandhigram Rural Institute, Dindigul, Tamil Nadu", email: "kumararajamahesh20263208@students.iisertirupati.ac.in", image: "/images/team/present/phd/Mahesh.jpeg" }
   ],
   projectAssociates: [
-    { name: "Gowtham Ram K", info: "Project Associate, M.Sc (Chem), Madurai Kamaraj University (MKU), Madurai, Tamil Nadu", email: "gowthamram@students.iisertirupati.ac.in", image: "/images/team/present/phd/Gowtham.jpeg" }
+    { name: "Gowtham Ram K", info: "Project Associate, M.Sc (Chem), Madurai Kamaraj University (MKU), Madurai, Tamil Nadu", email: "gowthamram@students.iisertirupati.ac.in", image: "/images/team/present/phd/Gowtham.jpeg" },
+    { name: "Ms. Divyasikha Sutar", info: "Project Fellow", image: "/images/team/Alumini/Msc Alumini/Divyasikha.webp" },
+    { name: "Sayan", info: "Project Fellow", image: "/images/team/present/project/Sayan.webp" }
   ],
   postdocs: [
     { name: "Dr. Sachin S. Gorad", info: "Ph.D. 2024 (IISER-Bhopal), M.Sc. (Org. Chem) Savitribai Phule Pune University Maharashtra", email: "sachinshrimant@labs.iisertirupati.ac.in", image: "/images/team/present/postdocs/sachin.png" },
     { name: "Dr. Nausad", info: "Ph.D. – IISER Mohali, B.Sc. + M.Sc. – Jamia Millia Islamia Central University", email: "nausadkhan@labs.iisertirupati.ac.in", image: "/images/team/present/postdocs/Nausad.jpeg" },
     { name: "Dr. Athira C S", info: "Ph.D.: CSIR NIIST, Kerala (2025), MSc: University of Kerala, Kerala (2019)", email: "athiracs@labs.iisertirupati.ac.in", image: "/images/team/present/postdocs/Athira.jpeg" },
     { name: "Dr. Anjali Krishna P K", info: "Ph.D.: CSIR-NIIST, Thiruvananthapuram, Kerala (2024), MSc: NIT Tiruchirappalli, Tamilnadu (2017)", email: "anjalikrishna@labs.iisertirupati.ac.in", image: "/images/team/present/postdocs/anjali.jpeg" },
-    { name: "Dr. Bapurao Rupanawar", info: "Ph.D. NCL-Pune, Feb 2022, Post Doc -OIST-Japan July 2022-Aug 2025, State- Maharashtra", email: "bapuraorupanawar@labs.iisertirupati.ac.in", image: "/images/team/present/postdocs/bapurao.jpg" }
+    { name: "Dr. Bapurao Rupanawar", info: "Ph.D. NCL-Pune, Feb 2022, Post Doc -OIST-Japan July 2022-Aug 2025, State- Maharashtra", email: "bapuraorupanawar@labs.iisertirupati.ac.in", image: "/images/team/present/postdocs/bapurao.jpg" },
+    { name: "Dr. Bikash", info: "Post-doctoral Fellow", image: "/images/team/present/postdocs/Bikash.webp" }
   ],
   masters: [
     { name: "Suyog", info: "MS, IISER Tirupati (2026)", email: "suyog_20221147@students.iisertirupati.ac.in", image: "/images/team/present/masters/suyog-2026.jpg" },
