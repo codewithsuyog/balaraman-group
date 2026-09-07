@@ -1208,7 +1208,7 @@ export const team = {
     { name: "Dr. Athira C S", info: "Ph.D.: CSIR NIIST, Kerala (2025), MSc: University of Kerala, Kerala (2019)", email: "athiracs@labs.iisertirupati.ac.in", image: "/images/team/present/postdocs/Athira.jpeg" },
     { name: "Dr. Anjali Krishna P K", info: "Ph.D.: CSIR-NIIST, Thiruvananthapuram, Kerala (2024), MSc: NIT Tiruchirappalli, Tamilnadu (2017)", email: "anjalikrishna@labs.iisertirupati.ac.in", image: "/images/team/present/postdocs/anjali.jpeg" },
     { name: "Dr. Bapurao Rupanawar", info: "Ph.D. NCL-Pune, Feb 2022, Post Doc -OIST-Japan July 2022-Aug 2025, State- Maharashtra", email: "bapuraorupanawar@labs.iisertirupati.ac.in", image: "/images/team/present/postdocs/bapurao.jpg" },
-    { name: "Dr. Bikash", info: "Post-doctoral Fellow", image: "/images/team/present/postdocs/Bikash.webp" }
+    { name: "Dr. Bikash Ranjan Isaac", info: "Ph.D. IISER Tirupati 2026, M.Sc. Berhampur University 2018", email: "bikashisaac@students.iisertirupati.ac.in", image: "/images/team/present/postdocs/Bikash.webp" }
   ],
   masters: [
     { name: "Suyog", info: "MS, IISER Tirupati (2026)", email: "suyog_20221147@students.iisertirupati.ac.in", image: "/images/team/present/masters/suyog-2026.jpg" },
