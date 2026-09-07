@@ -400,13 +400,8 @@ export default function TeamPage() {
                  <div className="h-px w-12 bg-purple-500"></div>
                  <h3 className="text-xs font-mono text-purple-500 uppercase tracking-[0.4em]">Post-graduate Students (MSc Thesis)</h3>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-                {(team.alumniMsc as TeamMember[]).filter(m => m.image).map((m, i) => (
-                  <AlumniMScCard key={`msc-img-${i}`} member={m} />
-                ))}
-              </div>
               {(team.alumniMsc as TeamMember[]).filter(m => !m.image).length > 0 && (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
                   {(team.alumniMsc as TeamMember[]).filter(m => !m.image).map((m, i) => (
                     <div key={`msc-noimg-${i}`} className="flex items-center gap-4 p-4 rounded-2xl bg-foreground/[0.02] border border-foreground/5 hover:border-purple-500/20 transition-all">
                       <div className="w-8 h-8 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-500 shrink-0">
@@ -418,6 +413,13 @@ export default function TeamPage() {
                         <p className="text-[10px] font-mono text-purple-500/50 mt-1">{m.year}</p>
                       </div>
                     </div>
+                  ))}
+                </div>
+              )}
+              {(team.alumniMsc as TeamMember[]).filter(m => m.image).length > 0 && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                  {(team.alumniMsc as TeamMember[]).filter(m => m.image).map((m, i) => (
+                    <AlumniMScCard key={`msc-img-${i}`} member={m} />
                   ))}
                 </div>
               )}
