@@ -1200,7 +1200,7 @@ export const team = {
   projectAssociates: [
     { name: "Gowtham Ram K", info: "Project Associate, M.Sc (Chem), Madurai Kamaraj University (MKU), Madurai, Tamil Nadu", email: "gowthamram@students.iisertirupati.ac.in", image: "/images/team/present/phd/Gowtham.jpeg" },
     { name: "Ms. Divyasikha Sutar", info: "Project Fellow", image: "/images/team/Alumini/Msc Alumini/Divyasikha.webp" },
-    { name: "Sayan", info: "Project Fellow", image: "/images/team/present/project/Sayan.webp" }
+    { name: "Sayan Mondal", info: "Project Fellow, BS-MS IISER Tirupati 2021-2026, Master thesis IIT BHU 2025-2026", email: "sayanmondal211078@students.iisertirupati.ac.in", image: "/images/team/present/project/Sayan.webp" }
   ],
   postdocs: [
     { name: "Dr. Sachin S. Gorad", info: "Ph.D. 2024 (IISER-Bhopal), M.Sc. (Org. Chem) Savitribai Phule Pune University Maharashtra", email: "sachinshrimant@labs.iisertirupati.ac.in", image: "/images/team/present/postdocs/sachin.png" },
