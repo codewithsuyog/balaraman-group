@@ -1307,7 +1307,7 @@ export default function Home() {
               </p>
               <span className="hidden md:inline text-foreground/40">|</span>
               <p className="text-[10px] font-mono text-foreground/70 uppercase tracking-[0.4em] text-center md:text-left">
-                 Designed & Developed by <span className="font-bold text-foreground">Suyog</span>
+                 Designed & Developed by <span className="font-bold text-foreground">Suyog Andhare</span>
               </p>
             </div>
             <div className="flex items-center gap-2">

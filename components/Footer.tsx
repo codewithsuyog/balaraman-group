@@ -111,7 +111,7 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4">
             <p>© {new Date().getFullYear()} Raman's Research Lab. All rights reserved.</p>
             <span className="hidden md:inline text-gray-700">|</span>
-            <p className="font-medium text-gray-400">Designed & Developed by Suyog</p>
+            <p className="font-medium text-gray-400">Designed & Developed by Suyog Andhare</p>
           </div>
           <div className="flex gap-6">
             <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
