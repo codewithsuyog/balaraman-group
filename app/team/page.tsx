@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { 
   ArrowLeft, Mail, Globe, Users, GraduationCap, 
-  ExternalLink, ChevronRight, Briefcase, BookOpen, Beaker, FlaskConical
+  ExternalLink, ChevronRight, Briefcase, BookOpen, Beaker, FlaskConical, Microscope
 } from 'lucide-react';
 import { team } from '../data';
 
