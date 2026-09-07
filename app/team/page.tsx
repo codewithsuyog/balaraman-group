@@ -83,8 +83,8 @@ const MemberCard = ({ member, role }: { member: TeamMember, role: string }) => {
 
       <div className="p-6 flex-1 flex flex-col">
         <div className="flex-1">
-          <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-amber-400 transition-colors tracking-tight">{member.name}</h3>
-          <p className="text-xs text-foreground font-light leading-relaxed mb-4">
+          <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-amber-400 transition-colors tracking-tight">{member.name}</h3>
+          <p className="text-[10px] text-foreground/90 font-light leading-relaxed mb-4">
             {member.info ? member.info.split(',').map((part: string, idx: number) => (
               <React.Fragment key={idx}>{part.trim()}<br/></React.Fragment>
             )) : null}
