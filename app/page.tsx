@@ -625,8 +625,8 @@ export default function Home() {
             className="flex items-center p-1 hover:scale-105 transition-transform"
             title="Raman's Research Lab"
           >
-            <div className="w-8 h-8 rounded-lg bg-black/90 p-0.5 shadow-sm border border-emerald-500/40 flex items-center justify-center overflow-hidden">
-              <img src="/images/lab-logo-dark.png" alt="EBR Lab Logo" className="w-full h-full object-contain" />
+            <div className="w-8 h-8 rounded-lg bg-white p-0.5 shadow-sm border border-foreground/15 flex items-center justify-center overflow-hidden">
+              <img src="/images/lab-logo-light.png" alt="EBR Lab Logo" className="w-full h-full object-contain" />
             </div>
           </a>
           <div className="flex items-center gap-2">
@@ -647,8 +647,8 @@ export default function Home() {
           className="hidden md:flex items-center pl-1 pr-2 py-0.5 hover:scale-105 transition-transform cursor-pointer"
           title="Raman's Research Lab"
         >
-          <div className="w-8 h-8 rounded-lg bg-black/90 p-0.5 shadow-sm border border-emerald-500/40 flex items-center justify-center overflow-hidden">
-            <img src="/images/lab-logo-dark.png" alt="EBR Lab Logo" className="w-full h-full object-contain" />
+          <div className="w-8 h-8 rounded-lg bg-white p-0.5 shadow-sm border border-foreground/15 flex items-center justify-center overflow-hidden">
+            <img src="/images/lab-logo-light.png" alt="EBR Lab Logo" className="w-full h-full object-contain" />
           </div>
         </a>
         <div className="hidden md:block w-px h-5 bg-foreground/20 self-center mx-1"></div>
