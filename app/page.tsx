@@ -1337,20 +1337,33 @@ export default function Home() {
         </div>
       </section>
 
-      {/* LAB RESEARCH BANNER SHOWCASE */}
-      <div className="max-w-7xl mx-auto px-6 mb-16 w-full relative z-10">
-        <div className="relative rounded-[2rem] md:rounded-[2.5rem] overflow-hidden border border-foreground/10 shadow-2xl bg-white group">
-          <img 
-            src="/images/banners/catalysis-panorama.jpg" 
-            alt="EBR Lab - Sustainable Chemistry via Catalysis" 
-            className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.01]" 
-          />
-        </div>
-      </div>
-
       {/* FOOTER */}
-      <footer className="w-full py-12 px-6 border-t border-foreground/10 bg-foreground/[0.02] backdrop-blur-md relative z-10">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <footer className="w-full relative z-10 overflow-hidden border-t border-foreground/10 py-16 px-6">
+        {/* Merged Chemistry Panorama Background */}
+        <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
+          {/* Light Mode Banner */}
+          <div className="absolute inset-0 dark:hidden flex items-center justify-center opacity-30">
+            <img 
+              src="/images/banners/catalysis-panorama.jpg" 
+              alt="EBR Lab Chemistry Background" 
+              className="w-full h-full object-cover object-center" 
+            />
+          </div>
+
+          {/* Dark Mode Banner */}
+          <div className="absolute inset-0 hidden dark:flex items-center justify-center opacity-25">
+            <img 
+              src="/images/banners/catalysis-panorama-dark.jpg" 
+              alt="EBR Lab Chemistry Background" 
+              className="w-full h-full object-cover object-center" 
+            />
+          </div>
+
+          {/* Seamless gradient mask over top and bottom */}
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-background/70 to-background"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
             <div className="flex flex-col md:flex-row items-center gap-3 md:gap-4">
               <div className="w-9 h-9 rounded-xl bg-white p-1.5 shadow-sm border border-foreground/10 flex items-center justify-center shrink-0 overflow-hidden">
                 <img src="/images/lab-logo-square.png" alt="EBR Lab Logo" className="w-full h-full object-contain" />

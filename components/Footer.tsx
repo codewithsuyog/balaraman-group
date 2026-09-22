@@ -26,8 +26,18 @@ export default function Footer() {
   const { theme, setTheme } = useTheme();
 
   return (
-    <footer className="w-full bg-[#0a0a0a] text-white pt-16 pb-8 px-6 border-t border-white/10">
-      <div className="max-w-7xl mx-auto">
+    <footer className="w-full bg-[#0a0a0a] text-white pt-16 pb-8 px-6 border-t border-white/10 relative overflow-hidden">
+      {/* Merged Chemistry Panorama Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none select-none opacity-20 overflow-hidden">
+        <img 
+          src="/images/banners/catalysis-panorama-dark.jpg" 
+          alt="EBR Lab Chemistry Background" 
+          className="w-full h-full object-cover object-center" 
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/60 to-[#0a0a0a]"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Stay Connected */}
           <div className="flex flex-col gap-4">
