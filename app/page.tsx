@@ -625,8 +625,8 @@ export default function Home() {
             className="flex items-center p-1 hover:scale-105 transition-transform"
             title="Raman's Research Lab"
           >
-            <div className="w-8 h-8 rounded-lg bg-white p-1 shadow-sm border border-white/40 flex items-center justify-center overflow-hidden">
-              <img src="/images/lab-logo-square.png" alt="EBR Lab Logo" className="w-full h-full object-contain" />
+            <div className="w-8 h-8 rounded-lg bg-black/90 p-0.5 shadow-sm border border-emerald-500/40 flex items-center justify-center overflow-hidden">
+              <img src="/images/lab-logo-dark.png" alt="EBR Lab Logo" className="w-full h-full object-contain" />
             </div>
           </a>
           <div className="flex items-center gap-2">
@@ -647,8 +647,8 @@ export default function Home() {
           className="hidden md:flex items-center pl-1 pr-2 py-0.5 hover:scale-105 transition-transform cursor-pointer"
           title="Raman's Research Lab"
         >
-          <div className="w-8 h-8 rounded-lg bg-white p-1 shadow-sm border border-white/40 flex items-center justify-center overflow-hidden">
-            <img src="/images/lab-logo-square.png" alt="EBR Lab Logo" className="w-full h-full object-contain" />
+          <div className="w-8 h-8 rounded-lg bg-black/90 p-0.5 shadow-sm border border-emerald-500/40 flex items-center justify-center overflow-hidden">
+            <img src="/images/lab-logo-dark.png" alt="EBR Lab Logo" className="w-full h-full object-contain" />
           </div>
         </a>
         <div className="hidden md:block w-px h-5 bg-foreground/20 self-center mx-1"></div>
@@ -1337,61 +1337,134 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="w-full relative z-10 overflow-hidden border-t border-foreground/10 py-16 px-6">
-        {/* Merged Chemistry Panorama Background */}
-        <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
-          {/* Light Mode Banner */}
-          <div className="absolute inset-0 dark:hidden flex items-center justify-center opacity-30">
-            <img 
-              src="/images/banners/catalysis-panorama.jpg" 
-              alt="EBR Lab Chemistry Background" 
-              className="w-full h-full object-cover object-center" 
-            />
-          </div>
+      {/* 7. COMPREHENSIVE LAB FOOTER */}
+      <footer className="w-full relative z-10 overflow-hidden border-t border-foreground/10 bg-foreground/[0.02] pt-16 pb-12">
+        {/* Subtle Decorative Ambient Glow */}
+        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-gradient-to-b from-amber-500/10 via-emerald-500/5 to-transparent blur-3xl pointer-events-none -z-10"></div>
 
-          {/* Dark Mode Banner */}
-          <div className="absolute inset-0 hidden dark:flex items-center justify-center opacity-25">
-            <img 
-              src="/images/banners/catalysis-panorama-dark.jpg" 
-              alt="EBR Lab Chemistry Background" 
-              className="w-full h-full object-cover object-center" 
-            />
-          </div>
-
-          {/* Seamless gradient mask over top and bottom */}
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-background/70 to-background"></div>
-        </div>
-
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
-            <div className="flex flex-col md:flex-row items-center gap-3 md:gap-4">
-              <div className="w-9 h-9 rounded-xl bg-white p-1.5 shadow-sm border border-foreground/10 flex items-center justify-center shrink-0 overflow-hidden">
-                <img src="/images/lab-logo-square.png" alt="EBR Lab Logo" className="w-full h-full object-contain" />
+        <div className="max-w-7xl mx-auto px-6">
+          {/* Top Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 pb-14 border-b border-foreground/10">
+            
+            {/* Col 1 & 2: Brand Identity */}
+            <div className="lg:col-span-2 space-y-5">
+              <div className="flex items-center gap-3.5">
+                {/* Adaptive Logo Badge */}
+                <div className="w-12 h-12 rounded-xl bg-white dark:bg-black p-1.5 shadow-md border border-foreground/10 flex items-center justify-center shrink-0">
+                  <img src="/images/lab-logo-light.png" alt="EBR Lab Logo" className="w-full h-full object-contain dark:hidden" />
+                  <img src="/images/lab-logo-dark.png" alt="EBR Lab Logo" className="w-full h-full object-contain hidden dark:block" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-foreground tracking-tight">Raman&apos;s Research Lab</h3>
+                  <p className="text-[11px] font-mono text-amber-500 uppercase tracking-wider font-semibold">IISER Tirupati</p>
+                </div>
               </div>
-              <p className="text-[10px] font-mono text-foreground uppercase tracking-[0.4em] text-center md:text-left">
-                 {`© ${new Date().getFullYear()} Raman's Research Lab`}
+              <p className="text-xs sm:text-sm text-foreground/75 font-light leading-relaxed max-w-md">
+                Pioneering fundamental & applied discoveries in organometallic chemistry, sustainable catalysis, hydrogen generation, and C1 chemistry.
               </p>
-              <span className="hidden md:inline text-foreground/40">|</span>
-              <p className="text-[10px] font-mono text-foreground/70 uppercase tracking-[0.4em] text-center md:text-left">
-                 Designed & Developed by <span className="font-bold text-foreground">Suyog Andhare</span>
+              <div className="flex flex-wrap gap-2 pt-1">
+                <span className="px-3 py-1 rounded-full bg-foreground/5 border border-foreground/10 font-mono text-[10px] uppercase tracking-wider text-foreground/70">
+                  Dept. of Chemistry
+                </span>
+                <span className="px-3 py-1 rounded-full bg-foreground/5 border border-foreground/10 font-mono text-[10px] uppercase tracking-wider text-foreground/70">
+                  CRSI Bronze Medal
+                </span>
+              </div>
+            </div>
+
+            {/* Col 3: Quick Navigation */}
+            <div>
+              <h4 className="text-xs font-mono text-amber-500 uppercase tracking-[0.2em] font-bold mb-4">Navigation</h4>
+              <ul className="space-y-2.5 text-xs sm:text-sm text-foreground/70 font-light">
+                <li><a href="#home" className="hover:text-amber-500 transition-colors">Home</a></li>
+                <li><a href="#pi" className="hover:text-amber-500 transition-colors">About PI</a></li>
+                <li><Link href="/team" className="hover:text-amber-500 transition-colors">Lab Members</Link></li>
+                <li><Link href="/research" className="hover:text-amber-500 transition-colors">Research Pillars</Link></li>
+                <li><Link href="/publications" className="hover:text-amber-500 transition-colors">Publications</Link></li>
+                <li><Link href="/gallery" className="hover:text-amber-500 transition-colors">Lab Gallery</Link></li>
+                <li><Link href="/alumni" className="hover:text-amber-500 transition-colors">Alumni Registry</Link></li>
+              </ul>
+            </div>
+
+            {/* Col 4: Research Pillars */}
+            <div>
+              <h4 className="text-xs font-mono text-amber-500 uppercase tracking-[0.2em] font-bold mb-4">Research Focus</h4>
+              <ul className="space-y-2.5 text-xs sm:text-sm text-foreground/70 font-light">
+                <li><Link href="/research" className="hover:text-emerald-500 transition-colors">Homogeneous Catalysis</Link></li>
+                <li><Link href="/research" className="hover:text-emerald-500 transition-colors">Heterogeneous Catalysis</Link></li>
+                <li><Link href="/research" className="hover:text-emerald-500 transition-colors">Pincer Complex Chemistry</Link></li>
+                <li><Link href="/research" className="hover:text-emerald-500 transition-colors">Hydrogen Generation</Link></li>
+                <li><Link href="/research" className="hover:text-emerald-500 transition-colors">CO₂ & C1 Chemistry</Link></li>
+                <li><Link href="/patents" className="hover:text-emerald-500 transition-colors">Patents & IP</Link></li>
+              </ul>
+            </div>
+
+            {/* Col 5: Location & Contact */}
+            <div>
+              <h4 className="text-xs font-mono text-amber-500 uppercase tracking-[0.2em] font-bold mb-4">Contact</h4>
+              <p className="text-xs text-foreground/70 leading-relaxed font-light mb-3">
+                Department of Chemistry,<br />
+                IISER Tirupati, Yerpedu Mandal,<br />
+                Andhra Pradesh 517619, India
+              </p>
+              <a 
+                href="mailto:eb.raman@iisertirupati.ac.in" 
+                className="text-xs font-mono text-amber-500 hover:underline block break-all mb-4"
+              >
+                eb.raman@iisertirupati.ac.in
+              </a>
+              <a 
+                href="https://www.iisertirupati.ac.in" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-mono text-foreground/60 hover:text-foreground transition-colors"
+              >
+                iisertirupati.ac.in <ArrowUpRight size={12} />
+              </a>
+            </div>
+
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-mono text-foreground/60">
+            <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 text-center md:text-left">
+              <p>{`© ${new Date().getFullYear()} Raman's Research Lab. All rights reserved.`}</p>
+              <span className="hidden md:inline text-foreground/30">|</span>
+              <p className="text-foreground/80">
+                Designed & Developed by <span className="font-bold text-foreground">Suyog Andhare</span>
               </p>
             </div>
-            <div className="flex items-center gap-2">
-               <a href={piStats.twitter} target="_blank" rel="noopener noreferrer"
-                 className="group/ft w-9 h-9 rounded-xl border border-foreground/10 bg-foreground/[0.04] flex items-center justify-center text-foreground hover:bg-foreground/10 transition-all duration-200"
-                 title="X">
-                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-               </a>
-               <a href={piStats.linkedin} target="_blank" rel="noopener noreferrer"
-                 className="group/ft w-9 h-9 rounded-xl border border-[#0a66c2]/20 bg-[#0a66c2]/5 flex items-center justify-center text-[#0a66c2] hover:bg-[#0a66c2]/10 transition-all duration-200"
-                 title="LinkedIn">
-                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z"/></svg>
-               </a>
+            <div className="flex items-center gap-2.5">
+              <a href={piStats.googleScholar} target="_blank" rel="noopener noreferrer" 
+                className="w-8 h-8 rounded-lg bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:text-amber-500 hover:border-amber-500/30 transition-all"
+                title="Google Scholar">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269z"/><circle cx="12" cy="16.5" r="5.5"/></svg>
+              </a>
+              <a href={`https://orcid.org/${piStats.orcid}`} target="_blank" rel="noopener noreferrer" 
+                className="w-8 h-8 rounded-lg bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:text-emerald-500 hover:border-emerald-500/30 transition-all"
+                title="ORCID">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-1.847-1.188-3.722-3.978-3.722h-2.341z"/></svg>
+              </a>
+              <a href={piStats.twitter} target="_blank" rel="noopener noreferrer" 
+                className="w-8 h-8 rounded-lg bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:text-foreground hover:border-foreground/30 transition-all"
+                title="𝕏">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+              <a href={piStats.linkedin} target="_blank" rel="noopener noreferrer" 
+                className="w-8 h-8 rounded-lg bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:text-[#0a66c2] hover:border-[#0a66c2]/30 transition-all"
+                title="LinkedIn">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z"/></svg>
+              </a>
+              <a href="mailto:eb.raman@iisertirupati.ac.in" 
+                className="w-8 h-8 rounded-lg bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:text-amber-500 hover:border-amber-500/30 transition-all"
+                title="Email">
+                <Mail size={14} />
+              </a>
             </div>
-         </div>
+          </div>
+        </div>
       </footer>
 
     </main>
   );
 }
-
