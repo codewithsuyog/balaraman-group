@@ -619,10 +619,14 @@ export default function Home() {
       >
         {/* Mobile Header */}
         <div className="flex items-center justify-between w-full md:w-auto md:hidden">
-          <div className="flex items-center gap-2 px-2">
-            <img src="/images/lab-logo.webp" alt="EBR Lab Logo" className="w-7 h-7 rounded-lg object-contain bg-white/90 p-0.5" />
-            <span className="font-bold text-amber-500 tracking-widest uppercase text-[10px]">Raman&apos;s Lab</span>
-          </div>
+          <a 
+            href="#home" 
+            onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+            className="flex items-center px-2 py-1 hover:scale-105 transition-transform"
+            title="Raman's Research Lab"
+          >
+            <img src="/images/lab-logo.png" alt="EBR Lab Logo" className="w-8 h-8 object-contain drop-shadow-sm" />
+          </a>
           <div className="flex items-center gap-2">
             <ThemeToggle />
             <button 
@@ -635,11 +639,15 @@ export default function Home() {
         </div>
 
         {/* Desktop Brand Logo */}
-        <div className="hidden md:flex items-center gap-2 pl-2 pr-1">
-          <img src="/images/lab-logo.webp" alt="EBR Lab Logo" className="w-6 h-6 rounded-md object-contain bg-white/90 p-0.5" />
-          <span className="font-bold text-amber-500 tracking-widest uppercase text-[10px]">EBR Lab</span>
-          <div className="w-px h-4 bg-foreground/20 ml-1"></div>
-        </div>
+        <a 
+          href="#home" 
+          onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+          className="hidden md:flex items-center pl-2 pr-2 py-0.5 hover:scale-110 transition-transform cursor-pointer"
+          title="Raman's Research Lab"
+        >
+          <img src="/images/lab-logo.png" alt="EBR Lab Logo" className="w-8 h-8 object-contain drop-shadow-sm" />
+        </a>
+        <div className="hidden md:block w-px h-5 bg-foreground/20 self-center mx-1"></div>
 
         {/* Navigation Links */}
         <div className={`flex-col md:flex-row md:flex items-stretch md:items-center gap-1 md:gap-2 ${mobileMenuOpen ? 'flex mt-2 mb-2' : 'hidden'}`}>
@@ -721,11 +729,21 @@ export default function Home() {
           <motion.div initial="hidden" animate="visible" variants={fadeUp} className="relative">
             <div className="flex justify-center mb-6 md:mb-8">
               <motion.div 
-                whileHover={{ scale: 1.06 }}
+                whileHover={{ scale: 1.08 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-3xl overflow-hidden shadow-[0_0_40px_rgba(251,191,36,0.25)] border-2 border-white/30 bg-white p-2.5 backdrop-blur-md"
+                className="relative group cursor-pointer"
               >
-                <img src="/images/lab-logo.webp" alt="EBR Lab - Sustainable Chemistry via Catalysis" className="w-full h-full object-contain" />
+                {/* Chemistry ambient glow */}
+                <div className="absolute -inset-4 bg-gradient-to-r from-emerald-500/30 via-amber-500/20 to-blue-500/30 blur-2xl rounded-full opacity-60 group-hover:opacity-90 transition-opacity pointer-events-none"></div>
+                
+                {/* Logo emblem */}
+                <div className="relative w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 p-1 drop-shadow-[0_10px_25px_rgba(0,0,0,0.6)]">
+                  <img 
+                    src="/images/lab-logo.png" 
+                    alt="EBR Lab - Sustainable Chemistry via Catalysis" 
+                    className="w-full h-full object-contain filter drop-shadow-[0_2px_12px_rgba(255,255,255,0.2)]" 
+                  />
+                </div>
               </motion.div>
             </div>
             <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter mb-8 text-white relative z-10 drop-shadow-[0_2px_30px_rgba(0,0,0,0.5)] leading-[0.9]">
