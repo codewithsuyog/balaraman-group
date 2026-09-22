@@ -1337,9 +1337,9 @@ export default function Home() {
       <footer className="w-full py-12 px-6 border-t border-foreground/5 bg-foreground/50 backdrop-blur-md relative z-10">
          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4">
-              <img src="/images/lab-logo.webp" alt="EBR Lab Logo" className="w-8 h-8 rounded-lg object-contain bg-white/90 p-0.5 border border-foreground/10" />
+              <img src="/images/lab-logo.png" alt="EBR Lab Logo" className="w-8 h-8 object-contain drop-shadow-sm" />
               <p className="text-[10px] font-mono text-foreground uppercase tracking-[0.4em] text-center md:text-left">
-                 © {new Date().getFullYear()} Raman&apos;s Research Lab
+                 {`© ${new Date().getFullYear()} Raman's Research Lab`}
               </p>
               <span className="hidden md:inline text-foreground/40">|</span>
               <p className="text-[10px] font-mono text-foreground/70 uppercase tracking-[0.4em] text-center md:text-left">
