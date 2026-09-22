@@ -1347,28 +1347,16 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 pb-14 border-b border-foreground/10">
             
             {/* Col 1 & 2: Brand Identity */}
-            <div className="lg:col-span-2 space-y-5">
+            <div className="lg:col-span-2 space-y-4">
               <div className="flex items-center gap-3.5">
-                {/* Adaptive Logo Badge */}
-                <div className="w-12 h-12 rounded-xl bg-white dark:bg-black p-1.5 shadow-md border border-foreground/10 flex items-center justify-center shrink-0">
-                  <img src="/images/lab-logo-light.png" alt="EBR Lab Logo" className="w-full h-full object-contain dark:hidden" />
-                  <img src="/images/lab-logo-dark.png" alt="EBR Lab Logo" className="w-full h-full object-contain hidden dark:block" />
+                {/* White Logo Badge */}
+                <div className="w-12 h-12 rounded-xl bg-white p-1.5 shadow-md border border-foreground/10 flex items-center justify-center shrink-0">
+                  <img src="/images/lab-logo-light.png" alt="EBR Lab Logo" className="w-full h-full object-contain" />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-foreground tracking-tight">Raman&apos;s Research Lab</h3>
                   <p className="text-[11px] font-mono text-amber-500 uppercase tracking-wider font-semibold">IISER Tirupati</p>
                 </div>
-              </div>
-              <p className="text-xs sm:text-sm text-foreground/75 font-light leading-relaxed max-w-md">
-                Pioneering fundamental & applied discoveries in organometallic chemistry, sustainable catalysis, hydrogen generation, and C1 chemistry.
-              </p>
-              <div className="flex flex-wrap gap-2 pt-1">
-                <span className="px-3 py-1 rounded-full bg-foreground/5 border border-foreground/10 font-mono text-[10px] uppercase tracking-wider text-foreground/70">
-                  Dept. of Chemistry
-                </span>
-                <span className="px-3 py-1 rounded-full bg-foreground/5 border border-foreground/10 font-mono text-[10px] uppercase tracking-wider text-foreground/70">
-                  CRSI Bronze Medal
-                </span>
               </div>
             </div>
 
@@ -1403,7 +1391,6 @@ export default function Home() {
             <div>
               <h4 className="text-xs font-mono text-amber-500 uppercase tracking-[0.2em] font-bold mb-4">Contact</h4>
               <p className="text-xs text-foreground/70 leading-relaxed font-light mb-3">
-                Department of Chemistry,<br />
                 IISER Tirupati, Yerpedu Mandal,<br />
                 Andhra Pradesh 517619, India
               </p>
