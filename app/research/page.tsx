@@ -94,7 +94,8 @@ export default function ResearchPage() {
         
         <div className="max-w-6xl mx-auto relative z-10">
           <motion.div initial="hidden" animate="visible" variants={fadeUp}>
-            <Link href="/" className="inline-flex items-center gap-2 text-foreground hover:text-amber-400 font-mono text-[10px] uppercase tracking-widest mb-12 transition-colors group">
+            <Link href="/" className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-foreground/[0.03] border border-foreground/10 hover:border-amber-500/30 text-foreground hover:text-amber-400 font-mono text-[10px] uppercase tracking-widest mb-12 transition-all group">
+              <img src="/images/lab-logo.webp" alt="EBR Lab Logo" className="w-5 h-5 rounded-md object-contain bg-white/90 p-0.5" />
               <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Back to Laboratory
             </Link>
             

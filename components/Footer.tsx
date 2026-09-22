@@ -109,6 +109,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
           <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4">
+            <img src="/images/lab-logo.webp" alt="EBR Lab Logo" className="w-7 h-7 rounded-md object-contain bg-white/90 p-0.5" />
             <p>© {new Date().getFullYear()} Raman's Research Lab. All rights reserved.</p>
             <span className="hidden md:inline text-gray-700">|</span>
             <p className="font-medium text-gray-400">Designed & Developed by Suyog Andhare</p>

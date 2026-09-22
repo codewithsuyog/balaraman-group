@@ -35,8 +35,9 @@ export default function AlumniPage() {
         
         {/* Header */}
         <motion.div initial="hidden" animate="visible" variants={fadeUp} className="mb-20">
-          <Link href="/team" className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 font-bold mb-8 transition-colors text-sm font-mono uppercase tracking-wider">
-            <ArrowLeft size={16} /> Back to Lab Members
+          <Link href="/team" className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-foreground/[0.03] border border-foreground/10 hover:border-amber-500/30 text-amber-400 hover:text-amber-300 font-bold mb-8 transition-all text-xs font-mono uppercase tracking-wider group">
+            <img src="/images/lab-logo.webp" alt="EBR Lab Logo" className="w-5 h-5 rounded-md object-contain bg-white/90 p-0.5" />
+            <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Back to Lab Members
           </Link>
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">Alumni Registry</h1>
           <p className="text-foreground/80 text-lg font-light max-w-2xl leading-relaxed">

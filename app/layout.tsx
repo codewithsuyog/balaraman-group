@@ -74,7 +74,9 @@ export const metadata: Metadata = {
     images: ["https://www.ebalaraman.com/pi-photo.webp"],
   },
   icons: {
-    apple: '/apple-touch-icon.png',
+    icon: '/images/lab-logo.webp',
+    shortcut: '/images/lab-logo.webp',
+    apple: '/images/lab-logo.webp',
   },
 };
 

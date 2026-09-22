@@ -619,8 +619,9 @@ export default function Home() {
       >
         {/* Mobile Header */}
         <div className="flex items-center justify-between w-full md:w-auto md:hidden">
-          <div className="px-3 font-bold text-amber-500 tracking-widest uppercase text-[10px]">
-            Raman&apos;s Lab
+          <div className="flex items-center gap-2 px-2">
+            <img src="/images/lab-logo.webp" alt="EBR Lab Logo" className="w-7 h-7 rounded-lg object-contain bg-white/90 p-0.5" />
+            <span className="font-bold text-amber-500 tracking-widest uppercase text-[10px]">Raman&apos;s Lab</span>
           </div>
           <div className="flex items-center gap-2">
             <ThemeToggle />
@@ -631,6 +632,13 @@ export default function Home() {
               {mobileMenuOpen ? <X size={16} /> : <Menu size={16} />}
             </button>
           </div>
+        </div>
+
+        {/* Desktop Brand Logo */}
+        <div className="hidden md:flex items-center gap-2 pl-2 pr-1">
+          <img src="/images/lab-logo.webp" alt="EBR Lab Logo" className="w-6 h-6 rounded-md object-contain bg-white/90 p-0.5" />
+          <span className="font-bold text-amber-500 tracking-widest uppercase text-[10px]">EBR Lab</span>
+          <div className="w-px h-4 bg-foreground/20 ml-1"></div>
         </div>
 
         {/* Navigation Links */}
@@ -711,6 +719,15 @@ export default function Home() {
           </motion.div>
 
           <motion.div initial="hidden" animate="visible" variants={fadeUp} className="relative">
+            <div className="flex justify-center mb-6 md:mb-8">
+              <motion.div 
+                whileHover={{ scale: 1.06 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-3xl overflow-hidden shadow-[0_0_40px_rgba(251,191,36,0.25)] border-2 border-white/30 bg-white p-2.5 backdrop-blur-md"
+              >
+                <img src="/images/lab-logo.webp" alt="EBR Lab - Sustainable Chemistry via Catalysis" className="w-full h-full object-contain" />
+              </motion.div>
+            </div>
             <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter mb-8 text-white relative z-10 drop-shadow-[0_2px_30px_rgba(0,0,0,0.5)] leading-[0.9]">
               Raman&apos;s<br/>
               <span style={{ color: '#fbbf24' }}>Research</span> Lab
@@ -1302,6 +1319,7 @@ export default function Home() {
       <footer className="w-full py-12 px-6 border-t border-foreground/5 bg-foreground/50 backdrop-blur-md relative z-10">
          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4">
+              <img src="/images/lab-logo.webp" alt="EBR Lab Logo" className="w-8 h-8 rounded-lg object-contain bg-white/90 p-0.5 border border-foreground/10" />
               <p className="text-[10px] font-mono text-foreground uppercase tracking-[0.4em] text-center md:text-left">
                  © {new Date().getFullYear()} Raman&apos;s Research Lab
               </p>

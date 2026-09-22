@@ -84,8 +84,9 @@ export default function GalleryPage() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
           >
-            <Link href="/#gallery" className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 transition-colors mb-6 group">
-              <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" /> Back to Home
+            <Link href="/#gallery" className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-foreground/[0.03] border border-foreground/10 hover:border-amber-500/30 text-amber-400 hover:text-amber-300 font-bold mb-6 transition-all text-xs font-mono uppercase tracking-wider group">
+              <img src="/images/lab-logo.webp" alt="EBR Lab Logo" className="w-5 h-5 rounded-md object-contain bg-white/90 p-0.5" />
+              <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Back to Home
             </Link>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter mb-4 text-gradient">
               {activeTab === 'images' ? 'Lab Images & Videos' : 'Lab Moments'}
