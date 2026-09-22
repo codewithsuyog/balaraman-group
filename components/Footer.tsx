@@ -26,8 +26,18 @@ export default function Footer() {
   const { theme, setTheme } = useTheme();
 
   return (
-    <footer className="w-full bg-[#0a0a0a] text-white pt-16 pb-8 px-6 border-t border-white/10">
-      <div className="max-w-7xl mx-auto">
+    <footer className="w-full bg-[#0a0a0a] text-white pt-16 pb-8 px-6 border-t border-white/10 relative overflow-hidden">
+      {/* Background Catalysis Panorama Graphic */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.08] select-none">
+        <img 
+          src="/images/banners/catalysis-panorama.webp" 
+          alt="Catalysis Molecular Research Banner" 
+          className="w-full h-full object-cover object-center invert" 
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-[#0a0a0a]"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Stay Connected */}
           <div className="flex flex-col gap-4">

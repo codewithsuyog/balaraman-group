@@ -729,19 +729,19 @@ export default function Home() {
           <motion.div initial="hidden" animate="visible" variants={fadeUp} className="relative">
             <div className="flex justify-center mb-6 md:mb-8">
               <motion.div 
-                whileHover={{ scale: 1.08 }}
+                whileHover={{ scale: 1.05, y: -2 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 className="relative group cursor-pointer"
               >
-                {/* Chemistry ambient glow */}
-                <div className="absolute -inset-4 bg-gradient-to-r from-emerald-500/30 via-amber-500/20 to-blue-500/30 blur-2xl rounded-full opacity-60 group-hover:opacity-90 transition-opacity pointer-events-none"></div>
+                {/* Soft ambient chemistry glow */}
+                <div className="absolute -inset-2 bg-gradient-to-r from-emerald-500/25 via-amber-500/20 to-blue-500/25 blur-xl rounded-3xl opacity-70 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
                 
-                {/* Logo emblem */}
-                <div className="relative w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 p-1 drop-shadow-[0_10px_25px_rgba(0,0,0,0.6)]">
+                {/* Premium square box */}
+                <div className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-2xl md:rounded-3xl bg-white p-3 sm:p-3.5 md:p-4 shadow-[0_12px_40px_rgba(0,0,0,0.35),0_2px_8px_rgba(0,0,0,0.1)] border border-white/40 ring-1 ring-black/5 flex items-center justify-center">
                   <img 
-                    src="/images/lab-logo.png" 
+                    src="/images/lab-logo-square.png" 
                     alt="EBR Lab - Sustainable Chemistry via Catalysis" 
-                    className="w-full h-full object-contain filter drop-shadow-[0_2px_12px_rgba(255,255,255,0.2)]" 
+                    className="w-full h-full object-contain filter drop-shadow-sm" 
                   />
                 </div>
               </motion.div>
@@ -1334,8 +1334,18 @@ export default function Home() {
       </section>
 
       {/* FOOTER */}
-      <footer className="w-full py-12 px-6 border-t border-foreground/5 bg-foreground/50 backdrop-blur-md relative z-10">
-         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <footer className="w-full py-16 px-6 border-t border-foreground/5 bg-foreground/[0.02] backdrop-blur-md relative z-10 overflow-hidden">
+        {/* Background Catalysis Panorama Graphic */}
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.06] dark:opacity-[0.12] select-none">
+          <img 
+            src="/images/banners/catalysis-panorama.webp" 
+            alt="Catalysis Molecular Research Banner" 
+            className="w-full h-full object-cover object-center dark:invert" 
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
             <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4">
               <img src="/images/lab-logo.png" alt="EBR Lab Logo" className="w-8 h-8 object-contain drop-shadow-sm" />
               <p className="text-[10px] font-mono text-foreground uppercase tracking-[0.4em] text-center md:text-left">
