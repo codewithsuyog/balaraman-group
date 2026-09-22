@@ -26,18 +26,8 @@ export default function Footer() {
   const { theme, setTheme } = useTheme();
 
   return (
-    <footer className="w-full bg-[#0a0a0a] text-white pt-16 pb-8 px-6 border-t border-white/10 relative overflow-hidden">
-      {/* Background Catalysis Panorama Graphic */}
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.08] select-none">
-        <img 
-          src="/images/banners/catalysis-panorama.webp" 
-          alt="Catalysis Molecular Research Banner" 
-          className="w-full h-full object-cover object-center invert" 
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-[#0a0a0a]"></div>
-      </div>
-
-      <div className="max-w-7xl mx-auto relative z-10">
+    <footer className="w-full bg-[#0a0a0a] text-white pt-16 pb-8 px-6 border-t border-white/10">
+      <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Stay Connected */}
           <div className="flex flex-col gap-4">
@@ -118,8 +108,10 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
-          <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4">
-            <img src="/images/lab-logo.png" alt="EBR Lab Logo" className="w-7 h-7 object-contain drop-shadow-sm" />
+          <div className="flex flex-col md:flex-row items-center gap-3 md:gap-4">
+            <div className="w-8 h-8 rounded-lg bg-white p-1 shadow-sm border border-white/20 flex items-center justify-center shrink-0 overflow-hidden">
+              <img src="/images/lab-logo-square.png" alt="EBR Lab Logo" className="w-full h-full object-contain" />
+            </div>
             <p>{`© ${new Date().getFullYear()} Raman's Research Lab. All rights reserved.`}</p>
             <span className="hidden md:inline text-gray-700">|</span>
             <p className="font-medium text-gray-400">Designed & Developed by Suyog Andhare</p>
