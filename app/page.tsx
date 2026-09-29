@@ -1507,46 +1507,60 @@ export default function Home() {
               <X size={20} />
             </button>
 
-            {/* Maximized Card */}
+            {/* Maximized Card with website glass aesthetic & glow */}
             <motion.div
               initial={{ scale: 0.8, opacity: 0, y: 15 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.85, opacity: 0, y: 15 }}
               transition={{ type: "spring", stiffness: 350, damping: 28 }}
-              className="relative max-w-md sm:max-w-lg w-full bg-white rounded-3xl p-6 sm:p-8 shadow-[0_25px_80px_rgba(0,0,0,0.65)] border border-white/40 flex flex-col items-center select-none cursor-default"
+              className="relative max-w-md sm:max-w-xl w-full bg-[#0a0d14]/95 border border-white/15 backdrop-blur-2xl rounded-3xl p-6 sm:p-8 shadow-[0_25px_80px_rgba(0,0,0,0.8)] flex flex-col items-center select-none cursor-default text-white"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Soft ambient background glow */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-emerald-500/25 via-amber-500/20 to-blue-500/25 blur-2xl rounded-3xl -z-10 pointer-events-none"></div>
+              {/* Soft ambient background glow matching hero */}
+              <div className="absolute -inset-4 bg-gradient-to-r from-emerald-500/25 via-amber-500/20 to-blue-500/25 blur-3xl rounded-3xl -z-10 pointer-events-none"></div>
 
-              {/* High-res Image Container */}
-              <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-2xl bg-white p-2 flex items-center justify-center overflow-hidden">
+              {/* High-res Image Container (White square box matching homescreen hero card) */}
+              <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-2xl md:rounded-3xl bg-white p-3 sm:p-4 shadow-[0_12px_40px_rgba(0,0,0,0.5),0_2px_8px_rgba(0,0,0,0.2)] border border-white/40 ring-1 ring-black/5 flex items-center justify-center overflow-hidden">
                 <img
                   src="/images/lab-logo-square.png"
-                  alt="Raman's Research Lab Emblem - Sustainable Chemistry via Catalysis"
-                  className="w-full h-full object-contain filter drop-shadow-md select-none"
+                  alt="EBR Lab - Sustainable Chemistry via Catalysis"
+                  className="w-full h-full object-contain filter drop-shadow-sm select-none"
                 />
               </div>
 
-              {/* Title & Info */}
-              <div className="mt-4 text-center">
-                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
-                  Raman&apos;s Research Lab
-                </h3>
-                <p className="text-xs sm:text-sm font-mono uppercase tracking-[0.25em] text-emerald-600 font-semibold mt-1">
+              {/* Title & Info in the exact website font style and design */}
+              <div className="mt-6 text-center w-full flex flex-col items-center">
+                {/* Category / Affiliation badge with accent lines */}
+                <div className="flex items-center gap-3 mb-2.5">
+                  <div className="h-px w-8 bg-amber-500"></div>
+                  <p className="text-[10px] sm:text-xs font-mono text-amber-400 uppercase tracking-[0.3em] font-semibold">
+                    IISER Tirupati
+                  </p>
+                  <div className="h-px w-8 bg-amber-500"></div>
+                </div>
+
+                {/* Hero-matched Main Title */}
+                <h2 className="text-2xl sm:text-4xl font-bold tracking-tighter text-white drop-shadow-[0_2px_20px_rgba(0,0,0,0.5)] leading-tight">
+                  Raman&apos;s <span style={{ color: '#fbbf24' }}>Research</span> Lab
+                </h2>
+
+                {/* Tagline matching site font & design */}
+                <p className="text-xs sm:text-sm font-mono text-emerald-400 uppercase tracking-[0.25em] font-semibold mt-2">
                   Sustainable Chemistry via Catalysis
                 </p>
-                <p className="text-xs text-slate-500 font-light mt-1">
-                  Department of Chemistry &bull; IISER Tirupati
+
+                {/* Subtitle matching Hero subtitle style */}
+                <p className="text-xs sm:text-sm text-white/70 font-light max-w-md mx-auto mt-2 leading-relaxed">
+                  Exploring new frontiers in <span className="font-semibold text-white">catalysis</span>, <span className="font-semibold text-white">sustainable chemistry</span>, and complex <span className="font-semibold text-white">organometallic systems</span>.
                 </p>
               </div>
 
-              {/* Dismiss hint */}
-              <div className="mt-5 pt-4 border-t border-slate-100 w-full flex items-center justify-between text-[11px] font-mono text-slate-400">
+              {/* Dismiss footer */}
+              <div className="mt-6 pt-4 border-t border-white/10 w-full flex items-center justify-between text-[11px] font-mono text-white/40">
                 <span>Click outside or press Esc to close</span>
                 <button 
                   onClick={() => setLogoModalOpen(false)}
-                  className="px-3 py-1 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium transition-colors cursor-pointer"
+                  className="px-4 py-1.5 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 text-white/90 font-medium transition-all cursor-pointer border border-white/10 text-xs"
                 >
                   Dismiss
                 </button>
