@@ -1507,23 +1507,23 @@ export default function Home() {
               <X size={20} />
             </button>
 
-            {/* Maximized Card with website glass aesthetic & glow */}
+            {/* Maximized Card with website glass aesthetic & glow for both themes */}
             <motion.div
               initial={{ scale: 0.8, opacity: 0, y: 15 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.85, opacity: 0, y: 15 }}
               transition={{ type: "spring", stiffness: 350, damping: 28 }}
-              className="relative max-w-md sm:max-w-xl w-full bg-[#0a0d14]/95 border border-white/15 backdrop-blur-2xl rounded-3xl p-6 sm:p-8 shadow-[0_25px_80px_rgba(0,0,0,0.8)] flex flex-col items-center select-none cursor-default text-white"
+              className="relative max-w-md sm:max-w-xl w-full bg-white/95 dark:bg-[#0a0d14]/95 border border-slate-200/80 dark:border-white/15 backdrop-blur-2xl rounded-3xl p-6 sm:p-8 shadow-[0_25px_70px_rgba(0,0,0,0.25)] dark:shadow-[0_25px_80px_rgba(0,0,0,0.8)] flex flex-col items-center select-none cursor-default text-slate-900 dark:text-white transition-colors"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Soft ambient background glow matching hero */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-emerald-500/25 via-amber-500/20 to-blue-500/25 blur-3xl rounded-3xl -z-10 pointer-events-none"></div>
+              <div className="absolute -inset-4 bg-gradient-to-r from-emerald-500/15 via-amber-500/15 to-blue-500/15 dark:from-emerald-500/25 dark:via-amber-500/20 dark:to-blue-500/25 blur-3xl rounded-3xl -z-10 pointer-events-none"></div>
 
               {/* High-res Image Container (White square box matching homescreen hero card) */}
-              <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-2xl md:rounded-3xl bg-white p-3 sm:p-4 shadow-[0_12px_40px_rgba(0,0,0,0.5),0_2px_8px_rgba(0,0,0,0.2)] border border-white/40 ring-1 ring-black/5 flex items-center justify-center overflow-hidden">
+              <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-2xl md:rounded-3xl bg-white p-3 sm:p-4 shadow-[0_10px_30px_rgba(0,0,0,0.1)] dark:shadow-[0_12px_40px_rgba(0,0,0,0.5)] border border-slate-200 dark:border-white/40 ring-1 ring-black/5 flex items-center justify-center overflow-hidden">
                 <img
                   src="/images/lab-logo-square.png"
-                  alt="EBR Lab - Sustainable Chemistry via Catalysis"
+                  alt="EBR Lab Emblem"
                   className="w-full h-full object-contain filter drop-shadow-sm select-none"
                 />
               </div>
@@ -1532,35 +1532,30 @@ export default function Home() {
               <div className="mt-6 text-center w-full flex flex-col items-center">
                 {/* Category / Affiliation badge with accent lines */}
                 <div className="flex items-center gap-3 mb-2.5">
-                  <div className="h-px w-8 bg-amber-500"></div>
-                  <p className="text-[10px] sm:text-xs font-mono text-amber-400 uppercase tracking-[0.3em] font-semibold">
+                  <div className="h-px w-8 bg-amber-500/70 dark:bg-amber-500"></div>
+                  <p className="text-[10px] sm:text-xs font-mono text-amber-600 dark:text-amber-400 uppercase tracking-[0.3em] font-semibold">
                     IISER Tirupati
                   </p>
-                  <div className="h-px w-8 bg-amber-500"></div>
+                  <div className="h-px w-8 bg-amber-500/70 dark:bg-amber-500"></div>
                 </div>
 
                 {/* Hero-matched Main Title */}
-                <h2 className="text-2xl sm:text-4xl font-bold tracking-tighter text-white drop-shadow-[0_2px_20px_rgba(0,0,0,0.5)] leading-tight">
-                  Raman&apos;s <span style={{ color: '#fbbf24' }}>Research</span> Lab
+                <h2 className="text-2xl sm:text-4xl font-bold tracking-tighter text-slate-900 dark:text-white drop-shadow-sm dark:drop-shadow-[0_2px_20px_rgba(0,0,0,0.5)] leading-tight">
+                  Raman&apos;s <span className="text-amber-500 dark:text-[#fbbf24]">Research</span> Lab
                 </h2>
 
-                {/* Tagline matching site font & design */}
-                <p className="text-xs sm:text-sm font-mono text-emerald-400 uppercase tracking-[0.25em] font-semibold mt-2">
-                  Sustainable Chemistry via Catalysis
-                </p>
-
                 {/* Subtitle matching Hero subtitle style */}
-                <p className="text-xs sm:text-sm text-white/70 font-light max-w-md mx-auto mt-2 leading-relaxed">
-                  Exploring new frontiers in <span className="font-semibold text-white">catalysis</span>, <span className="font-semibold text-white">sustainable chemistry</span>, and complex <span className="font-semibold text-white">organometallic systems</span>.
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-white/70 font-light max-w-md mx-auto mt-3 leading-relaxed">
+                  Exploring new frontiers in <span className="font-semibold text-slate-900 dark:text-white">catalysis</span>, <span className="font-semibold text-slate-900 dark:text-white">sustainable chemistry</span>, and complex <span className="font-semibold text-slate-900 dark:text-white">organometallic systems</span>.
                 </p>
               </div>
 
               {/* Dismiss footer */}
-              <div className="mt-6 pt-4 border-t border-white/10 w-full flex items-center justify-between text-[11px] font-mono text-white/40">
+              <div className="mt-6 pt-4 border-t border-slate-200/80 dark:border-white/10 w-full flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-white/40">
                 <span>Click outside or press Esc to close</span>
                 <button 
                   onClick={() => setLogoModalOpen(false)}
-                  className="px-4 py-1.5 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 text-white/90 font-medium transition-all cursor-pointer border border-white/10 text-xs"
+                  className="px-4 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-white/10 dark:hover:bg-white/20 active:scale-95 text-slate-800 dark:text-white/90 font-medium transition-all cursor-pointer border border-slate-200 dark:border-white/10 text-xs"
                 >
                   Dismiss
                 </button>
