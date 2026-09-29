@@ -9,7 +9,7 @@ import {
   FlaskConical, 
   Beaker, Globe, Award, Zap, Shield, BookOpen,
   ArrowUpRight, Download, Users, Briefcase, GraduationCap,
-  ExternalLink, ChevronRight, Menu, X, Leaf, Database, ZapOff
+  ExternalLink, ChevronRight, Menu, X, Leaf, Database, ZapOff, Maximize2
 } from 'lucide-react';
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { BackgroundCircles } from '@/components/ui/background-circles';
@@ -543,6 +543,23 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState('home');
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [logoModalOpen, setLogoModalOpen] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setLogoModalOpen(false);
+    };
+    if (logoModalOpen) {
+      document.body.style.overflow = 'hidden';
+      window.addEventListener('keydown', handleKeyDown);
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [logoModalOpen]);
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -734,19 +751,29 @@ export default function Home() {
             <div className="flex justify-center mb-6 md:mb-8">
               <motion.div 
                 whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.96 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                onClick={() => setLogoModalOpen(true)}
                 className="relative group cursor-pointer"
+                title="Click to maximize lab emblem"
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setLogoModalOpen(true); }}
               >
                 {/* Soft ambient chemistry glow */}
                 <div className="absolute -inset-2 bg-gradient-to-r from-emerald-500/25 via-amber-500/20 to-blue-500/25 blur-xl rounded-3xl opacity-70 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
                 
                 {/* Premium square box */}
-                <div className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-2xl md:rounded-3xl bg-white p-3 sm:p-3.5 md:p-4 shadow-[0_12px_40px_rgba(0,0,0,0.35),0_2px_8px_rgba(0,0,0,0.1)] border border-white/40 ring-1 ring-black/5 flex items-center justify-center">
+                <div className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-2xl md:rounded-3xl bg-white p-3 sm:p-3.5 md:p-4 shadow-[0_12px_40px_rgba(0,0,0,0.35),0_2px_8px_rgba(0,0,0,0.1)] border border-white/40 ring-1 ring-black/5 flex items-center justify-center overflow-hidden">
                   <img 
                     src="/images/lab-logo-square.png" 
                     alt="EBR Lab - Sustainable Chemistry via Catalysis" 
-                    className="w-full h-full object-contain filter drop-shadow-sm" 
+                    className="w-full h-full object-contain filter drop-shadow-sm transition-transform duration-300 group-hover:scale-105" 
                   />
+                  {/* Subtle expand indicator icon on hover */}
+                  <div className="absolute bottom-1.5 right-1.5 w-6 h-6 rounded-md bg-black/60 backdrop-blur-sm text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 scale-90 group-hover:scale-100 shadow-md">
+                    <Maximize2 size={12} />
+                  </div>
                 </div>
               </motion.div>
             </div>
@@ -1350,7 +1377,14 @@ export default function Home() {
             <div className="lg:col-span-2 space-y-4">
               <div className="flex items-center gap-3.5">
                 {/* White Logo Badge */}
-                <div className="w-12 h-12 rounded-xl bg-white p-1.5 shadow-md border border-foreground/10 flex items-center justify-center shrink-0">
+                <div 
+                  onClick={() => setLogoModalOpen(true)}
+                  className="w-12 h-12 rounded-xl bg-white p-1.5 shadow-md border border-foreground/10 flex items-center justify-center shrink-0 hover:scale-105 active:scale-95 transition-all cursor-pointer group/ftlogo"
+                  title="Click to maximize lab emblem"
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setLogoModalOpen(true); }}
+                >
                   <img src="/images/lab-logo-light.png" alt="EBR Lab Logo" className="w-full h-full object-contain" />
                 </div>
                 <div>
@@ -1451,6 +1485,76 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* FULLSCREEN LOGO MAXIMIZE MODAL */}
+      <AnimatePresence>
+        {logoModalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md cursor-zoom-out"
+            onClick={() => setLogoModalOpen(false)}
+          >
+            {/* Close button top-right */}
+            <button
+              onClick={() => setLogoModalOpen(false)}
+              className="absolute top-6 right-6 z-10 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 text-white border border-white/20 flex items-center justify-center transition-all shadow-lg cursor-pointer"
+              aria-label="Close modal"
+              title="Close (Esc)"
+            >
+              <X size={20} />
+            </button>
+
+            {/* Maximized Card */}
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0, y: 15 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.85, opacity: 0, y: 15 }}
+              transition={{ type: "spring", stiffness: 350, damping: 28 }}
+              className="relative max-w-md sm:max-w-lg w-full bg-white rounded-3xl p-6 sm:p-8 shadow-[0_25px_80px_rgba(0,0,0,0.65)] border border-white/40 flex flex-col items-center select-none cursor-default"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Soft ambient background glow */}
+              <div className="absolute -inset-4 bg-gradient-to-r from-emerald-500/25 via-amber-500/20 to-blue-500/25 blur-2xl rounded-3xl -z-10 pointer-events-none"></div>
+
+              {/* High-res Image Container */}
+              <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-2xl bg-white p-2 flex items-center justify-center overflow-hidden">
+                <img
+                  src="/images/lab-logo-square.png"
+                  alt="Raman's Research Lab Emblem - Sustainable Chemistry via Catalysis"
+                  className="w-full h-full object-contain filter drop-shadow-md select-none"
+                />
+              </div>
+
+              {/* Title & Info */}
+              <div className="mt-4 text-center">
+                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+                  Raman&apos;s Research Lab
+                </h3>
+                <p className="text-xs sm:text-sm font-mono uppercase tracking-[0.25em] text-emerald-600 font-semibold mt-1">
+                  Sustainable Chemistry via Catalysis
+                </p>
+                <p className="text-xs text-slate-500 font-light mt-1">
+                  Department of Chemistry &bull; IISER Tirupati
+                </p>
+              </div>
+
+              {/* Dismiss hint */}
+              <div className="mt-5 pt-4 border-t border-slate-100 w-full flex items-center justify-between text-[11px] font-mono text-slate-400">
+                <span>Click outside or press Esc to close</span>
+                <button 
+                  onClick={() => setLogoModalOpen(false)}
+                  className="px-3 py-1 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium transition-colors cursor-pointer"
+                >
+                  Dismiss
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
     </main>
   );
