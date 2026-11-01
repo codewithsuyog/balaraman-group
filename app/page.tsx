@@ -28,8 +28,8 @@ import ChemText from '../components/ChemText';
 import { Variants } from 'framer-motion';
 
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.23, 1, 0.32, 1] } }
 };
 
 const staggerContainer = {
@@ -103,7 +103,7 @@ const FeaturedPublication = ({ pub }: { pub: PubData }) => {
     <GlowCard className="rounded-2xl md:rounded-[3rem]">
     <motion.div 
       initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-      className="group relative flex flex-col gap-8 p-5 md:p-10 rounded-2xl md:rounded-[3rem] bg-foreground/[0.03] border border-foreground/10 hover:border-amber-500/30 hover:bg-foreground/5 transition-all duration-500 shadow-xl overflow-hidden"
+      className="group relative flex flex-col gap-8 p-5 md:p-10 rounded-2xl md:rounded-[3rem] bg-foreground/[0.03] border border-foreground/10 hover:border-amber-500/30 hover:bg-foreground/5 transition-colors duration-300 shadow-xl overflow-hidden"
     >
       <div className="flex flex-col md:flex-row gap-8 items-start">
         {/* Cover Image - Left */}
@@ -631,7 +631,7 @@ export default function Home() {
       
       {/* FLOATING NAVIGATION MENU */}
       <motion.nav 
-        initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
+        initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
         className="fixed top-6 left-1/2 -translate-x-1/2 z-50 glass rounded-2xl md:rounded-full px-2 md:px-4 py-2 flex flex-col md:flex-row md:items-center gap-1 md:gap-2 text-[10px] md:text-xs font-mono border border-foreground/10 w-[90vw] md:w-auto md:max-w-[95vw] shadow-2xl"
       >
         {/* Mobile Header */}
@@ -674,7 +674,7 @@ export default function Home() {
         <div className={`flex-col md:flex-row md:flex items-stretch md:items-center gap-1 md:gap-2 ${mobileMenuOpen ? 'flex mt-2 mb-2' : 'hidden'}`}>
           {navLinks.map((link: { id: string; label: string; href?: string }) => {
             const isExternal = link.href?.startsWith('/');
-            const baseClass = `px-4 py-3 md:py-2 rounded-xl md:rounded-full transition-all duration-500 ease-out whitespace-nowrap relative group cursor-pointer text-left md:text-center ${
+            const baseClass = `px-4 py-3 md:py-2 rounded-xl md:rounded-full transition-colors duration-200 whitespace-nowrap relative group cursor-pointer text-left md:text-center ${
               activeSection === link.id 
                 ? 'text-white font-bold' 
                 : 'text-foreground/70 hover:text-foreground'
@@ -1039,7 +1039,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${cat.image})` }}></div>
                 
                 {/* Overlay Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80 group-hover:opacity-100 group-hover:via-amber-900/40 transition-all duration-700"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80 group-hover:opacity-100 group-hover:via-amber-900/40 transition-opacity duration-500"></div>
                 
                 {/* Content Overlay */}
                 <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-end items-start text-left z-20">
@@ -1493,7 +1493,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
             className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md cursor-zoom-out"
             onClick={() => setLogoModalOpen(false)}
           >
@@ -1509,10 +1509,10 @@ export default function Home() {
 
             {/* Maximized Card with website glass aesthetic & glow for both themes */}
             <motion.div
-              initial={{ scale: 0.8, opacity: 0, y: 15 }}
+              initial={{ scale: 0.95, opacity: 0, y: 8 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.85, opacity: 0, y: 15 }}
-              transition={{ type: "spring", stiffness: 350, damping: 28 }}
+              exit={{ scale: 0.96, opacity: 0, y: 6 }}
+              transition={{ type: "spring", stiffness: 380, damping: 32 }}
               className="relative max-w-md sm:max-w-xl w-full bg-white/95 dark:bg-[#0a0d14]/95 border border-slate-200/80 dark:border-white/15 backdrop-blur-2xl rounded-3xl p-6 sm:p-8 shadow-[0_25px_70px_rgba(0,0,0,0.25)] dark:shadow-[0_25px_80px_rgba(0,0,0,0.8)] flex flex-col items-center select-none cursor-default text-slate-900 dark:text-white transition-colors"
               onClick={(e) => e.stopPropagation()}
             >
@@ -1546,7 +1546,7 @@ export default function Home() {
 
                 {/* Subtitle matching Hero subtitle style */}
                 <p className="text-xs sm:text-sm text-slate-600 dark:text-white/70 font-light max-w-md mx-auto mt-3 leading-relaxed">
-                  Exploring new frontiers in <span className="font-semibold text-slate-900 dark:text-white">catalysis</span>, <span className="font-semibold text-slate-900 dark:text-white">sustainable chemistry</span>, and complex <span className="font-semibold text-slate-900 dark:text-white">organometallic systems</span>.
+                  Transition-metal <span className="font-semibold text-slate-900 dark:text-white">catalysis</span>, <span className="font-semibold text-slate-900 dark:text-white">sustainable chemistry</span>, and <span className="font-semibold text-slate-900 dark:text-white">organometallic synthesis</span> at IISER Tirupati.
                 </p>
               </div>
 

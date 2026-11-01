@@ -44,7 +44,7 @@ export function GlowCard({ children, className = '', glowColor = 'rgba(245, 158,
         transform: isHovered
           ? `perspective(800px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`
           : 'perspective(800px) rotateX(0deg) rotateY(0deg)',
-        transition: 'transform 0.3s ease-out',
+        transition: 'transform 0.25s cubic-bezier(0.23, 1, 0.32, 1)',
       }}
     >
       {/* Radial glow overlay */}

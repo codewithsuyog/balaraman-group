@@ -130,7 +130,7 @@ p, li, td, th, span, a {
   backdrop-filter: blur(16px);
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 1.5rem;
-  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform 0.25s cubic-bezier(0.23, 1, 0.32, 1), border-color 0.2s ease, box-shadow 0.25s cubic-bezier(0.23, 1, 0.32, 1), background-color 0.2s ease;
   box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.06);
 }
 
@@ -280,4 +280,27 @@ html { scroll-behavior: smooth; }
 .cta-shimmer:hover::after {
   background-position: -200% 0;
   transition: background-position 0.8s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .text-gradient {
+    animation: none;
+    background-position: 0% center;
+  }
+  .animate-marquee-horizontal {
+    animation: none;
+  }
+}
+
+@media (hover: none) {
+  .card-glass:hover {
+    transform: none;
+  }
 }
