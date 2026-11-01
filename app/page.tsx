@@ -24,6 +24,7 @@ import {
 } from './data';
 import { featuredPublications as publications } from './publications_featured';
 import ChemText from '../components/ChemText';
+import { LabDashboardDemo } from '@/components/ui/lab-dashboard-demo';
 
 import { Variants } from 'framer-motion';
 
@@ -1026,6 +1027,11 @@ export default function Home() {
                   </p>
                </div>
             </div>
+          </motion.div>
+
+          {/* Stageshow lab dashboard demo */}
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mb-16">
+            <LabDashboardDemo />
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
