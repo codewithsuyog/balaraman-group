@@ -785,7 +785,7 @@ export default function Home() {
 
           <motion.div initial="hidden" animate="visible" variants={fadeUp}>
             <p className="text-lg sm:text-xl md:text-2xl text-white/80 font-light max-w-3xl mx-auto mb-8 leading-relaxed">
-              Exploring new frontiers in <span className="font-semibold text-white">catalysis</span>, <span className="font-semibold text-white">sustainable chemistry</span>, and complex <span className="font-semibold text-white">organometallic systems</span>.
+              Transition-metal <span className="font-semibold text-white">catalysis</span>, <span className="font-semibold text-white">sustainable chemistry</span>, and <span className="font-semibold text-white">organometallic synthesis</span> at IISER Tirupati.
             </p>
           </motion.div>
         </div>
@@ -873,7 +873,7 @@ export default function Home() {
             <h3 className="text-xl text-amber-500 mb-6 font-light tracking-tight">Associate Professor & Chair, Department of Chemistry, IISER Tirupati</h3>
             
             <p className="text-lg md:text-xl text-foreground font-light leading-relaxed mb-8 italic border-l-4 border-amber-500 pl-6">
-              &quot;Leading the frontier of sustainable catalysis and molecular engineering through innovative transition-metal systems.&quot;
+              &quot;Developing transition-metal catalytic systems for sustainable synthesis and molecular transformations.&quot;
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6 mb-10">
@@ -1067,7 +1067,7 @@ export default function Home() {
 
                   <MagneticButton>
                   <Link href={`/research#${cat.id}`} className="cta-shimmer flex items-center gap-3 px-8 py-4 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-[10px] font-black uppercase tracking-[0.2em] hover:bg-amber-600 hover:text-white hover:border-amber-600 transition-all mt-auto shadow-lg">
-                     Dive Deeper <ArrowRight size={14} />
+                     View Research <ArrowRight size={14} />
                   </Link>
                   </MagneticButton>
                 </div>
