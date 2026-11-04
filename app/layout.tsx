@@ -8,6 +8,9 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import ScrollProgress from "@/components/ScrollProgress";
 import { FloatingPaths } from '@/components/ui/background-paths';
 import "./globals.css";
+import { piStats } from "./data";
+
+const statsLine = `${piStats.publications}+ publications, ${(Math.floor(piStats.citations / 100) * 100).toLocaleString("en-US")}+ citations.`;
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -53,7 +56,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Dr. Ekambaram Balaraman | Raman's Research Lab — IISER Tirupati",
-    description: "Official website of Dr. Ekambaram Balaraman, leading research in organometallics, catalysis & sustainable chemistry at IISER Tirupati. 117+ publications, 9,500+ citations.",
+    description: `Official website of Dr. Ekambaram Balaraman, leading research in organometallics, catalysis & sustainable chemistry at IISER Tirupati. ${statsLine}`,
     url: 'https://www.ebalaraman.com',
     siteName: "Raman's Research Lab",
     images: [
@@ -70,7 +73,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Dr. Ekambaram Balaraman | Raman's Research Lab",
-    description: "Organometallics, catalysis & sustainable chemistry at IISER Tirupati. 117+ publications, 9,500+ citations.",
+    description: `Organometallics, catalysis & sustainable chemistry at IISER Tirupati. ${statsLine}`,
     images: ["https://www.ebalaraman.com/pi-photo.webp"],
   },
   icons: {
