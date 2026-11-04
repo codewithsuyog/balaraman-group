@@ -29,10 +29,10 @@ const PatentCard = ({ patent, type }: { patent: Patent, type: string }) => (
     className="group p-5 md:p-8 rounded-[2.5rem] bg-foreground/5 border border-foreground/10 hover:border-amber-500/30 transition-all duration-500 flex flex-col h-full"
   >
     <div className="flex items-center gap-3 mb-6">
-      <span className="px-3 py-1 rounded bg-amber-500/10 text-amber-400 text-[10px] font-black tracking-widest uppercase border border-amber-500/20">
+      <span className="px-3 py-1 rounded bg-amber-500/10 text-amber-400 text-xs font-black tracking-widest uppercase border border-amber-500/20">
         {type}
       </span>
-      {patent.year && <span className="text-[10px] font-mono text-foreground/90">{patent.year}</span>}
+      {patent.year && <span className="text-xs font-mono text-foreground/90">{patent.year}</span>}
     </div>
     
     <h3 className="text-xl font-bold text-foreground mb-4 leading-tight group-hover:text-amber-400 transition-colors">
@@ -42,26 +42,26 @@ const PatentCard = ({ patent, type }: { patent: Patent, type: string }) => (
     <div className="space-y-4 flex-1">
       {patent.authors && (
         <div className="flex gap-2">
-          <span className="text-[10px] font-mono text-foreground uppercase shrink-0 mt-1">Authors:</span>
+          <span className="text-xs font-mono text-foreground uppercase shrink-0 mt-1">Authors:</span>
           <p className="text-sm text-foreground leading-relaxed italic">{patent.authors}</p>
         </div>
       )}
       {patent.number && (
         <div className="flex gap-2">
-          <span className="text-[10px] font-mono text-foreground uppercase shrink-0 mt-1">Number:</span>
+          <span className="text-xs font-mono text-foreground uppercase shrink-0 mt-1">Number:</span>
           <p className="text-sm text-amber-400 font-mono">{patent.number}</p>
         </div>
       )}
       {patent.coapplicant && (
         <div className="flex gap-2">
-          <span className="text-[10px] font-mono text-foreground uppercase shrink-0 mt-1">Partner:</span>
+          <span className="text-xs font-mono text-foreground uppercase shrink-0 mt-1">Partner:</span>
           <p className="text-sm text-emerald-400 font-bold uppercase tracking-wider">{patent.coapplicant}</p>
         </div>
       )}
     </div>
 
     <div className="mt-8 pt-6 border-t border-foreground/5">
-       <button className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-foreground group-hover:text-foreground transition-colors">
+       <button className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-foreground group-hover:text-foreground transition-colors">
           View Details <ArrowRight size={12} />
        </button>
     </div>
@@ -72,10 +72,10 @@ export default function PatentsPage() {
   return (
     <main className="min-h-screen bg-background text-foreground pt-32 pb-20 px-6">
       <div className="max-w-7xl mx-auto">
-        <motion.div initial="hidden" animate="visible" variants={fadeUp} className="mb-20">
+        <motion.div initial={false} animate="visible" variants={fadeUp} className="mb-20">
           <div className="flex items-center gap-4 mb-8">
             <div className="h-px w-12 bg-amber-500"></div>
-            <p className="text-[10px] font-mono text-amber-400 tracking-[0.4em] uppercase">Intellectual Property</p>
+            <p className="text-xs font-mono text-amber-400 tracking-[0.4em] uppercase">Intellectual Property</p>
           </div>
           <h1 className="text-5xl md:text-8xl font-black tracking-tighter mb-8 uppercase leading-none">
             Patents & <br className="hidden md:block"/> Innovations

@@ -34,9 +34,9 @@ export default function AlumniPage() {
       <div className="max-w-7xl mx-auto px-6 py-24 relative z-10">
         
         {/* Header */}
-        <motion.div initial="hidden" animate="visible" variants={fadeUp} className="mb-20">
+        <motion.div initial={false} animate="visible" variants={fadeUp} className="mb-20">
           <Link href="/team" className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-foreground/[0.03] border border-foreground/10 hover:border-amber-500/30 text-amber-400 hover:text-amber-300 font-bold mb-8 transition-all text-xs font-mono uppercase tracking-wider group">
-            <img src="/images/lab-logo.webp" alt="EBR Lab Logo" className="w-5 h-5 rounded-md object-contain bg-white/90 p-0.5" />
+            <img src="/images/lab-logo-128.webp" alt="EBR Lab Logo" className="w-5 h-5 rounded-md object-contain bg-white/90 p-0.5" />
             <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Back to Lab Members
           </Link>
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">Alumni Registry</h1>
@@ -55,7 +55,7 @@ export default function AlumniPage() {
               <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse min-w-[800px] bg-foreground/[0.02] rounded-2xl overflow-hidden border border-foreground/5">
                   <thead className="bg-foreground/5">
-                    <tr className="border-b border-foreground/10 text-[11px] font-mono uppercase tracking-widest text-foreground/90">
+                    <tr className="border-b border-foreground/10 text-xs font-mono uppercase tracking-widest text-foreground/90">
                       <th className="p-6 font-medium">Scholar Name</th>
                       <th className="p-6 font-medium">Duration</th>
                       <th className="p-6 font-medium max-w-sm">Thesis Title</th>
@@ -92,7 +92,7 @@ export default function AlumniPage() {
                     <div>
                       <h3 className="text-base font-bold text-foreground">{alumnus.name}</h3>
                       <p className="text-xs text-foreground/70 font-light mt-1 leading-relaxed">{alumnus.info}</p>
-                      <span className="text-[10px] font-mono text-teal-400 mt-2 block">{alumnus.duration}</span>
+                      <span className="text-xs font-mono text-teal-400 mt-2 block">{alumnus.duration}</span>
                     </div>
                   </div>
                 ))}
@@ -111,9 +111,9 @@ export default function AlumniPage() {
                   <div key={idx} className="p-4 rounded-xl bg-foreground/[0.02] border border-foreground/5 hover:border-purple-500/20 transition-all flex justify-between items-center gap-4">
                     <div>
                       <h3 className="text-sm font-bold text-foreground">{alumnus.name}</h3>
-                      <p className="text-[11px] text-foreground/60 font-light truncate max-w-[200px]">{alumnus.institution}</p>
+                      <p className="text-xs text-foreground/60 font-light truncate max-w-[200px]">{alumnus.institution}</p>
                     </div>
-                    <span className="text-[10px] font-mono text-purple-400 shrink-0">{alumnus.year}</span>
+                    <span className="text-xs font-mono text-purple-400 shrink-0">{alumnus.year}</span>
                   </div>
                 ))}
               </div>
@@ -132,7 +132,7 @@ export default function AlumniPage() {
                     <div>
                       <h3 className="text-sm font-bold text-foreground">{alumnus.name}</h3>
                     </div>
-                    <span className="text-[10px] font-mono text-blue-400 shrink-0">{alumnus.duration}</span>
+                    <span className="text-xs font-mono text-blue-400 shrink-0">{alumnus.duration}</span>
                   </div>
                 ))}
               </div>
@@ -150,9 +150,9 @@ export default function AlumniPage() {
                   <div key={idx} className="p-4 rounded-xl bg-foreground/[0.02] border border-foreground/5 hover:border-amber-500/20 transition-all flex justify-between items-center gap-4">
                     <div>
                       <h3 className="text-sm font-bold text-foreground">{alumnus.name}</h3>
-                      {alumnus.batch && <p className="text-[10px] text-foreground/50 font-mono">{alumnus.batch}</p>}
+                      {alumnus.batch && <p className="text-xs text-foreground/70 font-mono">{alumnus.batch}</p>}
                     </div>
-                    <span className="text-[10px] font-mono text-amber-400 shrink-0">{alumnus.duration}</span>
+                    <span className="text-xs font-mono text-amber-400 shrink-0">{alumnus.duration}</span>
                   </div>
                 ))}
               </div>
@@ -168,7 +168,7 @@ export default function AlumniPage() {
                   {team.alumniLabRotation.map((alumnus: TeamMember, idx: number) => (
                     <div key={idx} className="p-3 rounded-lg bg-foreground/[0.02] border border-foreground/5 flex justify-between items-center text-sm">
                       <span className="font-medium text-foreground">{alumnus.name}</span>
-                      <span className="text-[10px] font-mono text-emerald-400">{alumnus.duration}</span>
+                      <span className="text-xs font-mono text-emerald-400">{alumnus.duration}</span>
                     </div>
                   ))}
                 </div>

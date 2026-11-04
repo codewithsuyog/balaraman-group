@@ -1,15 +1,13 @@
 'use client';
 
-import React, { useState, useEffect, useMemo, lazy, Suspense } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import { 
-  ArrowRight, ArrowLeft, FileText, Mail, MapPin, Phone, Microscope, Play, Pause, Volume2, VolumeX, Video, 
-  FlaskConical, 
-  Beaker, Globe, Award, Zap, Shield, BookOpen,
-  ArrowUpRight, Download, Users, Briefcase, GraduationCap,
-  ExternalLink, ChevronRight, Menu, X, Leaf, Database, ZapOff, Maximize2
+import {
+  ArrowRight, Mail, MapPin, FlaskConical, Beaker, Globe, Shield, BookOpen,
+  ArrowUpRight, Download, Briefcase, GraduationCap,
+  ExternalLink, ChevronRight, Menu, X, Maximize2
 } from 'lucide-react';
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { BackgroundCircles } from '@/components/ui/background-circles';
@@ -20,7 +18,7 @@ import { AnimatedCounter } from '@/components/ui/animated-counter';
 import { MagneticButton } from '@/components/ui/magnetic-button';
 import { 
   patents, piBio, cvLink, 
-  opportunities, team, awards, piStats, news 
+  team, awards, piStats, news 
 } from './data';
 import { featuredPublications as publications } from './publications_featured';
 import ChemText from '../components/ChemText';
@@ -48,56 +46,16 @@ interface PubData {
   volume?: string;
   pages?: string;
   details?: string;
+  coverImage?: string;
+  schemeImage?: string;
 }
-
-const PublicationLink = ({ pub }: { pub: PubData }) => {
-  const [coverFailed, setCoverFailed] = useState(false);
-  const extensions = ['.webp', '.jpg', '.png', '.gif', '.jpeg'];
-  const [coverExtIdx, setCoverExtIdx] = useState(0);
-
-  return (
-    <div className="group/pub flex flex-col md:flex-row gap-6 p-6 rounded-[2rem] bg-foreground/5 border border-foreground/5 hover:border-amber-500/20 hover:bg-foreground/10 transition-all">
-      <div className="w-20 h-24 rounded-lg bg-foreground overflow-hidden flex-shrink-0 border border-foreground/10 p-1">
-            <img 
-               src={coverFailed ? "/logo.webp" : `/images/publications/covers/${pub.id}${extensions[coverExtIdx]}`} 
-               alt={`Journal cover art for: ${pub.title ?? "publication " + pub.id}`} 
-               loading="lazy" decoding="async"
-               className="w-full h-full object-contain opacity-50 group-hover/pub:opacity-100 transition-opacity"
-               onError={() => coverExtIdx < extensions.length - 1 ? setCoverExtIdx(coverExtIdx + 1) : setCoverFailed(true)}
-            />
-      </div>
-      <div className="flex-1 min-w-0">
-        <div className="flex items-center gap-2 mb-2">
-          <span className="text-[10px] font-bold text-amber-400 px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/20">{pub.year}</span>
-        </div>
-        {pub.title && (
-          <p className="text-sm font-bold text-foreground mb-1 leading-snug">{pub.title}</p>
-        )}
-        <p className="text-xs text-foreground/90 font-light leading-relaxed line-clamp-2">{pub.fullText}</p>
-        {pub.doi && (
-          <a 
-            href={pub.doi.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`} 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="inline-flex items-center gap-2 mt-3 text-[10px] font-bold text-amber-500/80 hover:text-amber-400 transition-colors"
-          >
-            DOI: {pub.doi} <ExternalLink size={10} />
-          </a>
-        )}
-      </div>
-    </div>
-  );
-};
 
 const FeaturedPublication = ({ pub }: { pub: PubData }) => {
   const [coverFailed, setCoverFailed] = useState(false);
   const [schemeFailed, setSchemeFailed] = useState(false);
-  const extensions = ['.webp', '.jpg', '.png', '.gif', '.jpeg'];
-  const [coverExtIdx, setCoverExtIdx] = useState(0);
-  const [schemeExtIdx, setSchemeExtIdx] = useState(0);
 
-  const hasCover = !coverFailed;
-  const hasScheme = !schemeFailed;
+  const hasCover = !!pub.coverImage && !coverFailed;
+  const hasScheme = !!pub.schemeImage && !schemeFailed;
 
   return (
     <GlowCard className="rounded-2xl md:rounded-[3rem]">
@@ -110,12 +68,11 @@ const FeaturedPublication = ({ pub }: { pub: PubData }) => {
         {hasCover && (
           <div className="w-[120px] h-48 rounded-2xl bg-foreground border border-foreground/10 overflow-hidden relative group-hover:border-amber-500/40 transition-all p-2 shadow-2xl shrink-0">
             <img 
-              key={`cover-home-${pub.id}-${coverExtIdx}`}
-              src={`/images/publications/covers/${pub.id}${extensions[coverExtIdx]}`} 
+              src={pub.coverImage} 
               alt={`Journal cover art for: ${pub.title ?? "publication " + pub.id}`} 
               loading="lazy" decoding="async"
               className="w-full h-full object-contain"
-              onError={() => coverExtIdx < extensions.length - 1 ? setCoverExtIdx(prev => prev + 1) : setCoverFailed(true)}
+              onError={() => setCoverFailed(true)}
             />
           </div>
         )}
@@ -123,7 +80,7 @@ const FeaturedPublication = ({ pub }: { pub: PubData }) => {
         {/* Paper Details - Center */}
         <div className="flex-1 flex flex-col justify-center min-w-0">
           <div className="flex items-center gap-3 mb-4">
-            <span className="px-4 py-1.5 rounded-full bg-amber-500/10 text-amber-400 text-[10px] font-black tracking-widest uppercase border border-amber-500/20">
+            <span className="px-4 py-1.5 rounded-full bg-amber-500/10 text-amber-400 text-xs font-black tracking-widest uppercase border border-amber-500/20">
               {pub.year}
             </span>
             {pub.journal && (
@@ -159,12 +116,11 @@ const FeaturedPublication = ({ pub }: { pub: PubData }) => {
         {hasScheme && (
           <div className="w-full md:w-[300px] h-48 rounded-2xl bg-foreground border border-foreground/10 overflow-hidden relative group-hover:border-amber-500/40 transition-all shadow-2xl p-2 shrink-0">
             <img 
-              key={`scheme-home-${pub.id}-${schemeExtIdx}`}
-              src={`/images/publications/schemes/${pub.id}${extensions[schemeExtIdx]}`} 
+              src={pub.schemeImage} 
               alt={`Reaction scheme from: ${pub.title ?? "publication " + pub.id}`} 
               loading="lazy" decoding="async"
               className="w-full h-full object-contain"
-              onError={() => schemeExtIdx < extensions.length - 1 ? setSchemeExtIdx(prev => prev + 1) : setSchemeFailed(true)}
+              onError={() => setSchemeFailed(true)}
             />
           </div>
         )}
@@ -223,10 +179,10 @@ const TeamMemberThumb = ({ member, role }: { member: TeamMember, role: string })
       
       <div className="flex-1 flex flex-col justify-between w-full">
         <div>
-          <span className="text-[10px] font-bold text-foreground tracking-wider truncate w-full mb-1 block">{member.name}</span>
-          <span className="text-[9px] font-mono text-amber-400 uppercase tracking-widest mb-2 block">{role}</span>
+          <span className="text-xs font-bold text-foreground tracking-wider truncate w-full mb-1 block">{member.name}</span>
+          <span className="text-xs font-mono text-amber-400 uppercase tracking-widest mb-2 block">{role}</span>
           {member.info && (
-            <p className="text-[10px] text-foreground leading-relaxed mb-4 font-light">
+            <p className="text-xs text-foreground leading-relaxed mb-4 font-light">
               {member.info.split(',').map((part: string, idx: number) => (
                 <React.Fragment key={idx}>{part.trim()}<br/></React.Fragment>
               ))}
@@ -235,7 +191,7 @@ const TeamMemberThumb = ({ member, role }: { member: TeamMember, role: string })
         </div>
         
         {member.email && (
-          <a href={`mailto:${member.email}`} className="text-[11px] font-semibold text-accent hover:text-accent-light transition-colors w-full flex items-center gap-1.5 mt-auto pt-3 min-w-0" title={member.email}>
+          <a href={`mailto:${member.email}`} className="text-xs font-semibold text-accent hover:text-accent-light transition-colors w-full flex items-center gap-1.5 mt-auto pt-3 min-w-0" title={member.email}>
             <Mail size={12} className="shrink-0" />
             <span className="truncate flex-1">{member.email}</span>
           </a>
@@ -245,303 +201,10 @@ const TeamMemberThumb = ({ member, role }: { member: TeamMember, role: string })
   );
 };
 
-const AlumniThumb = ({ member }: { member: TeamMember }) => {
-  const [extIdx, setExtIdx] = useState(0);
-  const [failed, setFailed] = useState(false);
-
-  const imagePath = member.image || '';
-  const needsProbe = imagePath && !hasFileExt(imagePath);
-  const src = !imagePath
-    ? ''
-    : needsProbe
-      ? `${imagePath}${IMG_EXTENSIONS[extIdx]}`
-      : imagePath;
-
-  const handleError = () => {
-    if (needsProbe && extIdx < IMG_EXTENSIONS.length - 1) {
-      setExtIdx(extIdx + 1);
-    } else {
-      setFailed(true);
-    }
-  };
-
-  const showImage = src && !failed;
-
-  return (
-    <div className="flex flex-col items-start text-left group">
-      <div className="w-full aspect-[3/4] rounded-2xl bg-foreground/5 border border-foreground/10 flex items-center justify-center overflow-hidden mb-4 group-hover:border-emerald-500/30 transition-all">
-        <img 
-          src={showImage ? src : "/logo.webp"} 
-          alt={member.name} 
-          loading="lazy" decoding="async"
-          className={`w-full h-full object-cover transition-all duration-700 ${!showImage ? 'opacity-20 p-4 object-contain' : ''}`}
-          onError={handleError}
-        />
-      </div>
-      <h3 className="text-sm font-bold text-foreground mb-1 group-hover:text-emerald-400 transition-colors tracking-tight line-clamp-1">{member.name}</h3>
-      <p className="text-[10px] text-foreground font-light leading-relaxed mb-2 line-clamp-2">{member.thesis}</p>
-      <div className="flex items-center gap-2 mt-auto">
-        <span className="text-[9px] font-mono text-emerald-500/50">{member.duration}</span>
-      </div>
-      {member.present && (
-        <p className="text-[9px] text-foreground/90 mt-1 italic line-clamp-1 flex gap-1">
-          <span className="text-emerald-500/30">Currently:</span> {member.present}
-        </p>
-      )}
-    </div>
-  );
-};
-
-
-const SlideImage = ({ srcBase, isActive }: { srcBase: string, isActive: boolean }) => {
-  const extensions = ['.webp', '.jpg', '.png', '.jpeg'];
-  const [extIdx, setExtIdx] = useState(0);
-  const [failed, setFailed] = useState(false);
-
-  const src = `${srcBase}${extensions[extIdx]}`;
-
-  return (
-    <motion.img
-      src={failed ? '/logo.webp' : src}
-      initial={{ opacity: 0, scale: 1.05 }}
-      animate={{ opacity: isActive ? 1 : 0, scale: isActive ? 1 : 1.05 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.8 }}
-      className={`absolute inset-0 w-full h-full ${failed ? 'object-contain opacity-20 p-8' : 'object-cover'}`}
-      onError={() => {
-        if (extIdx < extensions.length - 1) {
-          setExtIdx(prev => prev + 1);
-        } else {
-          setFailed(true);
-        }
-      }}
-    />
-  );
-};
-
-const GallerySlideshow = () => {
-  const images = Array.from({ length: 36 }, (_, i) => 36 - i);
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % images.length);
-    }, 4000);
-    return () => clearInterval(timer);
-  }, []);
-
-  return (
-    <div className="w-full relative overflow-hidden rounded-3xl bg-foreground/[0.02] border border-foreground/10 mb-8 aspect-video md:aspect-[21/9] shadow-2xl group">
-      <AnimatePresence mode="wait">
-        <SlideImage key={currentIndex} srcBase={`/images/gallery/${images[currentIndex]}`} isActive={true} />
-      </AnimatePresence>
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-        {images.map((_, idx) => (
-          <button 
-            key={idx} 
-            onClick={() => setCurrentIndex(idx)}
-            className={`h-1.5 rounded-full transition-all duration-300 ${idx === currentIndex ? 'bg-pink-500 w-6' : 'bg-foreground/30 hover:bg-foreground/60 w-1.5'}`}
-          />
-        ))}
-      </div>
-      <button 
-        onClick={() => setCurrentIndex((prev) => (prev - 1 + images.length) % images.length)}
-        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-foreground/20 backdrop-blur-md border border-foreground/10 flex items-center justify-center text-foreground opacity-0 group-hover:opacity-100 transition-opacity hover:bg-foreground/50"
-      >
-        <ArrowLeft size={16} />
-      </button>
-      <button 
-        onClick={() => setCurrentIndex((prev) => (prev + 1) % images.length)}
-        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-foreground/20 backdrop-blur-md border border-foreground/10 flex items-center justify-center text-foreground opacity-0 group-hover:opacity-100 transition-opacity hover:bg-foreground/50"
-      >
-        <ArrowRight size={16} />
-      </button>
-    </div>
-  );
-};
-
-
-
-
-const LAB_IMAGES = [
-  { src: '', caption: 'Add your lab image here' },
-];
-
-const LAB_VIDEOS = [
-  { src: '', title: 'Lab Video', caption: 'Add your lab video here' },
-];
-
-
-
-const LabMediaShowcase = () => {
-  const [imgIdx, setImgIdx] = useState(0);
-  useEffect(() => {
-    const timer = setInterval(() => setImgIdx((p) => (p + 1) % LAB_IMAGES.length), 4000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const [vidIdx, setVidIdx] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [isMuted, setIsMuted] = useState(true);
-  const [videoError, setVideoError] = useState<Record<number, boolean>>({});
-  const videoRef = React.useRef<HTMLVideoElement>(null);
-
-  const allVideosErrored = LAB_VIDEOS.every((_, i) => videoError[i]);
-
-  useEffect(() => {
-    if (!videoRef.current || videoError[vidIdx]) return;
-    videoRef.current.load();
-    videoRef.current.play().catch(() => {});
-    setIsPlaying(true);
-  }, [vidIdx]);
-
-  useEffect(() => {
-    const vid = videoRef.current;
-    if (!vid) return;
-    const onEnded = () => setVidIdx((p) => (p + 1) % LAB_VIDEOS.length);
-    vid.addEventListener('ended', onEnded);
-    return () => vid.removeEventListener('ended', onEnded);
-  }, [vidIdx]);
-
-  const togglePlay = () => {
-    if (!videoRef.current) return;
-    if (isPlaying) { videoRef.current.pause(); } else { videoRef.current.play(); }
-    setIsPlaying(!isPlaying);
-  };
-
-  const toggleMute = () => {
-    if (!videoRef.current) return;
-    videoRef.current.muted = !isMuted;
-    setIsMuted(!isMuted);
-  };
-
-  return (
-    <div className="w-full flex flex-col md:flex-row gap-6 relative group">
-      {/* -- Images Section -- */}
-      <div className="w-full md:w-1/2 relative overflow-hidden rounded-3xl bg-background border border-foreground/10 shadow-2xl aspect-square md:aspect-[4/3] bg-gradient-to-br from-gray-900 to-black">
-        <div className="absolute top-6 left-6 z-30 flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-xl border text-[10px] font-mono uppercase tracking-widest transition-all bg-cyan-500/20 border-cyan-500/40 text-cyan-300">
-          <Microscope size={12} /> Lab Images
-          <span className="text-[9px] text-cyan-300/50">{imgIdx + 1}/{LAB_IMAGES.length}</span>
-        </div>
-
-        {/* --- IMAGE SLIDESHOW --- */}
-        <div className="absolute inset-0">
-          <AnimatePresence mode="wait">
-            <motion.img
-              key={imgIdx}
-              src={LAB_IMAGES[imgIdx].src}
-              alt={LAB_IMAGES[imgIdx].caption}
-              initial={{ opacity: 0, scale: 1.05 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 1.02 }}
-              transition={{ duration: 0.8 }}
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-          </AnimatePresence>
-
-          <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none z-10" />
-
-          <div className="absolute bottom-0 left-0 right-0 p-8 z-20">
-            <h4 className="text-lg font-bold text-foreground mb-1 tracking-tight">{LAB_IMAGES[imgIdx].caption}</h4>
-            <div className="flex gap-2 mt-4">
-              {LAB_IMAGES.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setImgIdx(i)}
-                  className={`h-1.5 rounded-full transition-all duration-500 ${
-                    i === imgIdx ? 'bg-cyan-400 w-8' : 'bg-foreground/25 hover:bg-foreground/50 w-1.5'
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
-
-          <button onClick={() => setImgIdx((p) => (p - 1 + LAB_IMAGES.length) % LAB_IMAGES.length)}
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-foreground/20 backdrop-blur-md border border-foreground/10 flex items-center justify-center text-foreground opacity-0 group-hover:opacity-100 transition-opacity hover:bg-foreground/50 z-20">
-            <ArrowLeft size={16} />
-          </button>
-          <button onClick={() => setImgIdx((p) => (p + 1) % LAB_IMAGES.length)}
-            className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-foreground/20 backdrop-blur-md border border-foreground/10 flex items-center justify-center text-foreground opacity-0 group-hover:opacity-100 transition-opacity hover:bg-foreground/50 z-20">
-            <ArrowRight size={16} />
-          </button>
-        </div>
-      </div>
-
-      {/* -- Videos Section -- */}
-      <div className="w-full md:w-1/2 relative overflow-hidden rounded-3xl bg-background border border-foreground/10 shadow-2xl aspect-square md:aspect-[4/3] bg-gradient-to-br from-gray-900 to-black">
-        <div className="absolute top-6 left-6 z-30 flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-xl border text-[10px] font-mono uppercase tracking-widest transition-all bg-red-500/20 border-red-500/40 text-red-300">
-          <Video size={12} /> Videos
-        </div>
-
-        {/* --- VIDEO PLAYER --- */}
-        <div className="absolute inset-0">
-          {!allVideosErrored ? (
-            <>
-              <AnimatePresence mode="wait">
-                <motion.div key={vidIdx} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }} className="absolute inset-0">
-                  <video ref={videoRef} src={LAB_VIDEOS[vidIdx].src} muted={isMuted} playsInline autoPlay
-                    className="w-full h-full object-cover"
-                    onError={() => setVideoError((p) => ({ ...p, [vidIdx]: true }))} />
-                </motion.div>
-              </AnimatePresence>
-
-              <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/80 to-transparent pointer-events-none z-10" />
-
-              <div className="absolute bottom-0 left-0 right-0 p-8 z-20">
-                <div className="flex items-end justify-between">
-                  <div className="flex-1 pr-4">
-                    <h4 className="text-xl font-bold text-foreground mb-1 tracking-tight truncate">{LAB_VIDEOS[vidIdx].title}</h4>
-                    <p className="text-sm text-foreground/90 font-light line-clamp-2">{LAB_VIDEOS[vidIdx].caption}</p>
-                  </div>
-                  <div className="flex items-center gap-3 shrink-0">
-                    <button onClick={toggleMute} className="w-10 h-10 rounded-full bg-foreground/10 backdrop-blur-md border border-foreground/10 flex items-center justify-center text-foreground/90 hover:text-foreground hover:bg-foreground/20 transition-all">
-                      {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
-                    </button>
-                    <button onClick={togglePlay} className="w-12 h-12 rounded-full bg-foreground/15 backdrop-blur-md border border-foreground/20 flex items-center justify-center text-foreground hover:bg-foreground/25 transition-all">
-                      {isPlaying ? <Pause size={18} /> : <Play size={18} className="ml-0.5" />}
-                    </button>
-                  </div>
-                </div>
-                <div className="flex gap-2 mt-6">
-                  {LAB_VIDEOS.map((_, i) => (
-                    <button key={i} onClick={() => setVidIdx(i)}
-                      className={`h-1 rounded-full transition-all duration-500 ${i === vidIdx ? 'bg-red-500 w-8' : videoError[i] ? 'bg-foreground/10 w-2' : 'bg-foreground/30 hover:bg-foreground/50 w-2'}`} />
-                  ))}
-                </div>
-              </div>
-
-              <button onClick={() => setVidIdx((p) => (p - 1 + LAB_VIDEOS.length) % LAB_VIDEOS.length)}
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-foreground/20 backdrop-blur-md border border-foreground/10 flex items-center justify-center text-foreground opacity-0 group-hover:opacity-100 transition-opacity hover:bg-foreground/50 z-20">
-                <ArrowLeft size={16} />
-              </button>
-              <button onClick={() => setVidIdx((p) => (p + 1) % LAB_VIDEOS.length)}
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-foreground/20 backdrop-blur-md border border-foreground/10 flex items-center justify-center text-foreground opacity-0 group-hover:opacity-100 transition-opacity hover:bg-foreground/50 z-20">
-                <ArrowRight size={16} />
-              </button>
-            </>
-          ) : (
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-background">
-              <iframe 
-                className="w-full h-full border-0"
-                src="https://www.youtube.com/embed/your-lab-tour-id" 
-                title="Lab Tour Video" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                sandbox="allow-scripts allow-same-origin allow-presentation"
-                allowFullScreen
-              ></iframe>
-            </div>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-};
 
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState('home');
-  const [formSubmitted, setFormSubmitted] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [logoModalOpen, setLogoModalOpen] = useState(false);
 
@@ -561,11 +224,6 @@ export default function Home() {
     };
   }, [logoModalOpen]);
 
-  const handleFormSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setFormSubmitted(true);
-    setTimeout(() => setFormSubmitted(false), 5000);
-  };
 
   const heroImage = '/images/gallery/30.webp';
 
@@ -633,8 +291,8 @@ export default function Home() {
       
       {/* FLOATING NAVIGATION MENU */}
       <motion.nav 
-        initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
-        className="fixed top-6 left-1/2 -translate-x-1/2 z-50 glass rounded-2xl md:rounded-full px-2 md:px-4 py-2 flex flex-col md:flex-row md:items-center gap-1 md:gap-2 text-[10px] md:text-xs font-mono border border-foreground/10 w-[90vw] md:w-auto md:max-w-[95vw] shadow-2xl"
+        initial={false} animate={{ y: 0 }} transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
+        className="fixed top-6 left-1/2 -translate-x-1/2 z-50 glass rounded-2xl md:rounded-full px-2 md:px-4 py-2 flex flex-col md:flex-row md:items-center gap-1 md:gap-2 text-xs md:text-xs font-mono border border-foreground/10 w-[90vw] md:w-auto md:max-w-[95vw] shadow-2xl"
       >
         {/* Mobile Header */}
         <div className="flex items-center justify-between w-full md:w-auto md:hidden">
@@ -645,13 +303,15 @@ export default function Home() {
             title="Raman's Research Lab"
           >
             <div className="w-8 h-8 rounded-lg bg-white p-0.5 shadow-sm border border-foreground/15 flex items-center justify-center overflow-hidden">
-              <img src="/images/lab-logo-light.webp" alt="EBR Lab Logo" className="w-full h-full object-contain" />
+              <img src="/images/lab-logo-128.webp" alt="EBR Lab Logo" className="w-full h-full object-contain" />
             </div>
           </a>
           <div className="flex items-center gap-2">
             <ThemeToggle />
             <button 
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={mobileMenuOpen}
               className="w-10 h-10 rounded-full bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:bg-amber-500/10 transition-colors"
             >
               {mobileMenuOpen ? <X size={16} /> : <Menu size={16} />}
@@ -667,7 +327,7 @@ export default function Home() {
           title="Raman's Research Lab"
         >
           <div className="w-8 h-8 rounded-lg bg-white p-0.5 shadow-sm border border-foreground/15 flex items-center justify-center overflow-hidden">
-            <img src="/images/lab-logo-light.webp" alt="EBR Lab Logo" className="w-full h-full object-contain" />
+            <img src="/images/lab-logo-128.webp" alt="EBR Lab Logo" className="w-full h-full object-contain" />
           </div>
         </a>
         <div className="hidden md:block w-px h-5 bg-foreground/20 self-center mx-1"></div>
@@ -746,10 +406,10 @@ export default function Home() {
         </div>
 
         <div className="z-10 max-w-6xl mx-auto text-center relative">
-          <motion.div initial="hidden" animate="visible" variants={fadeUp}>
+          <motion.div initial={false} animate="visible" variants={fadeUp}>
           </motion.div>
 
-          <motion.div initial="hidden" animate="visible" variants={fadeUp} className="relative">
+          <motion.div initial={false} animate="visible" variants={fadeUp} className="relative">
             <div className="flex justify-center mb-6 md:mb-8">
               <motion.div 
                 whileHover={{ scale: 1.05, y: -2 }}
@@ -785,7 +445,7 @@ export default function Home() {
             </h1>
           </motion.div>
 
-          <motion.div initial="hidden" animate="visible" variants={fadeUp}>
+          <motion.div initial={false} animate="visible" variants={fadeUp}>
             <p className="text-lg sm:text-xl md:text-2xl text-white/80 font-light max-w-3xl mx-auto mb-8 leading-relaxed">
               Transition-metal <span className="font-semibold text-white">catalysis</span>, <span className="font-semibold text-white">sustainable chemistry</span>, and <span className="font-semibold text-white">organometallic synthesis</span> at IISER Tirupati.
             </p>
@@ -808,7 +468,6 @@ export default function Home() {
                  <Image 
                    src="/images/pi/PI Photo 2.webp" 
                    alt="Dr. Ekambaram Balaraman - Principal Investigator of Raman's Research Lab at IISER Tirupati" 
-                   priority
                    fill
                    sizes="(max-width: 768px) 100vw, 33vw"
                    className="object-cover object-center" 
@@ -818,13 +477,13 @@ export default function Home() {
             
             <div className="mt-8 flex flex-col items-center gap-3">
                <div className="flex justify-center gap-6">
-                 <a href={piStats.googleScholar} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:text-amber-400 hover:border-amber-500 transition-all" title="Google Scholar">
+                 <a href={piStats.googleScholar} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:text-amber-400 hover:border-amber-500 transition-all" title="Google Scholar" aria-label="Google Scholar">
                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269z"/><circle cx="12" cy="16.5" r="5.5"/></svg>
                  </a>
-                 <a href={`https://orcid.org/${piStats.orcid}`} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:text-emerald-400 hover:border-emerald-500 transition-all" title="ORCID">
+                 <a href={`https://orcid.org/${piStats.orcid}`} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:text-emerald-400 hover:border-emerald-500 transition-all" title="ORCID" aria-label="ORCID">
                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-1.847-1.188-3.722-3.978-3.722h-2.341z"/></svg>
                  </a>
-                 <a href="mailto:eb.raman@iisertirupati.ac.in" className="w-12 h-12 rounded-full bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:text-amber-400 hover:border-amber-500 transition-all" title="Email"><Mail size={20} /></a>
+                 <a href="mailto:eb.raman@iisertirupati.ac.in" className="w-12 h-12 rounded-full bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:text-amber-400 hover:border-amber-500 transition-all" title="Email" aria-label="Email"><Mail size={20} /></a>
                </div>
                <a href="mailto:eb.raman@iisertirupati.ac.in" className="text-sm md:text-base font-mono text-foreground tracking-wider hover:text-amber-400 transition-colors">eb.raman@iisertirupati.ac.in</a>
             </div>
@@ -849,12 +508,12 @@ export default function Home() {
                         className="w-full p-5 rounded-2xl bg-foreground/[0.03] border border-foreground/8 hover:border-amber-500/30 hover:bg-amber-500/5 transition-all duration-300 cursor-default group/news shadow-sm hover:shadow-md"
                       >
                         <div className="flex items-center gap-2 mb-3">
-                          <span className={`px-2 py-0.5 rounded-full text-[9px] font-black tracking-widest uppercase border ${
+                          <span className={`px-2 py-0.5 rounded-full text-xs font-black tracking-widest uppercase border ${
                             item.type === 'Award' ? 'bg-amber-500/10 border-amber-500/20 text-amber-400' :
                             item.type === 'Joining' ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' :
                             'bg-purple-500/10 border-purple-500/20 text-purple-400'
                           }`}>{item.type}</span>
-                          <span className="text-[10px] text-foreground/50 font-mono">{item.date}</span>
+                          <span className="text-xs text-foreground/70 font-mono">{item.date}</span>
                         </div>
                         <h3 className="text-sm font-bold text-foreground mb-2 leading-snug tracking-tight group-hover/news:text-amber-600 transition-colors">{item.title}</h3>
                         <p className="text-xs text-foreground/70 font-light leading-relaxed">{item.detail}</p>
@@ -881,7 +540,7 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6 mb-10">
               {piBio.map((item: { year?: string; role?: string; institution?: string; details?: string }, idx) => (
                 <div key={idx} className="flex flex-col group">
-                  <span className="text-[11px] font-bold text-amber-400 mb-2 font-mono tracking-widest uppercase">{item.year}</span>
+                  <span className="text-xs font-bold text-amber-400 mb-2 font-mono tracking-widest uppercase">{item.year}</span>
                   <div className="flex-1 border-l-2 border-foreground/10 pl-6 group-hover:border-amber-500 transition-colors py-2">
                     <h4 className="text-lg font-bold text-foreground group-hover:text-amber-400 transition-colors leading-tight mb-2">{item.role}</h4>
                     <p className="text-sm text-foreground/90 font-light leading-relaxed">{item.institution}</p>
@@ -907,25 +566,25 @@ export default function Home() {
               <GlowCard className="rounded-2xl" glowColor="rgba(245, 158, 11, 0.2)">
               <div className="p-6 rounded-2xl bg-foreground/[0.04] border border-foreground/10 hover:border-amber-500/30 transition-all text-center group hover:bg-amber-500/5">
                 <div className="text-3xl md:text-4xl font-black text-amber-400 mb-2 drop-shadow-[0_0_10px_rgba(96,165,250,0.3)]"><AnimatedCounter target={piStats.publications} suffix="+" /></div>
-                <p className="text-[10px] uppercase tracking-widest text-foreground/90 font-mono font-semibold">Publications</p>
+                <p className="text-xs uppercase tracking-widest text-foreground/90 font-mono font-semibold">Publications</p>
               </div>
               </GlowCard>
               <GlowCard className="rounded-2xl" glowColor="rgba(52, 211, 153, 0.2)">
               <div className="p-6 rounded-2xl bg-foreground/[0.04] border border-foreground/10 hover:border-emerald-500/30 transition-all text-center group hover:bg-emerald-500/5">
                 <div className="text-3xl md:text-4xl font-black text-emerald-400 mb-2 drop-shadow-[0_0_10px_rgba(52,211,153,0.3)]"><AnimatedCounter target={piStats.hIndex} /></div>
-                <p className="text-[10px] uppercase tracking-widest text-foreground/90 font-mono font-semibold">h-Index</p>
+                <p className="text-xs uppercase tracking-widest text-foreground/90 font-mono font-semibold">h-Index</p>
               </div>
               </GlowCard>
               <GlowCard className="rounded-2xl" glowColor="rgba(251, 146, 60, 0.2)">
               <div className="p-6 rounded-2xl bg-foreground/[0.04] border border-foreground/10 hover:border-orange-500/30 transition-all text-center group hover:bg-orange-500/5">
                 <div className="text-3xl md:text-4xl font-black text-orange-400 mb-2 drop-shadow-[0_0_10px_rgba(251,146,60,0.3)]"><AnimatedCounter target={piStats.citations} formatCommas /></div>
-                <p className="text-[10px] uppercase tracking-widest text-foreground/90 font-mono font-semibold">Citations</p>
+                <p className="text-xs uppercase tracking-widest text-foreground/90 font-mono font-semibold">Citations</p>
               </div>
               </GlowCard>
               <GlowCard className="rounded-2xl" glowColor="rgba(192, 132, 252, 0.2)">
               <div className="p-6 rounded-2xl bg-foreground/[0.04] border border-foreground/10 hover:border-purple-500/30 transition-all text-center group hover:bg-purple-500/5">
                 <div className="text-3xl md:text-4xl font-black text-purple-400 mb-2 drop-shadow-[0_0_10px_rgba(192,132,252,0.3)]"><AnimatedCounter target={piStats.grantedUSPatents} /></div>
-                <p className="text-[10px] uppercase tracking-widest text-foreground/90 font-mono font-semibold">US Patents</p>
+                <p className="text-xs uppercase tracking-widest text-foreground/90 font-mono font-semibold">US Patents</p>
               </div>
               </GlowCard>
             </div>
@@ -934,23 +593,23 @@ export default function Home() {
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 mb-10">
               <div className="p-4 rounded-xl bg-foreground/[0.04] border border-foreground/10 text-center hover:border-cyan-500/20 transition-all">
                 <div className="text-xl font-black text-foreground mb-1">{piStats.phdCompleted}</div>
-                <p className="text-[9px] tracking-widest text-foreground font-mono font-medium">Ph.D. Completed</p>
+                <p className="text-xs tracking-widest text-foreground font-mono font-medium">Ph.D. Completed</p>
               </div>
               <div className="p-4 rounded-xl bg-foreground/[0.04] border border-foreground/10 text-center hover:border-cyan-500/20 transition-all">
                 <div className="text-xl font-black text-foreground mb-1">{piStats.phdPursuing}</div>
-                <p className="text-[9px] tracking-widest text-foreground font-mono font-medium">Ph.D. Pursuing</p>
+                <p className="text-xs tracking-widest text-foreground font-mono font-medium">Ph.D. Pursuing</p>
               </div>
               <div className="p-4 rounded-xl bg-foreground/[0.04] border border-foreground/10 text-center hover:border-cyan-500/20 transition-all">
                 <div className="text-xl font-black text-foreground mb-1">{piStats.postdocs}</div>
-                <p className="text-[9px] uppercase tracking-widest text-foreground font-mono font-medium">Post-docs</p>
+                <p className="text-xs uppercase tracking-widest text-foreground font-mono font-medium">Post-docs</p>
               </div>
               <div className="p-4 rounded-xl bg-foreground/[0.04] border border-foreground/10 text-center hover:border-cyan-500/20 transition-all">
                 <div className="text-xl font-black text-foreground mb-1">{piStats.mscStudents}</div>
-                <p className="text-[9px] uppercase tracking-widest text-foreground font-mono font-medium">MSc Students</p>
+                <p className="text-xs uppercase tracking-widest text-foreground font-mono font-medium">MSc Students</p>
               </div>
               <div className="p-4 rounded-xl bg-foreground/[0.04] border border-foreground/10 text-center hover:border-cyan-500/20 transition-all">
                 <div className="text-xl font-black text-foreground mb-1">{piStats.projectFellows}</div>
-                <p className="text-[9px] uppercase tracking-widest text-foreground font-mono font-medium">Project Fellows</p>
+                <p className="text-xs uppercase tracking-widest text-foreground font-mono font-medium">Project Fellows</p>
               </div>
             </div>
 
@@ -1045,7 +704,7 @@ export default function Home() {
                 
                 {/* Content Overlay */}
                 <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-end items-start text-left z-20">
-                  <span className="text-[10px] font-black text-amber-400 uppercase tracking-[0.4em] mb-4 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">Pillar {idx + 1}</span>
+                  <span className="text-xs font-black text-amber-400 uppercase tracking-[0.4em] mb-4 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">Pillar {idx + 1}</span>
                   <h3 className="text-2xl md:text-5xl font-black mb-4 tracking-tighter text-white uppercase leading-[0.8]">{cat.title}</h3>
                   <p className="text-sm md:text-base text-white font-normal leading-relaxed mb-6 max-w-sm line-clamp-2 md:line-clamp-3 group-hover:opacity-100 transition-all shadow-black drop-shadow-md">
                     {cat.details}
@@ -1053,7 +712,7 @@ export default function Home() {
                   
                   {/* Relevant Papers Preview */}
                   <div className="hidden md:block w-full max-w-md space-y-2 mb-8 opacity-0 group-hover:opacity-100 transition-all duration-700 transform translate-y-4 group-hover:translate-y-0 h-0 group-hover:h-auto overflow-hidden">
-                    <p className="text-[9px] text-amber-400 font-mono uppercase tracking-widest mb-2 border-b border-white/10 pb-1">Key Publications</p>
+                    <p className="text-xs text-amber-400 font-mono uppercase tracking-widest mb-2 border-b border-white/10 pb-1">Key Publications</p>
                     {cat.keyPubIds.map((id) => {
                       const pub = publications.find((p) => p.id === id);
                       return pub && (
@@ -1065,7 +724,7 @@ export default function Home() {
                   </div>
 
                   <MagneticButton>
-                  <Link href={`/research#${cat.id}`} className="cta-shimmer flex items-center gap-3 px-8 py-4 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-[10px] font-black uppercase tracking-[0.2em] hover:bg-amber-600 hover:text-white hover:border-amber-600 transition-all mt-auto shadow-lg">
+                  <Link href={`/research#${cat.id}`} className="cta-shimmer flex items-center gap-3 px-8 py-4 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-xs font-black uppercase tracking-[0.2em] hover:bg-amber-600 hover:text-white hover:border-amber-600 transition-all mt-auto shadow-lg">
                      View Research <ArrowRight size={14} />
                   </Link>
                   </MagneticButton>
@@ -1085,7 +744,7 @@ export default function Home() {
               <p className="text-foreground font-light">Highlights from our {piStats.publications}+ published works.</p>
             </div>
             <MagneticButton>
-            <Link href="/publications" className="cta-shimmer px-8 py-4 rounded-full border border-amber-500/30 text-amber-400 font-bold hover:bg-amber-500/10 transition-all flex items-center gap-2 uppercase text-[10px] tracking-widest font-mono">
+            <Link href="/publications" className="cta-shimmer px-8 py-4 rounded-full border border-amber-500/30 text-amber-400 font-bold hover:bg-amber-500/10 transition-all flex items-center gap-2 uppercase text-xs tracking-widest font-mono">
               View All {piStats.publications} Publications <ArrowRight size={18} />
             </Link>
             </MagneticButton>
@@ -1112,7 +771,7 @@ export default function Home() {
               <p className="text-foreground font-light">33+ patents filed including {piStats.grantedUSPatents} granted US patents.</p>
             </div>
             <MagneticButton>
-            <Link href="/patents" className="cta-shimmer px-8 py-4 rounded-full border border-amber-500/30 text-amber-400 font-bold hover:bg-amber-500/10 transition-all flex items-center gap-2 uppercase text-[10px] tracking-widest font-mono">
+            <Link href="/patents" className="cta-shimmer px-8 py-4 rounded-full border border-amber-500/30 text-amber-400 font-bold hover:bg-amber-500/10 transition-all flex items-center gap-2 uppercase text-xs tracking-widest font-mono">
               View All Patents <ArrowRight size={18} />
             </Link>
             </MagneticButton>
@@ -1156,8 +815,8 @@ export default function Home() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="text-[10px] font-bold text-amber-400 px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/20">{p.year}</span>
-                    <span className="text-[10px] text-foreground font-mono">#{p.number}</span>
+                    <span className="text-xs font-bold text-amber-400 px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/20">{p.year}</span>
+                    <span className="text-xs text-foreground font-mono">#{p.number}</span>
                   </div>
                   <h4 className="text-base font-bold text-foreground group-hover:text-amber-400 transition-colors leading-snug mb-1">{p.title}</h4>
                   <p className="text-xs text-foreground/90 font-light">{p.authors}</p>
@@ -1222,7 +881,7 @@ export default function Home() {
 
 
               <div className="mt-16 flex justify-start">
-                 <Link href="/team#alumni" className="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-amber-500/30 text-amber-400 font-bold hover:bg-amber-500/10 transition-all uppercase text-[10px] tracking-widest font-mono">
+                 <Link href="/team#alumni" className="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-amber-500/30 text-amber-400 font-bold hover:bg-amber-500/10 transition-all uppercase text-xs tracking-widest font-mono">
                    Open Full Alumni Registry <ArrowRight size={18} />
                  </Link>
               </div>
@@ -1246,7 +905,7 @@ export default function Home() {
                <FramerCarouselThumbnails />
             </div>
 
-            <Link href="/gallery" className="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-pink-500/30 text-pink-400 font-bold hover:bg-pink-500/10 transition-all uppercase text-[10px] tracking-widest font-mono">
+            <Link href="/gallery" className="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-pink-500/30 text-pink-400 font-bold hover:bg-pink-500/10 transition-all uppercase text-xs tracking-widest font-mono">
                View Full Gallery <ArrowRight size={18} />
             </Link>
          </div>
@@ -1308,12 +967,12 @@ export default function Home() {
                     {/* X Card */}
                     <a href={piStats.twitter} target="_blank" rel="noopener noreferrer"
                       className="group/x flex items-center gap-3 px-4 py-3 rounded-2xl border border-foreground/10 bg-foreground/[0.03] hover:border-foreground/30 hover:bg-foreground/5 transition-all duration-300 min-w-[140px]"
-                      title="X">
+                      title="X" aria-label="X">
                       <div className="w-9 h-9 rounded-xl border border-foreground/10 bg-foreground/5 flex items-center justify-center group-hover/x:border-foreground/30 group-hover/x:bg-foreground/10 transition-all shrink-0">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="text-foreground transition-colors"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                       </div>
                       <div className="flex flex-col">
-                        <span className="text-[10px] font-mono text-foreground/40 uppercase tracking-widest">Follow on</span>
+                        <span className="text-xs font-mono text-foreground/70 uppercase tracking-widest">Follow on</span>
                         <span className="text-sm font-bold text-foreground transition-colors tracking-tight">𝕏</span>
                       </div>
                     </a>
@@ -1321,12 +980,12 @@ export default function Home() {
                     {/* LinkedIn Card */}
                     <a href={piStats.linkedin} target="_blank" rel="noopener noreferrer"
                       className="group/li flex items-center gap-3 px-4 py-3 rounded-2xl border border-foreground/10 bg-foreground/[0.03] hover:border-[#0a66c2]/30 hover:bg-[#0a66c2]/5 transition-all duration-300 min-w-[140px]"
-                      title="LinkedIn">
+                      title="LinkedIn" aria-label="LinkedIn">
                       <div className="w-9 h-9 rounded-xl border border-foreground/10 bg-foreground/5 flex items-center justify-center group-hover/li:border-[#0a66c2]/30 group-hover/li:bg-[#0a66c2]/10 transition-all shrink-0">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="text-[#0a66c2] transition-colors"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z"/></svg>
                       </div>
                       <div className="flex flex-col">
-                        <span className="text-[10px] font-mono text-foreground/40 uppercase tracking-widest">Connect on</span>
+                        <span className="text-xs font-mono text-foreground/70 uppercase tracking-widest">Connect on</span>
                         <span className="text-sm font-bold text-foreground transition-colors tracking-tight">LinkedIn</span>
                       </div>
                     </a>
@@ -1384,11 +1043,11 @@ export default function Home() {
                   tabIndex={0}
                   onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setLogoModalOpen(true); }}
                 >
-                  <img src="/images/lab-logo-light.webp" alt="EBR Lab Logo" className="w-full h-full object-contain" />
+                  <img src="/images/lab-logo-128.webp" alt="EBR Lab Logo" className="w-full h-full object-contain" />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-foreground tracking-tight">Raman&apos;s Research Lab</h3>
-                  <p className="text-[11px] font-mono text-amber-500 uppercase tracking-wider font-semibold">IISER Tirupati</p>
+                  <p className="text-xs font-mono text-amber-500 uppercase tracking-wider font-semibold">IISER Tirupati</p>
                 </div>
               </div>
             </div>
@@ -1449,7 +1108,7 @@ export default function Home() {
           <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-mono text-foreground/60">
             <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 text-center md:text-left">
               <p>{`© ${new Date().getFullYear()} Raman's Research Lab. All rights reserved.`}</p>
-              <span className="hidden md:inline text-foreground/30">|</span>
+              <span className="hidden md:inline text-foreground/70">|</span>
               <p className="text-foreground/80">
                 Designed & Developed by <span className="font-bold text-foreground">Suyog Andhare</span>
               </p>
@@ -1457,27 +1116,27 @@ export default function Home() {
             <div className="flex items-center gap-2.5">
               <a href={piStats.googleScholar} target="_blank" rel="noopener noreferrer" 
                 className="w-8 h-8 rounded-lg bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:text-amber-500 hover:border-amber-500/30 transition-all"
-                title="Google Scholar">
+                title="Google Scholar" aria-label="Google Scholar">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269z"/><circle cx="12" cy="16.5" r="5.5"/></svg>
               </a>
               <a href={`https://orcid.org/${piStats.orcid}`} target="_blank" rel="noopener noreferrer" 
                 className="w-8 h-8 rounded-lg bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:text-emerald-500 hover:border-emerald-500/30 transition-all"
-                title="ORCID">
+                title="ORCID" aria-label="ORCID">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-1.847-1.188-3.722-3.978-3.722h-2.341z"/></svg>
               </a>
               <a href={piStats.twitter} target="_blank" rel="noopener noreferrer" 
                 className="w-8 h-8 rounded-lg bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:text-foreground hover:border-foreground/30 transition-all"
-                title="𝕏">
+                title="𝕏" aria-label="𝕏">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
               </a>
               <a href={piStats.linkedin} target="_blank" rel="noopener noreferrer" 
                 className="w-8 h-8 rounded-lg bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:text-[#0a66c2] hover:border-[#0a66c2]/30 transition-all"
-                title="LinkedIn">
+                title="LinkedIn" aria-label="LinkedIn">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z"/></svg>
               </a>
               <a href="mailto:eb.raman@iisertirupati.ac.in" 
                 className="w-8 h-8 rounded-lg bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:text-amber-500 hover:border-amber-500/30 transition-all"
-                title="Email">
+                title="Email" aria-label="Email">
                 <Mail size={14} />
               </a>
             </div>
@@ -1532,7 +1191,7 @@ export default function Home() {
                 {/* Category / Affiliation badge with accent lines */}
                 <div className="flex items-center gap-3 mb-2.5">
                   <div className="h-px w-8 bg-amber-500/70 dark:bg-amber-500"></div>
-                  <p className="text-[10px] sm:text-xs font-mono text-amber-600 dark:text-amber-400 uppercase tracking-[0.3em] font-semibold">
+                  <p className="text-xs sm:text-xs font-mono text-amber-600 dark:text-amber-400 uppercase tracking-[0.3em] font-semibold">
                     IISER Tirupati
                   </p>
                   <div className="h-px w-8 bg-amber-500/70 dark:bg-amber-500"></div>
@@ -1550,7 +1209,7 @@ export default function Home() {
               </div>
 
               {/* Dismiss footer */}
-              <div className="mt-6 pt-4 border-t border-slate-200/80 dark:border-white/10 w-full flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-white/40">
+              <div className="mt-6 pt-4 border-t border-slate-200/80 dark:border-white/10 w-full flex items-center justify-between text-xs font-mono text-slate-500 dark:text-white/40">
                 <span>Click outside or press Esc to close</span>
                 <button 
                   onClick={() => setLogoModalOpen(false)}

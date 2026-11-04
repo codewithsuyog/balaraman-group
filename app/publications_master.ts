@@ -27,8 +27,8 @@ export const publications: Publication[] = [
     volume: "368",
     pages: "e70358",
     doi: "10.1002/adsc.70358",
-    coverImage: "/images/publications/covers/119.webp",
-    schemeImage: "/images/publications/schemes/119.webp",
+    coverImage: "",
+    schemeImage: "",
     fullText: "Murugesan Sivaprakash, Kothapalli Bannoth Tejaswini, Kiran Kumar Pulukuri, Purushothaman Gopinath, and E. Balaraman*. Advances in the Synthesis of Levetiracetam: Classical Approaches and Patented Innovations. Adv. Synth. Catal., 2026, 368, 7, e70358.",
   },
   {
@@ -40,8 +40,8 @@ export const publications: Publication[] = [
     volume: "367",
     pages: "e9607",
     doi: "10.1002/adsc.9607",
-    coverImage: "/images/publications/covers/118.webp",
-    schemeImage: "/images/publications/schemes/118.webp",
+    coverImage: "",
+    schemeImage: "",
     fullText: "Rohit Kumar, Kothapalli Bonnoth Tejaswini, Chandrakant Gouda, and E. Balaraman*. Cobalt-Catalyzed Amide Synthesis from Alcohols: An Ammonia-Free Approach with Dihydrogen Release. Adv. Synth. Catal., 2025, 367, 15, e9607.",
   },
   {

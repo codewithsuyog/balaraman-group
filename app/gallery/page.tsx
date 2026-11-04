@@ -35,7 +35,7 @@ export default function GalleryPage() {
   
     return (
       <motion.div 
-        initial={{ opacity: 0, y: 20 }}
+        initial={index < 3 ? false : { opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: (num % 6) * 0.05 }}
@@ -50,7 +50,7 @@ export default function GalleryPage() {
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className={`object-contain transition-transform duration-500 group-hover:scale-105 ${failed ? 'opacity-20' : ''}`}
-            priority={num <= 4}
+            priority={index < 3}
             onError={() => setFailed(true)}
           />
         </div>
@@ -71,11 +71,11 @@ export default function GalleryPage() {
       <div className="max-w-7xl mx-auto">
         <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <motion.div 
-            initial={{ opacity: 0, x: -20 }}
+            initial={false}
             animate={{ opacity: 1, x: 0 }}
           >
             <Link href="/#gallery" className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-foreground/[0.03] border border-foreground/10 hover:border-amber-500/30 text-amber-400 hover:text-amber-300 font-bold mb-6 transition-all text-xs font-mono uppercase tracking-wider group">
-              <img src="/images/lab-logo.webp" alt="EBR Lab Logo" className="w-5 h-5 rounded-md object-contain bg-white/90 p-0.5" />
+              <img src="/images/lab-logo-128.webp" alt="EBR Lab Logo" className="w-5 h-5 rounded-md object-contain bg-white/90 p-0.5" />
               <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Back to Home
             </Link>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter mb-4 text-gradient">
