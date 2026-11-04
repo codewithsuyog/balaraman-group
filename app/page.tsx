@@ -60,7 +60,7 @@ const PublicationLink = ({ pub }: { pub: PubData }) => {
       <div className="w-20 h-24 rounded-lg bg-foreground overflow-hidden flex-shrink-0 border border-foreground/10 p-1">
             <img 
                src={coverFailed ? "/logo.webp" : `/images/publications/covers/${pub.id}${extensions[coverExtIdx]}`} 
-               alt="Cover" 
+               alt={`Journal cover art for: ${pub.title ?? "publication " + pub.id}`} 
                loading="lazy" decoding="async"
                className="w-full h-full object-contain opacity-50 group-hover/pub:opacity-100 transition-opacity"
                onError={() => coverExtIdx < extensions.length - 1 ? setCoverExtIdx(coverExtIdx + 1) : setCoverFailed(true)}
@@ -112,7 +112,7 @@ const FeaturedPublication = ({ pub }: { pub: PubData }) => {
             <img 
               key={`cover-home-${pub.id}-${coverExtIdx}`}
               src={`/images/publications/covers/${pub.id}${extensions[coverExtIdx]}`} 
-              alt="Cover" 
+              alt={`Journal cover art for: ${pub.title ?? "publication " + pub.id}`} 
               loading="lazy" decoding="async"
               className="w-full h-full object-contain"
               onError={() => coverExtIdx < extensions.length - 1 ? setCoverExtIdx(prev => prev + 1) : setCoverFailed(true)}
@@ -161,7 +161,7 @@ const FeaturedPublication = ({ pub }: { pub: PubData }) => {
             <img 
               key={`scheme-home-${pub.id}-${schemeExtIdx}`}
               src={`/images/publications/schemes/${pub.id}${extensions[schemeExtIdx]}`} 
-              alt="Scheme" 
+              alt={`Reaction scheme from: ${pub.title ?? "publication " + pub.id}`} 
               loading="lazy" decoding="async"
               className="w-full h-full object-contain"
               onError={() => schemeExtIdx < extensions.length - 1 ? setSchemeExtIdx(prev => prev + 1) : setSchemeFailed(true)}
@@ -612,6 +612,7 @@ export default function Home() {
         title: "Homogeneous Catalysis",
         image: "/images/research/organometallic.webp",
         icon: <FlaskConical className="text-amber-400" />,
+        keyPubIds: [118, 117],
         desc: "Molecularly-defined pincer complexes and metal-ligand cooperation for selective transformations.",
         details: "We design and develop well-defined transition-metal pincer complexes for C-C, C-N bond forming reactions, acceptorless dehydrogenation, hydrogenation, and borrowing hydrogen strategies using earth-abundant metals."
       },
@@ -620,6 +621,7 @@ export default function Home() {
         title: "Heterogeneous Catalysis",
         image: "/images/research/green_synthesis.webp",
         icon: <Beaker className="text-emerald-400" />,
+        keyPubIds: [116, 115],
         desc: "Robust nanocatalysts and supported systems for sustainable industrial transformations.",
         details: "Our group develops reusable heterogeneous nanocatalysts on graphene/carbon supports for hydrogen generation, CO2 conversion, biomass upgrading, and co-pyrolysis of waste materials."
       }
@@ -834,7 +836,7 @@ export default function Home() {
                    <div className="h-px w-8 bg-accent"></div>
                    <p className="text-sm font-extrabold text-accent tracking-[0.2em] uppercase">Lab News</p>
                  </div>
-                 <h3 className="text-2xl font-bold text-foreground tracking-tight">Latest Updates</h3>
+                 <h2 className="text-2xl font-bold text-foreground tracking-tight">Latest Updates</h2>
               </div>
               <div className="relative flex-1 min-h-[400px] w-full group overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-8 bg-gradient-to-b from-background to-transparent z-10 pointer-events-none opacity-0 transition-opacity"></div>
@@ -922,7 +924,7 @@ export default function Home() {
               </GlowCard>
               <GlowCard className="rounded-2xl" glowColor="rgba(192, 132, 252, 0.2)">
               <div className="p-6 rounded-2xl bg-foreground/[0.04] border border-foreground/10 hover:border-purple-500/30 transition-all text-center group hover:bg-purple-500/5">
-                <div className="text-3xl md:text-4xl font-black text-purple-400 mb-2 drop-shadow-[0_0_10px_rgba(192,132,252,0.3)]"><AnimatedCounter target={piStats.grantedUSPatents} suffix="+" /></div>
+                <div className="text-3xl md:text-4xl font-black text-purple-400 mb-2 drop-shadow-[0_0_10px_rgba(192,132,252,0.3)]"><AnimatedCounter target={piStats.grantedUSPatents} /></div>
                 <p className="text-[10px] uppercase tracking-widest text-foreground/90 font-mono font-semibold">US Patents</p>
               </div>
               </GlowCard>
@@ -1018,7 +1020,7 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
                <p className="text-xl md:text-2xl text-foreground/80 font-light leading-relaxed border-l-4 border-amber-500 pl-8 italic">
-                 &quot;We explore the frontiers of <span className="text-accent font-semibold not-italic">organometallic chemistry</span> — designing molecular architectures that unlock new pathways for <span className="text-accent font-semibold not-italic">sustainable catalysis</span> and selective organic transformations.&quot;
+                 &quot;We explore the frontiers of <span className="text-accent font-semibold not-italic">organometallic chemistry</span> — designing molecular architectures that unlock new pathways for <span className="text-accent font-semibold not-italic">sustainable catalysis</span>{" "}and selective organic transformations.&quot;
                </p>
                <div className="space-y-6 text-lg text-foreground/80 font-light leading-relaxed">
                   <p>
@@ -1052,17 +1054,14 @@ export default function Home() {
                   {/* Relevant Papers Preview */}
                   <div className="hidden md:block w-full max-w-md space-y-2 mb-8 opacity-0 group-hover:opacity-100 transition-all duration-700 transform translate-y-4 group-hover:translate-y-0 h-0 group-hover:h-auto overflow-hidden">
                     <p className="text-[9px] text-amber-400 font-mono uppercase tracking-widest mb-2 border-b border-white/10 pb-1">Key Publications</p>
-                    {idx === 0 ? (
-                      <>
-                        <p className="text-xs text-white leading-tight font-medium truncate drop-shadow-md">1. Transition-metal pincer complexes in acceptorless dehydrogenation...</p>
-                        <p className="text-xs text-white leading-tight font-medium truncate drop-shadow-md">2. Direct access to N-alkylated amines and imines via...</p>
-                      </>
-                    ) : (
-                      <>
-                        <p className="text-xs text-white leading-tight font-medium truncate drop-shadow-md">1. Robust nanocatalysts for sustainable industrial transformations...</p>
-                        <p className="text-xs text-white leading-tight font-medium truncate drop-shadow-md">2. Reusable heterogeneous nanocatalysts on graphene/carbon supports...</p>
-                      </>
-                    )}
+                    {cat.keyPubIds.map((id) => {
+                      const pub = publications.find((p) => p.id === id);
+                      return pub && (
+                        <p key={id} className="text-xs text-white leading-snug font-medium drop-shadow-md">
+                          [{pub.id}] <ChemText text={pub.title} />
+                        </p>
+                      );
+                    })}
                   </div>
 
                   <MagneticButton>
@@ -1110,7 +1109,7 @@ export default function Home() {
                 <p className="text-sm font-extrabold text-accent tracking-[0.2em] uppercase">Intellectual Property</p>
               </div>
               <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-4 text-gradient uppercase">Patents</h2>
-              <p className="text-foreground font-light">33+ patents filed including {patents.grantedUS.length} granted US patents.</p>
+              <p className="text-foreground font-light">33+ patents filed including {piStats.grantedUSPatents} granted US patents.</p>
             </div>
             <MagneticButton>
             <Link href="/patents" className="cta-shimmer px-8 py-4 rounded-full border border-amber-500/30 text-amber-400 font-bold hover:bg-amber-500/10 transition-all flex items-center gap-2 uppercase text-[10px] tracking-widest font-mono">
@@ -1132,7 +1131,7 @@ export default function Home() {
             <motion.div variants={fadeUp}>
             <GlowCard className="rounded-[3rem] h-full" glowColor="rgba(52, 211, 153, 0.2)">
             <div className="p-10 rounded-[3rem] bg-foreground/[0.03] border border-foreground/5 hover:border-amber-500/20 transition-all group h-full">
-              <div className="text-5xl font-black text-emerald-500 mb-4"><AnimatedCounter target={patents.grantedUS.length} /></div>
+              <div className="text-5xl font-black text-emerald-500 mb-4"><AnimatedCounter target={piStats.grantedUSPatents} /></div>
               <h3 className="text-lg font-bold text-foreground mb-2 uppercase tracking-tight">Granted US Patents</h3>
               <p className="text-foreground text-sm font-light">International intellectual property portfolio</p>
             </div>
@@ -1200,7 +1199,7 @@ export default function Home() {
                 <div className="mb-20">
                   <div className="flex items-center gap-4 mb-12">
                      <div className="h-px w-12 bg-amber-500"></div>
-                     <h2 className="text-sm font-extrabold text-accent uppercase tracking-[0.2em]">Project Associates</h2>
+                     <h3 className="text-sm font-extrabold text-accent uppercase tracking-[0.2em]">Project Associates</h3>
                   </div>
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
                     {team.projectAssociates.map((member, i) => <TeamMemberThumb key={i} member={member} role="Project Associate" />)}
@@ -1213,7 +1212,7 @@ export default function Home() {
                 <div className="mb-20">
                   <div className="flex items-center gap-4 mb-12">
                      <div className="h-px w-12 bg-amber-500"></div>
-                     <h2 className="text-sm font-extrabold text-accent uppercase tracking-[0.2em]">Master&apos;s Thesis</h2>
+                     <h3 className="text-sm font-extrabold text-accent uppercase tracking-[0.2em]">Master&apos;s Thesis</h3>
                   </div>
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
                     {team.masters.map((member, i) => <TeamMemberThumb key={i} member={member} role="MSc" />)}
@@ -1237,7 +1236,7 @@ export default function Home() {
          <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
             <div className="flex items-center justify-center gap-4 mb-4">
               <div className="h-px w-12 bg-accent"></div>
-              <h3 className="text-sm font-extrabold text-accent uppercase tracking-[0.2em]">Lab Images & Photos</h3>
+              <p className="text-sm font-extrabold text-accent uppercase tracking-[0.2em]">Lab Images & Photos</p>
               <div className="h-px w-12 bg-accent"></div>
             </div>
             <h2 className="text-4xl md:text-6xl font-black mb-12 uppercase tracking-tighter text-gradient">Lab Memories</h2>
@@ -1272,7 +1271,7 @@ export default function Home() {
                   <MapPin size={20} />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-foreground uppercase tracking-widest mb-2">Location</h4>
+                  <h3 className="font-sans text-sm font-bold text-foreground uppercase tracking-widest mb-2">Location</h3>
                   <p className="text-foreground font-light leading-relaxed">
                     Department of Chemistry,<br />
                     IISER Tirupati,<br />
@@ -1288,7 +1287,7 @@ export default function Home() {
                   <Mail size={20} />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-foreground uppercase tracking-widest mb-2">Email</h4>
+                  <h3 className="font-sans text-sm font-bold text-foreground uppercase tracking-widest mb-2">Email</h3>
                   <a href="mailto:eb.raman@iisertirupati.ac.in" className="text-foreground hover:text-amber-400 font-light transition-colors block">
                     eb.raman@iisertirupati.ac.in
                   </a>
@@ -1303,7 +1302,7 @@ export default function Home() {
                   <Globe size={20} />
                 </div>
                 <div className="w-full">
-                  <h4 className="text-sm font-bold text-foreground uppercase tracking-widest mb-4">Follow Our Lab</h4>
+                  <h3 className="font-sans text-sm font-bold text-foreground uppercase tracking-widest mb-4">Follow Our Lab</h3>
                   <div className="flex flex-wrap gap-3">
 
                     {/* X Card */}

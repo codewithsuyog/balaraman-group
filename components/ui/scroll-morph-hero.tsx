@@ -59,7 +59,7 @@ function FlipCard({
                 >
                     <img
                         src={src}
-                        alt={`publication-${index}`}
+                        alt=""
                         className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-black/10 transition-colors group-hover:bg-transparent" />

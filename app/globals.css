@@ -101,8 +101,8 @@ body {
   scroll-behavior: smooth;
 }
 
-/* Serif headings */
-h1, h2, h3 {
+/* Serif headings, unless the heading sets its own font class */
+:is(h1, h2, h3):not(.font-mono):not(.font-sans) {
   font-family: 'Playfair Display', 'Georgia', serif;
   letter-spacing: -0.02em;
 }
