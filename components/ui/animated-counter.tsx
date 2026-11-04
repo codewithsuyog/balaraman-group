@@ -12,6 +12,8 @@ interface AnimatedCounterProps {
   className?: string;
 }
 
+const format = (n: number, commas: boolean) => (commas ? n.toLocaleString('en-US') : String(n));
+
 export function AnimatedCounter({
   target,
   suffix = '',
@@ -22,7 +24,9 @@ export function AnimatedCounter({
 }: AnimatedCounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
-  const [displayValue, setDisplayValue] = useState('0');
+  // Server HTML shows the real value so crawlers and link previews never see "0".
+  // The spring starts at 0, so the count-up still plays once the counter scrolls into view.
+  const [displayValue, setDisplayValue] = useState(() => format(target, formatCommas));
 
   const motionValue = useMotionValue(0);
   const springValue = useSpring(motionValue, {
@@ -38,12 +42,7 @@ export function AnimatedCounter({
 
   useEffect(() => {
     const unsubscribe = springValue.on('change', (latest) => {
-      const rounded = Math.round(latest);
-      if (formatCommas) {
-        setDisplayValue(rounded.toLocaleString());
-      } else {
-        setDisplayValue(String(rounded));
-      }
+      setDisplayValue(format(Math.round(latest), formatCommas));
     });
     return unsubscribe;
   }, [springValue, formatCommas]);

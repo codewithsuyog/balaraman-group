@@ -3,6 +3,7 @@
 import { animate, motion, useMotionValue } from 'framer-motion';
 import React, { useEffect, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import Image from 'next/image';
 
 export const galleryItems = [
   { id: 36, url: '/images/gallery/36.webp', title: 'Group Photo' },
@@ -115,13 +116,17 @@ function FramerCarouselThumbnails() {
             {galleryItems.map((item) => (
               <div key={item.id} className='shrink-0 w-full h-[350px] md:h-[500px] bg-foreground/5 relative overflow-hidden'>
                 {/* Cinematic blurred background to fill space */}
-                <img 
+                <img
+                  loading="lazy"
+                  decoding="async"
                   src={imgErrors[item.id] ? '/logo.webp' : item.url} 
                   className='absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-110'
                   alt="" 
                 />
                 {/* Main uncropped image */}
                 <img
+                  loading="lazy"
+                  decoding="async"
                   src={imgErrors[item.id] ? '/logo.webp' : item.url}
                   alt={item.title}
                   className={`relative z-10 w-full h-full object-contain select-none pointer-events-none drop-shadow-2xl ${
@@ -245,10 +250,13 @@ function Thumbnails({
                 : 'border-transparent hover:border-foreground/20'
             }`}
           >
-            <img
+            {/* next/image serves a small resized copy instead of the full-size photo */}
+            <Image
+              fill
+              sizes='120px'
               src={imgErrors[item.id] ? '/logo.webp' : item.url}
               alt={item.title}
-              className={`w-full h-full object-cover pointer-events-none select-none ${
+              className={`object-cover pointer-events-none select-none ${
                 imgErrors[item.id] ? 'object-contain opacity-20 p-2' : ''
               }`}
               onError={() => onImgError(item.id)}

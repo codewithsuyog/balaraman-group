@@ -1,43 +1,22 @@
 import type { NextConfig } from "next";
 
+// Old and alternate domains that 308-redirect to the canonical site.
+const legacyHosts = [
+  '(?:www\.)?balaraman\.in',
+  '(?:www\.)?ebalaraman\.in',
+  '(?:www\.)?balaramanlab\.com',
+  'ebalaraman\.com',
+];
+
 const nextConfig: NextConfig = {
   trailingSlash: false,
   async redirects() {
-    return [
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: '(?:www\\.)?balaraman\\.in',
-          },
-        ],
-        destination: 'https://www.ebalaraman.com/:path*',
-        permanent: true,
-      },
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: '(?:www\\.)?ebalaraman\\.in',
-          },
-        ],
-        destination: 'https://www.ebalaraman.com/:path*',
-        permanent: true,
-      },
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'ebalaraman\\.com',
-          },
-        ],
-        destination: 'https://www.ebalaraman.com/:path*',
-        permanent: true,
-      },
-    ];
+    return legacyHosts.map((value) => ({
+      source: '/:path*',
+      has: [{ type: 'host' as const, value }],
+      destination: 'https://www.ebalaraman.com/:path*',
+      permanent: true,
+    }));
   },
 };
 

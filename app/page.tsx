@@ -610,7 +610,7 @@ export default function Home() {
       {
         id: 'homogeneous',
         title: "Homogeneous Catalysis",
-        image: "/images/research/organometallic.png",
+        image: "/images/research/organometallic.webp",
         icon: <FlaskConical className="text-amber-400" />,
         desc: "Molecularly-defined pincer complexes and metal-ligand cooperation for selective transformations.",
         details: "We design and develop well-defined transition-metal pincer complexes for C-C, C-N bond forming reactions, acceptorless dehydrogenation, hydrogenation, and borrowing hydrogen strategies using earth-abundant metals."
@@ -618,7 +618,7 @@ export default function Home() {
       {
         id: 'heterogeneous',
         title: "Heterogeneous Catalysis",
-        image: "/images/research/green_synthesis.png",
+        image: "/images/research/green_synthesis.webp",
         icon: <Beaker className="text-emerald-400" />,
         desc: "Robust nanocatalysts and supported systems for sustainable industrial transformations.",
         details: "Our group develops reusable heterogeneous nanocatalysts on graphene/carbon supports for hydrogen generation, CO2 conversion, biomass upgrading, and co-pyrolysis of waste materials."
@@ -643,7 +643,7 @@ export default function Home() {
             title="Raman's Research Lab"
           >
             <div className="w-8 h-8 rounded-lg bg-white p-0.5 shadow-sm border border-foreground/15 flex items-center justify-center overflow-hidden">
-              <img src="/images/lab-logo-light.png" alt="EBR Lab Logo" className="w-full h-full object-contain" />
+              <img src="/images/lab-logo-light.webp" alt="EBR Lab Logo" className="w-full h-full object-contain" />
             </div>
           </a>
           <div className="flex items-center gap-2">
@@ -665,7 +665,7 @@ export default function Home() {
           title="Raman's Research Lab"
         >
           <div className="w-8 h-8 rounded-lg bg-white p-0.5 shadow-sm border border-foreground/15 flex items-center justify-center overflow-hidden">
-            <img src="/images/lab-logo-light.png" alt="EBR Lab Logo" className="w-full h-full object-contain" />
+            <img src="/images/lab-logo-light.webp" alt="EBR Lab Logo" className="w-full h-full object-contain" />
           </div>
         </a>
         <div className="hidden md:block w-px h-5 bg-foreground/20 self-center mx-1"></div>
@@ -766,7 +766,7 @@ export default function Home() {
                 {/* Premium square box */}
                 <div className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-2xl md:rounded-3xl bg-white p-3 sm:p-3.5 md:p-4 shadow-[0_12px_40px_rgba(0,0,0,0.35),0_2px_8px_rgba(0,0,0,0.1)] border border-white/40 ring-1 ring-black/5 flex items-center justify-center overflow-hidden">
                   <img 
-                    src="/images/lab-logo-square.png" 
+                    src="/images/lab-logo-square.webp" 
                     alt="EBR Lab - Sustainable Chemistry via Catalysis" 
                     className="w-full h-full object-contain filter drop-shadow-sm transition-transform duration-300 group-hover:scale-105" 
                   />
@@ -804,7 +804,7 @@ export default function Home() {
                </div>
                <div className="w-full aspect-square rounded-[2rem] md:rounded-[3rem] border border-foreground/10 relative overflow-hidden group shadow-2xl bg-black/5 z-[1]">
                  <Image 
-                   src="/images/pi/PI Photo 2.jpeg" 
+                   src="/images/pi/PI Photo 2.webp" 
                    alt="Dr. Ekambaram Balaraman - Principal Investigator of Raman's Research Lab at IISER Tirupati" 
                    priority
                    fill
@@ -1385,7 +1385,7 @@ export default function Home() {
                   tabIndex={0}
                   onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setLogoModalOpen(true); }}
                 >
-                  <img src="/images/lab-logo-light.png" alt="EBR Lab Logo" className="w-full h-full object-contain" />
+                  <img src="/images/lab-logo-light.webp" alt="EBR Lab Logo" className="w-full h-full object-contain" />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-foreground tracking-tight">Raman&apos;s Research Lab</h3>
@@ -1522,7 +1522,7 @@ export default function Home() {
               {/* High-res Image Container (White square box matching homescreen hero card) */}
               <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-2xl md:rounded-3xl bg-white p-3 sm:p-4 shadow-[0_10px_30px_rgba(0,0,0,0.1)] dark:shadow-[0_12px_40px_rgba(0,0,0,0.5)] border border-slate-200 dark:border-white/40 ring-1 ring-black/5 flex items-center justify-center overflow-hidden">
                 <img
-                  src="/images/lab-logo-square.png"
+                  src="/images/lab-logo-square.webp"
                   alt="EBR Lab Emblem"
                   className="w-full h-full object-contain filter drop-shadow-sm select-none"
                 />

@@ -1186,42 +1186,42 @@ export const awards = [
 
 export const team = {
   currentPhd: [
-    { name: "Soumya Sree Samal", info: "Ph.D.: August 2022 (PMRF), M. Sc., (Chem), Pondicherry University, Puducherry", email: "soumya_samal@students.iisertirupati.ac.in", image: "/images/team/present/phd/soumya.png" },
-    { name: "Subarna Sukanya Padhy", info: "Ph.D. August 2022 (PMRF), M. Sc., (Chem), Pondicherry University, Puducherry", email: "subarna_padhy@students.iisertirupati.ac.in", image: "/images/team/present/phd/subarna.jpg" },
-    { name: "Smruti Rekha Padhy", info: "IISER-iPhD, IISER Tirupati", email: "smrutirekha@students.iisertirupati.ac.in", image: "/images/team/present/phd/smruti2.jpeg" },
-    { name: "Abhijith K S", info: "Ph.D. Jan 2023, BSMS (Chem), IISER Tirupati", email: "abhijithks@students.iisertirupati.ac.in", image: "/images/team/present/phd/abhijith.png" },
-    { name: "Chandrakant Gouda", info: "Ph.D. July 2023, M.Sc (Chem), Mangaluru University, Mangaluru", email: "chandrakantgouda@students.iisertirupati.ac.in", image: "/images/team/present/phd/chandrakant.jpeg" },
-    { name: "Palmurukan M. R. Pal", info: "Ph.D. July 2023, M.Sc., M-Tech., (Industrial Catalysis) CUSAT, Kerala", email: "palmurukanmr@students.iisertirupati.ac.in", image: "/images/team/present/phd/palmurukan.jpg" },
-    { name: "Sanjay A", info: "IPhD 2024, B.Sc - St. Joseph's College (Autonomous) Tiruchirappalli, Tamilnadu", email: "sanjay20242207@students.iisertirupati.ac.in", image: "/images/team/present/phd/Sanjay.jpeg" },
-    { name: "Nanthini P.", info: "Ph.D. Aug 2024, M.Sc (Chem), Bharathidasan University, Tamil Nadu", email: "nanthini20243208@students.iisertirupati.ac.in", image: "/images/team/present/phd/nanthini.jpg" },
-    { name: "Mahendra D R", info: "Ph.D. Jan 2025, M.Sc (Chem), University of Mysuru, Karnataka", email: "mahendra_20253202@students.iisertirupati.ac.in", image: "/images/team/present/phd/mahendra.jpg" },
-    { name: "Kumara Raja Mahesh K", info: "Ph.D. Aug 2026, M.Sc (Chem), The Gandhigram Rural Institute, Dindigul, Tamil Nadu", email: "kumararajamahesh20263208@students.iisertirupati.ac.in", image: "/images/team/present/phd/Mahesh.jpeg" }
+    { name: "Soumya Sree Samal", info: "Ph.D.: August 2022 (PMRF), M. Sc., (Chem), Pondicherry University, Puducherry", email: "soumya_samal@students.iisertirupati.ac.in", image: "/images/team/present/phd/soumya.webp" },
+    { name: "Subarna Sukanya Padhy", info: "Ph.D. August 2022 (PMRF), M. Sc., (Chem), Pondicherry University, Puducherry", email: "subarna_padhy@students.iisertirupati.ac.in", image: "/images/team/present/phd/subarna.webp" },
+    { name: "Smruti Rekha Padhy", info: "IISER-iPhD, IISER Tirupati", email: "smrutirekha@students.iisertirupati.ac.in", image: "/images/team/present/phd/smruti2.webp" },
+    { name: "Abhijith K S", info: "Ph.D. Jan 2023, BSMS (Chem), IISER Tirupati", email: "abhijithks@students.iisertirupati.ac.in", image: "/images/team/present/phd/abhijith.webp" },
+    { name: "Chandrakant Gouda", info: "Ph.D. July 2023, M.Sc (Chem), Mangaluru University, Mangaluru", email: "chandrakantgouda@students.iisertirupati.ac.in", image: "/images/team/present/phd/chandrakant.webp" },
+    { name: "Palmurukan M. R. Pal", info: "Ph.D. July 2023, M.Sc., M-Tech., (Industrial Catalysis) CUSAT, Kerala", email: "palmurukanmr@students.iisertirupati.ac.in", image: "/images/team/present/phd/palmurukan.webp" },
+    { name: "Sanjay A", info: "IPhD 2024, B.Sc - St. Joseph's College (Autonomous) Tiruchirappalli, Tamilnadu", email: "sanjay20242207@students.iisertirupati.ac.in", image: "/images/team/present/phd/Sanjay.webp" },
+    { name: "Nanthini P.", info: "Ph.D. Aug 2024, M.Sc (Chem), Bharathidasan University, Tamil Nadu", email: "nanthini20243208@students.iisertirupati.ac.in", image: "/images/team/present/phd/nanthini.webp" },
+    { name: "Mahendra D R", info: "Ph.D. Jan 2025, M.Sc (Chem), University of Mysuru, Karnataka", email: "mahendra_20253202@students.iisertirupati.ac.in", image: "/images/team/present/phd/mahendra.webp" },
+    { name: "Kumara Raja Mahesh K", info: "Ph.D. Aug 2026, M.Sc (Chem), The Gandhigram Rural Institute, Dindigul, Tamil Nadu", email: "kumararajamahesh20263208@students.iisertirupati.ac.in", image: "/images/team/present/phd/Mahesh.webp" }
   ],
   projectAssociates: [
-    { name: "Gowtham Ram K", info: "Project Associate, M.Sc (Chem), Madurai Kamaraj University (MKU), Madurai, Tamil Nadu", email: "gowthamram@students.iisertirupati.ac.in", image: "/images/team/present/phd/Gowtham.jpeg" },
+    { name: "Gowtham Ram K", info: "Project Associate, M.Sc (Chem), Madurai Kamaraj University (MKU), Madurai, Tamil Nadu", email: "gowthamram@students.iisertirupati.ac.in", image: "/images/team/present/phd/Gowtham.webp" },
     { name: "Divyasikha K Sutar", info: "Project Fellow, BS-MS IISER Tirupati 2021-2026", email: "divyasikhaksutar211177@students.iisertirupati.ac.in", image: "/images/team/Alumini/Msc Alumini/Divyasikha.webp" },
     { name: "Sayan Mondal", info: "Project Fellow, BS-MS IISER Tirupati 2021-2026, Master thesis IIT BHU 2025-2026", email: "sayanmondal211078@students.iisertirupati.ac.in", image: "/images/team/present/project/Sayan.webp" }
   ],
   postdocs: [
-    { name: "Dr. Sachin S. Gorad", info: "Ph.D. 2024 (IISER-Bhopal), M.Sc. (Org. Chem) Savitribai Phule Pune University Maharashtra", email: "sachinshrimant@labs.iisertirupati.ac.in", image: "/images/team/present/postdocs/sachin.png" },
-    { name: "Dr. Nausad", info: "Ph.D. – IISER Mohali, B.Sc. + M.Sc. – Jamia Millia Islamia Central University", email: "nausadkhan@labs.iisertirupati.ac.in", image: "/images/team/present/postdocs/Nausad.jpeg" },
-    { name: "Dr. Athira C S", info: "Ph.D.: CSIR NIIST, Kerala (2025), MSc: University of Kerala, Kerala (2019)", email: "athiracs@labs.iisertirupati.ac.in", image: "/images/team/present/postdocs/Athira.jpeg" },
-    { name: "Dr. Anjali Krishna P K", info: "Ph.D.: CSIR-NIIST, Thiruvananthapuram, Kerala (2024), MSc: NIT Tiruchirappalli, Tamilnadu (2017)", email: "anjalikrishna@labs.iisertirupati.ac.in", image: "/images/team/present/postdocs/anjali.jpeg" },
-    { name: "Dr. Bapurao Rupanawar", info: "Ph.D. NCL-Pune, Feb 2022, Post Doc -OIST-Japan July 2022-Aug 2025, State- Maharashtra", email: "bapuraorupanawar@labs.iisertirupati.ac.in", image: "/images/team/present/postdocs/bapurao.jpg" },
+    { name: "Dr. Sachin S. Gorad", info: "Ph.D. 2024 (IISER-Bhopal), M.Sc. (Org. Chem) Savitribai Phule Pune University Maharashtra", email: "sachinshrimant@labs.iisertirupati.ac.in", image: "/images/team/present/postdocs/sachin.webp" },
+    { name: "Dr. Nausad", info: "Ph.D. – IISER Mohali, B.Sc. + M.Sc. – Jamia Millia Islamia Central University", email: "nausadkhan@labs.iisertirupati.ac.in", image: "/images/team/present/postdocs/Nausad.webp" },
+    { name: "Dr. Athira C S", info: "Ph.D.: CSIR NIIST, Kerala (2025), MSc: University of Kerala, Kerala (2019)", email: "athiracs@labs.iisertirupati.ac.in", image: "/images/team/present/postdocs/Athira.webp" },
+    { name: "Dr. Anjali Krishna P K", info: "Ph.D.: CSIR-NIIST, Thiruvananthapuram, Kerala (2024), MSc: NIT Tiruchirappalli, Tamilnadu (2017)", email: "anjalikrishna@labs.iisertirupati.ac.in", image: "/images/team/present/postdocs/anjali.webp" },
+    { name: "Dr. Bapurao Rupanawar", info: "Ph.D. NCL-Pune, Feb 2022, Post Doc -OIST-Japan July 2022-Aug 2025, State- Maharashtra", email: "bapuraorupanawar@labs.iisertirupati.ac.in", image: "/images/team/present/postdocs/bapurao.webp" },
     { name: "Dr. Bikash Ranjan Isaac", info: "Ph.D. IISER Tirupati 2026, M.Sc. Berhampur University 2018", email: "bikashisaac@students.iisertirupati.ac.in", image: "/images/team/present/postdocs/Bikash.webp" }
   ],
   masters: [
-    { name: "Suyog Andhare", info: "MS, IISER Tirupati (2026)", email: "suyog_20221147@students.iisertirupati.ac.in", image: "/images/team/present/masters/suyog-2026.jpg" },
-    { name: "Kavya", info: "MS, IISER Tirupati (2026)", email: "mothukuri_20221091@students.iisertirupati.ac.in", image: "/images/team/present/masters/Kavya.jpeg" },
-    { name: "Ayesha", info: "MS, IISER Tirupati (2026)", email: "aysha_20221020@students.iisertirupati.ac.in", image: "/images/team/present/masters/ayesha.jpg" },
-    { name: "Subham Ghosh", info: "MS, B.Sc (Hons.) (Chem), Banaras Hindu University, Varanasi", email: "subham20255208@students.iisertirupati.ac.in", image: "/images/team/present/masters/Shubham.jpeg" },
-    { name: "Dheeksha", info: "MS, B.Sc (Chem), SDNB Vaishnav College, Chromepet, Chennai", email: "dheeksha20255202@students.iisertirupati.ac.in", image: "/images/team/present/masters/Dheeksha.jpeg" },
-    { name: "Md. Oruz Iqbal", info: "MS, iPhD 2024, B.Sc (Hons.) (Chem), Oriental College, Patliputra University", email: "oruziqbal20242205@students.iisertirupati.ac.in", image: "/images/team/present/masters/urus.jpeg" },
+    { name: "Suyog Andhare", info: "MS, IISER Tirupati (2026)", email: "suyog_20221147@students.iisertirupati.ac.in", image: "/images/team/present/masters/suyog-2026.webp" },
+    { name: "Kavya", info: "MS, IISER Tirupati (2026)", email: "mothukuri_20221091@students.iisertirupati.ac.in", image: "/images/team/present/masters/Kavya.webp" },
+    { name: "Ayesha", info: "MS, IISER Tirupati (2026)", email: "aysha_20221020@students.iisertirupati.ac.in", image: "/images/team/present/masters/ayesha.webp" },
+    { name: "Subham Ghosh", info: "MS, B.Sc (Hons.) (Chem), Banaras Hindu University, Varanasi", email: "subham20255208@students.iisertirupati.ac.in", image: "/images/team/present/masters/Shubham.webp" },
+    { name: "Dheeksha", info: "MS, B.Sc (Chem), SDNB Vaishnav College, Chromepet, Chennai", email: "dheeksha20255202@students.iisertirupati.ac.in", image: "/images/team/present/masters/Dheeksha.webp" },
+    { name: "Md. Oruz Iqbal", info: "MS, iPhD 2024, B.Sc (Hons.) (Chem), Oriental College, Patliputra University", email: "oruziqbal20242205@students.iisertirupati.ac.in", image: "/images/team/present/masters/urus.webp" },
   ],
   semesterProject: [
-    { name: "Suyog Andhare", info: "Semester Project, IISER Tirupati (2026)", email: "suyog_20221147@students.iisertirupati.ac.in", image: "/images/team/present/masters/suyog-2026.jpg" },
-    { name: "Kavya", info: "Semester Project, IISER Tirupati (2026)", email: "mothukuri_20221091@students.iisertirupati.ac.in", image: "/images/team/present/masters/Kavya.jpeg" },
-    { name: "Ayesha", info: "Semester Project, IISER Tirupati (2026)", email: "aysha_20221020@students.iisertirupati.ac.in", image: "/images/team/present/masters/ayesha.jpg" },
+    { name: "Suyog Andhare", info: "Semester Project, IISER Tirupati (2026)", email: "suyog_20221147@students.iisertirupati.ac.in", image: "/images/team/present/masters/suyog-2026.webp" },
+    { name: "Kavya", info: "Semester Project, IISER Tirupati (2026)", email: "mothukuri_20221091@students.iisertirupati.ac.in", image: "/images/team/present/masters/Kavya.webp" },
+    { name: "Ayesha", info: "Semester Project, IISER Tirupati (2026)", email: "aysha_20221020@students.iisertirupati.ac.in", image: "/images/team/present/masters/ayesha.webp" },
   ],
   alumniPhd: [
     { name: "Dr. Manoj K. Sahoo", thesis: "Visible mediated photoredox catalytic Dehydrogenation and C-H arylation reactions", duration: "2013-2018", present: "Post-doctoral Studies at UNIST, South Korea", image: "/images/team/Alumini/Phd Alumini/Dr. MANOJ K. SAHOO.jpg" },
@@ -1237,7 +1237,7 @@ export const team = {
     { name: "Dr. Reshma Babu", thesis: "3d-Transition Metal Catalyzed Acceptorless Alcohol Dehydrogenation and Related Reactions", duration: "2019-2024", image: "/images/team/Alumini/Phd Alumini/Dr. RESHMA BABU.jpg" }
   ],
   alumniPostdoc: [
-    { name: "Dr. M. Sivaprakash", info: "Ph.D. 2023 (Central University of Tamil Nadu), M.Sc. (Chem) Bharathiyar University Coimbatore", duration: "Apr 2023 – 2024", image: "/images/team/Alumini/Postdoc alumini/Sivaprakash.png" },
+    { name: "Dr. M. Sivaprakash", info: "Ph.D. 2023 (Central University of Tamil Nadu), M.Sc. (Chem) Bharathiyar University Coimbatore", duration: "Apr 2023 – 2024", image: "/images/team/Alumini/Postdoc alumini/Sivaprakash.webp" },
     { name: "Dr. Rohit Kumar", info: "Ph.D. 2024 (IISER Tirupati), B.Sc., (Chem), Central University, Bihar (iPhD)", duration: "2024 – 2025", image: "/images/team/Alumini/Postdoc alumini/Dr. ROHIT KUMAR.jpg" },
   ],
   alumniMsc: [
@@ -1270,7 +1270,7 @@ export const team = {
     { name: "Ms. Anuja Joy", institution: "Mahatma Gandhi University, Kerala", year: "Feb 2024 – Jul 2024" },
     { name: "Mr. Soumik Roy", institution: "Indian Institute of Science Education and Research (IISER) Tirupati", year: "May 2024 – 2025" },
     { name: "Ms. Navyasri M.", institution: "Indian Institute of Science Education and Research (IISER) Tirupati", year: "Aug 2024 – 2025" },
-    { name: "Ms. Divyasikha Sutar", institution: "Indian Institute of Science Education and Research (IISER) Tirupati", year: "Aug 2025 – 2026", image: "/images/team/Alumini/Msc Alumini/Divyasikha.jpg" },
+    { name: "Ms. Divyasikha Sutar", institution: "Indian Institute of Science Education and Research (IISER) Tirupati", year: "Aug 2025 – 2026", image: "/images/team/Alumini/Msc Alumini/Divyasikha.webp" },
     { name: "Ms. Lavanya", institution: "Indian Institute of Science Education and Research (IISER) Tirupati", year: "Aug 2025 – 2026", image: "/images/team/Alumini/Msc Alumini/Lavanya.webp", email: "laana23g@gmail.com" },
     { name: "Ms. Shahma Sujeer", institution: "Indian Institute of Science Education and Research (IISER) Tirupati", year: "Aug 2025 – 2026", image: "/images/team/Alumini/Msc Alumini/Shahma.webp", email: "shahmasujeer44@gmail.com" }
   ],
@@ -1386,7 +1386,7 @@ export const piStats = {
   orcid: '0000-0001-9248-2809',
   scopusId: '6504655693',
   twitter: 'https://x.com/EbLabgroup',
-  linkedin: 'https://www.linkedin.com', // Placeholder for now
+  linkedin: 'https://www.linkedin.com/in/ekambaram-balaraman-4a11293a/',
   phone: '',
   emails: ['eb.raman@iisertirupati.ac.in', 'balaramanekambaram@gmail.com'],
 };
