@@ -761,7 +761,7 @@ export const publications: Publication[] = [
   },
   {
     id: 62,
-    title: "Room temperature catalytic dehydrogenation of cyclic amines with the liberation of H2using water as a solvent",
+    title: "Room temperature catalytic dehydrogenation of cyclic amines with the liberation of H2 using water as a solvent",
     authors: "Manoj K. Sahoo, Ekambaram Balaraman",
     journal: "Green Chemistry",
     year: "2019",

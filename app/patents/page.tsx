@@ -118,12 +118,12 @@ export default function PatentsPage() {
           <section>
             <div className="flex items-center justify-between mb-12 border-b border-foreground/5 pb-6">
               <h2 className="text-2xl font-black uppercase tracking-widest text-orange-500 flex items-center gap-4">
-                <Shield size={24} /> Granted US Patents
+                <Shield size={24} /> US Patents
               </h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {patents.grantedUS.map((p, i) => (
-                <PatentCard key={i} patent={p} type="US Granted" />
+                <PatentCard key={i} patent={p} type={p.number.includes('App.') ? 'US Application' : 'US Granted'} />
               ))}
             </div>
           </section>

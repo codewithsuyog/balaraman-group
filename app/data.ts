@@ -215,7 +215,10 @@ export const piStats = {
   bookChapters: 5,
   hIndex: 54,
   citations: 10008,
-  grantedUSPatents: 9,
+  // Counts granted numbers only: "US Patent App." entries are applications, and one entry lists two patents.
+  grantedUSPatents: patents.grantedUS
+    .filter((p) => !p.number.includes('App.'))
+    .reduce((n, p) => n + p.number.split(';').length, 0),
   phdCompleted: 11,
   phdPursuing: 9,
   postdocs: 14,

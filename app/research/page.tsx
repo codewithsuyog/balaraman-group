@@ -114,18 +114,18 @@ export default function ResearchPage() {
       <section className="py-24 px-6 bg-foreground/[0.01]">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
           <div className="md:col-span-2 space-y-6 text-lg text-foreground/90 font-light leading-relaxed">
-            <h3 className="text-xs font-mono text-amber-500 uppercase tracking-[0.4em] mb-4">Laboratory Mission</h3>
+            <h2 className="text-xs font-mono text-amber-500 uppercase tracking-[0.4em] mb-4">Laboratory Mission</h2>
             <p>
-              We explore the frontiers of <span className="text-accent font-semibold">organometallic chemistry</span> — designing molecular architectures that unlock new pathways for <span className="text-accent font-semibold">sustainable catalysis</span> and selective organic transformations.
+              We explore the frontiers of <span className="text-accent font-semibold">organometallic chemistry</span> — designing molecular architectures that unlock new pathways for <span className="text-accent font-semibold">sustainable catalysis</span>{" "}and selective organic transformations.
             </p>
             <p>
               Our laboratory develops <span className="text-foreground font-medium">well-defined transition-metal catalytic systems</span> spanning hydrogen generation, hydrogenation, photocatalysis, and C–H activation — bridging the gap between <span className="text-foreground font-medium">homogeneous precision</span> and <span className="text-foreground font-medium">heterogeneous scalability</span>.
             </p>
           </div>
           <div className="bg-foreground/5 rounded-3xl p-8 border border-foreground/10 flex flex-col justify-center">
-            <h4 className="text-xs font-bold text-foreground mb-4 uppercase tracking-widest flex items-center gap-2">
+            <h3 className="font-sans text-xs font-bold text-foreground mb-4 uppercase tracking-widest flex items-center gap-2">
               <Database size={16} className="text-amber-400" /> Focus Areas
-            </h4>
+            </h3>
             <ul className="space-y-3 text-xs font-mono text-foreground">
               <li className="flex items-center gap-3"><ChevronRight size={10} className="text-amber-500" /> Homogeneous Catalysis</li>
               <li className="flex items-center gap-3"><ChevronRight size={10} className="text-amber-500" /> Heterogeneous Catalysis</li>
@@ -164,7 +164,7 @@ export default function ResearchPage() {
                 </p>
 
                 <div className="space-y-4 p-6 rounded-3xl bg-foreground/[0.03] border border-foreground/5">
-                  <h4 className="text-[10px] font-mono text-amber-500 uppercase tracking-[0.3em] mb-2">Representative Works</h4>
+                  <h3 className="text-[10px] font-mono text-amber-500 uppercase tracking-[0.3em] mb-2">Representative Works</h3>
                   <div className="flex flex-col">
                     {cat.pubs.map((pub, i) => <PublicationItem key={i} pub={pub} />)}
                   </div>

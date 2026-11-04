@@ -1,30 +1,21 @@
 'use client';
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, ArrowRight, X, Maximize2, Image as ImageIcon, Users, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight, X, Maximize2, ChevronLeft, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { galleryItems } from '@/components/ui/framer-thumbnails';
+
+const captionOf = (num: number) => galleryItems.find((g) => g.id === num)?.title ?? `Lab photo ${num}`;
 
 export default function GalleryPage() {
   const [selectedIndex, setSelectedIndex] = React.useState<number | null>(null);
-  const [activeTab, setActiveTab] = React.useState<'images' | 'memories'>('memories');
 
-  React.useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const params = new URLSearchParams(window.location.search);
-      if (params.get('tab') === 'images') {
-        setTimeout(() => setActiveTab('images'), 0);
-      }
-    }
-  }, []);
 
-  const labImagesCount = 7;
   const memoriesCount = 36;
-  const photos = activeTab === 'images' 
-    ? Array.from({ length: labImagesCount }, (_, i) => i + 1)
-    : Array.from({ length: memoriesCount }, (_, i) => memoriesCount - i);
+  const photos = Array.from({ length: memoriesCount }, (_, i) => memoriesCount - i);
 
-  const folder = activeTab === 'images' ? 'lab-images' : 'gallery';
+  const folder = 'gallery';
 
   // Keyboard navigation for lightbox
   React.useEffect(() => {
@@ -55,7 +46,7 @@ export default function GalleryPage() {
         <div className="w-full h-full relative p-2 bg-surface-alt/40">
           <Image 
             src={failed ? "/logo.webp" : src} 
-            alt={`Lab Moment ${num}`}
+            alt={captionOf(num)}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className={`object-contain transition-transform duration-500 group-hover:scale-105 ${failed ? 'opacity-20' : ''}`}
@@ -65,8 +56,7 @@ export default function GalleryPage() {
         </div>
         
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-8">
-          <p className="text-[10px] font-mono text-amber-400 uppercase tracking-widest mb-1">Moment #{num}</p>
-          <p className="text-white text-sm font-light uppercase tracking-tighter">Memory Archive</p>
+          <p className="text-white text-sm">{captionOf(num)}</p>
         </div>
 
         <div className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 scale-50 group-hover:scale-100">
@@ -89,41 +79,15 @@ export default function GalleryPage() {
               <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Back to Home
             </Link>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter mb-4 text-gradient">
-              {activeTab === 'images' ? 'Lab Images & Videos' : 'Lab Moments'}
+              Lab Moments
             </h1>
             <p className="text-[var(--color-muted)] max-w-2xl font-light text-lg italic">
-              {activeTab === 'images' 
-                ? "Explore our scientific facilities, instruments, and research media."
-                : "A comprehensive archive of Raman's Research Lab—milestones, celebrations, and daily scientific life."}
+              A comprehensive archive of Raman&apos;s Research Lab—milestones, celebrations, and daily scientific life.
             </p>
           </motion.div>
           <div className="px-6 py-3 rounded-full border border-foreground/10 bg-foreground/5 text-xs font-mono text-foreground uppercase tracking-widest h-max">
-            {photos.length} Captured {activeTab === 'images' ? 'Media' : 'Memories'}
+            {photos.length} Captured Memories
           </div>
-        </div>
-
-        {/* TABS */}
-        <div className="flex items-center gap-4 mb-12 border-b border-foreground/10 pb-4">
-          <button 
-            onClick={() => setActiveTab('images')}
-            className={`flex items-center gap-2 px-6 py-3 rounded-full font-bold text-xs uppercase tracking-widest transition-all ${
-              activeTab === 'images' 
-                ? 'bg-pink-500/20 text-pink-400 border border-pink-500/30' 
-                : 'bg-foreground/5 text-foreground hover:bg-foreground/10 border border-transparent'
-            }`}
-          >
-            <ImageIcon size={16} /> Lab Images & Videos
-          </button>
-          <button 
-            onClick={() => setActiveTab('memories')}
-            className={`flex items-center gap-2 px-6 py-3 rounded-full font-bold text-xs uppercase tracking-widest transition-all ${
-              activeTab === 'memories' 
-                ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' 
-                : 'bg-foreground/5 text-foreground hover:bg-foreground/10 border border-transparent'
-            }`}
-          >
-            <Users size={16} /> Lab Memories
-          </button>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -154,7 +118,7 @@ export default function GalleryPage() {
             >
               <img loading="lazy" decoding="async" 
                 src={`/images/${folder}/${photos[selectedIndex]}.webp`}
-                alt="Enlarged view" 
+                alt={captionOf(photos[selectedIndex])} 
                 className="max-w-full max-h-full object-contain rounded-2xl shadow-[0_0_100px_rgba(37,99,235,0.2)]"
               />
 

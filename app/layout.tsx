@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   description: "Official website of Dr. Ekambaram Balaraman (E. Balaraman), Associate Professor & Chair, Department of Chemistry, IISER Tirupati. Leading research in organometallics, catalysis, sustainable chemistry, and C1 chemistry.",
   keywords: [
     "Dr. Ekambaram Balaraman", "Ekambaram Balaraman", "E. Balaraman",
-    "E Balaraman", "Balaraman", "Dr. Balaraman", "Ekambaramam Balaraman",
+    "E Balaraman", "Balaraman", "Dr. Balaraman",
     "Balaraman Group", "Raman Group", "Raman's Research Lab", "Raman's Group",
     "Balaraman Research Group", "E. Balaraman Lab", "EB Lab",
     "Catalysis", "Sustainable Chemistry", "C1 Chemistry",
@@ -107,8 +107,8 @@ export default function RootLayout({
                   "@id": "https://www.ebalaraman.com/#person",
                   "name": "Dr. Ekambaram Balaraman",
                   "alternateName": [
-                    "Ekambaram Balaraman", "E. Balaraman", "Ekambaram", "Ebalarama",
-                    "E Balaraman", "Balaraman E", "Ekambaramam Balaraman",
+                    "Ekambaram Balaraman", "E. Balaraman", "Ekambaram",
+                    "E Balaraman", "Balaraman E",
                     "Balaraman", "Dr. E. Balaraman", "Dr. Balaraman",
                     "Balaraman IISER", "E Balaraman IISER Tirupati"
                   ],
