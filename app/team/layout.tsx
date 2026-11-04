@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: 'Team — Dr. Ekambaram Balaraman | Raman\'s Research Lab',
     description: 'Meet the researchers of Raman\'s Research Lab at IISER Tirupati.',
     url: 'https://www.ebalaraman.com/team',
-    images: [{ url: 'https://www.ebalaraman.com/pi-photo.webp', width: 1200, height: 630, alt: 'Dr. Ekambaram Balaraman' }],
+    images: [{ url: 'https://www.ebalaraman.com/pi-photo.webp', width: 1024, height: 619, alt: 'Dr. Ekambaram Balaraman' }],
   },
   twitter: {
     card: 'summary_large_image',

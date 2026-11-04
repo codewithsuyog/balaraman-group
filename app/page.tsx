@@ -904,7 +904,7 @@ export default function Home() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
               <GlowCard className="rounded-2xl" glowColor="rgba(245, 158, 11, 0.2)">
               <div className="p-6 rounded-2xl bg-foreground/[0.04] border border-foreground/10 hover:border-amber-500/30 transition-all text-center group hover:bg-amber-500/5">
-                <div className="text-3xl md:text-4xl font-black text-amber-400 mb-2 drop-shadow-[0_0_10px_rgba(96,165,250,0.3)]"><AnimatedCounter target={typeof piStats.publications === 'string' ? parseInt(piStats.publications) : piStats.publications} suffix="+" /></div>
+                <div className="text-3xl md:text-4xl font-black text-amber-400 mb-2 drop-shadow-[0_0_10px_rgba(96,165,250,0.3)]"><AnimatedCounter target={piStats.publications} suffix="+" /></div>
                 <p className="text-[10px] uppercase tracking-widest text-foreground/90 font-mono font-semibold">Publications</p>
               </div>
               </GlowCard>
@@ -1083,11 +1083,11 @@ export default function Home() {
           <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
               <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-4 text-gradient uppercase">Publications</h2>
-              <p className="text-foreground font-light">Highlights from our 117+ published works.</p>
+              <p className="text-foreground font-light">Highlights from our {piStats.publications}+ published works.</p>
             </div>
             <MagneticButton>
             <Link href="/publications" className="cta-shimmer px-8 py-4 rounded-full border border-amber-500/30 text-amber-400 font-bold hover:bg-amber-500/10 transition-all flex items-center gap-2 uppercase text-[10px] tracking-widest font-mono">
-              View All 117 Publications <ArrowRight size={18} />
+              View All {piStats.publications} Publications <ArrowRight size={18} />
             </Link>
             </MagneticButton>
           </div>

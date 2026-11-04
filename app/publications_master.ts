@@ -19,6 +19,32 @@ export interface Publication {
 
 export const publications: Publication[] = [
   {
+    id: 119,
+    title: "Advances in the Synthesis of Levetiracetam: Classical Approaches and Patented Innovations",
+    authors: "Murugesan Sivaprakash, Kothapalli Bannoth Tejaswini, Kiran Kumar Pulukuri, Purushothaman Gopinath, Ekambaram Balaraman",
+    journal: "Advanced Synthesis & Catalysis",
+    year: "2026",
+    volume: "368",
+    pages: "e70358",
+    doi: "10.1002/adsc.70358",
+    coverImage: "/images/publications/covers/119.webp",
+    schemeImage: "/images/publications/schemes/119.webp",
+    fullText: "Murugesan Sivaprakash, Kothapalli Bannoth Tejaswini, Kiran Kumar Pulukuri, Purushothaman Gopinath, and E. Balaraman*. Advances in the Synthesis of Levetiracetam: Classical Approaches and Patented Innovations. Adv. Synth. Catal., 2026, 368, 7, e70358.",
+  },
+  {
+    id: 118,
+    title: "Cobalt-Catalyzed Amide Synthesis from Alcohols: An Ammonia-Free Approach with Dihydrogen Release",
+    authors: "Rohit Kumar, Kothapalli Bonnoth Tejaswini, Chandrakant Gouda, Ekambaram Balaraman",
+    journal: "Advanced Synthesis & Catalysis",
+    year: "2025",
+    volume: "367",
+    pages: "e9607",
+    doi: "10.1002/adsc.9607",
+    coverImage: "/images/publications/covers/118.webp",
+    schemeImage: "/images/publications/schemes/118.webp",
+    fullText: "Rohit Kumar, Kothapalli Bonnoth Tejaswini, Chandrakant Gouda, and E. Balaraman*. Cobalt-Catalyzed Amide Synthesis from Alcohols: An Ammonia-Free Approach with Dihydrogen Release. Adv. Synth. Catal., 2025, 367, 15, e9607.",
+  },
+  {
     id: 117,
     title: "Nickel-Catalyzed Selective Monoamination of 1,2-Diols: An Affordable Approach to Amino Alcohols",
     authors: "Soumya Sree Samal, Murugan Subaramanian, Ekambaram Balaraman",
