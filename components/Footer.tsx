@@ -30,7 +30,7 @@ export default function Footer() {
       {/* Merged Chemistry Panorama Background */}
       <div className="absolute inset-0 z-0 pointer-events-none select-none opacity-20 overflow-hidden">
         <img 
-          src="/images/banners/catalysis-panorama-dark.jpg" 
+          src="/images/banners/catalysis-panorama-dark.webp" 
           alt="EBR Lab Chemistry Background" 
           className="w-full h-full object-cover object-center" 
         />
@@ -120,7 +120,7 @@ export default function Footer() {
         <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
           <div className="flex flex-col md:flex-row items-center gap-3 md:gap-4">
             <div className="w-8 h-8 rounded-lg bg-white p-1 shadow-sm border border-white/20 flex items-center justify-center shrink-0 overflow-hidden">
-              <img src="/images/lab-logo-square.png" alt="EBR Lab Logo" className="w-full h-full object-contain" />
+              <img src="/images/lab-logo-square.webp" alt="EBR Lab Logo" className="w-full h-full object-contain" />
             </div>
             <p>{`© ${new Date().getFullYear()} Raman's Research Lab. All rights reserved.`}</p>
             <span className="hidden md:inline text-gray-700">|</span>

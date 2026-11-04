@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Raman's Research Lab — ebalaraman.com
 
-## Getting Started
+Website of Dr. Ekambaram Balaraman's research group, Department of Chemistry, IISER Tirupati.
 
-First, run the development server:
+Built with Next.js (App Router), React, Tailwind CSS and framer-motion. Hosted on Vercel.
+
+## Run locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm ci
+npm run dev      # http://localhost:3000
+npm run build    # production build; run before every push
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Where content lives
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| What | File |
+|------|------|
+| Team, alumni, news, PI stats, patents | `app/data.ts` |
+| All publications | `app/publications_master.ts` |
+| Homepage featured publications | `app/publications_featured.ts` |
+| SEO metadata, JSON-LD | `app/layout.tsx`, `app/*/layout.tsx` |
+| Images | `public/images/` (use `.webp`) |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Images
 
-## Learn More
+- Add photos as `.webp`. Keep them under about 300 KB and at most 1920 px wide.
+- Gallery photos: put `<n>.webp` in `public/images/gallery/` and add an entry in `components/ui/framer-thumbnails.tsx`.
+- To shrink large gallery files: `node scripts/recompress-gallery.mjs public/images/gallery`.
 
-To learn more about Next.js, take a look at the following resources:
+## Deploy workflow
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`master` deploys straight to production at https://www.ebalaraman.com.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Create a branch: `git switch -c fix/short-description`
+2. Commit and push the branch. Vercel builds a preview URL for it.
+3. Check the preview, then open a pull request and merge into `master`.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Do not push directly to `master`.

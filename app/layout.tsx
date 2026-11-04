@@ -59,8 +59,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: 'https://www.ebalaraman.com/pi-photo.webp',
-        width: 1200,
-        height: 630,
+        width: 1024,
+        height: 619,
         alt: 'Dr. Ekambaram Balaraman - Associate Professor & Chair, IISER Tirupati',
       },
     ],
@@ -113,8 +113,8 @@ export default function RootLayout({
                   "image": {
                     "@type": "ImageObject",
                     "url": "https://www.ebalaraman.com/pi-photo.webp",
-                    "width": 800,
-                    "height": 800,
+                    "width": 1024,
+                    "height": 619,
                     "caption": "Dr. Ekambaram Balaraman - Associate Professor & Chair, IISER Tirupati"
                   },
                   "jobTitle": "Associate Professor & Chair, Department of Chemistry",
@@ -245,7 +245,6 @@ export default function RootLayout({
         />
         <meta name="thumbnail" content="https://www.ebalaraman.com/pi-photo.webp" />
         <link rel="image_src" href="https://www.ebalaraman.com/pi-photo.webp" />
-        <link rel="preload" as="image" type="image/webp" href="/images/pi/PI%20Photo%202.jpeg" />
         <link rel="preload" as="image" type="image/webp" href="/images/Background/group-photo.webp" />
       </head>
       <body className="font-sans min-h-screen bg-background text-foreground flex flex-col transition-colors duration-300 select-none" suppressHydrationWarning>
