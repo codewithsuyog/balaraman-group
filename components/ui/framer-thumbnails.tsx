@@ -141,7 +141,7 @@ function FramerCarouselThumbnails() {
 
           {/* Image caption overlay */}
           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent p-6 pointer-events-none z-10">
-            <p className="text-[10px] font-mono text-amber-400 uppercase tracking-[0.2em] mb-1">
+            <p className="text-xs font-mono text-amber-400 uppercase tracking-[0.2em] mb-1">
               Moment #{galleryItems[index]?.id}
             </p>
             <p className="text-white text-lg font-bold tracking-tight">
@@ -152,6 +152,7 @@ function FramerCarouselThumbnails() {
           {/* Previous Button */}
           <motion.button
             disabled={index === 0}
+            aria-label='Previous photo'
             onClick={() => setIndex((i) => Math.max(0, i - 1))}
             className={`absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition-all z-20 backdrop-blur-md border
               ${
@@ -166,6 +167,7 @@ function FramerCarouselThumbnails() {
           {/* Next Button */}
           <motion.button
             disabled={index === galleryItems.length - 1}
+            aria-label='Next photo'
             onClick={() => setIndex((i) => Math.min(galleryItems.length - 1, i + 1))}
             className={`absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition-all z-20 backdrop-blur-md border
               ${

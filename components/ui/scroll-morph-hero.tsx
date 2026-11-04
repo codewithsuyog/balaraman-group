@@ -241,7 +241,7 @@ export default function ScrollMorphHero() {
                         initial={{ opacity: 0 }}
                         animate={introPhase === "circle" && morphValue < 0.5 ? { opacity: 0.5 - morphValue } : { opacity: 0 }}
                         transition={{ duration: 1, delay: 0.2 }}
-                        className="mt-4 text-xs font-bold tracking-[0.2em] text-foreground/50"
+                        className="mt-4 text-xs font-bold tracking-[0.2em] text-foreground/70"
                     >
                         SCROLL TO EXPLORE PUBLICATIONS
                     </motion.p>

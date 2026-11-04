@@ -4,8 +4,8 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { 
-  ArrowLeft, Mail, Globe, Users, GraduationCap, 
-  ExternalLink, ChevronRight, Briefcase, BookOpen, Beaker, FlaskConical, Microscope
+  ArrowLeft, Mail, Users, GraduationCap, 
+  Briefcase, BookOpen, Beaker, FlaskConical, Microscope
 } from 'lucide-react';
 import { team } from '../data';
 
@@ -77,14 +77,14 @@ const MemberCard = ({ member, role }: { member: TeamMember, role: string }) => {
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
         <div className="absolute bottom-4 left-4 right-4">
-           <span className="text-[10px] font-mono text-amber-400 tracking-widest">{role}</span>
+           <span className="text-xs font-mono text-amber-400 tracking-widest">{role}</span>
         </div>
       </div>
 
       <div className="p-6 flex-1 flex flex-col">
         <div className="flex-1">
           <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-amber-400 transition-colors tracking-tight">{member.name}</h3>
-          <p className="text-[10px] text-foreground/90 font-light leading-relaxed mb-4">
+          <p className="text-xs text-foreground/90 font-light leading-relaxed mb-4">
             {member.info ? member.info.split(',').map((part: string, idx: number) => (
               <React.Fragment key={idx}>{part.trim()}<br/></React.Fragment>
             )) : null}
@@ -93,16 +93,15 @@ const MemberCard = ({ member, role }: { member: TeamMember, role: string }) => {
         
         <div className="mt-auto pt-4">
           {member.email && (
-            <a href={`mailto:${member.email}`} className="text-[10px] font-mono text-amber-500/50 hover:text-amber-400 transition-colors truncate block mb-3 w-full" title={member.email}>
+            <a href={`mailto:${member.email}`} className="text-xs font-mono text-amber-500 hover:text-amber-400 transition-colors truncate block mb-3 w-full" title={member.email}>
               {member.email}
             </a>
           )}
           
           <div className="flex gap-4 border-t border-foreground/5 pt-4">
             {member.email && (
-              <a href={`mailto:${member.email}`} className="text-foreground hover:text-amber-400 transition-colors"><Mail size={16} /></a>
+              <a href={`mailto:${member.email}`} aria-label={`Email ${member.name}`} className="text-foreground hover:text-amber-400 transition-colors"><Mail size={16} /></a>
             )}
-            <button className="text-foreground hover:text-amber-400 transition-colors"><Globe size={16} /></button>
           </div>
         </div>
       </div>
@@ -135,17 +134,17 @@ const AlumniPhDCard = ({ member }: { member: TeamMember }) => {
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
         <div className="absolute bottom-4 left-4 right-4">
-           <span className="text-[10px] font-mono text-emerald-400 tracking-widest">Ph.D. Alumni</span>
+           <span className="text-xs font-mono text-emerald-400 tracking-widest">Ph.D. Alumni</span>
         </div>
       </div>
       <div className="p-6">
         <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-amber-400 transition-colors tracking-tight">{member.name}</h3>
-        <p className="text-[10px] text-foreground/90 font-light leading-relaxed mb-1">{member.thesis}</p>
+        <p className="text-xs text-foreground/90 font-light leading-relaxed mb-1">{member.thesis}</p>
         <div className="flex items-center gap-2 mt-3">
-          <span className="text-[10px] font-mono text-amber-500/50">{member.duration}</span>
+          <span className="text-xs font-mono text-amber-500">{member.duration}</span>
         </div>
         {member.present && (
-          <p className="text-[10px] text-foreground mt-2 italic">Present: {member.present}</p>
+          <p className="text-xs text-foreground mt-2 italic">Present: {member.present}</p>
         )}
       </div>
     </motion.div>
@@ -177,14 +176,14 @@ const AlumniPostdocCard = ({ member }: { member: TeamMember }) => {
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
         <div className="absolute bottom-4 left-4 right-4">
-           <span className="text-[10px] font-mono text-teal-400 uppercase tracking-widest">Postdoc Alumni</span>
+           <span className="text-xs font-mono text-teal-400 uppercase tracking-widest">Postdoc Alumni</span>
         </div>
       </div>
       <div className="p-6">
         <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-amber-400 transition-colors tracking-tight">{member.name}</h3>
-        <p className="text-[10px] text-foreground/90 font-light leading-relaxed mb-1">{member.info}</p>
+        <p className="text-xs text-foreground/90 font-light leading-relaxed mb-1">{member.info}</p>
         <div className="flex items-center gap-2 mt-3">
-          <span className="text-[10px] font-mono text-amber-500/50">{member.duration}</span>
+          <span className="text-xs font-mono text-amber-500">{member.duration}</span>
         </div>
       </div>
     </motion.div>
@@ -216,14 +215,14 @@ const AlumniMScCard = ({ member }: { member: TeamMember }) => {
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
         <div className="absolute bottom-4 left-4 right-4">
-           <span className="text-[10px] font-mono text-purple-400 tracking-widest uppercase">MSc Alumni</span>
+           <span className="text-xs font-mono text-purple-400 tracking-widest uppercase">MSc Alumni</span>
         </div>
       </div>
       <div className="p-6">
         <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-purple-400 transition-colors tracking-tight">{member.name}</h3>
-        <p className="text-[10px] text-foreground/90 font-light leading-relaxed mb-1">{member.institution}</p>
+        <p className="text-xs text-foreground/90 font-light leading-relaxed mb-1">{member.institution}</p>
         <div className="flex items-center gap-2 mt-3">
-          <span className="text-[10px] font-mono text-purple-500/50">{member.year}</span>
+          <span className="text-xs font-mono text-purple-500">{member.year}</span>
         </div>
       </div>
     </motion.div>
@@ -249,9 +248,9 @@ export default function TeamPage() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-amber-600/10 via-transparent to-transparent opacity-50"></div>
         
         <div className="max-w-7xl mx-auto relative z-10 text-center">
-          <motion.div initial="hidden" animate="visible" variants={fadeUp}>
-            <Link href="/" className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-foreground/[0.03] border border-foreground/10 hover:border-amber-500/30 text-foreground hover:text-amber-400 font-mono text-[10px] uppercase tracking-widest mb-12 transition-all group">
-              <img src="/images/lab-logo.webp" alt="EBR Lab Logo" className="w-5 h-5 rounded-md object-contain bg-white/90 p-0.5" />
+          <motion.div initial={false} animate="visible" variants={fadeUp}>
+            <Link href="/" className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-foreground/[0.03] border border-foreground/10 hover:border-amber-500/30 text-foreground hover:text-amber-400 font-mono text-xs uppercase tracking-widest mb-12 transition-all group">
+              <img src="/images/lab-logo-128.webp" alt="EBR Lab Logo" className="w-5 h-5 rounded-md object-contain bg-white/90 p-0.5" />
               <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Back to Laboratory
             </Link>
             
@@ -353,8 +352,8 @@ export default function TeamPage() {
                       </div>
                       <div className="flex-1 min-w-0">
                         <h4 className="text-sm font-bold text-foreground truncate">{m.name}</h4>
-                        <p className="text-[10px] text-foreground/90 font-light truncate">{m.thesis}</p>
-                        <p className="text-[10px] font-mono text-emerald-500/50 mt-1">{m.duration}</p>
+                        <p className="text-xs text-foreground/90 font-light truncate">{m.thesis}</p>
+                        <p className="text-xs font-mono text-emerald-500 mt-1">{m.duration}</p>
                       </div>
                     </div>
                   ))}
@@ -384,8 +383,8 @@ export default function TeamPage() {
                       </div>
                       <div className="flex-1 min-w-0">
                         <h4 className="text-sm font-bold text-foreground truncate">{m.name}</h4>
-                        {m.institution && <p className="text-[10px] text-foreground/90 font-light truncate">{m.institution}</p>}
-                        <p className="text-[10px] font-mono text-teal-500/50 mt-1">{m.duration || m.year}</p>
+                        {m.institution && <p className="text-xs text-foreground/90 font-light truncate">{m.institution}</p>}
+                        <p className="text-xs font-mono text-teal-500 mt-1">{m.duration || m.year}</p>
                       </div>
                     </div>
                   ))}
@@ -410,8 +409,8 @@ export default function TeamPage() {
                       </div>
                       <div className="flex-1 min-w-0">
                         <h4 className="text-sm font-bold text-foreground truncate">{m.name}</h4>
-                        <p className="text-[10px] text-foreground/90 font-light truncate">{m.institution}</p>
-                        <p className="text-[10px] font-mono text-purple-500/50 mt-1">{m.year}</p>
+                        <p className="text-xs text-foreground/90 font-light truncate">{m.institution}</p>
+                        <p className="text-xs font-mono text-purple-500 mt-1">{m.year}</p>
                       </div>
                     </div>
                   ))}
@@ -442,7 +441,7 @@ export default function TeamPage() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <h4 className="text-sm font-bold text-foreground">{m.name}</h4>
-                      <p className="text-[10px] text-foreground/90 font-light">{m.institution}</p>
+                      <p className="text-xs text-foreground/90 font-light">{m.institution}</p>
                     </div>
                   </div>
                 ))}
@@ -465,7 +464,7 @@ export default function TeamPage() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <h4 className="text-sm font-bold text-foreground truncate">{m.name}</h4>
-                      <p className="text-[10px] text-foreground/90 font-light">{m.duration}</p>
+                      <p className="text-xs text-foreground/90 font-light">{m.duration}</p>
                     </div>
                   </div>
                 ))}
@@ -488,7 +487,7 @@ export default function TeamPage() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <h4 className="text-sm font-bold text-foreground truncate">{m.name}</h4>
-                      <p className="text-[10px] text-foreground/90 font-light">{m.batch} � {m.duration}</p>
+                      <p className="text-xs text-foreground/90 font-light">{m.batch} � {m.duration}</p>
                     </div>
                   </div>
                 ))}
@@ -511,7 +510,7 @@ export default function TeamPage() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <h4 className="text-sm font-bold text-foreground truncate">{m.name}</h4>
-                      <p className="text-[10px] text-foreground/90 font-light">{m.batch} � {m.duration}</p>
+                      <p className="text-xs text-foreground/90 font-light">{m.batch} � {m.duration}</p>
                     </div>
                   </div>
                 ))}

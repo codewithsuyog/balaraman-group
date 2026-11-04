@@ -77,9 +77,11 @@ export const metadata: Metadata = {
     images: ["https://www.ebalaraman.com/pi-photo.webp"],
   },
   icons: {
-    icon: '/images/lab-logo.webp',
-    shortcut: '/images/lab-logo.webp',
-    apple: '/images/lab-logo.webp',
+    icon: [
+      { url: '/favicon.ico', sizes: '32x32' },
+      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+    ],
+    apple: '/apple-touch-icon.png',
   },
 };
 
@@ -248,7 +250,6 @@ export default function RootLayout({
         />
         <meta name="thumbnail" content="https://www.ebalaraman.com/pi-photo.webp" />
         <link rel="image_src" href="https://www.ebalaraman.com/pi-photo.webp" />
-        <link rel="preload" as="image" type="image/webp" href="/images/Background/group-photo.webp" />
       </head>
       <body className="font-sans min-h-screen bg-background text-foreground flex flex-col transition-colors duration-300 select-none" suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>

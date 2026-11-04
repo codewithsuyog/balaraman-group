@@ -32,7 +32,7 @@ interface Publication {
 
 const PublicationItem = ({ pub }: { pub: Publication }) => (
   <div className="flex gap-4 group/pub py-4 border-b border-foreground/5 last:border-0 hover:bg-foreground/[0.02] transition-colors rounded-lg px-3 -mx-3">
-    <span className="text-xs font-mono text-amber-500/50 mt-1 shrink-0">{pub.id}.</span>
+    <span className="text-xs font-mono text-amber-500 mt-1 shrink-0">{pub.id}.</span>
     <div className="flex-1 min-w-0">
       <p className="text-sm text-foreground/90 font-light leading-relaxed">
         {pub.authors}. <ChemText text={pub.title} />. <span className="italic">{pub.journal}</span>, {pub.year}. {pub.volume && `${pub.volume}`}{pub.pages && `, ${pub.pages}`}
@@ -42,7 +42,7 @@ const PublicationItem = ({ pub }: { pub: Publication }) => (
           href={pub.doi?.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`} 
           target="_blank" 
           rel="noopener noreferrer"
-          className="text-[10px] font-mono text-amber-500/40 hover:text-amber-400 transition-colors"
+          className="text-xs font-mono text-amber-500 hover:text-amber-400 transition-colors"
         >
           DOI: {pub.doi}
         </a>
@@ -93,9 +93,9 @@ export default function ResearchPage() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-amber-600/10 via-transparent to-transparent opacity-50"></div>
         
         <div className="max-w-6xl mx-auto relative z-10">
-          <motion.div initial="hidden" animate="visible" variants={fadeUp}>
-            <Link href="/" className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-foreground/[0.03] border border-foreground/10 hover:border-amber-500/30 text-foreground hover:text-amber-400 font-mono text-[10px] uppercase tracking-widest mb-12 transition-all group">
-              <img src="/images/lab-logo.webp" alt="EBR Lab Logo" className="w-5 h-5 rounded-md object-contain bg-white/90 p-0.5" />
+          <motion.div initial={false} animate="visible" variants={fadeUp}>
+            <Link href="/" className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-foreground/[0.03] border border-foreground/10 hover:border-amber-500/30 text-foreground hover:text-amber-400 font-mono text-xs uppercase tracking-widest mb-12 transition-all group">
+              <img src="/images/lab-logo-128.webp" alt="EBR Lab Logo" className="w-5 h-5 rounded-md object-contain bg-white/90 p-0.5" />
               <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Back to Laboratory
             </Link>
             
@@ -164,11 +164,11 @@ export default function ResearchPage() {
                 </p>
 
                 <div className="space-y-4 p-6 rounded-3xl bg-foreground/[0.03] border border-foreground/5">
-                  <h3 className="text-[10px] font-mono text-amber-500 uppercase tracking-[0.3em] mb-2">Representative Works</h3>
+                  <h3 className="text-xs font-mono text-amber-500 uppercase tracking-[0.3em] mb-2">Representative Works</h3>
                   <div className="flex flex-col">
                     {cat.pubs.map((pub, i) => <PublicationItem key={i} pub={pub} />)}
                   </div>
-                  <Link href="/publications" className="inline-flex items-center gap-2 text-[10px] font-mono text-foreground/90 hover:text-amber-400 mt-4 transition-colors">
+                  <Link href="/publications" className="inline-flex items-center gap-2 text-xs font-mono text-foreground/90 hover:text-amber-400 mt-4 transition-colors">
                     Access Complete Archive <ArrowRight size={10} />
                   </Link>
                 </div>
