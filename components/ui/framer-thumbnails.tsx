@@ -1,8 +1,8 @@
 'use client';
 
-import { animate, motion, useMotionValue } from 'framer-motion';
+import { animate, motion, useMotionValue, useReducedMotion } from 'framer-motion';
 import React, { useEffect, useRef, useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
 import Image from 'next/image';
 
 export const galleryItems = [
@@ -53,6 +53,11 @@ function FramerCarouselThumbnails() {
   const [index, setIndex] = useState<number>(0);
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [imgErrors, setImgErrors] = useState<Record<number, boolean>>({});
+  // Autoplay stops while hovered or focused, when the visitor pauses it, or when they prefer reduced motion (WCAG 2.2.2).
+  const [hovered, setHovered] = useState(false);
+  const [userPaused, setUserPaused] = useState(false);
+  const reduceMotion = useReducedMotion();
+  const playing = !userPaused && !reduceMotion;
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   const x = useMotionValue(0);
@@ -76,15 +81,21 @@ function FramerCarouselThumbnails() {
 
   // Autoplay functionality
   useEffect(() => {
-    if (isDragging) return;
+    if (isDragging || hovered || !playing) return;
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % galleryItems.length);
     }, 4000);
     return () => clearInterval(timer);
-  }, [isDragging]);
+  }, [isDragging, hovered, playing]);
 
   return (
-    <div className='w-full mx-auto'>
+    <div
+      className='w-full mx-auto'
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onFocus={() => setHovered(true)}
+      onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget)) setHovered(false); }}
+    >
       <div className='flex flex-col gap-3'>
         {/* Main Carousel */}
         <div className='relative overflow-hidden rounded-3xl border border-foreground/10 shadow-2xl' ref={containerRef}>
@@ -179,6 +190,16 @@ function FramerCarouselThumbnails() {
             <ChevronRight size={20} className="text-white" />
           </motion.button>
         </div>
+
+        <button
+          type='button'
+          onClick={() => setUserPaused((p) => !p)}
+          aria-label={playing ? 'Pause slideshow' : 'Play slideshow'}
+          className='self-end inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-foreground/70 hover:text-foreground border border-foreground/10 transition-colors'
+        >
+          {playing ? <Pause size={14} /> : <Play size={14} />}
+          {playing ? 'Pause' : 'Play'}
+        </button>
 
         {/* Thumbnails */}
         <Thumbnails index={index} setIndex={setIndex} imgErrors={imgErrors} onImgError={handleImgError} />

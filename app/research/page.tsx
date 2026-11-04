@@ -87,7 +87,7 @@ export default function ResearchPage() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-background text-foreground selection:bg-amber-500/30 pb-32">
+    <main id="main" className="min-h-screen bg-background text-foreground selection:bg-amber-500/30 pb-32">
       {/* PROFESSIONAL HEADER */}
       <section className="relative pt-32 pb-24 px-6 border-b border-foreground/5 overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-amber-600/10 via-transparent to-transparent opacity-50"></div>
@@ -152,7 +152,6 @@ export default function ResearchPage() {
             >
               {/* Numbering & Content */}
               <div className="w-full lg:w-1/2">
-                <div className="text-7xl font-black text-foreground/5 font-mono mb-4 leading-none">{cat.number}</div>
                 <div className="flex items-center gap-4 mb-6">
                   <div className="p-3 rounded-2xl bg-amber-500/10 border border-amber-500/20">{cat.icon}</div>
                   <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground uppercase">{cat.title}</h2>

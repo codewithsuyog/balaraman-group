@@ -3,7 +3,7 @@
 :root {
   --background: #f4f5f7;
   --foreground: #1a1f2e;
-  --accent: #b45309;
+  --accent: #92400e;
   --accent-secondary: #92400e;
   --accent-light: #d97706;
   --surface: #ffffff;
@@ -11,28 +11,6 @@
   --border: #d1d5db;
   --muted: #4b5563;
   --overlay: rgba(0, 0, 0, 0.04);
-
-  /* Override Tailwind amber for light-mode readability */
-  --color-amber-300: #b45309;
-  --color-amber-400: #b45309;
-  --color-amber-500: #92400e;
-
-  /* Override pink accents */
-  --color-pink-300: #be185d;
-  --color-pink-400: #9d174d;
-  --color-pink-500: #831843;
-
-  /* Override blue accents */
-  --color-blue-300: #1d4ed8;
-  --color-blue-400: #1e40af;
-
-  /* Override emerald accents */
-  --color-emerald-300: #047857;
-  --color-emerald-400: #065f46;
-
-  /* Override purple accents */
-  --color-purple-300: #7e22ce;
-  --color-purple-400: #6b21a8;
 }
 
 .dark {
@@ -46,20 +24,19 @@
   --border: rgba(255, 255, 255, 0.1);
   --muted: #94a3b8;
   --overlay: rgba(255, 255, 255, 0.05);
+}
 
-  /* Restore Tailwind defaults for dark mode */
-  --color-amber-300: #fcd34d;
-  --color-amber-400: #fbbf24;
-  --color-amber-500: #f59e0b;
-  --color-pink-300: #f9a8d4;
-  --color-pink-400: #f472b6;
-  --color-pink-500: #ec4899;
-  --color-blue-300: #93c5fd;
-  --color-blue-400: #60a5fa;
-  --color-emerald-300: #6ee7b7;
-  --color-emerald-400: #34d399;
-  --color-purple-300: #d8b4fe;
-  --color-purple-400: #c084fc;
+/* Light theme only: accent hues used as text drop to their 800 shade so they pass 4.5:1
+   on light and lightly tinted surfaces. Dark mode keeps the Tailwind defaults. */
+:root:not(.dark) {
+  --color-amber-300: #92400e; --color-amber-400: #92400e; --color-amber-500: #92400e;
+  --color-orange-300: #9a3412; --color-orange-400: #9a3412; --color-orange-500: #9a3412;
+  --color-emerald-300: #065f46; --color-emerald-400: #065f46; --color-emerald-500: #065f46;
+  --color-teal-300: #115e59; --color-teal-400: #115e59; --color-teal-500: #115e59;
+  --color-cyan-300: #155e75; --color-cyan-400: #155e75; --color-cyan-500: #155e75;
+  --color-blue-300: #1e40af; --color-blue-400: #1e40af; --color-blue-500: #1e40af;
+  --color-purple-300: #6b21a8; --color-purple-400: #6b21a8; --color-purple-500: #6b21a8;
+  --color-pink-300: #9d174d; --color-pink-400: #9d174d; --color-pink-500: #9d174d;
 }
 
 @theme inline {
@@ -178,6 +155,12 @@ p, li, td, th, span, a {
   background: var(--accent);
   color: #ffffff;
   box-shadow: 0 0 22px -5px rgba(180, 83, 9, 0.5);
+}
+
+/* One visible keyboard focus ring everywhere (WCAG 2.4.7) */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 /* Custom Scrollbar */

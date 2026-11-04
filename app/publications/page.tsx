@@ -92,11 +92,12 @@ const PublicationCard = ({ pub, idx, fadeUp }: PublicationCardProps) => {
             {pub.doi && (
               <a 
                 href={pub.doi.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`} 
+                aria-label={`Read paper: ${pub.title} (opens in a new tab)`}
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="px-8 py-4 rounded-full bg-amber-600/10 border border-amber-600/30 text-amber-400 text-xs font-bold flex items-center gap-2 hover:bg-amber-500 hover:text-foreground shadow-lg shadow-amber-600/10 transition-all uppercase tracking-widest w-max"
               >
-                Read Publication <ExternalLink size={14} />
+                Read paper <ExternalLink size={14} />
               </a>
             )}
           </div>
@@ -150,7 +151,7 @@ export default function PublicationsPage() {
   }, [publicationsByYear, activeTab]);
 
   return (
-    <main className="min-h-screen bg-background text-foreground selection:bg-amber-500/30">
+    <main id="main" className="min-h-screen bg-background text-foreground selection:bg-amber-500/30">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[50vh] bg-amber-600/5 blur-[120px] rounded-full pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-6 py-24 relative z-10">

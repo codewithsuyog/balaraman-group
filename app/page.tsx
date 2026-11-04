@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import {
   ArrowRight, Mail, MapPin, FlaskConical, Beaker, Globe, Shield, BookOpen,
-  ArrowUpRight, Download, Briefcase, GraduationCap,
+  ArrowUpRight, Briefcase, GraduationCap,
   ExternalLink, ChevronRight, Menu, X, Maximize2
 } from 'lucide-react';
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -22,6 +22,7 @@ import {
 } from './data';
 import { featuredPublications as publications } from './publications_featured';
 import ChemText from '../components/ChemText';
+import { useDialogFocus } from '@/components/useDialogFocus';
 
 import { Variants } from 'framer-motion';
 
@@ -101,11 +102,12 @@ const FeaturedPublication = ({ pub }: { pub: PubData }) => {
               <MagneticButton>
               <a 
                 href={pub.doi.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`} 
+                aria-label={`Read paper: ${pub.title} (opens in a new tab)`}
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="cta-shimmer px-8 py-4 rounded-full bg-amber-600/10 border border-amber-600/30 text-amber-400 text-xs font-bold flex items-center gap-2 hover:bg-amber-500 hover:text-foreground shadow-lg shadow-amber-600/10 transition-all uppercase tracking-widest w-max"
               >
-                Read Publication <ExternalLink size={14} />
+                Read paper <ExternalLink size={14} />
               </a>
               </MagneticButton>
             )}
@@ -207,6 +209,7 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [logoModalOpen, setLogoModalOpen] = useState(false);
+  const logoDialogRef = useDialogFocus<HTMLDivElement>(logoModalOpen);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -260,7 +263,7 @@ export default function Home() {
     { id: 'patents', label: 'Patents' },
     { id: 'team', label: 'People' },
     { id: 'gallery', label: 'Gallery' },
-    { id: 'contact', label: 'Contact Us' },
+    { id: 'contact', label: 'Contact' },
   ];
 
   const researchCategories = useMemo(() => {
@@ -287,7 +290,8 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="flex flex-col items-center w-full overflow-hidden bg-background selection:bg-[var(--accent)]/30">
+    <>
+    <main id="main" className="flex flex-col items-center w-full overflow-hidden bg-background selection:bg-[var(--accent)]/30">
       
       {/* FLOATING NAVIGATION MENU */}
       <motion.nav 
@@ -500,7 +504,7 @@ export default function Home() {
               <div className="relative flex-1 min-h-[400px] w-full group overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-8 bg-gradient-to-b from-background to-transparent z-10 pointer-events-none opacity-0 transition-opacity"></div>
                 
-                <div className="absolute inset-0 overflow-y-auto overflow-x-hidden pr-3 scrollbar-thin scrollbar-thumb-foreground/10 hover:scrollbar-thumb-amber-500/50 scrollbar-track-transparent">
+                <div tabIndex={0} role="region" aria-label="Lab news" className="absolute inset-0 overflow-y-auto overflow-x-hidden pr-3 scrollbar-thin scrollbar-thumb-foreground/10 hover:scrollbar-thumb-amber-500/50 scrollbar-track-transparent">
                   <div className="flex flex-col gap-4 pb-12">
                     {news.map((item, idx) => (
                       <div
@@ -647,7 +651,7 @@ export default function Home() {
             <div className="flex flex-wrap gap-4">
                <MagneticButton>
                <a href={cvLink} target="_blank" rel="noopener noreferrer" className="cta-shimmer inline-flex items-center gap-3 px-10 py-5 rounded-full bg-foreground text-background font-bold hover:bg-amber-600 hover:text-foreground transition-all shadow-2xl">
-                  <Download size={20} /> Download Academic CV
+                  <ExternalLink size={20} /> View CV
                </a>
                </MagneticButton>
                <MagneticButton>
@@ -725,7 +729,7 @@ export default function Home() {
 
                   <MagneticButton>
                   <Link href={`/research#${cat.id}`} className="cta-shimmer flex items-center gap-3 px-8 py-4 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-xs font-black uppercase tracking-[0.2em] hover:bg-amber-600 hover:text-white hover:border-amber-600 transition-all mt-auto shadow-lg">
-                     View Research <ArrowRight size={14} />
+                     About {cat.title.toLowerCase()} <ArrowRight size={14} />
                   </Link>
                   </MagneticButton>
                 </div>
@@ -745,7 +749,7 @@ export default function Home() {
             </div>
             <MagneticButton>
             <Link href="/publications" className="cta-shimmer px-8 py-4 rounded-full border border-amber-500/30 text-amber-400 font-bold hover:bg-amber-500/10 transition-all flex items-center gap-2 uppercase text-xs tracking-widest font-mono">
-              View All {piStats.publications} Publications <ArrowRight size={18} />
+              All {piStats.publications} publications <ArrowRight size={18} />
             </Link>
             </MagneticButton>
           </div>
@@ -772,7 +776,7 @@ export default function Home() {
             </div>
             <MagneticButton>
             <Link href="/patents" className="cta-shimmer px-8 py-4 rounded-full border border-amber-500/30 text-amber-400 font-bold hover:bg-amber-500/10 transition-all flex items-center gap-2 uppercase text-xs tracking-widest font-mono">
-              View All Patents <ArrowRight size={18} />
+              All patents <ArrowRight size={18} />
             </Link>
             </MagneticButton>
           </div>
@@ -830,7 +834,7 @@ export default function Home() {
       {/* 5. TEAM & GALLERY PREVIEW SECTION */}
       <section id="team" className="w-full py-32 px-6 relative z-10 bg-foreground/[0.01] dot-grid-bg">
          <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
-            <h2 className="text-4xl md:text-6xl font-black mb-12 uppercase tracking-tighter text-gradient">Lab Members</h2>
+            <h2 className="text-4xl md:text-6xl font-black mb-12 uppercase tracking-tighter text-gradient">People</h2>
             
             <div className="w-full space-y-24">
               {/* Postdocs */}
@@ -882,7 +886,7 @@ export default function Home() {
 
               <div className="mt-16 flex justify-start">
                  <Link href="/team#alumni" className="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-amber-500/30 text-amber-400 font-bold hover:bg-amber-500/10 transition-all uppercase text-xs tracking-widest font-mono">
-                   Open Full Alumni Registry <ArrowRight size={18} />
+                   See all alumni <ArrowRight size={18} />
                  </Link>
               </div>
 
@@ -898,7 +902,7 @@ export default function Home() {
               <p className="text-sm font-extrabold text-accent uppercase tracking-[0.2em]">Lab Images & Photos</p>
               <div className="h-px w-12 bg-accent"></div>
             </div>
-            <h2 className="text-4xl md:text-6xl font-black mb-12 uppercase tracking-tighter text-gradient">Lab Memories</h2>
+            <h2 className="text-4xl md:text-6xl font-black mb-12 uppercase tracking-tighter text-gradient">Gallery</h2>
 
             {/* Interactive Gallery Carousel with Thumbnails */}
             <div className="w-full max-w-5xl mb-12">
@@ -919,7 +923,7 @@ export default function Home() {
               <div className="h-px w-12 bg-accent"></div>
               <p className="text-sm font-extrabold text-accent tracking-[0.2em] uppercase">Get in Touch</p>
             </div>
-            <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-8 text-gradient uppercase">Contact Us</h2>
+            <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-8 text-gradient uppercase">Contact</h2>
             <p className="text-xl text-foreground/90 font-light mb-12">
               Interested in joining our group or collaborating with us? We&apos;d love to hear from you.
             </p>
@@ -998,156 +1002,45 @@ export default function Home() {
           </div>
           
           <div className="w-full md:w-1/2 p-10 rounded-[3rem] bg-foreground/[0.02] border border-foreground/5">
-             <h3 className="text-2xl font-bold text-foreground mb-6 uppercase tracking-tight">Open Positions</h3>
+             <h3 className="text-2xl font-bold text-foreground mb-6 uppercase tracking-tight">Join the lab</h3>
              <p className="text-foreground font-light mb-8 leading-relaxed">
-               We are always looking for motivated Postdocs, Ph.D. students, and Master&apos;s students to join our lab. Please send your CV and a brief description of your research interests to Prof. Balaraman.
+               We welcome motivated Ph.D. students, postdocs and Master&apos;s students. Email Dr. Balaraman your CV and a short note on your research interests.
              </p>
              <div className="space-y-4">
                <div className="p-4 rounded-2xl bg-amber-500/5 border border-amber-500/10 flex items-center gap-4">
                  <GraduationCap size={24} className="text-amber-400" />
                  <div>
-                   <h4 className="text-sm font-bold text-foreground">Ph.D. Positions</h4>
-                   <p className="text-xs text-foreground/90">Through regular IISER Tirupati admissions</p>
+                   <h4 className="text-sm font-bold text-foreground">Ph.D.</h4>
+                   <p className="text-xs text-foreground/90">Apply through IISER Tirupati&apos;s regular Ph.D. admissions</p>
                  </div>
                </div>
                <div className="p-4 rounded-2xl bg-amber-500/5 border border-amber-500/10 flex items-center gap-4">
                  <Briefcase size={24} className="text-amber-400" />
                  <div>
-                   <h4 className="text-sm font-bold text-foreground">Postdoc Positions</h4>
-                   <p className="text-xs text-foreground/90">NPDF / Institute Fellowships</p>
+                   <h4 className="text-sm font-bold text-foreground">Postdoc</h4>
+                   <p className="text-xs text-foreground/90">Apply with a fellowship such as NPDF or an institute fellowship</p>
                  </div>
                </div>
              </div>
+             <a
+               href="mailto:eb.raman@iisertirupati.ac.in?subject=Joining%20the%20lab"
+               className="mt-8 inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-amber-500 text-background text-sm font-semibold hover:opacity-90 transition-opacity"
+             >
+               <Mail size={16} /> Email Dr. Balaraman
+             </a>
           </div>
         </div>
       </section>
 
-      {/* 7. COMPREHENSIVE LAB FOOTER */}
-      <footer className="w-full relative z-10 overflow-hidden border-t border-foreground/10 bg-foreground/[0.02] pt-16 pb-12">
-        {/* Subtle Decorative Ambient Glow */}
-        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-gradient-to-b from-amber-500/10 via-emerald-500/5 to-transparent blur-3xl pointer-events-none -z-10"></div>
-
-        <div className="max-w-7xl mx-auto px-6">
-          {/* Top Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 pb-14 border-b border-foreground/10">
-            
-            {/* Col 1 & 2: Brand Identity */}
-            <div className="lg:col-span-2 space-y-4">
-              <div className="flex items-center gap-3.5">
-                {/* White Logo Badge */}
-                <div 
-                  onClick={() => setLogoModalOpen(true)}
-                  className="w-12 h-12 rounded-xl bg-white p-1.5 shadow-md border border-foreground/10 flex items-center justify-center shrink-0 hover:scale-105 active:scale-95 transition-all cursor-pointer group/ftlogo"
-                  title="Click to maximize lab emblem"
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setLogoModalOpen(true); }}
-                >
-                  <img src="/images/lab-logo-128.webp" alt="EBR Lab Logo" className="w-full h-full object-contain" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-foreground tracking-tight">Raman&apos;s Research Lab</h3>
-                  <p className="text-xs font-mono text-amber-500 uppercase tracking-wider font-semibold">IISER Tirupati</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Col 3: Quick Navigation */}
-            <div>
-              <h4 className="text-xs font-mono text-amber-500 uppercase tracking-[0.2em] font-bold mb-4">Navigation</h4>
-              <ul className="space-y-2.5 text-xs sm:text-sm text-foreground/70 font-light">
-                <li><a href="#home" className="hover:text-amber-500 transition-colors">Home</a></li>
-                <li><a href="#pi" className="hover:text-amber-500 transition-colors">About PI</a></li>
-                <li><Link href="/team" className="hover:text-amber-500 transition-colors">Lab Members</Link></li>
-                <li><Link href="/research" className="hover:text-amber-500 transition-colors">Research Pillars</Link></li>
-                <li><Link href="/publications" className="hover:text-amber-500 transition-colors">Publications</Link></li>
-                <li><Link href="/gallery" className="hover:text-amber-500 transition-colors">Lab Gallery</Link></li>
-                <li><Link href="/alumni" className="hover:text-amber-500 transition-colors">Alumni Registry</Link></li>
-              </ul>
-            </div>
-
-            {/* Col 4: Research Pillars */}
-            <div>
-              <h4 className="text-xs font-mono text-amber-500 uppercase tracking-[0.2em] font-bold mb-4">Research Focus</h4>
-              <ul className="space-y-2.5 text-xs sm:text-sm text-foreground/70 font-light">
-                <li><Link href="/research" className="hover:text-emerald-500 transition-colors">Homogeneous Catalysis</Link></li>
-                <li><Link href="/research" className="hover:text-emerald-500 transition-colors">Heterogeneous Catalysis</Link></li>
-                <li><Link href="/research" className="hover:text-emerald-500 transition-colors">Pincer Complex Chemistry</Link></li>
-                <li><Link href="/research" className="hover:text-emerald-500 transition-colors">Hydrogen Generation</Link></li>
-                <li><Link href="/research" className="hover:text-emerald-500 transition-colors">CO₂ & C1 Chemistry</Link></li>
-                <li><Link href="/patents" className="hover:text-emerald-500 transition-colors">Patents & IP</Link></li>
-              </ul>
-            </div>
-
-            {/* Col 5: Location & Contact */}
-            <div>
-              <h4 className="text-xs font-mono text-amber-500 uppercase tracking-[0.2em] font-bold mb-4">Contact</h4>
-              <p className="text-xs text-foreground/70 leading-relaxed font-light mb-3">
-                IISER Tirupati, Yerpedu Mandal,<br />
-                Andhra Pradesh 517619, India
-              </p>
-              <a 
-                href="mailto:eb.raman@iisertirupati.ac.in" 
-                className="text-xs font-mono text-amber-500 hover:underline block break-all mb-4"
-              >
-                eb.raman@iisertirupati.ac.in
-              </a>
-              <a 
-                href="https://www.iisertirupati.ac.in" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-mono text-foreground/60 hover:text-foreground transition-colors"
-              >
-                iisertirupati.ac.in <ArrowUpRight size={12} />
-              </a>
-            </div>
-
-          </div>
-
-          {/* Bottom Bar */}
-          <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-mono text-foreground/60">
-            <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 text-center md:text-left">
-              <p>{`© ${new Date().getFullYear()} Raman's Research Lab. All rights reserved.`}</p>
-              <span className="hidden md:inline text-foreground/70">|</span>
-              <p className="text-foreground/80">
-                Designed & Developed by <span className="font-bold text-foreground">Suyog Andhare</span>
-              </p>
-            </div>
-            <div className="flex items-center gap-2.5">
-              <a href={piStats.googleScholar} target="_blank" rel="noopener noreferrer" 
-                className="w-8 h-8 rounded-lg bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:text-amber-500 hover:border-amber-500/30 transition-all"
-                title="Google Scholar" aria-label="Google Scholar">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269z"/><circle cx="12" cy="16.5" r="5.5"/></svg>
-              </a>
-              <a href={`https://orcid.org/${piStats.orcid}`} target="_blank" rel="noopener noreferrer" 
-                className="w-8 h-8 rounded-lg bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:text-emerald-500 hover:border-emerald-500/30 transition-all"
-                title="ORCID" aria-label="ORCID">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-1.847-1.188-3.722-3.978-3.722h-2.341z"/></svg>
-              </a>
-              <a href={piStats.twitter} target="_blank" rel="noopener noreferrer" 
-                className="w-8 h-8 rounded-lg bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:text-foreground hover:border-foreground/30 transition-all"
-                title="𝕏" aria-label="𝕏">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-              </a>
-              <a href={piStats.linkedin} target="_blank" rel="noopener noreferrer" 
-                className="w-8 h-8 rounded-lg bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:text-[#0a66c2] hover:border-[#0a66c2]/30 transition-all"
-                title="LinkedIn" aria-label="LinkedIn">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z"/></svg>
-              </a>
-              <a href="mailto:eb.raman@iisertirupati.ac.in" 
-                className="w-8 h-8 rounded-lg bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:text-amber-500 hover:border-amber-500/30 transition-all"
-                title="Email" aria-label="Email">
-                <Mail size={14} />
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
 
       {/* FULLSCREEN LOGO MAXIMIZE MODAL */}
       <AnimatePresence>
         {logoModalOpen && (
           <motion.div
+            ref={logoDialogRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label="EBR lab emblem"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -1224,5 +1117,127 @@ export default function Home() {
       </AnimatePresence>
 
     </main>
+      {/* 7. COMPREHENSIVE LAB FOOTER */}
+      <footer className="w-full relative z-10 overflow-hidden border-t border-foreground/10 bg-foreground/[0.02] pt-16 pb-12">
+        {/* Subtle Decorative Ambient Glow */}
+        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-gradient-to-b from-amber-500/10 via-emerald-500/5 to-transparent blur-3xl pointer-events-none -z-10"></div>
+
+        <div className="max-w-7xl mx-auto px-6">
+          {/* Top Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 pb-14 border-b border-foreground/10">
+            
+            {/* Col 1 & 2: Brand Identity */}
+            <div className="lg:col-span-2 space-y-4">
+              <div className="flex items-center gap-3.5">
+                {/* White Logo Badge */}
+                <div 
+                  onClick={() => setLogoModalOpen(true)}
+                  className="w-12 h-12 rounded-xl bg-white p-1.5 shadow-md border border-foreground/10 flex items-center justify-center shrink-0 hover:scale-105 active:scale-95 transition-all cursor-pointer group/ftlogo"
+                  title="Click to maximize lab emblem"
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setLogoModalOpen(true); }}
+                >
+                  <img src="/images/lab-logo-128.webp" alt="EBR Lab Logo" className="w-full h-full object-contain" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-foreground tracking-tight">Raman&apos;s Research Lab</h3>
+                  <p className="text-xs font-mono text-amber-500 uppercase tracking-wider font-semibold">IISER Tirupati</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Col 3: Quick Navigation */}
+            <div>
+              <h4 className="text-xs font-mono text-amber-500 uppercase tracking-[0.2em] font-bold mb-4">Navigation</h4>
+              <ul className="space-y-2.5 text-xs sm:text-sm text-foreground/70 font-light">
+                <li><a href="#home" className="hover:text-amber-500 transition-colors">Home</a></li>
+                <li><a href="#pi" className="hover:text-amber-500 transition-colors">About PI</a></li>
+                <li><Link href="/team" className="hover:text-amber-500 transition-colors">People</Link></li>
+                <li><Link href="/research" className="hover:text-amber-500 transition-colors">Research Pillars</Link></li>
+                <li><Link href="/publications" className="hover:text-amber-500 transition-colors">Publications</Link></li>
+                <li><Link href="/gallery" className="hover:text-amber-500 transition-colors">Gallery</Link></li>
+                <li><Link href="/alumni" className="hover:text-amber-500 transition-colors">Alumni Registry</Link></li>
+              </ul>
+            </div>
+
+            {/* Col 4: Research Pillars */}
+            <div>
+              <h4 className="text-xs font-mono text-amber-500 uppercase tracking-[0.2em] font-bold mb-4">Research Focus</h4>
+              <ul className="space-y-2.5 text-xs sm:text-sm text-foreground/70 font-light">
+                <li><Link href="/research" className="hover:text-emerald-500 transition-colors">Homogeneous Catalysis</Link></li>
+                <li><Link href="/research" className="hover:text-emerald-500 transition-colors">Heterogeneous Catalysis</Link></li>
+                <li><Link href="/research" className="hover:text-emerald-500 transition-colors">Pincer Complex Chemistry</Link></li>
+                <li><Link href="/research" className="hover:text-emerald-500 transition-colors">Hydrogen Generation</Link></li>
+                <li><Link href="/research" className="hover:text-emerald-500 transition-colors">CO₂ & C1 Chemistry</Link></li>
+                <li><Link href="/patents" className="hover:text-emerald-500 transition-colors">Patents & IP</Link></li>
+              </ul>
+            </div>
+
+            {/* Col 5: Location & Contact */}
+            <div>
+              <h4 className="text-xs font-mono text-amber-500 uppercase tracking-[0.2em] font-bold mb-4">Contact</h4>
+              <p className="text-xs text-foreground/70 leading-relaxed font-light mb-3">
+                IISER Tirupati, Yerpedu Mandal,<br />
+                Andhra Pradesh 517619, India
+              </p>
+              <a 
+                href="mailto:eb.raman@iisertirupati.ac.in" 
+                className="text-xs font-mono text-amber-500 hover:underline block break-all mb-4"
+              >
+                eb.raman@iisertirupati.ac.in
+              </a>
+              <a 
+                href="https://www.iisertirupati.ac.in" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-mono text-foreground/70 hover:text-foreground transition-colors"
+              >
+                iisertirupati.ac.in <ArrowUpRight size={12} />
+              </a>
+            </div>
+
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-mono text-foreground/70">
+            <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 text-center md:text-left">
+              <p>{`© ${new Date().getFullYear()} Raman's Research Lab. All rights reserved.`}</p>
+              <span className="hidden md:inline text-foreground/70">|</span>
+              <p className="text-foreground/80">
+                Designed & Developed by <span className="font-bold text-foreground">Suyog Andhare</span>
+              </p>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <a href={piStats.googleScholar} target="_blank" rel="noopener noreferrer" 
+                className="w-8 h-8 rounded-lg bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:text-amber-500 hover:border-amber-500/30 transition-all"
+                title="Google Scholar" aria-label="Google Scholar">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269z"/><circle cx="12" cy="16.5" r="5.5"/></svg>
+              </a>
+              <a href={`https://orcid.org/${piStats.orcid}`} target="_blank" rel="noopener noreferrer" 
+                className="w-8 h-8 rounded-lg bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:text-emerald-500 hover:border-emerald-500/30 transition-all"
+                title="ORCID" aria-label="ORCID">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-1.847-1.188-3.722-3.978-3.722h-2.341z"/></svg>
+              </a>
+              <a href={piStats.twitter} target="_blank" rel="noopener noreferrer" 
+                className="w-8 h-8 rounded-lg bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:text-foreground hover:border-foreground/30 transition-all"
+                title="𝕏" aria-label="𝕏">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+              <a href={piStats.linkedin} target="_blank" rel="noopener noreferrer" 
+                className="w-8 h-8 rounded-lg bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:text-[#0a66c2] hover:border-[#0a66c2]/30 transition-all"
+                title="LinkedIn" aria-label="LinkedIn">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z"/></svg>
+              </a>
+              <a href="mailto:eb.raman@iisertirupati.ac.in" 
+                className="w-8 h-8 rounded-lg bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:text-amber-500 hover:border-amber-500/30 transition-all"
+                title="Email" aria-label="Email">
+                <Mail size={14} />
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </>
   );
 }
