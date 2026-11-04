@@ -252,6 +252,7 @@ export default function RootLayout({
         <link rel="image_src" href="https://www.ebalaraman.com/pi-photo.webp" />
       </head>
       <body className="font-sans min-h-screen bg-background text-foreground flex flex-col transition-colors duration-300 select-none" suppressHydrationWarning>
+        <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-background focus:text-foreground">Skip to content</a>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <div className="contents">
             <div className="fixed inset-0 z-[-1] opacity-10 pointer-events-none overflow-hidden">

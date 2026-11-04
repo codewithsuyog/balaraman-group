@@ -243,7 +243,7 @@ export default function TeamPage() {
   }, []);
   
   return (
-    <main className="min-h-screen bg-background text-foreground selection:bg-amber-500/30 pb-32">
+    <main id="main" className="min-h-screen bg-background text-foreground selection:bg-amber-500/30 pb-32">
       <section className="relative pt-32 pb-24 px-6 border-b border-foreground/5 overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-amber-600/10 via-transparent to-transparent opacity-50"></div>
         

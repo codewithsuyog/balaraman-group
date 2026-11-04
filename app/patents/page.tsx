@@ -70,7 +70,7 @@ const PatentCard = ({ patent, type }: { patent: Patent, type: string }) => (
 
 export default function PatentsPage() {
   return (
-    <main className="min-h-screen bg-background text-foreground pt-32 pb-20 px-6">
+    <main id="main" className="min-h-screen bg-background text-foreground pt-32 pb-20 px-6">
       <div className="max-w-7xl mx-auto">
         <motion.div initial={false} animate="visible" variants={fadeUp} className="mb-20">
           <div className="flex items-center gap-4 mb-8">

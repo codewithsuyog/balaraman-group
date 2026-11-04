@@ -28,7 +28,7 @@ const fadeUp: Variants = {
 
 export default function AlumniPage() {
   return (
-    <main className="min-h-screen bg-background text-foreground selection:bg-amber-500/30">
+    <main id="main" className="min-h-screen bg-background text-foreground selection:bg-amber-500/30">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[50vh] bg-amber-600/5 blur-[120px] rounded-full pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-6 py-24 relative z-10">
@@ -37,7 +37,7 @@ export default function AlumniPage() {
         <motion.div initial={false} animate="visible" variants={fadeUp} className="mb-20">
           <Link href="/team" className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-foreground/[0.03] border border-foreground/10 hover:border-amber-500/30 text-amber-400 hover:text-amber-300 font-bold mb-8 transition-all text-xs font-mono uppercase tracking-wider group">
             <img src="/images/lab-logo-128.webp" alt="EBR Lab Logo" className="w-5 h-5 rounded-md object-contain bg-white/90 p-0.5" />
-            <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Back to Lab Members
+            <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Back to People
           </Link>
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">Alumni Registry</h1>
           <p className="text-foreground/80 text-lg font-light max-w-2xl leading-relaxed">
@@ -111,7 +111,7 @@ export default function AlumniPage() {
                   <div key={idx} className="p-4 rounded-xl bg-foreground/[0.02] border border-foreground/5 hover:border-purple-500/20 transition-all flex justify-between items-center gap-4">
                     <div>
                       <h3 className="text-sm font-bold text-foreground">{alumnus.name}</h3>
-                      <p className="text-xs text-foreground/60 font-light truncate max-w-[200px]">{alumnus.institution}</p>
+                      <p className="text-xs text-foreground/70 font-light truncate max-w-[200px]">{alumnus.institution}</p>
                     </div>
                     <span className="text-xs font-mono text-purple-400 shrink-0">{alumnus.year}</span>
                   </div>
@@ -183,7 +183,7 @@ export default function AlumniPage() {
                   {team.alumniBtech.map((alumnus: TeamMember, idx: number) => (
                     <div key={idx} className="p-3 rounded-lg bg-foreground/[0.02] border border-foreground/5 flex justify-between items-center text-sm">
                       <span className="font-medium text-foreground">{alumnus.name}</span>
-                      <span className="text-xs text-foreground/60">{alumnus.institution}</span>
+                      <span className="text-xs text-foreground/70">{alumnus.institution}</span>
                     </div>
                   ))}
                 </div>

@@ -71,7 +71,7 @@ function FlipCard({
                     style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
                 >
                     <div className="text-center">
-                        <p className="text-[8px] font-bold text-amber-400 uppercase tracking-widest mb-1">View</p>
+                        <p className="text-xs font-bold text-[#fbbf24] uppercase tracking-widest mb-1">View</p>
                         <p className="text-xs font-medium text-white">Paper</p>
                     </div>
                 </div>
@@ -255,7 +255,7 @@ export default function ScrollMorphHero() {
                     <h2 className="text-3xl md:text-5xl font-black text-foreground tracking-tight mb-4">
                         Recent Publications
                     </h2>
-                    <p className="text-sm md:text-base text-foreground/60 max-w-lg leading-relaxed">
+                    <p className="text-sm md:text-base text-foreground/70 max-w-lg leading-relaxed">
                         Discover a world where sustainable chemistry meets innovation. <br className="hidden md:block" />
                         Scroll through our curated collection of high-impact research.
                     </p>
