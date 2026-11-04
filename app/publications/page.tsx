@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { ArrowLeft, BookOpen, ExternalLink } from 'lucide-react';
 import { publications } from '../publications_master';
 import ChemText from '../../components/ChemText';
-import ScrollMorphHero from '@/components/ui/scroll-morph-hero';
 
 import { Variants } from 'framer-motion';
 
@@ -42,82 +41,64 @@ const PublicationCard = ({ pub, idx, fadeUp }: PublicationCardProps) => {
 
   const hasCover = !!pub.coverImage && !coverFailed;
   const hasScheme = !!pub.schemeImage && !schemeFailed;
-  const noImages = !hasCover && !hasScheme;
 
   return (
-    <motion.div 
-      key={pub.id || idx} 
+    <motion.article
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
       variants={fadeUp}
-      transition={{ delay: (idx % 10) * 0.05 }}
-      className="group relative flex flex-col gap-8 p-5 md:p-10 rounded-2xl md:rounded-[3rem] bg-foreground/[0.03] border border-foreground/10 hover:border-amber-500/30 hover:bg-foreground/5 transition-all duration-500 shadow-xl overflow-hidden"
+      transition={{ delay: (idx % 6) * 0.04 }}
+      className="flex flex-col md:flex-row gap-6 md:gap-8 items-start p-6 md:p-8 rounded-2xl bg-surface border border-line"
     >
-      <div className="flex flex-col md:flex-row gap-8 items-start">
-        {/* Cover Image - Left */}
-        {hasCover && (
-          <div className="w-[120px] h-48 rounded-2xl bg-foreground border border-foreground/10 overflow-hidden relative group-hover:border-amber-500/40 transition-all p-2 shadow-2xl shrink-0">
-            <img 
-              src={pub.coverImage} 
-              alt={`Journal cover art for: ${pub.title ?? "publication " + pub.id}`} 
-              loading="lazy" decoding="async"
-              className={`w-full h-full object-contain ${coverFailed ? 'opacity-20 p-4' : ''}`}
-              onError={() => setCoverFailed(true)}
-            />
-
-          </div>
-        )}
-
-        {/* Paper Details - Center */}
-        <div className="flex-1 flex flex-col justify-center min-w-0">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="px-4 py-1.5 rounded-full bg-amber-500/10 text-amber-400 text-xs font-black tracking-widest uppercase border border-amber-500/20">
-              {pub.year}
-            </span>
-            {pub.journal && (
-              <span className="text-xs text-foreground/90 font-mono italic">{pub.journal}</span>
-            )}
-          </div>
-          
-          <div className="text-base text-foreground leading-relaxed mb-6 font-light border-l-2 border-amber-500/30 pl-6">
-            <span className="text-amber-400 font-bold mr-2 text-lg">{pub.id}.</span>
-            {pub.title && (
-              <ChemText text={pub.title} as="strong" className="block text-foreground text-lg font-bold mb-2 leading-snug tracking-tight not-italic" />
-            )}
-            <span className="text-sm text-foreground"><ChemText text={pub.fullText || `${pub.authors}. ${pub.title}. ${pub.journal}, ${pub.year}${pub.details}`} /></span>
-          </div>
-          
-          <div className="flex items-center gap-4 flex-wrap mt-auto">
-            {pub.doi && (
-              <a 
-                href={pub.doi.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`} 
-                aria-label={`Read paper: ${pub.title} (opens in a new tab)`}
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="px-8 py-4 rounded-full bg-amber-600/10 border border-amber-600/30 text-amber-400 text-xs font-bold flex items-center gap-2 hover:bg-amber-500 hover:text-foreground shadow-lg shadow-amber-600/10 transition-all uppercase tracking-widest w-max"
-              >
-                Read paper <ExternalLink size={14} />
-              </a>
-            )}
-          </div>
+      {hasCover && (
+        <div className="w-24 h-32 shrink-0 rounded-lg bg-white border border-line p-1.5">
+          <img
+            src={pub.coverImage}
+            alt={`Journal cover art for: ${pub.title ?? "publication " + pub.id}`}
+            loading="lazy" decoding="async"
+            className="w-full h-full object-contain"
+            onError={() => setCoverFailed(true)}
+          />
         </div>
+      )}
 
-        {/* Scheme Image - Right */}
-        {hasScheme && (
-          <div className="w-full md:w-[300px] h-48 rounded-2xl bg-foreground border border-foreground/10 overflow-hidden relative group-hover:border-amber-500/40 transition-all shadow-2xl p-2 shrink-0">
-            <img 
-              src={pub.schemeImage} 
-              alt={`Reaction scheme from: ${pub.title ?? "publication " + pub.id}`} 
-              loading="lazy" decoding="async"
-              className={`w-full h-full object-contain ${schemeFailed ? 'opacity-20 p-4' : ''}`}
-              onError={() => setSchemeFailed(true)}
-            />
-
-          </div>
+      <div className="flex-1 min-w-0">
+        <p className="font-mono text-xs text-muted mb-2 tabular-nums">
+          <span className="text-accent">[{pub.id}]</span> {pub.year}{pub.journal && <> · {pub.journal}</>}
+          {(pub.volume || pub.pages) && <> · {[pub.volume, pub.pages].filter(Boolean).join(', ')}</>}
+        </p>
+        {pub.title && (
+          <h3 className="text-lg font-medium leading-snug text-foreground mb-2">
+            <ChemText text={pub.title} />
+          </h3>
+        )}
+        <p className="text-sm text-secondary leading-relaxed mb-4">{pub.authors}</p>
+        {pub.doi && (
+          <a
+            href={pub.doi.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`}
+            aria-label={`Read paper: ${pub.title} (opens in a new tab)`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-sm text-accent hover:underline underline-offset-4"
+          >
+            Read paper <ExternalLink size={14} />
+          </a>
         )}
       </div>
-    </motion.div>
+
+      {hasScheme && (
+        <div className="w-full md:w-72 h-44 shrink-0 rounded-lg bg-white border border-line p-2">
+          <img
+            src={pub.schemeImage}
+            alt={`Reaction scheme from: ${pub.title ?? "publication " + pub.id}`}
+            loading="lazy" decoding="async"
+            className="w-full h-full object-contain"
+            onError={() => setSchemeFailed(true)}
+          />
+        </div>
+      )}
+    </motion.article>
   );
 };
 
@@ -151,64 +132,44 @@ export default function PublicationsPage() {
   }, [publicationsByYear, activeTab]);
 
   return (
-    <main id="main" className="min-h-screen bg-background text-foreground selection:bg-amber-500/30">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[50vh] bg-amber-600/5 blur-[120px] rounded-full pointer-events-none"></div>
+    <main id="main" className="min-h-screen bg-background text-foreground selection:bg-raised">
 
       <div className="max-w-7xl mx-auto px-6 py-24 relative z-10">
         
         {/* Header */}
         <motion.div initial={false} animate="visible" variants={fadeUp} className="mb-20">
-          <Link href="/#publications" className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-foreground/[0.03] border border-foreground/10 hover:border-amber-500/30 text-amber-400 hover:text-amber-300 font-bold mb-8 transition-all text-xs font-mono uppercase tracking-wider group">
-            <img src="/images/lab-logo-128.webp" alt="EBR Lab Logo" className="w-5 h-5 rounded-md object-contain bg-white/90 p-0.5" />
-            <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Back to Home
+          <Link href="/#publications" className="inline-flex items-center gap-1.5 text-sm text-secondary hover:text-foreground mb-8 transition-colors"><ArrowLeft size={14} aria-hidden="true" /> Back to home
           </Link>
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">Publications Archive</h1>
-          <p className="text-foreground text-lg font-light max-w-2xl">
-            A comprehensive record of all scholarly articles, peer-reviewed papers, and research outputs from Raman&apos;s Research Lab.
+          <h1 className="text-4xl md:text-6xl text-foreground leading-[1.08] mb-6">Publications</h1>
+          <p className="text-secondary text-lg max-w-2xl">
+            Every paper from Raman&apos;s Research Lab, newest first
           </p>
         </motion.div>
 
-        {/* Morphing Hero Section */}
-        <div className="mb-20">
-          <ScrollMorphHero />
-        </div>
-
-        {/* Category Tabs */}
-        <div className="flex gap-4 mb-16 flex-wrap">
-          <button 
-            onClick={() => setActiveTab('independent')} 
-            className={`px-8 py-4 rounded-full text-sm font-bold uppercase tracking-widest transition-all ${
-              activeTab === 'independent' 
-                ? 'bg-amber-500 text-background' 
-                : 'bg-foreground/5 text-foreground border border-foreground/10 hover:border-amber-500/30 hover:text-foreground/90'
-            }`}
-          >
-            Independent Career Publications
-          </button>
-          <button 
-            onClick={() => setActiveTab('early')} 
-            className={`px-8 py-4 rounded-full text-sm font-bold uppercase tracking-widest transition-all ${
-              activeTab === 'early' 
-                ? 'bg-amber-500 text-background' 
-                : 'bg-foreground/5 text-foreground border border-foreground/10 hover:border-amber-500/30 hover:text-foreground/90'
-            }`}
-          >
-            Doctoral & Postdoctoral Publications
-          </button>
+        {/* Career stage filter */}
+        <div className="flex gap-2 mb-12 flex-wrap" role="group" aria-label="Filter by career stage">
+          {([['independent', 'Independent career'], ['early', 'Doctoral and postdoctoral']] as const).map(([key, label]) => (
+            <button
+              key={key}
+              onClick={() => setActiveTab(key)}
+              aria-pressed={activeTab === key}
+              className={`h-10 px-4 rounded-lg text-sm font-medium transition-colors ${
+                activeTab === key ? 'bg-foreground text-background' : 'border border-line text-secondary hover:text-foreground hover:bg-raised'
+              }`}
+            >
+              {label}
+            </button>
+          ))}
         </div>
 
         {/* Content */}
-        <div className="space-y-32">
+        <div className="space-y-16">
           {filteredByYear.map(([year, pubs], yearIdx) => (
             <div key={year} className="relative">
-              <div className="sticky top-24 z-20 mb-12 inline-block">
-                <h2 className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-foreground/50 drop-shadow-sm">
-                  {year}
-                </h2>
-                <div className="h-1 w-1/2 bg-amber-500/50 mt-2 rounded-full"></div>
-              </div>
-              
-              <div className="grid grid-cols-1 gap-8 md:pl-12 border-l border-foreground/5">
+              <h2 className="text-3xl text-foreground mb-6">
+                {year} <span className="font-mono text-sm text-muted ml-1 tabular-nums">{pubs.length}</span>
+              </h2>
+              <div className="grid grid-cols-1 gap-4">
                 {pubs.map((pub, idx) => (
                   <PublicationCard key={pub.id || idx} pub={pub} idx={idx} fadeUp={fadeUp} />
                 ))}

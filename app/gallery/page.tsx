@@ -20,7 +20,7 @@ const GalleryCard = ({ num, folder, index, onOpen }: { num: number, folder: stri
       viewport={{ once: true }}
       transition={{ delay: (num % 6) * 0.05 }}
       whileHover={{ scale: 1.03 }}
-      className="group relative aspect-[16/10] rounded-[2.5rem] overflow-hidden border border-foreground/10 shadow-2xl bg-foreground/5 cursor-pointer"
+      className="group relative aspect-[16/10] rounded-2xl overflow-hidden border border-line bg-surface cursor-pointer"
       onClick={() => !failed && onOpen(index)}
       role="button"
       tabIndex={0}
@@ -33,7 +33,7 @@ const GalleryCard = ({ num, folder, index, onOpen }: { num: number, folder: stri
           alt="" // the card's aria-label already names the photo
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className={`object-contain transition-transform duration-500 group-hover:scale-105 ${failed ? 'opacity-20' : ''}`}
+          className={`object-contain transition-transform duration-200  ${failed ? 'opacity-20' : ''}`}
           priority={index < 3}
           onError={() => setFailed(true)}
         />
@@ -43,7 +43,7 @@ const GalleryCard = ({ num, folder, index, onOpen }: { num: number, folder: stri
         <p className="text-white text-sm">{captionOf(num)}</p>
       </div>
 
-      <div className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 scale-50 group-hover:scale-100">
+      <div className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-colors duration-200 scale-50 group-hover:scale-100">
         <Maximize2 size={20} className="text-white" />
       </div>
     </motion.div>
@@ -81,18 +81,16 @@ export default function GalleryPage() {
             initial={false}
             animate={{ opacity: 1, x: 0 }}
           >
-            <Link href="/#gallery" className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-foreground/[0.03] border border-foreground/10 hover:border-amber-500/30 text-amber-400 hover:text-amber-300 font-bold mb-6 transition-all text-xs font-mono uppercase tracking-wider group">
-              <img src="/images/lab-logo-128.webp" alt="EBR Lab Logo" className="w-5 h-5 rounded-md object-contain bg-white/90 p-0.5" />
-              <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Back to Home
+            <Link href="/#gallery" className="inline-flex items-center gap-1.5 text-sm text-secondary hover:text-foreground mb-8 transition-colors"><ArrowLeft size={14} aria-hidden="true" /> Back to home
             </Link>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter mb-4 text-gradient">
+            <h1 className="text-4xl md:text-6xl text-foreground leading-[1.08] mb-6">
               Gallery
             </h1>
-            <p className="text-[var(--color-muted)] max-w-2xl font-light text-lg italic">
+            <p className="text-[var(--color-muted)] max-w-2xl text-lg">
               A comprehensive archive of Raman&apos;s Research Lab—milestones, celebrations, and daily scientific life.
             </p>
           </motion.div>
-          <div className="px-6 py-3 rounded-full border border-foreground/10 bg-foreground/5 text-xs font-mono text-foreground uppercase tracking-widest h-max">
+          <div className="px-6 py-3 rounded-lg border border-line bg-surface text-xs font-mono text-foreground h-max">
             {photos.length} photos
           </div>
         </div>
@@ -116,7 +114,7 @@ export default function GalleryPage() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedIndex(null)}
-            className="fixed inset-0 z-[100] bg-[#090c10]/98 backdrop-blur-3xl flex items-center justify-center p-6 md:p-20"
+            className="fixed inset-0 z-[100] bg-[#090c10]/98 flex items-center justify-center p-6 md:p-20"
           >
             <motion.div 
               key={selectedIndex}
@@ -130,14 +128,14 @@ export default function GalleryPage() {
               <img loading="lazy" decoding="async" 
                 src={`/images/${folder}/${photos[selectedIndex]}.webp`}
                 alt={captionOf(photos[selectedIndex])} 
-                className="max-w-full max-h-full object-contain rounded-2xl shadow-[0_0_100px_rgba(37,99,235,0.2)]"
+                className="max-w-full max-h-full object-contain rounded-2xl"
               />
 
               {/* Close */}
               <button 
                 aria-label="Close photo"
                 onClick={() => setSelectedIndex(null)}
-                className="absolute top-0 right-0 -translate-y-12 md:translate-y-0 md:translate-x-12 w-12 h-12 rounded-full bg-foreground/10 hover:bg-foreground/20 flex items-center justify-center transition-colors border border-foreground/10"
+                className="absolute top-0 right-0 -translate-y-12 md:translate-y-0 md:translate-x-12 w-12 h-12 rounded-full bg-raised hover:bg-raised flex items-center justify-center transition-colors border border-line"
               >
                 <X size={24} className="text-foreground" />
               </button>
@@ -146,7 +144,7 @@ export default function GalleryPage() {
               <button
                 aria-label="Previous photo"
                 onClick={(e) => { e.stopPropagation(); setSelectedIndex((selectedIndex - 1 + photos.length) % photos.length); }}
-                className="absolute left-2 md:-left-16 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-foreground/10 hover:bg-foreground/20 border border-foreground/10 flex items-center justify-center transition-all hover:scale-110"
+                className="absolute left-2 md:-left-16 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-raised hover:bg-raised border border-line flex items-center justify-center transition-colors"
               >
                 <ChevronLeft size={24} className="text-foreground" />
               </button>
@@ -155,13 +153,13 @@ export default function GalleryPage() {
               <button
                 aria-label="Next photo"
                 onClick={(e) => { e.stopPropagation(); setSelectedIndex((selectedIndex + 1) % photos.length); }}
-                className="absolute right-2 md:-right-16 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-foreground/10 hover:bg-foreground/20 border border-foreground/10 flex items-center justify-center transition-all hover:scale-110"
+                className="absolute right-2 md:-right-16 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-raised hover:bg-raised border border-line flex items-center justify-center transition-colors"
               >
                 <ChevronRight size={24} className="text-foreground" />
               </button>
 
               {/* Counter */}
-              <div className="absolute bottom-2 md:-bottom-12 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full bg-foreground/10 border border-foreground/10 text-xs font-mono text-foreground/70">
+              <div className="absolute bottom-2 md:-bottom-12 left-1/2 -translate-x-1/2 px-4 py-2 rounded-lg bg-raised border border-line text-xs font-mono text-secondary">
                 {selectedIndex + 1} / {photos.length}
               </div>
             </motion.div>

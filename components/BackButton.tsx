@@ -21,11 +21,11 @@ export default function BackButton() {
   if (pathname === "/") return null;
 
   return (
-    <div className="fixed bottom-6 left-6 z-50 flex flex-col gap-3">
+    <div className="fixed bottom-5 right-5 z-50 flex flex-col gap-2 [&_button]:shadow-[0_1px_2px_rgba(0,0,0,0.08),0_4px_12px_rgba(0,0,0,0.06)]">
       <ThemeToggle />
       <button
         onClick={() => router.back()}
-        className="flex items-center justify-center w-10 h-10 bg-foreground/5 backdrop-blur-md border border-foreground/10 rounded-full shadow-lg text-foreground hover:bg-foreground/10 hover:scale-110 transition-all duration-300"
+        className="flex items-center justify-center w-10 h-10 bg-surface border border-line rounded-full text-foreground hover:bg-raised transition-colors duration-300"
         aria-label="Go back"
         title="Go back"
       >

@@ -5,8 +5,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import BackButton from "@/components/BackButton";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import ScrollProgress from "@/components/ScrollProgress";
-import { FloatingPaths } from '@/components/ui/background-paths';
 import "./globals.css";
 import { piStats } from "./data";
 
@@ -15,7 +13,7 @@ const statsLine = `${piStats.publications}+ publications, ${(Math.floor(piStats.
 const playfair = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["400", "500", "600"],
 });
 
 const inter = Inter({
@@ -251,17 +249,10 @@ export default function RootLayout({
         <meta name="thumbnail" content="https://www.ebalaraman.com/pi-photo.webp" />
         <link rel="image_src" href="https://www.ebalaraman.com/pi-photo.webp" />
       </head>
-      <body className="font-sans min-h-screen bg-background text-foreground flex flex-col transition-colors duration-300 select-none" suppressHydrationWarning>
+      <body className="font-sans min-h-screen bg-background text-foreground flex flex-col" suppressHydrationWarning>
         <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-background focus:text-foreground">Skip to content</a>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <div className="contents">
-            <div className="fixed inset-0 z-[-1] opacity-10 pointer-events-none overflow-hidden">
-              <FloatingPaths position={1} />
-              <FloatingPaths position={-1} />
-            </div>
-            <div className="scroll-progress">
-              <div className="scroll-progress-bar h-full w-full" id="scroll-bar" suppressHydrationWarning></div>
-            </div>
             {children}
             <React.Suspense fallback={null}>
               <SpeedInsights />
@@ -270,7 +261,6 @@ export default function RootLayout({
               <Analytics />
             </React.Suspense>
             <BackButton />
-            <ScrollProgress />
           </div>
         </ThemeProvider>
       </body>

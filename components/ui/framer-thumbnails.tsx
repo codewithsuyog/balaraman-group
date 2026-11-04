@@ -98,7 +98,7 @@ function FramerCarouselThumbnails() {
     >
       <div className='flex flex-col gap-3'>
         {/* Main Carousel */}
-        <div className='relative overflow-hidden rounded-3xl border border-foreground/10 shadow-2xl' ref={containerRef}>
+        <div className='relative overflow-hidden rounded-2xl border border-line ' ref={containerRef}>
           <motion.div
             className='flex'
             drag='x'
@@ -125,13 +125,13 @@ function FramerCarouselThumbnails() {
             style={{ x }}
           >
             {galleryItems.map((item) => (
-              <div key={item.id} className='shrink-0 w-full h-[350px] md:h-[500px] bg-foreground/5 relative overflow-hidden'>
+              <div key={item.id} className='shrink-0 w-full h-[350px] md:h-[500px] bg-surface relative overflow-hidden'>
                 {/* Cinematic blurred background to fill space */}
                 <img
                   loading="lazy"
                   decoding="async"
                   src={imgErrors[item.id] ? '/logo.webp' : item.url} 
-                  className='absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-110'
+                  className='absolute inset-0 w-full h-full object-cover  opacity-40 scale-110'
                   alt="" 
                 />
                 {/* Main uncropped image */}
@@ -140,7 +140,7 @@ function FramerCarouselThumbnails() {
                   decoding="async"
                   src={imgErrors[item.id] ? '/logo.webp' : item.url}
                   alt={item.title}
-                  className={`relative z-10 w-full h-full object-contain select-none pointer-events-none drop-shadow-2xl ${
+                  className={`relative z-10 w-full h-full object-contain select-none pointer-events-none  ${
                     imgErrors[item.id] ? 'opacity-20 p-12' : ''
                   }`}
                   draggable={false}
@@ -152,10 +152,10 @@ function FramerCarouselThumbnails() {
 
           {/* Image caption overlay */}
           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent p-6 pointer-events-none z-10">
-            <p className="text-xs font-mono text-amber-400 uppercase tracking-[0.2em] mb-1">
+            <p className="text-xs font-mono text-accent mb-1">
               Moment #{galleryItems[index]?.id}
             </p>
-            <p className="text-white text-lg font-bold tracking-tight">
+            <p className="text-white text-lg font-medium tracking-tight">
               {galleryItems[index]?.title}
             </p>
           </div>
@@ -165,11 +165,11 @@ function FramerCarouselThumbnails() {
             disabled={index === 0}
             aria-label='Previous photo'
             onClick={() => setIndex((i) => Math.max(0, i - 1))}
-            className={`absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition-all z-20 backdrop-blur-md border
+            className={`absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center  transition-colors z-20  border
               ${
                 index === 0
-                  ? 'opacity-30 cursor-not-allowed bg-foreground/10 border-foreground/10'
-                  : 'bg-foreground/20 border-foreground/10 hover:bg-amber-500/30 hover:border-amber-500/40 hover:scale-110 opacity-70 hover:opacity-100'
+                  ? 'opacity-30 cursor-not-allowed bg-raised border-line'
+                  : 'bg-raised border-line hover:bg-raised hover:border-line  opacity-70 hover:opacity-100'
               }`}
           >
             <ChevronLeft size={20} className="text-white" />
@@ -180,11 +180,11 @@ function FramerCarouselThumbnails() {
             disabled={index === galleryItems.length - 1}
             aria-label='Next photo'
             onClick={() => setIndex((i) => Math.min(galleryItems.length - 1, i + 1))}
-            className={`absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition-all z-20 backdrop-blur-md border
+            className={`absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center  transition-colors z-20  border
               ${
                 index === galleryItems.length - 1
-                  ? 'opacity-30 cursor-not-allowed bg-foreground/10 border-foreground/10'
-                  : 'bg-foreground/20 border-foreground/10 hover:bg-amber-500/30 hover:border-amber-500/40 hover:scale-110 opacity-70 hover:opacity-100'
+                  ? 'opacity-30 cursor-not-allowed bg-raised border-line'
+                  : 'bg-raised border-line hover:bg-raised hover:border-line  opacity-70 hover:opacity-100'
               }`}
           >
             <ChevronRight size={20} className="text-white" />
@@ -195,7 +195,7 @@ function FramerCarouselThumbnails() {
           type='button'
           onClick={() => setUserPaused((p) => !p)}
           aria-label={playing ? 'Pause slideshow' : 'Play slideshow'}
-          className='self-end inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-foreground/70 hover:text-foreground border border-foreground/10 transition-colors'
+          className='self-end inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-secondary hover:text-foreground border border-line transition-colors'
         >
           {playing ? <Pause size={14} /> : <Play size={14} />}
           {playing ? 'Pause' : 'Play'}
@@ -269,8 +269,8 @@ function Thumbnails({
             transition={{ duration: 0.3, ease: 'easeOut' }}
             className={`relative shrink-0 h-full overflow-hidden rounded-lg border transition-colors ${
               i === index
-                ? 'border-amber-500/50'
-                : 'border-transparent hover:border-foreground/20'
+                ? 'border-line'
+                : 'border-transparent hover:border-line'
             }`}
           >
             {/* next/image serves a small resized copy instead of the full-size photo */}

@@ -1,160 +1,76 @@
 @import "tailwindcss";
 
+/* Warm paper-and-ink neutrals with one amber accent.
+   Light is the default; next-themes adds .dark. Text pairs are chosen to pass WCAG AA (4.5:1). */
 :root {
-  --background: #f4f5f7;
-  --foreground: #1a1f2e;
-  --accent: #92400e;
-  --accent-secondary: #92400e;
-  --accent-light: #d97706;
-  --surface: #ffffff;
-  --surface-alt: #ebedf0;
-  --border: #d1d5db;
-  --muted: #4b5563;
-  --overlay: rgba(0, 0, 0, 0.04);
+  --background: #f7f4ee;
+  --surface: #fdfbf7;
+  --raised: #efe9df;
+  --foreground: #1f1b16;
+  --secondary: #5e554a;
+  --muted: #6f665a;
+  --line: rgba(31, 27, 22, 0.1);
+  --accent: #92400e;      /* amber ink: links, key figures, selection */
+  --accent-fill: #b45309; /* filled primary button */
+  --on-accent: #ffffff;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .dark {
-  --background: #090c10;
-  --foreground: #f1f5f9;
-  --accent: #f59e0b;
-  --accent-secondary: #d97706;
-  --accent-light: #fcd34d;
-  --surface: #111827;
-  --surface-alt: #1f2937;
-  --border: rgba(255, 255, 255, 0.1);
-  --muted: #94a3b8;
-  --overlay: rgba(255, 255, 255, 0.05);
-}
-
-/* Light theme only: accent hues used as text drop to their 800 shade so they pass 4.5:1
-   on light and lightly tinted surfaces. Dark mode keeps the Tailwind defaults. */
-:root:not(.dark) {
-  --color-amber-300: #92400e; --color-amber-400: #92400e; --color-amber-500: #92400e;
-  --color-orange-300: #9a3412; --color-orange-400: #9a3412; --color-orange-500: #9a3412;
-  --color-emerald-300: #065f46; --color-emerald-400: #065f46; --color-emerald-500: #065f46;
-  --color-teal-300: #115e59; --color-teal-400: #115e59; --color-teal-500: #115e59;
-  --color-cyan-300: #155e75; --color-cyan-400: #155e75; --color-cyan-500: #155e75;
-  --color-blue-300: #1e40af; --color-blue-400: #1e40af; --color-blue-500: #1e40af;
-  --color-purple-300: #6b21a8; --color-purple-400: #6b21a8; --color-purple-500: #6b21a8;
-  --color-pink-300: #9d174d; --color-pink-400: #9d174d; --color-pink-500: #9d174d;
+  --background: #161513;
+  --surface: #1c1a18;
+  --raised: #262421;
+  --foreground: #efe9de;
+  --secondary: #aaa398;
+  --muted: #8f897f;
+  --line: rgba(239, 233, 222, 0.08);
+  --accent: #f5a524;
+  --accent-fill: #f5a524;
+  --on-accent: #161513;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-accent: var(--accent);
-  --color-accent-light: var(--accent-light);
-  --color-accent-secondary: var(--accent-secondary);
   --color-surface: var(--surface);
-  --color-surface-alt: var(--surface-alt);
-  --color-border: var(--border);
+  --color-raised: var(--raised);
+  --color-surface-alt: var(--raised);
+  --color-secondary: var(--secondary);
   --color-muted: var(--muted);
-  --font-sans: 'Inter', system-ui, sans-serif;
-  --font-serif: 'Playfair Display', 'Georgia', serif;
-  --font-mono: 'Geist Mono', var(--font-geist-mono), monospace;
-}
-
-@layer utilities {
-  .animate-marquee-horizontal {
-    animation: marquee-horizontal 30s linear infinite;
-  }
-  .animate-marquee-horizontal:hover {
-    animation-play-state: paused;
-  }
-}
-
-@keyframes marquee-horizontal {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  --color-line: var(--line);
+  --color-border: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent);
+  --color-accent-fill: var(--accent-fill);
+  --color-on-accent: var(--on-accent);
+  --font-sans: var(--font-inter), 'Inter', system-ui, sans-serif;
+  --font-serif: var(--font-playfair), 'Playfair Display', Georgia, serif;
+  --font-mono: var(--font-geist-mono), 'Geist Mono', monospace;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: var(--font-sans);
   font-size: 16px;
-  line-height: 1.7;
-  letter-spacing: 0.01em;
-  scroll-behavior: smooth;
+  line-height: 1.6;
 }
 
-/* Serif headings, unless the heading sets its own font class */
-:is(h1, h2, h3):not(.font-mono):not(.font-sans) {
-  font-family: 'Playfair Display', 'Georgia', serif;
+/* The display serif is for page and section titles only */
+:is(h1, h2):not(.font-mono):not(.font-sans) {
+  font-family: var(--font-serif);
+  font-weight: 500;
   letter-spacing: -0.02em;
 }
 
-/* Minimum body text */
-p, li, td, th, span, a {
-  font-size: max(1rem, inherit);
+::selection {
+  background: color-mix(in srgb, var(--accent) 25%, transparent);
 }
 
-/* Glassmorphism — light */
+/* Kept for the three places that use it: a solid bar with a hairline, no blur */
 .glass {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-.dark .glass {
-  background: rgba(15, 20, 30, 0.8);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.card-glass {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 1.5rem;
-  transition: transform 0.25s cubic-bezier(0.23, 1, 0.32, 1), border-color 0.2s ease, box-shadow 0.25s cubic-bezier(0.23, 1, 0.32, 1), background-color 0.2s ease;
-  box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.06);
-}
-
-.card-glass:hover {
-  background: rgba(255, 255, 255, 0.9);
-  border-color: var(--accent);
-  box-shadow: 0 8px 40px -8px rgba(180, 83, 9, 0.15);
-  transform: translateY(-4px);
-}
-
-.dark .card-glass {
-  background: rgba(15, 20, 30, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.3);
-}
-
-.dark .card-glass:hover {
-  background: rgba(15, 20, 30, 0.7);
-  border-color: var(--accent);
-}
-
-/* Gradient text — warm amber */
-.text-gradient {
-  background-image: linear-gradient(
-    to right,
-    var(--accent),
-    var(--accent-light),
-    var(--accent)
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  background-size: 200% auto;
-  animation: textGradient 5s linear infinite;
-}
-
-@keyframes textGradient {
-  to {
-    background-position: 200% center;
-  }
-}
-
-/* Tab active */
-.tab-active {
-  background: var(--accent);
-  color: #ffffff;
-  box-shadow: 0 0 22px -5px rgba(180, 83, 9, 0.5);
+  background: var(--surface);
+  border: 1px solid var(--line);
 }
 
 /* One visible keyboard focus ring everywhere (WCAG 2.4.7) */
@@ -163,47 +79,17 @@ p, li, td, th, span, a {
   outline-offset: 2px;
 }
 
-/* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
-
 ::-webkit-scrollbar-track {
   background: var(--background);
 }
-
 ::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 10px;
+  background: var(--raised);
+  border-radius: 8px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--accent);
-}
-
-/* Scroll progress */
-.scroll-progress {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 3px;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.05);
-  z-index: 100;
-}
-
-.scroll-progress-bar {
-  width: 100%;
-  background: linear-gradient(
-    to bottom,
-    var(--accent),
-    var(--accent-light)
-  );
-  transform-origin: top;
-  box-shadow: 0 0 10px rgba(180, 83, 9, 0.4);
-}
-
-/* Hide scrollbar utility */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -212,58 +98,15 @@ p, li, td, th, span, a {
   scrollbar-width: none;
 }
 
-/* Link styles */
-a[href^="mailto:"],
-a[href^="http"]:not(.nav-link):not(.btn) {
-  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+html {
+  scroll-behavior: smooth;
 }
 
-html { scroll-behavior: smooth; }
-
-/* Animated dot-grid background for sections */
-.dot-grid-bg {
-  position: relative;
-}
-.dot-grid-bg::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background-image: radial-gradient(circle, var(--foreground) 0.5px, transparent 0.5px);
-  background-size: 24px 24px;
-  opacity: 0.03;
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 30%, transparent 80%);
-  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 30%, transparent 80%);
+/* Keep section headings clear of the fixed nav when jumping to them */
+section[id] {
+  scroll-margin-top: 80px;
 }
 
-/* CTA shimmer sweep animation */
-.cta-shimmer {
-  position: relative;
-  overflow: hidden;
-}
-.cta-shimmer::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    105deg,
-    transparent 40%,
-    rgba(255, 255, 255, 0.15) 45%,
-    rgba(255, 255, 255, 0.25) 50%,
-    rgba(255, 255, 255, 0.15) 55%,
-    transparent 60%
-  );
-  background-size: 200% 100%;
-  background-position: 200% 0;
-  transition: background-position 0s;
-  pointer-events: none;
-  border-radius: inherit;
-}
-.cta-shimmer:hover::after {
-  background-position: -200% 0;
-  transition: background-position 0.8s ease;
-}
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -272,18 +115,5 @@ html { scroll-behavior: smooth; }
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-  }
-  .text-gradient {
-    animation: none;
-    background-position: 0% center;
-  }
-  .animate-marquee-horizontal {
-    animation: none;
-  }
-}
-
-@media (hover: none) {
-  .card-glass:hover {
-    transform: none;
   }
 }

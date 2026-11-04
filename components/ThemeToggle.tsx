@@ -15,14 +15,14 @@ export function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <button className="w-10 h-10 rounded-full bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground cursor-default opacity-0" aria-label="Toggle theme"></button>
+      <button className="w-10 h-10 rounded-full bg-surface border border-line flex items-center justify-center text-foreground cursor-default opacity-0" aria-label="Toggle theme"></button>
     );
   }
 
   return (
     <button
       onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-      className="w-10 h-10 rounded-full bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground hover:bg-amber-500/10 hover:text-amber-500 hover:border-amber-500/30 transition-all duration-300"
+      className="w-10 h-10 rounded-full bg-surface border border-line flex items-center justify-center text-foreground hover:bg-raised hover:text-accent hover:border-line transition-colors duration-300"
       aria-label="Toggle theme"
     >
       {resolvedTheme === "dark" ? (
