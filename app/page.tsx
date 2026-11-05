@@ -42,7 +42,7 @@ const FeaturedPublication = ({ pub }: { pub: PubData }) => {
   return (
     <motion.article
       initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-      className="flex gap-4 md:gap-5 items-start p-4 md:p-5 rounded-xl bg-surface border border-line"
+      className="flex gap-4 md:gap-5 items-start p-4 md:p-5 rounded-lg bg-surface border border-line"
     >
       {hasCover && (
         <div className="w-14 h-[74px] shrink-0 rounded-md bg-white border border-line p-1">
@@ -194,7 +194,7 @@ export default function Home() {
               <motion.article
                 key={cat.id}
                 initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={fadeUp}
-                className="flex flex-col p-6 md:p-8 rounded-2xl bg-surface border border-line"
+                className="flex flex-col p-6 md:p-8 rounded-lg bg-surface border border-line"
               >
                 {/* The lab's own journal covers are the visual for each pillar */}
                 <div className="flex gap-3 mb-8" aria-hidden="true">
@@ -258,7 +258,7 @@ export default function Home() {
           </div>
           <ul className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {news.slice(0, 3).map((item) => (
-              <li key={item.id} className="p-6 rounded-2xl bg-surface border border-line">
+              <li key={item.id} className="p-6 rounded-lg bg-surface border border-line">
                 <p className="font-mono text-xs text-muted mb-2">{item.date} · {item.type}</p>
                 <h3 className="text-base font-medium text-foreground leading-snug mb-2">{item.title}</h3>
                 <p className="text-sm text-secondary leading-relaxed">{item.detail}</p>
@@ -301,7 +301,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 4 }}
               transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-              className="relative w-full max-w-md rounded-2xl bg-surface border border-line p-6 flex flex-col items-center text-foreground"
+              className="relative w-full max-w-md rounded-lg bg-surface border border-line p-6 flex flex-col items-center text-foreground"
               onClick={(e) => e.stopPropagation()}
             >
               <button
@@ -311,7 +311,7 @@ export default function Home() {
               >
                 <X size={18} />
               </button>
-              <div className="w-64 h-64 sm:w-80 sm:h-80 rounded-xl bg-white p-3 mt-6 flex items-center justify-center">
+              <div className="w-64 h-64 sm:w-80 sm:h-80 rounded-lg bg-white p-3 mt-6 flex items-center justify-center">
                 <img src="/images/lab-logo-square.webp" alt="EBR lab emblem: Sustainable Chemistry via Catalysis" className="w-full h-full object-contain" />
               </div>
               <h2 className="text-2xl text-foreground mt-6">Raman&apos;s Research Lab</h2>

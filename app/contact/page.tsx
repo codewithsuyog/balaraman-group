@@ -1,16 +1,14 @@
 import { Mail, MapPin, Globe, GraduationCap, Briefcase } from 'lucide-react';
 import { piStats } from '../data';
+import { PageHeader, pageMain } from '@/components/ui';
 
 export default function ContactPage() {
   return (
     <main id="main">
-    <section className="w-full pt-40 sm:pt-32 pb-14 md:pb-20 px-6">
+    <section className={pageMain}>
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
         <div>
-          <h1 className="text-4xl md:text-6xl text-foreground leading-[1.04] mb-4">Contact</h1>
-          <p className="text-lg text-secondary mb-10 max-w-md">
-            Interested in joining the group or collaborating? We&apos;d like to hear from you.
-          </p>
+          <PageHeader title="Contact" intro="Interested in joining the group or collaborating? We'd like to hear from you." />
 
           <div className="space-y-6">
             <div className="flex gap-3">
@@ -51,8 +49,8 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <div className="p-6 md:p-8 rounded-2xl bg-surface border border-line self-start">
-          <h2 className="font-sans text-2xl font-medium tracking-normal text-foreground mb-3">Join the lab</h2>
+        <div className="p-6 md:p-8 rounded-lg bg-surface border border-line self-start">
+          <h2 className="text-3xl md:text-4xl text-foreground leading-[1] mb-3">Join the lab</h2>
           <p className="text-secondary mb-6 leading-relaxed">
             We welcome motivated Ph.D. students, postdocs and Master&apos;s students. Email Dr. Balaraman your CV and a short note on your research interests.
           </p>

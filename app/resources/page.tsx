@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight, FileText, FileDown, Database, Book, BookOpen } from 'lucide-react';
 import { resourceGroups } from '../resources';
 import { ResourceIllustration } from '@/components/ResourceIllustrations';
+import { PageHeader, chipClass, pageMain } from '@/components/ui';
 
 // "paper" for DOI links, otherwise the site's host name
 const sourceOf = (url: string) => {
@@ -69,15 +70,14 @@ export default function ResourcesPage() {
   const group = resourceGroups.find((g) => g.id === activeId) ?? resourceGroups[0];
 
   return (
-    <main id="main" className="w-full pt-40 sm:pt-32 pb-14 md:pb-20 px-6">
+    <main id="main" className={pageMain}>
       <div className="max-w-6xl mx-auto">
-        <header className="max-w-3xl mb-10">
-          <h1 className="text-5xl md:text-7xl text-foreground leading-[0.95] mb-6">Resources</h1>
-          <p className="text-lg md:text-xl text-secondary leading-relaxed">
-            Practical references we use in the lab, from NMR impurity tables and column chromatography to Schlenk line technique and
-            catalysis tests. Open to everyone; {total} links in {resourceGroups.length} topics, checked every month.
-          </p>
-        </header>
+        <PageHeader
+          title="Resources"
+          className="mb-10"
+          intro={<>Practical references we use in the lab, from NMR impurity tables and column chromatography to Schlenk line technique and
+            catalysis tests. Open to everyone; {total} links in {resourceGroups.length} topics, checked every month.</>}
+        />
 
         <div className="grid grid-cols-1 lg:grid-cols-[15rem_1fr] gap-8 lg:gap-12 items-start">
           {/* Topic tabs under category headings: wrap at the top on small screens, a column on the left on desktop.
@@ -108,11 +108,7 @@ export default function ResourcesPage() {
                     // On phones the links sit below the tabs, so bring them into view
                     if (window.innerWidth < 1024) document.getElementById('resource-panel')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                   }}
-                  className={`h-9 lg:h-8 px-3 rounded-lg text-sm text-left flex items-center justify-between gap-3 transition-colors ${
-                    active
-                      ? 'bg-foreground text-background'
-                      : 'border border-line lg:border-transparent text-secondary hover:text-foreground hover:bg-raised'
-                  }`}
+                  className={`h-9 lg:h-8 px-3 text-sm text-left justify-between gap-3 ${chipClass(active)} ${active ? '' : 'lg:border-transparent'}`}
                 >
                   <span>{g.title}</span>
                   <span className={`hidden lg:inline font-mono text-xs tabular-nums ${active ? 'opacity-70' : 'text-muted'}`}>{g.items.length}</span>

@@ -4,6 +4,7 @@ import React, { useMemo, useState } from 'react';
 import { Search } from 'lucide-react';
 import { publications } from '../publications_master';
 import ChemText from '../../components/ChemText';
+import { PageHeader, chipClass, pageMain } from '@/components/ui';
 
 type Pub = (typeof publications)[number];
 
@@ -93,12 +94,9 @@ export default function PublicationsPage() {
   }, [filtered]);
 
   return (
-    <main id="main" className="w-full pt-40 sm:pt-32 pb-14 md:pb-20 px-6">
+    <main id="main" className={pageMain}>
       <div className="max-w-5xl mx-auto">
-        <header className="mb-8">
-          <h1 className="text-5xl md:text-7xl text-foreground leading-[0.95] mb-4">Publications</h1>
-          <p className="text-lg text-secondary">Every paper from Raman&apos;s Research Lab, newest first</p>
-        </header>
+        <PageHeader title="Publications" intro="Every paper from Raman's Research Lab, newest first" className="mb-8" />
 
         {/* Filters */}
         <div className="flex flex-col md:flex-row md:items-center gap-3 mb-4">
@@ -108,9 +106,7 @@ export default function PublicationsPage() {
                 key={key}
                 onClick={() => setStage(key)}
                 aria-pressed={stage === key}
-                className={`h-10 px-4 rounded-lg text-sm font-medium transition-colors ${
-                  stage === key ? 'bg-foreground text-background' : 'border border-line text-secondary hover:text-foreground hover:bg-raised'
-                }`}
+                className={`h-10 px-4 text-sm font-medium ${chipClass(stage === key)}`}
               >
                 {label}
               </button>
@@ -141,7 +137,7 @@ export default function PublicationsPage() {
               <a
                 key={year}
                 href={`#y-${year}`}
-                className="h-8 px-2.5 inline-flex items-center rounded-md border border-line font-mono text-xs text-secondary hover:text-foreground hover:bg-raised tabular-nums transition-colors"
+                className={`h-8 px-2.5 font-mono text-xs tabular-nums ${chipClass()}`}
               >
                 {year}
               </a>

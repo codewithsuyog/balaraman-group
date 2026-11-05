@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Mail, Users, GraduationCap, Briefcase, ArrowRight } from 'lucide-react';
 import { team } from '../data';
+import { PageHeader, SectionHeading, pageMain } from '@/components/ui';
 
 import { Variants } from 'framer-motion';
 
@@ -56,7 +57,7 @@ const MemberCard = ({ member, role }: { member: TeamMember, role: string }) => {
   return (
     <motion.div 
       variants={fadeUp}
-      className="group relative bg-surface border border-line rounded-2xl overflow-hidden hover:bg-surface hover:border-line transition-colors duration-200 flex flex-col h-full"
+      className="group relative bg-surface border border-line rounded-lg overflow-hidden hover:bg-surface hover:border-line transition-colors duration-200 flex flex-col h-full"
     >
       <div className="aspect-[3/4] relative overflow-hidden bg-surface shrink-0">
         {!imgFailed && currentSrc ? (
@@ -112,32 +113,18 @@ const MemberCard = ({ member, role }: { member: TeamMember, role: string }) => {
 export default function TeamPage() {
   
   return (
-    <main id="main" className="min-h-screen bg-background text-foreground selection:bg-raised pb-32">
-      <section className="relative pt-40 sm:pt-32 pb-10 px-6 border-b border-line overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] via-transparent to-transparent opacity-50"></div>
-        
-        <div className="max-w-7xl mx-auto relative z-10 text-center">
-          <motion.div initial={false} animate="visible" variants={fadeUp}>
-            
-            <h1 className="text-4xl md:text-6xl text-foreground leading-[1.08] mb-6">
-              People
-            </h1>
-            
-            <p className="text-xl md:text-2xl text-foreground max-w-3xl mx-auto leading-relaxed border-y border-line py-8">
-              A diverse group of researchers dedicated to pioneering sustainable chemistry and advanced catalysis.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      <div className="max-w-7xl mx-auto px-6 py-12 space-y-16">
+    <main id="main" className={pageMain}>
+      <div className="max-w-7xl mx-auto space-y-14">
+        <PageHeader
+          title="People"
+          intro="A diverse group of researchers dedicated to pioneering sustainable chemistry and advanced catalysis."
+          className=""
+        />
         
             {/* Postdocs */}
             {team.postdocs && team.postdocs.length > 0 && (
           <section>
-            <div className="flex items-center gap-4 mb-12">
-               <h2 className="text-xs font-mono text-accent">Post-doctoral Fellows</h2>
-            </div>
+            <SectionHeading count={team.postdocs.length}>Postdoctoral fellows</SectionHeading>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5">
               {team.postdocs.map((member, i) => <MemberCard key={i} member={member} role="Postdoc" />)}
             </div>
@@ -147,9 +134,7 @@ export default function TeamPage() {
         {/* Ph.D. Scholars */}
         {team.currentPhd && team.currentPhd.length > 0 && (
           <section>
-            <div className="flex items-center gap-4 mb-12">
-               <h2 className="text-xs font-mono text-accent">Doctoral Scholars</h2>
-            </div>
+            <SectionHeading count={team.currentPhd.length}>Doctoral scholars</SectionHeading>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5">
               {team.currentPhd.map((member, i) => <MemberCard key={i} member={member} role="Ph.D." />)}
             </div>
@@ -159,9 +144,7 @@ export default function TeamPage() {
         {/* Project Associates */}
         {team.projectAssociates && team.projectAssociates.length > 0 && (
           <section>
-            <div className="flex items-center gap-4 mb-12">
-               <h2 className="text-xs font-mono text-accent">Project Associates</h2>
-            </div>
+            <SectionHeading count={team.projectAssociates.length}>Project associates</SectionHeading>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5">
               {team.projectAssociates.map((member, i) => <MemberCard key={i} member={member} role="Project Associate" />)}
             </div>
@@ -171,9 +154,7 @@ export default function TeamPage() {
         {/* Masters */}
         {team.masters && team.masters.length > 0 && (
           <section>
-            <div className="flex items-center gap-4 mb-12">
-               <h2 className="text-xs font-mono text-accent">Master&apos;s Students</h2>
-            </div>
+            <SectionHeading count={team.masters.length}>Master&apos;s students</SectionHeading>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5">
               {team.masters.map((member, i) => <MemberCard key={i} member={member} role="Masters" />)}
             </div>
@@ -182,7 +163,7 @@ export default function TeamPage() {
 
 
         <section id="alumni" className="border-t border-line pt-10">
-          <h2 className="text-3xl md:text-4xl text-foreground mb-3">Alumni</h2>
+          <SectionHeading className="mb-3">Alumni</SectionHeading>
           <p className="text-secondary mb-4 max-w-xl">Former Ph.D. students, postdocs and Master&apos;s students, and where they are now.</p>
           <Link href="/alumni" className="flex w-fit items-center gap-1.5 text-accent underline underline-offset-4 decoration-1 hover:decoration-2">
             See all alumni <ArrowRight size={16} />

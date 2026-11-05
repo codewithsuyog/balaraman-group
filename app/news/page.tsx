@@ -1,11 +1,11 @@
 import { news } from '../data';
+import { PageHeader, pageMain } from '@/components/ui';
 
 export default function NewsPage() {
   return (
-    <main id="main" className="w-full pt-40 sm:pt-32 pb-14 md:pb-20 px-6">
+    <main id="main" className={pageMain}>
       <div className="max-w-3xl mx-auto">
-        <h1 className="text-4xl md:text-6xl text-foreground leading-[1.04] mb-4">News</h1>
-        <p className="text-lg text-secondary mb-12">Awards, new members and milestones from the lab</p>
+        <PageHeader title="News" intro="Awards, new members and milestones from the lab" />
         <ol className="divide-y divide-[var(--line)] border-y border-line">
           {news.map((item) => (
             <li key={item.id} className="py-6">
