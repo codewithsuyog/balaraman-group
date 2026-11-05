@@ -1,5 +1,5 @@
 // Short lab guides shown above the links on the Resources page, keyed by topic id (see resources.ts).
-// Written in our own words. Set reviewedBy to the lab member who checked a guide to remove its "Draft" label.
+// Written in our own words.
 // Kept separate from resources.ts so regenerating the links never touches the guides.
 
 export type Guide = {
@@ -7,7 +7,6 @@ export type Guide = {
   steps: string[];
   tips: string[];
   mistakes: string[];
-  reviewedBy?: string;
 };
 
 export const guides: Record<string, Guide> = {
@@ -16,7 +15,7 @@ export const guides: Record<string, Guide> = {
     steps: [
       'Pick the eluent by TLC: product Rf 0.2–0.35, ≥ 0.1 from the nearest spot.',
       'Use 30–100 g silica per 1 g crude (more for close spots).',
-      'Pack a silica slurry in eluent on a sand layer; tap until level.',
+      'Plug with cotton, add sand, pour in a silica slurry in eluent; tap until level.',
       'Load a narrow band in minimum solvent, or dry-load on silica.',
       'Elute, collect equal fractions, check by TLC, combine and evaporate.',
     ],
@@ -28,7 +27,7 @@ export const guides: Record<string, Guide> = {
     mistakes: [
       'Letting the column run dry: the bed cracks.',
       'Loading in too much or too polar solvent: broad bands.',
-      'Product at Rf > 0.5: co-elutes with impurities.',
+      'Product at Rf > 0.5: runs fast and often comes off with impurities.',
     ],
   },
 
@@ -83,7 +82,7 @@ export const guides: Record<string, Guide> = {
     tips: [
       'Unsure which layer? Add a drop of water.',
       'Emulsion: add brine, or filter through Celite.',
-      'DMF/DMSO: wash with 5% aq. LiCl.',
+      'DMF: wash with 5% aq. LiCl; DMSO: wash several times with water.',
       'Metal residues: filter through a short silica or Celite pad.',
     ],
     mistakes: [
@@ -147,7 +146,7 @@ export const guides: Record<string, Guide> = {
       'New catalyst? Run a no-catalyst control.',
     ],
     mistakes: [
-      'Heating a vessel not rated for pressure.',
+      'Heating a sealed vessel not rated for pressure.',
       'Weighing hygroscopic bases (KOtBu) in air: irreproducible results.',
     ],
   },
@@ -161,7 +160,7 @@ export const guides: Record<string, Guide> = {
     ],
     tips: [
       'Write the opening date on every bottle.',
-      'Keep KOtBu and NaH in the glovebox.',
+      'Keep KOtBu and NaH dry, ideally in the glovebox.',
     ],
     mistakes: [
       'Using old THF, Et₂O or dioxane without a peroxide test.',

@@ -69,9 +69,6 @@ function LinkList({ items, q = '' }: { items: Resource[]; q?: string }) {
 function GuideBlock({ guide }: { guide: Guide }) {
   return (
     <div className="mb-8">
-      {!guide.reviewedBy && (
-        <p className="inline-block mb-4 px-2 py-0.5 rounded border border-line font-mono text-xs text-muted">Draft, not yet checked by the lab</p>
-      )}
       <p className="text-lg text-foreground leading-relaxed mb-6">{guide.summary}</p>
       <h3 className="text-lg font-medium text-foreground mb-3">Key steps</h3>
       <ol className="list-decimal pl-5 space-y-1.5 text-secondary leading-relaxed marker:text-muted marker:font-mono">
@@ -91,7 +88,6 @@ function GuideBlock({ guide }: { guide: Guide }) {
           </ul>
         </div>
       </div>
-      {guide.reviewedBy && <p className="mt-6 text-sm text-muted">Checked by {guide.reviewedBy}</p>}
     </div>
   );
 }
