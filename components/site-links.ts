@@ -1,4 +1,4 @@
-// Pages in the top nav. Gallery and Alumni are reached from Home/News and People.
+// Pages in the top nav. Gallery, Alumni and Join are reached from Home/News, People and Contact.
 export const siteLinks = [
   { href: '/', label: 'Home' },
   { href: '/pi', label: 'PI' },
@@ -7,6 +7,5 @@ export const siteLinks = [
   { href: '/team', label: 'People' },
   { href: '/news', label: 'News' },
   { href: '/resources', label: 'Resources' },
-  { href: '/join', label: 'Join' },
   { href: '/contact', label: 'Contact' },
 ];

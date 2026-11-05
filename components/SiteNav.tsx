@@ -10,7 +10,7 @@ import { siteLinks as links } from '@/components/site-links';
 export default function SiteNav() {
   const pathname = usePathname();
   const isActive = (href: string) =>
-    href === '/' ? pathname === '/' : pathname.startsWith(href) || (href === '/team' && pathname.startsWith('/alumni'));
+    href === '/' ? pathname === '/' : pathname.startsWith(href) || (href === '/team' && pathname.startsWith('/alumni')) || (href === '/contact' && pathname.startsWith('/join'));
 
   return (
     <nav
