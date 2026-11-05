@@ -321,54 +321,56 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* 1. HERO: text on the page, the real group photo as the visual */}
-      <section id="home" className="w-full px-6 pt-28 md:pt-32 pb-16 md:pb-24">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.35fr] gap-10 lg:gap-14 items-center">
-          <div>
-            <button
-              type="button"
-              onClick={() => setLogoModalOpen(true)}
-              aria-label="View the EBR lab emblem"
-              className="mb-8 w-16 h-16 rounded-xl bg-white border border-line p-1.5 flex items-center justify-center"
-            >
-              <img src="/images/lab-logo-128.webp" alt="" className="w-full h-full object-contain" />
-            </button>
-            <h1 className="text-5xl md:text-7xl text-foreground leading-[1.04] mb-5">
-              Raman&apos;s Research Lab
-            </h1>
-            <p className="text-lg md:text-xl text-secondary max-w-md leading-relaxed mb-8">
-              Transition-metal catalysis, sustainable chemistry and organometallic synthesis at IISER Tirupati
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <a
-                href="#contact"
-                onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }}
-                className="inline-flex items-center h-12 px-5 rounded-lg bg-accent-fill text-on-accent font-medium transition-opacity hover:opacity-90"
-              >
-                Join the lab
-              </a>
-              <Link
-                href="/publications"
-                className="inline-flex items-center h-12 px-5 rounded-lg border border-line text-foreground font-medium transition-colors hover:bg-raised"
-              >
-                Publications
-              </Link>
-            </div>
-          </div>
+      {/* 1. HERO: the group photo full-bleed, the RAMAN wordmark behind the title */}
+      <section id="home" className="relative w-full min-h-[100svh] flex items-center justify-center overflow-hidden px-6">
+        <Image
+          src={heroImage}
+          alt="Dr. Ekambaram Balaraman with the members of Raman's Research Lab on the IISER Tirupati campus"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        {/* Even darkening so the centred title stays readable over faces and sky */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/55 to-black/75" aria-hidden="true"></div>
 
-          <figure className="relative">
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-raised">
-              <Image
-                src={heroImage}
-                alt="Dr. Ekambaram Balaraman with the members of Raman's Research Lab on the IISER Tirupati campus"
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 58vw"
-                className="object-cover object-center"
-              />
-            </div>
-            <figcaption className="mt-3 text-sm text-muted">The group at IISER Tirupati</figcaption>
-          </figure>
+        {/* Wordmark behind the title */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none" aria-hidden="true">
+          <span className="font-serif font-medium leading-none tracking-[-0.04em] text-white/[0.16] text-[30vw] lg:text-[22vw]">
+            RAMAN
+          </span>
+        </div>
+
+        <div className="relative z-10 max-w-4xl mx-auto text-center pt-24 pb-16">
+          <button
+            type="button"
+            onClick={() => setLogoModalOpen(true)}
+            aria-label="View the EBR lab emblem"
+            className="mx-auto mb-8 w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-white p-2 flex items-center justify-center"
+          >
+            <img src="/images/lab-logo-square.webp" alt="" className="w-full h-full object-contain" />
+          </button>
+          <h1 className="text-5xl sm:text-6xl md:text-8xl text-white leading-[1.02] mb-6">
+            Raman&apos;s<br />Research Lab
+          </h1>
+          <p className="text-lg md:text-xl text-white/85 max-w-2xl mx-auto leading-relaxed mb-10">
+            Transition-metal catalysis, sustainable chemistry and organometallic synthesis at IISER Tirupati
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            <a
+              href="#contact"
+              onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }}
+              className="inline-flex items-center h-12 px-6 rounded-lg bg-accent-fill text-on-accent font-medium transition-opacity hover:opacity-90"
+            >
+              Join the lab
+            </a>
+            <Link
+              href="/publications"
+              className="inline-flex items-center h-12 px-6 rounded-lg border border-white/50 text-white font-medium transition-colors hover:bg-white/10"
+            >
+              Publications
+            </Link>
+          </div>
         </div>
       </section>
 
