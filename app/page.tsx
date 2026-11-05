@@ -9,6 +9,7 @@ import { piStats, news } from './data';
 import { featuredPublications as publications } from './publications_featured';
 import ChemText from '../components/ChemText';
 import { useDialogFocus } from '@/components/useDialogFocus';
+import FramerCarouselThumbnails from '@/components/ui/framer-thumbnails';
 
 import { Variants } from 'framer-motion';
 
@@ -264,6 +265,19 @@ export default function Home() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      {/* GALLERY */}
+      <section className="w-full py-14 md:py-20 px-6 border-t border-line">
+        <div className="max-w-5xl mx-auto">
+          <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <h2 className="text-5xl md:text-6xl leading-[0.95] text-foreground">Gallery</h2>
+            <Link href="/gallery" className="inline-flex items-center gap-1.5 text-accent hover:underline underline-offset-4">
+              All photos <ArrowRight size={16} />
+            </Link>
+          </div>
+          <FramerCarouselThumbnails />
         </div>
       </section>
 

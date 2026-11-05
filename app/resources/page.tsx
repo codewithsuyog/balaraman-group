@@ -1,5 +1,6 @@
 import { ArrowUpRight } from 'lucide-react';
 import { resourceGroups } from '../resources';
+import { ResourceIllustration } from '@/components/ResourceIllustrations';
 
 // "paper" for DOI links, otherwise the site's host name
 const sourceOf = (url: string) => {
@@ -36,10 +37,17 @@ export default function ResourcesPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-14">
           {resourceGroups.map((g) => (
             <section key={g.id} id={g.id} aria-labelledby={`${g.id}-title`}>
-              <h2 id={`${g.id}-title`} className="text-3xl md:text-4xl text-foreground leading-[1] mb-2">
-                {g.title}
-              </h2>
-              <p className="text-secondary mb-5">{g.description}</p>
+              <div className="flex items-start gap-5 mb-5">
+                <div className="w-28 h-[68px] shrink-0 rounded-lg bg-surface border border-line p-1.5">
+                  <ResourceIllustration id={g.id} />
+                </div>
+                <div className="min-w-0">
+                  <h2 id={`${g.id}-title`} className="text-3xl md:text-4xl text-foreground leading-[1] mb-2">
+                    {g.title}
+                  </h2>
+                  <p className="text-secondary">{g.description}</p>
+                </div>
+              </div>
               <ul className="divide-y divide-[var(--line)] border-y border-line">
                 {g.items.map((item) => (
                   <li key={item.url}>
