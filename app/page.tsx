@@ -497,7 +497,7 @@ export default function Home() {
       <section id="research" className="w-full py-20 md:py-28 px-6 border-t border-line">
         <div className="max-w-7xl mx-auto">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 mb-14">
-            <h2 className="text-4xl md:text-5xl text-foreground">Research</h2>
+            <h2 className="text-5xl md:text-6xl leading-[0.95] text-foreground">Research</h2>
             <div className="space-y-4 text-lg text-secondary leading-relaxed">
               <p>
                 We explore organometallic chemistry, designing molecular architectures that open new pathways for sustainable catalysis{" "}and selective organic transformations.
@@ -550,7 +550,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
-              <h2 className="text-4xl md:text-5xl text-foreground mb-3">Publications</h2>
+              <h2 className="text-5xl md:text-6xl leading-[0.95] text-foreground mb-3">Publications</h2>
               <p className="text-secondary">Recent work from {piStats.publications}+ published papers</p>
             </div>
             <Link href="/publications" className="inline-flex items-center gap-1.5 text-accent hover:underline underline-offset-4">
@@ -571,7 +571,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
-              <h2 className="text-4xl md:text-5xl text-foreground mb-3">Patents</h2>
+              <h2 className="text-5xl md:text-6xl leading-[0.95] text-foreground mb-3">Patents</h2>
               <p className="text-secondary">33+ patents filed, including {piStats.grantedUSPatents} granted US patents</p>
             </div>
             <Link href="/patents" className="inline-flex items-center gap-1.5 text-accent hover:underline underline-offset-4">
@@ -609,7 +609,7 @@ export default function Home() {
       {/* 5. PEOPLE */}
       <section id="team" className="w-full py-20 md:py-28 px-6 border-t border-line">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-5xl text-foreground mb-12">People</h2>
+          <h2 className="text-5xl md:text-6xl leading-[0.95] text-foreground mb-12">People</h2>
 
           <div className="space-y-16">
             {[
@@ -641,7 +641,7 @@ export default function Home() {
       <section id="gallery" className="w-full py-20 md:py-28 px-6 border-t border-line">
         <div className="max-w-5xl mx-auto">
           <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
-            <h2 className="text-4xl md:text-5xl text-foreground">Gallery</h2>
+            <h2 className="text-5xl md:text-6xl leading-[0.95] text-foreground">Gallery</h2>
             <Link href="/gallery" className="inline-flex items-center gap-1.5 text-accent hover:underline underline-offset-4">
               All photos <ArrowRight size={16} />
             </Link>
@@ -654,7 +654,7 @@ export default function Home() {
       <section id="contact" className="w-full py-20 md:py-28 px-6 border-t border-line">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
           <div>
-            <h2 className="text-4xl md:text-5xl text-foreground mb-4">Contact</h2>
+            <h2 className="text-5xl md:text-6xl leading-[0.95] text-foreground mb-4">Contact</h2>
             <p className="text-lg text-secondary mb-10 max-w-md">
               Interested in joining the group or collaborating? We&apos;d like to hear from you.
             </p>
@@ -814,13 +814,10 @@ export default function Home() {
 
             {/* Col 4: Research Pillars */}
             <div>
-              <p className="text-sm text-muted mb-3">Research Focus</p>
+              <p className="text-sm text-muted mb-3">Research focus</p>
               <ul className="space-y-2.5 text-sm text-secondary">
-                <li><Link href="/research" className="hover:text-foreground transition-colors">Homogeneous catalysis</Link></li>
-                <li><Link href="/research" className="hover:text-foreground transition-colors">Heterogeneous catalysis</Link></li>
-                <li><Link href="/research" className="hover:text-foreground transition-colors">Pincer complex chemistry</Link></li>
-                <li><Link href="/research" className="hover:text-foreground transition-colors">Hydrogen generation</Link></li>
-                <li><Link href="/research" className="hover:text-foreground transition-colors">CO₂ and C1 chemistry</Link></li>
+                <li><Link href="/research#homogeneous" className="hover:text-foreground transition-colors">Homogeneous catalysis</Link></li>
+                <li><Link href="/research#heterogeneous" className="hover:text-foreground transition-colors">Heterogeneous catalysis</Link></li>
                 <li><Link href="/patents" className="hover:text-foreground transition-colors">Patents</Link></li>
               </ul>
             </div>
