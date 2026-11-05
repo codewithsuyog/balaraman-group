@@ -40,7 +40,7 @@ export const publications: Publication[] = [
     volume: "367",
     pages: "e9607",
     doi: "10.1002/adsc.9607",
-    coverImage: "",
+    coverImage: "/images/publications/covers/118.webp",
     schemeImage: "/images/publications/schemes/118.webp",
     fullText: "Rohit Kumar, Kothapalli Bonnoth Tejaswini, Chandrakant Gouda, and E. Balaraman*. Cobalt-Catalyzed Amide Synthesis from Alcohols: An Ammonia-Free Approach with Dihydrogen Release. Adv. Synth. Catal., 2025, 367, 15, e9607.",
   },
