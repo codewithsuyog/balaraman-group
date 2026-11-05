@@ -33,7 +33,7 @@ const GalleryCard = ({ num, folder, index, onOpen }: { num: number, folder: stri
           src={failed ? "/logo.webp" : src} 
           alt="" // the card's aria-label already names the photo
           fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          sizes="(max-width: 1024px) 50vw, 33vw"
           className={`object-contain transition-transform duration-200  ${failed ? 'opacity-20' : ''}`}
           priority={index < 3}
           onError={() => setFailed(true)}
@@ -88,7 +88,7 @@ export default function GalleryPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
           {photos.map((num, idx) => {
             return <GalleryCard key={num} num={num} folder={folder} index={idx} onOpen={setSelectedIndex} />;
           })}

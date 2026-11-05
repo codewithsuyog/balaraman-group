@@ -93,7 +93,7 @@ const MemberCard = ({ member, role }: { member: TeamMember, role: string }) => {
         
         <div className="mt-auto pt-4">
           {member.email && (
-            <a href={`mailto:${member.email}`} className="flex items-center gap-1.5 text-xs font-mono text-accent hover:underline w-full" title={member.email} aria-label={`Email ${member.name}`}>
+            <a href={`mailto:${member.email}`} className="flex items-center gap-1.5 py-2 -my-2 text-xs font-mono text-accent hover:underline w-full" title={member.email} aria-label={`Email ${member.name}`}>
               <Mail size={14} className="shrink-0" aria-hidden="true" /><span className="truncate">{member.email}</span>
             </a>
           )}

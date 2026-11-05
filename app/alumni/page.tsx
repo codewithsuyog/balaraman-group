@@ -34,7 +34,7 @@ export default function AlumniPage() {
       <div className="max-w-7xl mx-auto">
         
         {/* Header */}
-        <Link href="/team" className="inline-flex items-center gap-1.5 text-sm text-secondary hover:text-foreground mb-6 transition-colors"><ArrowLeft size={14} aria-hidden="true" /> Back to People
+        <Link href="/team" className="inline-flex items-center gap-1.5 py-2 text-sm text-secondary hover:text-foreground mb-4 transition-colors"><ArrowLeft size={14} aria-hidden="true" /> Back to People
         </Link>
         <PageHeader
           title="Alumni"
@@ -105,7 +105,7 @@ export default function AlumniPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {team.alumniMsc.map((alumnus: TeamMember, idx: number) => (
                   <div key={idx} className="p-4 rounded-lg bg-surface border border-line hover:border-line transition-colors flex justify-between items-center gap-4">
-                    <div>
+                    <div className="min-w-0">
                       <h3 className="text-sm font-medium text-foreground">{alumnus.name}</h3>
                       <p className="text-xs text-secondary truncate max-w-[200px]">{alumnus.institution}</p>
                     </div>
@@ -125,7 +125,7 @@ export default function AlumniPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {team.alumniProjectFellows.map((alumnus: TeamMember, idx: number) => (
                   <div key={idx} className="p-4 rounded-lg bg-surface border border-line hover:border-line transition-colors flex justify-between items-center gap-4">
-                    <div>
+                    <div className="min-w-0">
                       <h3 className="text-sm font-medium text-foreground">{alumnus.name}</h3>
                     </div>
                     <span className="text-xs font-mono text-secondary shrink-0">{alumnus.duration}</span>
@@ -144,7 +144,7 @@ export default function AlumniPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {team.alumniSemester.map((alumnus: TeamMember, idx: number) => (
                   <div key={idx} className="p-4 rounded-lg bg-surface border border-line hover:border-line transition-colors flex justify-between items-center gap-4">
-                    <div>
+                    <div className="min-w-0">
                       <h3 className="text-sm font-medium text-foreground">{alumnus.name}</h3>
                       {alumnus.batch && <p className="text-xs text-secondary font-mono">{alumnus.batch}</p>}
                     </div>

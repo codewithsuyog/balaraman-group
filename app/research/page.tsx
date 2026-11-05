@@ -167,7 +167,7 @@ export default function ResearchPage() {
           </section>
         )}
 
-        <Link href="/publications" className="mt-16 inline-flex items-center gap-1.5 text-accent hover:underline underline-offset-4">
+        <Link href="/publications" className="mt-16 inline-flex items-center gap-1.5 py-2 text-accent hover:underline underline-offset-4">
           All publications <ArrowRight size={16} />
         </Link>
       </div>

@@ -217,7 +217,7 @@ export default function Home() {
                     );
                   })}
                 </ul>
-                <Link href={`/research#${cat.id}`} className="mt-auto inline-flex items-center gap-1.5 text-sm text-accent hover:underline underline-offset-4">
+                <Link href={`/research#${cat.id}`} className="mt-auto inline-flex items-center gap-1.5 py-2 text-sm text-accent hover:underline underline-offset-4">
                   About {cat.title.toLowerCase()} <ArrowRight size={14} />
                 </Link>
               </motion.article>
@@ -234,7 +234,7 @@ export default function Home() {
               <h2 className="text-5xl md:text-6xl leading-[0.95] text-foreground mb-3">Publications</h2>
               <p className="text-secondary">Recent work from {piStats.publications}+ published papers</p>
             </div>
-            <Link href="/publications" className="inline-flex items-center gap-1.5 text-accent hover:underline underline-offset-4">
+            <Link href="/publications" className="inline-flex items-center gap-1.5 py-2 text-accent hover:underline underline-offset-4">
               All {piStats.publications} publications <ArrowRight size={16} />
             </Link>
           </div>
@@ -252,7 +252,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
             <h2 className="text-5xl md:text-6xl leading-[0.95] text-foreground">News</h2>
-            <Link href="/news" className="inline-flex items-center gap-1.5 text-accent hover:underline underline-offset-4">
+            <Link href="/news" className="inline-flex items-center gap-1.5 py-2 text-accent hover:underline underline-offset-4">
               All news <ArrowRight size={16} />
             </Link>
           </div>
@@ -273,7 +273,7 @@ export default function Home() {
         <div className="max-w-5xl mx-auto">
           <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
             <h2 className="text-5xl md:text-6xl leading-[0.95] text-foreground">Gallery</h2>
-            <Link href="/gallery" className="inline-flex items-center gap-1.5 text-accent hover:underline underline-offset-4">
+            <Link href="/gallery" className="inline-flex items-center gap-1.5 py-2 text-accent hover:underline underline-offset-4">
               All photos <ArrowRight size={16} />
             </Link>
           </div>
@@ -288,7 +288,7 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl leading-[1] text-foreground mb-2">Join the lab</h2>
             <p className="text-secondary">How Ph.D. students, postdocs and project students can join us.</p>
           </div>
-          <Link href="/join" className="inline-flex items-center gap-1.5 text-accent hover:underline underline-offset-4 shrink-0">
+          <Link href="/join" className="inline-flex items-center gap-1.5 py-2 text-accent hover:underline underline-offset-4 shrink-0">
             Ways to join <ArrowRight size={16} />
           </Link>
         </div>
