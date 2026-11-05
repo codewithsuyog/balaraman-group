@@ -16,8 +16,20 @@ const art: Record<string, ReactElement> = {
       <text x="150" y="94" fontSize="9" textAnchor="end" fill="currentColor">ppm</text>
     </>
   ),
+  // TLC plate: baseline, solvent front and three spots
+  tlc: (
+    <>
+      <rect {...S} x="58" y="6" width="44" height="84" rx="2" />
+      <path {...S} strokeWidth={1.5} strokeDasharray="3 3" d="M58 76 H102 M58 16 H102" />
+      <circle cx="70" cy="76" r="3" fill="currentColor" opacity="0.6" />
+      <circle cx="70" cy="40" r="4" fill="var(--accent)" />
+      <circle cx="90" cy="76" r="3" fill="currentColor" opacity="0.6" />
+      <circle cx="90" cy="56" r="4" fill="currentColor" opacity="0.5" />
+      <circle cx="90" cy="30" r="3.5" fill="var(--accent)" opacity="0.7" />
+    </>
+  ),
   // Flash column with separated bands, stopcock and collection tubes
-  chromatography: (
+  column: (
     <>
       <path {...S} d="M66 6 H94 M70 6 V64 L76 72 V78 M90 6 V64 L84 72 V78" />
       <rect x="72" y="16" width="16" height="6" fill="var(--accent)" opacity="0.85" />

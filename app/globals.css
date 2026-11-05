@@ -105,9 +105,12 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Keep section headings clear of the fixed nav when jumping to them */
-section[id] {
-  scroll-margin-top: 80px;
+/* Keep section headings clear of the fixed nav when jumping to them
+   (in a layer so scroll-mt-* utilities can override it) */
+@layer base {
+  section[id] {
+    scroll-margin-top: 80px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

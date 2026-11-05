@@ -3,11 +3,12 @@
 // Topic pages from Not Voodoo (University of Rochester) are linked directly, not copied.
 
 export type Resource = { title: string; url: string };
-export type ResourceGroup = { id: string; title: string; description: string; items: Resource[] };
+export type ResourceGroup = { id: string; category: string; title: string; description: string; items: Resource[] };
 
 export const resourceGroups: ResourceGroup[] = [
   {
     id: "nmr",
+    category: "Analysis",
     title: "NMR",
     description: "Solvent and impurity peaks, shift data, and getting clean, quantitative spectra.",
     items: [
@@ -22,6 +23,7 @@ export const resourceGroups: ResourceGroup[] = [
   },
   {
     id: "characterization",
+    category: "Analysis",
     title: "Characterization",
     description: "Mass spectrometry, elemental analysis, reference spectra and crystals for X-ray.",
     items: [
@@ -35,22 +37,39 @@ export const resourceGroups: ResourceGroup[] = [
     ],
   },
   {
-    id: "chromatography",
-    title: "Chromatography and TLC",
-    description: "Running flash columns and TLC well, and what to do when compounds streak or stick.",
+    id: "column",
+    category: "Purification",
+    title: "Column chromatography",
+    description: "Manual (gravity) and flash columns: choosing silica or alumina, packing, loading, solvent systems, and compounds that streak or stick.",
     items: [
+      { title: "Column chromatography: the basics", url: "https://chem.libretexts.org/Bookshelves/Organic_Chemistry/Organic_Chemistry_Lab_Techniques_(Nichols)/02%3A_Chromatography/2.04%3A_Column_Chromatography" },
+      { title: "Manual (gravity) columns: packing, loading and eluting", url: "https://chem.libretexts.org/Bookshelves/Organic_Chemistry/Organic_Chemistry_Lab_Techniques_(Nichols)/02%3A_Chromatography/2.04%3A_Column_Chromatography/2.4A%3A_Macroscale_Columns" },
+      { title: "Pipette (microscale) columns", url: "https://chem.libretexts.org/Bookshelves/Organic_Chemistry/Organic_Chemistry_Lab_Techniques_(Nichols)/02%3A_Chromatography/2.04%3A_Column_Chromatography/2.4B%3A_Microscale_(Pipette)_Columns" },
+      { title: "Choosing the stationary phase", url: "https://www.chem.rochester.edu/notvoodoo/pages/chromatography.php?page=solid_phase" },
+      { title: "Solvent systems for columns", url: "https://www.chem.rochester.edu/notvoodoo/pages/chromatography.php?page=solvent_systems" },
       { title: "Flash chromatography: the original method (Still 1978)", url: "https://doi.org/10.1021/jo00408a041" },
       { title: "How to run a flash column", url: "https://www.chem.rochester.edu/notvoodoo/pages/chromatography.php?page=flash_column" },
       { title: "Tips for flash column chromatography", url: "https://www.chem.rochester.edu/notvoodoo/pages/chromatography.php?page=flash_column_tips" },
-      { title: "Troubleshooting flash column chromatography", url: "https://www.chem.rochester.edu/notvoodoo/pages/chromatography.php?page=flash_column_troubleshooting" },
-      { title: "Solvent systems for flash columns", url: "https://www.chem.rochester.edu/notvoodoo/pages/chromatography.php?page=solvent_systems" },
-      { title: "Reverse-phase (C18) flash chromatography for polar compounds (PDF)", url: "https://www.chem.rochester.edu/notvoodoo/documents/C18-RP-FC-Procedure.pdf" },
-      { title: "How to run a preparative TLC", url: "https://www.chem.rochester.edu/notvoodoo/pages/chromatography.php?page=run_prep_tlc" },
+      { title: "Troubleshooting column chromatography", url: "https://www.chem.rochester.edu/notvoodoo/pages/chromatography.php?page=flash_column_troubleshooting" },
+      { title: "Common column chromatography mistakes", url: "https://www.chem.rochester.edu/notvoodoo/pages/rookie_mistakes.php?page=column_chromatography" },
+      { title: "Reverse-phase (C18) columns for polar compounds (PDF)", url: "https://www.chem.rochester.edu/notvoodoo/documents/C18-RP-FC-Procedure.pdf" },
+    ],
+  },
+  {
+    id: "tlc",
+    category: "Purification",
+    title: "TLC",
+    description: "Choosing solvents, monitoring reactions, staining and preparative TLC.",
+    items: [
+      { title: "Thin layer chromatography: the basics", url: "https://chem.libretexts.org/Bookshelves/Organic_Chemistry/Organic_Chemistry_Lab_Techniques_(Nichols)/02%3A_Chromatography/2.03%3A_Thin_Layer_Chromatography_(TLC)" },
       { title: "TLC stains and dips", url: "https://www.chem.rochester.edu/notvoodoo/pages/magic_formulas.php?page=tlc_stains" },
+      { title: "Troubleshooting TLC", url: "https://www.chem.rochester.edu/notvoodoo/pages/chromatography.php?page=tlc_troubleshooting" },
+      { title: "How to run a preparative TLC", url: "https://www.chem.rochester.edu/notvoodoo/pages/chromatography.php?page=run_prep_tlc" },
     ],
   },
   {
     id: "workup",
+    category: "Purification",
     title: "Workup",
     description: "Quenching, extractions and removing stubborn by-products and solvents.",
     items: [
@@ -66,6 +85,7 @@ export const resourceGroups: ResourceGroup[] = [
   },
   {
     id: "isolation",
+    category: "Purification",
     title: "Crystallization and isolation",
     description: "Getting a pure solid, and handling oils and volatile products.",
     items: [
@@ -78,6 +98,7 @@ export const resourceGroups: ResourceGroup[] = [
   },
   {
     id: "reactions",
+    category: "At the bench",
     title: "Running reactions",
     description: "Setting up, heating, cooling and adding reagents, including gases like CO₂.",
     items: [
@@ -93,21 +114,8 @@ export const resourceGroups: ResourceGroup[] = [
     ],
   },
   {
-    id: "practice",
-    title: "Good lab practice",
-    description: "Records, reproducibility and keeping glassware and reagents in good shape.",
-    items: [
-      { title: "Improving your yield", url: "https://www.chem.rochester.edu/notvoodoo/pages/how_to.php?page=improve_yield" },
-      { title: "When a reaction won't reproduce", url: "https://www.chem.rochester.edu/notvoodoo/pages/troubleshooting.php?page=cant_reproduce" },
-      { title: "Keeping records", url: "https://www.chem.rochester.edu/notvoodoo/pages/tips.php?page=recordkeeping" },
-      { title: "Labels and bookkeeping mistakes", url: "https://www.chem.rochester.edu/notvoodoo/pages/rookie_mistakes.php?page=labels_and_bookkeeping" },
-      { title: "Storing reagents", url: "https://www.chem.rochester.edu/notvoodoo/pages/how_to.php?page=reagent_tips" },
-      { title: "Cleaning glassware: everyday methods", url: "https://www.chem.rochester.edu/notvoodoo/pages/how_to.php?page=clean_glassware" },
-      { title: "Cleaning glassware: tough jobs", url: "https://www.chem.rochester.edu/notvoodoo/pages/magic_formulas.php?page=aqua_regia" },
-    ],
-  },
-  {
     id: "air-sensitive",
+    category: "At the bench",
     title: "Air-sensitive techniques",
     description: "Schlenk lines, vacuum, degassing, dry solvents and organometallic reagents.",
     items: [
@@ -124,7 +132,37 @@ export const resourceGroups: ResourceGroup[] = [
     ],
   },
   {
+    id: "reagents",
+    category: "At the bench",
+    title: "Reagents",
+    description: "Preparing and choosing common reagents, oxidants and protecting groups.",
+    items: [
+      { title: "Choosing an oxidant", url: "https://www.chem.rochester.edu/notvoodoo/pages/reagents.php?page=oxidations" },
+      { title: "Preparing LDA", url: "https://www.chem.rochester.edu/notvoodoo/pages/reagents.php?page=prepare_lda" },
+      { title: "Preparing Jones reagent", url: "https://www.chem.rochester.edu/notvoodoo/pages/reagents.php?page=prepare_jones" },
+      { title: "Activating and using molecular sieves", url: "https://www.chem.rochester.edu/notvoodoo/pages/reagents.php?page=molecular_sieves" },
+      { title: "Choosing protecting groups", url: "https://www.chem.rochester.edu/notvoodoo/pages/tips.php?page=protecting_groups" },
+      { title: "Working with thiols", url: "https://www.chem.rochester.edu/notvoodoo/pages/how_to.php?page=work_with_thiols" },
+    ],
+  },
+  {
+    id: "practice",
+    category: "At the bench",
+    title: "Good lab practice",
+    description: "Records, reproducibility and keeping glassware and reagents in good shape.",
+    items: [
+      { title: "Improving your yield", url: "https://www.chem.rochester.edu/notvoodoo/pages/how_to.php?page=improve_yield" },
+      { title: "When a reaction won't reproduce", url: "https://www.chem.rochester.edu/notvoodoo/pages/troubleshooting.php?page=cant_reproduce" },
+      { title: "Keeping records", url: "https://www.chem.rochester.edu/notvoodoo/pages/tips.php?page=recordkeeping" },
+      { title: "Labels and bookkeeping mistakes", url: "https://www.chem.rochester.edu/notvoodoo/pages/rookie_mistakes.php?page=labels_and_bookkeeping" },
+      { title: "Storing reagents", url: "https://www.chem.rochester.edu/notvoodoo/pages/how_to.php?page=reagent_tips" },
+      { title: "Cleaning glassware: everyday methods", url: "https://www.chem.rochester.edu/notvoodoo/pages/how_to.php?page=clean_glassware" },
+      { title: "Cleaning glassware: tough jobs", url: "https://www.chem.rochester.edu/notvoodoo/pages/magic_formulas.php?page=aqua_regia" },
+    ],
+  },
+  {
     id: "safety",
+    category: "Safety and sustainability",
     title: "Safety",
     description: "Hazard assessment, pressure and hydrogen work, pyrophorics, toxic reagents and accidents.",
     items: [
@@ -140,20 +178,8 @@ export const resourceGroups: ResourceGroup[] = [
     ],
   },
   {
-    id: "reagents",
-    title: "Reagents",
-    description: "Preparing and choosing common reagents, oxidants and protecting groups.",
-    items: [
-      { title: "Choosing an oxidant", url: "https://www.chem.rochester.edu/notvoodoo/pages/reagents.php?page=oxidations" },
-      { title: "Preparing LDA", url: "https://www.chem.rochester.edu/notvoodoo/pages/reagents.php?page=prepare_lda" },
-      { title: "Preparing Jones reagent", url: "https://www.chem.rochester.edu/notvoodoo/pages/reagents.php?page=prepare_jones" },
-      { title: "Activating and using molecular sieves", url: "https://www.chem.rochester.edu/notvoodoo/pages/reagents.php?page=molecular_sieves" },
-      { title: "Choosing protecting groups", url: "https://www.chem.rochester.edu/notvoodoo/pages/tips.php?page=protecting_groups" },
-      { title: "Working with thiols", url: "https://www.chem.rochester.edu/notvoodoo/pages/how_to.php?page=work_with_thiols" },
-    ],
-  },
-  {
     id: "greener",
+    category: "Safety and sustainability",
     title: "Greener choices",
     description: "Picking safer, more sustainable solvents and reagents.",
     items: [
@@ -165,6 +191,7 @@ export const resourceGroups: ResourceGroup[] = [
   },
   {
     id: "catalysis",
+    category: "Reference",
     title: "Catalysis toolkit",
     description: "Tests and definitions every catalysis project needs: homogeneity, leaching, TON/TOF, kinetics.",
     items: [
@@ -178,6 +205,7 @@ export const resourceGroups: ResourceGroup[] = [
   },
   {
     id: "data",
+    category: "Reference",
     title: "Data tables",
     description: "Reference values you reach for during planning and analysis.",
     items: [
@@ -189,6 +217,7 @@ export const resourceGroups: ResourceGroup[] = [
   },
   {
     id: "flow",
+    category: "Reference",
     title: "Flow chemistry",
     description: "Getting started with continuous flow, including reactions with gases such as H₂ and CO₂.",
     items: [
@@ -199,6 +228,7 @@ export const resourceGroups: ResourceGroup[] = [
   },
   {
     id: "learning",
+    category: "Reference",
     title: "Learning and writing",
     description: "Organometallic chemistry, named reactions, and writing up your work.",
     items: [
