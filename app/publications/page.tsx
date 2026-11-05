@@ -3,7 +3,7 @@
 import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { ArrowLeft, BookOpen, ExternalLink } from 'lucide-react';
+import { BookOpen, ExternalLink } from 'lucide-react';
 import { publications } from '../publications_master';
 import ChemText from '../../components/ChemText';
 
@@ -138,8 +138,6 @@ export default function PublicationsPage() {
         
         {/* Header */}
         <motion.div initial={false} animate="visible" variants={fadeUp} className="mb-20">
-          <Link href="/#publications" className="inline-flex items-center gap-1.5 text-sm text-secondary hover:text-foreground mb-8 transition-colors"><ArrowLeft size={14} aria-hidden="true" /> Back to home
-          </Link>
           <h1 className="text-4xl md:text-6xl text-foreground leading-[1.08] mb-6">Publications</h1>
           <p className="text-secondary text-lg max-w-2xl">
             Every paper from Raman&apos;s Research Lab, newest first

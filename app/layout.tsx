@@ -3,7 +3,8 @@ import type { Metadata } from "next";
 import { Playfair_Display, Geist_Mono, Inter } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
-import BackButton from "@/components/BackButton";
+import SiteNav from "@/components/SiteNav";
+import SiteFooter from "@/components/SiteFooter";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 import { piStats } from "./data";
@@ -253,14 +254,15 @@ export default function RootLayout({
         <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-background focus:text-foreground">Skip to content</a>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <div className="contents">
+            <SiteNav />
             {children}
+            <SiteFooter />
             <React.Suspense fallback={null}>
               <SpeedInsights />
             </React.Suspense>
             <React.Suspense fallback={null}>
               <Analytics />
             </React.Suspense>
-            <BackButton />
           </div>
         </ThemeProvider>
       </body>

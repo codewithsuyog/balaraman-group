@@ -4,7 +4,7 @@ import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { 
-  ArrowLeft, Zap, Leaf, FlaskConical, Beaker, 
+  Zap, Leaf, FlaskConical, Beaker, 
   FileText, Globe, Award, Database, Microscope, 
   ArrowRight, ExternalLink, ChevronRight 
 } from 'lucide-react';
@@ -94,8 +94,6 @@ export default function ResearchPage() {
         
         <div className="max-w-6xl mx-auto relative z-10">
           <motion.div initial={false} animate="visible" variants={fadeUp}>
-            <Link href="/" className="inline-flex items-center gap-1.5 text-sm text-secondary hover:text-foreground mb-8 transition-colors"><ArrowLeft size={14} aria-hidden="true" /> Back to home
-            </Link>
             
             <h1 className="text-4xl md:text-6xl text-foreground leading-[1.08] mb-6">
               Research

@@ -81,8 +81,6 @@ export default function GalleryPage() {
             initial={false}
             animate={{ opacity: 1, x: 0 }}
           >
-            <Link href="/#gallery" className="inline-flex items-center gap-1.5 text-sm text-secondary hover:text-foreground mb-8 transition-colors"><ArrowLeft size={14} aria-hidden="true" /> Back to home
-            </Link>
             <h1 className="text-4xl md:text-6xl text-foreground leading-[1.08] mb-6">
               Gallery
             </h1>

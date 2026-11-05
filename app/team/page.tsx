@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { 
-  ArrowLeft, Mail, Users, GraduationCap, 
+  Mail, Users, GraduationCap, 
   Briefcase, BookOpen, Beaker, FlaskConical, Microscope
 } from 'lucide-react';
 import { team } from '../data';
@@ -249,8 +249,6 @@ export default function TeamPage() {
         
         <div className="max-w-7xl mx-auto relative z-10 text-center">
           <motion.div initial={false} animate="visible" variants={fadeUp}>
-            <Link href="/" className="inline-flex items-center gap-1.5 text-sm text-secondary hover:text-foreground mb-8 transition-colors"><ArrowLeft size={14} aria-hidden="true" /> Back to home
-            </Link>
             
             <h1 className="text-4xl md:text-6xl text-foreground leading-[1.08] mb-6">
               People
