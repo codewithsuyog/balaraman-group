@@ -25,13 +25,13 @@ const routes = [
   },
   {
     title: 'Summer and project students',
-    text: 'Students from other institutes can join for a summer or semester project, usually through a summer research fellowship programme.',
+    text: 'Students from other institutes can join for a summer or semester project. Email Dr. Balaraman to ask.',
     links: [],
   },
 ];
 
 const apply = [
-  'Your CV, with your marks and any lab or research experience',
+  'Your CV, with any lab or research experience',
   'A short note (half a page) on what you would like to work on and why this lab',
   'Which route above you are applying through, and your fellowship if you have one',
 ];
@@ -69,9 +69,10 @@ export default function JoinPage() {
         <section aria-labelledby="openings" className="mb-14">
           <SectionHeading id="openings">Current openings</SectionHeading>
           <p className="text-secondary leading-relaxed max-w-3xl">
-            Openings for funded project positions are announced here and on the lab&apos;s{' '}
-            <a href="https://x.com/EbLabgroup" target="_blank" rel="noopener noreferrer" className="text-accent underline underline-offset-4">X account</a>.
-            Email Dr. Balaraman to ask about current positions.
+            Openings may be posted on the lab&apos;s{' '}
+            <a href="https://x.com/EbLabgroup" target="_blank" rel="noopener noreferrer" className="text-accent underline underline-offset-4">X</a> or{' '}
+            <a href="https://www.linkedin.com/in/ekambaram-balaraman-4a11293a/" target="_blank" rel="noopener noreferrer" className="text-accent underline underline-offset-4">LinkedIn</a>.
+            You can also email Dr. Balaraman to ask.
           </p>
         </section>
 

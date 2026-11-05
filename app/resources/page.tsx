@@ -68,25 +68,25 @@ function LinkList({ items, q = '' }: { items: Resource[]; q?: string }) {
 
 function GuideBlock({ guide }: { guide: Guide }) {
   return (
-    <div className="mb-10">
+    <div className="mb-8">
       {!guide.reviewedBy && (
         <p className="inline-block mb-4 px-2 py-0.5 rounded border border-line font-mono text-xs text-muted">Draft, not yet checked by the lab</p>
       )}
-      <p className="text-lg text-foreground leading-relaxed mb-8">{guide.summary}</p>
+      <p className="text-lg text-foreground leading-relaxed mb-6">{guide.summary}</p>
       <h3 className="text-lg font-medium text-foreground mb-3">Key steps</h3>
-      <ol className="list-decimal pl-5 space-y-2 text-secondary leading-relaxed marker:text-muted marker:font-mono">
+      <ol className="list-decimal pl-5 space-y-1.5 text-secondary leading-relaxed marker:text-muted marker:font-mono">
         {guide.steps.map((x) => <li key={x}>{x}</li>)}
       </ol>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
         <div>
           <h3 className="text-lg font-medium text-foreground mb-3">Tips</h3>
-          <ul className="list-disc pl-5 space-y-2 text-secondary leading-relaxed marker:text-muted">
+          <ul className="list-disc pl-5 space-y-1.5 text-secondary leading-relaxed marker:text-muted">
             {guide.tips.map((x) => <li key={x}>{x}</li>)}
           </ul>
         </div>
         <div>
           <h3 className="text-lg font-medium text-foreground mb-3">Common mistakes</h3>
-          <ul className="list-disc pl-5 space-y-2 text-secondary leading-relaxed marker:text-muted">
+          <ul className="list-disc pl-5 space-y-1.5 text-secondary leading-relaxed marker:text-muted">
             {guide.mistakes.map((x) => <li key={x}>{x}</li>)}
           </ul>
         </div>
