@@ -28,19 +28,16 @@ const fadeUp: Variants = {
 
 export default function AlumniPage() {
   return (
-    <main id="main" className="min-h-screen bg-background text-foreground selection:bg-amber-500/30">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[50vh] bg-amber-600/5 blur-[120px] rounded-full pointer-events-none"></div>
+    <main id="main" className="min-h-screen bg-background text-foreground selection:bg-raised">
 
       <div className="max-w-7xl mx-auto px-6 py-24 relative z-10">
         
         {/* Header */}
         <motion.div initial={false} animate="visible" variants={fadeUp} className="mb-20">
-          <Link href="/team" className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-foreground/[0.03] border border-foreground/10 hover:border-amber-500/30 text-amber-400 hover:text-amber-300 font-bold mb-8 transition-all text-xs font-mono uppercase tracking-wider group">
-            <img src="/images/lab-logo-128.webp" alt="EBR Lab Logo" className="w-5 h-5 rounded-md object-contain bg-white/90 p-0.5" />
-            <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Back to People
+          <Link href="/team" className="inline-flex items-center gap-1.5 text-sm text-secondary hover:text-foreground mb-8 transition-colors"><ArrowLeft size={14} aria-hidden="true" /> Back to People
           </Link>
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">Alumni Registry</h1>
-          <p className="text-foreground/80 text-lg font-light max-w-2xl leading-relaxed">
+          <h1 className="text-4xl md:text-6xl text-foreground leading-[1.08] mb-6">Alumni</h1>
+          <p className="text-secondary text-lg max-w-2xl leading-relaxed">
             A complete record of doctoral scholars, post-doctoral fellows, post-graduates, undergraduates, and project fellows who have completed their research at Raman&apos;s Research Lab.
           </p>
         </motion.div>
@@ -49,13 +46,13 @@ export default function AlumniPage() {
           {/* Doctoral Alumni */}
           {team.alumniPhd && team.alumniPhd.length > 0 && (
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-              <h2 className="text-2xl font-bold mb-8 flex items-center gap-3 text-foreground border-b border-foreground/10 pb-4">
-                <GraduationCap className="text-emerald-400" size={28} /> Doctoral Alumni (Ph.D. Thesis)
+              <h2 className="text-2xl font-medium mb-8 flex items-center gap-3 text-foreground border-b border-line pb-4">
+                <GraduationCap className="text-secondary" size={28} /> Doctoral Alumni (Ph.D. Thesis)
               </h2>
               <div className="overflow-x-auto">
-                <table className="w-full text-left border-collapse min-w-[800px] bg-foreground/[0.02] rounded-2xl overflow-hidden border border-foreground/5">
-                  <thead className="bg-foreground/5">
-                    <tr className="border-b border-foreground/10 text-xs font-mono uppercase tracking-widest text-foreground/90">
+                <table className="w-full text-left border-collapse min-w-[800px] bg-surface rounded-2xl overflow-hidden border border-line">
+                  <thead className="bg-surface">
+                    <tr className="border-b border-line text-xs font-mono text-foreground">
                       <th className="p-6 font-medium">Scholar Name</th>
                       <th className="p-6 font-medium">Duration</th>
                       <th className="p-6 font-medium max-w-sm">Thesis Title</th>
@@ -64,11 +61,11 @@ export default function AlumniPage() {
                   </thead>
                   <tbody className="divide-y divide-foreground/5">
                     {team.alumniPhd.map((alumnus: TeamMember, idx: number) => (
-                      <tr key={idx} className="hover:bg-foreground/[0.04] transition-colors">
-                        <td className="p-6 font-bold text-foreground text-base">{alumnus.name}</td>
-                        <td className="p-6 text-xs text-amber-400 font-mono">{alumnus.duration || alumnus.year}</td>
-                        <td className="p-6 text-xs text-foreground/80 leading-relaxed max-w-sm italic">{alumnus.thesis || alumnus.title}</td>
-                        <td className="p-6 text-xs text-foreground/90 font-medium">{alumnus.present || '—'}</td>
+                      <tr key={idx} className="hover:bg-surface transition-colors">
+                        <td className="p-6 font-medium text-foreground text-base">{alumnus.name}</td>
+                        <td className="p-6 text-xs text-accent font-mono">{alumnus.duration || alumnus.year}</td>
+                        <td className="p-6 text-xs text-secondary leading-relaxed max-w-sm">{alumnus.thesis || alumnus.title}</td>
+                        <td className="p-6 text-xs text-foreground font-medium">{alumnus.present || '—'}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -80,19 +77,19 @@ export default function AlumniPage() {
           {/* Postdoctoral Alumni */}
           {team.alumniPostdoc && team.alumniPostdoc.length > 0 && (
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-              <h2 className="text-2xl font-bold mb-8 flex items-center gap-3 text-foreground border-b border-foreground/10 pb-4">
-                <Briefcase className="text-teal-400" size={28} /> Post-doctoral Alumni
+              <h2 className="text-2xl font-medium mb-8 flex items-center gap-3 text-foreground border-b border-line pb-4">
+                <Briefcase className="text-secondary" size={28} /> Post-doctoral Alumni
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {team.alumniPostdoc.map((alumnus: TeamMember, idx: number) => (
-                  <div key={idx} className="p-6 rounded-2xl bg-foreground/[0.02] border border-foreground/5 hover:border-teal-500/20 transition-all flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center text-teal-400 shrink-0 mt-0.5">
+                  <div key={idx} className="p-6 rounded-2xl bg-surface border border-line hover:border-line transition-colors flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-xl bg-raised flex items-center justify-center text-secondary shrink-0 mt-0.5">
                       <UserCheck size={20} />
                     </div>
                     <div>
-                      <h3 className="text-base font-bold text-foreground">{alumnus.name}</h3>
-                      <p className="text-xs text-foreground/70 font-light mt-1 leading-relaxed">{alumnus.info}</p>
-                      <span className="text-xs font-mono text-teal-400 mt-2 block">{alumnus.duration}</span>
+                      <h3 className="text-base font-medium text-foreground">{alumnus.name}</h3>
+                      <p className="text-xs text-secondary mt-1 leading-relaxed">{alumnus.info}</p>
+                      <span className="text-xs font-mono text-secondary mt-2 block">{alumnus.duration}</span>
                     </div>
                   </div>
                 ))}
@@ -103,17 +100,17 @@ export default function AlumniPage() {
           {/* M.Sc. Thesis Alumni */}
           {team.alumniMsc && team.alumniMsc.length > 0 && (
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-              <h2 className="text-2xl font-bold mb-8 flex items-center gap-3 text-foreground border-b border-foreground/10 pb-4">
-                <BookOpen className="text-purple-400" size={28} /> Post-graduate Students (M.Sc. Thesis)
+              <h2 className="text-2xl font-medium mb-8 flex items-center gap-3 text-foreground border-b border-line pb-4">
+                <BookOpen className="text-secondary" size={28} /> Post-graduate Students (M.Sc. Thesis)
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {team.alumniMsc.map((alumnus: TeamMember, idx: number) => (
-                  <div key={idx} className="p-4 rounded-xl bg-foreground/[0.02] border border-foreground/5 hover:border-purple-500/20 transition-all flex justify-between items-center gap-4">
+                  <div key={idx} className="p-4 rounded-xl bg-surface border border-line hover:border-line transition-colors flex justify-between items-center gap-4">
                     <div>
-                      <h3 className="text-sm font-bold text-foreground">{alumnus.name}</h3>
-                      <p className="text-xs text-foreground/70 font-light truncate max-w-[200px]">{alumnus.institution}</p>
+                      <h3 className="text-sm font-medium text-foreground">{alumnus.name}</h3>
+                      <p className="text-xs text-secondary truncate max-w-[200px]">{alumnus.institution}</p>
                     </div>
-                    <span className="text-xs font-mono text-purple-400 shrink-0">{alumnus.year}</span>
+                    <span className="text-xs font-mono text-secondary shrink-0">{alumnus.year}</span>
                   </div>
                 ))}
               </div>
@@ -123,16 +120,16 @@ export default function AlumniPage() {
           {/* Project Fellows & Research Associates */}
           {team.alumniProjectFellows && team.alumniProjectFellows.length > 0 && (
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-              <h2 className="text-2xl font-bold mb-8 flex items-center gap-3 text-foreground border-b border-foreground/10 pb-4">
-                <Beaker className="text-blue-400" size={28} /> Project Fellows & Research Associates
+              <h2 className="text-2xl font-medium mb-8 flex items-center gap-3 text-foreground border-b border-line pb-4">
+                <Beaker className="text-secondary" size={28} /> Project Fellows & Research Associates
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {team.alumniProjectFellows.map((alumnus: TeamMember, idx: number) => (
-                  <div key={idx} className="p-4 rounded-xl bg-foreground/[0.02] border border-foreground/5 hover:border-blue-500/20 transition-all flex justify-between items-center gap-4">
+                  <div key={idx} className="p-4 rounded-xl bg-surface border border-line hover:border-line transition-colors flex justify-between items-center gap-4">
                     <div>
-                      <h3 className="text-sm font-bold text-foreground">{alumnus.name}</h3>
+                      <h3 className="text-sm font-medium text-foreground">{alumnus.name}</h3>
                     </div>
-                    <span className="text-xs font-mono text-blue-400 shrink-0">{alumnus.duration}</span>
+                    <span className="text-xs font-mono text-secondary shrink-0">{alumnus.duration}</span>
                   </div>
                 ))}
               </div>
@@ -142,17 +139,17 @@ export default function AlumniPage() {
           {/* Semester & Summer Project Students */}
           {team.alumniSemester && team.alumniSemester.length > 0 && (
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-              <h2 className="text-2xl font-bold mb-8 flex items-center gap-3 text-foreground border-b border-foreground/10 pb-4">
+              <h2 className="text-2xl font-medium mb-8 flex items-center gap-3 text-foreground border-b border-line pb-4">
                 Semester & Summer Project Alumni
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {team.alumniSemester.map((alumnus: TeamMember, idx: number) => (
-                  <div key={idx} className="p-4 rounded-xl bg-foreground/[0.02] border border-foreground/5 hover:border-amber-500/20 transition-all flex justify-between items-center gap-4">
+                  <div key={idx} className="p-4 rounded-xl bg-surface border border-line hover:border-line transition-colors flex justify-between items-center gap-4">
                     <div>
-                      <h3 className="text-sm font-bold text-foreground">{alumnus.name}</h3>
-                      {alumnus.batch && <p className="text-xs text-foreground/70 font-mono">{alumnus.batch}</p>}
+                      <h3 className="text-sm font-medium text-foreground">{alumnus.name}</h3>
+                      {alumnus.batch && <p className="text-xs text-secondary font-mono">{alumnus.batch}</p>}
                     </div>
-                    <span className="text-xs font-mono text-amber-400 shrink-0">{alumnus.duration}</span>
+                    <span className="text-xs font-mono text-accent shrink-0">{alumnus.duration}</span>
                   </div>
                 ))}
               </div>
@@ -163,12 +160,12 @@ export default function AlumniPage() {
             {/* Lab Rotation Students */}
             {team.alumniLabRotation && team.alumniLabRotation.length > 0 && (
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-                <h3 className="text-xl font-bold mb-6 text-foreground border-b border-foreground/10 pb-3">Lab Rotation i-Ph.D. Alumni</h3>
+                <h3 className="text-xl font-medium mb-6 text-foreground border-b border-line pb-3">Lab Rotation i-Ph.D. Alumni</h3>
                 <div className="space-y-3">
                   {team.alumniLabRotation.map((alumnus: TeamMember, idx: number) => (
-                    <div key={idx} className="p-3 rounded-lg bg-foreground/[0.02] border border-foreground/5 flex justify-between items-center text-sm">
+                    <div key={idx} className="p-3 rounded-lg bg-surface border border-line flex justify-between items-center text-sm">
                       <span className="font-medium text-foreground">{alumnus.name}</span>
-                      <span className="text-xs font-mono text-emerald-400">{alumnus.duration}</span>
+                      <span className="text-xs font-mono text-secondary">{alumnus.duration}</span>
                     </div>
                   ))}
                 </div>
@@ -178,12 +175,12 @@ export default function AlumniPage() {
             {/* Undergraduate Alumni */}
             {team.alumniBtech && team.alumniBtech.length > 0 && (
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-                <h3 className="text-xl font-bold mb-6 text-foreground border-b border-foreground/10 pb-3">Undergraduate Alumni (B.Tech)</h3>
+                <h3 className="text-xl font-medium mb-6 text-foreground border-b border-line pb-3">Undergraduate Alumni (B.Tech)</h3>
                 <div className="space-y-3">
                   {team.alumniBtech.map((alumnus: TeamMember, idx: number) => (
-                    <div key={idx} className="p-3 rounded-lg bg-foreground/[0.02] border border-foreground/5 flex justify-between items-center text-sm">
+                    <div key={idx} className="p-3 rounded-lg bg-surface border border-line flex justify-between items-center text-sm">
                       <span className="font-medium text-foreground">{alumnus.name}</span>
-                      <span className="text-xs text-foreground/70">{alumnus.institution}</span>
+                      <span className="text-xs text-secondary">{alumnus.institution}</span>
                     </div>
                   ))}
                 </div>

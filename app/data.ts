@@ -1,4 +1,5 @@
 export const news = [
+  { id: 6, date: "November 2026", type: "Milestone", title: "Dr. Balaraman's work crosses 10,000 citations", detail: "Dr. Ekambaram Balaraman's research has now been cited more than 10,000 times, according to Google Scholar.", link: "" },
   { id: 1, date: "May 2026", type: "Award", title: "Dr. Balaraman selected for INSA Associate Fellowship (IAF) – 2026", detail: "Dr. Ekambaram Balaraman, Associate Professor and Chair, Department of Chemistry, IISER Tirupati, has been selected as a recipient of the INSA Associate Fellowship (IAF) – 2026 by the Indian National Science Academy.", link: "" },
   { id: 4, date: "August 2025", type: "Joining", title: "Dr. Bapurao Rupanawar joins as Post-doctoral Fellow", detail: "Dr. Bapurao Rupanawar (Ph.D. NCL-Pune, Post Doc OIST-Japan) has joined the lab as a Post-doctoral Fellow.", link: "" },
   { id: 5, date: "July 2025", type: "Joining", title: "Dr. Athira C S and Dr. Anjali Krishna P K join as Postdocs", detail: "Two new post-doctoral fellows have joined from CSIR-NIIST, Kerala.", link: "" },
