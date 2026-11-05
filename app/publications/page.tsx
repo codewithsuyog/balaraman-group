@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Search } from 'lucide-react';
 import { publications } from '../publications_master';
 import ChemText from '../../components/ChemText';
+import { PatentList, patentRows } from '@/components/PatentList';
 import { PageHeader, chipClass, pageMain } from '@/components/ui';
 
 type Pub = (typeof publications)[number];
@@ -73,14 +74,31 @@ function PublicationRow({ pub }: { pub: Pub }) {
 }
 
 export default function PublicationsPage() {
-  const [stage, setStage] = useState<'independent' | 'early'>('independent');
+  const [stage, setStage] = useState<'independent' | 'early' | 'patents'>('independent');
   const [query, setQuery] = useState('');
+
+  // Patents live here too: /publications#patents (old /patents links redirect to it)
+  useEffect(() => {
+    const fromHash = () => { if (window.location.hash === '#patents') setStage('patents'); };
+    fromHash();
+    window.addEventListener('hashchange', fromHash);
+    return () => window.removeEventListener('hashchange', fromHash);
+  }, []);
+  const pickStage = (key: typeof stage) => {
+    setStage(key);
+    history.replaceState(null, '', key === 'patents' ? '#patents' : window.location.pathname);
+  };
+
+  const patentsShown = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return patentRows.filter((p) => !q || `${p.title} ${p.authors ?? ''} ${p.number ?? ''} ${p.coapplicant ?? ''}`.toLowerCase().includes(q));
+  }, [query]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return publications.filter(
       (p) =>
-        (stage === 'independent' ? p.id >= 28 : p.id < 28) &&
+        (stage === 'early' ? p.id < 28 : p.id >= 28) &&
         (!q || `${p.title} ${p.authors} ${p.journal} ${p.year}`.toLowerCase().includes(q))
     );
   }, [stage, query]);
@@ -96,15 +114,15 @@ export default function PublicationsPage() {
   return (
     <main id="main" className={pageMain}>
       <div className="max-w-5xl mx-auto">
-        <PageHeader title="Publications" intro="Every paper from Raman's Research Lab, newest first" className="mb-8" />
+        <PageHeader title="Publications" intro="Every paper and patent from Raman's Research Lab, newest first" className="mb-8" />
 
         {/* Filters */}
         <div className="flex flex-col md:flex-row md:items-center gap-3 mb-4">
-          <div className="flex gap-2" role="group" aria-label="Filter by career stage">
-            {([['independent', 'Independent career'], ['early', 'Doctoral and postdoctoral']] as const).map(([key, label]) => (
+          <div className="flex flex-wrap gap-2" role="group" aria-label="Show">
+            {([['independent', 'Independent career'], ['early', 'Doctoral and postdoctoral'], ['patents', `Patents (${patentRows.length})`]] as const).map(([key, label]) => (
               <button
                 key={key}
-                onClick={() => setStage(key)}
+                onClick={() => pickStage(key)}
                 aria-pressed={stage === key}
                 className={`h-10 px-4 text-sm font-medium ${chipClass(stage === key)}`}
               >
@@ -120,15 +138,23 @@ export default function PublicationsPage() {
               type="search"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search title, author, journal"
+              placeholder={stage === 'patents' ? 'Search title, inventor, number' : 'Search title, author, journal'}
               className="w-full h-10 pl-9 pr-3 rounded-lg bg-surface border border-line text-sm text-foreground placeholder:text-muted"
             />
           </div>
         </div>
 
         <p className="text-sm text-muted mb-4" aria-live="polite">
-          {filtered.length} {filtered.length === 1 ? 'paper' : 'papers'}
+          {stage === 'patents'
+            ? `${patentsShown.length} ${patentsShown.length === 1 ? 'patent' : 'patents'}`
+            : `${filtered.length} ${filtered.length === 1 ? 'paper' : 'papers'}`}
         </p>
+
+        {stage === 'patents' ? (
+          patentsShown.length === 0
+            ? <p className="text-secondary py-10">No patents match &ldquo;{query}&rdquo;.</p>
+            : <PatentList rows={patentsShown} />
+        ) : (<>
 
         {/* Jump to year */}
         {byYear.length > 1 && (
@@ -163,6 +189,7 @@ export default function PublicationsPage() {
             ))}
           </div>
         )}
+        </>)}
       </div>
     </main>
   );

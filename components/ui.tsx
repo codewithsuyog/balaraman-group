@@ -2,8 +2,8 @@
 // Scale: page title (h1) text-5xl/7xl, section title (h2) text-3xl/4xl, item title (h3) text-lg medium.
 import type { ReactNode } from 'react';
 
-// Padding for an inner page's <main>: clears the floating nav (taller on phones, where its links wrap)
-export const pageMain = 'w-full pt-40 sm:pt-32 pb-14 md:pb-20 px-6';
+// Padding for an inner page's <main>: clears the floating nav (two lines on phones)
+export const pageMain = 'w-full pt-32 pb-14 md:pb-20 px-6';
 
 // Filter buttons, tabs and jump links: filled when active, outlined otherwise
 export const chipClass = (active = false) =>

@@ -9,7 +9,8 @@ import { siteLinks as links } from '@/components/site-links';
 // on narrow windows the links wrap onto extra lines instead of hiding behind a menu.
 export default function SiteNav() {
   const pathname = usePathname();
-  const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname.startsWith(href));
+  const isActive = (href: string) =>
+    href === '/' ? pathname === '/' : pathname.startsWith(href) || (href === '/team' && pathname.startsWith('/alumni'));
 
   return (
     <nav
@@ -28,7 +29,7 @@ export default function SiteNav() {
               key={link.href}
               href={link.href}
               aria-current={active ? 'page' : undefined}
-              className={`px-[7px] sm:px-2 lg:px-3 py-1.5 lg:py-2 rounded-lg whitespace-nowrap transition-colors ${
+              className={`px-[5px] sm:px-2 lg:px-3 py-1.5 lg:py-2 rounded-lg whitespace-nowrap transition-colors ${
                 active
                   ? 'text-foreground underline decoration-2 decoration-[var(--accent)] underline-offset-[6px]'
                   : 'text-secondary hover:text-foreground hover:bg-raised'
@@ -38,10 +39,10 @@ export default function SiteNav() {
             </Link>
           );
         })}
+        {/* Theme toggle flows with the links so phones fit them on two lines */}
+        <span className="hidden lg:block w-px h-5 bg-line mx-1" aria-hidden="true"></span>
+        <span className="shrink-0"><ThemeToggle /></span>
       </div>
-
-      <span className="hidden lg:block w-px h-5 bg-line mx-1" aria-hidden="true"></span>
-      <span className="shrink-0"><ThemeToggle /></span>
     </nav>
   );
 }

@@ -1,4 +1,5 @@
-import { Mail, MapPin, Globe, GraduationCap, Briefcase } from 'lucide-react';
+import { Mail, MapPin, Globe, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 import { piStats } from '../data';
 import { PageHeader, pageMain } from '@/components/ui';
 
@@ -54,22 +55,9 @@ export default function ContactPage() {
           <p className="text-secondary mb-6 leading-relaxed">
             We welcome motivated Ph.D. students, postdocs and Master&apos;s students. Email Dr. Balaraman your CV and a short note on your research interests.
           </p>
-          <ul className="space-y-4 mb-8">
-            <li className="flex gap-3">
-              <GraduationCap size={18} className="text-muted mt-0.5 shrink-0" aria-hidden="true" />
-              <div>
-                <p className="font-medium text-foreground">Ph.D.</p>
-                <p className="text-sm text-secondary">Apply through IISER Tirupati&apos;s regular Ph.D. admissions</p>
-              </div>
-            </li>
-            <li className="flex gap-3">
-              <Briefcase size={18} className="text-muted mt-0.5 shrink-0" aria-hidden="true" />
-              <div>
-                <p className="font-medium text-foreground">Postdoc</p>
-                <p className="text-sm text-secondary">Apply with a fellowship such as NPDF or an institute fellowship</p>
-              </div>
-            </li>
-          </ul>
+          <Link href="/join" className="mb-8 flex w-fit items-center gap-1.5 text-accent underline underline-offset-4 decoration-1 hover:decoration-2">
+            Ways to join and how to apply <ArrowRight size={16} aria-hidden="true" />
+          </Link>
           <a
             href="mailto:eb.raman@iisertirupati.ac.in?subject=Joining%20the%20lab"
             className="inline-flex items-center gap-2 h-11 px-5 rounded-lg bg-accent-fill text-on-accent font-medium transition-opacity hover:opacity-90"

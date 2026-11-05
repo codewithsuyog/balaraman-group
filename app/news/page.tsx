@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { news } from '../data';
 import { PageHeader, pageMain } from '@/components/ui';
 
@@ -15,6 +16,10 @@ export default function NewsPage() {
             </li>
           ))}
         </ol>
+        <p className="mt-8 text-secondary">
+          Photos from these and other moments are in the{' '}
+          <Link href="/gallery" className="text-accent underline underline-offset-4">gallery</Link>.
+        </p>
       </div>
     </main>
   );

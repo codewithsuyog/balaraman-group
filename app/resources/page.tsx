@@ -120,7 +120,7 @@ export default function ResourcesPage() {
             ))}
           </div>
 
-          <section id="resource-panel" role="tabpanel" aria-labelledby={`tab-${group.id}`} tabIndex={0} className="min-w-0 rounded-lg scroll-mt-36 sm:scroll-mt-24">
+          <section id="resource-panel" role="tabpanel" aria-labelledby={`tab-${group.id}`} tabIndex={0} className="min-w-0 rounded-lg scroll-mt-24">
             <div className="flex items-start gap-5 mb-6">
               <div className="w-28 h-[68px] shrink-0 rounded-lg bg-surface border border-line p-1.5">
                 <ResourceIllustration id={group.id} />
