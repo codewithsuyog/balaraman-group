@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { ExternalLink } from 'lucide-react';
 import { AnimatedCounter } from '@/components/ui/animated-counter';
 import { piBio, piStats, awards, cvLink } from '../data';
+import { pageMain } from '@/components/ui';
 
 type BioItem = { year: string; role: string; institution: string; details?: string };
 
@@ -25,11 +26,11 @@ const courses = [
 export default function PIPage() {
   return (
     <main id="main">
-    <section className="w-full pt-40 sm:pt-32 pb-14 md:pb-20 px-6">
+    <section className={pageMain}>
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
 
         <div className="flex flex-col">
-          <div className="w-full aspect-square rounded-2xl overflow-hidden relative bg-raised">
+          <div className="w-full aspect-square rounded-lg overflow-hidden relative bg-raised">
             <Image
               src="/images/pi/PI Photo 2.webp"
               alt="Dr. Ekambaram Balaraman, Principal Investigator of Raman's Research Lab at IISER Tirupati"
@@ -60,7 +61,7 @@ export default function PIPage() {
           </p>
 
           {/* Scholarly metrics: plain figures, accent only on citations */}
-          <dl className="grid grid-cols-2 md:grid-cols-4 gap-px bg-line rounded-xl overflow-hidden border border-line mb-4">
+          <dl className="grid grid-cols-2 md:grid-cols-4 gap-px bg-line rounded-lg overflow-hidden border border-line mb-4">
             <div className="bg-surface p-5">
               <dt className="text-sm text-muted mb-1">Publications</dt>
               <dd className="text-3xl font-medium tabular-nums text-foreground"><AnimatedCounter target={piStats.publications} suffix="+" /></dd>
@@ -84,7 +85,7 @@ export default function PIPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-12 mb-14">
             <section aria-labelledby="career">
-              <h2 id="career" className="font-sans text-xl font-medium tracking-normal text-foreground mb-4">Career</h2>
+              <h2 id="career" className="text-3xl text-foreground leading-[1] mb-4">Career</h2>
               <ol className="divide-y divide-[var(--line)] border-y border-line">
                 {career.map((item) => (
                   <li key={item.year} className="py-4 grid grid-cols-[7.5rem_1fr] gap-4">
@@ -100,7 +101,7 @@ export default function PIPage() {
             </section>
 
             <section aria-labelledby="education">
-              <h2 id="education" className="font-sans text-xl font-medium tracking-normal text-foreground mb-4">Education</h2>
+              <h2 id="education" className="text-3xl text-foreground leading-[1] mb-4">Education</h2>
               <ol className="divide-y divide-[var(--line)] border-y border-line">
                 {education.map((item) => (
                   <li key={item.year} className="py-4 grid grid-cols-[7.5rem_1fr] gap-4">
@@ -121,7 +122,7 @@ export default function PIPage() {
           </blockquote>
 
           <section aria-labelledby="honours" className="mb-14">
-            <h2 id="honours" className="font-sans text-xl font-medium tracking-normal text-foreground mb-4">
+            <h2 id="honours" className="text-3xl text-foreground leading-[1] mb-4">
               Honours and awards <span className="font-mono text-sm text-muted ml-1 tabular-nums">{honours.length}</span>
             </h2>
             <ul className="divide-y divide-[var(--line)] border-y border-line">
@@ -135,7 +136,7 @@ export default function PIPage() {
           </section>
 
           <section aria-labelledby="courses" className="mb-14">
-            <h2 id="courses" className="font-sans text-xl font-medium tracking-normal text-foreground mb-4">Courses taught</h2>
+            <h2 id="courses" className="text-3xl text-foreground leading-[1] mb-4">Courses taught</h2>
             <ul className="divide-y divide-[var(--line)] border-y border-line">
               {courses.map((c) => (
                 <li key={c.code} className="py-3.5 grid grid-cols-[7.5rem_1fr] gap-4">

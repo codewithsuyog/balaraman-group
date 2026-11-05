@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import { PageHeader, pageMain } from '@/components/ui';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, ArrowRight, X, Maximize2, ChevronLeft, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
@@ -20,7 +21,7 @@ const GalleryCard = ({ num, folder, index, onOpen }: { num: number, folder: stri
       viewport={{ once: true }}
       transition={{ delay: (num % 6) * 0.05 }}
       whileHover={{ scale: 1.03 }}
-      className="group relative aspect-[16/10] rounded-2xl overflow-hidden border border-line bg-surface cursor-pointer"
+      className="group relative aspect-[16/10] rounded-lg overflow-hidden border border-line bg-surface cursor-pointer"
       onClick={() => !failed && onOpen(index)}
       role="button"
       tabIndex={0}
@@ -32,7 +33,7 @@ const GalleryCard = ({ num, folder, index, onOpen }: { num: number, folder: stri
           src={failed ? "/logo.webp" : src} 
           alt="" // the card's aria-label already names the photo
           fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          sizes="(max-width: 1024px) 50vw, 33vw"
           className={`object-contain transition-transform duration-200  ${failed ? 'opacity-20' : ''}`}
           priority={index < 3}
           onError={() => setFailed(true)}
@@ -74,26 +75,20 @@ export default function GalleryPage() {
 
 
   return (
-    <main id="main" className="min-h-screen bg-background text-foreground py-24 px-6 md:px-12">
+    <main id="main" className={pageMain}>
       <div className="max-w-7xl mx-auto">
         <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
-          <motion.div 
-            initial={false}
-            animate={{ opacity: 1, x: 0 }}
-          >
-            <h1 className="text-4xl md:text-6xl text-foreground leading-[1.08] mb-6">
-              Gallery
-            </h1>
-            <p className="text-[var(--color-muted)] max-w-2xl text-lg">
-              A comprehensive archive of Raman&apos;s Research Lab—milestones, celebrations, and daily scientific life.
-            </p>
-          </motion.div>
+          <PageHeader
+            title="Gallery"
+            className="mb-0"
+            intro="Milestones, celebrations and everyday life in Raman's Research Lab."
+          />
           <div className="px-6 py-3 rounded-lg border border-line bg-surface text-xs font-mono text-foreground h-max">
             {photos.length} photos
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
           {photos.map((num, idx) => {
             return <GalleryCard key={num} num={num} folder={folder} index={idx} onOpen={setSelectedIndex} />;
           })}
@@ -126,7 +121,7 @@ export default function GalleryPage() {
               <img loading="lazy" decoding="async" 
                 src={`/images/${folder}/${photos[selectedIndex]}.webp`}
                 alt={captionOf(photos[selectedIndex])} 
-                className="max-w-full max-h-full object-contain rounded-2xl"
+                className="max-w-full max-h-full object-contain rounded-lg"
               />
 
               {/* Close */}

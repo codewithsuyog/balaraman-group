@@ -1,8 +1,11 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { publications } from '../publications_master';
+import { facilities, funding } from '../data';
+import { SectionHeading } from '@/components/ui';
 import ChemText from '../../components/ChemText';
 import { HomogeneousDiagram, HeterogeneousDiagram } from '@/components/ResearchDiagrams';
+import { PageHeader, pageMain } from '@/components/ui';
 
 const byId = (id: number) => publications.find((p) => p.id === id);
 const doiUrl = (doi: string) => (doi.startsWith('http') ? doi : `https://doi.org/${doi}`);
@@ -44,28 +47,26 @@ const areas = [
 
 export default function ResearchPage() {
   return (
-    <main id="main" className="w-full pt-40 sm:pt-32 pb-14 md:pb-20 px-6">
+    <main id="main" className={pageMain}>
       <div className="max-w-6xl mx-auto">
-        <header className="max-w-3xl mb-16 md:mb-20">
-          <h1 className="text-5xl md:text-7xl text-foreground leading-[0.95] mb-6">Research</h1>
-          <p className="text-lg md:text-xl text-secondary leading-relaxed">
-            We explore organometallic chemistry, designing molecular architectures that open new pathways for
-            sustainable catalysis and selective organic transformations. The lab works in two connected areas, bridging
-            the precision of molecular catalysts with the robustness of heterogeneous ones.
-          </p>
+        <PageHeader
+          title="Research"
+          className="mb-16 md:mb-20"
+          intro="We explore organometallic chemistry, designing molecular architectures that open new pathways for sustainable catalysis and selective organic transformations. The lab works in two connected areas, bridging the precision of molecular catalysts with the robustness of heterogeneous ones."
+        >
           <nav aria-label="Research areas" className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
             {areas.map((a) => (
               <a key={a.id} href={`#${a.id}`} className="text-accent hover:underline underline-offset-4">{a.title}</a>
             ))}
           </nav>
-        </header>
+        </PageHeader>
 
         <div className="space-y-20 md:space-y-28">
           {areas.map((area) => {
             const scheme = byId(area.scheme);
             return (
               <section key={area.id} id={area.id} className="border-t border-line pt-12 md:pt-16">
-                <h2 className="text-4xl md:text-5xl text-foreground leading-[1] mb-8">{area.title}</h2>
+                <h2 className="text-3xl md:text-4xl text-foreground leading-[1] mb-8">{area.title}</h2>
 
                 <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] gap-10 lg:gap-14 items-start">
                   <div className="space-y-5 text-lg text-secondary leading-relaxed">
@@ -92,7 +93,7 @@ export default function ResearchPage() {
                   </div>
 
                   <figure>
-                    <div className="rounded-xl bg-surface border border-line p-4 md:p-6">
+                    <div className="rounded-lg bg-surface border border-line p-4 md:p-6">
                       <area.Diagram />
                     </div>
                     <figcaption className="mt-3 text-sm text-muted">{area.diagramCaption}</figcaption>
@@ -102,7 +103,7 @@ export default function ResearchPage() {
                 {scheme?.schemeImage && (
                   <figure className="mt-12">
                     <p className="text-sm text-muted mb-3">From our work</p>
-                    <div className="rounded-xl bg-white border border-line p-4 md:p-6">
+                    <div className="rounded-lg bg-white border border-line p-4 md:p-6">
                       <img
                         src={scheme.schemeImage}
                         alt={`Reaction scheme from: ${scheme.title}`}
@@ -138,7 +139,35 @@ export default function ResearchPage() {
           })}
         </div>
 
-        <Link href="/publications" className="mt-16 inline-flex items-center gap-1.5 text-accent hover:underline underline-offset-4">
+        {facilities.length > 0 && (
+          <section aria-labelledby="facilities" className="mt-20">
+            <SectionHeading id="facilities">Facilities and instruments</SectionHeading>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 divide-y divide-[var(--line)] border-y border-line">
+              {facilities.map((f) => (
+                <li key={f.name} className="py-3">
+                  <span className="text-foreground">{f.name}</span>
+                  {f.detail && <span className="text-secondary"> · {f.detail}</span>}
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        {funding.length > 0 && (
+          <section aria-labelledby="funding" className="mt-20">
+            <SectionHeading id="funding">Funding</SectionHeading>
+            <ul className="divide-y divide-[var(--line)] border-y border-line">
+              {funding.map((f) => (
+                <li key={`${f.agency}-${f.title}`} className="py-3 flex flex-wrap justify-between gap-x-6">
+                  <span className="text-foreground">{f.agency}{f.title && <span className="text-secondary"> · {f.title}</span>}</span>
+                  {f.years && <span className="font-mono text-sm text-muted tabular-nums">{f.years}</span>}
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        <Link href="/publications" className="mt-16 inline-flex items-center gap-1.5 py-2 text-accent hover:underline underline-offset-4">
           All publications <ArrowRight size={16} />
         </Link>
       </div>

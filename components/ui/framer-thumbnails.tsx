@@ -98,7 +98,7 @@ function FramerCarouselThumbnails() {
     >
       <div className='flex flex-col gap-3'>
         {/* Main Carousel */}
-        <div className='relative overflow-hidden rounded-2xl border border-line ' ref={containerRef}>
+        <div className='relative overflow-hidden rounded-lg border border-line ' ref={containerRef}>
           <motion.div
             className='flex'
             drag='x'

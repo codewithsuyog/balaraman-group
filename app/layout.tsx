@@ -226,8 +226,8 @@ export default function RootLayout({
                     {
                       "@type": "ListItem",
                       "position": 5,
-                      "name": "Patents",
-                      "item": "https://www.ebalaraman.com/patents"
+                      "name": "Resources",
+                      "item": "https://www.ebalaraman.com/resources"
                     },
                     {
                       "@type": "ListItem",

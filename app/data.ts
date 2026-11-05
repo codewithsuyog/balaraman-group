@@ -63,21 +63,21 @@ export const team = {
     { name: "Ayesha", info: "Semester Project, IISER Tirupati (2026)", email: "aysha_20221020@students.iisertirupati.ac.in", image: "/images/team/present/masters/ayesha.webp" },
   ],
   alumniPhd: [
-    { name: "Dr. Manoj K. Sahoo", thesis: "Visible mediated photoredox catalytic Dehydrogenation and C-H arylation reactions", duration: "2013-2018", present: "Post-doctoral Studies at UNIST, South Korea", image: "/images/team/Alumini/Phd Alumini/Dr. MANOJ K. SAHOO.jpg" },
-    { name: "Dr. Garima Jaiswal", thesis: "Transition metal based nanocatalysts for (de)-hydrogenation reactions", duration: "2013-2018", present: "Research Scientist at HPCL, Bengaluru", image: "/images/team/Alumini/Phd Alumini/Dr. GARIMA JAISWAL.png" },
-    { name: "Dr. Vinod G. Landge", thesis: "Transition-metal catalyzed C-H bond alkynylation", duration: "2014-2019", present: "Research Scientist at USA", image: "/images/team/Alumini/Phd Alumini/Dr. VINOD G. LANDGE.jpg" },
-    { name: "Dr. Siba P. Midya", thesis: "Transition metal catalyzed (de)hydrogenative C-C and C-N bond formation", duration: "2014-2019", present: "DST-Inspire Faculty at IACS, Kolkata", image: "/images/team/Alumini/Phd Alumini/Dr. SIBA P. MIDYA.png" },
-    { name: "Dr. Jagannath Rana", thesis: "Earth-abundant metal catalyzed C-N bond activation of amides and alkylation reactions using alcohols", duration: "2015-2019", present: "Post-doctoral Studies at IISER Bhopal", image: "/images/team/Alumini/Phd Alumini/Dr. JAGANNATH RANA.jpg" },
-    { name: "Dr. Akash Mondal", thesis: "Manganese catalysed dehydrogenative C-C and C-N bond formation", duration: "2016-2022", present: "Post-doctoral Studies at IISER, Kolkata", image: "/images/team/Alumini/Phd Alumini/Dr. AKASH MONDAL.jpg" },
-    { name: "Dr. Subaramanian M", thesis: "Non-precious metal catalysis for the dehydrogenation and related reactions", duration: "2017-2022", present: "R&D", image: "/images/team/Alumini/Phd Alumini/Dr. SUBARAMANIAN M.jpg" },
-    { name: "Dr. Vinita Yadav", thesis: "Earth-abundant metal catalyzed C-C and C-N bond forming reactions using alcohols to access olefin and indole scaffolds", duration: "2017-2022", image: "/images/team/Alumini/Phd Alumini/Dr. VINITA YADAV.jpg" },
-    { name: "Dr. Rohit Kumar", thesis: "Dehydrogenative C-C and C-N Bond Forming Reactions and Electrochemical N2 Activation Under Molecular Cobalt Catalysis", duration: "2018-2024", present: "Post Doc at IIT Kharagpur", image: "/images/team/Alumini/Phd Alumini/Dr. ROHIT KUMAR.jpg" },
-    { name: "Dr. Sivakumar G", thesis: "Transition-metal catalyzed acceptorless dehydrogenation and related reactions in sustainable chemical synthesis", duration: "2019-2024", present: "Post-doctoral studies at Weizmann Institute of Science, Israel", image: "/images/team/Alumini/Phd Alumini/Dr. SIVAKUMAR G.jpg" },
-    { name: "Dr. Reshma Babu", thesis: "3d-Transition Metal Catalyzed Acceptorless Alcohol Dehydrogenation and Related Reactions", duration: "2019-2024", image: "/images/team/Alumini/Phd Alumini/Dr. RESHMA BABU.jpg" }
+    { name: "Dr. Manoj K. Sahoo", thesis: "Visible mediated photoredox catalytic Dehydrogenation and C-H arylation reactions", duration: "2013-2018", present: "Post-doctoral Studies at UNIST, South Korea", image: "/images/team/Alumini/Phd Alumini/Dr. MANOJ K. SAHOO.webp" },
+    { name: "Dr. Garima Jaiswal", thesis: "Transition metal based nanocatalysts for (de)-hydrogenation reactions", duration: "2013-2018", present: "Research Scientist at HPCL, Bengaluru", image: "/images/team/Alumini/Phd Alumini/Dr. GARIMA JAISWAL.webp" },
+    { name: "Dr. Vinod G. Landge", thesis: "Transition-metal catalyzed C-H bond alkynylation", duration: "2014-2019", present: "Research Scientist at USA", image: "/images/team/Alumini/Phd Alumini/Dr. VINOD G. LANDGE.webp" },
+    { name: "Dr. Siba P. Midya", thesis: "Transition metal catalyzed (de)hydrogenative C-C and C-N bond formation", duration: "2014-2019", present: "DST-Inspire Faculty at IACS, Kolkata", image: "/images/team/Alumini/Phd Alumini/Dr. SIBA P. MIDYA.webp" },
+    { name: "Dr. Jagannath Rana", thesis: "Earth-abundant metal catalyzed C-N bond activation of amides and alkylation reactions using alcohols", duration: "2015-2019", present: "Post-doctoral Studies at IISER Bhopal", image: "/images/team/Alumini/Phd Alumini/Dr. JAGANNATH RANA.webp" },
+    { name: "Dr. Akash Mondal", thesis: "Manganese catalysed dehydrogenative C-C and C-N bond formation", duration: "2016-2022", present: "Post-doctoral Studies at IISER, Kolkata", image: "/images/team/Alumini/Phd Alumini/Dr. AKASH MONDAL.webp" },
+    { name: "Dr. Subaramanian M", thesis: "Non-precious metal catalysis for the dehydrogenation and related reactions", duration: "2017-2022", present: "R&D", image: "/images/team/Alumini/Phd Alumini/Dr. SUBARAMANIAN M.webp" },
+    { name: "Dr. Vinita Yadav", thesis: "Earth-abundant metal catalyzed C-C and C-N bond forming reactions using alcohols to access olefin and indole scaffolds", duration: "2017-2022", image: "/images/team/Alumini/Phd Alumini/Dr. VINITA YADAV.webp" },
+    { name: "Dr. Rohit Kumar", thesis: "Dehydrogenative C-C and C-N Bond Forming Reactions and Electrochemical N2 Activation Under Molecular Cobalt Catalysis", duration: "2018-2024", present: "Post Doc at IIT Kharagpur", image: "/images/team/Alumini/Phd Alumini/Dr. ROHIT KUMAR.webp" },
+    { name: "Dr. Sivakumar G", thesis: "Transition-metal catalyzed acceptorless dehydrogenation and related reactions in sustainable chemical synthesis", duration: "2019-2024", present: "Post-doctoral studies at Weizmann Institute of Science, Israel", image: "/images/team/Alumini/Phd Alumini/Dr. SIVAKUMAR G.webp" },
+    { name: "Dr. Reshma Babu", thesis: "3d-Transition Metal Catalyzed Acceptorless Alcohol Dehydrogenation and Related Reactions", duration: "2019-2024", image: "/images/team/Alumini/Phd Alumini/Dr. RESHMA BABU.webp" }
   ],
   alumniPostdoc: [
     { name: "Dr. M. Sivaprakash", info: "Ph.D. 2023 (Central University of Tamil Nadu), M.Sc. (Chem) Bharathiyar University Coimbatore", duration: "Apr 2023 – 2024", image: "/images/team/Alumini/Postdoc alumini/Sivaprakash.webp" },
-    { name: "Dr. Rohit Kumar", info: "Ph.D. 2024 (IISER Tirupati), B.Sc., (Chem), Central University, Bihar (iPhD)", duration: "2024 – 2025", image: "/images/team/Alumini/Postdoc alumini/Dr. ROHIT KUMAR.jpg" },
+    { name: "Dr. Rohit Kumar", info: "Ph.D. 2024 (IISER Tirupati), B.Sc., (Chem), Central University, Bihar (iPhD)", duration: "2024 – 2025", image: "/images/team/Alumini/Postdoc alumini/Dr. ROHIT KUMAR.webp" },
   ],
   alumniMsc: [
     { name: "Mr. Thomas Abraham", institution: "Mahatma Gandhi University, Kerala", year: "2014" },
@@ -196,6 +196,10 @@ export const patents = {
     { title: "Catalytic hydrogenation process for the synthesis of terminal diols from terminal dialkyl aliphatic esters", number: "US Patent 9,944,579", authors: "E. Balaraman, M. K Sahoo" }
   ]
 };
+
+// Shown on the Research page once filled in (each section stays hidden while its list is empty).
+export const facilities: { name: string; detail?: string }[] = [];
+export const funding: { agency: string; title?: string; years?: string }[] = [];
 
 export const piBio = [
   { year: '1997 - 2000', role: 'Bachelor of Science (Chemistry)', institution: 'University of Madras (Aringer Anna Arts College, Cheyyar, Chennai)' },
