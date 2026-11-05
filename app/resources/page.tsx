@@ -60,9 +60,10 @@ export default function ResourcesPage() {
           })}
         </ul>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-14">
+        {/* Columns balance sections of different lengths without big gaps */}
+        <div className="lg:columns-2 gap-12">
           {resourceGroups.map((g) => (
-            <section key={g.id} id={g.id} aria-labelledby={`${g.id}-title`}>
+            <section key={g.id} id={g.id} aria-labelledby={`${g.id}-title`} className="break-inside-avoid mb-14">
               <div className="flex items-start gap-5 mb-5">
                 <div className="w-28 h-[68px] shrink-0 rounded-lg bg-surface border border-line p-1.5">
                   <ResourceIllustration id={g.id} />

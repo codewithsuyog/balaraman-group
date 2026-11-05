@@ -7,7 +7,7 @@ const A = { ...S, stroke: 'var(--accent)' } as const;
 
 const art: Record<string, ReactElement> = {
   // 1H NMR spectrum with one highlighted peak and a ppm axis
-  'nmr-analysis': (
+  nmr: (
     <>
       <path {...S} d="M10 78 H150" />
       <path {...S} d="M14 76 L30 76 L33 40 L36 76 L58 76 L60 58 L62 76 L64 52 L66 76 L96 76 L98 64 L100 76 L128 76 L130 70 L132 76 L146 76" />
@@ -17,7 +17,7 @@ const art: Record<string, ReactElement> = {
     </>
   ),
   // Flash column with separated bands, stopcock and collection tubes
-  purification: (
+  chromatography: (
     <>
       <path {...S} d="M66 6 H94 M70 6 V64 L76 72 V78 M90 6 V64 L84 72 V78" />
       <rect x="72" y="16" width="16" height="6" fill="var(--accent)" opacity="0.85" />
@@ -30,7 +30,7 @@ const art: Record<string, ReactElement> = {
     </>
   ),
   // Schlenk flask with side arm and tap under nitrogen
-  'air-sensitive-techniques': (
+  'air-sensitive': (
     <>
       <circle {...S} cx="70" cy="64" r="22" />
       <path {...S} d="M64 43 V14 M76 43 V14 M60 14 H80" />
@@ -50,7 +50,7 @@ const art: Record<string, ReactElement> = {
     </>
   ),
   // Catalytic cycle around a metal centre
-  'catalysis-toolkit': (
+  catalysis: (
     <>
       <path {...S} d="M80 14 A34 34 0 0 1 113 56" />
       <path {...S} d="M108 66 A34 34 0 0 1 52 74" />
@@ -68,19 +68,8 @@ const art: Record<string, ReactElement> = {
       <path {...S} strokeWidth={1.5} d="M30 27 H130 M30 46 H130 M30 65 H130 M64 12 V84 M98 12 V84" />
     </>
   ),
-  // TLC plate: baseline, solvent front and spots
-  experimental: (
-    <>
-      <rect {...S} x="56" y="8" width="48" height="80" rx="3" />
-      <path {...S} strokeWidth={1.5} strokeDasharray="3 3" d="M60 74 H100 M60 18 H100" />
-      <circle cx="68" cy="34" r="4" fill="var(--accent)" />
-      <circle cx="80" cy="52" r="4" fill="currentColor" opacity="0.5" />
-      <circle cx="92" cy="28" r="4" fill="currentColor" opacity="0.5" />
-      <circle cx="92" cy="60" r="3" fill="currentColor" opacity="0.35" />
-    </>
-  ),
   // Syringe pump feeding a coil reactor
-  'flow-chemistry': (
+  flow: (
     <>
       <rect {...S} x="8" y="36" width="30" height="16" rx="2" />
       <path {...S} d="M38 44 H50" />
@@ -97,12 +86,67 @@ const art: Record<string, ReactElement> = {
       <path {...A} strokeWidth={1.5} d="M40 32 Q56 30 70 36 M40 44 Q56 42 70 48 M90 36 Q104 30 120 32" />
     </>
   ),
-  // Manuscript page and pen
-  'writing-presenting': (
+  // Mass spectrum: molecular ion with its isotope cluster highlighted
+  characterization: (
     <>
-      <path {...S} d="M42 10 H96 L112 26 V86 H42 Z M96 10 V26 H112" />
-      <path {...S} strokeWidth={1.5} d="M52 40 H100 M52 52 H100 M52 64 H84" />
-      <path {...A} d="M104 78 L134 48 L142 56 L112 86 L102 88 Z" />
+      <path {...S} d="M12 82 H148" />
+      {[[26, 30], [44, 52], [60, 40], [78, 64]].map(([x, h]) => <path key={x} {...S} d={`M${x} 82 V${82 - h}`} />)}
+      <path {...A} strokeWidth={3} d="M108 82 V20 M118 82 V44 M128 82 V70" />
+      <text x="118" y="14" fontSize="9" textAnchor="middle" fill="var(--accent)">M⁺</text>
+    </>
+  ),
+  // Separatory funnel with two layers
+  workup: (
+    <>
+      <path {...S} d="M74 8 H86 M76 8 V16 Q48 30 52 54 Q56 70 76 74 V86 M84 8 V16 Q112 30 108 54 Q104 70 84 74 V86" />
+      <path d="M53 46 Q80 40 107 46 Q106 66 84 72 H76 Q54 66 53 46 Z" fill="var(--accent)" opacity="0.3" />
+      <path {...S} strokeWidth={1.5} d="M54 46 Q80 40 106 46" />
+      <path {...S} d="M70 80 H90" />
+    </>
+  ),
+  // Crystals: hexagonal prisms
+  isolation: (
+    <>
+      <path {...A} d="M62 82 L54 70 V34 L62 22 L70 34 V70 Z M54 34 H70" />
+      <path {...S} d="M84 84 L76 74 V46 L84 36 L92 46 V74 Z M76 46 H92" />
+      <path {...S} d="M104 84 L98 76 V58 L104 50 L110 58 V76 Z M98 58 H110" />
+      <path {...S} d="M40 86 H124" />
+    </>
+  ),
+  // Round-bottom flask on a stirrer hotplate
+  reactions: (
+    <>
+      <circle {...S} cx="80" cy="46" r="20" />
+      <path {...S} d="M74 27 V8 M86 27 V8 M70 8 H90" />
+      <path d="M62 52 Q80 44 98 52 A20 20 0 0 1 62 52 Z" fill="var(--accent)" opacity="0.3" />
+      <rect x="74" y="58" width="12" height="4" rx="2" fill="var(--accent)" />
+      <rect {...S} x="40" y="70" width="80" height="16" rx="3" />
+      <circle {...S} cx="104" cy="78" r="3" />
+    </>
+  ),
+  // Lab notebook with a checklist
+  practice: (
+    <>
+      <rect {...S} x="48" y="10" width="64" height="78" rx="3" />
+      <path {...S} d="M58 10 V88" />
+      <path {...A} d="M66 28 l4 4 l8 -8 M66 48 l4 4 l8 -8" />
+      <path {...S} strokeWidth={1.5} d="M84 30 H102 M84 50 H102 M66 70 H102" />
+    </>
+  ),
+  // Reagent bottle with label
+  reagents: (
+    <>
+      <path {...S} d="M70 8 H90 V20 Q104 24 104 40 V84 H56 V40 Q56 24 70 20 Z" />
+      <rect x="62" y="46" width="36" height="24" rx="2" fill="var(--accent)" opacity="0.25" />
+      <path {...S} strokeWidth={1.5} d="M68 54 H92 M68 62 H84" />
+    </>
+  ),
+  // Leaf and droplet
+  greener: (
+    <>
+      <path {...A} d="M60 78 Q50 30 104 18 Q114 70 60 78 Z" />
+      <path {...S} d="M60 78 Q80 50 98 28" />
+      <path {...S} d="M118 56 Q112 66 112 72 a6 6 0 0 0 12 0 Q124 66 118 56 Z" />
     </>
   ),
 };
