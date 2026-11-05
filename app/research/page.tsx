@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { publications } from '../publications_master';
+import { facilities, funding } from '../data';
+import { SectionHeading } from '@/components/ui';
 import ChemText from '../../components/ChemText';
 import { HomogeneousDiagram, HeterogeneousDiagram } from '@/components/ResearchDiagrams';
 import { PageHeader, pageMain } from '@/components/ui';
@@ -136,6 +138,34 @@ export default function ResearchPage() {
             );
           })}
         </div>
+
+        {facilities.length > 0 && (
+          <section aria-labelledby="facilities" className="mt-20">
+            <SectionHeading id="facilities">Facilities and instruments</SectionHeading>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 divide-y divide-[var(--line)] border-y border-line">
+              {facilities.map((f) => (
+                <li key={f.name} className="py-3">
+                  <span className="text-foreground">{f.name}</span>
+                  {f.detail && <span className="text-secondary"> · {f.detail}</span>}
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        {funding.length > 0 && (
+          <section aria-labelledby="funding" className="mt-20">
+            <SectionHeading id="funding">Funding</SectionHeading>
+            <ul className="divide-y divide-[var(--line)] border-y border-line">
+              {funding.map((f) => (
+                <li key={`${f.agency}-${f.title}`} className="py-3 flex flex-wrap justify-between gap-x-6">
+                  <span className="text-foreground">{f.agency}{f.title && <span className="text-secondary"> · {f.title}</span>}</span>
+                  {f.years && <span className="font-mono text-sm text-muted tabular-nums">{f.years}</span>}
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         <Link href="/publications" className="mt-16 inline-flex items-center gap-1.5 text-accent hover:underline underline-offset-4">
           All publications <ArrowRight size={16} />

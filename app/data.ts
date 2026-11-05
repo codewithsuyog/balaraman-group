@@ -197,6 +197,10 @@ export const patents = {
   ]
 };
 
+// Shown on the Research page once filled in (each section stays hidden while its list is empty).
+export const facilities: { name: string; detail?: string }[] = [];
+export const funding: { agency: string; title?: string; years?: string }[] = [];
+
 export const piBio = [
   { year: '1997 - 2000', role: 'Bachelor of Science (Chemistry)', institution: 'University of Madras (Aringer Anna Arts College, Cheyyar, Chennai)' },
   { year: '2000 - 2002', role: 'Master of Science (Chemistry)', institution: 'University of Madras (R.K.M. Vivekananda College, Chennai)' },

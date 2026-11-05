@@ -20,6 +20,7 @@ const hasExtension = (path: string) => /\.\w{2,5}$/.test(path);
 
 interface TeamMember {
   name?: string;
+  topic?: string; // one-line research topic, shown under the name when set
   image?: string;
   info?: string;
   email?: string;
@@ -82,6 +83,7 @@ const MemberCard = ({ member, role }: { member: TeamMember, role: string }) => {
       <div className="p-4 flex-1 flex flex-col">
         <div className="flex-1">
           <h3 className="text-base font-medium text-foreground mb-1 group-hover:text-accent transition-colors">{member.name}</h3>
+          {member.topic && <p className="text-sm text-accent leading-snug mb-2">{member.topic}</p>}
           <p className="text-xs text-foreground leading-relaxed mb-4">
             {member.info ? member.info.split(',').map((part: string, idx: number) => (
               <React.Fragment key={idx}>{part.trim()}<br/></React.Fragment>
@@ -91,16 +93,10 @@ const MemberCard = ({ member, role }: { member: TeamMember, role: string }) => {
         
         <div className="mt-auto pt-4">
           {member.email && (
-            <a href={`mailto:${member.email}`} className="text-xs font-mono text-accent hover:text-accent transition-colors truncate block mb-3 w-full" title={member.email}>
-              {member.email}
+            <a href={`mailto:${member.email}`} className="flex items-center gap-1.5 text-xs font-mono text-accent hover:underline w-full" title={member.email} aria-label={`Email ${member.name}`}>
+              <Mail size={14} className="shrink-0" aria-hidden="true" /><span className="truncate">{member.email}</span>
             </a>
           )}
-          
-          <div className="flex gap-4 border-t border-line pt-4">
-            {member.email && (
-              <a href={`mailto:${member.email}`} aria-label={`Email ${member.name}`} className="text-foreground hover:text-accent transition-colors"><Mail size={16} /></a>
-            )}
-          </div>
         </div>
       </div>
     </motion.div>

@@ -281,6 +281,19 @@ export default function Home() {
         </div>
       </section>
 
+      {/* JOIN */}
+      <section className="w-full py-12 md:py-16 px-6 border-t border-line">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <h2 className="text-3xl md:text-4xl leading-[1] text-foreground mb-2">Join the lab</h2>
+            <p className="text-secondary">How Ph.D. students, postdocs and project students can join us.</p>
+          </div>
+          <Link href="/join" className="inline-flex items-center gap-1.5 text-accent hover:underline underline-offset-4 shrink-0">
+            Ways to join <ArrowRight size={16} />
+          </Link>
+        </div>
+      </section>
+
       {/* LAB EMBLEM DIALOG */}
       <AnimatePresence>
         {logoModalOpen && (
