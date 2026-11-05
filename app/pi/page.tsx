@@ -3,6 +3,25 @@ import { ExternalLink } from 'lucide-react';
 import { AnimatedCounter } from '@/components/ui/animated-counter';
 import { piBio, piStats, awards, cvLink } from '../data';
 
+type BioItem = { year: string; role: string; institution: string; details?: string };
+
+const isEducation = (item: BioItem) => /bachelor|master|doctor|ph\.d/i.test(item.role);
+// Newest first, like an academic CV
+const education = (piBio as BioItem[]).filter(isEducation).reverse();
+const career = (piBio as BioItem[]).filter((i) => !isEducation(i)).reverse();
+
+// "Title – 2021" -> { title, year }; entries without a year keep an empty year
+const honours = awards.map((a) => {
+  const m = a.match(/^(.*?)\s+[–-]\s+((?:19|20)\d{2}(?:[–-]\d{2,4})?(?:\s*&\s*\d{4})?)(.*)$/);
+  return m ? { title: (m[1] + m[3]).trim(), year: m[2] } : { title: a, year: '' };
+}).sort((x, y) => (parseInt(y.year) || 0) - (parseInt(x.year) || 0)); // newest first, undated last
+
+const courses = [
+  { code: 'CHM 111', name: 'Inorganic Chemistry' },
+  { code: 'CHM 211', name: 'Coordination Chemistry' },
+  { code: 'CHM 411', name: 'Organometallic Chemistry' },
+];
+
 export default function PIPage() {
   return (
     <main id="main">
@@ -63,40 +82,69 @@ export default function PIPage() {
             {piStats.phdCompleted} Ph.D. completed · {piStats.phdPursuing} Ph.D. pursuing · {piStats.postdocs} postdocs · {piStats.mscStudents} MSc students · {piStats.projectFellows} project fellows
           </p>
 
-          <h2 className="font-sans text-lg font-medium tracking-normal text-foreground mb-5">Education and career</h2>
-          <ol className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6 mb-12">
-            {piBio.map((item: { year?: string; role?: string; institution?: string; details?: string }, idx) => (
-              <li key={idx} className="border-l border-line pl-5">
-                <p className="font-mono text-xs text-muted mb-1 tabular-nums">{item.year}</p>
-                <p className="text-base font-medium text-foreground leading-snug">{item.role}</p>
-                <p className="text-sm text-secondary leading-relaxed">{item.institution}</p>
-                {item.details && <p className="text-sm text-muted leading-relaxed mt-2 max-w-md">{item.details}</p>}
-              </li>
-            ))}
-          </ol>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-12 mb-14">
+            <section aria-labelledby="career">
+              <h2 id="career" className="font-sans text-xl font-medium tracking-normal text-foreground mb-4">Career</h2>
+              <ol className="divide-y divide-[var(--line)] border-y border-line">
+                {career.map((item) => (
+                  <li key={item.year} className="py-4 grid grid-cols-[7.5rem_1fr] gap-4">
+                    <span className="font-mono text-sm text-muted tabular-nums pt-0.5">{item.year}</span>
+                    <div>
+                      <p className="font-medium text-foreground leading-snug">{item.role}</p>
+                      <p className="text-sm text-secondary leading-relaxed">{item.institution}</p>
+                      {item.details && <p className="text-sm text-muted leading-relaxed mt-1">{item.details}</p>}
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </section>
 
-          <blockquote className="mb-12 border-l-2 border-accent pl-5 max-w-2xl">
+            <section aria-labelledby="education">
+              <h2 id="education" className="font-sans text-xl font-medium tracking-normal text-foreground mb-4">Education</h2>
+              <ol className="divide-y divide-[var(--line)] border-y border-line">
+                {education.map((item) => (
+                  <li key={item.year} className="py-4 grid grid-cols-[7.5rem_1fr] gap-4">
+                    <span className="font-mono text-sm text-muted tabular-nums pt-0.5">{item.year}</span>
+                    <div>
+                      <p className="font-medium text-foreground leading-snug">{item.role}</p>
+                      <p className="text-sm text-secondary leading-relaxed">{item.institution}</p>
+                      {item.details && <p className="text-sm text-muted leading-relaxed mt-1">{item.details}</p>}
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          </div>
+
+          <blockquote className="mb-14 border-l-2 border-accent pl-5 max-w-2xl">
             <p className="text-lg text-foreground leading-relaxed">Take risk in life. If you win, you will lead; if you lose, you will guide.</p>
           </blockquote>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-12">
-            <div>
-              <h2 className="font-sans text-lg font-medium tracking-normal text-foreground mb-4">Honours and awards</h2>
-              <ul className="space-y-2.5 list-disc pl-5 marker:text-muted">
-                {awards.slice(0, 8).map((award, i) => (
-                  <li key={i} className="text-sm text-secondary leading-relaxed">{award}</li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h2 className="font-sans text-lg font-medium tracking-normal text-foreground mb-4">Courses taught</h2>
-              <ul className="space-y-2.5 text-sm text-secondary">
-                <li><span className="font-mono text-muted mr-2">CHM 111</span>Inorganic Chemistry</li>
-                <li><span className="font-mono text-muted mr-2">CHM 211</span>Coordination Chemistry</li>
-                <li><span className="font-mono text-muted mr-2">CHM 411</span>Organometallic Chemistry</li>
-              </ul>
-            </div>
-          </div>
+          <section aria-labelledby="honours" className="mb-14">
+            <h2 id="honours" className="font-sans text-xl font-medium tracking-normal text-foreground mb-4">
+              Honours and awards <span className="font-mono text-sm text-muted ml-1 tabular-nums">{honours.length}</span>
+            </h2>
+            <ul className="divide-y divide-[var(--line)] border-y border-line">
+              {honours.map((h) => (
+                <li key={h.title} className="py-3.5 grid grid-cols-[7.5rem_1fr] gap-4">
+                  <span className="font-mono text-sm text-muted tabular-nums pt-0.5">{h.year || '—'}</span>
+                  <span className="text-foreground leading-relaxed">{h.title}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section aria-labelledby="courses" className="mb-14">
+            <h2 id="courses" className="font-sans text-xl font-medium tracking-normal text-foreground mb-4">Courses taught</h2>
+            <ul className="divide-y divide-[var(--line)] border-y border-line">
+              {courses.map((c) => (
+                <li key={c.code} className="py-3.5 grid grid-cols-[7.5rem_1fr] gap-4">
+                  <span className="font-mono text-sm text-muted">{c.code}</span>
+                  <span className="text-foreground">{c.name}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
 
           <div className="flex flex-wrap gap-3">
             <a href={cvLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 h-11 px-5 rounded-lg bg-foreground text-background font-medium transition-opacity hover:opacity-90">

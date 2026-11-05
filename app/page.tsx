@@ -189,22 +189,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* WELCOME */}
-      <section className="w-full py-20 md:py-28 px-6">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-5xl md:text-6xl leading-[0.95] text-foreground mb-6">Welcome</h2>
-          <p className="text-lg md:text-xl text-secondary leading-relaxed mb-8">
-            Raman&apos;s Research Lab, led by Dr. Ekambaram Balaraman in the Department of Chemistry at IISER Tirupati,
-            develops well-defined transition-metal catalysts, homogeneous and heterogeneous, for sustainable synthesis and
-            molecular transformations. Students and postdocs interested in joining the group should contact Dr. Balaraman.
-          </p>
-          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
-            <Link href="/pi" className="inline-flex items-center gap-1.5 text-accent hover:underline underline-offset-4">Meet the PI <ArrowRight size={16} /></Link>
-            <Link href="/contact" className="inline-flex items-center gap-1.5 text-accent hover:underline underline-offset-4">Join the lab <ArrowRight size={16} /></Link>
-          </div>
-        </div>
-      </section>
-
       {/* 3. RESEARCH SECTION */}
       <section id="research" className="w-full py-20 md:py-28 px-6 border-t border-line">
         <div className="max-w-7xl mx-auto">
