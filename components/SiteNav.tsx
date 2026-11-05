@@ -14,6 +14,7 @@ const links = [
   { href: '/patents', label: 'Patents' },
   { href: '/team', label: 'People' },
   { href: '/news', label: 'News' },
+  { href: '/resources', label: 'Resources' },
   { href: '/gallery', label: 'Gallery' },
   { href: '/contact', label: 'Contact' },
 ];
@@ -26,13 +27,13 @@ export default function SiteNav() {
   return (
     <nav
       aria-label="Main"
-      className="fixed top-3 inset-x-3 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 z-50 rounded-xl bg-surface/95 border border-line px-2 md:px-3 py-1.5 flex flex-col md:flex-row md:items-center gap-1 text-sm"
+      className="fixed top-3 inset-x-3 lg:inset-x-auto lg:left-1/2 lg:-translate-x-1/2 z-50 rounded-xl bg-surface/95 border border-line px-2 lg:px-3 py-1.5 flex flex-col lg:flex-row lg:items-center gap-1 text-sm"
     >
-      <div className="flex items-center justify-between md:justify-start gap-2">
+      <div className="flex items-center justify-between lg:justify-start gap-2">
         <Link href="/" className="flex items-center gap-2 p-1 rounded-lg" aria-label="Raman's Research Lab, home" onClick={() => setOpen(false)}>
           <img src="/images/lab-logo-hex-96.webp" alt="" width={28} height={32} className="w-7 h-8 shrink-0 min-w-7" />
         </Link>
-        <div className="flex items-center gap-1 md:hidden">
+        <div className="flex items-center gap-1 lg:hidden">
           <ThemeToggle />
           <button
             onClick={() => setOpen(!open)}
@@ -45,7 +46,7 @@ export default function SiteNav() {
         </div>
       </div>
 
-      <div className={`${open ? 'flex' : 'hidden'} md:flex flex-col md:flex-row md:items-center gap-0.5 pb-2 md:pb-0`}>
+      <div className={`${open ? 'flex' : 'hidden'} lg:flex flex-col lg:flex-row lg:items-center gap-0.5 pb-2 lg:pb-0`}>
         {links.map((link) => {
           const active = isActive(link.href);
           return (
@@ -64,8 +65,8 @@ export default function SiteNav() {
             </Link>
           );
         })}
-        <span className="hidden md:block w-px h-5 bg-line mx-1" aria-hidden="true"></span>
-        <span className="hidden md:block"><ThemeToggle /></span>
+        <span className="hidden lg:block w-px h-5 bg-line mx-1" aria-hidden="true"></span>
+        <span className="hidden lg:block"><ThemeToggle /></span>
       </div>
     </nav>
   );
