@@ -276,9 +276,7 @@ export default function Home() {
             className="flex items-center gap-2 p-1 rounded-lg"
             aria-label="Raman's Research Lab, back to top"
           >
-            <span className="w-8 h-8 rounded-md bg-white border border-line flex items-center justify-center overflow-hidden">
-              <img src="/images/lab-logo-128.webp" alt="" className="w-full h-full object-contain" />
-            </span>
+            <img src="/images/lab-logo-hex-96.webp" alt="" width={28} height={32} className="w-7 h-8 shrink-0 min-w-7" />
           </a>
           <div className="flex items-center gap-1 md:hidden">
             <ThemeToggle />
@@ -334,43 +332,39 @@ export default function Home() {
         {/* Even darkening so the centred title stays readable over faces and sky */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/55 to-black/75" aria-hidden="true"></div>
 
-        {/* Wordmark behind the title */}
+        {/* Wordmark behind the title, as on the original site */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none" aria-hidden="true">
-          <span className="font-serif font-medium leading-none tracking-[-0.04em] text-white/[0.16] text-[30vw] lg:text-[22vw]">
+          <span
+            className="font-sans font-black uppercase tracking-tighter leading-none text-[120px] sm:text-[200px] md:text-[300px]"
+            style={{ color: 'rgba(255, 255, 255, 0.16)', WebkitTextStroke: '2px rgba(0, 0, 0, 0.2)' }}
+          >
             RAMAN
           </span>
         </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto text-center pt-24 pb-16">
+        <div className="relative z-10 max-w-6xl mx-auto text-center pt-24 pb-16">
+          {/* Hexagon emblem on its own, no box */}
           <button
             type="button"
             onClick={() => setLogoModalOpen(true)}
             aria-label="View the EBR lab emblem"
-            className="mx-auto mb-8 w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-white p-2 flex items-center justify-center"
+            className="mx-auto mb-6 md:mb-8 block w-24 sm:w-28 md:w-32 rounded-lg"
           >
-            <img src="/images/lab-logo-square.webp" alt="" className="w-full h-full object-contain" />
+            <img
+              src="/images/lab-logo-hex-320.webp"
+              alt=""
+              width={282}
+              height={320}
+              className="w-full h-auto drop-shadow-[0_8px_24px_rgba(0,0,0,0.35)]"
+            />
           </button>
-          <h1 className="text-5xl sm:text-6xl md:text-8xl text-white leading-[1.02] mb-6">
-            Raman&apos;s<br />Research Lab
+          <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-white leading-[0.9] mb-8">
+            Raman&apos;s<br />
+            <span className="text-[#fbbf24]">Research</span> Lab
           </h1>
-          <p className="text-lg md:text-xl text-white/85 max-w-2xl mx-auto leading-relaxed mb-10">
-            Transition-metal catalysis, sustainable chemistry and organometallic synthesis at IISER Tirupati
+          <p className="text-lg sm:text-xl md:text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed">
+            Transition-metal <span className="font-semibold text-white">catalysis</span>, <span className="font-semibold text-white">sustainable chemistry</span>, and <span className="font-semibold text-white">organometallic synthesis</span> at IISER Tirupati.
           </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <a
-              href="#contact"
-              onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }}
-              className="inline-flex items-center h-12 px-6 rounded-lg bg-accent-fill text-on-accent font-medium transition-opacity hover:opacity-90"
-            >
-              Join the lab
-            </a>
-            <Link
-              href="/publications"
-              className="inline-flex items-center h-12 px-6 rounded-lg border border-white/50 text-white font-medium transition-colors hover:bg-white/10"
-            >
-              Publications
-            </Link>
-          </div>
         </div>
       </section>
 
@@ -793,9 +787,9 @@ export default function Home() {
                   type="button"
                   onClick={() => setLogoModalOpen(true)}
                   aria-label="View the EBR lab emblem"
-                  className="w-12 h-12 rounded-xl bg-white p-1.5 border border-line flex items-center justify-center shrink-0"
+                  className="shrink-0 rounded-lg"
                 >
-                  <img src="/images/lab-logo-128.webp" alt="" className="w-full h-full object-contain" />
+                  <img src="/images/lab-logo-hex-96.webp" alt="" width={42} height={48} className="w-[42px] h-12" />
                 </button>
                 <div>
                   <p className="text-lg font-medium text-foreground">Raman&apos;s Research Lab</p>

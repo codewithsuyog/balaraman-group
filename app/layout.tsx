@@ -13,7 +13,7 @@ const statsLine = `${piStats.publications}+ publications, ${(Math.floor(piStats.
 const playfair = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const inter = Inter({

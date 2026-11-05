@@ -56,11 +56,14 @@ body {
   line-height: 1.6;
 }
 
-/* The display serif is for page and section titles only */
-:is(h1, h2):not(.font-mono):not(.font-sans) {
-  font-family: var(--font-serif);
-  font-weight: 500;
-  letter-spacing: -0.02em;
+/* The display serif is for page and section titles only.
+   In the base layer so utility classes (font-bold, tracking-*) on a heading still win. */
+@layer base {
+  :is(h1, h2):not(.font-mono):not(.font-sans) {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
 }
 
 ::selection {
