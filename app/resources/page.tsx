@@ -1,4 +1,4 @@
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, FileText, FileDown, Database, Book, BookOpen } from 'lucide-react';
 import { resourceGroups } from '../resources';
 import { ResourceIllustration } from '@/components/ResourceIllustrations';
 
@@ -7,6 +7,21 @@ const sourceOf = (url: string) => {
   const host = new URL(url).hostname.replace(/^www\./, '');
   return host === 'doi.org' ? 'paper' : host;
 };
+
+// Link type, worked out from the URL so new links get an icon automatically
+const DATABASE_HOSTS = ['pubchem.ncbi.nlm.nih.gov', 'sdbs.db.aist.go.jp', 'chemcalc.org', 'acsgcipr.org', 'reagents.acsgcipr.org', 'organicchemistrydata.org'];
+const BOOK_HOSTS = ['nap.nationalacademies.org'];
+const linkType = (url: string) => {
+  const u = new URL(url);
+  const host = u.hostname.replace(/^www\./, '');
+  if (u.pathname.toLowerCase().endsWith('.pdf')) return 'pdf';
+  if (host === 'doi.org') return 'paper';
+  if (BOOK_HOSTS.includes(host) || u.pathname.includes('/doi/book/')) return 'book';
+  if (DATABASE_HOSTS.includes(host)) return 'database';
+  return 'guide';
+};
+const TYPE_ICON = { paper: FileText, pdf: FileDown, database: Database, book: Book, guide: BookOpen } as const;
+const TYPE_LABEL = { paper: 'Paper', pdf: 'PDF', database: 'Database or tool', book: 'Book', guide: 'Guide' } as const;
 
 export default function ResourcesPage() {
   const total = resourceGroups.reduce((n, g) => n + g.items.length, 0);
@@ -34,6 +49,17 @@ export default function ResourcesPage() {
           ))}
         </nav>
 
+        <ul aria-label="Link types" className="-mt-10 mb-12 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted">
+          {(Object.keys(TYPE_ICON) as (keyof typeof TYPE_ICON)[]).map((t) => {
+            const Icon = TYPE_ICON[t];
+            return (
+              <li key={t} className="inline-flex items-center gap-1.5">
+                <Icon size={15} aria-hidden="true" /> {TYPE_LABEL[t]}
+              </li>
+            );
+          })}
+        </ul>
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-14">
           {resourceGroups.map((g) => (
             <section key={g.id} id={g.id} aria-labelledby={`${g.id}-title`}>
@@ -57,7 +83,14 @@ export default function ResourcesPage() {
                       rel="noopener noreferrer"
                       className="group flex items-start justify-between gap-4 py-3 text-foreground hover:text-accent transition-colors"
                     >
-                      <span className="leading-snug">{item.title}</span>
+                      <span className="flex items-start gap-2.5 leading-snug">
+                        {(() => {
+                          const t = linkType(item.url);
+                          const Icon = TYPE_ICON[t];
+                          return <Icon size={16} className="shrink-0 mt-0.5 text-muted group-hover:text-accent" aria-label={TYPE_LABEL[t]} role="img" />;
+                        })()}
+                        <span>{item.title}</span>
+                      </span>
                       <span className="shrink-0 inline-flex items-center gap-1 font-mono text-xs text-muted group-hover:text-accent pt-1">
                         {sourceOf(item.url)} <ArrowUpRight size={12} aria-hidden="true" />
                       </span>
