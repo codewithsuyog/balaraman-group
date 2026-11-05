@@ -153,7 +153,7 @@ export default function PublicationsPage() {
         {stage === 'patents' ? (
           patentsShown.length === 0
             ? <p className="text-secondary py-10">No patents match &ldquo;{query}&rdquo;.</p>
-            : <PatentList rows={patentsShown} />
+            : <><h2 className="sr-only">Patents</h2><PatentList rows={patentsShown} /></>
         ) : (<>
 
         {/* Jump to year */}
