@@ -25,7 +25,7 @@ const courses = [
 export default function PIPage() {
   return (
     <main id="main">
-    <section className="w-full pt-28 md:pt-32 pb-20 md:pb-28 px-6">
+    <section className="w-full pt-40 sm:pt-32 pb-14 md:pb-20 px-6">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
 
         <div className="flex flex-col">

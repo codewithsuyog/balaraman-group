@@ -11,12 +11,12 @@ export default function ResourcesPage() {
   const total = resourceGroups.reduce((n, g) => n + g.items.length, 0);
 
   return (
-    <main id="main" className="w-full pt-28 md:pt-32 pb-20 md:pb-28 px-6">
+    <main id="main" className="w-full pt-40 sm:pt-32 pb-14 md:pb-20 px-6">
       <div className="max-w-6xl mx-auto">
         <header className="max-w-3xl mb-12">
           <h1 className="text-5xl md:text-7xl text-foreground leading-[0.95] mb-6">Resources</h1>
           <p className="text-lg md:text-xl text-secondary leading-relaxed">
-            Practical references we use in the lab, from NMR impurity tables to Schlenk line technique and
+            Practical references we use in the lab, from NMR impurity tables and column chromatography to Schlenk line technique and
             catalysis tests. Open to everyone; {total} links, checked every month.
           </p>
         </header>

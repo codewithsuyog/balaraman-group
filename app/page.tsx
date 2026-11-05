@@ -4,7 +4,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, ExternalLink, X } from 'lucide-react';
+import { ArrowRight, X } from 'lucide-react';
 import { piStats, news } from './data';
 import { featuredPublications as publications } from './publications_featured';
 import ChemText from '../components/ChemText';
@@ -35,18 +35,16 @@ interface PubData {
 
 const FeaturedPublication = ({ pub }: { pub: PubData }) => {
   const [coverFailed, setCoverFailed] = useState(false);
-  const [schemeFailed, setSchemeFailed] = useState(false);
 
   const hasCover = !!pub.coverImage && !coverFailed;
-  const hasScheme = !!pub.schemeImage && !schemeFailed;
 
   return (
     <motion.article
       initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-      className="flex flex-col md:flex-row gap-6 md:gap-8 items-start p-6 md:p-8 rounded-2xl bg-surface border border-line"
+      className="flex gap-4 md:gap-5 items-start p-4 md:p-5 rounded-xl bg-surface border border-line"
     >
       {hasCover && (
-        <div className="w-24 h-32 shrink-0 rounded-lg bg-white border border-line p-1.5">
+        <div className="w-14 h-[74px] shrink-0 rounded-md bg-white border border-line p-1">
           <img
             src={pub.coverImage}
             alt={`Journal cover art for: ${pub.title ?? "publication " + pub.id}`}
@@ -56,41 +54,27 @@ const FeaturedPublication = ({ pub }: { pub: PubData }) => {
           />
         </div>
       )}
-
       <div className="flex-1 min-w-0">
-        <p className="font-mono text-xs text-muted mb-2 tabular-nums">
+        <p className="font-mono text-xs text-muted mb-1 tabular-nums">
           <span className="text-accent">[{pub.id}]</span> {pub.year}{pub.journal && <> · {pub.journal}</>}
         </p>
         {pub.title && (
-          <h3 className="text-lg font-medium leading-snug text-foreground mb-2">
-            <ChemText text={pub.title} />
+          <h3 className="text-base md:text-lg font-medium leading-snug text-foreground">
+            {pub.doi ? (
+              <a
+                href={pub.doi.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-accent transition-colors"
+                aria-label={`${pub.title} (opens in a new tab)`}
+              >
+                <ChemText text={pub.title} />
+              </a>
+            ) : <ChemText text={pub.title} />}
           </h3>
         )}
-        {pub.authors && <p className="text-sm text-secondary leading-relaxed mb-4">{pub.authors}</p>}
-        {pub.doi && (
-          <a
-            href={pub.doi.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`}
-            aria-label={`Read paper: ${pub.title} (opens in a new tab)`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm text-accent hover:underline underline-offset-4"
-          >
-            Read paper <ExternalLink size={14} />
-          </a>
-        )}
+        {pub.authors && <p className="text-sm text-secondary leading-relaxed mt-1 line-clamp-1 md:line-clamp-none">{pub.authors}</p>}
       </div>
-
-      {hasScheme && (
-        <div className="w-full md:w-72 h-44 shrink-0 rounded-lg bg-white border border-line p-2">
-          <img
-            src={pub.schemeImage}
-            alt={`Reaction scheme from: ${pub.title ?? "publication " + pub.id}`}
-            loading="lazy" decoding="async"
-            className="w-full h-full object-contain"
-            onError={() => setSchemeFailed(true)}
-          />
-        </div>
-      )}
     </motion.article>
   );
 };
@@ -190,7 +174,7 @@ export default function Home() {
       </section>
 
       {/* 3. RESEARCH SECTION */}
-      <section id="research" className="w-full py-20 md:py-28 px-6 border-t border-line">
+      <section id="research" className="w-full py-14 md:py-20 px-6 border-t border-line">
         <div className="max-w-7xl mx-auto">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 mb-14">
             <h2 className="text-5xl md:text-6xl leading-[0.95] text-foreground">Research</h2>
@@ -242,7 +226,7 @@ export default function Home() {
       </section>
 
       {/* 4. PUBLICATIONS SECTION */}
-      <section id="publications" className="w-full py-20 md:py-28 px-6 border-t border-line">
+      <section id="publications" className="w-full py-14 md:py-20 px-6 border-t border-line">
         <div className="max-w-7xl mx-auto">
           <div className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
@@ -254,8 +238,8 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="flex flex-col gap-4">
-            {publications.slice(0, 3).map((pub) => (
+          <div className="flex flex-col gap-3">
+            {publications.slice(0, 5).map((pub) => (
               <FeaturedPublication key={pub.id} pub={pub} />
             ))}
           </div>
@@ -263,7 +247,7 @@ export default function Home() {
       </section>
 
       {/* LATEST NEWS */}
-      <section className="w-full py-20 md:py-28 px-6 border-t border-line">
+      <section className="w-full py-14 md:py-20 px-6 border-t border-line">
         <div className="max-w-7xl mx-auto">
           <div className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
             <h2 className="text-5xl md:text-6xl leading-[0.95] text-foreground">News</h2>

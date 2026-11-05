@@ -4,7 +4,7 @@ import { piStats } from '../data';
 export default function ContactPage() {
   return (
     <main id="main">
-    <section className="w-full pt-28 md:pt-32 pb-20 md:pb-28 px-6">
+    <section className="w-full pt-40 sm:pt-32 pb-14 md:pb-20 px-6">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
         <div>
           <h1 className="text-4xl md:text-6xl text-foreground leading-[1.04] mb-4">Contact</h1>

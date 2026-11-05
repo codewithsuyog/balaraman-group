@@ -2,7 +2,7 @@ import { news } from '../data';
 
 export default function NewsPage() {
   return (
-    <main id="main" className="w-full pt-28 md:pt-32 pb-20 md:pb-28 px-6">
+    <main id="main" className="w-full pt-40 sm:pt-32 pb-14 md:pb-20 px-6">
       <div className="max-w-3xl mx-auto">
         <h1 className="text-4xl md:text-6xl text-foreground leading-[1.04] mb-4">News</h1>
         <p className="text-lg text-secondary mb-12">Awards, new members and milestones from the lab</p>

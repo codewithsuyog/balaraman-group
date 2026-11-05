@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Mail } from 'lucide-react';
 import { piStats } from '@/app/data';
 
-// Compact footer: the main nav already lists every page, so this only identifies the lab and how to reach it.
+// Compact footer: who we are and how to reach us, then the copyright line.
 export default function SiteFooter() {
   return (
     <footer className="w-full border-t border-line bg-surface">

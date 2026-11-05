@@ -44,7 +44,7 @@ const areas = [
 
 export default function ResearchPage() {
   return (
-    <main id="main" className="w-full pt-28 md:pt-32 pb-20 md:pb-28 px-6">
+    <main id="main" className="w-full pt-40 sm:pt-32 pb-14 md:pb-20 px-6">
       <div className="max-w-6xl mx-auto">
         <header className="max-w-3xl mb-16 md:mb-20">
           <h1 className="text-5xl md:text-7xl text-foreground leading-[0.95] mb-6">Research</h1>
