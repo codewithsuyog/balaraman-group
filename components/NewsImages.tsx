@@ -1,5 +1,5 @@
-// Photos for a news item. Each opens full size in a new tab (posters are too detailed for a thumbnail).
-export type NewsImage = { src: string; alt: string; contain?: boolean };
+// Photos for a news item, shown whole (never cropped). Each opens full size in a new tab.
+export type NewsImage = { src: string; alt: string };
 
 export function NewsImages({ images, className = '', imgClassName }: {
   images?: NewsImage[];
@@ -23,7 +23,7 @@ export function NewsImages({ images, className = '', imgClassName }: {
             alt={img.alt}
             loading="lazy"
             decoding="async"
-            className={`w-full ${imgClassName} ${img.contain ? 'object-contain' : 'object-cover object-top'}`}
+            className={`w-full ${imgClassName} object-contain`}
           />
         </a>
       ))}

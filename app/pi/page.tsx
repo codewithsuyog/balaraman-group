@@ -26,6 +26,25 @@ const courses = [
 export default function PIPage() {
   return (
     <main id="main">
+    {/* This page is the PI's profile; the PI photo is its main image (used by search engines) */}
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'ProfilePage',
+          url: 'https://www.ebalaraman.com/pi',
+          mainEntity: { '@id': 'https://www.ebalaraman.com/#person' },
+          primaryImageOfPage: {
+            '@type': 'ImageObject',
+            url: 'https://www.ebalaraman.com/pi-photo.webp',
+            width: 1024,
+            height: 619,
+            caption: 'Dr. Ekambaram Balaraman, Associate Professor and Chair, Department of Chemistry, IISER Tirupati',
+          },
+        }),
+      }}
+    />
     <section className={pageMain}>
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
 
