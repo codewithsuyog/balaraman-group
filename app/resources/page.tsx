@@ -179,7 +179,7 @@ export default function ResourcesPage() {
         <div className="grid grid-cols-1 lg:grid-cols-[15rem_1fr] gap-8 lg:gap-12 items-start">
           {/* Topic tabs under category headings: wrap at the top on small screens, a column on the left on desktop.
               Arrow keys move through every tab in order, across categories. */}
-          <div onKeyDown={onKeyDown} className="space-y-4 lg:space-y-3 lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto">
+          <div onKeyDown={onKeyDown} className="space-y-4 lg:space-y-2.5 lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto">
             {categories.map((cat, ci) => (
             <div key={cat}>
             <p id={`cat-${ci}`} className="font-mono text-xs text-muted mb-1.5 lg:mb-1 lg:px-3">{cat}</p>
@@ -205,7 +205,7 @@ export default function ResourcesPage() {
                     // On phones the links sit below the tabs, so bring them into view
                     if (window.innerWidth < 1024) document.getElementById('resource-panel')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                   }}
-                  className={`h-9 lg:h-8 px-3 text-sm text-left justify-between gap-3 ${chipClass(active)} ${active ? '' : 'lg:border-transparent'}`}
+                  className={`h-9 lg:h-[30px] px-3 text-sm text-left justify-between gap-3 ${chipClass(active)} ${active ? '' : 'lg:border-transparent'}`}
                 >
                   <span>{g.title}</span>
                   <span className={`hidden lg:inline font-mono text-xs tabular-nums ${active ? 'opacity-70' : 'text-muted'}`}>{g.items.length}</span>

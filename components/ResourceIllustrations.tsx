@@ -53,6 +53,18 @@ const art: Record<string, ReactElement> = {
       <text x="116" y="34" fontSize="11" fill="currentColor">N₂</text>
     </>
   ),
+  // Glovebox: window, two glove ports and the antechamber on the side
+  glovebox: (
+    <>
+      <rect {...S} x="22" y="18" width="96" height="58" rx="4" />
+      <rect {...S} strokeWidth={1.5} x="30" y="24" width="80" height="22" rx="2" />
+      <circle {...A} cx="52" cy="62" r="8" />
+      <circle {...A} cx="88" cy="62" r="8" />
+      <rect {...S} x="118" y="40" width="26" height="22" rx="3" />
+      <path {...S} strokeWidth={1.5} d="M131 40 V62" />
+      <path {...S} d="M30 76 V86 M110 76 V86" />
+    </>
+  ),
   // Safety goggles
   safety: (
     <>

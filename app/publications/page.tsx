@@ -17,7 +17,7 @@ function PublicationRow({ pub }: { pub: Pub }) {
   const hasCover = !!pub.coverImage && !coverFailed;
 
   return (
-    <li className="py-5 flex flex-wrap md:flex-nowrap gap-4 md:gap-6">
+    <li className="py-4 md:py-5 flex flex-wrap md:flex-nowrap gap-3 md:gap-6">
       {hasCover ? (
         <div className="w-14 h-[74px] shrink-0 rounded-md bg-white border border-line p-1">
           <img
@@ -48,7 +48,7 @@ function PublicationRow({ pub }: { pub: Pub }) {
             <ChemText text={pub.title} />
           )}
         </h3>
-        <p className="text-sm text-secondary leading-relaxed mt-1 line-clamp-2 md:line-clamp-none">{pub.authors}</p>
+        <p className="text-sm text-secondary leading-relaxed mt-1 line-clamp-1 md:line-clamp-none">{pub.authors}</p>
 
       </div>
 
@@ -58,14 +58,14 @@ function PublicationRow({ pub }: { pub: Pub }) {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`Open the reaction scheme for: ${pub.title} (full size, new tab)`}
-          className="block w-full md:w-72 shrink-0 rounded-lg bg-white border border-line p-2 hover:border-[var(--accent)] transition-colors"
+          className="block w-full md:w-72 shrink-0 rounded-lg bg-white border border-line p-1.5 md:p-2 hover:border-[var(--accent)] transition-colors"
         >
           <img
             src={pub.schemeImage}
             alt={`Reaction scheme from: ${pub.title}`}
             loading="lazy"
             decoding="async"
-            className="w-full h-36 object-contain"
+            className="w-full h-24 sm:h-32 md:h-36 object-contain"
           />
         </a>
       )}
