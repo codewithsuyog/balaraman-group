@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, X } from 'lucide-react';
 import { piStats, news } from './data';
+import { NewsImages } from '@/components/NewsImages';
 import { featuredPublications as publications } from './publications_featured';
 import ChemText from '../components/ChemText';
 import { useDialogFocus } from '@/components/useDialogFocus';
@@ -259,6 +260,7 @@ export default function Home() {
           <ul className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {news.slice(0, 3).map((item) => (
               <li key={item.id} className="p-6 rounded-lg bg-surface border border-line">
+                <NewsImages images={item.images} className="mb-4" imgClassName="h-40" />
                 <p className="font-mono text-xs text-muted mb-2">{item.date} · {item.type}</p>
                 <h3 className="text-base font-medium text-foreground leading-snug mb-2">{item.title}</h3>
                 <p className="text-sm text-secondary leading-relaxed">{item.detail}</p>
