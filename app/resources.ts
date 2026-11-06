@@ -132,6 +132,20 @@ export const resourceGroups: ResourceGroup[] = [
     ],
   },
   {
+    id: "glovebox",
+    category: "At the bench",
+    title: "Glovebox",
+    description: "Working in an inert-atmosphere glovebox: antechamber cycles, what may go in, purifier care and regeneration.",
+    items: [
+      { title: "Gloveboxes: how they work and good practice (Schlenk Line Survival Guide)", url: "https://schlenklinesurvivalguide.com/gloveboxes/" },
+      { title: "Glovebox safety guidelines and best practices (EPFL, PDF)", url: "https://www.epfl.ch/labs/lsci/wp-content/uploads/2022/07/Glovebox-mandatory-guidelines-and-best-practices_ENG_Feb2022.pdf" },
+      { title: "Glovebox guidelines: antechamber, solvents, sensors (University of Houston, PDF)", url: "https://nsmn1.uh.edu/miljanic/Glovebox.pdf" },
+      { title: "Glovebox operation SOP (Michigan State University, PDF)", url: "https://www2.chemistry.msu.edu/faculty/mccusker/SOPs/SOP-Glovebox%20Operation.pdf" },
+      { title: "Glovebox manual: purifier, regeneration, maintenance (UNC RISE, PDF)", url: "https://mscore.web.unc.edu/wp-content/uploads/sites/10018/2020/04/JanusManual_v4.pdf" },
+      { title: "Glovebox operation and emergency shutdown (Purdue chemical hygiene plan, PDF)", url: "https://www.chem.purdue.edu/chemsafety/CHP/2014/BartCHPFall2014CHPpt3.pdf" },
+    ],
+  },
+  {
     id: "reagents",
     category: "At the bench",
     title: "Reagents",

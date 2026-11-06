@@ -203,4 +203,140 @@ export const guides: Record<string, Guide> = {
       'Sending wet or impure samples for elemental analysis.',
     ],
   },
+
+  glovebox: {
+    summary: 'A sealed box of N₂ or Ar, kept below about 1 ppm O₂ and H₂O by a copper and molecular-sieve purifier. Best for weighing, storing and setting up air-sensitive work.',
+    steps: [
+      'Check the O₂ and H₂O readings (usually < 1 ppm) and box pressure before you start.',
+      'Dry everything that goes in: oven-dried glassware and tools, dry degassed solvents.',
+      'Antechamber: evacuate and refill 3× or more (about 5 min per vacuum for the small one, 20 min for the large).',
+      'Never open both antechamber doors at once.',
+      'Cap vials and close solvent bottles while working; take waste out through the antechamber.',
+    ],
+    tips: [
+      'Weigh catalysts and bases (KOtBu, NaH) here, then seal the flask before taking it out.',
+      'Paper, wipes and septa hold air and water: give them longer antechamber cycles.',
+      'Log O₂/H₂O readings and every regeneration in the box logbook.',
+      'Fine powders jumping? Use an anti-static gun or anti-static weighing boats.',
+    ],
+    mistakes: [
+      'Using chlorinated solvents, thiols, phosphines or amines with the purifier on: they poison the catalyst. Turn circulation off, then purge.',
+      'Bringing in water, alcohols or acetone.',
+      'Sealed vials of air in the antechamber: loosen caps so air is pumped out, not carried in.',
+      'Sharp tools near the gloves: one pinhole ruins the atmosphere. Check gloves often.',
+    ],
+  },
+
+  practice: {
+    summary: 'Habits that make results reproducible and your notebook useful to the next person.',
+    steps: [
+      'Write the plan (scheme, amounts, equivalents) before starting.',
+      'Record what actually happened: times, temperatures, colour changes, deviations.',
+      'Label every flask and vial: code, compound, date, initials.',
+      'Link every spectrum and sample to its notebook page code.',
+    ],
+    tips: [
+      'Note reagent supplier and batch when a result matters.',
+      'Clean glassware straight after use; dried residues are much harder to remove.',
+      'Repeat a key result before reporting it.',
+    ],
+    mistakes: [
+      'Writing up from memory days later.',
+      'Unlabelled vials in the fridge or glovebox.',
+      'Reporting a yield from a single run or an impure sample.',
+    ],
+  },
+
+  greener: {
+    summary: 'Choose safer solvents and reagents and cut waste without losing performance.',
+    steps: [
+      'Check solvents in a selection guide (CHEM21, ACS GCI) before using them.',
+      'Prefer catalytic over stoichiometric reagents.',
+      'Run reactions more concentrated where safe; use less solvent for workup and columns.',
+      'Think about atom economy: H₂ and water are the ideal by-products.',
+    ],
+    tips: [
+      'Common swaps: 2-MeTHF or CPME for THF/Et₂O; heptane for hexane.',
+      'Try EtOAc/ethanol–heptane eluents instead of DCM/MeOH, after checking the separation by TLC.',
+      'Avoid benzene, CCl₄, chloroform and 1,4-dioxane where alternatives work.',
+    ],
+    mistakes: [
+      'Swapping a solvent without re-checking solubility, boiling point and peroxide risk (2-MeTHF and CPME are ethers too).',
+    ],
+  },
+
+  catalysis: {
+    summary: 'Checks that show a catalyst is real, how active it is, and what the active species is.',
+    steps: [
+      'Controls: no catalyst, no ligand, metal salt only, no base.',
+      'Report TON (mol product per mol catalyst) and TOF (TON per hour, from initial rates).',
+      'Homogeneous? Use kinetics (induction periods), poisoning tests and the mercury test together.',
+      'Heterogeneous: hot filtration test, ICP of the filtrate for leaching, recycling with characterization after use.',
+      'Mechanism: kinetic orders, KIE, deuterium labelling, intermediates by NMR.',
+    ],
+    tips: [
+      'Measure TOF at low conversion, where rates are still initial rates.',
+      'For base-metal or metal-free claims, check trace metals (ICP-MS) in reagents.',
+      'Use an internal standard for GC or NMR yields during kinetics.',
+    ],
+    mistakes: [
+      'Calculating TOF from an end-point yield.',
+      'Treating the mercury test as proof on its own: Hg can also react with molecular complexes.',
+      'Recycling without checking leaching or activity per mass of catalyst.',
+    ],
+  },
+
+  data: {
+    summary: 'Reference values for planning reactions and explaining results.',
+    steps: [
+      'pKa: compare acid and base in the same solvent; DMSO and water values differ widely.',
+      'Hammett: plot log(kX/kH) against σ; the slope ρ shows charge build-up in the rate-determining step.',
+      'Cooling baths: pick the bath for your target temperature and check it with a thermometer.',
+    ],
+    tips: [
+      'Ice/NaCl reaches about −20 °C; dry ice/acetone −78 °C; liquid N₂ −196 °C.',
+      'Bordwell values are in DMSO; the Evans table lists several solvents.',
+    ],
+    mistakes: [
+      'Mixing pKa values measured in different solvents.',
+      'Reading ρ backwards: positive ρ means negative charge builds up in the transition state.',
+    ],
+  },
+
+  flow: {
+    summary: 'Pumping reagents through tubing gives better heat transfer, safer use of gases and hazardous intermediates, and simpler scale-up.',
+    steps: [
+      'Start from a batch reaction that works and stays fully dissolved (solids block tubing).',
+      'Residence time = reactor volume ÷ total flow rate.',
+      'Fit a back-pressure regulator to heat solvents above their boiling point.',
+      'Discard the first 2–3 reactor volumes, then collect at steady state.',
+    ],
+    tips: [
+      'Gases (H₂, CO₂, O₂): use a tube-in-tube reactor or a mass-flow controller for gas–liquid flow.',
+      'Check that pumps, tubing and fittings suit your pressure and solvents.',
+    ],
+    mistakes: [
+      'Precipitates clogging the reactor.',
+      'Collecting product before steady state.',
+    ],
+  },
+
+  learning: {
+    summary: 'Build a background in organometallic chemistry and write your work up clearly.',
+    steps: [
+      'Learn the basics: electron counting, oxidation state, d-electron count.',
+      'Know the elementary steps: oxidative addition, reductive elimination, migratory insertion, β-hydride elimination.',
+      'Read recent papers in your area every week and note their controls and methods.',
+      'Write as you go: schemes, tables and SI while experiments are fresh.',
+    ],
+    tips: [
+      'Structure a paper as problem, what is new, evidence, limits.',
+      'Follow the target journal’s SI template from the start.',
+      'Ask a labmate to read your draft before the PI does.',
+    ],
+    mistakes: [
+      'Writing the SI at the end from scattered notes.',
+      'Overclaiming generality from a narrow substrate scope.',
+    ],
+  },
 };
