@@ -106,7 +106,7 @@ export default function Home() {
   const researchCategories = useMemo(() => {
     return [
       {
-        id: 'homogeneous',
+        id: 'dehydrogenation', // anchor of the first molecular-catalysis theme on /research
         title: "Homogeneous Catalysis",
         keyPubIds: [118, 117],
         coverIds: [117, 112, 111],
@@ -119,7 +119,7 @@ export default function Home() {
         keyPubIds: [116, 115],
         coverIds: [115, 106, 85],
         desc: "Robust nanocatalysts and supported systems for sustainable industrial transformations.",
-        details: "Our group develops reusable heterogeneous nanocatalysts on graphene/carbon supports for hydrogen generation, CO2 conversion, biomass upgrading, and co-pyrolysis of waste materials."
+        details: "Our group develops reusable heterogeneous nanocatalysts on graphene/carbon supports for hydrogen generation, (de)hydrogenation, biomass upgrading, and co-pyrolysis of waste materials."
       }
     ];
   }, []);
