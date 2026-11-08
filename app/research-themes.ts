@@ -9,6 +9,7 @@ export type Tile = { sym: string; num?: number };
 export type ResearchTheme = {
   id: string;
   title: string;
+  summary: string; // one line for the home page
   text: string;
   molecule: MoleculeName;
   tiles: Tile[];
@@ -23,6 +24,7 @@ export const researchThemes: ResearchTheme[] = [
   {
     id: 'dehydrogenation',
     title: 'Acceptorless dehydrogenative coupling',
+    summary: 'Alcohols coupled into amides, imines, olefins and N-heterocycles, releasing H₂.',
     text: 'Acceptorless dehydrogenation removes hydrogen from alcohols and amines and releases it as H₂, so no oxidant is needed. With manganese, iron, cobalt and nickel catalysts, many of them pincer complexes, we couple alcohols into amides, imines, olefins and branched ketones, and build N-heterocycles such as indoles, quinoxalines and quinazolines, releasing hydrogen gas instead of stoichiometric waste.',
     molecule: 'benzylAlcohol',
     tiles: [Mn, Fe, Co, Ni],
@@ -32,6 +34,7 @@ export const researchThemes: ResearchTheme[] = [
   {
     id: 'borrowing-hydrogen',
     title: 'Borrowing hydrogen',
+    summary: 'Alcohols as alkylating agents for amines and C–H bonds, with water as the by-product.',
     text: 'In borrowing hydrogen, the catalyst takes hydrogen from an alcohol, lets the carbonyl it forms react, then returns the hydrogen, so alcohols act as alkylating agents and water is the by-product. We use it for N-alkylation of amines and anilines, mono-amination of 1,2-diols to amino alcohols, and C-alkylation of amides, esters, oxindoles, indoles and secondary alcohols.',
     molecule: 'propanediol',
     tiles: [Mn, Co, Ni],
@@ -41,6 +44,7 @@ export const researchThemes: ResearchTheme[] = [
   {
     id: 'hydrogen-methanol',
     title: 'Hydrogenation, methanol and hydrogen storage',
+    summary: 'Methanol as a C1 and hydrogen source, selective hydrogenation, and hydrogen storage.',
     text: 'Methanol can be a fuel, a hydrogen carrier and a one-carbon building block. We use it for N-methylation and methoxymethylation of amides, transfer hydrogenation and deuteration, and to make dimethoxymethane and other acetals. We also carry out selective hydrogenations (Z-selective semihydrogenation of alkynes, hydrogenation of amides, and semihydrogenation of azoarenes with H₂), and study hydrogen storage and release, from paraformaldehyde–methanol mixtures to methane.',
     molecule: 'methanol',
     tiles: [Mn, Co, Ni, Ru],
@@ -50,6 +54,7 @@ export const researchThemes: ResearchTheme[] = [
   {
     id: 'heterogeneous',
     title: 'Heterogeneous catalysis and upcycling',
+    summary: 'Reusable nanocatalysts, and co-pyrolysis of biomass with plastics.',
     text: 'Solid catalysts can be separated and reused. We make iron, cobalt and manganese nanocatalysts, nitrogen-modified cobalt nanoparticles on graphene, palladium nanoparticles inside covalent organic frameworks, and polyoxometalate catalysts for dehydrogenation, hydrogenation, amination and coupling reactions. We also turn waste into value: catalytic co-pyrolysis of biomass with plastics gives aromatics, light olefins and linear α-olefins.',
     molecule: 'tetrahydroquinoline',
     tiles: [Fe, Co, Pd],
@@ -59,6 +64,7 @@ export const researchThemes: ResearchTheme[] = [
   {
     id: 'light',
     title: 'Light-driven catalysis',
+    summary: 'Photoredox catalysts and photoactive frameworks for dehydrogenation, isomerization and solar H₂.',
     text: 'Visible light can drive reactions at room temperature. We use photocatalysis for the oxidative dehydrogenation of N-heterocycles, the acceptorless dehydrogenation of diaryl hydrazines and the trifluoromethylation of β-nitroalkenes, and build photoactive materials: a triazine covalent organic framework for E–Z isomerization of olefins, metal–organic frameworks for solar hydrogen production, and a carbonaceous polymeric photocatalyst.',
     molecule: 'stilbene',
     tiles: [{ sym: 'hν' }, Cu],
@@ -68,6 +74,7 @@ export const researchThemes: ResearchTheme[] = [
   {
     id: 'ch-activation',
     title: 'C–H activation',
+    summary: 'Co, Ni, Pd and Rh catalysts that turn C–H bonds directly into new bonds.',
     text: 'Turning C–H bonds directly into new bonds avoids pre-functionalized starting materials. We have developed cobalt-, nickel-, palladium- and rhodium-catalysed C(sp²)–H alkynylation, arylation, N-vinylation and carbonylation, and C(sp³)–H alkynylation and arylation, including the functionalization of fluorene with alcohols.',
     molecule: 'allylbenzene',
     tiles: [Co, Ni, Pd, Rh],

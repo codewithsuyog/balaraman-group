@@ -1,11 +1,13 @@
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, X } from 'lucide-react';
 import { piStats, news } from './data';
+import { researchThemes } from './research-themes';
+import { ResearchThemeArt } from '@/components/ResearchThemeArt';
 import { NewsImages } from '@/components/NewsImages';
 import { featuredPublications as publications } from './publications_featured';
 import ChemText from '../components/ChemText';
@@ -103,26 +105,6 @@ export default function Home() {
 
   const heroImage = '/images/gallery/30.webp';
 
-  const researchCategories = useMemo(() => {
-    return [
-      {
-        id: 'dehydrogenation', // anchor of the first molecular-catalysis theme on /research
-        title: "Homogeneous Catalysis",
-        keyPubIds: [118, 117],
-        coverIds: [117, 112, 111],
-        desc: "Molecularly-defined pincer complexes and metal-ligand cooperation for selective transformations.",
-        details: "We design and develop well-defined transition-metal pincer complexes for C-C, C-N bond forming reactions, acceptorless dehydrogenation, hydrogenation, and borrowing hydrogen strategies using earth-abundant metals."
-      },
-      {
-        id: 'heterogeneous',
-        title: "Heterogeneous Catalysis",
-        keyPubIds: [116, 115],
-        coverIds: [115, 106, 85],
-        desc: "Robust nanocatalysts and supported systems for sustainable industrial transformations.",
-        details: "Our group develops reusable heterogeneous nanocatalysts on graphene/carbon supports for hydrogen generation, (de)hydrogenation, biomass upgrading, and co-pyrolysis of waste materials."
-      }
-    ];
-  }, []);
 
   return (
     <main id="main" className="flex flex-col items-center w-full overflow-hidden bg-background">
@@ -182,48 +164,32 @@ export default function Home() {
             <h2 className="text-5xl md:text-6xl leading-[0.95] text-foreground">Research</h2>
             <div className="space-y-4 text-lg text-secondary leading-relaxed">
               <p>
-                We explore organometallic chemistry, designing molecular architectures that open new pathways for sustainable catalysis{" "}and selective organic transformations.
+                We develop catalysts for cleaner chemical synthesis, most of them based on earth-abundant metals such as manganese, iron, cobalt and nickel.
               </p>
               <p>
-                The lab develops well-defined transition-metal catalytic systems for hydrogen generation, hydrogenation, photocatalysis and C–H activation, bridging homogeneous precision and heterogeneous scalability.
+                From well-defined molecular complexes to reusable solid catalysts, our work falls into six themes.
               </p>
             </div>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {researchCategories.map((cat) => (
-              <motion.article
-                key={cat.id}
+          {/* Same six themes as the Research page, from one data file */}
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+            {researchThemes.map((t) => (
+              <motion.li
+                key={t.id}
                 initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={fadeUp}
-                className="flex flex-col p-6 md:p-8 rounded-lg bg-surface border border-line"
+                className="flex flex-col p-5 md:p-6 rounded-lg bg-surface border border-line"
               >
-                {/* The lab's own journal covers are the visual for each pillar */}
-                <div className="flex gap-3 mb-8" aria-hidden="true">
-                  {cat.coverIds.map((id) => (
-                    <div key={id} className="w-[30%] max-w-[120px] aspect-[3/4] rounded-md bg-white border border-line p-1">
-                      <img src={`/images/publications/covers/${id}.webp`} alt="" loading="lazy" decoding="async" className="w-full h-full object-contain" />
-                    </div>
-                  ))}
-                </div>
-                <h3 className="text-2xl font-medium text-foreground mb-3">{cat.title}</h3>
-                <p className="text-secondary leading-relaxed mb-6">{cat.details}</p>
-                <p className="text-sm text-muted mb-2">Key publications</p>
-                <ul className="space-y-2 mb-8">
-                  {cat.keyPubIds.map((id) => {
-                    const pub = publications.find((p) => p.id === id);
-                    return pub && (
-                      <li key={id} className="text-sm text-foreground leading-snug">
-                        <span className="font-mono text-accent mr-1.5">[{pub.id}]</span><ChemText text={pub.title} />
-                      </li>
-                    );
-                  })}
-                </ul>
-                <Link href={`/research#${cat.id}`} className="mt-auto inline-flex items-center gap-1.5 py-2 text-sm text-accent hover:underline underline-offset-4">
-                  About {cat.title.toLowerCase()} <ArrowRight size={14} />
+                <ResearchThemeArt molecule={t.molecule} tiles={t.tiles} className="w-40 mb-4" />
+                <h3 className="text-xl font-medium text-foreground leading-snug mb-2">{t.title}</h3>
+                <p className="text-secondary leading-relaxed mb-4">{t.summary}</p>
+                <p className="text-sm text-muted mb-1">{t.papers.length} papers</p>
+                <Link href={`/research#${t.id}`} className="mt-auto inline-flex items-center gap-1.5 py-2 text-sm text-accent hover:underline underline-offset-4" aria-label={`About ${t.title}`}>
+                  About this theme <ArrowRight size={14} />
                 </Link>
-              </motion.article>
+              </motion.li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
