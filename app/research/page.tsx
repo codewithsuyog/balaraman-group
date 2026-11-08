@@ -32,6 +32,17 @@ const JOURNAL_ABBR: Record<string, string> = {
   'Organic & Biomolecular Chemistry': 'Org. Biomol. Chem.',
   'Nature Communications': 'Nat. Commun.',
   'ACS Applied Energy Materials': 'ACS Appl. Energy Mater.',
+  'ACS Applied Materials & Interfaces': 'ACS Appl. Mater. Interfaces',
+  'ACS Symposium Series': 'ACS Symp. Ser.',
+  'Angewandte Chemie International Edition': 'Angew. Chem. Int. Ed.',
+  'Chemistry – An Asian Journal': 'Chem. Asian J.',
+  'Journal of Catalysis': 'J. Catal.',
+  'Journal of Chemical Sciences': 'J. Chem. Sci.',
+  'Molecular Catalysis': 'Mol. Catal.',
+  'Organic Chemistry Frontiers': 'Org. Chem. Front.',
+  'The Chemical Record': 'Chem. Rec.',
+  'Topics in Organometallic Chemistry': 'Top. Organomet. Chem.',
+  'Proceedings of the National Academy of Sciences, India Section A: Physical Sciences': 'Proc. Natl. Acad. Sci., India, Sect. A',
 };
 const journalOf = (j: string) => JOURNAL_ABBR[decode(j)] ?? decode(j);
 

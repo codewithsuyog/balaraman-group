@@ -41,7 +41,7 @@ export const researchThemes: ResearchTheme[] = [
   {
     id: 'hydrogen-methanol',
     title: 'Hydrogenation, methanol and hydrogen storage',
-    text: 'Methanol can be a fuel, a hydrogen carrier and a one-carbon building block. We use it for N-methylation and methoxymethylation of amides, transfer hydrogenation and deuteration, and to make dimethoxymethane and other acetals. With H₂ we carry out selective hydrogenations, such as Z-selective semihydrogenation of alkynes and hydrogenation of amides and azoarenes, and we study hydrogen storage and release, from paraformaldehyde–methanol mixtures to methane.',
+    text: 'Methanol can be a fuel, a hydrogen carrier and a one-carbon building block. We use it for N-methylation and methoxymethylation of amides, transfer hydrogenation and deuteration, and to make dimethoxymethane and other acetals. We also carry out selective hydrogenations (Z-selective semihydrogenation of alkynes, hydrogenation of amides, and semihydrogenation of azoarenes with H₂), and study hydrogen storage and release, from paraformaldehyde–methanol mixtures to methane.',
     molecule: 'methanol',
     tiles: [Mn, Co, Ni, Ru],
     selected: [98, 114, 113, 47],
@@ -50,7 +50,7 @@ export const researchThemes: ResearchTheme[] = [
   {
     id: 'heterogeneous',
     title: 'Heterogeneous catalysis and upcycling',
-    text: 'Solid catalysts can be separated and reused. We make iron, cobalt and manganese nanocatalysts, cobalt nanoparticles on nitrogen-doped graphene, palladium nanoparticles inside covalent organic frameworks, and polyoxometalate catalysts for dehydrogenation, hydrogenation, amination and coupling reactions. We also turn waste into value: catalytic co-pyrolysis of biomass with plastics gives aromatics, light olefins and linear α-olefins.',
+    text: 'Solid catalysts can be separated and reused. We make iron, cobalt and manganese nanocatalysts, nitrogen-modified cobalt nanoparticles on graphene, palladium nanoparticles inside covalent organic frameworks, and polyoxometalate catalysts for dehydrogenation, hydrogenation, amination and coupling reactions. We also turn waste into value: catalytic co-pyrolysis of biomass with plastics gives aromatics, light olefins and linear α-olefins.',
     molecule: 'tetrahydroquinoline',
     tiles: [Fe, Co, Pd],
     selected: [44, 106, 60, 72],
@@ -59,7 +59,7 @@ export const researchThemes: ResearchTheme[] = [
   {
     id: 'light',
     title: 'Light-driven catalysis',
-    text: 'Visible light can drive reactions at room temperature. We use photoredox catalysis for the oxidative dehydrogenation of N-heterocycles, the acceptorless dehydrogenation of diaryl hydrazines and the trifluoromethylation of β-nitroalkenes, and photoactive materials (a triazine covalent organic framework, metal–organic frameworks and carbon-based polymers) for E–Z isomerization of olefins and solar hydrogen production.',
+    text: 'Visible light can drive reactions at room temperature. We use photocatalysis for the oxidative dehydrogenation of N-heterocycles, the acceptorless dehydrogenation of diaryl hydrazines and the trifluoromethylation of β-nitroalkenes, and build photoactive materials: a triazine covalent organic framework for E–Z isomerization of olefins, metal–organic frameworks for solar hydrogen production, and a carbonaceous polymeric photocatalyst.',
     molecule: 'stilbene',
     tiles: [{ sym: 'hν' }, Cu],
     selected: [58, 53, 43, 50],
