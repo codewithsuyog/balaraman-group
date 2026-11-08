@@ -2,143 +2,151 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { publications } from '../publications_master';
 import { facilities, funding } from '../data';
-import { SectionHeading } from '@/components/ui';
+import { PageHeader, SectionHeading, pageMain } from '@/components/ui';
 import ChemText from '../../components/ChemText';
-import { HomogeneousDiagram, HeterogeneousDiagram } from '@/components/ResearchDiagrams';
-import { PageHeader, pageMain } from '@/components/ui';
+import { ResearchThemeArt } from '@/components/ResearchThemeArt';
+import { ResearchDots } from '@/components/ResearchDots';
 
 const byId = (id: number) => publications.find((p) => p.id === id);
 const doiUrl = (doi: string) => (doi.startsWith('http') ? doi : `https://doi.org/${doi}`);
+const decode = (s: string) => s.replace(/&amp;/g, '&');
 
-// Most recent papers whose title matches the area (publications_master is newest first)
-const keyPapers = (keywords: RegExp, count = 5) =>
-  publications.filter((p) => keywords.test(p.title)).slice(0, count);
+// Journal abbreviations for the compact citations; unknown names are shown as stored
+const JOURNAL_ABBR: Record<string, string> = {
+  'Advanced Synthesis & Catalysis': 'Adv. Synth. Catal.',
+  'Organic Letters': 'Org. Lett.',
+  'Chemical Communications': 'Chem. Commun.',
+  'The Journal of Organic Chemistry': 'J. Org. Chem.',
+  'Biomass Conversion and Biorefinery': 'Biomass Convers. Biorefin.',
+  'ACS Sustainable Chemistry & Engineering': 'ACS Sustainable Chem. Eng.',
+  'Catalysis Today': 'Catal. Today',
+  'International Journal of Hydrogen Energy': 'Int. J. Hydrogen Energy',
+  'Catalysis Science & Technology': 'Catal. Sci. Technol.',
+  'ACS Catalysis': 'ACS Catal.',
+  'Journal of the American Chemical Society': 'J. Am. Chem. Soc.',
+  'Journal of Materials Chemistry A': 'J. Mater. Chem. A',
+  'Chemistry – A European Journal': 'Chem. Eur. J.',
+  'Dalton Transactions': 'Dalton Trans.',
+  'Green Chemistry': 'Green Chem.',
+  'Organic & Biomolecular Chemistry': 'Org. Biomol. Chem.',
+  'Nature Communications': 'Nat. Commun.',
+  'ACS Applied Energy Materials': 'ACS Appl. Energy Mater.',
+};
+const journalOf = (j: string) => JOURNAL_ABBR[decode(j)] ?? decode(j);
 
-const areas = [
+// Research themes. Each summary only claims what the selected papers show.
+const themes = [
   {
     id: 'homogeneous',
-    title: 'Homogeneous catalysis',
-    why: 'Forming C–C and C–N bonds usually needs pre-activated reagents and leaves stoichiometric waste behind. Using simple alcohols directly, with hydrogen and water as the only by-products, makes these bonds cleaner and cheaper to build.',
-    how: 'We design well-defined pincer complexes of earth-abundant metals such as Mn, Co, Ni and Fe that work through metal–ligand cooperation. With acceptorless dehydrogenation, hydrogenation and borrowing-hydrogen strategies, these catalysts turn alcohols into coupling partners for C–C and C–N bond formation.',
-    examples: [
-      { id: 112, text: 'a Mn(I) pincer catalyst couples amino alcohols with primary alcohols in a double dehydrogenative coupling, releasing hydrogen and water' },
-      { id: 117, text: 'nickel catalysis gives selective mono-amination of 1,2-diols, an affordable route to amino alcohols' },
-    ],
-    scheme: 112,
-    Diagram: HomogeneousDiagram,
-    diagramCaption: 'Borrowing hydrogen and acceptorless dehydrogenation with a pincer catalyst',
-    keywords: /pincer|dehydrogenat|borrowing|hydrogenation|Mn\(I\)|manganese|cobalt|nickel|iron/i,
+    title: 'Earth-abundant metal catalysis',
+    text: 'Making C–C and C–N bonds usually needs pre-activated reagents and leaves salt waste behind. We design catalysts based on manganese, iron, cobalt and nickel, many with pincer ligands, that use simple alcohols directly through acceptorless dehydrogenation and borrowing hydrogen, so hydrogen gas and water are the only by-products. Recent examples include amides made from alcohols without ammonia, selective mono-amination of diols to amino alcohols, and N-methylation with methanol.',
+    papers: [118, 117, 114, 112, 111],
   },
   {
     id: 'heterogeneous',
-    title: 'Heterogeneous catalysis',
-    why: 'Molecular catalysts are precise but hard to separate and reuse. Industrial processes need robust catalysts that can be recovered and run again, without losing selectivity.',
-    how: 'We build reusable nanocatalysts on graphene and nitrogen-doped carbon supports, including core–shell architectures of 3d transition metals, for hydrogen generation, CO₂ conversion, biomass upgrading and the co-pyrolysis of waste materials.',
-    examples: [
-      { id: 106, text: 'graphene-encapsulated metal@N/C catalysts convert biomass and waste plastics into linear α-olefins and aromatics' },
-      { id: 85, text: 'a reusable manganese-based nanocatalyst carries out the amination of alcohols' },
-    ],
-    scheme: 106,
-    Diagram: HeterogeneousDiagram,
-    diagramCaption: 'Reusable 3d-metal nanocatalysts on N-doped carbon supports',
-    keywords: /nanocatal|heterogeneous|graphene|supported|co-?pyrolysis|biomass|HZSM|N\/C|carbon nitride|nanopartic/i,
+    title: 'Heterogeneous catalysis and upcycling',
+    text: 'Industrial processes need catalysts that are robust, easy to separate and reusable. We build solid catalysts, from 3d metals encapsulated in graphene and nitrogen-doped carbon to metal-modified zeolites, and use them to turn waste into value: co-pyrolysis of biomass with plastics gives aromatics, light olefins and linear α-olefins. A reusable manganese nanocatalyst carries out the amination of alcohols.',
+    papers: [115, 106, 96, 85],
+  },
+  {
+    id: 'c1-hydrogen',
+    title: 'Methanol, C1 and hydrogen',
+    text: 'Methanol can serve as a fuel, a hydrogen carrier and a one-carbon building block. We use it as a C1 source for methylation and methoxymethylation, as a hydrogen source for reductions, and as a hydrogen store, releasing H₂ from paraformaldehyde–methanol mixtures with nickel catalysts. We also work on catalytic routes that turn methane into hydrogen and solid carbon.',
+    papers: [116, 113, 108, 98, 94],
+  },
+  {
+    id: 'light',
+    title: 'Light-driven catalysis',
+    text: 'Visible light can drive reactions at room temperature that otherwise need heat. We use organic photoredox catalysts, porous covalent and metal–organic frameworks, and carbon-based materials for the dehydrogenation of N-heterocycles and hydrazines, E–Z isomerization of olefins, and solar hydrogen production.',
+    papers: [58, 53, 50, 49, 43],
+  },
+  {
+    id: 'ch-activation',
+    title: 'C–H activation',
+    text: 'Turning C–H bonds directly into new bonds avoids pre-functionalized starting materials. Our earlier work developed cobalt-, nickel- and rhodium-catalysed C–H alkynylation, N-vinylation and carbonylation, oxidant-free direct arylation, and manganese-catalysed α-alkylation of amides and esters with alcohols.',
+    papers: [59, 42, 36, 35, 31],
   },
 ];
 
 export default function ResearchPage() {
   return (
     <main id="main" className={pageMain}>
+      <ResearchDots items={themes.map(({ id, title }) => ({ id, title }))} />
+
       <div className="max-w-6xl mx-auto">
         <PageHeader
           title="Research"
-          className="mb-16 md:mb-20"
-          intro="We explore organometallic chemistry, designing molecular architectures that open new pathways for sustainable catalysis and selective organic transformations. The lab works in two connected areas, bridging the precision of molecular catalysts with the robustness of heterogeneous ones."
-        >
-          <nav aria-label="Research areas" className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
-            {areas.map((a) => (
-              <a key={a.id} href={`#${a.id}`} className="text-accent hover:underline underline-offset-4">{a.title}</a>
+          intro="We develop catalysts for cleaner chemical synthesis, from molecular complexes of earth-abundant metals to reusable solid materials and light-driven systems. Recent themes of our work:"
+        />
+
+        {/* Theme map: one tile per theme, linked to its section */}
+        <nav aria-label="Research themes" className="relative mb-16 md:mb-20">
+          <svg viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true" className="hidden lg:block absolute inset-x-0 top-1/2 -translate-y-1/2 w-full h-28 text-line">
+            <path d="M0 70 C120 10 220 110 340 60 S560 0 680 60 S880 110 1000 40" fill="none" stroke="currentColor" strokeWidth="2" />
+            <path d="M0 80 C120 20 220 120 340 70 S560 10 680 70 S880 120 1000 50" fill="none" stroke="currentColor" strokeWidth="1" opacity="0.6" />
+          </svg>
+          <ul className="relative grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
+            {themes.map((t, i) => (
+              <li key={t.id} className={i % 2 ? 'lg:mt-10' : ''}>
+                <a
+                  href={`#${t.id}`}
+                  className="group flex flex-col items-center gap-2 p-3 rounded-lg bg-background border border-line hover:border-[var(--accent)] transition-colors text-center h-full"
+                >
+                  <ResearchThemeArt id={t.id} className="w-full max-w-[150px]" />
+                  <span className="text-sm font-medium text-foreground group-hover:text-accent leading-snug">{t.title}</span>
+                </a>
+              </li>
             ))}
-          </nav>
-        </PageHeader>
+          </ul>
+        </nav>
+      </div>
 
-        <div className="space-y-20 md:space-y-28">
-          {areas.map((area) => {
-            const scheme = byId(area.scheme);
-            return (
-              <section key={area.id} id={area.id} className="border-t border-line pt-12 md:pt-16">
-                <h2 className="text-3xl md:text-4xl text-foreground leading-[1] mb-8">{area.title}</h2>
+      {/* Themes, on alternating bands */}
+      {themes.map((t, i) => (
+        <section
+          key={t.id}
+          id={t.id}
+          aria-labelledby={`${t.id}-title`}
+          className={`-mx-6 px-6 py-14 md:py-20 border-t border-line ${i % 2 ? '' : 'bg-surface'}`}
+        >
+          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[17rem_1fr] gap-8 lg:gap-16 items-start">
+            <div className="flex flex-col items-start lg:items-end gap-4">
+              <h2 id={`${t.id}-title`} className="text-3xl md:text-4xl text-foreground leading-[1.05] lg:text-right">{t.title}</h2>
+              <ResearchThemeArt id={t.id} className="w-48 md:w-56" />
+            </div>
+            <div className="min-w-0 max-w-3xl">
+              <p className="text-lg text-secondary leading-relaxed">{t.text}</p>
+              <h3 className="mt-8 mb-3 text-sm font-medium text-foreground">Selected publications</h3>
+              <ol className="space-y-2.5">
+                {t.papers.map((id) => {
+                  const p = byId(id);
+                  if (!p) return null;
+                  return (
+                    <li key={id} className="leading-snug">
+                      <a
+                        href={doiUrl(p.doi)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group block"
+                        aria-label={`${p.title}, ${journalOf(p.journal)} ${p.year} (opens in a new tab)`}
+                      >
+                        <span className="text-foreground group-hover:text-accent transition-colors">
+                          <i>{journalOf(p.journal)}</i> <b>{p.year}</b>
+                          {p.volume && <>, <i>{p.volume}</i></>}
+                          {p.pages && <>, {p.pages}</>}.
+                        </span>
+                        <span className="block text-sm text-muted"><ChemText text={p.title} /></span>
+                      </a>
+                    </li>
+                  );
+                })}
+              </ol>
+            </div>
+          </div>
+        </section>
+      ))}
 
-                <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] gap-10 lg:gap-14 items-start">
-                  <div className="space-y-5 text-lg text-secondary leading-relaxed">
-                    <p>{area.why}</p>
-                    <p>{area.how}</p>
-                    <p>
-                      For example,{' '}
-                      {area.examples.map((ex, i) => {
-                        const p = byId(ex.id);
-                        return (
-                          <span key={ex.id}>
-                            {i > 0 && '; '}
-                            {ex.text}{' '}
-                            {p ? (
-                              <a href={doiUrl(p.doi)} target="_blank" rel="noopener noreferrer" className="font-mono text-base text-accent hover:underline underline-offset-4" aria-label={`Paper ${ex.id}: ${p.title} (opens in a new tab)`}>[{ex.id}]</a>
-                            ) : (
-                              <span className="font-mono text-base text-accent">[{ex.id}]</span>
-                            )}
-                          </span>
-                        );
-                      })}
-                      .
-                    </p>
-                  </div>
-
-                  <figure>
-                    <div className="rounded-lg bg-surface border border-line p-4 md:p-6">
-                      <area.Diagram />
-                    </div>
-                    <figcaption className="mt-3 text-sm text-muted">{area.diagramCaption}</figcaption>
-                  </figure>
-                </div>
-
-                {scheme?.schemeImage && (
-                  <figure className="mt-12">
-                    <p className="text-sm text-muted mb-3">From our work</p>
-                    <div className="rounded-lg bg-white border border-line p-4 md:p-6">
-                      <img
-                        src={scheme.schemeImage}
-                        alt={`Reaction scheme from: ${scheme.title}`}
-                        loading="lazy"
-                        decoding="async"
-                        className="w-full max-w-3xl mx-auto h-auto"
-                      />
-                    </div>
-                    <figcaption className="mt-3 text-sm text-muted">
-                      <span className="font-mono text-accent">[{scheme.id}]</span> <ChemText text={scheme.title} />. {scheme.journal}, {scheme.year}
-                    </figcaption>
-                  </figure>
-                )}
-
-                <div className="mt-12">
-                  <h3 className="text-lg font-medium text-foreground mb-4">Key publications</h3>
-                  <ol className="divide-y divide-[var(--line)] border-y border-line">
-                    {keyPapers(area.keywords).map((p) => (
-                      <li key={p.id} className="py-4 flex gap-4">
-                        <span className="font-mono text-sm text-accent tabular-nums shrink-0 w-12">[{p.id}]</span>
-                        <div className="min-w-0">
-                          <a href={doiUrl(p.doi)} target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-accent transition-colors leading-snug">
-                            <ChemText text={p.title} />
-                          </a>
-                          <p className="text-sm text-muted mt-1">{p.journal}, {p.year}</p>
-                        </div>
-                      </li>
-                    ))}
-                  </ol>
-                </div>
-              </section>
-            );
-          })}
-        </div>
-
+      <div className="max-w-6xl mx-auto">
         {facilities.length > 0 && (
           <section aria-labelledby="facilities" className="mt-20">
             <SectionHeading id="facilities">Facilities and instruments</SectionHeading>
@@ -167,7 +175,7 @@ export default function ResearchPage() {
           </section>
         )}
 
-        <Link href="/publications" className="mt-16 inline-flex items-center gap-1.5 py-2 text-accent hover:underline underline-offset-4">
+        <Link href="/publications" className="mt-12 inline-flex items-center gap-1.5 py-2 text-accent hover:underline underline-offset-4">
           All publications <ArrowRight size={16} />
         </Link>
       </div>
