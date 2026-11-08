@@ -106,7 +106,7 @@ export default function Home() {
   const researchCategories = useMemo(() => {
     return [
       {
-        id: 'homogeneous',
+        id: 'dehydrogenation', // anchor of the first molecular-catalysis theme on /research
         title: "Homogeneous Catalysis",
         keyPubIds: [118, 117],
         coverIds: [117, 112, 111],
