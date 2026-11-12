@@ -132,10 +132,13 @@ html {
       animation-range: entry calc(var(--i, 0) * 6%) entry calc(30% + var(--i, 0) * 6%);
     }
     /* Line drawings draw themselves as they scroll into view (shapes carry pathLength="1") */
-    .draw :is(path, line, circle, rect, polyline) {
+    .draw {
+      view-timeline: --draw block; /* SVG shapes have no box of their own, so they follow the drawing's timeline */
+    }
+    .draw :is(path, line, circle, rect, polyline)[pathLength] {
       stroke-dasharray: 1;
       animation: draw linear both;
-      animation-timeline: view();
+      animation-timeline: --draw;
       animation-range: entry 20% cover 40%;
     }
     /* Hero scroll cue fades out over the first 200px of scrolling */

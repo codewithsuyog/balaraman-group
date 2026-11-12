@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { publications } from '../publications_master';
 import { facilities, funding } from '../data';
-import { PageHeader, SectionHeading, pageMain } from '@/components/ui';
+import { PageHeader, SectionHeading, cardHover, pageMain } from '@/components/ui';
 import ChemText from '../../components/ChemText';
 import { ResearchThemeArt } from '@/components/ResearchThemeArt';
 import { ResearchDots } from '@/components/ResearchDots';
@@ -97,9 +97,9 @@ export default function ResearchPage() {
               <li key={t.id} className={i % 2 ? 'xl:mt-10' : ''}>
                 <a
                   href={`#${t.id}`}
-                  className="group flex flex-col items-center gap-2 p-3 rounded-lg bg-background border border-line hover:border-[var(--accent)] transition-colors text-center h-full"
+                  className={`group flex flex-col items-center gap-2 p-3 rounded-lg bg-background border border-line text-center h-full ${cardHover}`}
                 >
-                  <ResearchThemeArt molecule={t.molecule} tiles={t.tiles} className="w-full max-w-[150px]" />
+                  <ResearchThemeArt art={t.art} tiles={t.tiles} className="w-full max-w-[150px]" />
                   <span className="text-sm font-medium text-foreground group-hover:text-accent leading-snug">{t.title}</span>
                 </a>
               </li>
@@ -116,10 +116,10 @@ export default function ResearchPage() {
           aria-labelledby={`${t.id}-title`}
           className={`-mx-6 px-6 py-14 md:py-20 border-t border-line ${i % 2 ? '' : 'bg-surface'}`}
         >
-          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[17rem_1fr] gap-8 lg:gap-16 items-start">
+          <div className="reveal max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[17rem_1fr] gap-8 lg:gap-16 items-start">
             <div className="flex flex-col items-start lg:items-end gap-4">
               <h2 id={`${t.id}-title`} className="text-3xl md:text-4xl text-foreground leading-[1.05] lg:text-right">{t.title}</h2>
-              <ResearchThemeArt molecule={t.molecule} tiles={t.tiles} labelled className="w-48 md:w-56" />
+              <ResearchThemeArt art={t.art} tiles={t.tiles} labelled className="w-48 md:w-56" />
             </div>
             <div className="min-w-0 max-w-3xl">
               <p className="text-lg text-secondary leading-relaxed">{t.text}</p>

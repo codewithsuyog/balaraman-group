@@ -179,7 +179,7 @@ export default function Home() {
           <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
             {researchThemes.map((t, i) => (
               <li key={t.id} style={{ '--i': i % 3 } as React.CSSProperties} className={`reveal flex flex-col p-5 md:p-6 rounded-lg bg-surface border border-line ${cardHover}`}>
-                <ResearchThemeArt molecule={t.molecule} tiles={t.tiles} className="w-40 mb-4" />
+                <ResearchThemeArt art={t.art} tiles={t.tiles} className="w-40 mb-4" />
                 <h3 className="text-xl font-medium text-foreground leading-snug mb-2">{t.title}</h3>
                 <p className="text-secondary leading-relaxed mb-4">{t.summary}</p>
                 <p className="text-sm text-muted mb-1">{t.papers.length} papers</p>
