@@ -1,18 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Mail, Users, GraduationCap, Briefcase, ArrowRight } from 'lucide-react';
 import { team } from '../data';
-import { PageHeader, SectionHeading, pageMain } from '@/components/ui';
+import { PageHeader, SectionHeading, cardHover, pageMain } from '@/components/ui';
 
-import { Variants } from 'framer-motion';
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
-};
 
 const EXTENSIONS = ['.webp', '.jpg', '.png', '.jpeg'];
 
@@ -56,10 +49,7 @@ const MemberCard = ({ member, role }: { member: TeamMember, role: string }) => {
   const altText = member.name ? `${roleTitle} ${member.name}` : 'Team Member';
 
   return (
-    <motion.div 
-      variants={fadeUp}
-      className="group relative bg-surface border border-line rounded-lg overflow-hidden hover:bg-surface hover:border-line transition-colors duration-200 flex flex-col h-full"
-    >
+    <div className={`reveal group relative bg-surface border border-line rounded-lg overflow-hidden flex flex-col h-full ${cardHover}`}>
       <div className="aspect-[3/4] relative overflow-hidden bg-surface shrink-0">
         {!imgFailed && currentSrc ? (
           <img 
@@ -99,7 +89,7 @@ const MemberCard = ({ member, role }: { member: TeamMember, role: string }) => {
           )}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

@@ -60,7 +60,7 @@ export default function ContactPage() {
           </Link>
           <a
             href="mailto:eb.raman@iisertirupati.ac.in?subject=Joining%20the%20lab"
-            className="inline-flex items-center gap-2 h-11 px-5 rounded-lg bg-accent-fill text-on-accent font-medium transition-opacity hover:opacity-90"
+            className="inline-flex items-center gap-2 h-11 px-5 rounded-lg bg-accent-fill text-on-accent font-medium transition duration-(--dur-fast) hover:opacity-90 active:scale-[0.98]"
           >
             <Mail size={16} aria-hidden="true" /> Email Dr. Balaraman
           </a>

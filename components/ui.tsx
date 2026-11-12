@@ -5,9 +5,12 @@ import type { ReactNode } from 'react';
 // Padding for an inner page's <main>: clears the floating nav (two lines on phones)
 export const pageMain = 'w-full pt-32 pb-14 md:pb-20 px-6';
 
+// Cards that link somewhere or can be acted on: accent border and a small lift on hover
+export const cardHover = 'transition-[translate,border-color] duration-(--dur) ease-(--ease) hover:border-[var(--accent)] hover:-translate-y-0.5';
+
 // Filter buttons, tabs and jump links: filled when active, outlined otherwise
 export const chipClass = (active = false) =>
-  `inline-flex items-center rounded-lg transition-colors ${
+  `inline-flex items-center rounded-lg transition duration-(--dur-fast) active:scale-[0.98] ${
     active ? 'bg-foreground text-background' : 'border border-line text-secondary hover:text-foreground hover:bg-raised'
   }`;
 

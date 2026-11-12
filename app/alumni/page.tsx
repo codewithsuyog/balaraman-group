@@ -1,10 +1,8 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { PageHeader, pageMain } from '@/components/ui';
 import Link from 'next/link';
 import { ArrowLeft, GraduationCap, Briefcase, BookOpen, Beaker } from 'lucide-react';
-import { Variants } from 'framer-motion';
 import { team as teamData } from '../data';
 
 interface TeamMember {
@@ -39,10 +37,6 @@ function AlumnusCard({ alumnus, children }: { alumnus: TeamMember; children: Rea
   );
 }
 
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
-};
 
 export default function AlumniPage() {
   return (
@@ -61,7 +55,7 @@ export default function AlumniPage() {
         <div className="space-y-14">
           {/* Doctoral Alumni */}
           {team.alumniPhd && team.alumniPhd.length > 0 && (
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+            <div className="reveal">
               <h2 className="text-3xl md:text-4xl text-foreground leading-[1] mb-6 flex items-center gap-3">
                 <GraduationCap className="text-muted shrink-0" size={24} aria-hidden="true" /> Doctoral alumni
               </h2>
@@ -74,12 +68,12 @@ export default function AlumniPage() {
                   </AlumnusCard>
                 ))}
               </ul>
-            </motion.div>
+            </div>
           )}
 
           {/* Postdoctoral Alumni */}
           {team.alumniPostdoc && team.alumniPostdoc.length > 0 && (
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+            <div className="reveal">
               <h2 className="text-3xl md:text-4xl text-foreground leading-[1] mb-6 flex items-center gap-3">
                 <Briefcase className="text-muted shrink-0" size={24} aria-hidden="true" /> Postdoctoral alumni
               </h2>
@@ -91,18 +85,18 @@ export default function AlumniPage() {
                   </AlumnusCard>
                 ))}
               </ul>
-            </motion.div>
+            </div>
           )}
 
           {/* M.Sc. Thesis Alumni */}
           {team.alumniMsc && team.alumniMsc.length > 0 && (
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+            <div className="reveal">
               <h2 className="text-3xl md:text-4xl text-foreground leading-[1] mb-6 flex items-center gap-3">
                 <BookOpen className="text-muted shrink-0" size={24} aria-hidden="true" /> M.Sc. thesis students
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {team.alumniMsc.map((alumnus: TeamMember, idx: number) => (
-                  <div key={idx} className="p-4 rounded-lg bg-surface border border-line hover:border-line transition-colors flex justify-between items-center gap-4">
+                  <div key={idx} className="p-4 rounded-lg bg-surface border border-line flex justify-between items-center gap-4">
                     {alumnus.image && <img src={alumnus.image} alt="" loading="lazy" decoding="async" className="w-12 h-12 rounded-lg object-cover shrink-0" />}
                     <div className="min-w-0 flex-1">
                       <h3 className="text-sm font-medium text-foreground">{alumnus.name}</h3>
@@ -112,18 +106,18 @@ export default function AlumniPage() {
                   </div>
                 ))}
               </div>
-            </motion.div>
+            </div>
           )}
 
           {/* Project Fellows & Research Associates */}
           {team.alumniProjectFellows && team.alumniProjectFellows.length > 0 && (
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+            <div className="reveal">
               <h2 className="text-3xl md:text-4xl text-foreground leading-[1] mb-6 flex items-center gap-3">
                 <Beaker className="text-muted shrink-0" size={24} aria-hidden="true" /> Project fellows and research associates
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {team.alumniProjectFellows.map((alumnus: TeamMember, idx: number) => (
-                  <div key={idx} className="p-4 rounded-lg bg-surface border border-line hover:border-line transition-colors flex justify-between items-center gap-4">
+                  <div key={idx} className="p-4 rounded-lg bg-surface border border-line flex justify-between items-center gap-4">
                     <div className="min-w-0">
                       <h3 className="text-sm font-medium text-foreground">{alumnus.name}</h3>
                     </div>
@@ -131,18 +125,18 @@ export default function AlumniPage() {
                   </div>
                 ))}
               </div>
-            </motion.div>
+            </div>
           )}
 
           {/* Semester & Summer Project Students */}
           {team.alumniSemester && team.alumniSemester.length > 0 && (
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+            <div className="reveal">
               <h2 className="text-3xl md:text-4xl text-foreground leading-[1] mb-6 flex items-center gap-3">
                 Semester and summer project students
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {team.alumniSemester.map((alumnus: TeamMember, idx: number) => (
-                  <div key={idx} className="p-4 rounded-lg bg-surface border border-line hover:border-line transition-colors flex justify-between items-center gap-4">
+                  <div key={idx} className="p-4 rounded-lg bg-surface border border-line flex justify-between items-center gap-4">
                     <div className="min-w-0">
                       <h3 className="text-sm font-medium text-foreground">{alumnus.name}</h3>
                       {alumnus.batch && <p className="text-xs text-secondary font-mono">{alumnus.batch}</p>}
@@ -151,13 +145,13 @@ export default function AlumniPage() {
                   </div>
                 ))}
               </div>
-            </motion.div>
+            </div>
           )}
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Lab Rotation Students */}
             {team.alumniLabRotation && team.alumniLabRotation.length > 0 && (
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+              <div className="reveal">
                 <h3 className="text-xl font-medium mb-6 text-foreground border-b border-line pb-3">Lab Rotation i-Ph.D. Alumni</h3>
                 <div className="space-y-3">
                   {team.alumniLabRotation.map((alumnus: TeamMember, idx: number) => (
@@ -167,12 +161,12 @@ export default function AlumniPage() {
                     </div>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             )}
 
             {/* Undergraduate Alumni */}
             {team.alumniBtech && team.alumniBtech.length > 0 && (
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+              <div className="reveal">
                 <h3 className="text-xl font-medium mb-6 text-foreground border-b border-line pb-3">Undergraduate Alumni (B.Tech)</h3>
                 <div className="space-y-3">
                   {team.alumniBtech.map((alumnus: TeamMember, idx: number) => (
@@ -182,7 +176,7 @@ export default function AlumniPage() {
                     </div>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             )}
           </div>
 

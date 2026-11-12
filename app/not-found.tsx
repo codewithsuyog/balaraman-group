@@ -21,7 +21,7 @@ export default function NotFound() {
         <div className="flex flex-col sm:flex-row items-center gap-3">
           <Link 
             href="/" 
-            className="inline-flex items-center gap-2 h-11 px-5 rounded-lg bg-foreground text-background font-medium transition-opacity hover:opacity-90"
+            className="inline-flex items-center gap-2 h-11 px-5 rounded-lg bg-foreground text-background font-medium transition duration-(--dur-fast) hover:opacity-90 active:scale-[0.98]"
           >
             <Home size={16} />
             Go to homepage

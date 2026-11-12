@@ -9,17 +9,12 @@ import { piStats, news } from './data';
 import { researchThemes } from './research-themes';
 import { ResearchThemeArt } from '@/components/ResearchThemeArt';
 import { NewsImages } from '@/components/NewsImages';
+import { cardHover } from '@/components/ui';
 import { featuredPublications as publications } from './publications_featured';
 import ChemText from '../components/ChemText';
 import { useDialogFocus } from '@/components/useDialogFocus';
 import FramerCarouselThumbnails from '@/components/ui/framer-thumbnails';
 
-import { Variants } from 'framer-motion';
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 8 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } }
-};
 
 
 interface PubData {
@@ -43,9 +38,8 @@ const FeaturedPublication = ({ pub }: { pub: PubData }) => {
   const hasCover = !!pub.coverImage && !coverFailed;
 
   return (
-    <motion.article
-      initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-      className="flex gap-4 md:gap-5 items-start p-4 md:p-5 rounded-lg bg-surface border border-line"
+    <article
+      className="reveal flex gap-4 md:gap-5 items-start p-4 md:p-5 rounded-lg bg-surface border border-line"
     >
       {hasCover && (
         <div className="w-14 h-[74px] shrink-0 rounded-md bg-white border border-line p-1">
@@ -79,7 +73,7 @@ const FeaturedPublication = ({ pub }: { pub: PubData }) => {
         )}
         {pub.authors && <p className="text-sm text-secondary leading-relaxed mt-1 line-clamp-1 md:line-clamp-none">{pub.authors}</p>}
       </div>
-    </motion.article>
+    </article>
   );
 };
 
@@ -160,7 +154,7 @@ export default function Home() {
       {/* 3. RESEARCH SECTION */}
       <section id="research" className="w-full py-14 md:py-20 px-6 border-t border-line">
         <div className="max-w-7xl mx-auto">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 mb-14">
+          <div className="reveal grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 mb-14">
             <h2 className="text-5xl md:text-6xl leading-[0.95] text-foreground">Research</h2>
             <div className="space-y-4 text-lg text-secondary leading-relaxed">
               <p>
@@ -170,16 +164,12 @@ export default function Home() {
                 From well-defined molecular complexes to reusable solid catalysts, our work falls into six themes.
               </p>
             </div>
-          </motion.div>
+          </div>
 
           {/* Same six themes as the Research page, from one data file */}
           <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
             {researchThemes.map((t) => (
-              <motion.li
-                key={t.id}
-                initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={fadeUp}
-                className="flex flex-col p-5 md:p-6 rounded-lg bg-surface border border-line"
-              >
+              <li key={t.id} className={`reveal flex flex-col p-5 md:p-6 rounded-lg bg-surface border border-line ${cardHover}`}>
                 <ResearchThemeArt molecule={t.molecule} tiles={t.tiles} className="w-40 mb-4" />
                 <h3 className="text-xl font-medium text-foreground leading-snug mb-2">{t.title}</h3>
                 <p className="text-secondary leading-relaxed mb-4">{t.summary}</p>
@@ -187,7 +177,7 @@ export default function Home() {
                 <Link href={`/research#${t.id}`} className="mt-auto inline-flex items-center gap-1.5 py-2 text-sm text-accent hover:underline underline-offset-4" aria-label={`About ${t.title}`}>
                   About this theme <ArrowRight size={14} />
                 </Link>
-              </motion.li>
+              </li>
             ))}
           </ul>
         </div>
