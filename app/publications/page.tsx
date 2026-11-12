@@ -153,7 +153,7 @@ export default function PublicationsPage() {
         {stage === 'patents' ? (
           patentsShown.length === 0
             ? <p className="text-secondary py-10">No patents match &ldquo;{query}&rdquo;.</p>
-            : <><h2 className="sr-only">Patents</h2><PatentList rows={patentsShown} /></>
+            : <div className="swap-in"><h2 className="sr-only">Patents</h2><PatentList rows={patentsShown} /></div>
         ) : (<>
 
         {/* Jump to year */}
@@ -174,7 +174,7 @@ export default function PublicationsPage() {
         {byYear.length === 0 ? (
           <p className="text-secondary py-10">No papers match &ldquo;{query}&rdquo;.</p>
         ) : (
-          <div className="space-y-10">
+          <div key={stage} className="swap-in space-y-10">
             {byYear.map(([year, pubs]) => (
               <section key={year} id={`y-${year}`} aria-labelledby={`y-${year}-title`}>
                 <h2 id={`y-${year}-title`} className="text-3xl text-foreground mb-1">

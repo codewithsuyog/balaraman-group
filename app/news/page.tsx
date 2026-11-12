@@ -10,7 +10,7 @@ export default function NewsPage() {
         <PageHeader title="News" intro="Awards, new members and milestones from the lab" />
         <ol className="divide-y divide-[var(--line)] border-y border-line">
           {news.map((item) => (
-            <li key={item.id} className="py-6 flex flex-col sm:flex-row gap-4 sm:gap-6">
+            <li key={item.id} className="reveal py-6 flex flex-col sm:flex-row gap-4 sm:gap-6">
               <NewsImages images={item.images} className="sm:w-48 shrink-0" imgClassName="max-h-56 sm:max-h-44" />
               <div className="min-w-0">
                 <p className="font-mono text-xs text-muted mb-2">{item.date} · {item.type}</p>

@@ -56,7 +56,7 @@ const MemberCard = ({ member, role }: { member: TeamMember, role: string }) => {
             src={currentSrc} 
             alt={altText} 
             loading="lazy" decoding="async"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition duration-(--dur-slow) ease-(--ease) group-hover:scale-[1.03]"
             onError={handleError}
           />
         ) : (
