@@ -133,7 +133,24 @@ html {
   }
 }
 
+/* Page-to-page transitions (View Transitions API): a short cross-fade, and the nav underline slides */
+::view-transition-old(*),
+::view-transition-new(*) {
+  animation-duration: 200ms;
+  animation-timing-function: var(--ease);
+}
+::view-transition-group(nav-underline) {
+  animation-duration: var(--dur);
+  animation-timing-function: var(--ease);
+}
+
 @media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+
   *,
   *::before,
   *::after {

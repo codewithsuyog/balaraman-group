@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ViewTransition } from "react";
 import type { Metadata } from "next";
 import { Playfair_Display, Geist_Mono, Inter } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -202,7 +202,8 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <div className="contents">
             <SiteNav />
-            {children}
+            {/* Pages cross-fade on navigation; the nav stays put (styles in globals.css) */}
+            <ViewTransition>{children}</ViewTransition>
             <SiteFooter />
             <React.Suspense fallback={null}>
               <SpeedInsights />

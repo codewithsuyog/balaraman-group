@@ -15,6 +15,8 @@ export default function SiteNav() {
   return (
     <nav
       aria-label="Main"
+      // Own transition layer, so the bar stays crisp above the page cross-fade
+      style={{ viewTransitionName: 'site-nav' }}
       className="fixed top-2 lg:top-3 inset-x-2 lg:inset-x-auto lg:left-1/2 lg:-translate-x-1/2 lg:w-max z-50 rounded-xl bg-surface/95 border border-line px-1.5 lg:px-3 py-1 lg:py-1.5 flex items-center gap-1 text-[13px] lg:text-sm"
     >
       <Link href="/" className="flex items-center p-1 rounded-lg shrink-0" aria-label="Raman's Research Lab, home">
@@ -29,13 +31,19 @@ export default function SiteNav() {
               key={link.href}
               href={link.href}
               aria-current={active ? 'page' : undefined}
-              className={`px-[5px] sm:px-2 lg:px-3 py-1.5 lg:py-2 rounded-lg whitespace-nowrap transition-colors ${
-                active
-                  ? 'text-foreground underline decoration-2 decoration-[var(--accent)] underline-offset-[6px]'
-                  : 'text-secondary hover:text-foreground hover:bg-raised'
+              className={`relative px-[5px] sm:px-2 lg:px-3 py-1.5 lg:py-2 rounded-lg whitespace-nowrap transition-colors ${
+                active ? 'text-foreground' : 'text-secondary hover:text-foreground hover:bg-raised'
               }`}
             >
               {link.label}
+              {/* Underline is its own element so it can slide to the next page's link during a page transition */}
+              {active && (
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-x-[5px] sm:inset-x-2 lg:inset-x-3 bottom-0.5 lg:bottom-1 h-0.5 rounded-full bg-accent"
+                  style={{ viewTransitionName: 'nav-underline' }}
+                />
+              )}
             </Link>
           );
         })}
