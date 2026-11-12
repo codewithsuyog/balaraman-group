@@ -119,14 +119,20 @@ html {
 
 /* Scroll reveal: content fades and rises as it enters the viewport. Pure CSS (scroll-driven animation),
    so it works on server-rendered pages; browsers without support just show the content. */
-@keyframes rise {
+@keyframes reveal {
   from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+/* Load-time fades start at 0.01, not 0: fully transparent content is not counted as painted, which delays LCP.
+   (Scroll reveals stay at 0 so waiting content is truly hidden, also from contrast checks.) */
+@keyframes rise {
+  from { opacity: 0.01; transform: translateY(12px); }
   to { opacity: 1; transform: none; }
 }
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
     .reveal {
-      animation: rise linear both;
+      animation: reveal linear both;
       animation-timeline: view();
       /* --i (0, 1, 2…) on siblings starts each one slightly later */
       animation-range: entry calc(var(--i, 0) * 6%) entry calc(30% + var(--i, 0) * 6%);
@@ -187,7 +193,7 @@ html {
   }
 }
 @keyframes swap {
-  from { opacity: 0; transform: translateY(8px); }
+  from { opacity: 0.01; transform: translateY(8px); }
 }
 
 /* Page-to-page transitions (View Transitions API): a short cross-fade, and the nav underline slides */
