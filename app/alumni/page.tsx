@@ -1,6 +1,6 @@
 'use client';
 
-import { PageHeader, pageMain } from '@/components/ui';
+import { PageHeader, cardHover, pageMain } from '@/components/ui';
 import Link from 'next/link';
 import { ArrowLeft, GraduationCap, Briefcase, BookOpen, Beaker } from 'lucide-react';
 import { team as teamData } from '../data';
@@ -23,7 +23,7 @@ const team = teamData as Record<string, TeamMember[]>;
 // Photo on the left, details on the right; a plain initial when there is no photo
 function AlumnusCard({ alumnus, children }: { alumnus: TeamMember; children: React.ReactNode }) {
   return (
-    <li className="p-4 rounded-lg bg-surface border border-line flex gap-4">
+    <li className={`p-4 rounded-lg bg-surface border border-line flex gap-4 ${cardHover}`}>
       {alumnus.image ? (
         <img src={alumnus.image} alt={alumnus.name} loading="lazy" decoding="async" className="w-20 h-24 rounded-lg object-cover shrink-0 bg-raised" />
       ) : (
@@ -96,7 +96,7 @@ export default function AlumniPage() {
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {team.alumniMsc.map((alumnus: TeamMember, idx: number) => (
-                  <div key={idx} className="p-4 rounded-lg bg-surface border border-line flex justify-between items-center gap-4">
+                  <div key={idx} className={`p-4 rounded-lg bg-surface border border-line flex justify-between items-center gap-4 ${cardHover}`}>
                     {alumnus.image && <img src={alumnus.image} alt="" loading="lazy" decoding="async" className="w-12 h-12 rounded-lg object-cover shrink-0" />}
                     <div className="min-w-0 flex-1">
                       <h3 className="text-sm font-medium text-foreground">{alumnus.name}</h3>
@@ -117,7 +117,7 @@ export default function AlumniPage() {
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {team.alumniProjectFellows.map((alumnus: TeamMember, idx: number) => (
-                  <div key={idx} className="p-4 rounded-lg bg-surface border border-line flex justify-between items-center gap-4">
+                  <div key={idx} className={`p-4 rounded-lg bg-surface border border-line flex justify-between items-center gap-4 ${cardHover}`}>
                     <div className="min-w-0">
                       <h3 className="text-sm font-medium text-foreground">{alumnus.name}</h3>
                     </div>
@@ -136,7 +136,7 @@ export default function AlumniPage() {
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {team.alumniSemester.map((alumnus: TeamMember, idx: number) => (
-                  <div key={idx} className="p-4 rounded-lg bg-surface border border-line flex justify-between items-center gap-4">
+                  <div key={idx} className={`p-4 rounded-lg bg-surface border border-line flex justify-between items-center gap-4 ${cardHover}`}>
                     <div className="min-w-0">
                       <h3 className="text-sm font-medium text-foreground">{alumnus.name}</h3>
                       {alumnus.batch && <p className="text-xs text-secondary font-mono">{alumnus.batch}</p>}

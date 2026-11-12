@@ -169,7 +169,7 @@ function FramerCarouselThumbnails() {
               ${
                 index === 0
                   ? 'opacity-30 cursor-not-allowed bg-raised border-line'
-                  : 'bg-raised border-line hover:bg-raised hover:border-line  opacity-70 hover:opacity-100'
+                  : 'bg-raised border-line hover:border-[var(--accent)] opacity-70 hover:opacity-100'
               }`}
           >
             <ChevronLeft size={20} className="text-white" />
@@ -184,7 +184,7 @@ function FramerCarouselThumbnails() {
               ${
                 index === galleryItems.length - 1
                   ? 'opacity-30 cursor-not-allowed bg-raised border-line'
-                  : 'bg-raised border-line hover:bg-raised hover:border-line  opacity-70 hover:opacity-100'
+                  : 'bg-raised border-line hover:border-[var(--accent)] opacity-70 hover:opacity-100'
               }`}
           >
             <ChevronRight size={20} className="text-white" />

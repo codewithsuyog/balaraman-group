@@ -218,7 +218,7 @@ export default function ResourcesPage() {
           </div>
 
           {q ? (
-            <section aria-labelledby="results-title" className="min-w-0" aria-live="polite">
+            <section aria-labelledby="results-title" className="swap-in min-w-0" aria-live="polite">
               <h2 id="results-title" className="text-3xl md:text-4xl text-foreground leading-[1] mb-6">
                 {results.length ? `Results for “${q}”` : `Nothing found for “${q}”`}
               </h2>
