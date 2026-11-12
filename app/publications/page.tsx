@@ -17,7 +17,7 @@ function PublicationRow({ pub }: { pub: Pub }) {
   const hasCover = !!pub.coverImage && !coverFailed;
 
   return (
-    <li className="py-4 md:py-5 flex flex-wrap md:flex-nowrap gap-3 md:gap-6">
+    <li className="py-4 md:py-5 px-2 -mx-2 rounded-lg flex flex-wrap md:flex-nowrap gap-3 md:gap-6 transition-colors duration-(--dur) hover:bg-raised/50">
       {hasCover ? (
         <div className="w-14 h-[74px] shrink-0 rounded-md bg-white border border-line p-1">
           <img
