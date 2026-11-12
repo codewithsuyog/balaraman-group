@@ -22,13 +22,14 @@ export function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-      className="w-10 h-10 rounded-full bg-surface border border-line flex items-center justify-center text-foreground hover:bg-raised hover:text-accent hover:border-line transition-colors duration-300"
+      className="w-10 h-10 rounded-full bg-surface border border-line flex items-center justify-center text-foreground hover:bg-raised hover:text-accent transition duration-(--dur-fast) active:scale-[0.96]"
       aria-label="Toggle theme"
     >
+      {/* key restarts the turn-in animation each time the icon swaps */}
       {resolvedTheme === "dark" ? (
-        <Sun className="h-[1.2rem] w-[1.2rem]" />
+        <Sun key="sun" className="turn-in h-[1.2rem] w-[1.2rem]" />
       ) : (
-        <Moon className="h-[1.2rem] w-[1.2rem]" />
+        <Moon key="moon" className="turn-in h-[1.2rem] w-[1.2rem]" />
       )}
     </button>
   );

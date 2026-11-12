@@ -10,6 +10,8 @@ const legacyHosts = [
 
 const nextConfig: NextConfig = {
   trailingSlash: false,
+  // Cross-fade between pages (React <ViewTransition> in app/layout.tsx)
+  experimental: { viewTransition: true },
   async redirects() {
     return [
       // Patents moved into the Publications page

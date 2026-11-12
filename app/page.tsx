@@ -4,22 +4,17 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, X } from 'lucide-react';
+import { ArrowRight, ChevronDown, X } from 'lucide-react';
 import { piStats, news } from './data';
 import { researchThemes } from './research-themes';
 import { ResearchThemeArt } from '@/components/ResearchThemeArt';
 import { NewsImages } from '@/components/NewsImages';
+import { cardHover } from '@/components/ui';
 import { featuredPublications as publications } from './publications_featured';
 import ChemText from '../components/ChemText';
 import { useDialogFocus } from '@/components/useDialogFocus';
 import FramerCarouselThumbnails from '@/components/ui/framer-thumbnails';
 
-import { Variants } from 'framer-motion';
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 8 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } }
-};
 
 
 interface PubData {
@@ -43,9 +38,8 @@ const FeaturedPublication = ({ pub }: { pub: PubData }) => {
   const hasCover = !!pub.coverImage && !coverFailed;
 
   return (
-    <motion.article
-      initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-      className="flex gap-4 md:gap-5 items-start p-4 md:p-5 rounded-lg bg-surface border border-line"
+    <article
+      className="reveal flex gap-4 md:gap-5 items-start p-4 md:p-5 rounded-lg bg-surface border border-line"
     >
       {hasCover && (
         <div className="w-14 h-[74px] shrink-0 rounded-md bg-white border border-line p-1">
@@ -79,7 +73,7 @@ const FeaturedPublication = ({ pub }: { pub: PubData }) => {
         )}
         {pub.authors && <p className="text-sm text-secondary leading-relaxed mt-1 line-clamp-1 md:line-clamp-none">{pub.authors}</p>}
       </div>
-    </motion.article>
+    </article>
   );
 };
 
@@ -107,7 +101,7 @@ export default function Home() {
 
 
   return (
-    <main id="main" className="flex flex-col items-center w-full overflow-hidden bg-background">
+    <main id="main" className="flex flex-col items-center w-full overflow-x-clip bg-background">{/* clip, not hidden: hidden would make this a scroll container and break scroll-driven reveals */}
       {/* 1. HERO: the group photo full-bleed, the RAMAN wordmark behind the title */}
       <section id="home" className="relative w-full min-h-[100svh] flex items-center justify-center overflow-hidden px-6">
         <Image
@@ -137,7 +131,7 @@ export default function Home() {
             type="button"
             onClick={() => setLogoModalOpen(true)}
             aria-label="View the EBR lab emblem"
-            className="mx-auto mb-6 md:mb-8 block w-24 sm:w-28 md:w-32 rounded-lg"
+            className="enter mx-auto mb-6 md:mb-8 block w-24 sm:w-28 md:w-32 rounded-lg transition duration-(--dur) hover:scale-[1.04] active:scale-[0.98]"
           >
             <img
               src="/images/lab-logo-hex-320.webp"
@@ -147,20 +141,29 @@ export default function Home() {
               className="w-full h-auto drop-shadow-[0_8px_24px_rgba(0,0,0,0.35)]"
             />
           </button>
-          <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-white leading-[0.9] mb-8">
+          <h1 className="enter text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-white leading-[0.9] mb-8" style={{ '--i': 1 } as React.CSSProperties}>
             Raman&apos;s<br />
             <span className="text-[#fbbf24]">Research</span> Lab
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed">
+          <p className="enter text-lg sm:text-xl md:text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed" style={{ '--i': 2 } as React.CSSProperties}>
             Transition-metal <span className="font-semibold text-white">catalysis</span>, <span className="font-semibold text-white">sustainable chemistry</span>, and <span className="font-semibold text-white">organometallic synthesis</span> at IISER Tirupati.
           </p>
         </div>
+
+        {/* Scroll cue: fades out as soon as the page is scrolled */}
+        <a
+          href="#research"
+          aria-label="Scroll to research"
+          className="scroll-cue absolute bottom-5 left-1/2 -translate-x-1/2 z-10 w-11 h-11 rounded-full flex items-center justify-center text-white/80 hover:text-white border border-white/30 hover:border-white/60 transition-colors"
+        >
+          <ChevronDown size={20} aria-hidden="true" />
+        </a>
       </section>
 
       {/* 3. RESEARCH SECTION */}
       <section id="research" className="w-full py-14 md:py-20 px-6 border-t border-line">
         <div className="max-w-7xl mx-auto">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 mb-14">
+          <div className="reveal grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 mb-14">
             <h2 className="text-5xl md:text-6xl leading-[0.95] text-foreground">Research</h2>
             <div className="space-y-4 text-lg text-secondary leading-relaxed">
               <p>
@@ -170,24 +173,20 @@ export default function Home() {
                 From well-defined molecular complexes to reusable solid catalysts, our work falls into six themes.
               </p>
             </div>
-          </motion.div>
+          </div>
 
           {/* Same six themes as the Research page, from one data file */}
           <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
-            {researchThemes.map((t) => (
-              <motion.li
-                key={t.id}
-                initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={fadeUp}
-                className="flex flex-col p-5 md:p-6 rounded-lg bg-surface border border-line"
-              >
-                <ResearchThemeArt molecule={t.molecule} tiles={t.tiles} className="w-40 mb-4" />
+            {researchThemes.map((t, i) => (
+              <li key={t.id} style={{ '--i': i % 3 } as React.CSSProperties} className={`reveal flex flex-col p-5 md:p-6 rounded-lg bg-surface border border-line ${cardHover}`}>
+                <ResearchThemeArt art={t.art} tiles={t.tiles} className="w-40 mb-4" />
                 <h3 className="text-xl font-medium text-foreground leading-snug mb-2">{t.title}</h3>
                 <p className="text-secondary leading-relaxed mb-4">{t.summary}</p>
                 <p className="text-sm text-muted mb-1">{t.papers.length} papers</p>
                 <Link href={`/research#${t.id}`} className="mt-auto inline-flex items-center gap-1.5 py-2 text-sm text-accent hover:underline underline-offset-4" aria-label={`About ${t.title}`}>
                   About this theme <ArrowRight size={14} />
                 </Link>
-              </motion.li>
+              </li>
             ))}
           </ul>
         </div>
@@ -224,8 +223,8 @@ export default function Home() {
             </Link>
           </div>
           <ul className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {news.slice(0, 3).map((item) => (
-              <li key={item.id} className="p-6 rounded-lg bg-surface border border-line">
+            {news.slice(0, 3).map((item, i) => (
+              <li key={item.id} style={{ '--i': i } as React.CSSProperties} className="reveal p-6 rounded-lg bg-surface border border-line">
                 <NewsImages images={item.images} className="mb-4" imgClassName="max-h-48" />
                 <p className="font-mono text-xs text-muted mb-2">{item.date} · {item.type}</p>
                 <h3 className="text-base font-medium text-foreground leading-snug mb-2">{item.title}</h3>
@@ -245,13 +244,13 @@ export default function Home() {
               All photos <ArrowRight size={16} />
             </Link>
           </div>
-          <FramerCarouselThumbnails />
+          <div className="reveal"><FramerCarouselThumbnails /></div>
         </div>
       </section>
 
       {/* JOIN */}
       <section className="w-full py-12 md:py-16 px-6 border-t border-line">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="reveal max-w-5xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <h2 className="text-3xl md:text-4xl leading-[1] text-foreground mb-2">Join the lab</h2>
             <p className="text-secondary">How Ph.D. students, postdocs and project students can join us.</p>

@@ -14,6 +14,10 @@
   --accent-fill: #b45309; /* filled primary button */
   --on-accent: #ffffff;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  /* Motion: three durations, one easing. Keep to opacity and transform. */
+  --dur-fast: 150ms;
+  --dur: 250ms;
+  --dur-slow: 500ms;
 }
 
 .dark {
@@ -113,7 +117,103 @@ html {
   }
 }
 
+/* Scroll reveal: content fades and rises as it enters the viewport. Pure CSS (scroll-driven animation),
+   so it works on server-rendered pages; browsers without support just show the content. */
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+/* Load-time fades start at 0.01, not 0: fully transparent content is not counted as painted, which delays LCP.
+   (Scroll reveals stay at 0 so waiting content is truly hidden, also from contrast checks.) */
+@keyframes rise {
+  from { opacity: 0.01; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: reveal linear both;
+      animation-timeline: view();
+      /* --i (0, 1, 2…) on siblings starts each one slightly later */
+      animation-range: entry calc(var(--i, 0) * 6%) entry calc(30% + var(--i, 0) * 6%);
+    }
+    /* Line drawings draw themselves as they scroll into view (shapes carry pathLength="1") */
+    .draw {
+      view-timeline: --draw block; /* SVG shapes have no box of their own, so they follow the drawing's timeline */
+    }
+    .draw :is(path, line, circle, rect, polyline)[pathLength] {
+      stroke-dasharray: 1;
+      animation: draw linear both;
+      animation-timeline: --draw;
+      animation-range: entry 20% cover 40%;
+    }
+    /* Hero scroll cue fades out over the first 200px of scrolling */
+    .scroll-cue {
+      animation: fade-out linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 200px;
+    }
+  }
+}
+@keyframes draw {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes fade-out {
+  to { opacity: 0; visibility: hidden; }
+}
+
+/* Entrance on page load (hero): same rise, staggered with --i */
+@keyframes turn-in {
+  from { rotate: -90deg; opacity: 0; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .enter {
+    animation: rise var(--dur-slow) var(--ease) both;
+    animation-delay: calc(var(--i, 0) * 90ms);
+  }
+  .turn-in {
+    animation: turn-in var(--dur) var(--ease);
+  }
+  /* Content that replaces other content (tab panel, filtered list): add with a changing React key */
+  .swap-in {
+    animation: swap var(--dur) var(--ease);
+  }
+  /* <details> lists open and close smoothly where the browser supports it */
+  :root {
+    interpolate-size: allow-keywords;
+  }
+  details::details-content {
+    block-size: 0;
+    overflow: clip;
+    transition: block-size var(--dur) var(--ease), content-visibility var(--dur) allow-discrete;
+  }
+  details[open]::details-content {
+    block-size: auto;
+  }
+}
+@keyframes swap {
+  from { opacity: 0.01; transform: translateY(8px); }
+}
+
+/* Page-to-page transitions (View Transitions API): a short cross-fade, and the nav underline slides */
+::view-transition-old(*),
+::view-transition-new(*) {
+  animation-duration: 200ms;
+  animation-timing-function: var(--ease);
+}
+::view-transition-group(nav-underline) {
+  animation-duration: var(--dur);
+  animation-timing-function: var(--ease);
+}
+
 @media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+
   *,
   *::before,
   *::after {

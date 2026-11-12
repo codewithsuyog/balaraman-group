@@ -103,7 +103,7 @@ export default function PIPage() {
           </p>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-12 mb-14">
-            <section aria-labelledby="career">
+            <section aria-labelledby="career" className="reveal">
               <h2 id="career" className="text-3xl text-foreground leading-[1] mb-4">Career</h2>
               <ol className="divide-y divide-[var(--line)] border-y border-line">
                 {career.map((item) => (
@@ -119,7 +119,7 @@ export default function PIPage() {
               </ol>
             </section>
 
-            <section aria-labelledby="education">
+            <section aria-labelledby="education" className="reveal">
               <h2 id="education" className="text-3xl text-foreground leading-[1] mb-4">Education</h2>
               <ol className="divide-y divide-[var(--line)] border-y border-line">
                 {education.map((item) => (
@@ -140,7 +140,7 @@ export default function PIPage() {
             <p className="text-lg text-foreground leading-relaxed">Take risk in life. If you win, you will lead; if you lose, you will guide.</p>
           </blockquote>
 
-          <section aria-labelledby="honours" className="mb-14">
+          <section aria-labelledby="honours" className="reveal mb-14">
             <h2 id="honours" className="text-3xl text-foreground leading-[1] mb-4">
               Honours and awards <span className="font-mono text-sm text-muted ml-1 tabular-nums">{honours.length}</span>
             </h2>
@@ -154,7 +154,7 @@ export default function PIPage() {
             </ul>
           </section>
 
-          <section aria-labelledby="courses" className="mb-14">
+          <section aria-labelledby="courses" className="reveal mb-14">
             <h2 id="courses" className="text-3xl text-foreground leading-[1] mb-4">Courses taught</h2>
             <ul className="divide-y divide-[var(--line)] border-y border-line">
               {courses.map((c) => (
