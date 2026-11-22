@@ -104,6 +104,7 @@ export const resourceGroups: ResourceGroup[] = [
     items: [
       { title: "How to run a reaction: a roadmap", url: "https://www.chem.rochester.edu/notvoodoo/pages/how_to.php?page=roadmap" },
       { title: "Choosing glassware: flasks and vessels", url: "https://www.chem.rochester.edu/notvoodoo/pages/tips.php?page=reaction_vessels" },
+      { title: "Glassware builder: assemble distillation, reflux and Soxhlet setups (interactive)", url: "https://glassware.cheminfo.org/" },
       { title: "Weighing reactants and reagents", url: "https://www.chem.rochester.edu/notvoodoo/pages/troubleshooting.php?page=weighing" },
       { title: "Adding reagents", url: "https://www.chem.rochester.edu/notvoodoo/pages/reagents.php?page=add_reagents" },
       { title: "Using syringes", url: "https://www.chem.rochester.edu/notvoodoo/pages/tips.php?page=use_syringe" },

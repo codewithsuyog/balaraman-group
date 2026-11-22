@@ -14,7 +14,7 @@ const sourceOf = (url: string) => {
 };
 
 // Link type, worked out from the URL so new links get an icon automatically
-const DATABASE_HOSTS = ['pubchem.ncbi.nlm.nih.gov', 'sdbs.db.aist.go.jp', 'chemcalc.org', 'acsgcipr.org', 'reagents.acsgcipr.org', 'organicchemistrydata.org'];
+const DATABASE_HOSTS = ['pubchem.ncbi.nlm.nih.gov', 'sdbs.db.aist.go.jp', 'chemcalc.org', 'acsgcipr.org', 'reagents.acsgcipr.org', 'organicchemistrydata.org', 'glassware.cheminfo.org'];
 const BOOK_HOSTS = ['nap.nationalacademies.org'];
 const linkType = (url: string) => {
   const u = new URL(url);
